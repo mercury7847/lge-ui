@@ -25,48 +25,48 @@ if ('scrollRestoration' in history) {
                         '<div class="sku">{{#raw sku}}</div>' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
-                            '<a href="{{url}}">' +
-                                // BTOCSITE-16 검색 결과 구획 정리
-                                '<div class="star">'+
-									'<div class="star-rating" {{#if rating > 0 }} style="width:{{(rating*100)/5}}%;" {{/if}}>'+
-										'<span class="blind">현재 별점 : {{rating}}</span>'+
-									'</div>'+
-								'</div>'+
-                                '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
-                                '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
-                            '</a>' +
+                                '<a href="{{url}}">' +
+                                    // BTOCSITE-16 검색 결과 구획 정리
+                                    '<div class="star">'+
+                                        '<div class="star-rating" {{#if rating > 0 }} style="width:{{(rating*100)/5}}%;" {{/if}}>'+
+                                            '<span class="blind">현재 별점 : {{rating}}</span>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
+                                    '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
+                                '</a>' +
                             '{{/if}}' +
                         '</div>' +
 
                          // BTOCSITE-16 검색 결과 구획 정리
                         '<div class="info-price mo-only">' +
-                                '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
-                                    '<a href="{{url}}">' +
-                                        '<div class="price-info rental">' +
-                                            '<p class="tit">렌탈</p><span class="price"><em>월</em> {{vcui.number.addComma(carePrice)}}<em>원</em></span>' +
-                                        '</div>' +
-                                    '</a>' +
-                                '{{/if}}' +
-                                '{{#if obsFlag=="Y" && originalPrice != 0}}' +
-                                    '<a href="{{url}}">' +
-                                        '<div class="price-info sales">' +
-                                            '{{#if obsFlag=="Y"}}' +
-                                                '{{#if price == originalPrice}}' +
-                                                    '<div class="price-in">' +
-                                                        '<span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>' +
-                                                    '</div>' +
-                                                '{{#else}}' +
-                                                    '<div class="original">' +
-                                                        '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>{{/if}}' +
-                                                    '</div>' +
-                                                    '<div class="price-in">' +
-                                                        '{{#if price != 0}}<span class="price">{{vcui.number.addComma(price)}}<em>원</em></span>{{/if}}' +
-                                                    '</div>' +
-                                                '{{/if}}' +
+                            '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
+                                '<a href="{{url}}">' +
+                                    '<div class="price-info rental">' +
+                                        '<p class="tit">렌탈</p><span class="price"><em>월</em> {{vcui.number.addComma(carePrice)}}<em>원</em></span>' +
+                                    '</div>' +
+                                '</a>' +
+                            '{{/if}}' +
+                            '{{#if obsFlag=="Y" && originalPrice != 0}}' +
+                                '<a href="{{url}}">' +
+                                    '<div class="price-info sales">' +
+                                        '{{#if obsFlag=="Y"}}' +
+                                            '{{#if price == originalPrice}}' +
+                                                '<div class="price-in">' +
+                                                    '<span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>' +
+                                                '</div>' +
+                                            '{{#else}}' +
+                                                '<div class="original">' +
+                                                    '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>{{/if}}' +
+                                                '</div>' +
+                                                '<div class="price-in">' +
+                                                    '{{#if price != 0}}<span class="price">{{vcui.number.addComma(price)}}<em>원</em></span>{{/if}}' +
+                                                '</div>' +
                                             '{{/if}}' +
-                                        '</div>' +
-                                    '</a>' +
-                                '{{/if}}' +
+                                        '{{/if}}' +
+                                    '</div>' +
+                                '</a>' +
+                            '{{/if}}' +
                         '</div>' +
 
                         // BTOCSITE-16 검색 결과 구획 정리 - 삭제
@@ -99,25 +99,25 @@ if ('scrollRestoration' in history) {
                             '<p class="tit">렌탈</p><span class="price"><em>월</em> {{vcui.number.addComma(carePrice)}}<em>원</em></span>' +
                         '</div>' +
                     '</a>' +
-                    '{{/if}}' +
-                    '{{#if obsFlag=="Y" && originalPrice != 0}}' +
+                '{{/if}}' +
+                '{{#if obsFlag=="Y" && originalPrice != 0}}' +
                     '<a href="{{url}}">' +
-                    '<div class="price-info sales">' +
-                        '{{#if obsFlag=="Y"}}' +
-                            '{{#if price == originalPrice}}' +
-                                '<div class="price-in">' +
-                                    '<span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>' +
-                                '</div>' +
-                            '{{#else}}' +
-                                '<div class="original">' +
-                                    '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>{{/if}}' +
-                                '</div>' +
-                                '<div class="price-in">' +
-                                    '{{#if price != 0}}<span class="price">{{vcui.number.addComma(price)}}<em>원</em></span>{{/if}}' +
-                                '</div>' +
+                        '<div class="price-info sales">' +
+                            '{{#if obsFlag=="Y"}}' +
+                                '{{#if price == originalPrice}}' +
+                                    '<div class="price-in">' +
+                                        '<span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>' +
+                                    '</div>' +
+                                '{{#else}}' +
+                                    '<div class="original">' +
+                                        '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>{{/if}}' +
+                                    '</div>' +
+                                    '<div class="price-in">' +
+                                        '{{#if price != 0}}<span class="price">{{vcui.number.addComma(price)}}<em>원</em></span>{{/if}}' +
+                                    '</div>' +
+                                '{{/if}}' +
                             '{{/if}}' +
-                        '{{/if}}' +
-                    '</div>' +
+                        '</div>' +
                     '</a>' +
                 '{{/if}}' +
             '</div>' +
@@ -152,8 +152,9 @@ if ('scrollRestoration' in history) {
                             '{{/if}}' +
                         '</div>' +
                     '{{/if}}' +
+                    // BTOCSITE-16 검색 결과 구획 정리 - 삭제
                     // '<div class="info-btm">' +
-                    //     '<div class="text model">fhjksdjhfklsdjlfkj</div>' +
+                    //     '<div class="text model">{{desc}}</div>' +
                     // '</div>' +
                 '</div>' +
             '</div>' +
