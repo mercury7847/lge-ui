@@ -92,17 +92,19 @@
                 var ajaxUrl = self.$lnbContents.attr('data-list-url');
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-                    var data = result.data;
-                    var param = result.param;
-                    self.$pagination.vcPagination('setPageInfo',param.pagination);
-                    self.$listCount.text(vcui.number.addComma(data.totalCount));
-                    var arr = data.listData instanceof Array ? data.listData : [];
-                    self.$myLists.empty();
-                    arr.forEach(function(item, index) {
-                        item.date = vcui.date.format(item.date,'yyyy.MM.dd');
-                        self.$myLists.append(vcui.template(listItemTemplate, item));
-                    });
-                    self.checkNoData();
+                    if( result.status == "success" && result.data) {
+                        var data = result.data;
+                        var param = result.param;
+                        self.$pagination.vcPagination('setPageInfo',param.pagination);
+                        self.$listCount.text(vcui.number.addComma(data.totalCount));
+                        var arr = data.listData instanceof Array ? data.listData : [];
+                        self.$myLists.empty();
+                        arr.forEach(function(item, index) {
+                            item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                            self.$myLists.append(vcui.template(listItemTemplate, item));
+                        });
+                        self.checkNoData();        
+                    }
                 });
             },
 
