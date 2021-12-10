@@ -17,6 +17,8 @@
 			}
 			a {
 				display:flex; //BTOCSITE-6032 수정
+				align-items: center;
+				justify-content: center;
 				height:74px;
 				border-radius:8px;
 				box-shadow:2px 4px 16px rgba(0,0,0,0.14);
