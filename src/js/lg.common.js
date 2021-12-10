@@ -1672,7 +1672,8 @@ var goAppUrl = function(path) {
             self.requestAjaxData(url, data, callback, "POST", null, ignoreCommonSuccessCheck, null, ignoreCommonLoadingHide);
         },
 
-        requestAjaxFileData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck) {
+        requestAjaxFileData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, failcallback) {
+            //BTCOSITE-6032 : failcallback  추가
             var self = this;
             var dtype = dataType? dataType : "json";
             $.ajax({
@@ -1714,6 +1715,10 @@ var goAppUrl = function(path) {
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
+                //failcallback 추가
+                if( failcallback) {
+                    failcallback();
+                }
             });
         },
 

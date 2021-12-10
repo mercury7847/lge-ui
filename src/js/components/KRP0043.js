@@ -475,6 +475,8 @@
                 var param = self.validation.getAllValues();
                 var formData = new FormData();
 
+                //xssFilterChk(param);
+
                 // data modelId 값 추가
                 formData.append('modelId', self.$dataModelId);
         
@@ -512,13 +514,20 @@
                         lgkorUI.alert("", {
                             title: "게시물 등록에 실패하였습니다.",
                             ok : function(){
-                                self.$writePopup.vcModal('hide');
-                                location.reload();
+                                
                             }
                         });
                         
                     }
-                }, 'POST', 'json',true);
+                }, 'POST', 'json',true, function(){
+                    lgkorUI.hideLoading();
+                    lgkorUI.alert("", {
+                        title: "게시물 등록에 실패하였습니다.",
+                        ok : function(){
+                
+                        }
+                    });
+                });
             }
         },
         // qna-modify-popup - post
@@ -574,12 +583,19 @@
                         lgkorUI.alert("", {
                             title: "게시물 수정에 실패하였습니다.",
                             ok : function(){
-                                self.$writePopup.vcModal('hide');
-                                location.reload();
+                    
                             }
                         });
                     }
-                }, 'POST', 'json',true);
+                }, 'POST', 'json', true, function(){
+                    lgkorUI.hideLoading();
+                    lgkorUI.alert("", {
+                        title: "게시물 수정에 실패하였습니다.",
+                        ok : function(){
+                
+                        }
+                    });
+                });
             }
         },
         // qna-delete-popup - post
@@ -600,7 +616,7 @@
                         lgkorUI.alert("", {
                             title: "게시물 삭제에 실패하였습니다.",
                             ok : function(){
-                                location.reload();
+                                
                             }
                         });
                     }
