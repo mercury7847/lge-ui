@@ -311,9 +311,7 @@ $(window).ready(function(){
             if(scrollAbled){
                 var page = parseInt(contList.data('page'));
                 var totalpage = contList.data('totalpage');
-
-                //BTOCSITE-5938 - TV 광고 페이지 동영상 위치 오류 수정
-                if(page <= totalpage){
+                if(page < totalpage){
                     var getList = false;
                     var scrolltop, wrapheight, listheight, scrolldist, contop;
                     if(window.breakpoint.name == "pc"){
@@ -346,13 +344,8 @@ $(window).ready(function(){
                             $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
                         }
                     }
-                    //BTOCSITE-5938 - TV 광고 페이지 동영상 위치 오류 수정
-                    if(window.breakpoint.name == "mobile" && page == totalpage){
-                        getList = false;
-                        $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
-                    }else {
-                        if(getList) setContentsList(page+1);
-                    }
+
+                    if(getList) setContentsList(page+1);
                 }
             }
         }
@@ -384,7 +377,10 @@ $(window).ready(function(){
                 contList.data('page', page);
                 contList.data('totalpage', totalpage);
 
-                if(page == 1) contList.find('.video-list').empty();
+                if(page == 1) {
+                    contList.find('.video-list').empty();
+                    contList.find('.video-list').scrollTop(0);
+                }
                 for(var key in data.storyList){
                     var contlistemplate = vcui.template(contListTemplate, data.storyList[key]);
                     contList.find('.video-list').append(contlistemplate);
