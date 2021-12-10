@@ -106,7 +106,7 @@
             self.$pdpQna = $('#pdp_qna');
             
             // QnA 리스트 상단 영역
-            self.$totalCount = self.$pdpQna.find('.count');
+            //self.$totalCount = self.$pdpQna.find('.count');
             self.$sortingWrap = self.$pdpQna.find('.sorting-wrap');
             self.$sortSelect = self.$sortingWrap.find('.ui_selectbox'); //문의유형 select 정렬
             self.$sortSecChk = self.$sortingWrap.find('.chk-wrap'); //비밀글 제외 체크 
@@ -285,13 +285,13 @@
                     var innerHTML = "";
                     
                     var pagination = result.data.pagination;
-                    var totalCount = result.data.qnaTotalCount;
+                    // var totalCount = result.data.qnaTotalCount;
                     var $pdpTab = $('.tab-menu [data-link-name=qna]');
 
                     if(result.status == "success"){
 
                         if( (noticeData.length > 0 && listData.length > 0) || listData.length > 0 || noticeData.length > 0) {
-                            var currentCount = totalCount > 999 ? "999+" : totalCount;
+                            // var currentCount = totalCount > 999 ? "999+" : totalCount;
                             noticeData.forEach(function(item){
                                 innerHTML += vcui.template(noticeListTmpl, item);
                             });
@@ -303,7 +303,7 @@
                             
                             // 211206 추가 - 필터. no-data일경우에,비노출 처리 건, 다시 데이터 조회될 경우, 초기화 
                             self.$qnaList.empty().append(innerHTML);
-                            self.$totalCount.text(currentCount);
+                            //self.$totalCount.text(currentCount);
                             //$pdpTab.text("Q&A (" + currentCount +")");
                             self.$qnaType.find('.qna-result-lists').show();
                             self.$nodata.hide();
@@ -311,14 +311,14 @@
                             lgkorUI.hideLoading();
                         } else {                            
                             //$pdpTab.text("Q&A (" + totalCount +")");
-                            self.$totalCount.text(totalCount);
+                            //self.$totalCount.text(totalCount);
                             self.requestNoData();
                             self.$pagination.vcPagination('setPageInfo', pagination);
                             
                         }
                     } else {                        
-                        $pdpTab.text("Q&A (" + totalCount +")");
-                        self.$totalCount.text(totalCount);
+                        //$pdpTab.text("Q&A (" + totalCount +")");
+                        //self.$totalCount.text(totalCount);
                         self.requestNoData();
                         self.$pagination.vcPagination('setPageInfo', pagination);
 
@@ -475,9 +475,6 @@
                 var param = self.validation.getAllValues();
                 var formData = new FormData();
 
-                //xssFilterChk(param);
-
-                // data modelId 값 추가
                 formData.append('modelId', self.$dataModelId);
         
                 for (var key in param) {
