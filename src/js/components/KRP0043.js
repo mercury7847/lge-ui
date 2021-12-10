@@ -512,7 +512,7 @@
                     } else {    
                         lgkorUI.hideLoading();                    
                         lgkorUI.alert("", {
-                            title: "게시물 등록에 실패하였습니다.",
+                            title: "게시물 등록에 실패하였습니다. 입력한 내용을 확인해 주세요.",
                             ok : function(){
                                 
                             }
@@ -581,7 +581,7 @@
                     } else {
                         lgkorUI.hideLoading();
                         lgkorUI.alert("", {
-                            title: "게시물 수정에 실패하였습니다.",
+                            title: "게시물 수정에 실패하였습니다. 입력한 내용을 확인해 주세요.",
                             ok : function(){
                     
                             }
