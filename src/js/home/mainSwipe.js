@@ -326,13 +326,16 @@ MainSwiper.prototype = {
                     if (self.isFirstLoad) self.isFirstLoad = false;
 
                     self.getContent();
+                    //BTOCSITE-7335 test
+                    $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
 
 
                     vcui.require(['ui/lazyLoaderSwitch'], function (){
                         setTimeout(function(){
+                            //BTOCSITE-7335 test
+                            //$('body').vcLazyLoaderSwitch('reload', $(currentSlide));
                             mainSwiper.swiper.updateAutoHeight();
-                            $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
-                        }, 500);
+                        }, 100);
                     });
                 });
             }
