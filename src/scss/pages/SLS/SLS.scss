@@ -568,10 +568,10 @@ br.pc {
     .care-home-list{
         display:flex;
         flex-wrap:wrap;
-        margin-top:-32px;
+        margin:-32px 0 0 -32px;
         >li{
-            margin-top:32px;
-            width:33.33%;
+            margin:32px 0 0 32px;
+            width:calc(33.33% - 32px);
             @media screen and (max-width: 1024px){
                 text-align:center;
             }
