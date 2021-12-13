@@ -103,6 +103,12 @@
                  border-left:1px solid #d8d8d8;
                  &:first-child {
                      border-left:none;
+                     /* s : BTOCSITE-5938-417 */
+                     border-right:1px solid #d8d8d8;
+                     &:last-child {
+                        border-right:none;
+                     }
+                     /* e : BTOCSITE-5938-417 */
                  }
             }
         }
