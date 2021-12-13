@@ -345,7 +345,7 @@ $(function(){
 
         function heroBanner() {
             var heroList = $('.hero-banner .slide-track > li');
-            var heroListAct = $('.hero-banner .slide-track > li.ui_carousel_current').index();
+            var heroListAct = heroList.siblings('.ui_carousel_current').index();
             var heroListLens = heroList.length;
             var custom = $('.custom-indi-wrap');
             var slideCurrent = custom.find('.slide-page .current');

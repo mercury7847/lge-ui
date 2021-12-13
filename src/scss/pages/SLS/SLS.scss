@@ -3,7 +3,7 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 // common
-
+// BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어
 br.m {
     display:none;
     @include mobile {
