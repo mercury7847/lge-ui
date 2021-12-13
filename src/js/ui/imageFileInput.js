@@ -71,7 +71,7 @@ vcui.define('ui/imageFileInput', ['jquery', 'vcui'], function ($, core) {
         //BTOCSITE-6032 - S
         _checkFileNameSize : function _checkFileNameSize(file) {
             var fileNameSize = file.name.length;
-            console.log("파일 길이값 체크 " +fileNameSize);            
+            // console.log("파일 길이값 체크 " +fileNameSize);            
             return fileNameSize <= this.options.fileNameSize
         },
         //BTOCSITE-6032 - E
