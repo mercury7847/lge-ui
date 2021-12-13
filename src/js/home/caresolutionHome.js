@@ -334,5 +334,31 @@ $(function(){
             var url = $target.data('url');
             if(url) location.href = url;
         });
+
+        /* BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어 */
+        // 히어로배너
+        $context.find('.ui_wide_slider').vcCarousel({
+            autoplay: true
+        }).on('carouselafterchange', function(e, slide, prev, next){
+            heroBanner();
+        })
+
+        function heroBanner() {
+            var heroList = $('.hero-banner .slide-track > li');
+            var heroListAct = heroList.siblings('.ui_carousel_current').index();
+            var heroListLens = heroList.length;
+            var custom = $('.custom-indi-wrap');
+            var slideCurrent = custom.find('.slide-page .current');
+            var slideCount = custom.find('.slide-page .count');        
+
+            if( heroListLens > 1) {
+                custom.show();
+                slideCurrent.text(heroListAct);
+                slideCount.text(heroListLens - 2);
+            }
+        }
+
+        heroBanner();
+        /* //BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어 */
     }); 
 });
