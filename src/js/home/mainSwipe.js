@@ -327,14 +327,15 @@ MainSwiper.prototype = {
 
                     self.getContent();
                     //BTOCSITE-7335 test
-                    $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
+                    //$('body').vcLazyLoaderSwitch('reload', $(currentSlide));
+                    mainSwiper.swiper.updateAutoHeight();
 
 
                     vcui.require(['ui/lazyLoaderSwitch'], function (){
                         setTimeout(function(){
                             //BTOCSITE-7335 test
                             //$('body').vcLazyLoaderSwitch('reload', $(currentSlide));
-                            mainSwiper.swiper.updateAutoHeight();
+                            
                         }, 100);
                     });
                 });
