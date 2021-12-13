@@ -6349,7 +6349,7 @@
             priceHtml += '                                         <span class="product_total_title">총금액</span>'
             priceHtml += '                                         <span class="product_price"><span class="total_price"><em></em>원</span></span>';
             priceHtml += '                                    </div>';
-            priceHtml += '                                    <p class="err-msg err-msg-pannel">로그인 후 주문시 할인 적용된 금액을 확인할 수 있습니다.</p>'; // BTOCSITE-9269
+            priceHtml += '                                    <p class="err-msg err-msg-pannel">로그인 후 주문 시 할인 적용된 금액을 확인할 수 있습니다.</p>'; // BTOCSITE-9269
             if ($objContent.attr('data-page-type') === 'COMMON') { //BTOCSITE-3198 구매하기 버튼명 다르게 노출
                 priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
             } else {
