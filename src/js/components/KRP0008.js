@@ -2743,6 +2743,7 @@
                 if(compare){
                     var compareObj = {
                         "id": compareData.id,
+                        "b2bcatemapping":compareData.b2bcatemapping,
                         "productName": compareData.productName,
                         "productID": compareId,
                         "productImg": compareData.productImg,
