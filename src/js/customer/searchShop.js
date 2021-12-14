@@ -505,6 +505,19 @@
     
                     // 필터 적용
                     e.preventDefault();
+                    var keywords = self._getKeyword();
+    
+                    if(keywords.searchCity == '') {
+                        lgkorUI.alert("", {
+                            title: "시/도를 선택해 주세요.",
+                            ok:function(){
+                                self._toggleOptContainer();
+                            }
+                        });
+                     
+                        return false;
+                    }
+
                     self._setOptApply();
                 });
     
@@ -833,9 +846,12 @@
                     var nArr = vcui.array.filter(self.totalStoreData, function(item,index){
                         return keywords.searchCity!==''? xsearch(item.shopAdress, searchCity).length > 0 : false;
                     });
-                    nArr = vcui.array.filter(nArr, function(item,index){
-                        return keywords.searchBorough!==''? xsearch(item.shopAdress, keywords.searchBorough).length > 0 : false;
-                    });
+
+                    if(keywords.searchBorough!=='') {
+                        nArr = vcui.array.filter(nArr, function(item,index){
+                            return keywords.searchBorough!==''? xsearch(item.shopAdress, keywords.searchBorough).length > 0 : false;
+                        });
+                    }
                     
                     nArr = self._filterOptions(nArr, keywords);
                     resultLen = nArr.length;
