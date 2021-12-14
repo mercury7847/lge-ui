@@ -539,10 +539,16 @@
 }
 .popup-inch-guide{
     max-width: 444px;
+    .pop-conts.no-footer{
+        @include mobile{
+            overflow-y: hidden;
+        }
+    }
     iframe{
         min-height: 554px;
         @include mobile{
-            height: 100%;
+            height: calc(100% - 20px);
+            min-height: initial;
         }
     }
 }
