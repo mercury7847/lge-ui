@@ -895,7 +895,7 @@
                                 memberDiscount: "0",
                                 directDiscount: "0",
                                 magicSpace: 0,
-                                energy: 1,
+                                energy: 2,
                                 knockOn: true,
                                 door: {
                                     count: 3,
