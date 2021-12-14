@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["BMC/BMC"]
+    })
+<body>
+    <div class="wrap">
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "기획전"
+        })
+        <!-- //210311_H1추가 -->
+
+        <main class="container">
+            <!-- event -->
+            <!-- 2021.2.10 data-cart-url, data-sibling-url 추가-->
+            <div class="contents event exhibition"
+                data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
+                data-sibling-url="/lg5-common/data-ajax/KRP0007/retrieveSiblingProductInfo.json"
+            ><!-- 210126 수정 - .exhibition 추가 -->
+                <div class="cont-wrap">
+                    <div class="ev-detail-wrap">
+
+                        <div class="ev-detail-top">
+                            <div class="top-inner">
+                                <div class="tit-wrap">
+                                    <p class="tit"><span class="blind">제목</span>LG Objet Collection 공간인테리어 가전 혜택</p>
+                                    <span class="sub-tit"><span class="blind">서브 제목</span>LG Objet Collection으로 우리집 인테리어 완성!  Objet Collection 제품을 구매하고 다양한 혜택을 누리세요.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ev-detail-con"><!-- 210329 수정 [종료된 기획전 .finish 클래스 추가] -->
+                            <div>이벤트 컨텐츠</div>
+                        </div>
+
+
+
+
+
+                        <!-- 주영 -->
+                        <div class="ev-detail-bottom evt_slide_warp">
+
+                            <style>
+                                .contents.exhibition .ev-detail-bottom.evt_slide_warp { max-width: 1480px; }
+                                .evt-detail_listSlide { position: relative; }
+                                .evt-detail_listSlide .tit-wrap { margin-bottom: 8px; }
+                                .evt-detail_listSlide .tit-wrap .tit {
+                                    padding-left: 10px;
+                                    font-size: 24px;
+                                    line-height: 32px;
+                                    font-weight: 700;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                }
+                                .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 { position: relative; max-width: 1460px;}
+                                .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts { position: relative; padding-top: 12px; padding-bottom: 12px;}
+                                .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box { position: relative; box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14); }
+                                .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box .thumb { position: relative; }
+                                .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box .thumb img { position: relative; }
+
+                                .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box .info { position: relative; padding: 15px; }
+                                .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box .info .flag-wrap { margin-bottom: 6px; }
+                                .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box .info .flag-wrap .flag {
+                                    position: relative;
+                                    top: 0;
+                                    left: 0;
+                                    background-color: #fff;
+                                    min-width: auto;
+                                    margin: 0;
+                                    padding: 0;
+                                    border: 0;
+                                    font-size: 12px;
+                                    line-height: 22px;
+                                    font-weight: 700;
+                                    display: inline-block;
+                                    height: 22px;
+                                    vertical-align: middle;
+                                }
+
+                                .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box .info .tit {
+                                    height: 20px;
+                                    color: #000;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    font-weight: 700;
+                                    overflow: hidden;
+                                    text-overflow: clip;
+                                    display: -webkit-box;
+                                    -webkit-line-clamp: 1;
+                                    -webkit-box-orient: vertical;
+                                    max-height: 60px;
+                                }
+                                .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box .info .date { 
+                                    margin-top: 8px;
+                                    padding-right: 0px;
+                                    font-size: 14px;
+                                    line-height: 20px;
+                                    overflow: hidden;
+                                    height: 24px;
+                                    text-overflow: clip;
+                                    display: -webkit-box;
+                                    -webkit-line-clamp: 1;
+                                    -webkit-box-orient: vertical;
+                                }
+                                
+                                @media screen and (max-width: 767px) {
+                                    .evt-detail_listSlide .tit-wrap { margin-bottom: 0px; }
+                                    .evt-detail_listSlide .tit-wrap .tit {
+                                        font-size: 20px;
+                                        padding-left: 0px;
+                                    }
+                                    .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts { width: 37.5vw!important; }
+                                    .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box .info .tit {
+                                        font-size: 13px;
+                                        line-height: 18px;
+                                    }
+
+                                    .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box .info .flag-wrap .flag { font-size: 10px; }
+                                    .evt-detail_listSlide .slide-wrap.carousel-type.carousel-4 .slide-conts .slide-box .info .date { font-size: 10px; margin-top: 5px; }
+                                }
+                            </style>
+
+                            <script>
+                                vcui.require(['ui/carousel'], function () {
+                                    $('.ui_carousel_4_slider').vcCarousel({
+                                        infinite: false,
+                                        prevArrow:'.btn-arrow.prev',
+                                        nextArrow:'.btn-arrow.next',
+                                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                                        speed: 150,
+                                        touchThreshold: 100,
+                                        dots: false,
+                                        responsive: [{
+                                            breakpoint: 100000,
+                                            settings: {
+                                                slidesToShow: 4,
+                                                slidesToScroll: 4,
+                                            }
+                                        },{
+                                            breakpoint: 768,
+                                            settings: {
+                                                slidesToShow: 2,
+                                                slidesToScroll: 2,
+                                                arrows:false,
+                                                variableWidth:true,
+                                                outerEdgeLimit: true,
+                                            }
+                                        }]
+                                    });
+                                });
+                            </script>
+
+                            <div class="evt-detail_listSlide">
+                                <div class="tit-wrap event-type">
+                                    <span class="tit">
+                                        진행중인 이벤트
+                                    </span>
+                                </div>
+
+                                <div class="slide-wrap carousel-type carousel-4 ui_carousel_4_slider">
+                                    <div class="indi-wrap">
+                                        <ul class="indi-conts ui_carousel_dots">
+                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                        </ul>
+                                    </div>
+                                    <div class="slide-content ui_carousel_list">
+                                        <div class="slide-track ui_carousel_track">
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <a href="#n" class="slide-box">
+                                                    <span class="thumb" aria-hidden="true">
+                                                        <img src="https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/banner_888x666[20211213_145430].jpg" alt="">
+                                                    </span>
+                                                    <div class="info">
+                                                        <div class="flag-wrap bar-type"> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 구분</span>
+                                                                온라인
+                                                            </span> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 유형</span>
+                                                                구매혜택
+                                                            </span>
+                                                        </div>
+                                                        <p class="tit"> 
+                                                            <span class="blind">이벤트 제목</span>
+                                                            2022년 오브제컬렉션 온라인 동시구매 이벤트 
+                                                        </p>
+                                                        <p class="date"> 
+                                                            <span class="blind">이벤트 기간</span>
+                                                            2021.12.13 ~ 2022.02.28
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div> 
+                                            <!-- // slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <a href="#n" class="slide-box">
+                                                    <span class="thumb" aria-hidden="true">
+                                                        <img src="https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/banner_888x666[20211213_145430].jpg" alt="">
+                                                    </span>
+                                                    <div class="info">
+                                                        <div class="flag-wrap bar-type"> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 구분</span>
+                                                                온라인
+                                                            </span> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 유형</span>
+                                                                구매혜택
+                                                            </span>
+                                                        </div>
+                                                        <p class="tit"> 
+                                                            <span class="blind">이벤트 제목</span>
+                                                            2022년 오브제컬렉션 온라인 동시구매 이벤트 
+                                                        </p>
+                                                        <p class="date"> 
+                                                            <span class="blind">이벤트 기간</span>
+                                                            2021.12.13 ~ 2022.02.28
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div> 
+                                            <!-- // slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <a href="#n" class="slide-box">
+                                                    <span class="thumb" aria-hidden="true">
+                                                        <img src="https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/banner_888x666[20211213_145430].jpg" alt="">
+                                                    </span>
+                                                    <div class="info">
+                                                        <div class="flag-wrap bar-type"> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 구분</span>
+                                                                온라인
+                                                            </span> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 유형</span>
+                                                                구매혜택
+                                                            </span>
+                                                        </div>
+                                                        <p class="tit"> 
+                                                            <span class="blind">이벤트 제목</span>
+                                                            2022년 오브제컬렉션 온라인 동시구매 이벤트 
+                                                        </p>
+                                                        <p class="date"> 
+                                                            <span class="blind">이벤트 기간</span>
+                                                            2021.12.13 ~ 2022.02.28
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div> 
+                                            <!-- // slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <a href="#n" class="slide-box">
+                                                    <span class="thumb" aria-hidden="true">
+                                                        <img src="https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/banner_888x666[20211213_145430].jpg" alt="">
+                                                    </span>
+                                                    <div class="info">
+                                                        <div class="flag-wrap bar-type"> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 구분</span>
+                                                                온라인
+                                                            </span> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 유형</span>
+                                                                구매혜택
+                                                            </span>
+                                                        </div>
+                                                        <p class="tit"> 
+                                                            <span class="blind">이벤트 제목</span>
+                                                            2022년 오브제컬렉션 온라인 동시구매 이벤트 
+                                                        </p>
+                                                        <p class="date"> 
+                                                            <span class="blind">이벤트 기간</span>
+                                                            2021.12.13 ~ 2022.02.28
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div> 
+                                            <!-- // slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <a href="#n" class="slide-box">
+                                                    <span class="thumb" aria-hidden="true">
+                                                        <img src="https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/banner_888x666[20211213_145430].jpg" alt="">
+                                                    </span>
+                                                    <div class="info">
+                                                        <div class="flag-wrap bar-type"> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 구분</span>
+                                                                온라인
+                                                            </span> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 유형</span>
+                                                                구매혜택
+                                                            </span>
+                                                        </div>
+                                                        <p class="tit"> 
+                                                            <span class="blind">이벤트 제목</span>
+                                                            2022년 오브제컬렉션 온라인 동시구매 이벤트 
+                                                        </p>
+                                                        <p class="date"> 
+                                                            <span class="blind">이벤트 기간</span>
+                                                            2021.12.13 ~ 2022.02.28
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div> 
+                                            <!-- // slide -->
+                                            <!-- slide -->
+                                            <div class="slide-conts ui_carousel_slide">
+                                                <a href="#n" class="slide-box">
+                                                    <span class="thumb" aria-hidden="true">
+                                                        <img src="https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/banner_888x666[20211213_145430].jpg" alt="">
+                                                    </span>
+                                                    <div class="info">
+                                                        <div class="flag-wrap bar-type"> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 구분</span>
+                                                                온라인
+                                                            </span> 
+                                                            <span class="flag"> 
+                                                                <span class="blind">이벤트 유형</span>
+                                                                구매혜택
+                                                            </span>
+                                                        </div>
+                                                        <p class="tit"> 
+                                                            <span class="blind">이벤트 제목</span>
+                                                            2022년 오브제컬렉션 온라인 동시구매 이벤트 
+                                                        </p>
+                                                        <p class="date"> 
+                                                            <span class="blind">이벤트 기간</span>
+                                                            2021.12.13 ~ 2022.02.28
+                                                        </p>
+                                                    </div>
+                                                </a>
+                                            </div> 
+                                            <!-- // slide -->
+                                        </div>
+                                    </div>
+
+                                    <div class="slide-controls">
+                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                            <!-- 210105 수정 -->
+                            <div class="btn-wrap">
+                                <a href="#n" class="btn border"><span>목록</span></a>
+                            </div>
+                            <!-- //210105 수정 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // event -->
+        </main>
+       
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
