@@ -84,7 +84,6 @@ br.pc {
                 display: inline-block;
                 li{
                     a{
-                        color:#666;
                         @include mobile{
                             font-size:15px;
                             line-height:24px;
@@ -645,9 +644,6 @@ br.pc {
                 }
                 .img-wrap {
                     text-align:center;
-                    a {
-                        display:block;
-                    }
                     img {
                         display:inline-block;
                         width:100%;
@@ -664,9 +660,7 @@ br.pc {
                     height:82px;
                     @include mobile{
                         margin-top:20px;
-                    }
-                    a {
-                        display:block;
+                        height:60px;
                     }
                     .tit {
                         max-height:56px;
@@ -675,7 +669,6 @@ br.pc {
                         font-weight:700;
                         overflow:hidden;
                         @include textEllipsisClamp(2);
-                        
                         @include mobile {
                             font-size: 14px;
                             line-height: 20px;
@@ -697,6 +690,7 @@ br.pc {
                     }
                 }
                 .info-wrap {
+                    margin-top:20px;
                     .price-wrap {
                         @include mobile {
                             position:static;
@@ -705,7 +699,6 @@ br.pc {
                             @include clearfix;
                             .price {
                                 display:inline-block;
-                                padding:20px 0 0;
                                 @include font-large-1;
                                 font-weight:700;
                                 vertical-align:middle;
