@@ -453,7 +453,7 @@ br.pc {
         @include mobile{
             margin-left:-8px;
         }
-        .link-item{
+        >li{
             margin-left:24px;
             width:calc(33.33% - 24px);
             @include mobile{
@@ -461,6 +461,7 @@ br.pc {
                 width:calc(33.33% - 8px);
             }
             >a{
+                position:relative;
                 display:table;
                 padding:113px 0 30px;
                 width:100%;
@@ -473,7 +474,23 @@ br.pc {
                     padding:70px 5px 15px;
                     box-shadow:1px 2px 6px 0 rgba(0, 0, 0, 0.14);
                 }
-                >span{
+                .thumb{
+                    position:absolute;
+                    top:30px;
+                    left:50%;
+                    transform:translateX(-50%);
+                    width:64px;
+                    height:64px;
+                    @include mobile{
+                        top:20px;
+                        width:48px;
+                        height:48px;
+                    }
+                    img{
+                        width:100%;
+                    }
+                }
+                .tit{
                     display:table-cell;
                     position:relative;
                     vertical-align:middle;
@@ -511,47 +528,13 @@ br.pc {
                         height:24px;
                         background:url('/lg5-common/images/icons/btn-arr-24.svg') no-repeat 0 0;
                         @include mobile{
-                            top:2px;
-                            width:12px;
-                            height:12px;
-                            background:url('/lg5-common/images/icons/btn_arrow_right_24.svg') no-repeat 0 0;
-                            background-size:100% 100%;
+                            display:none;
                         }
                     }
                 }
                 &:hover, &:focus{
                     border:2px solid #da0f47;
                     outline:none;
-                }
-            }
-            &.link{
-                &-benefit{
-                    background:url('/lg5-common/images/icons/ic-main-care-link-3-on.svg') center 30px no-repeat;
-                    @include mobile{
-                        background:url('/lg5-common/images/icons/ic-main-care-link-3-on.svg') center 15px no-repeat;
-                        background-size:48px 48px;
-                    }
-                }
-                &-planner{
-                    background:url('/lg5-common/images/icons/ic-main-care-link-2-on.svg') center 30px no-repeat;
-                    @include mobile{
-                        background:url('/lg5-common/images/icons/ic-main-care-link-2-on.svg') center 15px no-repeat;
-                        background-size:48px 48px;
-                    }
-                }
-                &-my{
-                    background:url('/lg5-common/images/icons/ic-main-care-link-1-on.svg') center 30px no-repeat;
-                    @include mobile{
-                        background:url('/lg5-common/images/icons/ic-main-care-link-1-on.svg') center 15px no-repeat;
-                        background-size:48px 48px;
-                    }
-                }
-            }
-            &.next-schedule{
-                background:url('/lg5-common/images/icons/ic-main-careship-cal-on.svg') center 30px no-repeat;
-                @include mobile{
-                    background:url('/lg5-common/images/icons/ic-main-careship-cal-on.svg') center 15px no-repeat;
-                    background-size:48px 48px;
                 }
             }
         }
@@ -662,10 +645,8 @@ br.pc {
                         max-width:200px;
                         overflow:hidden;
                         @include mobile {
-                            max-width:160px;
-                            max-height:160px;
-                            width: 100%;
-                            height: auto;
+                            max-width:120px;
+                            max-height:120px;
                         }
                     }
                 }
@@ -705,11 +686,6 @@ br.pc {
                     }
                 }
                 .info-wrap {
-                    padding-top:16px;
-                    @include mobile{
-                         padding:0;
-                    }
-                    
                     .price-wrap {
                         @include mobile {
                             position:static;
@@ -921,32 +897,9 @@ br.pc {
             @include mobile {
                 padding:0;
             }
-            &:before {
-                display: inline-block;
-                content: '';
-                position: absolute;
-                top: 54px;
-                left: 50px;
-                width: 64px;
-                height: 64px;
-                background:center no-repeat;
-                @include mobile{
-                    top:25px;
-                    left:50%;
-                    transform:translateX(-50%);
-                }
-            }
-            &.other1 {
-                &:before {
-                    background-image:url('/lg5-common/images/icons/icon-img04-64.svg');
-                }
-            }
-            &.other2 {
+            +li {
                 @include mobile{
                     margin-top:8px;
-                }
-                &:before {
-                    background-image:url('/lg5-common/images/icons/icon-img05-64.svg');
                 }
             }
             > a {
@@ -960,6 +913,18 @@ br.pc {
                     padding:25px 8px;
                     box-shadow:1px 2px 6px 0 rgba(0, 0, 0, 0.14);
                     text-align:center;
+                }
+                .thumb{
+                    position: absolute;
+                    top: 54px;
+                    left: 50px;
+                    width: 64px;
+                    height: 64px;
+                    @include mobile{
+                        top:25px;
+                        left:50%;
+                        transform:translateX(-50%);
+                    }
                 }
                 .tit {
                     position: relative;
@@ -1052,6 +1017,13 @@ br.pc {
                 @include mobile {
                     padding-left: 80px;
                 }
+                .thumb{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 64px;
+                    height: 64px;
+                }
                 .tit {
                     margin-bottom: 8px;
                     font-weight: 700;
@@ -1067,32 +1039,7 @@ br.pc {
                     @include font-medium;
                     word-break:keep-all;
                 }
-                &:before {
-                    display: inline-block;
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 64px;
-                    height: 64px;
-                }
             }
-            &.banner1 {
-                .inner:before {
-                    background:url('/lg5-common/images/icons/icon-img06-64.svg') center no-repeat;
-                }
-            }
-            &.banner2 {
-                .inner:before {
-                    background:url('/lg5-common/images/icons/icon-img07-64.svg') center no-repeat;
-                }
-            }
-            &.banner3 {
-                .inner:before {
-                    background:url('/lg5-common/images/icons/icon-img08-64.svg') center no-repeat;
-                }
-            }
-
         }
     }
     .mob-only {
