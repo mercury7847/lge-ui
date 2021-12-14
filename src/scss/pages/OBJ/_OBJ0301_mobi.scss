@@ -2809,3 +2809,31 @@ strong.selected-objet-list-title {
 &.space_experience .opacity-mask {
     display: none;
 }
+
+.simulator.full .objet_select_slider .img-download .productShareWrap {
+    position:relative;
+    display:inline-block;
+    width: 38px;
+    height: 38px;
+    vertical-align: middle;
+}
+
+.simulator.full .objet_select_slider .img-download .productShareWrap .btn-product-share {
+    position:absolute;
+    z-index:2;
+    left:0;top:0;
+}
+.simulator.full .objet_select_slider .img-download .productShareWrap .component-wrap {
+    position:absolute;
+    z-index:1;
+    left:0;top:0;
+}
+
+.simulator.full .objet_select_slider .img-download .btn-product-share {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: url(/lg5-common/images/icons/icon-share-24.svg) #fff no-repeat center center;
+    background-size: 25px;
+}
