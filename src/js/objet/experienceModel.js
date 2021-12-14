@@ -784,7 +784,7 @@
 
                             },
                             doorColorData: [
-                                /* 210719 BTOCSITE-2346 냉장고 > 상냉장/하냉동 > 베이직 선택 시 '페닉스'재질 컬러칩 비노출 start
+                                // BTOCSITE-9444 페닉스 컬러 원복 
                                 {
                                     doorMaterial: {
                                         name: "페닉스",
@@ -808,7 +808,7 @@
                                         }]
                                     }
 
-                                },210719 BTOCSITE-2346 냉장고 > 상냉장/하냉동 > 베이직 선택 시 '페닉스'재질 컬러칩 비노출 end */
+                                },
                                 {
                                     doorMaterial: {
                                         name: "솔리드",
@@ -932,7 +932,6 @@
                                             name: "보타닉",
                                             code: "BT",
                                             mixingCode: "FBT"
-
                                         }, {
                                             name: "샌드",
                                             code: "SD",
