@@ -1172,4 +1172,10 @@
 
 [data-product-only] {display: none;}
 
+//출장예약 확인 팝업, 일정변경 팝업, 보유제품 직접 등록팝업 - 높이가 낮은 해상도 일 경우 버튼 잘림 대응
+@media screen and (min-width: 768px) and (max-height: 768px)  {
+    .popup-wrap .pop-conts.reservation-time-pop {max-height: calc(100vh - 208px);}
+}
+
+
 @import "../../support/pages/payNwarranty";
