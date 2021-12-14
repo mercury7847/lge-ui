@@ -1173,6 +1173,24 @@ var goAppUrl = function(path) {
                     return false;
                 }
             }
+
+            var prod_compare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+            // 세션스토리지에서 비교하기 데이터 전체 비교
+            
+            if(prod_compare.hasOwnProperty(categoryId) && prod_compare[categoryId].data.length) {
+                var cateMapCheck = true;
+                prod_compare[categoryId].data.forEach(function(item) {
+                    if(item.b2bcatemapping !== data.b2bcatemapping) {
+                        cateMapCheck = false;
+                        return false;
+                    }
+                });
+
+                if(!cateMapCheck) {
+                    $(window).trigger("toastshow", "비교하기가 불가능한 제품을 선택했습니다. 다른 제품을 선택해주세요.");
+                    return false;
+                }
+            }
             self.setStorage(self.COMPARE_KEY, compareStorage, true);
 
             return true;
@@ -1180,8 +1198,6 @@ var goAppUrl = function(path) {
 
         removeCompareProd: function(categoryId, id){
             var self = this;
-
-            console.log("removeCompareProd cat %o id %o",categoryId,id);
 
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
