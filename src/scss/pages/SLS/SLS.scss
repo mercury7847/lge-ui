@@ -84,7 +84,6 @@ br.pc {
                 display: inline-block;
                 li{
                     a{
-                        color:#666;
                         @include mobile{
                             font-size:15px;
                             line-height:24px;
