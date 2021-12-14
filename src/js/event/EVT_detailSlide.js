@@ -45,7 +45,7 @@
             setting: function() {
                 var self = this;
                 
-                var EVT_detail_slideList = $('.slide-track');
+                var EVT_detail_slideList = $('.evt_slide_warp').find('.slide-track');
                 var ajaxUrl = $('.event.exhibition').attr('data-list-url');
                 
                 lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
