@@ -2371,6 +2371,9 @@
                 &.is-active {
                     display: block;
                 }
+                @include mobile{
+                    display: block;
+                }
             }
 
             .app-smart-wrap {
@@ -2811,6 +2814,11 @@
         }
         @at-root .menu-item.is-active .icon-#{$name} {
             background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.svg');
+        }
+        @include mobile{
+            @at-root .menu-item.slick-current .icon-#{$name} {
+                background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.svg');
+            }
         }
         @at-root .prd-result-lists .icon-#{$name} {
             background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_search.svg');

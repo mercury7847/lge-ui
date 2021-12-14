@@ -12,6 +12,7 @@
                 self.setMagazineVideo();
                 self.modelSearchInit();
                 self.contentTab();
+                self.resize();
             });
         },
         settings: function(){
@@ -111,27 +112,20 @@
                 if(!$parent.hasClass('is-active')){
                     $parent.addClass('is-active');
                     $(this).children('.txt').text('닫기');
-                    self.appSmartTab.destroy()
+                    self.appSmartTab.destroy();
+                    self.appMobileSmartTab.destroy();
                 }else{
                     var currentIndex = self.$appTablist.filter('.is-active').index();
+                    console.log(currentIndex)
                     $parent.removeClass('is-active');
                     $(this).children('.txt').text('전체보기');
-                    self.appSmartTab.init(currentIndex)
+                    self.appSmartTab.init(currentIndex);
+                    // self.appMobileSmartTab.load();
+                    self.appMobileSmartTab.init(currentIndex); 
                 }
             })
 
-            //App 탭 > 우리집 스마트한 생활 > 메뉴 클릭
-            self.$appTablist.find('a').on('click', function(e) {
-                e.preventDefault();
-
-                self.$appTabCont.find('.tab-cont').removeClass('is-active');
-                self.$appTabCont.find('.tab-cont').filter(this.hash).addClass('is-active');
-                $(this).parent().addClass('is-active').siblings().removeClass('is-active');
-
-                if( !self.$appTabMenu.hasClass('slick-initialized')) {
-                    self.$appTabBtnAll.trigger('click')
-                }
-            })
+            
 
             //App 탭 > 하단 슬라이드배너 > 앱 설치 및 사용방법 팝업 버튼 활성화시 팝업내 슬라이드 활성화
             self.$howToPopup.on('modalshown', function(e){
@@ -270,15 +264,50 @@
                 $('html, body').stop().animate({scrollTop:self.stickyTabOffsetTop});
 
                 if( data.content[0] == $('.thinq-app')[0]) {
-                    self.appSmartTab.load();
+                    if( window.innerWidth > 1024) {
+                        console.log('pc');
+                        self.appSmartTab.load();
+                    }else{
+                        console.log('mobile !')
+                        setTimeout(function(){self.appMobileSmartTab.load()},500)
+                        
+                    }
                     self.appDownloadGuideSlider.load();
                 } else {
 
                 }
             })
         },
+        appSmartTabMenu: function() {
+            //App 탭 > 우리집 스마트한 생활 > 메뉴 클릭 (pc)
+            var self = this;
+            self.$appTablist.find('a').on('click', function(e) {
+                e.preventDefault();
+                if( window.innerWidth > 1024) { // BTOCSITE-8564 
+                    self.$appTabCont.find('.tab-cont').removeClass('is-active');
+                    self.$appTabCont.find('.tab-cont').filter(this.hash).addClass('is-active');
+                    $(this).parent().addClass('is-active').siblings().removeClass('is-active');
+    
+                    if( !self.$appTabMenu.hasClass('slick-initialized')) {
+                        self.$appTabBtnAll.trigger('click')
+                    }
+                }else{
+                    self.$appTabCont.find('.tab-cont').removeClass('is-active');
+                    self.$appTabCont.find('.tab-cont').filter(this.hash).addClass('is-active');
+                    $(this).parent().addClass('is-active').siblings().removeClass('is-active');
+
+                    var menuIdx = $(this).parent().index();// BTOCSITE-8564 
+                    $(this).parent().addClass('is-active').siblings().removeClass('slick-current'); // BTOCSITE-8564 
+                    thinQMain.$appTabMenu.slick('slickGoTo', menuIdx);// BTOCSITE-8564 
+
+                    if( !self.$appTabMenu.hasClass('slick-initialized')) {
+                        self.$appTabBtnAll.trigger('click')
+                    }
+                }
+            })
+        },
         appSmartTab: {
-            //App 탭 > 우리집 스마트한 생활 메뉴 슬라이드
+            //App 탭 > 우리집 스마트한 생활 메뉴 슬라이드 (pc)
             prevSlidesToShow: 0,
             slideConfig : {
                 infinite: false,
@@ -298,7 +327,7 @@
                         settings:{
                             arrows:false,
                             slidesToShow: 4,
-                            slidesToScroll: 4,
+                            swipeToSlide: 1,
                         }
                     }
                 ]
@@ -329,6 +358,69 @@
                 thinQMain.$appTabMenu.filter('.slick-initialized').slick('unslick');
                 thinQMain.$appTabMenu.find('.menu-item').removeClass('active-first active-last')
                 thinQMain.$appTabMenu.find('.menu-item a').removeAttr('tabindex');
+            }
+        },
+        appMobileSmartTab: {
+            //App 탭 > 우리집 스마트한 생활 메뉴 슬라이드 (mobile)
+            prevSlidesToShow: 0,
+            slideNavConfig : {
+                infinite: false,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                arrows:false,
+                // fade: true,
+                asNavFor: '.tab-mobile-content',
+                responsive: [
+                    {
+                        breakpoint:768,
+                        settings:{
+                            arrows:false,
+                            slidesToShow: 4,
+                            swipeToSlide: true,
+                        }
+                    }
+                ]
+            },
+            slideContentConfig: {
+                infinite: false,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                // fade: true,
+                asNavFor: '.menu-slide-nav',
+                adaptiveHeight:true,
+            },
+            init: function(index){
+                var tabs = this;
+                thinQMain.$appTabMenu.not('.slick-initialized').slick(tabs.slideNavConfig)
+                thinQMain.$appTabCont.not('.slick-initialized').slick(tabs.slideContentConfig)
+
+                if( !thinQMain.$appTabArea.find('.menu-slide-block').hasClass('is-active') ) {
+                    if( index != undefined ) {
+                        thinQMain.$appTabMenu.slick('slickGoTo', index)
+                    }
+                }
+            },
+            reinit: function(){
+                thinQMain.$appTabMenu.filter('.slick-initialized').slick('setPosition');
+                thinQMain.$appTabCont.filter('.slick-initialized').slick('setPosition')
+            },
+            load: function(){
+                if( this.prevSlidesToShow > 0 &&  this.prevSlidesToShow != thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')) {
+                    console.log('reinit');
+                    this.reinit();
+                    this.prevSlidesToShow = thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')
+                } else {
+                    this.init();
+                    this.prevSlidesToShow = thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')
+                }
+            },
+            destroy: function(){
+                thinQMain.$appTabMenu.filter('.slick-initialized').slick('unslick');
+                thinQMain.$appTabMenu.find('.menu-item').removeClass('active-first active-last')
+                thinQMain.$appTabMenu.find('.menu-item a').removeAttr('tabindex');
+
+                thinQMain.$appTabCont.filter('.slick-initialized').slick('unslick');
             }
         },
         appDownloadGuideSlider:{
@@ -471,13 +563,21 @@
             }
         },
         resize: function(){
+            var self = this;
+            self.appSmartTabMenu();
+            if( window.innerWidth > 1024) {
+                $('.app-tab-content').removeClass('tab-mobile-content');
 
+            } else {
+                $('.app-tab-content').addClass('tab-mobile-content');
+                self.appMobileSmartTab.load(); 
+            }
         }
     };
     thinQMain.init();
 
     $(window).on('resize', function(){
-
+        thinQMain.resize();
     })
 
     $(window).on('breakpointchange', function(e){
