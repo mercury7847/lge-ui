@@ -81,7 +81,7 @@
 
 
                     vcui.require(['ui/carousel'], function () {
-                        $('.ui_carousel_4_slider').vcCarousel({
+                        $('.ui_carousel_4_slider').vcCarousel('destroy').vcCarousel({
                             infinite: false,
                             prevArrow:'.btn-arrow.prev',
                             nextArrow:'.btn-arrow.next',
