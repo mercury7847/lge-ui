@@ -32,7 +32,7 @@
 
 
 
-    $(window).ready(function() {
+    $(function() {
         
         var evtDetail_SlideList = {
             init: function(){
@@ -45,9 +45,9 @@
             setting: function() {
                 var self = this;
                 
-                var EVT_detail_slideList = $('.evt_slide_warp').find('.slide-track');
+                var EVT_detail_slideList = $('.ui_carousel_4_slider').find('.slide-track');
                 var ajaxUrl = $('.event.exhibition').attr('data-list-url');
-                
+                console.log('ajaxUrl', ajaxUrl)
                 lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
                     
 
@@ -77,36 +77,41 @@
                         }
                         item.ecProduct = JSON.stringify(ecProduct);
                     }
+                    console.log(list)
                     EVT_detail_slideList.append(vcui.template(EVT_ItemTemplate, list));
-
-
-                    vcui.require(['ui/carousel'], function () {
-                        $('.ui_carousel_4_slider').vcCarousel('destroy').vcCarousel({
-                            infinite: false,
-                            prevArrow:'.btn-arrow.prev',
-                            nextArrow:'.btn-arrow.next',
-                            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                            speed: 150,
-                            touchThreshold: 100,
-                            dots: false,
-                            variableWidth:false,
-                            outerEdgeLimit: false,
-                            slidesToShow: 4,
-                            slidesToScroll: 4,
-                            responsive: [
-                                {
-                                    breakpoint: 768,
-                                    settings: {
-                                        slidesToShow: 2,
-                                        slidesToScroll: 2,
-                                        arrows:false,
-                                        variableWidth:true,
-                                        outerEdgeLimit: true,
-                                    }
-                                }
-                            ]
-                        });
-                    });
+                    
+                    //슬라이드 옵션
+                    $('.ui_carousel_4_slider').vcCarousel('setOption', 'responsive', [
+                        {
+                            breakpoint: 20000,
+                            settings: {
+                                infinite: false,
+                                prevArrow:'.btn-arrow.prev',
+                                nextArrow:'.btn-arrow.next',
+                                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                                speed: 150,
+                                touchThreshold: 100,
+                                dots: false,
+                                variableWidth:false,
+                                outerEdgeLimit: false,
+                                slidesToShow: 4,
+                                slidesToScroll: 4,
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                infinite: false,
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                                arrows:false,
+                                dots:false,
+                                //variableWidth:true,
+                                outerEdgeLimit: true,
+                            }
+                        }
+                    ]).vcCarousel('reinit') // //슬라이드 비동기 처리 : dev 반영시 안되는 문제 responsive, vcCarousel('reinit') 추가
+                    
                 });
 
             },
