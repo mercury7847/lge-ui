@@ -5,6 +5,9 @@
 
 .contents {
     &.exhibition {
+        .cont-wrap {
+            padding-bottom: 0;
+        }
         .ev-detail-bottom {
             &.evt_slide_warp {
                 max-width: 1480px;
@@ -14,6 +17,12 @@
                     // padding-right: 30px;
                     // padding: 20px;
                     padding: 0px;
+                }
+                .btn-wrap {
+                    margin-top: 46px;
+                    @include mobile {
+                        margin-top: 12px;
+                    }
                 }
             }
         }
@@ -34,7 +43,7 @@
         }
         .tit {
             padding-left: 10px;
-            font-size: 24px;
+            font-size: 28px;
             line-height: 32px;
             font-weight: 700;
             white-space: nowrap;
@@ -74,11 +83,14 @@
                         .slide-conts {
                             padding-top: 12px; 
                             padding-bottom: 12px;
+                            padding-left: 7px;
+                            padding-right: 7px;
                             @include mobile {
                                 // width: 44.5vw!important;
                             }
                             .slide-box {
                                 box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                                border-radius: 8px;
                                 .thumb {
                                     position: relative;
                                     overflow: hidden;
@@ -132,7 +144,7 @@
                                     .tit {
                                         height: 20px;
                                         color: #000;
-                                        font-size: 15px;
+                                        font-size: 18px;
                                         line-height: 20px;
                                         font-weight: 700;
                                         overflow: hidden;
