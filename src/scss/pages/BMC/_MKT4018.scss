@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.academy-event-wrap{
+    position: relative;
+    .bg-wrap{
+        img {
+            width:100%;
+        }
+    }
+    .process-info-wrap{
+        position: absolute;
+        top:0;
+        left: 50%;
+        transform: translate(-50%,0);
+        color:#fff;
+    }
+}
