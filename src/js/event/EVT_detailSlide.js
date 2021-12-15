@@ -83,6 +83,21 @@
                     //슬라이드 옵션
                     $('.ui_carousel_4_slider').vcCarousel('setOption', 'responsive', [
                         {
+                            breakpoint: 768,
+                            settings: {
+                                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                                speed: 150,
+                                touchThreshold: 100,
+                                infinite: false,
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
+                                arrows:false,
+                                dots:false,
+                                //variableWidth:true,
+                                outerEdgeLimit: true,
+                            }
+                        },
+                        {
                             breakpoint: 20000,
                             settings: {
                                 infinite: false,
@@ -96,21 +111,6 @@
                                 outerEdgeLimit: false,
                                 slidesToShow: 4,
                                 slidesToScroll: 4,
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                                speed: 150,
-                                touchThreshold: 100,
-                                infinite: false,
-                                slidesToShow: 2,
-                                slidesToScroll: 2,
-                                arrows:false,
-                                dots:false,
-                                variableWidth:true,
-                                outerEdgeLimit: true,
                             }
                         }
                     ]).vcCarousel('reinit') // //슬라이드 비동기 처리 : dev 반영시 안되는 문제 responsive, vcCarousel('reinit') 추가
