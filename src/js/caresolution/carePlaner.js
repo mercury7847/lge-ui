@@ -477,6 +477,7 @@
             //var statusBarHeight = 0; //BTOCSITE-1967
             if(isOpen){
                 // console.log(1)
+                $putItemContainer.find('.contract-slide').removeAttr('style'); // BTOCSITE-5938-403 : BTOCSITE-5938-403 : 20211215 safari 버그 (transition, scroll 동시 사용할때 버그 있음)
                 $putItemContainer.find('.total-info').removeAttr('style');
                 $putItemContainer.find('.total-info dl').show();
                 wraptop = $putItemContainer.find('.total-info').outerHeight(true) + $putItemContainer.find('.tit-wrap').outerHeight(true) + $putItemContainer.find('.slide-wrap').outerHeight(true) + 10;
@@ -484,7 +485,10 @@
                 item.css({transform:'rotate(0deg)'});
             } else{
                 // console.log(2)
-                $putItemContainer.find('.total-info').css({background:'#ffffff'})
+                /* s BTOCSITE-5938-403 : 20211215 safari 버그 (transition, scroll 동시 사용할때 버그 있음) */
+                $putItemContainer.find('.contract-slide').css({transform: 'translateZ(0px)'})
+                $putItemContainer.find('.total-info').css({background:'#ffffff', transform: 'translateZ(1px)'})
+                /* e BTOCSITE-5938-403 */
                 $putItemContainer.find('.total-info dl').hide();
                 wraptop = $putItemContainer.find('.total-info').outerHeight(true) + $putItemContainer.find('.tit-wrap').outerHeight(true) - 5;
                 item.css({transform:'rotate(180deg)'});
