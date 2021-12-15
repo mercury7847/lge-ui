@@ -367,7 +367,11 @@
                     lgkorUI.hideLoading();
                     if (data.resultMessage) {
                         lgkorUI.alert("", {
-                            title: data.resultMessage
+                            title: data.resultMessage,
+                            okBtnName: '확인',
+                            ok: function() {
+                                location.href = "/company/sustainable/socialContribution#com-tabs02"
+                            }
                         });
                     }
                 }
