@@ -355,6 +355,10 @@
                             var ajaxUrl = self.$section.attr('data-wish-url');
                             lgkorUI.checkWishItem(ajaxUrl);
                             /* //BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
+
+                            // 비교하기 버튼 상태 변경 - 필터 복구시
+                            console.log("비교하기 버튼 상태 변경 - 필터 복구시")
+                            self.compareBtnStatus();
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
                         }
@@ -455,6 +459,10 @@
                 self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
 
                 self.cateWrapStatus();
+
+                // 비교하기 버튼 상태 변경 - 초기화시
+                console.log("비교하기 버튼 상태 변경 - 초기화시");
+                self.compareBtnStatus();
             },
 
             bindEvents: function() {
@@ -793,6 +801,12 @@
                             //self.$ttCount.hide(); //추가
                         /* //BTOCSITE-5157 : PLP 제품이 없을때 문구 미노출 이슈 2021-09-13 */
                     }
+
+
+
+                    // 비교하기 버튼 상태 변경 - ajax 통신시
+                    console.log("비교하기 버튼 상태 변경 - ajax 통신시")
+                    self.compareBtnStatus();
 
                     /* BTOCSITE-2150 add */
                     self.isLoading = false; 
@@ -1204,6 +1218,26 @@
                     if(isAdd) $this.addClass("on");
                 } else{
                     lgkorUI.removeCompareProd(categoryId, _id);
+                }
+            },
+
+            // 비교하기 버튼 상태 변경
+            compareBtnStatus:function(){
+                console.log("compareBtnStatus");
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+
+                console.log(storageCompare)
+                if(storageCompare && storageCompare['data'].length > 0){
+                    var data = storageCompare['data'][0];
+
+                    console.log("data ",data);
+
+                    console.log("mapping ",$('.KRP0007 a[data-b2bcatemapping]'));
+
+                    // 비교하기 버튼 상태 변경
+                    $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style')
+                    .parent().find('a[data-b2bcatemapping="'+(data.b2bcatemapping === 'Y' ? 'N' : 'Y')+'"]').hide();
                 }
             },
 
