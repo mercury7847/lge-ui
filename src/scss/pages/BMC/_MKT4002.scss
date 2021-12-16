@@ -334,7 +334,10 @@
 
 .ev-detail-bottom {
     @include mobile {
-        padding:0 16px;
+        padding:0 0px;
+        .bullet-list {
+            padding: 0 16px;
+        }
     }
     .etc-btn-wrap {
         margin-top:32px;
