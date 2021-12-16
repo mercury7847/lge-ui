@@ -147,6 +147,7 @@ $(window).ready(function(){
             superCategoryTab = $('.ui_supercategory_tab');
             categoryTab = $('.ui_category_tab').hide();
             yearTab = $('.video-list-wrap .ui_year_tab');
+            yearTab.vcTab('update').vcSmoothScroll('refresh');
             contList = $('.tabs-cont.sub_cate_list');
             
             var storyId = vcui.uri.getParam('storyId');
@@ -217,7 +218,7 @@ $(window).ready(function(){
             $(window).on('resize', function(){
                 setTimeout(function() {
                     if(window.breakpoint.name == "pc"){
-                        $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                        $('.video-wrap').removeClass('fixed').removeAttr('style').find('.video-inner').removeAttr('style');
                     }
                 },100)
             })
@@ -298,7 +299,6 @@ $(window).ready(function(){
                 data.isMoreModel = isMoreModel;
                 if(!data.videoType) data.videoType = "youtube";
 
-
                 data['shareUrl'] = vcui.uri.updateQueryParam(location.href, 'storyId', data.storyId);    
                 var templateList = vcui.template(viewerTemplate, data);
 
@@ -321,7 +321,7 @@ $(window).ready(function(){
             if(scrollAbled){
                 var page = parseInt(contList.data('page'));
                 var totalpage = contList.data('totalpage');
-                if(page < totalpage){
+                if(page <= totalpage){
                     var getList = false;
                     var scrolltop, wrapheight, listheight, scrolldist, contop;
                     if(window.breakpoint.name == "pc"){
@@ -330,28 +330,29 @@ $(window).ready(function(){
                         listheight = contList.find('.video-list').outerHeight(true);
                         scrolldist = listheight - wrapheight - 10;
 
-                        if(scrolltop >= scrolldist) getList = true;
-
-                        $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                        if(scrolltop >= scrolldist && page != totalpage) getList = true;
+                        $('.video-wrap').removeClass('fixed').removeAttr('style').find('.video-inner').removeAttr('style');
                     } else{
                         scrolltop = $(window).scrollTop();
                         contop = contList.offset().top;
                         wrapheight = contList.height();
-                        if(-scrolltop + contop + wrapheight < $(window).height()) getList = true;
+                        if(-scrolltop + contop + wrapheight < $(window).height() && page != totalpage) getList = true;
 
                         var videotop = $('.video-wrap').offset().top;
                         if(-scrolltop + videotop < 0){
-                            var innerwidth = $('.video-wrap').find('.video-inner').width();
-                            var innerheight = $('.video-wrap').find('.video-inner').height();
-                            $('.video-wrap').css({paddingTop:innerheight}).find('.video-inner').css({
-                                position: 'fixed',
-                                top:0,
-                                height: innerheight,
-                                width: innerwidth,
-                                zIndex: 10
-                            })
+                            if(!$('.video-wrap').hasClass('fixed')) {
+                                var innerwidth = $('.video-wrap').find('.video-inner').width();
+                                var innerheight = $('.video-wrap').find('.video-inner').height();
+                                $('.video-wrap').addClass('fixed').css({paddingTop:innerheight}).find('.video-inner').css({
+                                    position: 'fixed',
+                                    top:0,
+                                    height: innerheight,
+                                    width: innerwidth,
+                                    zIndex: 10
+                                })
+                            }
                         } else{
-                            $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                            $('.video-wrap').removeClass('fixed').removeAttr('style').find('.video-inner').removeAttr('style');
                         }
                     }
 
