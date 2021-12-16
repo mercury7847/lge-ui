@@ -37,7 +37,7 @@ br.pc {
         margin-bottom: 32px;
         text-align: center;
         @include mobile {
-            margin-bottom: 24px;
+            margin-bottom:19px;
             & + .tabs-wrap {
                 padding-top: 0;
             }
@@ -184,7 +184,7 @@ br.pc {
                         }
                     }
                     .slide-info-area {
-                        top:96px;
+                        top:100px;
                         left:0;
                         bottom:120px;
                         max-width:1614px;
@@ -394,9 +394,11 @@ br.pc {
                         line-height:23px;
                     }
                     .count{
+                        color:#d6d6d6;
                         &:before{
                             content:'/';
                             margin:0 8px;
+                            color:#fff;
                         }
                     }
                 }
@@ -560,11 +562,17 @@ br.pc {
         display:flex;
         flex-wrap:wrap;
         margin:-32px 0 0 -32px;
+        @include mobile{
+            margin-top:-23px;
+        }
         >li{
             margin:32px 0 0 32px;
             width:calc(33.33% - 32px);
             @media screen and (max-width: 1024px){
                 text-align:center;
+            }
+            @include mobile{
+                margin-top:23px;
             }
             >a{
                 display:inline-block;
@@ -607,7 +615,7 @@ br.pc {
     max-width:1444px;
     .prd-list-wrap {
         @include mobile {
-            margin-top:20px;
+            margin-top:14px;
             padding:0;
         }
         .inner {
@@ -619,7 +627,7 @@ br.pc {
                 @include mobile {
                     width:calc(50% - 4px);
                     margin:0;
-                    padding:4px;
+                    padding:0 4px;
                     &:nth-child(3), &:nth-child(4){
                         display:none;
                     }
@@ -752,6 +760,9 @@ br.pc {
                     }
                     @include mobile{
                         padding:18px 0;
+                    }
+                    &:first-child{
+                        padding-top:14px;
                     }
                     &:nth-child(odd){
                         margin-right:12px;
@@ -989,12 +1000,6 @@ br.pc {
     @include mobile {
         padding-left: 16px;
         padding-right: 16px;
-    }
-    .tit-wrap {
-        margin-bottom: 48px;
-        @include mobile {
-            margin-bottom: 40px;
-        }
     }
     .care-banner-list{
         display:flex;
