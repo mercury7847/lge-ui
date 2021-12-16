@@ -31,7 +31,9 @@
 
 .evt-detail_listSlide {
     position: relative;
+    margin-top: 80px;
     @include mobile {
+        margin-top: 60px;
         margin-bottom: 0px;
         // padding-left: 14px;
         // padding: 0 20px
@@ -61,9 +63,10 @@
             &.carousel-4 {
                 position: relative;
                 max-width: 1460px;
+                padding-bottom: 22px;
                 @include mobile {
                     margin: 0 -16px;
-                    padding: 0 0px 38px;
+                    padding: 0 0px;
                     // padding-left: 30px;
                     max-width: 100%;
                     margin: 0;
@@ -183,6 +186,25 @@
                     }
                 }
                 
+                .indi-wrap {
+                    li {
+                        .btn-indi {
+                            &::before {
+                                width: 10px;
+                                height: 10px;
+                                background-color: #e4e4e4;
+                            }
+                        }
+                        &.on {
+                            .btn-indi {
+                                width: 24px;
+                                &::before {
+                                    background-color: #000;
+                                }
+                            }
+                        }
+                    }
+                } 
             }
         }
         
