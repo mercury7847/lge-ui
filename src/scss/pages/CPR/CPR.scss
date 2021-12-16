@@ -375,6 +375,100 @@
                     margin-bottom: 20px;
                 }
             }
+            /* BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 */
+            .pay-benefit-wrap{
+                display:flex;
+                margin:48px 0 0 -48px;
+                @include mobile{
+                    margin:32px 0 0 -12px;
+                }
+                .benefit-box{
+                    margin-left:48px;
+                    width:calc(33.33% - 48px);
+                    padding:24px 24px 32px;
+                    border:1px solid #ddd;
+                    border-radius:8px;
+                    @include mobile{
+                        margin-left:12px;
+                        padding:0;
+                        width:calc(50% - 4px);
+                        border:0;
+                    }
+                    .payment-info{
+                        >li{
+                            margin-bottom:8px;
+                            &:first-of-type{
+                                margin-bottom:20px;
+                            }
+                            &:last-of-type{
+                                margin-bottom:0;
+                            }
+                            @include mobile{
+                                margin-bottom:12px !important;
+                            }
+                        }
+                        .price-info{
+                            display:flex;
+                            @include mobile{
+                                display:block;
+                            }
+                            dt{
+                                flex:1;
+                                font-size:14px;
+                                font-weight:700;
+                                line-height:24px;
+                                @include mobile{
+                                    font-size:13px;
+                                    line-height:21px;
+                                }
+                            }
+                            dd{
+                                .price{
+                                    font-size:14px;
+                                    line-height:24px;
+                                    font-weight:700;
+                                }
+                            }
+                            &.total{
+                                .price{
+                                    font-size:20px;
+                                    line-height:30px;
+                                    @include mobile{
+                                        font-size:18px;
+                                        line-height:26px;
+                                    }
+                                }
+                            }
+                            &.discount{
+                                .price{
+                                    color:#da0f47;
+                                }
+                            }
+                        }
+                    }
+                    .additional{
+                        margin-top:24px;
+                        padding-top:24px;
+                        border-top:1px solid #ddd;
+                        @include mobile{
+                            margin-top:18px;
+                            padding-top:16px;
+                        }
+                        .title{
+                            font-size:16px;
+                            line-height:24px;
+                            @include mobile{
+                                font-size:14px;
+                                line-height:22px;
+                            }
+                        }
+                    }
+                    &:nth-child(3){
+                        display:none;
+                    }
+                }
+            }
+            /* //BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 */
         }
         .lists {
             @include clearfix;
