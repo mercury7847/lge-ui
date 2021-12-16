@@ -175,9 +175,43 @@
                     '</p>' +
                 '</div>' +
 
-                '<div class="lb-btn">' +
-                    '<button type="button" class="btn"><span>멤버십포인트 적립 신청하기</span></button>' +
-                '</div>' +
+                <div class="pc-only">
+                    <div class="tit-wrap type-sub align-center">
+                        <h3 class="tit">LG전자 멤버십 APP 다운</h3>
+                    </div>
+                    <div class="section-inner">
+                        <div class="app-down">
+                            <div class="inner">
+                                <span class="txt-btn">
+                                    <strong>안드로이드 앱 설치하기</strong>
+                                    <a href="#" class="btn-app-down">
+                                        <img src="/lg5-common/images/BMC/img-btn-googleplay.png" alt="Google Play"/>
+                                    </a>
+                                </span>
+                                <span class="img-qr">
+                                    <img src="/lg5-common/images/BMC/img-qr-googleplay.png" alt="Google Play Qr코드"/>
+                                </span>
+                            </div>
+                            <div class="inner">
+                                <span class="txt-btn">
+                                    <strong>iOS 앱 설치하기</strong>
+                                    <a href="#" class="btn-app-down">
+                                        <img src="/lg5-common/images/BMC/img-btn-appstore.png" alt="App Store"/>
+                                    </a>
+                                </span>
+                                <span class="img-qr">
+                                    <img src="/lg5-common/images/BMC/img-qr-appstore.png" alt="App Store Qr코드"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                '{{#if !vcui.detect.isMobileDevice}}'+
+                    '<div class="lb-btn">' +
+                        '<button type="button" class="btn"><span>LG전자 멤버십 바로가기</span></button>' +
+                    '</div>' +
+                '{{/if}}'+
 
                 '<div class="lb-cont_bottom cont_bottom-custom">' +
                     '<div class="lb-bottom_text">' +
@@ -185,7 +219,7 @@
                         '<ul>' +
                             '<li>' +
                                 '<p class="dt">- 지급조건 :</p>' +
-                                '<p class="dd">혜택 유효기간 내 엘지전자 웹사이트 / 멤버십 앱에서 포인트 적립 신청 조건</p>' +
+                                '<p class="dd">혜택 유효기간 내 멤버십 앱에서 포인트 적립 신청 조건</p>' +
                             '</li>' +
                             '<li>' +
                                 '<p class="dt">- 지급일정 :</p>' +
@@ -201,6 +235,8 @@
             '</div>' +
         '</div>' +
     '</div>';
+
+    console.log("sssss", vcui.detect.isMobileDevice);
 
     //4년 차 케어솔루션
     var lb_careSolution_4 = '<div class="sects lb-pdlr lb-careSolution_4">' +
