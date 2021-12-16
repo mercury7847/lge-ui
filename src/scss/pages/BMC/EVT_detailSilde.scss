@@ -44,7 +44,6 @@
             margin-bottom: 0px;
         }
         .tit {
-            padding-left: 10px;
             font-size: 28px;
             line-height: 32px;
             font-weight: 700;
@@ -72,9 +71,22 @@
                     margin: 0;
                 }
                 .slide-content {
+                    position: relative;
+                    &::after {
+                        content: '';
+                        background-color: #fff;
+                        width: 6px;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                    }
                     @include mobile {
                         padding-left: 12px;
                         padding-right: 40px;
+                        &::after {
+                            display: none;
+                        }
                     }
                     .slide-track {
                         @include mobile {
@@ -86,10 +98,12 @@
                         .slide-conts {
                             padding-top: 12px; 
                             padding-bottom: 12px;
+                            padding-left: 0px;
+                            padding-right: 24px;
                             @include mobile {
                                 // width: 44.5vw!important;
-                                padding-left: 7px;
-                                padding-right: 7px;
+                                // padding-left: 7px;
+                                // padding-right: 7px;
                             }
                             .slide-box {
                                 box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
@@ -205,6 +219,17 @@
                         }
                     }
                 } 
+            }
+
+            .slide-controls {
+                .btn-arrow {
+                    &.prev {
+                        left: -24px;
+                    }
+                    &.next {
+                        right: 0px;
+                    }
+                }
             }
         }
         
