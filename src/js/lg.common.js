@@ -359,7 +359,7 @@ var goAppUrl = function(path) {
                 self._preloadComponents();
             }
 
-            self._mobileInitPopup(); //2021-09-30 삭제
+            //self._mobileInitPopup(); //2021-12-16 삭제 (BTOCSITE-9801)
             self._addTopButtonCtrl();
             self._createMainWrapper();
             self._switchLinker();
