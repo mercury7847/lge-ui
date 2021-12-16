@@ -102,8 +102,9 @@
                             padding-right: 24px;
                             @include mobile {
                                 // width: 44.5vw!important;
-                                // padding-left: 7px;
-                                // padding-right: 7px;
+                                // padding-left: 8px;
+                                // padding-right: 8px;
+                                padding-right: 16px;
                             }
                             .slide-box {
                                 box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
