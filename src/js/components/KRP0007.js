@@ -372,6 +372,9 @@
 
                 var ajaxUrl = self.$section.attr('data-wish-url');
                 lgkorUI.checkWishItem(ajaxUrl);
+
+                
+
             },
 
             //21-04-15 모바일 사업부 종료에 따른 공지 팝업 뛰우기
@@ -466,6 +469,17 @@
             },
 
             bindEvents: function() {
+                // BTOCSITe-9186
+                $('.sort-select-wrap .ui_selectbox').on('change', function(e){
+                    setTimeout(function(){
+                        var selectWidth = $(e.target).parents('.sort-select-wrap').find('.ui-selectbox-view').width();
+                        var currentWidth = selectWidth + 15;
+                        $('.btn-inchGuide').css('right', currentWidth)
+                    }, 100)
+                    
+                })
+                // BTOCSITe-9186
+                
                 var self = this;
 
                 self.$productList.on('click','a', function(e){
@@ -693,6 +707,8 @@
                     $(this).removeClass('on');
                 });
                 /* //BTOCSITE-2785 : 2021-07-14 add */
+
+           
             },
 
             setPageData: function(param) {
