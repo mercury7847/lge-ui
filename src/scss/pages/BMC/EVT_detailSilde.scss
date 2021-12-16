@@ -72,21 +72,9 @@
                 }
                 .slide-content {
                     position: relative;
-                    &::after {
-                        content: '';
-                        background-color: #fff;
-                        width: 6px;
-                        height: 100%;
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                    }
+                    margin: 0px -10px 0;
                     @include mobile {
-                        padding-left: 12px;
-                        padding-right: 40px;
-                        &::after {
-                            display: none;
-                        }
+                        margin: 0px 7px 0;
                     }
                     .slide-track {
                         @include mobile {
@@ -96,15 +84,17 @@
                             // padding: 50px;
                         }
                         .slide-conts {
+                            padding: 0 8px;
                             padding-top: 12px; 
                             padding-bottom: 12px;
-                            padding-left: 0px;
-                            padding-right: 24px;
+                            // padding-left: 0px;
+                            // padding-right: 24px;
                             @include mobile {
-                                // width: 44.5vw!important;
+                                width: 44.5vw!important;
+                                // width: 37.5vw!important;
                                 // padding-left: 8px;
                                 // padding-right: 8px;
-                                padding-right: 16px;
+                                // padding-right: 16px;
                             }
                             .slide-box {
                                 box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
@@ -228,7 +218,7 @@
                         left: -24px;
                     }
                     &.next {
-                        right: 0px;
+                        right: -24px;
                     }
                 }
             }

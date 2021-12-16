@@ -93,7 +93,7 @@
                                 slidesToScroll: 2,
                                 arrows:false,
                                 dots:false,
-                                //variableWidth:true,
+                                variableWidth:true,
                                 outerEdgeLimit: true,
                             }
                         },
