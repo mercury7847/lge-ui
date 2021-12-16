@@ -39,7 +39,7 @@ function goPdpUrl() {
         e.preventDefault();
         var href = $(this).attr('href');
         //BTOCSITE-9570 진열기획전 페이지 수정 요청 문구 수정
-        lgkorUI.alert('해당 페이지는 제품 정보만 확인 가능합니다.<br>&#39;구매 매장 확인/예약 하기&#39;를 통해 구매 가능합니다.<br><br>매장 진열된 제품으로(생산 단종) 정가보다 할인해서 구매 가능한 모델입니다.', {
+        lgkorUI.alert('해당 페이지는 제품 정보만 확인 가능합니다.<br>&#39;구매 매장 확인/예약 하기&#39;를 통해 구매 가능합니다.<br><br>매장 진열된 제품으로(생산 단종)<br>정가보다 할인해서 구매 가능한 모델입니다.', {
             title: "",
             okBtnName: "확인",
             ok: function(){
