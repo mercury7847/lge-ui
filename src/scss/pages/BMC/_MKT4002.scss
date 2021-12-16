@@ -335,7 +335,9 @@
 .ev-detail-bottom {
     @include mobile {
         padding:0 0px;
-        .bullet-list {
+    }
+    .bullet-list {
+        @include mobile {
             padding: 0 16px;
         }
     }
