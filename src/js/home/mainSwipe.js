@@ -332,7 +332,7 @@ MainSwiper.prototype = {
                         setTimeout(function(){
                             mainSwiper.swiper.updateAutoHeight();
                             $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
-                        }, 500);
+                        }, 200);
                     });
                 });
             }

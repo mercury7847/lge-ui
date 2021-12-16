@@ -645,7 +645,8 @@
                 clearTimeout(self.searchTimer);
                 
                 var searchVal = e.target.value;
-                if (searchVal.length < 4) {
+                //20211210 - BTOCSITE-9407 보유제품 등록시 모델검색 조건 변경 요청
+                if (searchVal.length < 3) {
                     self.$myProductinputLayerAutoComplete.parents('.input-layer-wrap').removeClass('on');
                     self.$myProductinputLayerAutoComplete.hide();
                 } else {
@@ -817,7 +818,11 @@
                                     'customEventCategory': '보유제품 등록',				
                                     'customEventAction': '보유제품 등록 완료',				
                                     'customEventLabel': param.sku
-                                });				
+                                });	
+                                
+                                // BTOCSITE-9426 LGE.COM 2022년 1월 이벤트 개발의 건
+                                gtag('event', 'conversion',{'send_to': 'AW-362582935/fK-XCM6O6IgDEJen8qwB'});
+                                fbq('trackCustom', 'Buttonconvprodreg');
 
                                 self.$registMyProductPopup.vcModal('close');
 

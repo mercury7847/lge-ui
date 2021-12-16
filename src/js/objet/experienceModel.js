@@ -738,21 +738,164 @@
                                     }
                                 }]
                             },       /* 매직 스페이스 제품 출시  연기로 주석처리하였음 출시되면 주석 풀면 됨 20210428 기준 end  (210719 주석해제) */
-                            
-
-                            /* BTOCSITE-4470 : 모델 베이지 항목 삭제(원본 파일은 _bak 파일에서 확인) 2021-08-25 */
-                            
-
+                            /* BTOCSITE-4470 : 모델 베이직 항목 삭제(원본 파일은 _bak 파일에서 확인) 2021-08-25 */
+                            /* BTOCSITE-9444 : 베이직 모델 추가 */
                             {
+                            name: "베이직",
+                            defaultCode: "M872AAA041",
+                            leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M871AAA041.png",
+                            simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M871AAA041.png",
+                            defaultPrice: "0",
+                            memberDiscount: "0",
+                            directDiscount: "0",
+                            magicSpace: 0,
+                            energy: 1,
+                            knockOn: false,
+                            door: {
+                                count: 4,
+                                door1: {
+                                    name: "상단(좌)",
+                                    code: "D870TT",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door2: {
+                                    name: "상단(우)",
+                                    code: "D870TT",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door3: {
+                                    name: "하단(좌)",
+                                    code: "D870BB",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                },
+                                door4: {
+                                    name: "하단(우)",
+                                    code: "D870BB",
+                                    defaultPrice: "0",
+                                    memberDiscount: "0",
+                                    directDiscount: "0",
+                                }
+
+                            },
+                            doorColorData: [
+                                // BTOCSITE-9444 페닉스 컬러 원복 
+                                {
+                                    doorMaterial: {
+                                        name: "페닉스",
+                                        enName: "FENIX",
+                                        code: "F",
+                                        desc: "감각적인 디자인을 완성하는 프리미엄 신소재로 손 끝은 스치는 부드러움과 스스로 재생되는 신비로움을 경험할 수 있습니다.",
+                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-fenix.jpg",
+                                        doorColor: [{
+                                            name: "보타닉",
+                                            code: "BT",
+                                            mixingCode: "FBT"
+
+                                        }, {
+                                            name: "샌드",
+                                            code: "SD",
+                                            mixingCode: "FSD"
+                                        }, {
+                                            name: "스톤",
+                                            code: "ST",
+                                            mixingCode: "FST"
+                                        }]
+                                    }
+
+                                },
+                                {
+                                    doorMaterial: {
+                                        name: "솔리드",
+                                        enName: "Solid Metal",
+                                        code: "S",
+                                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                        doorColor: [{
+                                            name: "맨해튼 미드나잇",
+                                            code: "MT",
+                                            mixingCode: "SMT"
+                                        }, {
+                                            name: "실버",
+                                            code: "SV",
+                                            mixingCode: "SSV"
+                                        }, {
+                                            name: "그린",
+                                            code: "GR",
+                                            mixingCode: "SGR"
+                                        }]
+                                    }
+                                }, {
+                                    doorMaterial: {
+                                        name: "미스트",
+                                        enName: "Mist Glass",
+                                        code: "G",
+                                        desc: "고운 안개처럼 부드러운 터치감을 느낄 수 있는 매트한 유리 소재로, 공간에 은은하게 어우러집니다.",
+                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Mist.jpg",
+                                        doorColor: [{
+                                            name: "베이지",
+                                            code: "BE",
+                                            mixingCode: "GBE"
+                                        }, {
+                                            name: "핑크",
+                                            code: "PK",
+                                            mixingCode: "GPK"
+                                        }, {
+                                            name: "민트",
+                                            code: "MN",
+                                            mixingCode: "GMN"
+                                        }, {
+                                            name: "실버",
+                                            code: "SV",
+                                            mixingCode: "GSV"
+                                        }, {
+                                            name: "레드우드",
+                                            code: "RD",
+                                            mixingCode: "GRD"
+                                        }, {
+                                            name: "클레이 브라운",
+                                            code: "CL",
+                                            mixingCode: "GCL"
+                                        }]
+                                        //210719 BTOCSITE-2346 신규 컬러 추가 - 레드우드,클레이브라운
+                                    }
+                                }, {
+                                    doorMaterial: {
+                                        name: "네이쳐",
+                                        enName: "Nature Metal",
+                                        code: "M",
+                                        desc: "자연을 본뜬 질감 메탈 소재로 어느 공간에 두어도 차분하고 편안한 감각을 표현해주는 소재입니다.",
+                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Nature.jpg",
+                                        doorColor: [{
+                                            name: "그레이",
+                                            code: "GY",
+                                            mixingCode: "MGY"
+                                        }, {
+                                            name: "블랙",
+                                            code: "BK",
+                                            mixingCode: "MBK"
+                                        }, {
+                                            name: "화이트",
+                                            code: "WH",
+                                            mixingCode: "MWH"
+                                        }]
+                                    }
+                                }]
+                            },{
                                 name: "빌트인 타입",
-                                defaultCode: "M620AAA351",
+                                defaultCode: "M622AAA352",
                                 leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_M620AAA351.png",
                                 simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_M620AAA351.png",
                                 defaultPrice: "0",
                                 memberDiscount: "0",
                                 directDiscount: "0",
                                 magicSpace: 0,
-                                energy: 1,
+                                energy: 2,
                                 knockOn: true,
                                 door: {
                                     count: 3,
@@ -789,7 +932,6 @@
                                             name: "보타닉",
                                             code: "BT",
                                             mixingCode: "FBT"
-
                                         }, {
                                             name: "샌드",
                                             code: "SD",
@@ -1491,230 +1633,14 @@
     proposeSet = {
         proposeConfig: [
             {
-                defaultCode: "M620AAA351",
-                modelCode: "M620FBB351S",
-                door1: "D620TT-FBT",
-                door2: "D620BB-FBT",
-                door3: "D620BB-FBT",
-                door4: ""
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620FSS351S",
-                door1: "D620TT-FSD",
-                door2: "D620BB-FSD",
-                door3: "D620BB-FSD",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620FTT351S",
-                door1: "D620TT-FST",
-                door2: "D620BB-FST",
-                door3: "D620BB-FST",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620FBS351",
-                door1: "D620TT-FBT",
-                door2: "D620BB-FSD",
-                door3: "D620BB-FSD",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620FBT351S",
-                door1: "D620TT-FBT",
-                door2: "D620BB-FST",
-                door3: "D620BB-FST",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620FTS351S",
-                door1: "D620TT-FST",
-                door2: "D620BB-FSD",
-                door3: "D620BB-FSD",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620SGG351S",
-                door1: "D620TT-SGR",
-                door2: "D620BB-SGR",
-                door3: "D620BB-SGR",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620SSS351S",
-                door1: "D620TT-SSV",
-                door2: "D620BB-SSV",
-                door3: "D620BB-SSV",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620SMM351S",
-                door1: "D620TT-SMT",
-                door2: "D620BB-SMT",
-                door3: "D620BB-SMT",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620SGS351",
-                door1: "D620TT-SGR",
-                door2: "D620BB-SSV",
-                door3: "D620BB-SSV",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620SSG351S",
-                door1: "D620TT-SSV",
-                door2: "D620BB-SGR",
-                door3: "D620BB-SGR",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620SMS351",
-                door1: "D620TT-SMT",
-                door2: "D620BB-SSV",
-                door3: "D620BB-SSV",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620MBB351S",
-                door1: "D620TT-MBK",
-                door2: "D620BB-MBK",
-                door3: "D620BB-MBK",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620MGG351S",
-                door1: "D620TT-MGY",
-                door2: "D620BB-MGY",
-                door3: "D620BB-MGY",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620MWW351",
-                door1: "D870TT-MWH",
-                door2: "D870BB-MWH",
-                door3: "D870BB-MWH",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620MBG351S",
-                door1: "D620TT-MBK",
-                door2: "D620BB-MGY",
-                door3: "D620BB-MGY",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620MWG351S",
-                door1: "D620TT-MWH",
-                door2: "D620BB-MGY",
-                door3: "D620BB-MGY",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620MGB351S",
-                door1: "D620TT-MGY",
-                door2: "D620BB-MBK",
-                door3: "D620BB-MBK",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620GBB351",
+                defaultCode: "M622AAA352",
+                modelCode: "M622GBB352",
                 door1: "D620TT-GBE",
                 door2: "D620BB-GBE",
                 door3: "D620BB-GBE",
                 door4: "",
             },
             {
-                defaultCode: "M620AAA351",
-                modelCode: "M620GBMB351S",
-                door1: "D620TT-GBE",
-                door2: "D620BB-GMN",
-                door3: "D620BB-GMN",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620GBP351S",
-                door1: "D620TT-GBE",
-                door2: "D620BB-GPK",
-                door3: "D620BB-GPK",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620GBS351S",
-                door1: "D620TT-GBE",
-                door2: "D620BB-GSV",
-                door3: "D620BB-GSV",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620GSS351S",
-                door1: "D620TT-GSV",
-                door2: "D620BB-GSV",
-                door3: "D620BB-GSV",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620GSB351S",
-                door1: "D620TT-GSV",
-                door2: "D620BB-GBE",
-                door3: "D620BB-GBE",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620GSM351S",
-                door1: "D620TT-GSV",
-                door2: "D620BB-GMN",
-                door3: "D620BB-GMN",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620GSP351S",
-                door1: "D870TT-GSV",
-                door2: "D870BB-GPK",
-                door3: "D870BB-GPK",
-                door4: "",
-            }, {
-                defaultCode: "M620AAA351",
-                modelCode: "M620GMB351S",
-                door1: "D870TT-GMN",
-                door2: "D870BB-GBE",
-                door3: "D870BB-GBE",
-                door4: "",
-            },
-            {
-                defaultCode: "M620AAA351",
-                modelCode: "M620GPB351",
-                door1: "D620TT-GPK",
-                door2: "D620BB-GBE",
-                door3: "D620BB-GBE",
-                door4: "",
-            },{
-                defaultCode: "M620AAA351",
-                modelCode: "M620GRC351S",
-                door1: "D620TT-GRD",
-                door2: "D620BB-GCL",
-                door3: "D620BB-GCL",
-                door4: "",
-            },{
-                defaultCode: "M620AAA351",
-                modelCode: "M620GCB351S",
-                door1: "D620TT-GCL",
-                door2: "D620BB-GBE",
-                door3: "D620BB-GBE",
-                door4: "",
-            }, {
                 defaultCode: "M872AAA451",
                 modelCode: "M872FBB451S",
                 door1: "D870TT-FBT",
@@ -2840,13 +2766,6 @@
                 door3: "D870BB-SSV",
                 door4: "D870BB-SSV",
             }, {
-                defaultCode: "M872AAA041",
-                modelCode: "M872SGS041", 
-                door1: "D870TT-SGR",
-                door2: "D870TT-SGR",
-                door3: "D870BB-SSV",
-                door4: "D870BB-SSV",
-            }, {
                 defaultCode: "M872AAA151",
                 modelCode: "M872SSG151S",
                 door1: "D870TT-SSV",
@@ -2863,13 +2782,6 @@
             }, {
                 defaultCode: "M872AAA151",
                 modelCode: "M872MBB151S",
-                door1: "D870TT-MBK",
-                door2: "D870TT-MBK",
-                door3: "D870BB-MBK",
-                door4: "D870BB-MBK",
-            }, {
-                defaultCode: "M872AAA041",
-                modelCode: "M872MBB041S",
                 door1: "D870TT-MBK",
                 door2: "D870TT-MBK",
                 door3: "D870BB-MBK",
@@ -2995,23 +2907,9 @@
                 door4: "D870BB-GBE",
             }, {
                 defaultCode: "M872AAA041",
-                modelCode: "M872GPB041",
-                door1: "D870TT-GPK",
-                door2: "D870TT-GPK",
-                door3: "D870BB-GBE",
-                door4: "D870BB-GBE",
-            }, {
-                defaultCode: "M872AAA041",
-                modelCode: "M872GRC041S",
-                door1: "D870TT-GRD",
-                door2: "D870TT-GRD",
-                door3: "D870BB-GCL",
-                door4: "D870BB-GCL",
-            }, {
-                defaultCode: "M872AAA041",
-                modelCode: "M872GCB041S",
-                door1: "D870TT-GCL",
-                door2: "D870TT-GCL",
+                modelCode: "M872GBB041",
+                door1: "D870TT-GBE",
+                door2: "D870TT-GBE",
                 door3: "D870BB-GBE",
                 door4: "D870BB-GBE",
             }
@@ -4162,7 +4060,7 @@
             if(plChk.length){
                 pannelSumTotal();
                 $('.sum').css('display','flex'); //2021-10-14 추가
-                $('.price_info').find('.err-msg-pannel').css('display','block'); // BTOCSITE-9262
+                $('.price_info').find('.err-msg-pannel').css('display','block'); // BTOCSITE-9269
             } else {
                 let desc = "";
                 let obj = {
@@ -6171,7 +6069,7 @@
             priceHtml += '                                         <span class="product_total_title">총금액</span>'
             priceHtml += '                                         <span class="product_price"><span class="total_price"><em></em>원</span></span>';
             priceHtml += '                                    </div>';
-            priceHtml += '                                    <p class="err-msg err-msg-pannel">주문 시 할인 적용가를 확인할 수 있습니다.</p>'; // BTOCSITE-9262
+            priceHtml += '                                    <p class="err-msg err-msg-pannel">로그인 후 주문 시 할인 적용된 금액을 확인할 수 있습니다.</p>'; // BTOCSITE-9269
             if ($objContent.attr('data-page-type') === 'COMMON') { //BTOCSITE-3198 구매하기 버튼명 다르게 노출
                 priceHtml += '                                    <button class="btn btn_purchase"><span>구매하기</span></button>';
             } else {

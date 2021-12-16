@@ -987,8 +987,9 @@
         var isAgreeChk = $('#popup-takeback').data('isAgreeChk');
         if(isAgreeChk){
             if(!$('#popup-takeback').find('input[name=takebackPopAgree]').prop('checked')){
+                // BTOCSITE-8310 스토어 명칭 제품으로 변경
                 lgkorUI.alert("", {
-                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
+                    title: "제품 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요." 
                 });
     
                 return;
@@ -1063,8 +1064,9 @@
         var isAgreeChk = $('#popup-cancel').data('isAgreeChk');
         if(isAgreeChk){
             if(!$('#popup-cancel').find('input[name=cancelPopAgree]').prop('checked')){
+                // BTOCSITE-8310 스토어 명칭 제품으로 변경
                 lgkorUI.alert("", {
-                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
+                    title: "제품 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요." 
                 });
     
                 return;
@@ -1081,41 +1083,96 @@
                 if( datalayerResult != null) {
                     //console.log("datalayerResult", datalayerResult);
                     if(typeof dataLayer !== 'undefined' && dataLayer) {
-                        
-                        var orderProdutID = datalayerResult.listData[0].orderNumber;
-                        var orderRentalId = datalayerResult.listData[0].requestNo;
-                        
-                        function getOrderID(datalayerResult){
-                            if( orderProdutID == "" || orderProdutID == undefined) {
-                                return "ORD-" + orderRentalId
-                            } else {
-                                return "ORD-" + orderProdutID
-                            }
-                        }
 
+                        //onsole.log("sssssss", datalayerResult);
+
+                        if(TAB_FLAG == TAB_FLAG_ORDER) {
+                            console.log("구매 탭");
+                            //var orderProdutID = datalayerResult.listData[0].orderNumber; 
+
+                            // function getOrderID(datalayerResult){
+                            //     if( orderProdutID == "" || orderProdutID == undefined) {
+                            //         return "ORD-" + orderProdutID
+                            //     }
+                            // }
+
+
+                            var list = datalayerResult.listData;
+                            for(idx in list){
+                                //console.log("111111",list[idx].orderNumber);
+                                for(cdx in list[idx].productList){
+                                    //console.log("2222222",list[idx].productList[cdx].modelType);
+                                }
+                            }
+  
+                            var pushDataEvent = {				
+                                'event': 'refund',				
+                                'actionField': {
+                                    //'order_id' : getOrderID(datalayerResult)
+                                    'order_id' : "ORD-" + list[idx].orderNumber
+                                },				
+                                'products': [{
+                                    'model_name': list[idx].productList[cdx].productNameKR,					
+                                    'model_id': list[idx].productList[cdx].modelID,					
+                                    'model_sku': list[idx].productList[cdx].productNameEN,					
+                                    'category': null,					
+                                    'brand': 'LG',					
+                                    'price': datalayerResult.payment.grandTotal,
+                                    'quantity': list[idx].productList[cdx].orderedQuantity,					
+                                    'model_gubun': list[idx].productList[cdx].modelType,
+                                    'ct_id': null
+                                }]				
+                            };
+
+                            dataLayer.push(pushDataEvent);
+                            console.log("dataLayer : ", pushDataEvent);
+
+                        } else {
+                            console.log("케어솔루션 탭");
+
+                            var CARE_list = datalayerResult.careListData;
+                            for(idx in CARE_list){
+                                //console.log("111111",CARE_list[idx].orderNumber);
+                                for(CARE_cdx in CARE_list[idx].productList){
+                                    //console.log("2222222",CARE_list[idx].productList[CARE_cdx].modelType);
+                                }
+            
+                            }
+
+                            var care_list_requestNo = CARE_list[idx].requestNo;
+
+                            function getOrderID(datalayerResult){
+                                // if( orderProdutID == "" || orderProdutID == undefined) {
+                                //     return "ORD-" + orderProdutID
+                                // }
+                                return care_list_requestNo.replace('OR', 'OR-');
+                            }
+                            
+                            var pushDataEvent = {				
+                                'event': 'refund',				
+                                'actionField': {
+                                    'order_id' : getOrderID(datalayerResult)
+                                    //'order_id' : CARE_list[idx].requestNo
+                                },				
+                                'products': [{
+                                    'model_name': CARE_list[idx].productList[CARE_cdx].productNameKR,					
+                                    'model_id': CARE_list[idx].productList[CARE_cdx].modelID,					
+                                    'model_sku': CARE_list[idx].productList[CARE_cdx].productNameEN,					
+                                    'category': null,					
+                                    'brand': 'LG',					
+                                    'price': CARE_list[idx].productList[CARE_cdx].paymentMethod.grandTotal,
+                                    'quantity': CARE_list[idx].productList[CARE_cdx].orderedQuantity,					
+                                    'model_gubun': CARE_list[idx].productList[CARE_cdx].modelType,
+                                    'ct_id': null
+                                }]				
+                            };
+    
+                            dataLayer.push(pushDataEvent);
+                            console.log("dataLayer : ", pushDataEvent);
+                        }
+                        //console.log("최종 데이터 확인", getListData);
                         //console.log("구매제품", orderProdutID);
                         //console.log("렌탈제품", orderRentalId);
-
-                        var pushDataEvent = {				
-                            'event': 'refund',				
-                            'actionField': {
-                                'order_id' : getOrderID(datalayerResult)
-                            },				
-                            'products': [{
-                                'model_name': datalayerResult.listData[0].productList[0].productNameKR,					
-                                'model_id': datalayerResult.listData[0].productList[0].modelID,					
-                                'model_sku': datalayerResult.listData[0].productList[0].productNameEN,					
-                                'category': null,					
-                                'brand': 'LG',					
-                                'price': datalayerResult.payment.grandTotal,					
-                                'quantity': datalayerResult.listData[0].productList[0].orderedQuantity,					
-                                'model_gubun': datalayerResult.listData[0].productList[0].modelType,
-                                'ct_id': null
-                            }]				
-                        };
-
-                        dataLayer.push(pushDataEvent);
-                        console.log("dataLayer : ", pushDataEvent);
                     }
                 }
                 //console.log("3")
@@ -2433,9 +2490,9 @@
 
                 /* BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
                 if(result.status == "success"){
-                    if( datalayerResult == null ) {
+                    //if( datalayerResult == null ) {
                         datalayerResult = result.data;
-                    }
+                    //}
                 }
                 /* //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
             } else{

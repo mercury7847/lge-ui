@@ -25,48 +25,43 @@ if ('scrollRestoration' in history) {
                         '<div class="sku">{{#raw sku}}</div>' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
-                            '<a href="{{url}}">' +
-                                // BTOCSITE-16 검색 결과 구획 정리
-                                '<div class="star">'+
-									'<div class="star-rating" {{#if rating > 0 }} style="width:{{(rating*100)/5}}%;" {{/if}}>'+
-										'<span class="blind">현재 별점 : {{rating}}</span>'+
-									'</div>'+
-								'</div>'+
-                                '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
-                                '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
-                            '</a>' +
+                                '<a href="{{url}}">' +
+                                    '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                    '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
+                                    '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
+                                '</a>' +
                             '{{/if}}' +
                         '</div>' +
                         // BTOCSITE-16 검색 결과 구획 정리
-                        '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
-                            '{{#if originalPrice != 0}}' +
-                                '<div class="info-price mo-only">' +
-                                    '<a href="{{url}}">' +
-                                        '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
-                                            '<div class="price-info rental">' +
-                                                '<p class="tit">렌탈</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
-                                            '</div>' +
-                                        '{{/if}}' +
-                                        '<div class="price-info sales">' +
-                                            '{{#if obsFlag=="Y"}}' +
-                                                '{{#if price == originalPrice}}' +
-                                                    '<div class="price-in">' +
-                                                        '<span class="price">{{originalPrice}}<em>원</em></span>' +
-                                                    '</div>' +
-                                                '{{#else}}' +
-                                                    '<div class="original">' +
-                                                        '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
-                                                    '</div>' +
-                                                    '<div class="price-in">' +
-                                                        '{{#if price != 0}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
-                                                    '</div>' +
-                                                '{{/if}}' +
-                                            '{{/if}}' +
-                                        '</div>' +
-                                    '</a>' +
-                                '</div>' +
+                        '<div class="info-price mo-only">' +
+                            '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
+                                '<a href="{{url}}">' +
+                                    '<div class="price-info rental">' +
+                                        '<p class="tit">렌탈</p><span class="price"><em>월</em> {{vcui.number.addComma(carePrice)}}<em>원</em></span>' +
+                                    '</div>' +
+                                '</a>' +
                             '{{/if}}' +
-                        '{{/if}}' +
+                            '{{#if obsFlag=="Y" && originalPrice != 0}}' +
+                                '<a href="{{url}}">' +
+                                    '<div class="price-info sales">' +
+                                        '{{#if obsFlag=="Y"}}' +
+                                            '{{#if price == originalPrice}}' +
+                                                '<div class="price-in">' +
+                                                    '<span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>' +
+                                                '</div>' +
+                                            '{{#else}}' +
+                                                '<div class="original">' +
+                                                    '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>{{/if}}' +
+                                                '</div>' +
+                                                '<div class="price-in">' +
+                                                    '{{#if price != 0}}<span class="price">{{vcui.number.addComma(price)}}<em>원</em></span>{{/if}}' +
+                                                '</div>' +
+                                            '{{/if}}' +
+                                        '{{/if}}' +
+                                    '</div>' +
+                                '</a>' +
+                            '{{/if}}' +
+                        '</div>' +
 
                         // BTOCSITE-16 검색 결과 구획 정리 -삭제
                         // '<div class="info-btm">' +
@@ -92,35 +87,35 @@ if ('scrollRestoration' in history) {
             '</div>' +
 
             // BTOCSITE-16 검색 결과 구획 정리
-            '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
-                '{{#if originalPrice != 0}}' +
-                    '<div class="info-price pc-only">' +
-                        '<a href="{{url}}">' +
-                            '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
-                                '<div class="price-info rental">' +
-                                    '<p class="tit">렌탈</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
-                                '</div>' +
-                            '{{/if}}' +
-                            '<div class="price-info sales">' +
-                                '{{#if obsFlag=="Y"}}' +
-                                    '{{#if price == originalPrice}}' +
-                                        '<div class="price-in">' +
-                                            '<span class="price">{{originalPrice}}<em>원</em></span>' +
-                                        '</div>' +
-                                    '{{#else}}' +
-                                        '<div class="original">' +
-                                            '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
-                                        '</div>' +
-                                        '<div class="price-in">' +
-                                            '{{#if price != 0}}<span class="price">{{price}}<em>원</em></span>{{/if}}' +
-                                        '</div>' +
-                                    '{{/if}}' +
+            '<div class="info-price pc-only">' +
+                '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
+                    '<a href="{{url}}">' +
+                        '<div class="price-info rental">' +
+                            '<p class="tit">렌탈</p><span class="price"><em>월</em> {{vcui.number.addComma(carePrice)}}<em>원</em></span>' +
+                        '</div>' +
+                    '</a>' +
+                    '{{/if}}' +
+                    '{{#if obsFlag=="Y" && originalPrice != 0}}' +
+                    '<a href="{{url}}">' +
+                        '<div class="price-info sales">' +
+                            '{{#if obsFlag=="Y"}}' +
+                                '{{#if price == originalPrice}}' +
+                                    '<div class="price-in">' +
+                                        '<span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>' +
+                                    '</div>' +
+                                '{{#else}}' +
+                                    '<div class="original">' +
+                                        '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>{{/if}}' +
+                                    '</div>' +
+                                    '<div class="price-in">' +
+                                        '{{#if price != 0}}<span class="price">{{vcui.number.addComma(price)}}<em>원</em></span>{{/if}}' +
+                                    '</div>' +
                                 '{{/if}}' +
-                            '</div>' +
-                        '</a>' +
-                    '</div>' +
+                            '{{/if}}' +
+                        '</div>' +
+                    '</a>' +
                 '{{/if}}' +
-            '{{/if}}' +
+            '</div>' +
         '</div>' +
     '</div></li>';
 
@@ -796,6 +791,22 @@ if ('scrollRestoration' in history) {
                     var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
+                    console.log("data %o",data);
+
+                    // 구매가능 렌탈가능 버튼 노출 상태
+                    if(data.availableforpurchaseyn === 'Y') {
+                        $('[name="availableforpurchase"]').closest('.sort-check-area').show();
+                    } else {
+                        $('[name="availableforpurchase"]').closest('.sort-check-area').hide();
+                    }
+
+                    if(data.availableforrentalyn === 'Y') {
+                        $('[name="availableforrental"]').closest('.sort-check-area').show();
+                    } else {
+                        $('[name="availableforrental"]').closest('.sort-check-area').hide();
+                    }
+
+
                     //검색내 검색어 세팅
                     if(self.$listSorting.find('div.search-inner input').length > 0) {
                         self.$listSorting.find('div.search-inner input').attr('data-searchvalue', param.searchIn).val(param.searchIn);
@@ -906,9 +917,9 @@ if ('scrollRestoration' in history) {
                             item.ga = self.makeProductGAData(item);
                             //item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
-                            item.price = item.price ? vcui.number.addComma(item.price) : null;
-                            item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
-                            item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                            // item.price = item.price ? vcui.number.addComma(item.price) : null;
+                            // item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                            // item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
                             item.rentalFlag = lgkorUI.stringToBool(item.rentalFlag);
                             item.ctypeCnt = item.ctypeCnt ? parseInt(item.ctypeCnt) : 0;
                             $list_ul.append(vcui.template(productItemTemplate, item));

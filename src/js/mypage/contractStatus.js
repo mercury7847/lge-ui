@@ -628,34 +628,10 @@
         });
 
 
-        //주영
-        // $('.cctest').find('a').on('click', function(e){
-        //     //e.preventDefault();
-        //     //$(this).attr("href", "/html/MYC/ACCF7025_care_list.html");
-        //     tetetetetetete();
-        // });
+     
     }
 
-    //주영
-    // function tetetetetetete(result){
-    //     var sendata = {
-    //         contractID: $('select[name=contractInfo]').find('option:selected').val()
-    //     }
-
-    //     //var _href = $('.cctest').find('a').attr("href");
-    //     //console.log("sssssss", _href);
-    //     console.log("gggggg", sendata);
-
-    //     //$('.cctest').find('a').attr("href", _href + sendata.contractID);
-    //     //$('.cctest').find('a').attr("href", "/html/MYC/ACCF7025_care_list.html?");
-
-    //     /* BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
-    //     lgkorUI.requestAjaxData(CONTRACT_CARE, sendata, function(result){
-            
-    //         lgkorUI.hideLoading();
-
-    //     }, ajaxMethod);
-    // }
+    
 
     //계약서 발급 신청
     function sendRequestContract(){
@@ -1428,7 +1404,6 @@
         //console.log("sssss", mypage.find(".section-wrap"))
 
 
-        //주영 여기
         if(data != undefined && data != "" && data != null && $lc_select != ""){
             var info;
     
@@ -1507,7 +1482,7 @@
                 if(Date.now() >= (+$lc_join) && Date.now() <= (+CareShip_MonthLater)) {
                     console.log("------케어십 가입 14개월 이전!!!------")
                     //console.log("---가입시점부터 14개월 말일 까지 노출---")
-                    $lc_cont.html(vcui.template(lb_careShip, data));
+                    return $lc_cont.html(vcui.template(lb_careShip, data));
                 } else {
                     console.log("----케어십 14개월이 훨신 지난 조건----");
                     mypage.find(".lb-container").empty();
@@ -1524,7 +1499,7 @@
                     //console.log("mmm", MonthLater1);
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater1)) {
                         console.log("---1년차 - 3개월 까지만 노출---")
-                        $lc_cont.html(vcui.template(lb_careSolution_1, data));
+                        return $lc_cont.html(vcui.template(lb_careSolution_1, data));
                     }
                 } else {
                     console.log("------1년차 조건에 해당하지 않음------")
@@ -1535,7 +1510,7 @@
                     console.log("------2년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater2)) {
                         console.log("---2년차 - 3개월 까지만 노출---")
-                        $lc_cont.html(vcui.template(lb_careSolution_2, data));
+                        return $lc_cont.html(vcui.template(lb_careSolution_2, data));
                     }
                 } else {
                     console.log("------2년차 조건에 해당하지 않음------")
@@ -1546,7 +1521,7 @@
                     console.log("------3년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater3)) {
                         console.log("---3년차 - 3개월 까지만 노출---")
-                        $lc_cont.html(vcui.template(lb_careSolution_3, data));
+                        return $lc_cont.html(vcui.template(lb_careSolution_3, data));
                     }
                 } else {
                     console.log("------3년차 조건에 해당하지 않음------")
@@ -1557,7 +1532,7 @@
                     console.log("------4년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater4)) {
                         console.log("---4년차 - 3개월 까지만 노출---")
-                        $lc_cont.html(vcui.template(lb_careSolution_4, data));
+                        return $lc_cont.html(vcui.template(lb_careSolution_4, data));
                     }
                 } else {
                     console.log("------4년차 조건에 해당하지 않음------")
@@ -1568,7 +1543,7 @@
                     console.log("------5년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater5)) {
                         console.log("---5년차 - 3개월 까지만 노출---")
-                        $lc_cont.html(vcui.template(lb_careSolution_5, data));
+                        return $lc_cont.html(vcui.template(lb_careSolution_5, data));
                     }
                 } else {
                     mypage.find(".lb-container").empty();

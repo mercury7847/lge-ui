@@ -217,7 +217,7 @@
             '{{/if}}' +
             '{{#if bizType != "DISPOSABLE"}}'+
             '<div class="product-compare">' +
-                '<a href="#" data-id="{{modelId}}" data-contents="{{#raw modelDisplayName}}"><span>비교하기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                '<a href="#" data-id="{{modelId}}" data-contents="{{#raw modelDisplayName}}" data-b2bcatemapping="{{b2bCateMapping}}"><span>비교하기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
             '</div>' +
             '{{/if}}'+
         '</div>' +
@@ -355,6 +355,10 @@
                             var ajaxUrl = self.$section.attr('data-wish-url');
                             lgkorUI.checkWishItem(ajaxUrl);
                             /* //BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
+
+                            // 비교하기 버튼 상태 변경 - 필터 복구시
+                            console.log("비교하기 버튼 상태 변경 - 필터 복구시")
+                            self.compareBtnStatus();
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
                         }
@@ -368,6 +372,9 @@
 
                 var ajaxUrl = self.$section.attr('data-wish-url');
                 lgkorUI.checkWishItem(ajaxUrl);
+
+                
+
             },
 
             //21-04-15 모바일 사업부 종료에 따른 공지 팝업 뛰우기
@@ -455,9 +462,14 @@
                 self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
 
                 self.cateWrapStatus();
+
+                // 비교하기 버튼 상태 변경 - 초기화시
+                console.log("비교하기 버튼 상태 변경 - 초기화시");
+                self.compareBtnStatus();
             },
 
             bindEvents: function() {
+                
                 var self = this;
 
                 self.$productList.on('click','a', function(e){
@@ -685,6 +697,24 @@
                     $(this).removeClass('on');
                 });
                 /* //BTOCSITE-2785 : 2021-07-14 add */
+
+                // BTOCSITe-9186
+                // BTOCSITe-9186
+                $('.sort-select-wrap .ui_selectbox').on('change', function(e){
+                    setTimeout(function(){
+                        var selectWidth = $(e.target).parents('.sort-select-wrap').find('.ui-selectbox-view').width();
+                        if( $(window).width() > 767){ 
+                            var currentWidth = selectWidth + 15;
+                            $('.btn-inchGuide').css('right', currentWidth)
+                        }else{
+                            var currentWidth = selectWidth + 11;
+                            $('.btn-inchGuide').css('right', currentWidth)
+                        }
+                    }, 100)
+                })
+                // BTOCSITe-9186
+                // BTOCSITe-9186
+           
             },
 
             setPageData: function(param) {
@@ -793,6 +823,12 @@
                             //self.$ttCount.hide(); //추가
                         /* //BTOCSITE-5157 : PLP 제품이 없을때 문구 미노출 이슈 2021-09-13 */
                     }
+
+
+
+                    // 비교하기 버튼 상태 변경 - ajax 통신시
+                    console.log("비교하기 버튼 상태 변경 - ajax 통신시")
+                    self.compareBtnStatus();
 
                     /* BTOCSITE-2150 add */
                     self.isLoading = false; 
@@ -1082,6 +1118,8 @@
                 // item.isShow = true;
                 // console.log("item %o",item);
 
+                //BTOCSITE-8312 프로젝터>시네빔과 프로빔 스펙비교 예외처리 요청
+                item.b2bCateMapping = item.b2bCateMapping || "N";
 
                 if( typeof item.obsSellingPriceNumber == "string") {
                     item.isShowPrice = item.obsSellingPriceNumber.replace(/,/g, "");
@@ -1094,7 +1132,6 @@
                 /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인 */
                 item.isShowLotteCard = kiosk ? false : lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-6613 키오스크 조건 추가
                 item.isShowLotteCardEvent = kiosk ? false : lgkorUI.isShowDate('20211101','20220101') // 2021.11.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-9006 롯데카드 12개월 무이자 할인 적용기간
-
                 
                 return vcui.template(productItemTemplate, item);
             },
@@ -1179,6 +1216,7 @@
             setCompareState:function(atag){
                 var $this = $(atag);
                 var _id = $this.data('id');
+                var b2bcatemapping = $this.data('b2bcatemapping');
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(!$this.hasClass('on')){
                     var compare = $this.closest('.product-compare');
@@ -1191,6 +1229,7 @@
 
                     var compareObj = {
                         "id": _id,
+                        "b2bcatemapping":b2bcatemapping,
                         "productName": productName,
                         "productID": productID,
                         "productImg": productImg,
@@ -1201,6 +1240,26 @@
                     if(isAdd) $this.addClass("on");
                 } else{
                     lgkorUI.removeCompareProd(categoryId, _id);
+                }
+            },
+
+            // 비교하기 버튼 상태 변경
+            compareBtnStatus:function(){
+                console.log("compareBtnStatus");
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+
+                console.log(storageCompare)
+                if(storageCompare && storageCompare['data'].length > 0){
+                    var data = storageCompare['data'][0];
+
+                    console.log("data ",data);
+
+                    console.log("mapping ",$('.KRP0007 a[data-b2bcatemapping]'));
+
+                    // 비교하기 버튼 상태 변경
+                    $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style')
+                    .parent().find('a[data-b2bcatemapping="'+(data.b2bcatemapping === 'Y' ? 'N' : 'Y')+'"]').hide();
                 }
             },
 

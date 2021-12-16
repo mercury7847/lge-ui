@@ -1,3 +1,35 @@
+<!-- BTOCSITE-9567 메인 홈 띠배너 요청 s -->
+<div class="ces2022-banner-wrap">
+    <div class="ces2022-banner">
+        <a href="https://www.lge.co.kr/ces2022">
+             <span class="blind">LG&#10005CES2022</span>
+        </a>
+        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+    </div>
+</div>
+<style>
+    .ces2022-banner-wrap { height: 50px; margin-top: -20px; margin-bottom: 28px; background: #e5ebe1;}
+    .ces2022-banner-wrap.hide {height:0; overflow: hidden; opacity: 0; margin-top: 0; margin-bottom: 0; transition: all 0.2s;}
+    .ces2022-banner{position: relative; width: 100%; height: 100%;  background-color: #fff; margin: 0 auto;}
+    /* cms에 등록된 피씨용 배경 이미지 경로로 변경해야함 */
+    .ces2022-banner > a {display: block; width:100%; height: 100%; margin:0 auto; background: #c96667 url(/kr/dcr/images/main/main-home/line-baner-pc.png) no-repeat; background-position: center center; background-size: auto 100%;}
+    .ces2022-banner .btn-close {position: absolute; top: 13px; right: 15px; width: 24px; height: 24px;}
+    .ces2022-banner .btn-close:before{content: ' '; position: absolute; top: 0; left: 0; width: 24px; height: 24px; background: url(/lg5-common/images/icons/btn-close-24-white.svg) no-repeat; background-size: 24px 24px;}
+    @media screen and (max-width: 767px){
+        .ces2022-banner-wrap {height: 38px; margin-top: 0;  margin-bottom: 0;}
+        /* cms에 등록된 모바일용 배경 이미지 경로로 변경해야함 */
+        .ces2022-banner > a {background: #c96667 url(/kr/dcr/images/main/main-home/line-baner-mo.png) no-repeat; background-size: auto 100%; background-position: 0 0;}
+        .ces2022-banner .btn-close {position: absolute; top: 7px; right:15px;}
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        $(".ces2022-banner > .btn-close").click(function(e) {
+            $('.ces2022-banner-wrap').addClass('hide');
+        });
+    });
+</script>
+<!-- BTOCSITE-9567 메인 홈 띠배너 요청 e -->
 <!-- // BTOCSITE-2193 : 홈메인 운영 어드민 메뉴 개설 -->
 <div class="scene-cover">
     <!-- 히어로 배너 영역 : 최대 8개 게시 s -->

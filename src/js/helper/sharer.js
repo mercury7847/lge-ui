@@ -247,7 +247,7 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
             }
 
 
-            $(document).on('click.sharer', self.options.selector, function (e) {
+            $(document).off('click.sharer').on('click.sharer', self.options.selector, function (e) {
 
                 e.preventDefault();
 

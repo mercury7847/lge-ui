@@ -1833,3 +1833,16 @@
     }
     //BTOCSITE-8035 최하단 텍스트 잘림으로 인한 하단 패딩값 추가 211110 - E
 }
+
+
+//출장예약 확인 팝업, 일정변경 팝업, 보유제품 직접 등록팝업 - 높이가 낮은 해상도 일 경우 버튼 잘림 대응
+@media screen and (min-width: 768px) and (max-height: 768px)  {
+    #event-modal.popup-wrap .pop-conts.mypage,
+    #registMyProductPopup.popup-wrap .pop-conts {max-height: calc(100vh - 208px);}
+
+    #registMyProductPopup.popup-wrap .pop-conts {min-height:auto;}
+
+    #event-modal.popup-wrap .pop-conts.mypage ~ .pop-footer,
+    #registMyProductPopup.popup-wrap .pop-footer {padding:32px}
+}
+

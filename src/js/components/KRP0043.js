@@ -5,8 +5,10 @@
             '<a href="#n" class="accord-btn ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
                 '<span class="badge active notice">공지</span>' + 
                 '<span class="title line1">{{ noticeTitle }}</span>' +
-                '<span class="writer"> {{ creationName }} </span>' +
-                '<span class="date"> {{ creationDate }} </span>' +
+                '<div class="info-wrap">' +
+                    '<span class="writer"> {{ creationName }} </span>' +
+                    '<span class="date"> {{ creationDate }} </span>' +
+                '</div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
@@ -16,9 +18,11 @@
                     '<p class="desc">' +
                         '{{ noticeContent }}' +
                     '</p>' +
+                    '{{#if !!noticeImagePath}}' +
                     '<div class="img-wrap">' +
                         '<img src="{{ noticeImagePath }}" alt="">' +
                     '</div>' +
+                    '{{/if}}'
                 '</div>' +
             '</div>' +
         '</div>' +
@@ -30,10 +34,12 @@
             '<a href="#n" class="accord-btn {{#if (enabled == "Y")}}ui_accord_toggle{{/if}}" data-open-text="내용 더 보기" data-close-text="내용 닫기">' +
                 '<span class="badge {{#if (answered == "Y") }}active{{/if}}">{{#if (answered == "Y") }}답변완료{{/if}}{{#if (answered == "N") }}답변대기{{/if}}</span>' + 
                 '<span class="title line1{{#if (secret == "Y") && (blocked == "N") }} on{{/if}}{{#if (blocked == "Y") }} hide{{/if}}">' +
-                '{{ questionTitle }}' +
+                '{{#if (secret == "Y") && (blocked == "N") }}비밀글입니다{{#else}}{{ questionTitle }}{{/if}}' +
                 '</span>' +
-                '<span class="writer">{{ creationUserName }}</span>' +
-                '<span class="date">{{ creationDate }}</span>' +
+                '<div class="info-wrap">' + 
+                    '<span class="writer">{{ creationUserName }}</span>' +
+                    '<span class="date">{{ creationDate }}</span>' +
+                '</div>' +
                 '<span class="blind ui_accord_text">내용 더 보기</span>' +
             '</a>' +
         '</div>' +
@@ -100,7 +106,7 @@
             self.$pdpQna = $('#pdp_qna');
             
             // QnA 리스트 상단 영역
-            self.$totalCount = self.$pdpQna.find('.count');
+            //self.$totalCount = self.$pdpQna.find('.count');
             self.$sortingWrap = self.$pdpQna.find('.sorting-wrap');
             self.$sortSelect = self.$sortingWrap.find('.ui_selectbox'); //문의유형 select 정렬
             self.$sortSecChk = self.$sortingWrap.find('.chk-wrap'); //비밀글 제외 체크 
@@ -155,7 +161,10 @@
                 self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": "1"});
             });
 
-            
+            // 닫기 버튼 클릭 시 form 전체 입력 값 초기화
+            self.$writePopup.on('click', '.btn-close', function(){
+               $("#submitForm")[0].reset();
+            });
 
             // 비밀글 제외 체크
             self.$qnaType.find('#secretSort').off('click').on('click', function(){
@@ -272,18 +281,17 @@
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                     var listData = result.data.qnaList;
-                    var noticeData = result.data.qnaNoticeList;//공지사항
-                    //var html = ""; // 공지사항용
-                    var innerHTML = ""; //qna list용
+                    var noticeData = result.data.qnaNoticeList;
+                    var innerHTML = "";
                     
                     var pagination = result.data.pagination;
-                    var totalCount = result.data.qnaTotalCount;
+                    // var totalCount = result.data.qnaTotalCount;
                     var $pdpTab = $('.tab-menu [data-link-name=qna]');
 
                     if(result.status == "success"){
 
                         if( (noticeData.length > 0 && listData.length > 0) || listData.length > 0 || noticeData.length > 0) {
-                            var currentCount = totalCount > 999 ? "999+" : totalCount;
+                            // var currentCount = totalCount > 999 ? "999+" : totalCount;
                             noticeData.forEach(function(item){
                                 innerHTML += vcui.template(noticeListTmpl, item);
                             });
@@ -295,24 +303,22 @@
                             
                             // 211206 추가 - 필터. no-data일경우에,비노출 처리 건, 다시 데이터 조회될 경우, 초기화 
                             self.$qnaList.empty().append(innerHTML);
-                            self.$totalCount.text(currentCount);
-                            $pdpTab.text("Q&A (" + currentCount +")");
+                            //self.$totalCount.text(currentCount);
+                            //$pdpTab.text("Q&A (" + currentCount +")");
                             self.$qnaType.find('.qna-result-lists').show();
                             self.$nodata.hide();
                             self.$pagination.vcPagination('setPageInfo', pagination);
                             lgkorUI.hideLoading();
-                        } else {
-                            //1207 함수 추가
-                            $pdpTab.text("Q&A (" + totalCount +")");
-                            self.$totalCount.text(totalCount);
+                        } else {                            
+                            //$pdpTab.text("Q&A (" + totalCount +")");
+                            //self.$totalCount.text(totalCount);
                             self.requestNoData();
                             self.$pagination.vcPagination('setPageInfo', pagination);
                             
                         }
-                    } else {
-                        //1207 함수 추가
-                        $pdpTab.text("Q&A (" + totalCount +")");
-                        self.$totalCount.text(totalCount);
+                    } else {                        
+                        //$pdpTab.text("Q&A (" + totalCount +")");
+                        //self.$totalCount.text(totalCount);
                         self.requestNoData();
                         self.$pagination.vcPagination('setPageInfo', pagination);
 
@@ -422,7 +428,7 @@
                                             reader.readAsDataURL(data);
                                             reader.onload = function(e){                               
                                                 var imgTag = "<img src='"+e.target.result+"' alt='첨부파일 썸네일'>";
-                                                $fileBox.classList.add('on');                                                
+                                                $fileBox.classList.add('on');
                                                 $filePreview.innerHTML = imgTag;
                                                 $($fileName).val(imgfiles[i].fileName);
                                             }
@@ -432,8 +438,14 @@
                                     }
                                 })(i);
                             }
-                        } else {
-                            console.log("fail");
+                        } else {                    
+                            lgkorUI.alert("", {
+                                title: "게시물 확인이 불가합니다. 관리자에게 문의해주세요. ",
+                                ok : function(){
+                                    self.$writePopup.vcModal('hide');
+                                    location.reload();
+                                }
+                            });
                         }
                     },"POST");
                 }
@@ -463,7 +475,6 @@
                 var param = self.validation.getAllValues();
                 var formData = new FormData();
 
-                // data modelId 값 추가
                 formData.append('modelId', self.$dataModelId);
         
                 for (var key in param) {
@@ -495,19 +506,25 @@
                             }
                         });
                         
-                    } else {
-                        lgkorUI.hideLoading();
-                        self.$writePopup.vcModal('hide');
-                        if (result.message) {
-                            lgkorUI.alert("", {
-                                title: result.message,
-                                ok : function(){
-                                    self.$writePopup.vcModal('hide');
-                                }
-                            });
-                        }
+                    } else {    
+                        lgkorUI.hideLoading();                    
+                        lgkorUI.alert("", {
+                            title: "게시물 등록에 실패하였습니다. 입력한 내용을 확인해 주세요.",
+                            ok : function(){
+                                
+                            }
+                        });
+                        
                     }
-                }, 'POST', 'json',true);
+                }, 'POST', 'json',true, function(){
+                    lgkorUI.hideLoading();
+                    lgkorUI.alert("", {
+                        title: "게시물 등록에 실패하였습니다.",
+                        ok : function(){
+                
+                        }
+                    });
+                });
             }
         },
         // qna-modify-popup - post
@@ -550,8 +567,7 @@
                 //lgkorUI.showLoading();
                 lgkorUI.requestAjaxFileData(ajaxUrl, formData, function(result) {
                     if (result.status == 'success') {
-                        lgkorUI.hideLoading();
-                        
+                        lgkorUI.hideLoading();                        
                         lgkorUI.alert("", {
                             title: "게시물이 수정되었습니다.",
                             ok: function(){
@@ -561,14 +577,22 @@
                         });                    
                     } else {
                         lgkorUI.hideLoading();
-                        self.$writePopup.vcModal('hide');
-                        if (result.message) {
-                            lgkorUI.alert("", {
-                                title: result.message,
-                            });
-                        }
+                        lgkorUI.alert("", {
+                            title: "게시물 수정에 실패하였습니다. 입력한 내용을 확인해 주세요.",
+                            ok : function(){
+                    
+                            }
+                        });
                     }
-                }, 'POST', 'json',true);
+                }, 'POST', 'json', true, function(){
+                    lgkorUI.hideLoading();
+                    lgkorUI.alert("", {
+                        title: "게시물 수정에 실패하였습니다.",
+                        ok : function(){
+                
+                        }
+                    });
+                });
             }
         },
         // qna-delete-popup - post
@@ -587,7 +611,10 @@
                         });
                     } else {
                         lgkorUI.alert("", {
-                            title: result.message
+                            title: "게시물 삭제에 실패하였습니다.",
+                            ok : function(){
+                                
+                            }
                         });
                     }
                 },"POST");
@@ -633,7 +660,7 @@
                         var $fileItem = $(target).closest('[data-role="file-item"]');
                         $fileItem.find("input[type='file']").data('fileFlag','delete');
                         $fileItem.find('.file-preview').empty();
-                        $fileItem.find('.file-name input').prop('placeholder','');
+                        $fileItem.find('.file-name input').prop('placeholder','파일선택');
                     }
                 }
             });
@@ -643,7 +670,7 @@
             if(self.$writeFormFileItem.hasClass="on"){
                 self.$writeFormFileItem.removeClass("on");
                 self.$writeFormFileItem.find('.file-preview').empty();
-                self.$writeFormFileItem.find('.file-name input').prop('placeholder','');
+                self.$writeFormFileItem.find('.file-name input').prop('placeholder','파일선택');
                 self.$writeFormFileItem.find('.file-name input').val('');
             }
             

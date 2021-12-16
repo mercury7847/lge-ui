@@ -1164,12 +1164,45 @@ var goAppUrl = function(path) {
             if(compareStorage[categoryId] == undefined){
                 var categoryName = lgkorUI.getHiddenInputData().categoryName;
                 compareStorage[categoryId] = { 'categoryName' : categoryName,'data' : [data]};
+
+                if(compareStorage[categoryId]['data'].length === 1){
+                    // 비교하기 첫제품 추가시 토스트 메시지
+                    $(window).trigger("toastshow", "선택하신 제품과 함께 비교할 수 있는 제품만 비교하기 버튼이 보여집니다");
+
+                    // 비교하기 버튼 상태 변경
+                    if($('.KRP0007').size() > 0) {
+
+                        console.log("plp 첫상품 추가시 버튼 상태 변경")
+                        $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style')
+                        .parent().find('a[data-b2bcatemapping="'+(data.b2bcatemapping === 'Y' ? 'N' : 'Y')+'"]').hide();
+                    }
+
+                }
+
             } else{
                 var leng = compareStorage[categoryId]['data'].length;
                 if(leng < compareLimit){
                     compareStorage[categoryId]['data'].push(data);
                 } else{
                     $(window).trigger('excessiveCompareStorage');
+                    return false;
+                }
+            }
+
+            // 세션스토리지에서 비교하기 데이터 전체 비교
+            var prod_compare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY);
+            if(prod_compare.hasOwnProperty(categoryId) && prod_compare[categoryId].data.length) {
+                var cateMapCheck = true;
+                prod_compare[categoryId].data.forEach(function(item) {
+                    if(item.b2bcatemapping !== data.b2bcatemapping) {
+                        cateMapCheck = false;
+                        return false;
+                    }
+                });
+
+                if(!cateMapCheck) {
+                    // $(window).trigger("toastshow", "비교하기가 불가능한 제품을 선택했습니다. 다른 제품을 선택해주세요.");
+                    console.log("비교하기가 불가능한 제품을 선택했습니다. 다른 제품을 선택해주세요.");
                     return false;
                 }
             }
@@ -1181,8 +1214,6 @@ var goAppUrl = function(path) {
         removeCompareProd: function(categoryId, id){
             var self = this;
 
-            console.log("removeCompareProd cat %o id %o",categoryId,id);
-
             if(id) {
                 var compareStorage = self.getStorage(self.COMPARE_KEY);
                 compareStorage[categoryId]['data'] = vcui.array.filter(compareStorage[categoryId]['data'], function(item){
@@ -1191,6 +1222,18 @@ var goAppUrl = function(path) {
 
                 if(compareStorage[categoryId]['data'].length == 0) {
                     self.removeStorage(self.COMPARE_KEY, categoryId);
+
+                    // PLP 비교하기 버튼 리셋
+                    if($('.KRP0007').size() > 0) {
+                        $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style');
+                    }
+                    
+                    // PDP 비교하기 아이템 삭제시 버튼 상태 변경
+                    if($('.KRP0008').size() > 0) {
+                        console.log("ppd 비교하기 아이템 삭제시 ")
+                        $('.KRP0008 .product-compare input[type=checkbox]').removeAttr('disabled');
+                    }
+
                 } else {
                     var data = {};
                         data[categoryId] = compareStorage[categoryId];
@@ -1198,15 +1241,29 @@ var goAppUrl = function(path) {
                 }
                 
             } else {
+                // self.initCompareProd(categoryId);
                 self.removeStorage(self.COMPARE_KEY, categoryId);
+
+                // 비교하기 버튼 리셋
+                if($('.KRP0007').size() > 0) {
+                    $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style');
+                }
+
+                // PDP 비교하기 아이템 삭제시 버튼 상태 변경
+                if($('.KRP0008').size() > 0) {
+                    console.log("ppd 비교하기 아이템 삭제시 222 ")
+                    $('.KRP0008 .product-compare input[type=checkbox]').removeAttr('disabled');
+                }
             }
         },
 
-        initCompareProd: function(categoryId){
-            var self = this;
+        // initCompareProd: function(categoryId){
+        //     var self = this;
             
-            self.removeStorage(self.COMPARE_KEY, categoryId);
-        },
+        //     self.removeStorage(self.COMPARE_KEY, categoryId);
+        //     // 비교하기 버튼 리셋
+        //     $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style');
+        // },
 
         setCompapreCookie: function(categoryId){
             var self = this;
@@ -1672,7 +1729,8 @@ var goAppUrl = function(path) {
             self.requestAjaxData(url, data, callback, "POST", null, ignoreCommonSuccessCheck, null, ignoreCommonLoadingHide);
         },
 
-        requestAjaxFileData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck) {
+        requestAjaxFileData: function(url, data, callback, type, dataType, ignoreCommonSuccessCheck, failcallback) {
+            //BTCOSITE-6032 : failcallback  추가
             var self = this;
             var dtype = dataType? dataType : "json";
             $.ajax({
@@ -1714,6 +1772,10 @@ var goAppUrl = function(path) {
             }).fail(function(err){
                 //alert(url, err.message);
                 console.log('ajaxFail',url,err);
+                //failcallback 추가
+                if( failcallback) {
+                    failcallback();
+                }
             });
         },
 

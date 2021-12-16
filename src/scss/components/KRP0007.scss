@@ -519,7 +519,8 @@
     position: relative;
     .btn-inchGuide{
         position:absolute;
-        right: 96px;
+        right: 75px;
+        transition:right 0.1s,;
         top:-4px;
         height: 30px;
         line-height: 22px;
@@ -537,7 +538,19 @@
         }
     }
 }
-/* // BTOCSITE-9186 */
 .popup-inch-guide{
     max-width: 444px;
+    .pop-conts.no-footer{
+        @include mobile{
+            overflow-y: hidden;
+        }
+    }
+    iframe{
+        min-height: 554px;
+        @include mobile{
+            height: calc(100% - 20px);
+            min-height: initial;
+        }
+    }
 }
+/* // BTOCSITE-9186 */

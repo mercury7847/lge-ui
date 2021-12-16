@@ -1,0 +1,153 @@
+{
+    "data": [
+    {
+        "eventList": [
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.12.13",
+            "eventId": "EV00016715",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/banner_888x666[20211213_145430].jpg",
+            "eventTitle": "LG 오브제컬렉션 포토 이벤트",
+            "eventUrl": "/benefits/event/detail-EV00016715",
+            "eventGubun": "온라인",
+            "eventType": "경품",
+            "eventToDate": "2022.01.31"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.12.18",
+            "eventId": "EV00016714",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/888x666[20211213_103233].jpg",
+            "eventTitle": "2022년 오브제컬렉션 온라인 동시구매 이벤트 ",
+            "eventUrl": "/benefits/event/detail-",
+            "eventGubun": "온라인",
+            "eventType": "구매혜택",
+            "eventToDate": "2022.02.28"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.12.13",
+            "eventId": "EV00016713",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/banner_888x666[20211213_095601].jpg",
+            "eventTitle": "LG 스탠바이미 매장인증 이벤트",
+            "eventUrl": "/benefits/event/detail-EV00016713",
+            "eventGubun": "온라인",
+            "eventType": "경품",
+            "eventToDate": "2022.01.31"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.12.13",
+            "eventId": "EV00016712",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/썸네일[20211213_095556].jpg",
+            "eventTitle": "제품 등록 이벤트",
+            "eventUrl": "/benefits/event/detail-EV00016712",
+            "eventGubun": "온라인",
+            "eventType": "경품",
+            "eventToDate": "2022.01.31"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.12.10",
+            "eventId": "EV00016711",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/2021_3Q_PC_아카데미_배너_888X666_v2[20211210_111508].jpg",
+            "eventTitle": "2022년 LG 그램 아카데미 이벤트",
+            "eventUrl": "/benefits/event/detail-EV00016711",
+            "eventGubun": "온라인",
+            "eventType": "구매혜택",
+            "eventToDate": "2022.01.31"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.12.08",
+            "eventId": "EV00016701",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/shareig_usp_c[20211209_090543].jpg",
+            "eventTitle": "새해복 받호랑",
+            "eventUrl": "/benefits/event/detail-EV00016701",
+            "eventGubun": "온라인",
+            "eventType": "경품",
+            "eventToDate": "2022.01.08"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.12.07",
+            "eventId": "EV00016691",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/banner_888x666[20211207_103805].jpg",
+            "eventTitle": "LG 휘센 에어컨 보상판매 이벤트",
+            "eventUrl": "/benefits/event/detail-EV00016691",
+            "eventGubun": "온라인",
+            "eventType": "경품",
+            "eventToDate": "2022.05.10"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.12.04",
+            "eventId": "EV00016661",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/1122-lge_ev12_banner_888x666_santa[20211125_103336].jpg",
+            "eventTitle": "연말 시즌 꿈꾸며 산다 클로스 이벤트",
+            "eventUrl": "/benefits/event/detail-EV00016661",
+            "eventGubun": "온라인",
+            "eventType": "경품",
+            "eventToDate": "2021.12.31"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.12.03",
+            "eventId": "EV00016632",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/1122-lge_ev12_banner_888x666_tree[20211125_103359].jpg",
+            "eventTitle": "나만의 드림스 컴 트리 이벤트",
+            "eventUrl": "/benefits/event/detail-EV00016632",
+            "eventGubun": "온라인",
+            "eventType": "경품",
+            "eventToDate": "2021.12.31"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.12.01",
+            "eventId": "EV00016672",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/LG_DIOS_LifeKitchen_OBS_Thumbnail[20211206_152100].jpg",
+            "eventTitle": "LG DIOS 인생주방과 함께하는 1박2일 여행",
+            "eventUrl": "/benefits/event/detail-EV00016672",
+            "eventGubun": "온라인",
+            "eventType": "경품",
+            "eventToDate": "2021.12.26"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.11.25",
+            "eventId": "EV00016681",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/2021_3Q_PC_아카데미_배너_888X666_v2[20211125_153438].jpg",
+            "eventTitle": "2022년 PC아카데미 예약판매 이벤트",
+            "eventUrl": "/benefits/event/detail-EV00016681",
+            "eventGubun": "온라인",
+            "eventType": "구매혜택",
+            "eventToDate": "2022.01.31"
+        },
+        {
+            "orderKey": 2,
+            "eventTarget": "self",
+            "eventFromDate": "2021.11.24",
+            "eventId": "EV00016671",
+            "eventListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/eventMgt/bn_888x666[20211124_164209].jpg",
+            "eventTitle": "LG 스탠바이미 12월 리뷰 이벤트",
+            "eventUrl": "/benefits/event/detail-EV00016671",
+            "eventGubun": "온라인",
+            "eventType": "경품",
+            "eventToDate": "2021.12.31"
+        }]
+    }],
+    "message": null,
+    "status": "success",
+    "dataCount": 1
+}

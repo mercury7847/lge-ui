@@ -138,6 +138,9 @@ $(window).ready(function(){
 
 
         function setting(){
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
             VIDEO_LIST_URL = $('.KRP0027').data("videoListUrl");
             VIEWER_DATA_URL = $('.KRP0027').data("viewerDataUrl");
 
@@ -160,28 +163,28 @@ $(window).ready(function(){
 
         function bindEvents(){
             superCategoryTab.on('tabchange', function(e, data){
+
+                console.log("superCategoryTab")
                 param = {
-                    mode : "superCategory",
-                    scrolled : false
+                    mode : "superCategory"
                 }
                 setContentsList(1);
             });
 
             categoryTab.find('.ui_tab').on('tabchange', function(e, data){
+                console.log("categoryTab")
                 param = {
-                    mode : "category",
-                    scrolled : false
+                    mode : "category"
                 }
                 setContentsList(1);
             });
 
             yearTab.on('tabchange', function(e, data){
                 param = {
-                    mode : "year",
-                    scrolled : true
+                    mode : "year"
                 }
                 setContentsList(1);
-            }).vcTab();
+            })
 
             contList.scroll(function(e){
                 if(window.breakpoint.name == "pc"){
@@ -214,7 +217,18 @@ $(window).ready(function(){
                 setViewContents(storyID);
             });
 
-            $(window).on('resize', function(){setContListScrolled();})
+            $(window).on('resize', function(){
+                console.log("resize");
+                // console.log("000 scrollAbled %o",scrollAbled);
+                // scrollAbled = true;
+                setTimeout(function() {
+                    // setContListScrolled();
+
+                    if(window.breakpoint.name == "pc"){
+                        $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                    }
+                },100)
+            })
 
             /* BTOCSITE-5938-337 [모니터링] 스토리 > 아카이브 > TV광고 IE 버튼 오류 */
             $(function(){
@@ -279,11 +293,10 @@ $(window).ready(function(){
         }
 
         function changeViewContents(data){
-            $('.video-wrap').empty();
-
-            // console.log("### changeViewContents ###", data)
-
             if(data != undefined){
+                $('.video-wrap').empty();
+
+                console.log("### changeViewContents ###", data)
 
                 var isMoreModel = false;
                 var modelist = data.modelList;
@@ -309,57 +322,80 @@ $(window).ready(function(){
         }
 
         function setContListScrolled(){
-            if(scrollAbled){
-                var page = parseInt(contList.data('page'));
-                var totalpage = contList.data('totalpage');
+            param = {
+                mode : "year"
+            };
 
-                //BTOCSITE-5938 - TV 광고 페이지 동영상 위치 오류 수정
-                if(page <= totalpage){
-                    var getList = false;
-                    var scrolltop, wrapheight, listheight, scrolldist, contop;
-                    if(window.breakpoint.name == "pc"){
-                        scrolltop = contList.scrollTop();
-                        wrapheight = contList.height();
-                        listheight = contList.find('.video-list').outerHeight(true);
-                        scrolldist = listheight - wrapheight - 10;
-
-                        if(scrolltop >= scrolldist) getList = true;
-
-                        $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
-                    } else{
-                        scrolltop = $(window).scrollTop();
-                        contop = contList.offset().top;
-                        wrapheight = contList.height();
-                        if(-scrolltop + contop + wrapheight < $(window).height()) getList = true;
-
-                        var videotop = $('.video-wrap').offset().top;
-                        if(-scrolltop + videotop < 0){
-                            var innerwidth = $('.video-wrap').find('.video-inner').width();
-                            var innerheight = $('.video-wrap').find('.video-inner').height();
-                            $('.video-wrap').css({paddingTop:innerheight}).find('.video-inner').css({
-                                position: 'fixed',
-                                top:0,
-                                height: innerheight,
-                                width: innerwidth,
-                                zIndex: 10
-                            })
-                        } else{
+            console.log("scrollAbled %o",scrollAbled);
+            // setTimeout(function(){
+                if(scrollAbled){
+                    console.log("스크롤 ");
+                    var page = parseInt(contList.data('page'));
+                    var totalpage = contList.data('totalpage');
+                    if(page < totalpage){
+                        var getList = false;
+                        var scrolltop, wrapheight, listheight, scrolldist, contop;
+                        if(window.breakpoint.name == "pc"){
+                            console.log("pc");
+                            scrolltop = contList.scrollTop();
+                            wrapheight = contList.height();
+                            listheight = contList.find('.video-list').outerHeight(true);
+                            scrolldist = listheight - wrapheight - 10;
+    
+                            if(scrolltop >= scrolldist) getList = true;
+    
                             $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                        } else{
+                            console.log("mo");
+                            scrolltop = $(window).scrollTop();
+                            contop = contList.offset().top;
+                            wrapheight = contList.height();
+                            if(-scrolltop + contop + wrapheight < $(window).height()) getList = true;
+    
+                            var videotop = $('.video-wrap').offset().top;
+                            if(-scrolltop + videotop < 0){
+                                console.log("11");
+                                var innerwidth = $('.video-wrap').find('.video-inner').width();
+                                var innerheight = $('.video-wrap').find('.video-inner').height();
+                                $('.video-wrap').css({paddingTop:innerheight}).find('.video-inner').css({
+                                    position: 'fixed',
+                                    top:0,
+                                    height: innerheight,
+                                    width: innerwidth,
+                                    zIndex: 10
+                                })
+                            } else{
+                                console.log("22");
+                                $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                            }
                         }
-                    }
-                    //BTOCSITE-5938 - TV 광고 페이지 동영상 위치 오류 수정
-                    if(window.breakpoint.name == "mobile" && page == totalpage){
-                        getList = false;
-                        $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
-                    }else {
-                        if(getList) setContentsList(page+1);
+
+                        if(getList) {
+
+                            console.log("getlist");
+                            setContentsList(page+1);
+                        }
+                    } else {
+
+
+
+
+                        // console.log("33");
+                        // //BTOCSITE-5938 - TV 광고 페이지 동영상 위치 오류 수정
+                        // if(window.breakpoint.name == "mobile"){
+                        //     $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                        // }
                     }
                 }
-            }
+
+            // },300);
         }
 
         function setContentsList(page){
-            if(!param.scrolled) lgkorUI.showLoading();
+
+            console.log("setContentsList 스크롤 잠김");
+
+        //    lgkorUI.showLoading();
 
             contLoadMode = param.mode;
 
@@ -377,7 +413,7 @@ $(window).ready(function(){
             // 연도 탭
             sendata.year = param.mode === "year" ? idxs.year : "";
 
-            // console.log("### setContentsList ###", sendata)
+            console.log("### setContentsList ###", sendata)
             lgkorUI.requestAjaxDataPost(VIDEO_LIST_URL, sendata, function(result){
                 var data = result.data[0];
                 var page = data.pagination.page;
@@ -385,7 +421,10 @@ $(window).ready(function(){
                 contList.data('page', page);
                 contList.data('totalpage', totalpage);
 
-                if(page == 1) contList.find('.video-list').empty();
+                if(page == 1) {
+                    contList.find('.video-list').empty();
+                    // contList.find('.video-list').scrollTop(0);
+                }
                 for(var key in data.storyList){
                     var contlistemplate = vcui.template(contListTemplate, data.storyList[key]);
                     contList.find('.video-list').append(contlistemplate);
@@ -416,15 +455,18 @@ $(window).ready(function(){
                 }
 
                 // 스크롤이 아닌경우
-                if(!param.scrolled) changeViewContents(data.storyinfo);
+
+                if(contLoadMode != "year") changeViewContents(data.storyinfo);
 
                 scrollAbled = true;
-
-                lgkorUI.hideLoading();
+                console.log("scrollAbled 222 %o",scrollAbled);
+                // lgkorUI.hideLoading();
             });
         }
 
         function changeYearTab(data){
+
+            console.log("changeYearTab %o",data);
             var yeardata = vcui.array.filter(data, function(item, index){
                 return item.yearBaseDate != "TOTAL";
             });
@@ -433,7 +475,7 @@ $(window).ready(function(){
             });
             var tabTemplate = vcui.template(yearTabTemplate, {totalCnt: totalcnt[0].yearCnt, yearList: yeardata})
             yearTab.find('.tabs').empty().append(tabTemplate);
-            yearTab.vcTab('update').vcSmoothScroll('refresh');
+            yearTab.vcTab('update').vcSmoothScrollTab('refresh');
         }
 
         function getTabCateIDs(){

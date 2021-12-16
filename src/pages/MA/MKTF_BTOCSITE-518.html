@@ -37,7 +37,7 @@
 
                         <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 태그 수정-->
                         <div class="inner bdb">
-                            <h1 class="tit mo-h2">개인정보(필수사항)</h2>
+                            <h1 class="tit mo-h2">개인정보(필수사항)</h1>
                         </div>
 
                         <p class="reqchk">필수 입력 사항</p>
@@ -99,7 +99,7 @@
                             <div class="sub-forms subbox">
                                 <div class="inner bdb">
                                     <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 텍스트 수정-->
-                                    <h1 class="tit mo-h2">시스템에어컨 설치정보</h2>
+                                    <h1 class="tit mo-h2">시스템에어컨 설치정보</h1>
                                     <div class="desc">하기 사항을 입력해주시면 보다 정확한 상담이 가능합니다.</div>
                                 </div>
                                 <dl class="forms dl1">
@@ -135,7 +135,7 @@
                             </div>
                             <div class="sub-forms subbox">
                                 <div class=sub-forms-box>
-                                    <h1 class="tit">설치 현장 정보</h2>
+                                    <h1 class="tit">설치 현장 정보</h1>
                                     <dl class="forms dl1">
                                         <dt class="tit"><label for="inp06" class="req">주소<span class="blind">필수입력</span></label></dt>
                                         <dd class="conts">
@@ -194,7 +194,9 @@
                                                 <dd class="conts">
                                                     <div class="input-wrap">
                                                          <!--  BTOCSITE-518 20210709 START -->
-                                                         <input type="text" id="inp07" name="inp07"><span class="unit">㎡</span>
+                                                        <!-- 211210 BTOCSITE-9224 시스템에어컨 B2C 온라인 견적 요청 화면 수정 요청-->
+                                                         <input type="text" id="inp07" name="inp07" data-required="true"><span class="unit">㎡</span>
+                                                        <!--// 211210 BTOCSITE-9224 시스템에어컨 B2C 온라인 견적 요청 화면 수정 요청-->
                                                          <!--  BTOCSITE-518 20210709 END -->
                                                     </div>
                                                 </dd>
@@ -250,12 +252,29 @@
                                             </div>
                                         </dd>
                                     </dl>
+
+                                    <!-- 211210 BTOCSITE-9224 시스템에어컨 B2C 온라인 견적 요청 화면 수정 요청-->
+                                    <dl class="forms dl2">
+                                        <dt class="tit"><label for="rdo2-1" class="req">현장방문 요청<span class="blind">필수입력</span></label></dt>
+                                        <dd class="conts">
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="rdo2-1" name="rdo2" checked value="방문">
+                                                <label for="rdo2-1">방문</label>
+                                            </span>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="rdo2-2" name="rdo2" value="미 방문">
+                                                <label for="rdo2-2">미 방문</label>
+                                            </span>
+                                        </dd>
+                                    </dl>
+                                    <!--// 211210 BTOCSITE-9224 시스템에어컨 B2C 온라인 견적 요청 화면 수정 요청-->
+
                                 </div>
                             </div>
                             
                             <div class="sub-forms subbox">
                                 <div class=sub-forms-box>
-                                    <h1 class="tit">기존 사용 제품</h2>
+                                    <h1 class="tit">기존 사용 제품</h1>
                                     <!--  BTOCSITE-518 20210707 START -->
                                     <dl class="forms dl2">
                                         <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 필수 체크 -->
@@ -455,7 +474,7 @@
                                     <h2 class="tit mo-h2 mo-only">약관 동의</h2>
                                 </div>
                                 <div class="tit-head">
-                                    <h2 class="tit">* 개인정보 수집 및 이용 동의</strong>
+                                    <h2 class="tit">* 개인정보 수집 및 이용 동의</h2>
                                 </div>
                                 <div class="tit-center">
                                     <div class="txt-wrap">
@@ -559,7 +578,7 @@
                             <!-- 개인정보 제3자 제공 동의 -->
                             <div class="sub-forms bdn">
                                 <div class="tit-head">
-                                    <h2 class="tit">* 개인정보 제3자 제공 동의</strong>
+                                    <h2 class="tit">* 개인정보 제3자 제공 동의</h2>
                                 </div>
                                 <div class="tit-center">
                                     <div class="txt-wrap">

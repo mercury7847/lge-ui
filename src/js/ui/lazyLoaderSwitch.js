@@ -53,7 +53,7 @@ vcui.define('ui/lazyLoaderSwitch', ['jquery', 'vcui'], function ($, core) {
                 }
                 self.scrollTimer = setTimeout(function(){
                     self._action();
-                }, 200);
+                }, 10); //BTOCSITE-7335 lazyload 속도 수정
             }).trigger('scroll' + self.eventNS);
 
             // $(window).on('resizeend', function(e){

@@ -20,13 +20,6 @@
                 vcui.require(['ui/pagination'], function () {
                     self.setting();
                     self.bindEvents();
-                    
-                    var $a = self.$mySort.find('li.on a');
-                    var category = $a.attr('href').replace("#","");
-                    self.requestData({
-                        "category":category,
-                        "page": "1"
-                    });
 
                     //self.checkNoData();
                 });
@@ -43,6 +36,16 @@
                 self.$pagination = self.$sectionInner.find('div.pagination').vcPagination();
                 self.$noData = self.$lnbContents.find('div.no-data');
                 self.$detailPopup = self.$contWrap.find('#popupDetail');
+            },
+
+            dataInit: function() {
+                var self = this;
+                var $a = self.$mySort.find('li.on a');
+                var category = $a.attr('href').replace("#","");
+                self.requestData({
+                    "category":category,
+                    "page": "1"
+                });
             },
 
             bindEvents: function() {
@@ -89,17 +92,19 @@
                 var ajaxUrl = self.$lnbContents.attr('data-list-url');
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-                    var data = result.data;
-                    var param = result.param;
-                    self.$pagination.vcPagination('setPageInfo',param.pagination);
-                    self.$listCount.text(vcui.number.addComma(data.totalCount));
-                    var arr = data.listData instanceof Array ? data.listData : [];
-                    self.$myLists.empty();
-                    arr.forEach(function(item, index) {
-                        item.date = vcui.date.format(item.date,'yyyy.MM.dd');
-                        self.$myLists.append(vcui.template(listItemTemplate, item));
-                    });
-                    self.checkNoData();
+                    if( result.status == "success" && result.data) {
+                        var data = result.data;
+                        var param = result.param;
+                        self.$pagination.vcPagination('setPageInfo',param.pagination);
+                        self.$listCount.text(vcui.number.addComma(data.totalCount));
+                        var arr = data.listData instanceof Array ? data.listData : [];
+                        self.$myLists.empty();
+                        arr.forEach(function(item, index) {
+                            item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                            self.$myLists.append(vcui.template(listItemTemplate, item));
+                        });
+                        self.checkNoData();        
+                    }
                 });
             },
 
@@ -219,7 +224,10 @@
                 });
             }
         };
-
         myWrite.init();                
+
+        $(window).on('load', function(){
+            myWrite.dataInit();
+        })
     });
 })();
