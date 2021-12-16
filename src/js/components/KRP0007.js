@@ -469,16 +469,6 @@
             },
 
             bindEvents: function() {
-                // BTOCSITe-9186
-                $('.sort-select-wrap .ui_selectbox').on('change', function(e){
-                    setTimeout(function(){
-                        var selectWidth = $(e.target).parents('.sort-select-wrap').find('.ui-selectbox-view').width();
-                        var currentWidth = selectWidth + 15;
-                        $('.btn-inchGuide').css('right', currentWidth)
-                    }, 100)
-                    
-                })
-                // BTOCSITe-9186
                 
                 var self = this;
 
@@ -708,6 +698,15 @@
                 });
                 /* //BTOCSITE-2785 : 2021-07-14 add */
 
+                // BTOCSITe-9186
+                $('.sort-select-wrap .ui_selectbox').on('change', function(e){
+                    setTimeout(function(){
+                        var selectWidth = $(e.target).parents('.sort-select-wrap').find('.ui-selectbox-view').width();
+                        var currentWidth = selectWidth + 15;
+                        $('.btn-inchGuide').css('right', currentWidth)
+                    }, 100)
+                })
+                // BTOCSITe-9186
            
             },
 
