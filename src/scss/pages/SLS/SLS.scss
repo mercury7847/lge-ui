@@ -563,7 +563,7 @@ br.pc {
         flex-wrap:wrap;
         margin:-32px 0 0 -32px;
         @include mobile{
-            margin-top:-23px;
+            margin:-23px 0 0 -8px;
         }
         >li{
             margin:32px 0 0 32px;
@@ -572,18 +572,20 @@ br.pc {
                 text-align:center;
             }
             @include mobile{
-                margin-top:23px;
+                margin:23px 0 0 8px;
+                width:calc(33.33% - 8px);
             }
             >a{
                 display:inline-block;
+                width:100%;
                 .thumb{
                     display:inline-block;
                     width:128px;
                     max-width:calc(100% - 8px);
                     height:128px;
                     @include mobile{
-                        width:104px;
-                        height:104px;
+                        width:auto;
+                        height:auto;
                     }
                     img{
                         width:100%;
