@@ -26,12 +26,7 @@ if ('scrollRestoration' in history) {
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
                                 '<a href="{{url}}">' +
-                                    // BTOCSITE-16 검색 결과 구획 정리
-                                    '<div class="star">'+
-                                        '<div class="star-rating" {{#if rating > 0 }} style="width:{{(rating*100)/5}}%;" {{/if}}>'+
-                                            '<span class="blind">현재 별점 : {{rating}}</span>'+
-                                        '</div>'+
-                                    '</div>'+
+                                    '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
                                     '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
                                     '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
                                 '</a>' +
@@ -795,6 +790,22 @@ if ('scrollRestoration' in history) {
 
                     var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
+
+                    console.log("data %o",data);
+
+                    // 구매가능 렌탈가능 버튼 노출 상태
+                    if(data.availableforpurchaseyn === 'Y') {
+                        $('[name="availableforpurchase"]').closest('.sort-check-area').show();
+                    } else {
+                        $('[name="availableforpurchase"]').closest('.sort-check-area').hide();
+                    }
+
+                    if(data.availableforrentalyn === 'Y') {
+                        $('[name="availableforrental"]').closest('.sort-check-area').show();
+                    } else {
+                        $('[name="availableforrental"]').closest('.sort-check-area').hide();
+                    }
+
 
                     //검색내 검색어 세팅
                     if(self.$listSorting.find('div.search-inner input').length > 0) {
