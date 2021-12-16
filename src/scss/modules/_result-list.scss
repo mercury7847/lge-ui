@@ -510,9 +510,6 @@
             margin-right: 6px;
 
             @include font-small;
-            @include mobile {
-                display:block;
-            }
 
             .search-word {
                 color:#000;
