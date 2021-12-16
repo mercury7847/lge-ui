@@ -2,7 +2,7 @@
 (function(){
     var EVT_ItemTemplate = '{{#each item in eventList}}'+
         '<div class="slide-conts ui_carousel_slide">'+
-            '<a href="{{item.eventUrl}}" class="slide-box" data-ec-product="{{item.ecProduct}}">'+
+            '<a href="{{item.eventUrl}}" class="slide-box">'+ //data-ec-product="{{item.ecProduct}}" 데이터 전달
                 '<span class="thumb" aria-hidden="true">'+
                     '<img src="{{item.eventListThumbnailPath}}" alt="">'+
                 '</span>'+
@@ -46,7 +46,7 @@
                 var self = this;
                 
                 var EVT_detail_slideList = $('.ui_carousel_4_slider').find('.slide-track');
-                var ajaxUrl = $('.event.exhibition').attr('data-list-url');
+                var ajaxUrl = $('.evt_slide_warp').attr('data-list-url');
                 console.log('ajaxUrl', ajaxUrl)
                 lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
                     
@@ -57,27 +57,27 @@
                     for(var key in list.eventList){
                         var item = list.eventList[key];
 
-                        function getEcCategoryName(item){
-                            if( item.subCategoryName == "" || item.subCategoryName == undefined) {
-                                return item.superCategoryName + "/" + item.categoryName 
-                            } else {
-                                return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
-                            }
-                        }
-                        var ecProduct = {
-                            "model_name": item.eventTitle,
-                            "model_id": item.modelId,
-                            "model_sku": item.modelName, 
-                            "model_gubun": item.modelGubunName,
-                            "price": vcui.number.addComma(item.obsOriginalPrice), 
-                            "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
-                            "brand": "LG",
-                            "category": getEcCategoryName(item),
-                            "ct_id": item.subCategoryId
-                        }
-                        item.ecProduct = JSON.stringify(ecProduct);
+                        // function getEcCategoryName(item){
+                        //     if( item.subCategoryName == "" || item.subCategoryName == undefined) {
+                        //         return item.superCategoryName + "/" + item.categoryName 
+                        //     } else {
+                        //         return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+                        //     }
+                        // }
+                        // var ecProduct = {
+                        //     "model_name": item.eventTitle,
+                        //     "model_id": item.modelId,
+                        //     "model_sku": item.modelName, 
+                        //     "model_gubun": item.modelGubunName,
+                        //     "price": vcui.number.addComma(item.obsOriginalPrice), 
+                        //     "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
+                        //     "brand": "LG",
+                        //     "category": getEcCategoryName(item),
+                        //     "ct_id": item.subCategoryId
+                        // }
+                        // item.ecProduct = JSON.stringify(ecProduct);
                     }
-                    console.log(list)
+                    //console.log(list)
                     EVT_detail_slideList.append(vcui.template(EVT_ItemTemplate, list));
                     
                     //슬라이드 옵션
