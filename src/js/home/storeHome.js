@@ -110,34 +110,65 @@ $(function(){
             speed: 150,
             touchThreshold: 100
         };
-        var listTemp = 
-            '<li class="slide-conts ui_carousel_slide">' + 
-                '<a href="{{url}}" class="slide-box" data-ec-product="{{ecProduct}}">' + 
-                    '<div class="img"><img src="{{imgAddr}}" alt="{{imgAlt}}"></div>' + 
-                    '<div class="info">' + 
-                        '<div class="model">{{modelDisplayName}}</div>' + 
-                        '<div class="code">{{modelName}}</div>' + 
-                        '{{#if price != ""}}'+
-                        '<div class="price-area">' + 
-                            '{{#if price != discounted_price}}'+
-                            '<div class="original">' + 
-                                '<em class="blind">기존가격</em>' + 
-                                '<span class="price">{{price}}<em>원</em></span>' + 
-                            '</div>' + 
-                            '{{/if}}'+
-                            '<div class="total">' + 
-                                '<em class="blind">판매가격</em>' + 
-                                '{{#if price != discounted_price}}'+
-                                    '<span class="price">{{discounted_price}}<em>원</em></span>' + 
-                                '{{#else}}'+
-                                    '<span class="price">{{price}}<em>원</em></span>' + 
-                                '{{/if}}'+
-                            '</div>' + 
-                        '</div>' + 
-                        '{{/if}}'+
-                    '</div>' + 
-                '</a>' + 
-            '</li>';
+        
+        function getListHTML(item){
+            var listTemp = '';
+
+            listTemp += '<li class="slide-conts ui_carousel_slide">';
+            listTemp += '<a href="' + item.modelUrlPath + '" class="slide-box" data-ec-product="' + item.ecProduct + '">';
+            listTemp += '<div class="img"><img src="' + item.smallImageAddr + '" alt="' + item.modelDisplayName + '"></div>';
+            listTemp += '<div class="info">';
+            listTemp += '<div class="model">' + item.modelDisplayName + '</div>';
+            listTemp += '<div class="code">' + item.modelName + '</div>';
+
+                    
+            if (item.obsOriginalPrice != "") {
+                listTemp += '<div class="price-area">';
+
+                if( item.obsOriginalPrice != item.obsSellingPrice) {
+                    listTemp += '<div class="original">';
+                    listTemp +=     '<em class="blind">기존가격</em>';
+                    listTemp +=     '<span class="price">' + item.obsOriginalPrice + '<em>원</em></span>';
+                    listTemp += '</div>';
+                }
+
+                    listTemp += '<div class="total">';
+                    listTemp +=     '<em class="blind">판매가격</em>';
+
+                    if(item.obsOriginalPrice != item.obsSellingPrice) {
+                        listTemp += '<span class="price">' + item.obsSellingPrice + '<em>원</em></span>';
+                    } else {
+                        listTemp += '<span class="price">' + item.obsOriginalPrice + '<em>원</em></span>';
+                    }
+                    listTemp += '</div>'; 
+                listTemp += '</div>';
+            }                        
+            listTemp += '</div>';
+            listTemp += '</a>';
+            listTemp += '</li>';
+
+
+            return listTemp;
+        }
+
+        function getEcCategoryName(item){
+            if( item.subCategoryName == "" || item.subCategoryName == undefined) {
+                return item.superCategoryName + "/" + item.categoryName 
+            } else {
+                return item.superCategoryName + "/" + item.categoryName  + '/' + item.subCategoryName
+            }
+        }
+
+        
+        function ConvertSystemSourcetoHtml(str){
+            str = str.replace(/</g,"&lt;");
+            str = str.replace(/>/g,"&gt;");
+            str = str.replace(/\"/g,"&quot;");
+            str = str.replace(/\'/g,"&#39;");
+            //str = str.replace(/\n/g,"<br />");
+            return str;
+        }
+
         if( $recomCarousel.length == 0 ) return;
         lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
             var data = result.data;
@@ -149,23 +180,24 @@ $(function(){
 
                     data.listData.forEach(function(listItem, listIdx){
 
-                        listItem.price = listItem.price > 0 ? vcui.number.addComma(listItem.price) : ""
-                        listItem.discounted_price = listItem.discounted_price > 0 ? vcui.number.addComma(listItem.discounted_price) : ""
+                        listItem.obsOriginalPrice = listItem.obsOriginalPrice > 0 ? vcui.number.addComma(listItem.obsOriginalPrice) : ""
+                        listItem.obsSellingPrice = listItem.obsSellingPrice > 0 ? vcui.number.addComma(listItem.obsSellingPrice) : ""
                         
                         var ecProduct = {
                             "model_name": listItem.modelDisplayName,
-                            "model_id": listItem.model_id,
+                            "model_id": listItem.modelId,
                             "model_sku": listItem.modelName, 
-                            "model_gubun": listItem.model_gubun,
-                            "price": listItem.price, 
-                            "discounted_price": listItem.discounted_price, 
+                            "model_gubun": listItem.modelGubunName,
+                            "price": listItem.obsOriginalPrice, 
+                            "discounted_price": listItem.obsSellingPrice, 
                             "brand": "LG",
-                            "category": listItem.category,
+                            "category": getEcCategoryName(listItem),
                             "ct_id": listItem.categoryId
                         }
 
-                        listItem.ecProduct = JSON.stringify(ecProduct);
-                        listHtml += vcui.template(listTemp, listItem)
+                        listItem.ecProduct = ConvertSystemSourcetoHtml(JSON.stringify(ecProduct));
+                        //listHtml += vcui.template(listTemp, listItem)
+                        listHtml += getListHTML(listItem);
                     })
                     $recomCarousel.find('.slide-track').empty().append(listHtml);
                     carouselInit(window.breakpoint)
