@@ -328,6 +328,93 @@
 
                         }
 
+                        .lb-pcAppDown {
+                            margin-bottom: 70px;
+                            @media screen and (max-width:1024px){
+                                margin-bottom: 60px;
+                            }
+
+                            .type-sub {
+                                .tit {
+                                    font-size: 16px;
+                                    margin-bottom: 20px;
+                                }
+                            }
+                            .app-down{
+                                display:flex;
+                                justify-content:center;
+                                .inner{
+                                    display:flex;
+                                    align-items: center;
+                                    // padding:66px 84px 64px 40px;
+                                    padding:20px;
+                                    width:490px;
+                                    background:#f4f4f4;
+                                    border-radius:8px;
+                                    .txt-btn{
+                                        width:calc(100% - 108px);
+                                        >strong{
+                                            display:block;
+                                            font-size:18px;
+                                            line-height:28px;
+                                        }
+                                        .btn-app-down{
+                                            display:block;
+                                            margin-top:14px;
+                                            width:133px;
+                                            height:42px;
+                                            img{
+                                                width:100%;
+                                            }
+                                        }
+                                    }
+                                    .img-qr{
+                                        display:inline-block;
+                                        width:108px;
+                                        height:109px;
+                                        img{
+                                            width:100%;
+                                        }
+                                    }
+                                    +.inner{
+                                        margin-left:20px;
+                                    }
+                                }
+    
+                                @media screen and (max-width:1024px){
+                                    .inner {
+                                        position: relative;
+                                        width: 100%;
+                                        justify-content: center;
+                                        height: 130px;
+                                        padding: 0;
+                                        background-color: #fff;
+                                        .txt-btn {
+                                            position: absolute;
+                                            bottom: -10px;
+                                            width: auto;
+                                            margin-top: 0;
+                                            strong {
+                                                display: none;
+                                            }
+                                            .btn-app-down {
+                                                width: 106px;
+                                                height: 33.5px;
+                                                margin-top: 0;
+                                            }
+                                        }
+                                        .img-qr {
+                                            width: 72px;
+                                            height: 73px;
+                                            position: absolute;
+                                            top: 20px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+
                         .lb-btn {
                             display: flex;
                             justify-content: center;
