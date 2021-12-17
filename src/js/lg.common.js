@@ -1231,7 +1231,8 @@ var goAppUrl = function(path) {
                     // PDP 비교하기 아이템 삭제시 버튼 상태 변경
                     if($('.KRP0008').size() > 0) {
                         console.log("ppd 비교하기 아이템 삭제시 ")
-                        $('.KRP0008 .product-compare input[type=checkbox]').removeAttr('disabled');
+                        // $('.KRP0008 .product-compare input[type=checkbox]').removeAttr('disabled');
+                        $('.KRP0008 .product-compare').removeAttr('style');
                     }
 
                 } else {
@@ -1252,7 +1253,8 @@ var goAppUrl = function(path) {
                 // PDP 비교하기 아이템 삭제시 버튼 상태 변경
                 if($('.KRP0008').size() > 0) {
                     console.log("ppd 비교하기 아이템 삭제시 222 ")
-                    $('.KRP0008 .product-compare input[type=checkbox]').removeAttr('disabled');
+                    // $('.KRP0008 .product-compare input[type=checkbox]').removeAttr('disabled');
+                    $('.KRP0008 .product-compare').removeAttr('style');
                 }
             }
         },

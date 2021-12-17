@@ -2795,8 +2795,10 @@
                     
                     console.log("data ",data);
 
-                    var $dm = self.$pdpInfo.find('.product-compare input[type=checkbox]');
-                    $dm.attr('disabled', true)
+                    // var $dm = self.$pdpInfo.find('.product-compare input[type=checkbox]');
+                    // $dm.attr('disabled', true)
+
+                    self.$pdpInfo.find('.product-compare').hide();
 
                 }
             },
