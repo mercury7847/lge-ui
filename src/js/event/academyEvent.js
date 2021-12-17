@@ -63,12 +63,17 @@
                 if (result.success === true) {
                     $('.email-certified-info').show();
                     $('#academyPopup02 .pop-footer').show();
+                    $('#academyPopup02 .pop-conts').animate({
+                        scrollTop: 200
+                    }, 500);
                     // lgkorUI.showLoading();
                     // $('html, body').animate({
                     //     scrollTop: 0
                     // }, 500);
                     // lgkorUI.hideLoading();
                 }else{
+                    $('.email-certified-info').hide();
+                    $('#academyPopup02 .pop-footer').hide();
                     // lgkorUI.alert('', {
                     //     title:'필수 입력정보가<br>입력되지 않았습니다.'
                     // });
