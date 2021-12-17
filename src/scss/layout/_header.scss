@@ -2112,9 +2112,19 @@ html {
             }
         }
         .scroll-down {
+            //BTOCSITE-7335
+            .mobile-nav-button.active {
+                top:54px;
+                & + .header-bottom {
+                    .login-mobile:before {
+                        top:43px;
+                    }
+                }
+            }
             .header-bottom {
                 height:100vh;
-                transform:translateY(43px);
+                top:43px;
+                // transform:translateY(43px);
             }
             .dimmed {
                 height:100vh;
