@@ -55,7 +55,7 @@ MainSwiper.prototype = {
         var mainSwiper =  this;        
         var hash = mainSwiper.getLastSegmentByUrl();
         var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );        
-
+        if($('#sw_con').size() <= 0) return false;
         this.swiper = new Swiper('#sw_con', {
             autoHeight : true,
             observer : true,
