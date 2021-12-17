@@ -101,7 +101,7 @@
                     '<div class="col col2">'+
                         '<div class="state-box">'+
                             '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
-                            '{{#if listData.itemCancelAbleMassege !=""}}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
+                            '{{#if !vcui.isEmpty(listData.itemCancelAbleMassege) }}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
                             '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
                             '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                             '<div class="state-btns">'+
@@ -755,11 +755,16 @@
 
         lgkorUI.addLimitedInputEvent($('input[name=birthDt]'));
 
+        // BTOCSITE-5938-210 내용 추가 생년월일 년도 입력 수 제한
+        lgkorUI.addLimitedInputEvent($('input[name=year]'));
+
         // .on('click', ".methodReceipt-btn", function(e){
         //     e.preventDefault();
 
         //     setMethodReceiptPop();
         // });
+
+        
     }
 
     function sendDetailPage(dataID){
@@ -804,7 +809,19 @@
         var bankValue;
 
         if($('#' + popname).data('isBirthDt')){
-            bankValue= $('#' + popname).find('input[name=birthDt]').val();
+            // BTOCSITE-5938-210 생년월일 관련 내용 추가 - S
+            bankValue = $('#' + popname).find('input[name=birthDt]').val();
+            var bYear = $('#' + popname).find('input[name="year"]').val();
+            var bMonth = $('#' + popname).find('.ui_selectbox[name="month"]').val();
+            var bDay = $('#' + popname).find('.ui_selectbox[name="day"]').val();
+                         
+            bankValue = bYear + bMonth + bDay;
+            $('#' + popname).find('input[name=birthDt]').val(bankValue);
+            // BTOCSITE-5938-210 생년월일 관련 내용 추가 - E
+            
+            //bankValue= $('#' + popname).find('input[name=birthDt]').val();
+            // BTOCSITE-5938-210 생년월일 validation Check 추가 - S
+            
             if(!bankValue){
                 lgkorUI.alert("", {
                     title: "생년월일을 입력해 주세요."
@@ -812,6 +829,31 @@
     
                 return false;
             }
+
+            if(!bYear){
+                lgkorUI.alert("", {
+                    title: "년도를 입력해 주세요."
+                });
+    
+                return false;
+            }
+
+            if(!bMonth){
+                lgkorUI.alert("", {
+                    title: "월을 선택해 주세요."
+                });
+    
+                return false;
+            }
+
+            if(!bDay){
+                lgkorUI.alert("", {
+                    title: "일을 선택해 주세요."
+                });
+    
+                return false;
+            }
+            // BTOCSITE-5938-210 생년월일 validation Check 추가 - E
         }
 
         bankValue = $('#' + popname).find('.bank-input-box select option:selected').val();
@@ -945,8 +987,9 @@
         var isAgreeChk = $('#popup-takeback').data('isAgreeChk');
         if(isAgreeChk){
             if(!$('#popup-takeback').find('input[name=takebackPopAgree]').prop('checked')){
+                // BTOCSITE-8310 스토어 명칭 제품으로 변경
                 lgkorUI.alert("", {
-                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
+                    title: "제품 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요." 
                 });
     
                 return;
@@ -1023,8 +1066,9 @@
         var isAgreeChk = $('#popup-cancel').data('isAgreeChk');
         if(isAgreeChk){
             if(!$('#popup-cancel').find('input[name=cancelPopAgree]').prop('checked')){
+                // BTOCSITE-8310 스토어 명칭 제품으로 변경
                 lgkorUI.alert("", {
-                    title: "스토어 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요."
+                    title: "제품 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요." 
                 });
     
                 return;
@@ -1299,7 +1343,7 @@
                         var chk = item != null && item != "null" && item != undefined && item != "" ? true : false;
                         return chk;
                     });
-                    
+
                     $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true, isQuantity:true}));
                 }
             }
@@ -2445,7 +2489,7 @@
                 }
                 // BTOCSITE-4124 210907 수정 - E
                 // //BTOCSITE-1775
-                
+
 
                 /* BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
                 //팝업 데이터 불러온 자리
@@ -2458,7 +2502,7 @@
                 /* //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
 
 
-
+                
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";
