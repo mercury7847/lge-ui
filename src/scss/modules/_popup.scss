@@ -683,7 +683,7 @@
             text-align:left;
             @include mobile {
                 height:calc(100% - 62px);
-                max-height:calc(100vh - 96px);
+                max-height:calc(100% - 62px);
             }
         }
         &.no-footer:after {
