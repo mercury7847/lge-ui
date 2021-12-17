@@ -242,8 +242,6 @@
         '</div>' +
     '</div>';
 
-    console.log("sssss", vcui.detect.isMobileDevice);
-
     //4년 차 케어솔루션
     var lb_careSolution_4 = '<div class="sects lb-pdlr lb-careSolution_4">' +
         '<div class="latter-benefits_detail">' +
