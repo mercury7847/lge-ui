@@ -299,6 +299,7 @@
                                     background-color: #e3e3e3;
                                     padding: 10px 25px 10px 35px;
                                     border-radius: 50px;
+                                    font-weight: 500;
                                     &::before {
                                         content: '';
                                         width: 3px;
@@ -311,7 +312,6 @@
                                     @include mobile {
                                         font-size: 13px;
                                         padding: 10px 15px 10px 20px;
-                                        font-weight: 500;
                                         &::before {
                                             width: 2px;
                                             height: 2px;
