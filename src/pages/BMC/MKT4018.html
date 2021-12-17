@@ -16,47 +16,48 @@
             <div class="contents">
                 <div class="academy-event-wrap">
                     <div class="bg-wrap">
-                        <img data-pc-src="/lg5-common/images/BMC/bg-academy.png" data-m-src="/lg5-common/images/BMC/bg-academy-m.png" alt="" src="/lg5-common/images/BMC/bg-academy.png" data-current-image="/lg5-common/images/BMC/bg-academy.png">
+                        <img src="/lg5-common/images/BMC/bg-academy.png" alt=""  class="pc-only">
+                        <img src="/lg5-common/images/BMC/bg-academy-m.png" alt="" class="mobile-only">
                     </div>
                     <div class="process-info-wrap">
                         <h2>
                             대학생들이 누릴 수 있는 특별한 혜택!
-                            <em>LG전자 아카데미 기획전 스토어</em>
+                            <em>LG전자 아카데미 스토어</em>
                         </h2>
                         <p>LG전자 아카데미 스토어에서 대학/대학원생들에게<br>제공되는 특별한 혜택을 만나보세요.</p>
                         <h3>아카데미 기획전 참여 process!</h3>
                         <div class="process-info"> 
                             <ul>
                                 <li>
-                                    <div class="inbox">
+                                    <div class="inbox step01">
                                         <p>
                                             <span>STEP 01</span>
                                             로그인<br>(회원가입)
-                                        </p>>
+                                        </p>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="inbox">
+                                    <div class="inbox step02">
                                         <p>
                                             <span>STEP 02</span>
                                             대상 연령 확인<br>(만18세~29세 학생)
-                                        </p>>
+                                        </p>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="inbox">
+                                    <div class="inbox step03">
                                         <p>
                                             <span>STEP 03</span>
                                             이메일 인증<br>(**@ac.kr)
-                                        </p>>
+                                        </p>
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="inbox">
+                                    <div class="inbox step04">
                                         <p>
                                             <span>STEP 04</span>
                                             아카데미<br>기획전 입장
-                                        </p>>
+                                        </p>
                                     </div>
                                 </li>
                             </ul>
@@ -64,19 +65,23 @@
                         <!-- 로그인 전 s -->
                         <div class="academy-event login-no">
                             <div class="btn-area">
-                                <button type="button" class="btn pink btn-opt-login" id="btn-opt-login"><span>로그인</span></button>
+                                <button type="button" class="btn pink" id="btnLogin"><span>로그인</span></button>
                             </div>
                         </div>
-                        <article id="academyPopup01" class="popup-wrap">
+                        <article id="academyPopup01" class="popup-wrap small">
                             <header class="pop-header">
                                 <h1 class="tit"><span>아카데미 기획전 대상 확인</span></h1>
                             </header>
                             <section class="pop-conts">
-                                <P class="p-title">죄송합니다.</P>
-                                <p>회원님은 LG전자 아카데미 스토어 대상자에 포함되지 않습니다.</p>
-                                <p>만 18세~29세 학생만 입장 가능합니다.</p>
+                                <section class="section">
+                                    <P class="p-title">죄송합니다.</P>
+                                    <p>회원님은 LG전자 아카데미 스토어 대상자에<br>
+                                        포함되지 않습니다.<br>
+                                        만 18세~29세 학생만 입장 가능합니다.
+                                    </p>
+                                </section>
                             </section>
-                            <footer class="pop-footer">
+                            <footer class="pop-footer center">
                                 <div class="btn-group">
                                     <button type="button" class="btn pink btn-list"><span>목록</span></button>
                                 </div>
@@ -86,58 +91,59 @@
                         <!-- 로그인 전 e -->
                         <!-- 로그인 후 s -->
                         <div class="academy-event login-ok">
-                            <button type="button" data-href="#academyPopup02" data-control="modal" class="btn pink"><span>이메일 인증하기</span></button>
+                            <div class="btn-area">
+                                <button type="button" data-href="#academyPopup02" data-control="modal" class="btn pink"><span>이메일 인증하기</span></button>
+                            </div>
                             <article id="academyPopup02" class="popup-wrap">
                                 <header class="pop-header">
                                     <h1 class="tit"><span>이메일 인증</span></h1>
                                 </header>
                                 <section class="pop-conts">
-                                    <P class="p-title">@ac.kr 계정의 이메일로 인증해 주세요.</P>
-                                    <div class="form-wrap" id="emailCertifiedForm">
-                                        <dl class="forms">
-                                            <dt class="tit"><label for="email" class="req">이메일<span class="blind">필수입력</span></label></dt>
-                                            <dd class="conts">
-                                                <span class="input-wrap block">
-                                                    <input type="text" id="userEmail" name="userEmail" placeholder="ac.kr 계정의 이메일 주소를 입력해 주세요." data-required="true">
-                                                    <div class="btm-more err-block"><p class="err-msg"></p></div>
-                                                </span>
-                                            </dd>
-                                        </dl>
-                                        <div class="agree-cont-wrap">
-                                            <div class="agree-input">
-                                                <span class="chk-wrap">
-                                                    <input type="checkbox" id="agreeUserCheck" name="agreeUserCheck">
-                                                    <label for="agreeUserCheck">(필수) 개인정보 수집 및 이용동의 </label>
-                                                </span>
-                                            </div>
-                                            <div class="agree-cont-box">
-                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
-                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
-                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
-                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
-                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태<br>
-                                                LG전자 주식회사(이하 '회사'라 합니다)는 비회원의 서비스 이용을 위해 아래와 같은 개인정보를 수집하고 있습니다<br>
-                                                1) 필수 : 이름, 휴대전화번호, 주소<br>
-                                                ※ 서비스 예약 후 제품 서비스 시 : 모델명, 제조번호<br>
-                                                - 스마트 가전 : LG전자 스마트 제품 정보/상태/사용이력, 스마트 진단 정보, 에너지 정보, 제품 F/W 및 S/W 정보, 사용자 콘텐츠, 스마트폰 어플리케이션 사용 정보, 원격 동작 이력 등<br>
-                                                - 스마트 폰 : 휴대전화 상태 (모델명, S/W Ver, IMEI, 시리얼넘버, IMSI, 전원상태,
-                                            </div>
+                                        <P class="p-title">@ac.kr 계정의 이메일로 인증해 주세요.</P>
+                                        <div class="form-wrap" id="emailCertifiedForm">
+                                            <dl class="forms inner-type">
+                                                <dt class="tit"><label for="email" class="req">이메일<span class="blind">필수입력</span></label></dt>
+                                                <dd class="conts">
+                                                    <span class="input-wrap block">
+                                                        <input type="text" id="userEmail" name="userEmail" placeholder="ac.kr 계정의 이메일 주소를 입력해 주세요." data-required="true">
+                                                        <div class="btm-more err-block"><p class="err-msg"></p></div>
+                                                    </span>
+                                                </dd>
+                                                <dt class="tit"><label class="req">개인정보 수집 및 이용동의<span class="blind">필수입력</span></label></dt>
+                                                <dd class="conts">
+                                                    <div class="agree-cont-wrap">
+                                                        <div class="agree-cont-box">
+                                                            <p>LG전자 온라인(몰) 서비스 개인정보 수집•이용 동의</p>
+                                                            LG전자 주식회사(이하 “당사”)는 LG전자 서비스를 이용하는 귀하의 개인정보를 아래와 같이 수집·이용합니다. 상세한 내용은 LG전자 서비스 개인정보 처리
+                                                        </div>
+                                                        <div class="agree-input">
+                                                            <span class="chk-wrap">
+                                                                <input type="checkbox" id="agreeUserCheck" name="agreeUserCheck">
+                                                                <label for="agreeUserCheck">동의합니다.</label>
+                                                            </span>
+                                                        </div>
+                                                        <div class="err-block">
+                                                            <p class="err-msg"></p>
+                                                        </div>
+                                                    </div>
+                                                </dd>
+                                            </dl>
                                         </div>
-                                    </div>
-                                    <div class="btn-area">
-                                        <button type="button" class="btn pink" id="btnCertified"><span>이메일 인증</span></button>
-                                    </div>
+                                        <div class="btn-area">
+                                            <button type="button" class="btn pink" id="btnCertified"><span>이메일 인증</span></button>
+                                        </div>
+                                    </form>
                                     <div class="email-certified-info" >
-                                        <p class="info-title">입력하신 이메일로 인증 메일을<br>전송하였으니 확인해 주세요.</p>
-                                        <p>(48시간 이내에 인증이 완료되어야 기획전 입장이 가능합니다.)</p>
+                                        <p class="info-title">입력하신 이메일로 인증 메일을 전송하였으니 <br>확인해 주세요.</p>
+                                        48시간 이내에 인증이 완료되어야 기획전 입장이 <br>가능합니다.
                                     </div>
                                 </section>
                                 <footer class="pop-footer">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn pink btn-close"><span>확인</span></button>
+                                    <div class="btn-group center">
+                                        <button type="button" class="btn pink btn-confirm"><span>확인</span></button>
                                     </div>
                                 </footer>
-                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
                             </article>
                         </div>
                         <!-- 로그인 후 e -->

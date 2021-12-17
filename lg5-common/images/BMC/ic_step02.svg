@@ -1,0 +1,16 @@
+<svg id="ic_step02" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2.5px}
+        </style>
+    </defs>
+    <path id="Rectangle" style="fill:none" d="M0 0h80v80H0z"/>
+    <g id="ic" transform="translate(5 18)">
+        <g id="Group_18" data-name="Group 18" transform="translate(62 18)">
+            <path id="Line" class="cls-2" d="M.405 0v8" transform="translate(1.595)"/>
+            <rect id="Rectangle-2" data-name="Rectangle" class="cls-2" width="4" height="9" rx="2" transform="translate(0 8)"/>
+        </g>
+        <path id="Path" class="cls-2" d="M45 0v11.859h-.047c-.754 5.263-10.518 11-22.453 11S.8 17.123.047 11.86H0V0" transform="translate(13 20.141)"/>
+        <path id="Path-2" data-name="Path" class="cls-2" d="M3.617 12.868a1.62 1.62 0 0 0-.011 2.993l30.75 12.879a1.62 1.62 0 0 0 1.246 0L66.386 16a1.62 1.62 0 0 0 0-2.993L35.617.256a1.62 1.62 0 0 0-1.235 0z"/>
+    </g>
+</svg>

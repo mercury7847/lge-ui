@@ -1,6 +1,6 @@
 (function() {
     var validation;
-
+    
     var emailCertified = {
         init: function() {
             var self = this;
@@ -9,6 +9,8 @@
             self.$cont = $('#academyPopup02');
             self.$submitForm = self.$cont.find('#emailCertifiedForm');
             self.$completeBtn = $('#btnCertified');
+            self.$loginBtn = $('#btnLogin');
+
 
             vcui.require(['ui/validation'], function () {
                 var register = {
@@ -26,7 +28,11 @@
                             if( _pattern.test(value) == true) {
                                 if( value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
                                     console.log( value.split('@')[1]);
-                                    return true;
+                                    if(value.split('@')[1] === 'ac.kr'){
+                                        return true;
+                                    } else{
+                                        return false;
+                                    }
                                 } else {
                                     return false;
                                 }
@@ -34,6 +40,12 @@
                                 return false;
                             }
                         }
+                    },
+                    //약관동의
+                    agreeUserCheck: {
+                        required: true,
+                        msgTarget: '.err-block',
+                        errorMsg: '약관에 동의해 주시기 바랍니다.'
                     }
                 }
                 validation = new vcui.ui.CsValidation('#emailCertifiedForm', {register:register});
@@ -43,29 +55,42 @@
         },
         bindEvent: function() {
             var self = this;
-            
-            //신청 버튼 클릭시
-            self.$completeBtn.on('click', function() {
+            //이메일 인증 버튼 클릭시
+            self.$completeBtn.on('click', function(e) {
                 var result = validation.validate();
-                //console.log(result);
                 //self.param = validation.getAllValues();
 
-                // if (result.success === true) {
-                //     lgkorUI.showLoading();
-                //     $('html, body').animate({
-                //         scrollTop: 0
-                //     }, 500);
-                //     lgkorUI.hideLoading();
-                // }else{
-                //     lgkorUI.alert('', {
-                //         title:'필수 입력정보가<br>입력되지 않았습니다.'
-                //     });
-                // }
+                if (result.success === true) {
+                    $('.email-certified-info').show();
+                    $('#academyPopup02 .pop-footer').show();
+                    // lgkorUI.showLoading();
+                    // $('html, body').animate({
+                    //     scrollTop: 0
+                    // }, 500);
+                    // lgkorUI.hideLoading();
+                }else{
+                    // lgkorUI.alert('', {
+                    //     title:'필수 입력정보가<br>입력되지 않았습니다.'
+                    // });
+                }
+            });
+            $('#btnLogin').on('click', function(e) {
+                $('#academyPopup01').vcModal('show'); 
+            });
+            $('#academyPopup01 .btn-list').on('click', function(e) {
+                $('#academyPopup01').vcModal('hide'); 
+                location.href='/benefits/exhibitions';
+            });
+    
+            $('#academyPopup02 .btn-confirm').on('click', function(e) {
+                $('#academyPopup02').vcModal('hide'); 
+                location.reload();
             });
         },
     }
 
     $(window).ready(function() {
         emailCertified.init();
+       // $('#academyPopup02').vcModal('show');
     });
 })();
