@@ -147,7 +147,6 @@ $(window).ready(function(){
             superCategoryTab = $('.ui_supercategory_tab');
             categoryTab = $('.ui_category_tab').hide();
             yearTab = $('.video-list-wrap .ui_year_tab');
-            yearTab.vcTab('update').vcSmoothScroll('refresh');
             contList = $('.tabs-cont.sub_cate_list');
             
             var storyId = vcui.uri.getParam('storyId');
@@ -185,7 +184,7 @@ $(window).ready(function(){
                     mode : "year"
                 }
                 setContentsList(1);
-            });
+            }).vcTab();
 
             contList.scroll(function(e){
                 if(window.breakpoint.name == "pc"){
