@@ -95,29 +95,98 @@ $(function(){
     buildNewRecommend();
     // 추천 렌더링
     function buildRecommend(){
+        //BTOCSITE-7335 : 스토어 홈 고객 추천제품 ajax 처리
+        var $recomCarousel = $context.find('.ui_recom_carousel');
+        var $box = $recomCarousel.closest('.module-box');
+        var $titWrap = $box.find('.tit-wrap');
+        var $userName = $titWrap.find('.tit .name');
+        var ajaxUrl = $recomCarousel.data('ajaxUrl');
+        var param = {};
+        var slideConfig = {
+            infinite: true,
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150,
+            touchThreshold: 100
+        };
+        var listTemp = 
+            '<li class="slide-conts ui_carousel_slide">' + 
+                '<a href="{{url}}" class="slide-box" data-ec-product="{{ecProduct}}">' + 
+                    '<div class="img"><img src="{{imgAddr}}" alt="{{imgAlt}}"></div>' + 
+                    '<div class="info">' + 
+                        '<div class="model">{{modelDisplayName}}</div>' + 
+                        '<div class="code">{{modelName}}</div>' + 
+                        '{{#if price != ""}}'+
+                        '<div class="price-area">' + 
+                            '{{#if price != discounted_price}}'+
+                            '<div class="original">' + 
+                                '<em class="blind">기존가격</em>' + 
+                                '<span class="price">{{price}}<em>원</em></span>' + 
+                            '</div>' + 
+                            '{{/if}}'+
+                            '<div class="total">' + 
+                                '<em class="blind">판매가격</em>' + 
+                                '{{#if price != discounted_price}}'+
+                                    '<span class="price">{{discounted_price}}<em>원</em></span>' + 
+                                '{{#else}}'+
+                                    '<span class="price">{{price}}<em>원</em></span>' + 
+                                '{{/if}}'+
+                            '</div>' + 
+                        '</div>' + 
+                        '{{/if}}'+
+                    '</div>' + 
+                '</a>' + 
+            '</li>';
+        if( $recomCarousel.length == 0 ) return;
+        lgkorUI.requestAjaxData(ajaxUrl, param, function(result){
+            var data = result.data;
 
-        $(window).on('breakpointchange.recommend', function(e){
+            if( result.status == "success") {
+                if( data.userName && data.listData.length > 0) {
+                    $userName.text(data.userName);
+                    var listHtml = "";
 
-            var breakpoint = window.breakpoint;    
-            if(breakpoint.name == 'mobile'){    
-                
-                $context.find('.ui_recom_carousel').vcCarousel('destroy');
-                
-            }else if(breakpoint.name == 'pc'){   
-                
-                $context.find('.ui_recom_carousel').vcCarousel({
-                    infinite: true,
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 150,
-                    touchThreshold: 100
-                });
-            }    
+                    data.listData.forEach(function(listItem, listIdx){
+
+                        listItem.price = listItem.price > 0 ? vcui.number.addComma(listItem.price) : ""
+                        listItem.discounted_price = listItem.discounted_price > 0 ? vcui.number.addComma(listItem.discounted_price) : ""
+                        
+                        var ecProduct = {
+                            "model_name": listItem.modelDisplayName,
+                            "model_id": listItem.model_id,
+                            "model_sku": listItem.modelName, 
+                            "model_gubun": listItem.model_gubun,
+                            "price": listItem.price, 
+                            "discounted_price": listItem.discounted_price, 
+                            "brand": "LG",
+                            "category": listItem.category,
+                            "ct_id": listItem.categoryId
+                        }
+
+                        listItem.ecProduct = JSON.stringify(ecProduct);
+                        listHtml += vcui.template(listTemp, listItem)
+                    })
+                    $recomCarousel.find('.slide-track').empty().append(listHtml);
+                    carouselInit(window.breakpoint)
+                    $box.show();
+                } else {
+                    $box.hide();
+                }
+            }
         })
 
-        $(window).trigger('breakpointchange.recommend');
-        
+        function carouselInit(breakpoint){
+            if(breakpoint.name == 'mobile'){    
+                $recomCarousel.vcCarousel('destroy');
+            }else if(breakpoint.name == 'pc'){   
+                $recomCarousel.vcCarousel(slideConfig);
+            }    
+        }
+
+        $(window).on('breakpointchange.recommend', function(e){
+            carouselInit(window.breakpoint)
+        })
     }
     buildRecommend();
     function errorRequest(err){

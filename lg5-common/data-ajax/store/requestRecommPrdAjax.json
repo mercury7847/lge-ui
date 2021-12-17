@@ -1,0 +1,65 @@
+{
+    "status": "success",
+    "message": null,
+    "data": {
+        "userName" : "김엘지",
+        "listData" : [
+            {
+                "url" : "/asdsadsad제품링크",
+                "imgAddr" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "imgAlt" : "처음 만나는 공간인테리어",
+                "modelDisplayName" : "처음 만나는 공간인테리어 가전 LG 오브제 컬렉션 냉장고1",
+                "modelName" : "M870FBS451",
+                "sku": "65ART90EKPA.AKR",
+                "price": "0",
+                "discounted_price": "1101900",
+                "categoryId": "CT50000025",
+                "model_gubun": "일반 제품",
+                "category": "생활가전/세탁기/통돌이",
+                "model_id": "asdsadsadadad"
+            },
+            {
+                "url" : "/asdsadsad제품링크",
+                "imgAddr" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "imgAlt" : "두번째 만나는 공간인테리어",
+                "modelDisplayName" : "두번째 만나는 공간인테리어 가전 LG 오브제 컬렉션 냉장고2",
+                "modelName" : "M870FBS452",
+                "sku": "65ART90EKPA.AKR",
+                "price": "1221000",
+                "discounted_price": "1101900",
+                "categoryId": "CT50000025",
+                "model_gubun": "일반 제품",
+                "category": "생활가전/세탁기/통돌이",
+                "model_id": "asdsadsadadad"
+            },
+            {
+                "url" : "/asdsadsad제품링크",
+                "imgAddr" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "imgAlt" : "세번째 만나는 공간인테리어",
+                "modelDisplayName" : "세번째 만나는 공간인테리어 가전 LG 오브제 컬렉션 냉장고3",
+                "modelName" : "M870FBS453",
+                "sku": "65ART90EKPA.AKR",
+                "price": "1101900",
+                "discounted_price": "1101900",
+                "categoryId": "CT50000025",
+                "model_gubun": "일반 제품",
+                "category": "생활가전/세탁기/통돌이",
+                "model_id": "asdsadsadadad"
+            },
+            {
+                "url" : "/asdsadsad제품링크",
+                "imgAddr" : "/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg",
+                "imgAlt" : "네번째 만나는 공간인테리어",
+                "modelDisplayName" : "네번째 만나는 공간인테리어 가전 LG 오브제 컬렉션 냉장고4",
+                "modelName" : "M870FBS454",
+                "sku": "65ART90EKPA.AKR",
+                "price": "1221000",
+                "discounted_price": "1101900",
+                "categoryId": "CT50000025",
+                "model_gubun": "일반 제품",
+                "category": "생활가전/세탁기/통돌이",
+                "model_id": "asdsadsadadad"
+            }
+        ]
+    }
+}
