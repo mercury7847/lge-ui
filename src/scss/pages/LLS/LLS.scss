@@ -474,7 +474,7 @@
                 }
                 &-thumb-area {
                     position: relative;
-                    overflow:hidden;
+                    overflow:hidden;                    
                     border-radius:8px;
 
                     .slide-item-time {
@@ -492,7 +492,7 @@
                     }
                     img {
                         width:100%;
-                        max-width:100%;
+                        max-width:400px; //BTOCSITE-9172 리사이징시 이미지가 화면 꽉차게 보일정도로 커지는 현상으로 max-width 제한
                     }
                 }
                 &-cont-area {

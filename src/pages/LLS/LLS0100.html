@@ -132,19 +132,32 @@
                                             - 하이라이트 아이프래임의 url에 파라미터를 붙여서 독립적으로 ga 트래킹 가능하도록 해야 함 
                                                 Ex) /benefits/highlight + 파라미터
                                         -->
-                                        <a href="/html/LLS/LLS0101.html">
-                                            <div class="slide-thumb-area">
+
+                                        <!-- BTOCSITE-9172 html 수정 : a 태그 삭제 -->
+                                        <div class="slide-thumb-area">
+                                            <!-- BTOCSITE-9172 html 수정: : a 태그 추가-->
+                                            <a href="/html/LLS/LLS0101.html">
                                                 <img src="/lg5-common/images/LLS/img-lls-highlight-dummy01.jpg" alt="">
                                                 <span class="slide-item-time">18:00</span>
-                                            </div>
-                                            <div class="slide-cont-area">
-                                                <strong class="slide-title">
-                                                    타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
-                                                    타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
-                                                    타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
-                                                </strong>
-                                            </div>
-                                        </a>
+                                            </a>
+                                            <!-- BTOCSITE-9172 html 수정 : a 태그 추가-->
+                                        </div>
+                                        <div class="slide-cont-area">
+                                            <strong class="slide-title">
+                                                타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
+                                                타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
+                                                타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
+                                            </strong>
+                                            <!-- BTOCSITE-9172 추가: slide-btn-area 추가 -->
+                                            <div class="slide-btn-area">                                                
+                                                <!-- 방송 혜택 url 연결-->
+                                                <a href="/" class="btn-link btn-lls-benefit"><span>방송 혜택 보기</span></a> 
+                                                <!-- 당첨자 발표 url 연결-->
+                                                <a href="/html/BMC/MKT4007.html" class="btn-link btn-event-popup"><span>당첨자 확인</span></a>
+                                            </div>                                            
+                                            <!-- //BTOCSITE-9172 추가: slide-btn-area 추가 -->
+                                        </div>
+                                        <!-- BTOCSITE-9172 html 수정 : a 태그 삭제 -->
                                     </div>
                                 }
                             </div>
@@ -190,8 +203,9 @@
                 </div>
                 <!-- //방송에 나온 그 제품 -->
 
+                <!-- BTOCSITE-9172 이벤트 당첨자 영역 삭제 -->
                 <!-- 이벤트 당첨자 발표 -->
-                <div class="lls-sec event-announced">
+                <!-- <div class="lls-sec event-announced">
                     <div class="lls-sec__head">
                         <h3 class="lls-sec__head--title">이벤트 당첨자 발표</h3>
                     </div>
@@ -201,7 +215,7 @@
                             <li class="list-item">
                                 <a href="/html/BMC/MKT4007.html" class="item-list-anchor">
                                     <div class="item-list-thumb">
-                                        <!-- 어드민에서 당첨자 발표 등록 시, 썸네일을 입력하지 않으면 디폴트 이미지가 출력 -->
+                                        
                                         <img src="/lg5-common/images/LLS/img-lls-event-default.jpg" alt="">
                                     </div>
                                     <div class="item-list-content">
@@ -214,8 +228,9 @@
                             }
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <!-- //방송에 나온 그 제품 -->
+                <!-- //BTOCSITE-9172 이벤트 당첨자 영역 삭제 -->
 
             </div>
             <!-- //엘라쇼 -->

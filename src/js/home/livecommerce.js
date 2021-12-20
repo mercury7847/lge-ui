@@ -164,7 +164,7 @@ var lls = {
 
 
         //최신 하이라이트 목록 클릭시 모바일 기기가 아니면 앱설치 팝업 활성화
-        self.$highSlider.find('.slide-item a').on('click', function(e){
+        self.$highSlider.find('.slide-item .slide-thumb-area a').on('click', function(e){
             if( self.$highSlider.hasClass('swipping')) {
                 e.preventDefault();
             } else {
@@ -174,6 +174,18 @@ var lls = {
                 } 
             }
         });
+
+        //BTOCSITE-9172 방송 혜택 보기, 당첨자헤택 보기
+        self.$highSlider.find('.btn-lls-benefit').on('click', function(e){
+            e.preventDefault();
+            self.requestModal(this);
+        })
+
+        //BTOCSITE-9172 방송 혜택 보기, 당첨자헤택 보기
+        self.$highSlider.find('.btn-event-popup').on('click', function(e){
+            e.preventDefault();
+            self.requestModal(this);
+        })
 
         //이벤트 당첨자 발표 목록 클릭시 당첨자 발표 목록 윈도우팝업
         self.$eventAnchor.on('click', function(e){
