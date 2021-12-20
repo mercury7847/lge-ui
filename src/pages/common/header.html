@@ -2592,6 +2592,62 @@
 <!-- // 210324 수정 [모바일 gnb 타이틀 케이스 추가] -->
 }
 
+
+@@if (context.mobileCase === "all" || context.mobileCase === "subDepth") {
+<!-- Mobile Sub Depth Header -->
+<div class="mobile-nav-wrap is-depth">
+    <a href="#" class="btn-back"><span class="blind">이전</span></a>
+    <a href="#n" class="nav-item">노트북</a>
+    <div class="nav-category-container hasDepth">
+        <ul>
+            <li><a href="#" class="isActive">Tv/AV</a>
+                <ul>
+                    <li><a href="#">Tv</a></li>
+                    <li class="isActive"><a href="#">프로젝터</a></li>
+                    <li><a href="#">AV</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                </ul>
+            </li>
+            <li><a href="#">IT</a>
+                <ul>
+                    <li><a href="#">노트북</a></li>
+                    <li><a href="#">일체형/데스크톱</a></li>
+                    <li><a href="#">모니터</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                </ul>
+            </li>
+            <li><a href="#">주방가전</a>
+                <ul>
+                    <li><a href="#">노트북</a></li>
+                    <li><a href="#">일체형/데스크톱</a></li>
+                    <li><a href="#">모니터</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                    <li><a href="#">케어용품/소모품</a></li>
+                </ul>
+            </li>
+            <li><a href="#">생활가전</a></li>
+            <li><a href="#">에어컨/에어케어</a></li>
+            <li><a href="#">뷰티/의료기기</a></li>
+            <li><a href="#">LG SIGNATURE</a></li>
+            <li><a href="#">LG Objet Collection</a></li>
+            <li><a href="#">케어용품/소모품</a></li>
+        </ul>
+    </div>
+</div>
+<!--// Mobile Sub Depth Header -->
+}
+
+
 @@if (context.pageCase === undefined) {
 <!-- Breadcrumb -->
 @@include('./common/modules/breadcrumb.html', {
