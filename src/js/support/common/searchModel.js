@@ -175,7 +175,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 
                 lgkorUI.searchModelName();
 
-                if (opts.reset) {
+                if (opts.reset || lgkorUI.cookie.getCookie('LG_SupportSearch_reset') === 'Y') {
                     self.reset();
                 } else {
                     if (lgkorUI.searchParamsToObject('mktModelCd')) {
@@ -462,6 +462,8 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 var $this = $(this),
                     data = $this.data();
                 
+                lgkorUI.cookie.setCookie('LG_SupportSearch_reset','Y');
+
                 /* BTOCSITE-3312 add :: 출장예약 페이지일때 모델명을 몰라요 클릭시 팝업 추가 */
                 if (!!data.modelCode == false && self.isEngineerReservation){
                     //var alertMsg = '서비스 접수 확인 문자의 <strong class="point">[제품 / 설치 환경 사진등록]</strong> 으로 사진 업로드 하시면 정확하고 신속한 서비스가 가능 합니다.<br><br>모델명 입력을 건너뛰기 하시겠습니까?';
@@ -876,6 +878,8 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             self.$keywordBox.show();
             self.$keywordBox.find('.search-desc').hide();
             self.$selectedModelBar.vcSticky('destroy');
+
+            lgkorUI.cookie.setCookie('LG_SupportSearch_reset','Y');
 
             self.$el.trigger('reset');
 
