@@ -1171,8 +1171,6 @@ var goAppUrl = function(path) {
 
                     // 비교하기 버튼 상태 변경
                     if($('.KRP0007').size() > 0) {
-
-                        console.log("plp 첫상품 추가시 버튼 상태 변경")
                         $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style')
                         .parent().find('a[data-b2bcatemapping="'+(data.b2bcatemapping === 'Y' ? 'N' : 'Y')+'"]').hide();
                     }
@@ -1229,8 +1227,6 @@ var goAppUrl = function(path) {
                     
                     // PDP 비교하기 아이템 삭제시 버튼 상태 변경
                     if($('.KRP0008').size() > 0) {
-                        console.log("ppd 비교하기 아이템 삭제시 ")
-                        // $('.KRP0008 .product-compare input[type=checkbox]').removeAttr('disabled');
                         $('.KRP0008 .product-compare').removeAttr('style');
                     }
 
