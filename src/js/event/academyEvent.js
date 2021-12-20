@@ -57,27 +57,51 @@
             var self = this;
             //이메일 인증 버튼 클릭시
             self.$completeBtn.on('click', function(e) {
+                $('.email-certified-info').hide();
+                $('#academyPopup02 .pop-footer').hide();
+
                 var result = validation.validate();
-                //self.param = validation.getAllValues();
 
                 if (result.success === true) {
-                    $('.email-certified-info').show();
-                    $('#academyPopup02 .pop-footer').show();
-                    $('#academyPopup02 .pop-conts').animate({
-                        scrollTop: 200
-                    }, 500);
-                    // lgkorUI.showLoading();
-                    // $('html, body').animate({
-                    //     scrollTop: 0
-                    // }, 500);
-                    // lgkorUI.hideLoading();
-                }else{
-                    $('.email-certified-info').hide();
-                    $('#academyPopup02 .pop-footer').hide();
-                    // lgkorUI.alert('', {
-                    //     title:'필수 입력정보가<br>입력되지 않았습니다.'
-                    // });
+                    
+                    var url = self.$submitForm.data('ajax'),
+                    allData = validation.getAllValues(),
+                    formData = new FormData();
+
+                    for (var key in allData) {
+                        formData.append(key, allData[key]);
+                    }
+                    
+                    lgkorUI.showLoading();
+
+                    lgkorUI.requestAjaxFileData(url, formData, function(result) {
+                        var data = result.data;
+
+                        if (data.resultFlag == 'Y') {
+                            self.$submitForm.submit();
+                            $('.email-certified-info').show();
+                            $('#academyPopup02 .pop-footer').show();
+                            $('#academyPopup02 .pop-conts').animate({
+                                scrollTop: 200
+                            }, 500);
+                        } else {
+                            lgkorUI.hideLoading();
+                            if (data.resultMessage) {
+                                lgkorUI.alert("", {
+                                    title: data.resultMessage,
+                                    okBtnName: '확인',
+                                    // ok: function() {
+                                        
+                                    // }
+                                });
+                            }
+                        }
+                    }, 'POST');
                 }
+                // else{
+                //     $('.email-certified-info').hide();
+                //     $('#academyPopup02 .pop-footer').hide();
+                // }
             });
             $('#btnLogin').on('click', function(e) {
                 $('#academyPopup01').vcModal('show'); 
