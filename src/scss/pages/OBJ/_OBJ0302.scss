@@ -564,7 +564,8 @@ h2.title {
                 }
                 // 210903 BTOCSITE-4239 4도어 추가 - End
 
-                &[data-model_code="X320AA"],
+                // 211215 BTOCSITE-9627 컨버터블 > 냉장고 기본모델명 변경 (X320AA -> X321AA)
+                &[data-model_code="X321AA"],
                 &[data-model_code="Y320AA"],
                 &[data-model_code="Z320AA"] {
                     //컨버터블
