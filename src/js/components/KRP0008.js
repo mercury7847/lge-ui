@@ -2786,20 +2786,12 @@
             // 비교하기 버튼 상태 변경
             compareBtnStatus:function(){
                 var self = this;
-                console.log("compareBtnStatus");
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
 
                 if(storageCompare && storageCompare['data'].length > 0){ 
                     var data = storageCompare['data'][0];
-                    
-                    console.log("data ",data);
-
-                    // var $dm = self.$pdpInfo.find('.product-compare input[type=checkbox]');
-                    // $dm.attr('disabled', true)
-
                     self.$pdpInfo.find('.product-compare').hide();
-
                 }
             },
             setSiblingOptionCheck: function(target, currentIndex, modelsData){
