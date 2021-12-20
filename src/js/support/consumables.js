@@ -163,7 +163,9 @@ vcui.define('support/consumables.min', ['jquery', 'vcui'], function ($, core) {
             //소모품 대체, 공유 모델명 검색
             $("#keyword").on("input", function() {
                 var keyword = $(this).val().toUpperCase().trim();
-                var regex = /[^a-zA-Z0-9.\-]/g;
+                // BTOCSITE-9665 고객지원 모델명 검색창 한글 입력 허용
+                // var regex = /[^a-zA-Z0-9.\-]/g;
+                var regex =/[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9.\-]/g;
 
                 if (regex.test(keyword)) {
                     $(this).val(keyword.replace(regex,""));
