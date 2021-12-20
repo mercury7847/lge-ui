@@ -127,335 +127,88 @@
                                 <div class="additional">
                                     <h2 class="title"><span>추가할인</span></h2>
                                     <div class="membership">
-                                        <div class="ui_accordion" ui-modules="Accordion" role="presentation">
-                                            <ul>
-                                                <li class="lists cash-back">
-                                                    <div class="head" role="heading">
-                                                        <span class="text">캐시백</span>
-                                                        <a href="#n" class="btn-toggle ui_accord_toggle" id="accrod_toggle_m4u3wxrkdj" aria-controls="accord_content_m4u3wxrkdj" aria-expanded="false"><span class="blind">내용 더보기</span></a>
-                                                        <span class="content"><span class="price">-136,900원</span></span>
-                                                    </div>
-                                                    <div class="ui_accord_content" id="accord_content_m4u3wxrkdj" role="region" aria-labelledby="accord_toggle_m4u3wxrkdj" style="display: none;">
-                                                        <div class="info-box">
-                                                            <ul class="bullet-list">
-                                                                <li class="b-txt">행사기간 : 11월 3일~11월 30일 결제 완료</li>
-                                                                <li class="b-txt">대상 카드 : 신한카드, 우리카드 (캐시백)<br>*씨티카드(캐시백 또는 청구할인)</li>
-                                                                <li class="b-txt">캐시백 지급은 배송일 기준 익월말에 지급됨.<br>*단, 법인카드, 체크카드, 기프트카드는 적용 불가함.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- 로그인 전 -->
-                                        <dl class="price-info point">
-                                            <dt class="text">멤버십 포인트</dt>
-                                            <dd class="content">
-                                                <div class="point-confirm">
-                                                    <div class="btn-box">
-                                                        <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
-                                                    </div>
-                                                    <div class="input-box">
-                                                        <input type="text" title="멤버십 포인트 확인" value="500,000" readonly="">
-                                                        <span class="won">원</span>
+                                        <ul class="payment-info">
+                                            <li>
+                                                <dl class="price-info discount">
+                                                    <dt class="text">캐시백</dt>
+                                                    <dd class="content"><span class="price">최대 혜택 23,000원</span></dd>
+                                                </dl>
+                                                <div class="ui_accordion" ui-modules="Accordion" role="presentation">
+                                                    <ul>
+                                                        <li class="acco-box">
+                                                            <div class="head" role="heading">
+                                                                <a href="#n" class="btn-toggle ui_accord_toggle cash-back-info" id="accrod_toggle_m4u3wxrkdj" aria-controls="accord_content_m4u3wxrkdj" aria-expanded="false">
+                                                                    캐시백 혜택 안내
+                                                                    <span class="ico"></span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="ui_accord_content" id="accord_content_m4u3wxrkdj" role="region" aria-labelledby="accord_toggle_m4u3wxrkdj" style="display: none;">
+                                                                <div class="info-box">
+                                                                    <ul class="bullet-list">
+                                                                        <li class="b-txt">행사기간 : <br> 11월 3일~11월 30일 결제 완료</li>
+                                                                        <li class="b-txt">
+                                                                            <ul class="card-list">
+                                                                                <li>신한카드 : 500,000원</li>
+                                                                                <li>국민카드 : 500,000원</li>
+                                                                                <li>비씨카드(NH) : 500,000원</li>
+                                                                                <li>비씨카드(우리) : 500,000원</li>
+                                                                                <li>현대카드(캐시백or청구할인) : 500,000원</li>
+                                                                                <li>롯데카드 : 500,000원</li>
+                                                                                <li>하나카드 : 500,000원</li>
+                                                                                <li>NH농협카드 : 500,000원</li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li class="b-txt">캐시백 지급은 배송일 기준 익월말에 지급됨.</li>
+                                                                        <li class="b-txt">단, 법인카드, 체크카드, 기프트카드는 적용 불가함.</li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <dl class="price-info discount">
+                                                    <dt class="text">멤버십 포인트</dt>
+                                                    <dd class="content">
+                                                        <div class="btn-box">
+                                                            <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
+                                                        </div>  
+                                                    </dd>
+                                                </dl>
+                                                <div class="card-selec-box">
+                                                    <strong>카드 헤택</strong>
+                                                    <div class="select-wrap">
+                                                        <select class="ui_selectbox" title="카드 혜택">
+                                                            <option value="" class="placeholder"></option> <!-- 첫번째 옵션 공백 -->
+                                                            <option value="" class="placeholder">현대-무이자 7개월</option>
+                                                            <option value="" class="placeholder">롯데-무이자 12개월</option>
+                                                            <option value="" class="placeholder">국민-무이자 7개월</option>
+                                                            <option value="" class="placeholder">농협-무이자 8개월</option>
+                                                        </select>
                                                     </div>
                                                 </div>
-                                            </dd>
-                                        </dl>
-                                        <!-- 로그인 후 -->
-                                        <dl class="price-info point member">
-                                            <dt class="text">멤버십 포인트</dt>
-                                            <dd class="content">
-                                                <div class="point-confirm">
-                                                    <div class="btn-box">
-                                                        <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
-                                                    </div>
-                                                    <div class="input-box">
-                                                        <input type="text" title="멤버십 포인트 확인" value="500,000" readonly="">
-                                                        <span class="won">원</span>
-                                                    </div>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                        <div class="ui_accordion" ui-modules="Accordion" role="presentation">
-                                            <ul>
-                                                <li class="lists">
-                                                    <div class="head" role="heading">
-                                                        <span class="text">카드 혜택</span>
-                                                        <a href="#n" class="btn-toggle ui_accord_toggle" id="accrod_toggle_c1rrlg2pl0" aria-controls="accord_content_c1rrlg2pl0" aria-expanded="false"><span class="blind">내용 더보기</span></a>
-                                                    </div>
-                                                    <div class="ui_accord_content" id="accord_content_c1rrlg2pl0" role="region" aria-labelledby="accord_toggle_c1rrlg2pl0" style="display: none;">
-                                                        <div class="info-box">
-                                                            <ul class="bullet-list">
-                                                                <li class="b-txt">국민카드 : 무이자 6개월 / 7% 청구할인</li>
-                                                                <li class="b-txt">신한카드 : 7% 청구할인</li>
-                                                                <li class="b-txt">현대카드 : 무이자 6개월</li>
-                                                                <li class="b-txt">삼성카드 : 5% 청구할인</li>
-                                                                <li class="b-txt">하나카드 : 무이자3개월 / 5% 청구할인</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                            </li>
+                                            <li>
+                                                <dl class="price-info total-discount">
+                                                    <dt class="text">최대 할인 금액</dt>
+                                                    <dd class="content">
+                                                        <small class="discount-rate">38%</small>
+                                                        <span class="price">136,900원</span>
+                                                    </dd>
+                                                </dl>
+                                            </li>
+                                            <li>
+                                                <dl class="price-info discount">
+                                                    <dt class="text">최대 혜택 적용 시</dt>
+                                                    <dd class="content"><span class="price">-77,210원</span></dd>
+                                                </dl>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <dl class="price-info">
-                                        <dt class="text">최대 할인 금액</dt>
-                                        <dd class="content">
-                                            <small class="discount-rate">38%</small>
-                                            <span class="price">656,900원</span>
-                                        </dd>
-                                    </dl>
-                                    <dl class="price-info total-payment">
-                                        <dt class="text">최대 혜택 적용 시</dt>
-                                        <dd class="content">
-                                            <span class="price">1,233,000원</span>
-                                        </dd>
-                                    </dl>
-                                    <p class="info-text">※ 할인적용가, 최대 혜택적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.<br>
-                                        또한, 캐시백, 청구할인, 무이자 등은 각 카드사별 조건에 따라 달라질 수 있습니다.</p>
-                                </div>
-                            </div>
-                            <div class="benefit-box">
-                                <ul class="payment-info">
-                                    <li>
-                                        <dl class="price-info total">
-                                            <dt class="text">판매가</dt>
-                                            <dd class="content">
-                                                <strong class="price">1,990,000원</strong>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="price-info discount">
-                                            <dt class="text">회원할인</dt>
-                                            <dd class="content"><span class="price">-59,700원</span></dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="price-info discount">
-                                            <dt class="text">즉시할인</dt>
-                                            <dd class="content"><span class="price">-77,210원</span></dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="price-info total-discount">
-                                            <dt class="text">할인금액합계</dt>
-                                            <dd class="content"><span class="price">136,900원</span></dd>
-                                        </dl>
-                                    </li>
-                                </ul>
-                                <div class="additional">
-                                    <h2 class="title"><span>추가할인</span></h2>
-                                    <div class="membership">
-                                        <div class="ui_accordion" ui-modules="Accordion" role="presentation">
-                                            <ul>
-                                                <li class="lists cash-back">
-                                                    <div class="head" role="heading">
-                                                        <span class="text">캐시백</span>
-                                                        <a href="#n" class="btn-toggle ui_accord_toggle" id="accrod_toggle_m4u3wxrkdj" aria-controls="accord_content_m4u3wxrkdj" aria-expanded="false"><span class="blind">내용 더보기</span></a>
-                                                        <span class="content"><span class="price">-136,900원</span></span>
-                                                    </div>
-                                                    <div class="ui_accord_content" id="accord_content_m4u3wxrkdj" role="region" aria-labelledby="accord_toggle_m4u3wxrkdj" style="display: none;">
-                                                        <div class="info-box">
-                                                            <ul class="bullet-list">
-                                                                <li class="b-txt">행사기간 : 11월 3일~11월 30일 결제 완료</li>
-                                                                <li class="b-txt">대상 카드 : 신한카드, 우리카드 (캐시백)<br>*씨티카드(캐시백 또는 청구할인)</li>
-                                                                <li class="b-txt">캐시백 지급은 배송일 기준 익월말에 지급됨.<br>*단, 법인카드, 체크카드, 기프트카드는 적용 불가함.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- 로그인 전 -->
-                                        <dl class="price-info point">
-                                            <dt class="text">멤버십 포인트</dt>
-                                            <dd class="content">
-                                                <div class="point-confirm">
-                                                    <div class="btn-box">
-                                                        <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
-                                                    </div>
-                                                    <div class="input-box">
-                                                        <input type="text" title="멤버십 포인트 확인" value="500,000" readonly="">
-                                                        <span class="won">원</span>
-                                                    </div>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                        <!-- 로그인 후 -->
-                                        <dl class="price-info point member">
-                                            <dt class="text">멤버십 포인트</dt>
-                                            <dd class="content">
-                                                <div class="point-confirm">
-                                                    <div class="btn-box">
-                                                        <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
-                                                    </div>
-                                                    <div class="input-box">
-                                                        <input type="text" title="멤버십 포인트 확인" value="500,000" readonly="">
-                                                        <span class="won">원</span>
-                                                    </div>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                        <div class="ui_accordion" ui-modules="Accordion" role="presentation">
-                                            <ul>
-                                                <li class="lists">
-                                                    <div class="head" role="heading">
-                                                        <span class="text">카드 혜택</span>
-                                                        <a href="#n" class="btn-toggle ui_accord_toggle" id="accrod_toggle_c1rrlg2pl0" aria-controls="accord_content_c1rrlg2pl0" aria-expanded="false"><span class="blind">내용 더보기</span></a>
-                                                    </div>
-                                                    <div class="ui_accord_content" id="accord_content_c1rrlg2pl0" role="region" aria-labelledby="accord_toggle_c1rrlg2pl0" style="display: none;">
-                                                        <div class="info-box">
-                                                            <ul class="bullet-list">
-                                                                <li class="b-txt">국민카드 : 무이자 6개월 / 7% 청구할인</li>
-                                                                <li class="b-txt">신한카드 : 7% 청구할인</li>
-                                                                <li class="b-txt">현대카드 : 무이자 6개월</li>
-                                                                <li class="b-txt">삼성카드 : 5% 청구할인</li>
-                                                                <li class="b-txt">하나카드 : 무이자3개월 / 5% 청구할인</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <dl class="price-info">
-                                        <dt class="text">최대 할인 금액</dt>
-                                        <dd class="content">
-                                            <small class="discount-rate">38%</small>
-                                            <span class="price">656,900원</span>
-                                        </dd>
-                                    </dl>
-                                    <dl class="price-info total-payment">
-                                        <dt class="text">최대 혜택 적용 시</dt>
-                                        <dd class="content">
-                                            <span class="price">1,233,000원</span>
-                                        </dd>
-                                    </dl>
-                                    <p class="info-text">※ 할인적용가, 최대 혜택적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.<br>
-                                        또한, 캐시백, 청구할인, 무이자 등은 각 카드사별 조건에 따라 달라질 수 있습니다.</p>
-                                </div>
-                            </div>
-                            <div class="benefit-box">
-                                <ul class="payment-info">
-                                    <li>
-                                        <dl class="price-info total">
-                                            <dt class="text">판매가</dt>
-                                            <dd class="content">
-                                                <strong class="price">1,990,000원</strong>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="price-info discount">
-                                            <dt class="text">회원할인</dt>
-                                            <dd class="content"><span class="price">-59,700원</span></dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="price-info discount">
-                                            <dt class="text">즉시할인</dt>
-                                            <dd class="content"><span class="price">-77,210원</span></dd>
-                                        </dl>
-                                    </li>
-                                    <li>
-                                        <dl class="price-info total-discount">
-                                            <dt class="text">할인금액합계</dt>
-                                            <dd class="content"><span class="price">136,900원</span></dd>
-                                        </dl>
-                                    </li>
-                                </ul>
-                                <div class="additional">
-                                    <h2 class="title"><span>추가할인</span></h2>
-                                    <div class="membership">
-                                        <div class="ui_accordion" ui-modules="Accordion" role="presentation">
-                                            <ul>
-                                                <li class="lists cash-back">
-                                                    <div class="head" role="heading">
-                                                        <span class="text">캐시백</span>
-                                                        <a href="#n" class="btn-toggle ui_accord_toggle" id="accrod_toggle_m4u3wxrkdj" aria-controls="accord_content_m4u3wxrkdj" aria-expanded="false"><span class="blind">내용 더보기</span></a>
-                                                        <span class="content"><span class="price">-136,900원</span></span>
-                                                    </div>
-                                                    <div class="ui_accord_content" id="accord_content_m4u3wxrkdj" role="region" aria-labelledby="accord_toggle_m4u3wxrkdj" style="display: none;">
-                                                        <div class="info-box">
-                                                            <ul class="bullet-list">
-                                                                <li class="b-txt">행사기간 : 11월 3일~11월 30일 결제 완료</li>
-                                                                <li class="b-txt">대상 카드 : 신한카드, 우리카드 (캐시백)<br>*씨티카드(캐시백 또는 청구할인)</li>
-                                                                <li class="b-txt">캐시백 지급은 배송일 기준 익월말에 지급됨.<br>*단, 법인카드, 체크카드, 기프트카드는 적용 불가함.</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- 로그인 전 -->
-                                        <dl class="price-info point">
-                                            <dt class="text">멤버십 포인트</dt>
-                                            <dd class="content">
-                                                <div class="point-confirm">
-                                                    <div class="btn-box">
-                                                        <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
-                                                    </div>
-                                                    <div class="input-box">
-                                                        <input type="text" title="멤버십 포인트 확인" value="500,000" readonly="">
-                                                        <span class="won">원</span>
-                                                    </div>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                        <!-- 로그인 후 -->
-                                        <dl class="price-info point member">
-                                            <dt class="text">멤버십 포인트</dt>
-                                            <dd class="content">
-                                                <div class="point-confirm">
-                                                    <div class="btn-box">
-                                                        <button type="button" class="btn dark-gray size" data-link-url="#login"><span>보유 멤버십 포인트 확인</span></button>
-                                                    </div>
-                                                    <div class="input-box">
-                                                        <input type="text" title="멤버십 포인트 확인" value="500,000" readonly="">
-                                                        <span class="won">원</span>
-                                                    </div>
-                                                </div>
-                                            </dd>
-                                        </dl>
-                                        <div class="ui_accordion" ui-modules="Accordion" role="presentation">
-                                            <ul>
-                                                <li class="lists">
-                                                    <div class="head" role="heading">
-                                                        <span class="text">카드 혜택</span>
-                                                        <a href="#n" class="btn-toggle ui_accord_toggle" id="accrod_toggle_c1rrlg2pl0" aria-controls="accord_content_c1rrlg2pl0" aria-expanded="false"><span class="blind">내용 더보기</span></a>
-                                                    </div>
-                                                    <div class="ui_accord_content" id="accord_content_c1rrlg2pl0" role="region" aria-labelledby="accord_toggle_c1rrlg2pl0" style="display: none;">
-                                                        <div class="info-box">
-                                                            <ul class="bullet-list">
-                                                                <li class="b-txt">국민카드 : 무이자 6개월 / 7% 청구할인</li>
-                                                                <li class="b-txt">신한카드 : 7% 청구할인</li>
-                                                                <li class="b-txt">현대카드 : 무이자 6개월</li>
-                                                                <li class="b-txt">삼성카드 : 5% 청구할인</li>
-                                                                <li class="b-txt">하나카드 : 무이자3개월 / 5% 청구할인</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <dl class="price-info">
-                                        <dt class="text">최대 할인 금액</dt>
-                                        <dd class="content">
-                                            <small class="discount-rate">38%</small>
-                                            <span class="price">656,900원</span>
-                                        </dd>
-                                    </dl>
-                                    <dl class="price-info total-payment">
-                                        <dt class="text">최대 혜택 적용 시</dt>
-                                        <dd class="content">
-                                            <span class="price">1,233,000원</span>
-                                        </dd>
-                                    </dl>
-                                    <p class="info-text">※ 할인적용가, 최대 혜택적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.<br>
-                                        또한, 캐시백, 청구할인, 무이자 등은 각 카드사별 조건에 따라 달라질 수 있습니다.</p>
+                                    <p class="info-text">※ 할인적용가, 최대 혜택적용가는 회원에게 적용되는 가격으로서 로그인 후 주문시에 적용됩니다.<br>
+                                        또한, 캐시백은 총 결제금액의 60% 이상을 상기 신용카드로 결제해야, 캐시백 지급 대상이 됩니다. (멤버십 포인트 사용 등으로 카드 결제액이 60% 미만일 경우 지급되지 않음) 캐시백, 청구할인, 무이자 등은 각 카드사별 조건에 따라 달라질 수 있습니다.
+                                    </p>
                                 </div>
                             </div>
                         </div>
