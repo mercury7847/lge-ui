@@ -13,7 +13,7 @@ $(window).ready(function(){
             '</div>';
 
         var itemTemplate =             
-            '<div class="item-inner" data-id="{{id}}">'+
+            '<div class="item-inner" data-id="{{id}}" data-b2bcatemapping="{{b2bcatemapping}}">'+
             '   <span class="img-area">'+
             '       <img src="{{productImg}}" alt="{{productAlt}}">'+
             '       <p class="blind">{{productAlt}}</p>'+
@@ -142,7 +142,6 @@ $(window).ready(function(){
                         //console.log("### setCompares render ###", compareIds)
                         $('.sticy-compare .list-inner li').empty();
                         storageCompare['data'].forEach(function(item,i){ 
-                            //console.log("item['id']:",item['id'])
                             list = $('.sticy-compare .list-inner li').eq(i);                    
                             listItem = vcui.template(itemTemplate, item);
                             list.html(listItem);
@@ -275,7 +274,8 @@ $(window).ready(function(){
                 $uiSelectbox.parent().remove();
             }
 
-            lgkorUI.initCompareProd(categoryId);
+            lgkorUI.removeCompareProd(categoryId);
+
         }
 
         function updateCompareButton() {

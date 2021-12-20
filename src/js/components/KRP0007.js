@@ -217,7 +217,7 @@
             '{{/if}}' +
             '{{#if bizType != "DISPOSABLE"}}'+
             '<div class="product-compare">' +
-                '<a href="#" data-id="{{modelId}}" data-contents="{{#raw modelDisplayName}}"><span>비교하기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                '<a href="#" data-id="{{modelId}}" data-contents="{{#raw modelDisplayName}}" data-b2bcatemapping="{{b2bCateMapping}}"><span>비교하기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
             '</div>' +
             '{{/if}}'+
         '</div>' +
@@ -355,6 +355,9 @@
                             var ajaxUrl = self.$section.attr('data-wish-url');
                             lgkorUI.checkWishItem(ajaxUrl);
                             /* //BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
+
+                            // 비교하기 버튼 상태 변경 - 필터 복구시
+                            self.compareBtnStatus();
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
                         }
@@ -455,6 +458,9 @@
                 self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
 
                 self.cateWrapStatus();
+
+                // 비교하기 버튼 상태 변경 - 초기화시
+                self.compareBtnStatus();
             },
 
             bindEvents: function() {
@@ -794,6 +800,11 @@
                         /* //BTOCSITE-5157 : PLP 제품이 없을때 문구 미노출 이슈 2021-09-13 */
                     }
 
+
+
+                    // 비교하기 버튼 상태 변경 - ajax 통신시
+                    self.compareBtnStatus();
+
                     /* BTOCSITE-2150 add */
                     self.isLoading = false; 
                     if (isNew){
@@ -1082,6 +1093,8 @@
                 // item.isShow = true;
                 // console.log("item %o",item);
 
+                //BTOCSITE-8312 프로젝터>시네빔과 프로빔 스펙비교 예외처리 요청
+                item.b2bCateMapping = item.b2bCateMapping || "N";
 
                 if( typeof item.obsSellingPriceNumber == "string") {
                     item.isShowPrice = item.obsSellingPriceNumber.replace(/,/g, "");
@@ -1094,7 +1107,6 @@
                 /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인 */
                 item.isShowLotteCard = kiosk ? false : lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-6613 키오스크 조건 추가
                 item.isShowLotteCardEvent = kiosk ? false : lgkorUI.isShowDate('20211101','20220101') // 2021.11.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-9006 롯데카드 12개월 무이자 할인 적용기간
-
                 
                 return vcui.template(productItemTemplate, item);
             },
@@ -1179,6 +1191,7 @@
             setCompareState:function(atag){
                 var $this = $(atag);
                 var _id = $this.data('id');
+                var b2bcatemapping = $this.data('b2bcatemapping');
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(!$this.hasClass('on')){
                     var compare = $this.closest('.product-compare');
@@ -1191,6 +1204,7 @@
 
                     var compareObj = {
                         "id": _id,
+                        "b2bcatemapping":b2bcatemapping,
                         "productName": productName,
                         "productID": productID,
                         "productImg": productImg,
@@ -1201,6 +1215,20 @@
                     if(isAdd) $this.addClass("on");
                 } else{
                     lgkorUI.removeCompareProd(categoryId, _id);
+                }
+            },
+
+            // 비교하기 버튼 상태 변경
+            compareBtnStatus:function(){
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+
+                console.log(storageCompare)
+                if(storageCompare && storageCompare['data'].length > 0){
+                    var data = storageCompare['data'][0];
+                    // 비교하기 버튼 상태 변경
+                    $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style')
+                    .parent().find('a[data-b2bcatemapping="'+(data.b2bcatemapping === 'Y' ? 'N' : 'Y')+'"]').hide();
                 }
             },
 

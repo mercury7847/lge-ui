@@ -135,6 +135,8 @@
 
                 // BTOCSITE-659 
                 self.addAWSPdpUp();
+                // BTOCSITE-8312 프로젝터>시네빔과 프로빔 스펙비교 예외처리 요청
+                self.compareBtnStatus();
             },
 
             prepare: function() {
@@ -2743,6 +2745,7 @@
                 if(compare){
                     var compareObj = {
                         "id": compareData.id,
+                        "b2bcatemapping":compareData.b2bCateMapping,
                         "productName": compareData.productName,
                         "productID": compareId,
                         "productImg": compareData.productImg,
@@ -2778,6 +2781,17 @@
                     $dm.addClass('compare-select');
                 } else {
                     $dm.removeClass('compare-select');
+                }
+            },
+            // 비교하기 버튼 상태 변경
+            compareBtnStatus:function(){
+                var self = this;
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+
+                if(storageCompare && storageCompare['data'].length > 0){ 
+                    var data = storageCompare['data'][0];
+                    self.$pdpInfo.find('.product-compare').hide();
                 }
             },
             setSiblingOptionCheck: function(target, currentIndex, modelsData){
