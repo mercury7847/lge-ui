@@ -306,11 +306,13 @@
                     }
                 }else{
                     var menuIdx = $(this).parent().index();
+                    var contentT = $('.tab-mobile-content').offset().top;
+
                     $(this).parent().addClass('is-active').siblings().removeClass('is-active');
                     $(this).parent().addClass('slick-current').siblings().removeClass('slick-current');
                     thinQMain.$appTabMenu.slick('slickGoTo', menuIdx);
-                    console.log('aaaaaaaaaa');
-                    $(window).scrollTop(920);
+                    $(window).scrollTop(contentT);
+
                     if( !self.$appTabMenu.hasClass('slick-initialized')) {
                         self.$appTabBtnAll.trigger('click')
                     }
@@ -432,6 +434,9 @@
                 thinQMain.$appTabMenu.filter('.slick-initialized').slick('unslick');
                 thinQMain.$appTabMenu.find('.menu-item').removeClass('active-first active-last')
                 thinQMain.$appTabMenu.find('.menu-item a').removeAttr('tabindex');
+            },
+            height: function(){
+                
             }
         },
         appDownloadGuideSlider:{
@@ -577,13 +582,20 @@
             //App 탭 > 카테고리 메뉴 스티키
             var self = this;
             var menuOffsetTop = self.$appTabMenuSticky.offset().top;
-            var aa = 74;
+            var tabLast = $('.app-tab-desc').offset().top;
             $(window).on('scroll', function(){
                 var scrollTop = $(window).scrollTop();
-                if( scrollTop > menuOffsetTop){
-                    self.$appTabMenuSticky.addClass('fixed');
-                }else{
-                    self.$appTabMenuSticky.removeClass('fixed');
+                if(scrollTop >= self.stickyTabOffsetTop) {
+                    if( scrollTop >= menuOffsetTop && scrollTop <  tabLast ){
+                        self.$appTabMenuSticky.addClass('fixed');
+                    }else if(scrollTop >= menuOffsetTop - 76 && scrollTop <= tabLast){
+                        self.$thinqWrap.removeClass('active on');
+                    }else{
+                        self.$appTabMenuSticky.removeClass('fixed');
+                        self.$thinqWrap.addClass('active on');
+                    }
+                } else {
+                    self.$thinqWrap.removeClass('active on');
                 }
             })
         },
