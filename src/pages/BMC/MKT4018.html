@@ -94,14 +94,13 @@
                             <div class="btn-area">
                                 <button type="button" data-href="#academyPopup02" data-control="modal" class="btn pink"><span>이메일 인증하기</span></button>
                             </div>
-                            <!-- 임시 json -->
-                            <article id="academyPopup02" class="popup-wrap" data-ajax="../../../lg5-common/data-ajax/support/save.json" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
+                            <article id="academyPopup02" class="popup-wrap">
                                 <header class="pop-header">
                                     <h1 class="tit"><span>이메일 인증</span></h1>
                                 </header>
                                 <section class="pop-conts">
                                         <P class="p-title">@ac.kr 계정의 이메일로 인증해 주세요.</P>
-                                        <div class="form-wrap" id="emailCertifiedForm">
+                                        <div class="form-wrap" id="emailCertifiedForm" data-ajax="../../../lg5-common/data-ajax/support/save.json" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
                                             <dl class="forms inner-type">
                                                 <dt class="tit"><label for="email" class="req">이메일<span class="blind">필수입력</span></label></dt>
                                                 <dd class="conts">

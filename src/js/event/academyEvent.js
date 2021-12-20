@@ -4,10 +4,9 @@
     var emailCertified = {
         init: function() {
             var self = this;
-            //self.param = {};
 
             self.$cont = $('#academyPopup02');
-            self.$submitForm = self.$cont.find('#emailCertifiedForm');
+            self.$submitForm = $('#emailCertifiedForm');
             self.$completeBtn = $('#btnCertified');
             self.$loginBtn = $('#btnLogin');
 
@@ -57,13 +56,11 @@
             var self = this;
             //이메일 인증 버튼 클릭시
             self.$completeBtn.on('click', function(e) {
-                $('.email-certified-info').hide();
-                $('#academyPopup02 .pop-footer').hide();
 
                 var result = validation.validate();
 
                 if (result.success === true) {
-                    
+                   
                     var url = self.$submitForm.data('ajax'),
                     allData = validation.getAllValues(),
                     formData = new FormData();
@@ -72,12 +69,13 @@
                         formData.append(key, allData[key]);
                     }
                     
-                    lgkorUI.showLoading();
+                    //lgkorUI.showLoading();
 
                     lgkorUI.requestAjaxFileData(url, formData, function(result) {
                         var data = result.data;
 
                         if (data.resultFlag == 'Y') {
+                            console.log(data.resultFlag, url);
                             self.$submitForm.submit();
                             $('.email-certified-info').show();
                             $('#academyPopup02 .pop-footer').show();
@@ -90,18 +88,18 @@
                                 lgkorUI.alert("", {
                                     title: data.resultMessage,
                                     okBtnName: '확인',
-                                    // ok: function() {
+                                    ok: function() {
                                         
-                                    // }
+                                    }
                                 });
                             }
+                            
                         }
                     }, 'POST');
+                } else{
+                    $('.email-certified-info').hide();
+                    $('#academyPopup02 .pop-footer').hide();
                 }
-                // else{
-                //     $('.email-certified-info').hide();
-                //     $('#academyPopup02 .pop-footer').hide();
-                // }
             });
             $('#btnLogin').on('click', function(e) {
                 $('#academyPopup01').vcModal('show'); 
