@@ -425,7 +425,7 @@
                 var contentT = $('.tab-mobile-content').offset().top;
                 thinQMain.$appTabMenu.on('afterChange', function(){
                     thinQMain.$appTablist.removeClass('is-active');
-                    $(window).scrollTop(contentT);
+                    $('html, body').stop().animate({scrollTop:contentT});
                 })
                 if( this.prevSlidesToShow > 0 &&  this.prevSlidesToShow != thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')) {
                     this.reinit();
