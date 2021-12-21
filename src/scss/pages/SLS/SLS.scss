@@ -411,6 +411,7 @@ br.pc {
                         position: absolute;
                         bottom:0;
                         right:0;
+                        margin-right:0;
                         width:46px;
                         height:46px;
                         @include mobile{
