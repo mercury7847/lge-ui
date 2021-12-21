@@ -48,7 +48,7 @@ $(window).ready(function(){
 				'{{#if modelList && modelList.length > 0}}'+
 				'<div class="btn-area">'+
 					'<div class="btn-wrap">'+
-						'<a href="#n" class="btn-text btn-modelName">{{#raw modelList[0].models[0].modelDisplayName}}</a>'+
+						'<a href="{{#raw modelList[0].models[0].modelUrlPath}}" class="btn-text btn-modelName">{{#raw modelList[0].models[0].modelDisplayName}}</a>'+ //BTOCSITE-5938-413 20211221
 						'{{#if isMoreModel}}'+
 						'<button type="button" class="btn-more btn-moreModel"><span class="hidden">수상내역 더보기</span></button>'+
 						'{{/if}}'+
@@ -147,7 +147,6 @@ $(window).ready(function(){
             superCategoryTab = $('.ui_supercategory_tab');
             categoryTab = $('.ui_category_tab').hide();
             yearTab = $('.video-list-wrap .ui_year_tab');
-            yearTab.vcTab('update').vcSmoothScroll('refresh');
             contList = $('.tabs-cont.sub_cate_list');
             
             var storyId = vcui.uri.getParam('storyId');
@@ -185,7 +184,7 @@ $(window).ready(function(){
                     mode : "year"
                 }
                 setContentsList(1);
-            });
+            }).vcTab();
 
             contList.scroll(function(e){
                 if(window.breakpoint.name == "pc"){
@@ -357,7 +356,7 @@ $(window).ready(function(){
                         } else{
                             $('.video-wrap').removeClass('fixed').removeAttr('style').find('.video-inner').removeAttr('style');
                         }
-                    } else {
+                    } //else {
 
 
 
@@ -367,8 +366,8 @@ $(window).ready(function(){
                         // if(window.breakpoint.name == "mobile"){
                         //     $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
                         // }
-                    }
                 }
+            }
 
             // },300);
         }

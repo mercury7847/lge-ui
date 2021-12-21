@@ -357,7 +357,6 @@
                             /* //BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
 
                             // 비교하기 버튼 상태 변경 - 필터 복구시
-                            console.log("비교하기 버튼 상태 변경 - 필터 복구시")
                             self.compareBtnStatus();
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
@@ -464,7 +463,6 @@
                 self.cateWrapStatus();
 
                 // 비교하기 버튼 상태 변경 - 초기화시
-                console.log("비교하기 버튼 상태 변경 - 초기화시");
                 self.compareBtnStatus();
             },
 
@@ -827,7 +825,6 @@
 
 
                     // 비교하기 버튼 상태 변경 - ajax 통신시
-                    console.log("비교하기 버튼 상태 변경 - ajax 통신시")
                     self.compareBtnStatus();
 
                     /* BTOCSITE-2150 add */
@@ -1245,18 +1242,12 @@
 
             // 비교하기 버튼 상태 변경
             compareBtnStatus:function(){
-                console.log("compareBtnStatus");
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
 
                 console.log(storageCompare)
                 if(storageCompare && storageCompare['data'].length > 0){
                     var data = storageCompare['data'][0];
-
-                    console.log("data ",data);
-
-                    console.log("mapping ",$('.KRP0007 a[data-b2bcatemapping]'));
-
                     // 비교하기 버튼 상태 변경
                     $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style')
                     .parent().find('a[data-b2bcatemapping="'+(data.b2bcatemapping === 'Y' ? 'N' : 'Y')+'"]').hide();

@@ -1656,6 +1656,10 @@
 
     //청약신청하기...
     function rentalRequest(){
+        // 이중 클릭 방지
+        lgkorUI.showLoading();
+        requestButton.attr('disabled',true);
+
         var chk = false;
         //stepAccordion.expand(1, true)
         var stepperStatus = stepAccordion.getActivate();
@@ -1672,12 +1676,17 @@
         }
 
         if(!chk){
+            lgkorUI.hideLoading();
+            requestButton.attr('disabled',false);
+
             return;
        }
 
         var agreechk = requestAgreeChecker.getAllChecked();
         if(!agreechk){
             $(window).trigger("toastshow", "청약 신청을 위해 케어솔루션 청약신청 고객 동의가 필요합니다.");
+            lgkorUI.hideLoading();
+            requestButton.attr('disabled',false);
             return;
         }        
 
@@ -1738,7 +1747,6 @@
             preVisitRequest: preVisitRequest
         };
 
-        lgkorUI.showLoading();
 
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
@@ -1771,7 +1779,7 @@
                 }
             } else{
                 lgkorUI.hideLoading();
-
+                requestButton.attr('disabled',false);
                 lgkorUI.alert("", {
                     title: result.data.alert.title
                 });

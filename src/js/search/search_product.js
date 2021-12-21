@@ -795,17 +795,16 @@ if ('scrollRestoration' in history) {
 
                     // 구매가능 렌탈가능 버튼 노출 상태
                     if(data.availableforpurchaseyn === 'Y') {
-                        $('[name="availableforpurchase"]').closest('.sort-check-area').show();
+                        $('[name="availableforpurchase"]').closest('.sort-check-area').addClass('active');
                     } else {
-                        $('[name="availableforpurchase"]').closest('.sort-check-area').hide();
+                        $('[name="availableforpurchase"]').closest('.sort-check-area').removeClass('active');
                     }
 
                     if(data.availableforrentalyn === 'Y') {
-                        $('[name="availableforrental"]').closest('.sort-check-area').show();
+                        $('[name="availableforrental"]').closest('.sort-check-area').addClass('active');
                     } else {
-                        $('[name="availableforrental"]').closest('.sort-check-area').hide();
+                        $('[name="availableforrental"]').closest('.sort-check-area').removeClass('active');
                     }
-
 
                     //검색내 검색어 세팅
                     if(self.$listSorting.find('div.search-inner input').length > 0) {
