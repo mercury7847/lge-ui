@@ -271,8 +271,10 @@
         contentTab: function(){
             //전체 탭
             var self = this;
-
+            var appCateSticky = false;
             self.$stickyTab.on('tabchange', function(e, data){
+                appCateSticky = false;
+
                 $('html, body').stop().animate({scrollTop:self.stickyTabOffsetTop});
 
                 if( data.content[0] == $('.thinq-app')[0]) {
@@ -282,7 +284,7 @@
                     }else{
                         console.log('mobile !');
                         self.appSmartTabMobile.load();
-                        self.appCateMenuScroll();
+                        self.appCateMenuScroll(true);
 
                     }
                     self.appDownloadGuideSlider.load();
@@ -290,6 +292,9 @@
 
                 }
             })
+
+            
+
         },
         appSmartTabMenu: function() {
             //App 탭 > 우리집 스마트한 생활 > 메뉴 클릭
@@ -578,24 +583,28 @@
                 }
             }
         },
-        appCateMenuScroll: function(){
+        appCateMenuScroll: function(sticky){
             //App 탭 > 카테고리 메뉴 스티키
             var self = this;
-            var menuOffsetTop = self.$appTabMenuSticky.offset().top;
-            var tabLast = $('.app-tab-desc').offset().top;
+            appCateSticky = sticky;
             $(window).on('scroll', function(){
-                var scrollTop = $(window).scrollTop();
-                if(scrollTop >= self.stickyTabOffsetTop) {
-                    if( scrollTop >= menuOffsetTop && scrollTop <  tabLast ){
-                        self.$appTabMenuSticky.addClass('fixed');
-                    }else if(scrollTop >= menuOffsetTop - 76 && scrollTop <= tabLast){
+                if(appCateSticky){
+                    var scrollTop = $(window).scrollTop();
+                    var tabOffsetT = self.$appTabCont.offset().top;
+                    var tabOffsetB = $('.app-tab-desc').offset().top;
+                    
+                    if(scrollTop >= self.stickyTabOffsetTop) {
+                        if( scrollTop >= tabOffsetT && scrollTop <= tabOffsetB){
+                            self.$appTabMenuSticky.addClass('fixed');
+                        }else if(scrollTop >= tabOffsetT - 76 && scrollTop <= tabOffsetB){
+                            self.$thinqWrap.removeClass('active on');
+                        }else{
+                            self.$appTabMenuSticky.removeClass('fixed');
+                            self.$thinqWrap.addClass('active on');
+                        }
+                    } else {
                         self.$thinqWrap.removeClass('active on');
-                    }else{
-                        self.$appTabMenuSticky.removeClass('fixed');
-                        self.$thinqWrap.addClass('active on');
                     }
-                } else {
-                    self.$thinqWrap.removeClass('active on');
                 }
             })
         },
