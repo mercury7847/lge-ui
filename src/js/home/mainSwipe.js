@@ -292,7 +292,7 @@ MainSwiper.prototype = {
         });
 
         $.ajax({
-            method: 'POST',
+            method: 'GET',
             url : href,
             dataType : 'html',
             success : function( res ){
