@@ -48,7 +48,7 @@ $(window).ready(function(){
 				'{{#if modelList && modelList.length > 0}}'+
 				'<div class="btn-area">'+
 					'<div class="btn-wrap">'+
-						'<a href="#n" class="btn-text btn-modelName">{{#raw modelList[0].models[0].modelDisplayName}}</a>'+
+						'<a href="{{#raw modelList[0].models[0].modelUrlPath}}" class="btn-text btn-modelName">{{#raw modelList[0].models[0].modelDisplayName}}</a>'+ //BTOCSITE-5938-413 20211221
 						'{{#if isMoreModel}}'+
 						'<button type="button" class="btn-more btn-moreModel"><span class="hidden">수상내역 더보기</span></button>'+
 						'{{/if}}'+
