@@ -356,7 +356,7 @@ $(window).ready(function(){
                         } else{
                             $('.video-wrap').removeClass('fixed').removeAttr('style').find('.video-inner').removeAttr('style');
                         }
-                    } else {
+                    } //else {
 
 
 
@@ -366,8 +366,8 @@ $(window).ready(function(){
                         // if(window.breakpoint.name == "mobile"){
                         //     $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
                         // }
-                    }
                 }
+            }
 
             // },300);
         }
