@@ -97,12 +97,12 @@
                 self.validation = new vcui.ui.Validation('#submitForm', { 
                 
                 });
-                self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","page": "1"});
+                self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","myQna":"N","page": "1"});
             });
         },
         settings : function (){
-            var self = this;            
-            
+            var self = this;
+
             self.$pdpQna = $('#pdp_qna');
             
             // QnA 리스트 상단 영역
@@ -140,25 +140,37 @@
             // QnA 리스트 : 페이징 선택
             self.$pagination.off('page_click.page').on('page_click.page',  function(e, data) {
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var excludePrivate  = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
+                var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked) 
+                var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
                 if(excludePrivate === "on" ) {
                     excludePrivate = "Y";
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": data});                
+                if(myQna === "on" ) {
+                    myQna = "Y";
+                } else {
+                    myQna = "N";
+                }
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": data});
             });
             
             // QnA 리스트 : selectbox 선택
             self.$sortSelect.off('change').on('change', function(e){
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var excludePrivate = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined
+                var excludePrivate = ''; // on , undefined
+                var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
                 if(excludePrivate === "on" ) {
                     excludePrivate = "Y";
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": "1"});
+                if(myQna === "on" ) {
+                    myQna = "Y";
+                } else {
+                    myQna = "N";
+                }
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
             });
 
             // 닫기 버튼 클릭 시 form 전체 입력 값 초기화
@@ -169,14 +181,37 @@
             // 비밀글 제외 체크
             self.$qnaType.find('#secretSort').off('click').on('click', function(){
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var excludePrivate  = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
-                //var questionTypeName = self.$sortSelect.vcSelectbox('text');
+                var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
+                var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
                 if(excludePrivate === "on" ) {
                     excludePrivate = "Y";
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": "1"});
+                if(myQna === "on" ) {
+                    myQna = "Y";
+                } else {
+                    myQna = "N";
+                }
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
+            });
+
+            // 내 문의 보기 체크
+            self.$qnaType.find('#myWriteView').off('click').on('click', function(){
+                var questionTypeCode = self.$sortSelect.vcSelectbox('value');
+                var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
+                var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
+                if(excludePrivate === "on" ) {
+                    excludePrivate = "Y";
+                } else {
+                    excludePrivate = "N";
+                }
+                if(myQna === "on" ) {
+                    myQna = "Y";
+                } else {
+                    myQna = "N";
+                }
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
             });
 
             self.$writePopup.find('.btn-confirm').on('click', function() {
