@@ -87,17 +87,31 @@
 	/* BTOCSITE-4492 */
 	&.m-hdline-top{
 		.visual-wrap{
+			//BTOCSITE-8039
+			.text {
+				display: none;
+			}
 			.bullet-list{
 				display:none;
 			}
 		}
 		@include mobile{
 			.visual-wrap{
+				.text {
+					display: block;
+					margin-top:20px;
+					font-size:15px;
+					line-height:1.53;
+				}
 				.bullet-list{
 					display:block;
 				}
 			}
 			.text-wrap{
+				//BTOCSITE-8039
+				.text {
+					display: none;
+				}
 				.bullet-list{
 					display:none;
 				}
@@ -108,6 +122,8 @@
 					margin:0 0 28px 0;
 				}
 			}
+			//BTOCSITE-8039
+			
 		}
 	}
 	/* //BTOCSITE-4492 */

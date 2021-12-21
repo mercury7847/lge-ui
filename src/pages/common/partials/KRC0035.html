@@ -55,8 +55,12 @@
     @@if ( !context.mHdlineTop ) {
     <section class="component KRC0035 @@align-class1 @@imgSizeType @@bg-color">
     }
-    @@if ( context.mHdlineTop ) {
+    @@if ( context.mHdlineTop && !context.copyBottom ) {
     <section class="component KRC0035 @@align-class1 @@imgSizeType m-hdline-top">
+    }
+
+    @@if ( context.mHdlineTop && context.copyBottom ) {
+        <section class="component KRC0035 @@align-class1 @@imgSizeType m-hdline-top m-copy-bottom">
     }
         <div class="component-inner">
             <div class="inner">
@@ -136,6 +140,10 @@
                         </div>
                     </div>
                     <!-- // carousel slide -->
+                    @@if ( context.copyBottom ) {
+                        <div class="text @@font-class3 bottom-copy">바디카피 영역입니다. 바디카피 영역입니다. 바디카피 영역입니다. </div>
+                    }
+
                     @@if ( context.mHdlineTop ) {
                     <ul class="bullet-list">
                         <li class="b-txt">디스클레이머 영역입니다.</li>

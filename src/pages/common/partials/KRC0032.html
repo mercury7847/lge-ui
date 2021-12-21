@@ -48,11 +48,11 @@
     -->
 	<section class="component KRC0032 @@stageSize">
         <div class="component-box">
-            <div class="usp-banner-wrap ui_carousel_slider">
+            <div class="usp-banner-wrap ui_carousel_slider" data-auto-speed="@@autoSpeed" data-dot-type="@@dotType" data-auto-count="@@autoCount">
                 <!-- Indicator Area -->
                 <div class="indi-wrap">
-                    <ul class="ui_carousel_dots indi-conts">
-                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    <ul class="ui_carousel_dots indi-conts bar-type">
+                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span><div class="bar"></div></button></li>
                     </ul>
                     <span class="ui_carousel_play play">
                         <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
@@ -123,7 +123,7 @@
                         <!-- 210208 수정(a태그 감싸기 button 변경) -->
                         <a href="#">
                             <div class="animation-area">
-                                <video autoplay="" muted="" loop="">
+                                <video muted="" loop="">
                                     <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
                                     <!-- WEBM 동영상을 제공하는 경우
                                     <source src="/lg5-common/videos/signature_rain_view.webm" type="video/webm">
