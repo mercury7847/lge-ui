@@ -285,7 +285,6 @@
                         console.log('mobile !');
                         self.appSmartTabMobile.load();
                         self.appCateMenuScroll(true);
-
                     }
                     self.appDownloadGuideSlider.load();
                 } else {
@@ -423,8 +422,8 @@
                 thinQMain.$appTabCont.filter('.slick-initialized').slick('setPosition');
             },
             load: function(){
+                var contentT = $('.tab-mobile-content').offset().top;
                 thinQMain.$appTabMenu.on('afterChange', function(){
-                    var contentT = $('.tab-mobile-content').offset().top;
                     thinQMain.$appTablist.removeClass('is-active');
                     $(window).scrollTop(contentT);
                 })
