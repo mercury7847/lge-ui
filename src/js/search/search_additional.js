@@ -189,6 +189,7 @@ if ('scrollRestoration' in history) {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
                 $(window).scrollTop(0); //BTOCSITE-2216
+                $('[name="availableforpurchase"]').closest('.sort-check-area').addClass('active'); // BTOCSITE-16 검색 구획정리
                 
                 vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     self.setting();
