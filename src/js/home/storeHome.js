@@ -110,47 +110,35 @@ $(function(){
             speed: 150,
             touchThreshold: 100
         };
-        
-        function getListHTML(item){
-            var listTemp = '';
-
-            listTemp += '<li class="slide-conts ui_carousel_slide">';
-            listTemp += '<a href="' + item.modelUrlPath + '" class="slide-box" data-ec-product="' + item.ecProduct + '">';
-            listTemp += '<div class="img"><img src="' + item.smallImageAddr + '" alt="' + item.modelDisplayName + '"></div>';
-            listTemp += '<div class="info">';
-            listTemp += '<div class="model">' + item.modelDisplayName + '</div>';
-            listTemp += '<div class="code">' + item.modelName + '</div>';
-
-                    
-            if (item.obsOriginalPrice != "") {
-                listTemp += '<div class="price-area">';
-
-                if( item.obsOriginalPrice != item.obsSellingPrice) {
-                    listTemp += '<div class="original">';
-                    listTemp +=     '<em class="blind">기존가격</em>';
-                    listTemp +=     '<span class="price">' + item.obsOriginalPrice + '<em>원</em></span>';
-                    listTemp += '</div>';
-                }
-
-                    listTemp += '<div class="total">';
-                    listTemp +=     '<em class="blind">판매가격</em>';
-
-                    if(item.obsOriginalPrice != item.obsSellingPrice) {
-                        listTemp += '<span class="price">' + item.obsSellingPrice + '<em>원</em></span>';
-                    } else {
-                        listTemp += '<span class="price">' + item.obsOriginalPrice + '<em>원</em></span>';
-                    }
-                    listTemp += '</div>'; 
-                listTemp += '</div>';
-            }                        
-            listTemp += '</div>';
-            listTemp += '</a>';
-            listTemp += '</li>';
-
-
-            return listTemp;
-        }
-
+        var listTemp = 
+            '<li class="slide-conts ui_carousel_slide">' + 
+                '<a href="{{modelUrlPath}}" class="slide-box" data-ec-product="{{ecProduct}}">' + 
+                    '<div class="img"><img src="{{smallImageAddr}}" alt="{{modelDisplayName}}"></div>' + 
+                    '<div class="info">' + 
+                        '<div class="model">{{#raw modelDisplayName}}</div>' + 
+                        '<div class="code">{{modelName}}</div>' + 
+                        '{{#if obsOriginalPrice != ""}}'+
+                        '<div class="price-area">' + 
+                            '{{#if obsOriginalPrice != obsSellingPrice}}'+
+                            '<div class="original">' + 
+                                '<em class="blind">기존가격</em>' + 
+                                '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' + 
+                            '</div>' + 
+                            '{{/if}}'+
+                            '<div class="total">' + 
+                                '<em class="blind">판매가격</em>' + 
+                                '{{#if obsOriginalPrice != obsSellingPrice}}'+
+                                    '<span class="price">{{obsSellingPrice}}<em>원</em></span>' + 
+                                '{{#else}}'+
+                                    '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' + 
+                                '{{/if}}'+
+                            '</div>' + 
+                        '</div>' + 
+                        '{{/if}}'+
+                    '</div>' + 
+                '</a>' + 
+            '</li>';
+       
         function getEcCategoryName(item){
             if( item.subCategoryName == "" || item.subCategoryName == undefined) {
                 return item.superCategoryName + "/" + item.categoryName 
@@ -196,8 +184,7 @@ $(function(){
                         }
 
                         listItem.ecProduct = ConvertSystemSourcetoHtml(JSON.stringify(ecProduct));
-                        //listHtml += vcui.template(listTemp, listItem)
-                        listHtml += getListHTML(listItem);
+                        listHtml += vcui.template(listTemp, listItem)                        
                     })
                     $recomCarousel.find('.slide-track').empty().append(listHtml);
                     carouselInit(window.breakpoint)
