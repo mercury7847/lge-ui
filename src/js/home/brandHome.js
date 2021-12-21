@@ -424,7 +424,9 @@
             },
             load: function(){
                 thinQMain.$appTabMenu.on('afterChange', function(){
+                    var contentT = $('.tab-mobile-content').offset().top;
                     thinQMain.$appTablist.removeClass('is-active');
+                    $(window).scrollTop(contentT);
                 })
                 if( this.prevSlidesToShow > 0 &&  this.prevSlidesToShow != thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')) {
                     this.reinit();
