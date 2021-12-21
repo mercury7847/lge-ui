@@ -1,10 +1,19 @@
 (function() {
     var validation;
-    
+    var isLogin = lgkorUI.isLogin;
+
+
     var emailCertified = {
         init: function() {
             var self = this;
-
+            console.log(isLogin);
+            if (!isLogin) {
+                $('.login-no').show();
+                $('.login-ok').hide();
+            } else {
+                $('.login-ok').show();
+                $('.login-no').hide();
+            }
             self.$cont = $('#academyPopup02');
             self.$submitForm = $('#emailCertifiedForm');
             self.$completeBtn = $('#btnCertified');
@@ -56,26 +65,23 @@
             var self = this;
             //이메일 인증 버튼 클릭시
             self.$completeBtn.on('click', function(e) {
+                e.preventDefault();
 
                 var result = validation.validate();
 
                 if (result.success === true) {
-                   
-                    var url = self.$submitForm.data('ajax'),
-                    allData = validation.getAllValues(),
-                    formData = new FormData();
 
-                    for (var key in allData) {
-                        formData.append(key, allData[key]);
-                    }
-                    
-                    //lgkorUI.showLoading();
+                    var url = self.$submitForm.data('ajax');
+                    var allData = validation.getAllValues();
 
-                    lgkorUI.requestAjaxFileData(url, formData, function(result) {
+                    lgkorUI.showLoading();
+
+                    lgkorUI.requestAjaxFileData(url, allData, function(result) {
                         var data = result.data;
-
+                        
                         if (data.resultFlag == 'Y') {
                             console.log(data.resultFlag, url);
+                            lgkorUI.hideLoading();
                             self.$submitForm.submit();
                             $('.email-certified-info').show();
                             $('#academyPopup02 .pop-footer').show();
@@ -89,11 +95,9 @@
                                     title: data.resultMessage,
                                     okBtnName: '확인',
                                     ok: function() {
-                                        
                                     }
                                 });
                             }
-                            
                         }
                     }, 'POST');
                 } else{
@@ -113,7 +117,7 @@
                 $('#academyPopup02').vcModal('hide'); 
                 location.reload();
             });
-        },
+        }
     }
 
     $(window).ready(function() {
