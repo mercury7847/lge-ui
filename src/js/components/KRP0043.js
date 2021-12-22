@@ -158,7 +158,7 @@
             // QnA 리스트 : selectbox 선택
             self.$sortSelect.off('change').on('change', function(e){
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var excludePrivate = ''; // on , undefined
+                var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked) 
                 var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
                 if(excludePrivate === "on" ) {
                     excludePrivate = "Y";
