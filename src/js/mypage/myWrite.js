@@ -37,7 +37,6 @@
                 self.$pagination = self.$sectionInner.find('div.pagination').vcPagination();
                 self.$noData = self.$lnbContents.find('div.no-data');
                 self.$detailPopup = self.$contWrap.find('#popupDetail');
-                self.$qnaBtn = self.$modalWrap.find('.btn-qna'); // 추가 BTOCSITE-9642
             },
 
             dataInit: function() {
@@ -88,9 +87,9 @@
                     });
                 });
 
-                //BTOCSITE-9642 - start
-                self.$qnaBtn.on('click', function(){
-                    var dataURL = self.$qnaBtn.data('url');
+                //BTOCSITE-9642 - Q&A로 이동 버튼 추가 start
+                self.$modalWrap.on('click','.btn-qna',function(){
+                    var dataURL = $(this).data('url');
 
                     if(!dataURL || dataURL == "URL_NOT_FOUND") {
                         lgkorUI.alert("", {
@@ -103,7 +102,7 @@
                         location.href = dataURL + '#pdp_qna';
                     }
                 });
-                //BTOCSITE-9642 - end
+                //BTOCSITE-9642 - Q&A로 이동 버튼 추가 end
             },
 
             requestData: function(param) {
