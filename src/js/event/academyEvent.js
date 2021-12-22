@@ -2,7 +2,7 @@
     var validation;
     var isLogin = lgkorUI.isLogin;
     // 아카데미 회원 임시 변수
-    var academyMember = flase;
+    var academyMember = false;
 
     var emailCertified = {
         init: function() {
