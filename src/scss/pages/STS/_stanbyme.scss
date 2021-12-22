@@ -240,7 +240,7 @@
 					>a{
 						align-items:center;
 						p{
-							line-height:20px;
+							line-height:26px;
 						}
 						@include mobile{
 							margin-right:44px;
@@ -979,6 +979,26 @@
 			.pc-only{
 				display:none;
 			}
+		}
+	}
+}
+
+.flag-wrap {
+	.notice{
+		display: inline-block;
+		width: 60px;
+		border: 1px solid #000;
+		border-radius: 4px;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 20px;
+		text-align: center;
+		vertical-align: middle;
+		color:#000;
+	}
+	@include mobile{
+		.notice {
+			width: 64px;
 		}
 	}
 }

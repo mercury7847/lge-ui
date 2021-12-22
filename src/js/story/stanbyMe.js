@@ -3,15 +3,24 @@
     '<tr>' +
         '<td class="board-tit">' +
             '<a href="{{url}}">' +
-                '{{# if (newFlag == "Y") { #}}' +
+                '{{#if newFlag == "Y" }}' +
                 '<div class="flag-wrap bar-type">' +
                     '<span class="flag"><span class="blind">최신 게시글</span>NEW</span>' +
                 '</div>' +
-                '{{# } #}}' +
+                '{{/if}}' +
+
+                // -S- BTOCSITE-8824 스탠바이미 클럽 Q&A게시판 공지  기능 요청
+                '{{#if noticeFlag == "Y" }}' +
+                '<div class="flag-wrap bar-type">' +
+                    '<span class="notice"><span class="blind">공지</span>공지</span>' +
+                '</div>' +
+                '{{/if}}' +
+                // -E- BTOCSITE-8824 스탠바이미 클럽 Q&A게시판 공지  기능 요청
+
                 '<p>{{title}}</p>' +
-                '{{# if (clubDCount > 0) { #}}' +
+                '{{#if clubDCount > 0 }}' +
                     '<span class="count">{{clubDCount}}</span>' +
-                '{{# } #}}' +
+                '{{/if}}' +
             '</a>' +
         '</td>' +
         '<td>{{creationUserName}}</td>' +
@@ -97,6 +106,7 @@
                         self.$contents.find('.ui_imageinput').vcImageFileInput({
                             individualFlag:true,
                             totalSize: 40 * 1024 * 1024,
+                            fileNameSize : 50, // 파일명 최대 50자 이내(.확장자 포함)
                             message: {
                                 name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
                                 format: 'jpg, jpeg, png, gif 파일만 첨부 가능합니다.',
@@ -240,6 +250,7 @@
 
                 lgkorUI.requestAjaxDataPost(url, self.params, function(d) {
                     var html = '',
+                        noticeList = d.noticeList, // BTOCSITE-8824 스탠바이미 클럽 Q&A게시판 공지  기능 요청
                         data = d.data,
                         page = d.pagination;
 
@@ -247,7 +258,14 @@
 
                     self.$listWrap.find('tbody').find('tr').not( self.$noData).remove();
 
-                    if (data.length) {
+                    // BTOCSITE-8824 스탠바이미 클럽 Q&A게시판 공지  기능 요청
+                    if (data.length || noticeList.length) {
+                        noticeList.forEach(function(item) {
+                            if(!item.clubDCount) item.clubDCount = 0;
+                            item.newFlag = "N";
+                            item.hitCnt = "" + item.hitCnt;
+                            html += vcui.template(listTmpl, item);
+                        });
                         data.forEach(function(item) {
                             item.hitCnt = "" + item.hitCnt;
                             html += vcui.template(listTmpl, item);
