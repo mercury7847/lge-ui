@@ -678,10 +678,10 @@
 
             self.$writeForm.find('.ui_imageinput').vcImageFileInput({
                 individualFlag:true,
-                totalSize: 4 * 1024 * 1024, //  전체 파일 토탈 용량 값 : 4 * 1024 * 1024(4MB):dev test용 / 40 * 1024 * 1024 (40MB):stg,prd
+                totalSize: 40 * 1024 * 1024, //  전체 파일 토탈 용량 값 : 4 * 1024 * 1024(4MB):dev test용 / 40 * 1024 * 1024 (40MB):stg,prd
                 fileNameSize : 50, // 파일명 최대 50자 이내(.확장자 포함)
                 individual: {
-                    size: 1 * 1024 * 1024 // 개인 파일 업로드 시 용량 값 : 1 * 1024 * 1024(1MB):dev / 10 * 1024 * 1024 (10MB)
+                    size: 10 * 1024 * 1024 // 개인 파일 업로드 시 용량 값 : 1 * 1024 * 1024(1MB):dev / 10 * 1024 * 1024 (10MB)
                 },
                 message: {
                     name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
