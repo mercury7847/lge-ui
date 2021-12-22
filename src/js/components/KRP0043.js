@@ -179,7 +179,7 @@
             });
 
             // 비밀글 제외 체크
-            self.$qnaType.find('#secretSort').off('click').on('click', function(){
+            self.$qnaType.find('#secretSort').on('click', function(){
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
                 var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
                 var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
@@ -197,7 +197,7 @@
             });
 
             // 내 문의 보기 체크
-            self.$qnaType.find('#myWriteView').off('click').on('click', function(){
+            self.$qnaType.find('#myWriteView').on('click', function(){
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
                 var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
                 var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
