@@ -1,7 +1,8 @@
 (function() {
     var validation;
     var isLogin = lgkorUI.isLogin;
-
+    // 아카데미 회원 임시 변수
+    var academyMember = flase;
 
     var emailCertified = {
         init: function() {
@@ -11,8 +12,12 @@
                 $('.login-no').show();
                 $('.login-ok').hide();
             } else {
-                $('.login-ok').show();
-                $('.login-no').hide();
+                if(academyMember){
+
+                } else{
+                    $('.login-ok').show();
+                    $('.login-no').hide();
+                }
             }
             self.$cont = $('#academyPopup02');
             self.$submitForm = $('#emailCertifiedForm');
@@ -106,7 +111,8 @@
                 }
             });
             $('#btnLogin').on('click', function(e) {
-                $('#academyPopup01').vcModal('show'); 
+                //$('#academyPopup01').vcModal('show'); 
+                location.href='/sso/api/emp/Login';
             });
             $('#academyPopup01 .btn-list').on('click', function(e) {
                 $('#academyPopup01').vcModal('hide'); 

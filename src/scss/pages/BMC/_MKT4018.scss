@@ -364,3 +364,87 @@
         }
     }
 }
+
+.email-certify{
+    width:100%;
+    padding-top: 14.58%;
+    @include mobile{
+        padding-top: 36.11%;
+    }
+    .title-box{
+        text-align: center;
+        .title{
+            padding-top: 134px;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 59px;
+            margin-bottom: 12px;
+            position: relative;
+            @include mobile{
+                font-size: 27px;
+                line-height: 40px;
+                margin-bottom: 7px;
+            }
+            &:before{
+                content: '';
+                position: absolute;
+                top:0;
+                left:50%;
+                margin-left: -55px;
+                width:110px;
+                height: 110px;
+                border-radius: 50%;
+                background: #f4f4f4 url(/lg5-common/images/BMC/img_CS_email_80.svg) center center no-repeat;
+                background-size: 80px 80px;
+            }
+        }
+        .sub-title{
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 27px;
+            margin-bottom: 6px;
+            @include mobile{
+                font-size: 15px;
+                line-height: 24px;
+            }
+        }
+        .text{
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 27px;
+            margin-bottom: 32px;
+            @include mobile{
+                font-size: 15px;
+                line-height: 24px;
+                margin-bottom: 27px;
+            }
+        }
+    }
+    .info-text{
+        text-align: center;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 28px;
+        color:#666666;
+        margin-bottom: 120px;
+        @include mobile{
+            font-size: 15px;
+            line-height: 23px;
+            margin-bottom: 59px;
+        }
+    }
+    .logo-link{
+        text-align: center;
+        a {
+            display: inline-block;
+            width: 109px;
+            height: 29px;
+            background-image: url(/lg5-common/images/header/lg_logo.svg);
+            background-size: 100% 100%;
+            @include mobile{
+                width: 104.5px;
+                height: 27.5px;
+            }
+        }
+    }
+}
