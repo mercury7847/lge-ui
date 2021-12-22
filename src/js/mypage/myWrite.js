@@ -28,6 +28,7 @@
             setting: function() {
                 var self = this;
                 self.$contWrap = $('div.cont-wrap');
+                self.$modalWrap = $('#event-modal'); // 추가 BTOCSITE-9642
                 self.$lnbContents = self.$contWrap.find('div.lnb-contents');
                 self.$mySort = self.$lnbContents.find('div.my-sort');
                 self.$sectionInner = self.$lnbContents.find('div.section-inner');
@@ -36,6 +37,7 @@
                 self.$pagination = self.$sectionInner.find('div.pagination').vcPagination();
                 self.$noData = self.$lnbContents.find('div.no-data');
                 self.$detailPopup = self.$contWrap.find('#popupDetail');
+                self.$qnaBtn = self.$modalWrap.find('.btn-qna'); // 추가 BTOCSITE-9642
             },
 
             dataInit: function() {
@@ -85,6 +87,23 @@
                         "page": data
                     });
                 });
+
+                //BTOCSITE-9642 - start
+                self.$qnaBtn.on('click', function(){
+                    var dataURL = self.$qnaBtn.data('url');
+
+                    if(!dataURL || dataURL == "URL_NOT_FOUND") {
+                        lgkorUI.alert("", {
+                            title: "죄송합니다. 해당 제품은 단종되어 Q&A로 이동되지 않습니다.",
+                            ok: function(){
+                            
+                            }
+                        });
+                    } else {
+                        location.href = dataURL + '#pdp_qna';
+                    }
+                });
+                //BTOCSITE-9642 - end
             },
 
             requestData: function(param) {
@@ -103,7 +122,7 @@
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                             self.$myLists.append(vcui.template(listItemTemplate, item));
                         });
-                        self.checkNoData();        
+                        self.checkNoData();
                     }
                 });
             },
@@ -125,12 +144,12 @@
                 var self = this;
                 if(url) {
                     lgkorUI.requestAjaxData(url, null, function(result){
-                        self.openModalFromHtml(result, eventTarget);
+                        self.openModalFromHtml(result, eventTarget, url); // url 추가 211221
                     }, null, "html");
                 }
             },
 
-            openModalFromHtml: function(html, eventTarget) {
+            openModalFromHtml: function(html, eventTarget, url) { // url 추가 211221
                 /*
                 $('#event-modal').off('.modal-link-event').on('click.modal-link-event','button.modal-link',function(e){
                     var title = $(this).data('title');
@@ -224,7 +243,7 @@
                 });
             }
         };
-        myWrite.init();                
+        myWrite.init();
 
         $(window).on('load', function(){
             myWrite.dataInit();
