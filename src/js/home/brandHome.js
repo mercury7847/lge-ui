@@ -127,11 +127,14 @@
                         $parent.addClass('is-active');
                         $(this).children('.txt').text('닫기');
                         self.appSmartTabMobile.destroy();
+                        self.$appTabCont.slick('slickSetOption', 'swipe', false);
                     }else{
                         $parent.removeClass('is-active');
                         $(this).children('.txt').text('전체보기');
                         var currentIndex = self.$appTablist.filter('.slick-current').index();
                         self.appSmartTabMobile.init(currentIndex); 
+                        self.$appTabCont.slick('slickSetOption', 'swipe', true);
+                        
                     }
                 }
                 
@@ -312,13 +315,13 @@
                     var menuIdx = $(this).parent().index();
                     var contentT = $('.tab-mobile-content').offset().top;
 
-                    $(this).parent().addClass('is-active').siblings().removeClass('is-active');
-                    $(this).parent().addClass('slick-current').siblings().removeClass('slick-current');
+                    $(this).parent().addClass('slick-current is-active').siblings().removeClass('slick-current is-active');
+                    
                     thinQMain.$appTabMenu.slick('slickGoTo', menuIdx);
                     $(window).scrollTop(contentT);
 
                     if( !self.$appTabMenu.hasClass('slick-initialized')) {
-                        self.$appTabBtnAll.trigger('click')
+                        self.$appTabBtnAll.trigger('click');
                     }
                 }
             })
@@ -407,6 +410,8 @@
             },
             init: function(index){
                 var tabs = this;
+                var contentT = $('.tab-mobile-content').offset().top;
+
                 thinQMain.$appTabMenu.not('.slick-initialized').slick(tabs.slideNavConfig);
                 thinQMain.$appTabCont.not('.slick-initialized').slick(tabs.slideContentConfig);
                 
@@ -414,6 +419,11 @@
                     if( index != undefined ) {
                         thinQMain.$appTabMenu.slick('slickGoTo', index);
                     }
+
+                    thinQMain.$appTabMenu.on('afterChange', function(){
+                        thinQMain.$appTablist.removeClass('is-active');
+                        $('html, body').stop().animate({scrollTop:contentT});
+                    })
                 }
                 
             },
@@ -422,11 +432,6 @@
                 thinQMain.$appTabCont.filter('.slick-initialized').slick('setPosition');
             },
             load: function(){
-                var contentT = $('.tab-mobile-content').offset().top;
-                thinQMain.$appTabMenu.on('afterChange', function(){
-                    thinQMain.$appTablist.removeClass('is-active');
-                    $('html, body').stop().animate({scrollTop:contentT});
-                })
                 if( this.prevSlidesToShow > 0 &&  this.prevSlidesToShow != thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')) {
                     this.reinit();
                     this.prevSlidesToShow = thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow');
@@ -440,9 +445,6 @@
                 thinQMain.$appTabMenu.filter('.slick-initialized').slick('unslick');
                 thinQMain.$appTabMenu.find('.menu-item').removeClass('active-first active-last')
                 thinQMain.$appTabMenu.find('.menu-item a').removeAttr('tabindex');
-            },
-            height: function(){
-                
             }
         },
         appDownloadGuideSlider:{
