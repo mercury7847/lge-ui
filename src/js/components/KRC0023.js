@@ -20,7 +20,7 @@ $(window).ready(function(){
                 speed: 150,
                 touchThreshold: 100
             }
-        };
+        });
 
         $(".KRC0023").not(".slidesToShowMore").find('.ui_carousel_slider2').vcToggleCarousel({
             pcOption: "unbuild",
