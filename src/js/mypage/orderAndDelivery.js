@@ -764,7 +764,10 @@
         //     setMethodReceiptPop();
         // });
 
-        
+        // BTOCSITE-5938-234 추가 요건 처리 - 팝업창 닫았을때 입력한 취소사유 count값 초기화
+        $('#popup-cancel, #popup-takeback').on('click', ".ui_modal_close", function(e){
+            $(this).closest('article').find('.count em').html('0');
+        });
     }
 
     function sendDetailPage(dataID){
@@ -1198,7 +1201,7 @@
                 $('#popup-takeback').find('textarea').focus();
             }, 10);
         } else{
-            $('#popup-cancel').find('#txt-count11 em').html('0'); // BTOCSITE-5938-234 추가
+            $('#popup-takeback').find('.count em').html('0'); // BTOCSITE-5938-234 추가
             $('#popup-takeback').find('textarea').attr('disabled', "disabled").val('');
         }
     }
@@ -1211,7 +1214,7 @@
                 $('#popup-cancel').find('textarea').focus();
             }, 10);
         } else{
-            $('#popup-cancel').find('#txt-count1 em').html('0'); // BTOCSITE-5938-234 추가
+            $('#popup-cancel').find('.count em').html('0'); // BTOCSITE-5938-234 추가
             $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
         }
     }
