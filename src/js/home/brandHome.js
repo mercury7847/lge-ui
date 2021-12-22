@@ -123,15 +123,16 @@
                         self.appSmartTab.init(currentIndex);
                     }
                 }else{
+                    var currentIndex = self.$appTablist.filter('.slick-current').index();
                     if(!$parent.hasClass('is-active')){
                         $parent.addClass('is-active');
                         $(this).children('.txt').text('닫기');
                         self.appSmartTabMobile.destroy();
                         self.$appTabCont.slick('slickSetOption', 'swipe', false);
+                        self.$appTablist.eq(currentIndex).addClass('is-active')
                     }else{
                         $parent.removeClass('is-active');
                         $(this).children('.txt').text('전체보기');
-                        var currentIndex = self.$appTablist.filter('.slick-current').index();
                         self.appSmartTabMobile.init(currentIndex); 
                         self.$appTabCont.slick('slickSetOption', 'swipe', true);
                         
@@ -315,7 +316,7 @@
                     var menuIdx = $(this).parent().index();
                     var contentT = $('.tab-mobile-content').offset().top;
 
-                    $(this).parent().addClass('slick-current is-active').siblings().removeClass('slick-current is-active');
+                    $(this).parent().addClass('slick-current').siblings().removeClass('slick-current');
                     
                     thinQMain.$appTabMenu.slick('slickGoTo', menuIdx);
                     $(window).scrollTop(contentT);
