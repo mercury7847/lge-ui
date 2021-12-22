@@ -1148,7 +1148,9 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         break;
                     case 'focusout':
 
-                        if (self.$slider && self.$slider[0] && e.relatedTarget && !$.contains(self.$slider[0], e.relatedTarget)) {
+                    console.log(e.relatedTarget)
+                        if (self.$slider && self.$slider[0] && !e.relatedTarget && !$.contains(self.$slider[0], e.relatedTarget)) {
+                            console.log('out 1111')
                             self.focussed = false;
                             self.autoPlay();
                             self.triggerHandler('carouseldeactive');

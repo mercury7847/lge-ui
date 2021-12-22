@@ -7,19 +7,20 @@ $(window).ready(function(){
 
 		var option = {
 			root: null,
-			rootMargin: '100px 0px 100px',
-			threshold: 1.0
+			threshold: 0.5
 		};
+
+		function carouselPlay(target){
+			$(target).find('.ui_carousel_play.play button').trigger('click');
+		}
+
+		function carouselStop(target){
+			$(target).find('.ui_carousel_play.stop button').trigger('click');
+		}
 		  
 		var io = new IntersectionObserver((entries, observer) => {
 			entries.forEach((entry) => {
-			  	if(entry.isIntersecting){
-					$(entry.target).find('.ui_carousel_play.play button').trigger('click');
-					
-			  	} else {
-					//entry.target.classList.remove('visible');
-					$(entry.target).find('.ui_carousel_play.stop button').trigger('click');
-			  	}
+				entry.isIntersecting ? carouselPlay(entry.target) : carouselStop(entry.target);
 			});                            
 		}, option);
 		
@@ -75,19 +76,37 @@ $(window).ready(function(){
 				autoplaySpeed: autoPlaySpeed,
 				prevArrow:'.btn-arrow.prev',
 				nextArrow:'.btn-arrow.next',
+				// dotsSelector: '.ui_wideslider_dots',
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				playSelector: '.btn-play.play',
 				adaptiveHeight:true,
 				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
 				speed: 150,
-				touchThreshold: 100
+				touchThreshold: 100,
+				customPaging: function(slide, i) {      // 인디케이터 버튼 마크업
+					var $slide = $(slide.$slider);
 
+					if( $slide.hasClass('indi-type-bar')) {
+						console.log('indi-type-bar')
+					}
+
+					if( $slide.hasClass('indi-type-bar-text')) {
+						console.log('indi-type-bar-text')
+					}
+
+					return $('<button type="button" class="btn-indi" />').html('<span class="blind">' + i + 1 + '번 내용 보깃</span>');
+				},
 			}).on('carouselbeforechange', function(e, slide, prev, next){
 
 				if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
 					$(slide.$slides.get(prev)).find("video").get(0).currentTime = 0;
 					$(slide.$slides.get(prev)).find("video").get(0).pause();
+				}
+
+				if($(slide.$slides.get(prev)).find('.youtube-box .video-box-closeset').length){
+					console.log('youtube')
+					$(slide.$slides.get(prev)).find(".close-video").trigger('click');
 				}
 
 

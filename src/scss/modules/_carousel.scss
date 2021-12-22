@@ -149,6 +149,115 @@
     }
 }
 
+//custom indicator //BTOCSITE-8039 컴포넌트 변경건으로 hero-banner에서만 쓰는게 아닌 공통으로 쓰게끔 위치 변경
+.custom-indi-wrap {
+    position:absolute;
+    left:20px;
+    bottom:4px;
+    right:20px;
+    z-index:10;
+    font-size:0;
+    text-align:center;
+    .custom-indis {
+        display:inline-block;
+        max-width:calc(100% - 30px);
+        vertical-align:top;
+        .indis {
+            display:table;
+            width:auto;
+            li {
+                display:table-cell;
+                width:104px;
+                padding:0 2px;
+                .btn-indi {
+                    position:relative;
+                    display:block;
+                    width:100%;
+                    overflow:hidden;
+                    text-align:left;
+                    &::after {
+                        content:' ';
+                        display:block;
+                        position:relative;
+                        width:100%;
+                        height:4px;
+                        background:rgba(#fff, .4);
+                    }
+                    p {
+                        width:0;
+                        height:24px;
+                        color:#fff;
+                        font-size:16px;
+                        line-height:24px;
+                        white-space:nowrap;
+                        overflow:hidden;
+                        text-overflow:ellipsis;
+                        opacity:0;
+                    }
+                    .bar {
+                        position:absolute;
+                        left:0;
+                        bottom:0;
+                        width:0;
+                        height:4px;
+                        background:#fff;
+                    }
+                }
+
+                &.on {
+                    width:504px;
+                    .btn-indi {
+                        p {
+                            width:auto;
+                            opacity:1;
+                        }
+                        @keyframes bars {
+                            from { width:0; }
+                            to { width:100%; }
+                        }
+                        .bar {
+                            width:100%;
+                            animation-name:pulse;
+                            //animation-duration:5s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .indi-control {
+        display:inline-block; 
+        position:relative; 
+        width:26px;
+        height:26px;
+        //margin-top:12px;
+        //margin-left:2px;
+        font-size:0;
+        text-align:center;
+        //&::before, &::after {
+        //    content:' ';
+        //    display:inline-block;
+        //    width:2px;
+        //    height:10px;
+        //    margin:0 2px;
+        //    background-color:#fff;
+        //    vertical-align:middle;
+        //}
+        &:before {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            background: url('/lg5-common/images/icons/btn-carousel-hero-pause.svg') no-repeat 0 0;
+            content: '';
+        }
+        &.play {
+            &:before {
+                background-image: url('/lg5-common/images/icons/btn-carousel-hero-play.svg');
+            }
+        }
+    }
+}
+
 // visual slide COMMON
 .slide-wrap {
     position:relative;
@@ -289,113 +398,6 @@
                             border-radius:30px;
                         }
                     }
-                }
-            }
-        }
-    }
-    .custom-indi-wrap {
-        position:absolute;
-        left:20px;
-        bottom:4px;
-        right:20px;
-        z-index:10;
-        font-size:0;
-        text-align:center;
-        .custom-indis {
-            display:inline-block;
-            max-width:calc(100% - 30px);
-            vertical-align:top;
-            .indis {
-                display:table;
-                width:auto;
-                li {
-                    display:table-cell;
-                    width:104px;
-                    padding:0 2px;
-                    .btn-indi {
-                        position:relative;
-                        display:block;
-                        width:100%;
-                        overflow:hidden;
-                        text-align:left;
-                        &::after {
-                            content:' ';
-                            display:block;
-                            position:relative;
-                            width:100%;
-                            height:4px;
-                            background:rgba(#fff, .4);
-                        }
-                        p {
-                            width:0;
-                            height:24px;
-                            color:#fff;
-                            font-size:16px;
-                            line-height:24px;
-                            white-space:nowrap;
-                            overflow:hidden;
-                            text-overflow:ellipsis;
-                            opacity:0;
-                        }
-                        .bar {
-                            position:absolute;
-                            left:0;
-                            bottom:0;
-                            width:0;
-                            height:4px;
-                            background:#fff;
-                        }
-                    }
-
-                    &.on {
-                        width:504px;
-                        .btn-indi {
-                            p {
-                                width:auto;
-                                opacity:1;
-                            }
-                            @keyframes bars {
-                                from { width:0; }
-                                to { width:100%; }
-                            }
-                            .bar {
-                                width:100%;
-                                animation-name:pulse;
-                                //animation-duration:5s;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .indi-control {
-            display:inline-block; 
-            position:relative; 
-            width:26px;
-            height:26px;
-            //margin-top:12px;
-            //margin-left:2px;
-            font-size:0;
-            text-align:center;
-            //&::before, &::after {
-            //    content:' ';
-            //    display:inline-block;
-            //    width:2px;
-            //    height:10px;
-            //    margin:0 2px;
-            //    background-color:#fff;
-            //    vertical-align:middle;
-            //}
-            &:before {
-                display: inline-block;
-                width: 26px;
-                height: 26px;
-                background: url('/lg5-common/images/icons/btn-carousel-hero-pause.svg') no-repeat 0 0;
-                content: '';
-            }
-            &.play {
-                &:before {
-                    background-image: url('/lg5-common/images/icons/btn-carousel-hero-play.svg');
                 }
             }
         }
