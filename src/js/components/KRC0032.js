@@ -40,4 +40,40 @@ $(window).ready(function(){
 			});
 		});
 	});
+
+
+
+
+
+	var tetete = $('.KRC0032').find('.carousel-box');
+
+    tetete.each(function(cdx, item){
+        //console.log("11111", $(item).find('.title').attr('id'));
+        var titleAttr = $(item).attr("data-ui_carousel_index");
+		console.log("ssssssssss", titleAttr);
+
+        $(item).find('.drop-info .dropInfo_openBtn').on('click', function(e){
+            var mybtnAttr = $(this).attr('aria-describedby');
+
+            //console.log("콘텐츠의 아이디", titleAttr);
+            //console.log("내가 찍힌", mybtnAttr);
+
+            // if(titleAttr == mybtnAttr) {
+            //     //console.log("111");
+            //     $(item).find('.dropContent').addClass('on');
+            //     $(this).hide();
+            // }
+        });
+
+        // $(item).find('.drop-info .dropInfo_closeBtn').on('click', function(e){
+        //     var mybtnAttr = $(this).attr('aria-describedby');
+ 
+        //     if(titleAttr == mybtnAttr) {
+        //         //console.log("111");
+        //         $(item).find('.dropContent').removeClass('on');
+        //         $(item).find('.drop-info .dropInfo_openBtn').show();
+        //     }
+        // });
+        
+    });
 })
