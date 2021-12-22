@@ -20,7 +20,7 @@ $(window).ready(function(){
 
             //console.log("콘텐츠의 아이디", titleAttr);
             //console.log("내가 찍힌", mybtnAttr);
-
+            console.log("sssss", titleAttr == mybtnAttr);
             if(titleAttr == mybtnAttr) {
                 //console.log("111");
                 $(item).find('.dropContent').addClass('on');
