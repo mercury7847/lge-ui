@@ -38,8 +38,15 @@
                     
                     if( paramFlag != undefined && paramFlag != "" || paramFlagDisc != undefined && paramFlagDisc != "") {
                         if( paramFlag == "true" || paramFlag == true || paramFlagDisc == "Y" ) {
-                            e.preventDefault();
-                            window.close();
+                            // s BTOCSITE-5938-429 : 팝업이 아닌 경우 동장 안됨
+                            try {
+                                window.close();
+                            } finally {
+                                window.history.back();
+                                e.preventDefault();
+                            }
+                            // e BTOCSITE-5938-429 : 팝업이 아닌 경우 동장 안됨
+
                         }
                     } 
                 });
