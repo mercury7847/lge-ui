@@ -406,6 +406,9 @@
                             margin-bottom:8px;
                             &:first-of-type{
                                 margin-bottom:16px;
+                                @include mobile{
+                                    margin-bottom:16px !important;
+                                }
                             }
                             &:last-of-type{
                                 margin-bottom:0;
@@ -419,12 +422,6 @@
                             align-items:center;
                             @media (max-width: $desktop-s-width) {
                                 display:block;
-                            }
-                            &.mem-point{
-                                height:48px;
-                                @include mobile{
-                                    height:96px;
-                                }
                             }
                             dt{
                                 flex:1;
@@ -466,8 +463,34 @@
                                 }
                             }
                             &.discount{
+                                .text{
+                                    @include mobile{
+                                        margin-bottom:4px;
+                                    }
+                                }
                                 .price{
                                     color:#da0f47;
+                                    @include mobile{
+                                        font-size:13px;
+                                        line-height:21px;
+                                    }
+                                }
+                            }
+                            &.total-discount{
+                                margin-top:12px;
+                                @include mobile{
+                                    margin-top:16px;
+                                }
+                                .text{
+                                    @include mobile{
+                                        margin-bottom:4px;
+                                    }
+                                }
+                                .price{
+                                    @include mobile{
+                                        font-size:13px;
+                                        line-height:21px;
+                                    }
                                 }
                             }
                             &.total-payment{
@@ -475,6 +498,18 @@
                                     font-size:20px;
                                     line-height:30px;
                                     color:#da0f47;
+                                }
+                            }
+                            &.mem-point{
+                                margin:12px 0;
+                                min-height:48px;
+                                @include mobile{
+                                    margin:16px 0;
+                                }
+                                .content{
+                                    @include mobile{
+                                        margin-top:8px;
+                                    }
                                 }
                             }
                         }
@@ -503,24 +538,37 @@
                                         margin-bottom:12px;
                                     }
                                 }
-                                .txt-p{
-                                    position:relative;
-                                    width:160px;
-                                    &:after{
-                                        content:'P';
-                                        position:absolute;
-                                        top:50%;
-                                        right:16px;
-                                        transform:translateY(-50%);
-                                        font-size:14px;
-                                        line-height:26px;
+                                .btn-box{
+                                    .btn{
+                                        &.size{
+                                            @include mobile{
+                                                width:100%;
+                                            }
+                                        }
                                     }
-                                    input{
-                                        padding-right:28px;
-                                        text-align:right;
-                                        font-size:14px;
-                                        line-height:26px;
-                                        background:#fff;
+                                }
+                                .input-wrap{
+                                    display:none;
+                                    position:relative;
+                                    padding-right:28px;
+                                    width:160px;
+                                    height:48px;
+                                    text-align:right;
+                                    font-size:14px;
+                                    line-height:26px;
+                                    border:1px solid #ddd;
+                                    border-radius:8px;
+                                    background:#fff;
+                                    line-height:46px;
+                                    &.p-none{
+                                        background:#f4f4f4;
+                                        color:#aaaaaa;
+                                        &:after{
+                                            color:#aaaaaa;
+                                        }
+                                    }
+                                    em{
+                                        margin-left:1px;
                                     }
                                 }
                             }
@@ -532,6 +580,10 @@
                             border-radius:8px;
                             width:100%;
                             min-height:48px;
+                            transition:all 0.4s;
+                            @include mobile{
+                                margin-top:8px;
+                            }
                             .cash-back-info{
                                 display:block;
                                 position:relative;
@@ -549,7 +601,20 @@
                                     background: url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat 0 0;
                                     transition:all 0.3s;
                                     @include mobile {
-                                        right:19px;
+                                        right:12px;
+                                    }
+                                }
+                            }
+                            &.disabled{
+                                border:1px solid #ededed;
+                                background:#ededed;
+                                .cash-back-info{
+                                    color:#aaa;
+                                    font-weight:500;
+                                    cursor:default;
+                                    pointer-events:none;
+                                    .ico{
+                                        background: url('/lg5-common/images/icons/btn-down-16-gray.svg') no-repeat 0 0;
                                     }
                                 }
                             }
@@ -562,15 +627,17 @@
                             }
                             .ui_accord_content{
                                 position:absolute;
-                                z-index:999999;
+                                z-index:2;
                                 top:41px;
                                 left:-1px;
                                 right:-1px;
                                 padding:0 16px 24px;
+                                max-height:300px;
                                 border:1px solid #000;
                                 border-top:0;
                                 border-radius:0 0 8px 8px;
                                 background:#fff;
+                                overflow:auto;
                                 .bullet-list{
                                     margin-top:14px;
                                 }
@@ -586,6 +653,7 @@
                                         }
                                         .card-list{
                                             display:inline-block;
+                                            width:calc(100% - 4px);
                                         }
                                     }
                                 }
@@ -598,10 +666,13 @@
                             border-radius:8px;
                             width:100%;
                             min-height:48px;
+                            @include mobile{
+                                margin:16px 0;
+                            }
                             strong{
                                 position:absolute;
                                 top:16px;
-                                z-index:99999;
+                                z-index:1;
                                 padding:0 16px;
                                 font-size:14px;
                                 border-radius:8px;
@@ -615,6 +686,9 @@
                                         height:46px;
                                         border:none;
                                         text-align:right;
+                                        @include mobile{
+                                            text-align:left;
+                                        }
                                         .ui-select-text{
                                             font-size:14px;
                                             line-height:26px;
