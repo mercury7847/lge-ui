@@ -1,24 +1,32 @@
 (function() {
     var validation;
-    var isLogin = lgkorUI.isLogin;
+    // loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+    // birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
+    var loginFlag = "Y";
+    var birthDt = 20010101;
     // 아카데미 회원 임시 변수
     var academyMember = false;
 
     var emailCertified = {
         init: function() {
             var self = this;
-            console.log(isLogin);
-            if (!isLogin) {
+            if(lgkorUI.stringToBool(loginFlag)) {
+                if(academyMember){
+                    alert('아카데미기획전 상세페이지로 넘기기')
+                    // location.href='/benefits/exhibitions';
+                } else{
+                    if( birthDt > 19920101 && birthDt < 20040102){
+                        $('.login-ok').show();
+                        $('.login-no').hide();
+                    } else {
+                        $('#academyPopup01').vcModal('show'); 
+                    }
+                }
+            } else {
                 $('.login-no').show();
                 $('.login-ok').hide();
-            } else {
-                if(academyMember){
-
-                } else{
-                    $('.login-ok').show();
-                    $('.login-no').hide();
-                }
             }
+
             self.$cont = $('#academyPopup02');
             self.$submitForm = $('#emailCertifiedForm');
             self.$completeBtn = $('#btnCertified');
@@ -100,6 +108,7 @@
                                     title: data.resultMessage,
                                     okBtnName: '확인',
                                     ok: function() {
+                                        alert(academyMember);
                                     }
                                 });
                             }
@@ -111,7 +120,6 @@
                 }
             });
             $('#btnLogin').on('click', function(e) {
-                //$('#academyPopup01').vcModal('show'); 
                 location.href='/sso/api/emp/Login';
             });
             $('#academyPopup01 .btn-list').on('click', function(e) {
