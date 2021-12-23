@@ -542,6 +542,7 @@
                                     .btn{
                                         &.size{
                                             @media (max-width: $desktop-s-width) {
+                                                padding:0 10px;
                                                 width:100%;
                                             }
                                         }
