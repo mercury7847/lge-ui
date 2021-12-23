@@ -13,6 +13,8 @@
                 self.modelSearchInit();
                 self.contentTab();
                 self.resize();
+                self.appSmartTabMenu();
+                self.appSmartTabMobile.load();
             });
         },
         settings: function(){
@@ -614,14 +616,15 @@
         },
         resize: function(){
             var self = this;
-            self.appSmartTabMenu();
+            // self.appSmartTabMenu();
+            console.log('sdfsdfsdsdfsdfssfd');
 
             if( window.innerWidth > 1024) {
                 $('.app-tab-content').removeClass('tab-mobile-content');
 
             } else {
                 $('.app-tab-content').addClass('tab-mobile-content');
-                self.appSmartTabMobile.load(); 
+                //self.appSmartTabMobile.load(); 
 
             }
         }
