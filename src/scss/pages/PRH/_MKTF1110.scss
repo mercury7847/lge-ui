@@ -2230,7 +2230,7 @@
             left: 50%;
             transform: translate(-50%, 0%);
             z-index: 5;
-            @include mobile {
+            @include tablet {
                 top:0;
                 padding:25px 16px 24px;
                 z-index: 50;
@@ -2378,7 +2378,7 @@
                 &.is-active {
                     display: block;
                 }
-                @include mobile{
+                @include tablet{
                     display:block;
                 }
             }
@@ -2822,7 +2822,7 @@
         @at-root .menu-item.is-active .icon-#{$name} {
             background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.svg');
         }
-        @include mobile{
+        @include tablet{
             @at-root .menu-item.slick-current .icon-#{$name} {
                 background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.svg');
             }
