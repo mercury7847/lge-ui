@@ -87,6 +87,22 @@
                     self.url = self.$submitForm.data('ajax');
                     self.mode = self.url.indexOf('updateStanbyMeAjax') > -1 ? 'modify' : 'write';
 
+                    // BTOCSITE-8824 스탠바이미 클럽 Q&A게시판 공지 기능 요청 : 비로그인시 URL 이동
+                    self.loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+                    if(self.loginFlag == 'N') {
+                        lgkorUI.confirm("로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까? ", {
+                            title: "",
+                            cancelBtnName: "아니오",
+                            okBtnName: "네",
+                            ok: function(){
+                                location.href = "/sso/api/emp/Login";
+                            },
+                            cancel: function() {
+                                location.href = "/story/stanbyme-club/stanbyme-club-list?tab=prod2";
+                            }
+                        });   
+                    }
+
                     vcui.require(['ui/validation'], function () {
                         self.validation = new vcui.ui.CsValidation('#submitForm', { 
                             register: {
