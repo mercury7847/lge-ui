@@ -89,6 +89,7 @@
     var qnaPdp = {
         init : function (){
             loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+            
             var self = this;
             var isUrl = document.location.search;
             
@@ -99,14 +100,16 @@
                 
                 });
 
-                
-                if(isUrl){                    
-                    self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","myQna":"Y","page": "1"});                    
-                    $('#myWriteView').prop("checked", true);
+                if(loginFlag == "Y"){
+                    if(isUrl){
+                        self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"Y","page": "1"});
+                        $('#myWriteView').prop("checked", true);
+                    } else {
+                        self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"N","page": "1"});
+                    }
                 } else {
-                    self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","myQna":"N","page": "1"});
+                    self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"N","page": "1"});
                 }
-                
             });
         },
         settings : function (){
