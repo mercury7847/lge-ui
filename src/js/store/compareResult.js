@@ -23,7 +23,7 @@
             $('.compare-result').removeClass('ui_sticky');
         }      
         
-        // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공
+        // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 (테스트할때 주석처리 해야함, local 테스트시 오류뜸)
         setDifferentBenefit();
     }
 
@@ -55,6 +55,14 @@
                 requestCart($li,"C");
             }
         });
+
+        // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공
+        $('.ui_selectbox').on('click', function(){
+            var selTxt = $(this).siblings('.ui-selectbox-view').find('.ui-select-text').text();
+            if( selTxt ){
+                $(this).parents('.card-selec-box').find('strong').addClass('mo-sel');
+            }
+        })
     }
 
     function requestCart($dm,cartType) {
@@ -143,7 +151,7 @@
         $('.compare-result.ui_sticky').vcSticky('update');
     }
 
-    // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공
+    //BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 (테스트할때 주석처리 해야함, local 테스트시 오류뜸)
     function setDifferentBenefit(){
         var memInp = $('.mem-point .input-wrap');
         var memBtn = $('.mem-point .btn-box');
@@ -160,6 +168,8 @@
             memBtn.css('display', 'block');
         }    
     }
+
+    
 
     $(document).ready(function(){
     //$(window).load(function(){
