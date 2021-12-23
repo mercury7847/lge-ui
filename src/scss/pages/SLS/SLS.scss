@@ -37,7 +37,7 @@ br.pc {
         margin-bottom: 32px;
         text-align: center;
         @include mobile {
-            margin-bottom: 24px;
+            margin-bottom:19px;
             & + .tabs-wrap {
                 padding-top: 0;
             }
@@ -82,6 +82,14 @@ br.pc {
             //BTOCSITE-7335
             .tabs {
                 display: inline-block;
+                li{
+                    a{
+                        @include mobile{
+                            font-size:15px;
+                            line-height:24px;
+                        }
+                    }
+                }
             }
             @include mobile {
                 margin-bottom: 8px;
@@ -110,329 +118,337 @@ br.pc {
     }
 }
 
-// top visual
-.slide-wrap {
-    &.hero-banner {
-        .slide-content {
-            .slide-track  {
-                height:640px;
-                @include mobile{
-                    height:460px;
-                }
-                .slide-conts {
-                    position:relative;
-                    height:640px;
-                    @include mobile{
-                        height:460px;
-                    }
-                    .slide-img {
-                        overflow:hidden;
-                        position: relative;
-                        width:100%;
-                        height:100%;
-                        img {
-                            position:absolute;
-                            top:0;
-                            left:50%;
-                            transform:translateX(-50%);
-                            width: auto;
-                            height: auto;
-                            min-width: 100%;
-                            min-height: 100%;
-                            max-width:none;
-                            @media screen and (min-width:1920px) {
+// top visual // 스토어 WSG 적용 후 변경(1월 작업 예정) 현재 caresolution에만 적용
+.caresolution{
+    .sub-main{
+        .slide-wrap {
+            &.hero-banner {
+                .slide-content {
+                    .slide-track  {
+                        height:640px;
+                        @include mobile{
+                            height:460px;
+                        }
+                        .slide-conts {
+                            position:relative;
+                            height:640px;
+                            @include mobile{
+                                height:460px;
+                            }
+                            .slide-img {
+                                overflow:hidden;
+                                position: relative;
                                 width:100%;
-                                height:auto;
-                                top:50%;
+                                height:100%;
+                                img {
+                                    position:absolute;
+                                    top:0;
+                                    left:50%;
+                                    transform:translateX(-50%);
+                                    width: auto;
+                                    height: auto;
+                                    min-width: 100%;
+                                    min-height: 100%;
+                                    max-width:none;
+                                    @media screen and (min-width:1920px) {
+                                        width:100%;
+                                        height:auto;
+                                        top:50%;
+                                        left:0;
+                                        transform:translateY(-50%);
+                                    }
+                                    @include mobile {
+                                        width:100%;
+                                        height:auto;
+                                        top:50%;
+                                        left:0;
+                                        transform:translateY(-50%);
+                                    }
+                                }
+                            }
+                            .bg {
+                                background-size: cover;
+                                &.pc{
+                                    display:inline-block;
+                                }
+                                &.mobile{
+                                    display:none;
+                                }
+                                @include mobile {
+                                    height: 100%;
+                                    padding-bottom: 0;
+                                    &.pc{
+                                        display:none;
+                                    }
+                                    &.mobile{
+                                        display:inline-block;
+                                    }
+                                }
+                            }
+                            .slide-info-area {
+                                top:100px;
                                 left:0;
-                                transform:translateY(-50%);
+                                bottom:120px;
+                                max-width:1614px;
+                                margin:0 auto;
+                                padding: 0 40px;
+                                transform:translateX(0);
+                                @include mobile {
+                                    top:32px;
+                                    right:20px;
+                                    bottom:102px;
+                                    left:20px;
+                                    padding: 0;
+                                }
+                                .boxs {
+                                    display:inline-block;
+                                    &.fc-black {
+                                        color:#000;
+                                    }
+                                    &.fc-white {
+                                        color:#fff;
+                                    }
+                                    .txt {
+                                        color:inherit;
+                                        font-size:52px;
+                                        font-weight:700;
+                                        line-height:62px;
+                                        @include mobile{
+                                            position:relative;
+                                            font-size:27px;
+                                            line-height:34px;
+                                        }
+                                    }
+                                    .small {
+                                        margin-top:16px;
+                                        font-size:24px;
+                                        line-height:32px;
+                                        @include mobile{
+                                            margin-top:7px;
+                                            font-size:16px;
+                                            line-height:22px;
+                                        }
+                                    }
+                                }
                             }
-                            @include mobile {
-                                width:100%;
-                                height:auto;
-                                top:50%;
-                                left:0;
-                                transform:translateY(-50%);
+                            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                                .slide-info-area {
+                                    width:100%;
+                                }
                             }
-                        }
-                    }
-                    .bg {
-                        background-size: cover;
-                        &.pc{
-                            display:inline-block;
-                        }
-                        &.mobile{
-                            display:none;
-                        }
-                        @include mobile {
-                            height: 100%;
-                            padding-bottom: 0;
-                            &.pc{
-                                display:none;
-                            }
-                            &.mobile{
-                                display:inline-block;
-                            }
-                        }
-                    }
-                    .slide-info-area {
-                        top:96px;
-                        left:0;
-                        bottom:120px;
-                        max-width:1614px;
-                        margin:0 auto;
-                        padding: 0 40px;
-                        transform:translateX(0);
-                        @include mobile {
-                            top:36px;
-                            right:20px;
-                            bottom:102px;
-                            left:20px;
-                            padding: 0;
-                        }
-                        .boxs {
-                            display:inline-block;
-                            &.fc-black {
-                                color:#000;
-                            }
-                            &.fc-white {
+                            .link {
+                                position:absolute;
+                                right:0;
+                                bottom:0;
+                                padding-right:60px;
                                 color:#fff;
-                            }
-                            .txt {
-                                color:inherit;
                                 font-size:52px;
                                 font-weight:700;
-                                line-height:62px;
+                                line-height:70px;
+                                text-align:right;
                                 @include mobile{
-                                    font-size:27px;
-                                    line-height:34px;
-                                }
-                            }
-                            .small {
-                                margin-top:16px;
-                                font-size:24px;
-                                line-height:32px;
-                                @include mobile{
-                                    margin-top:7px;
+                                    padding-right:22px;
                                     font-size:16px;
-                                    line-height:22px;
+                                    line-height:24px;
+                                }
+                                &:after {
+                                    content:' ';
+                                    position:absolute;
+                                    right:0;
+                                    bottom:8px;
+                                    width:56px;
+                                    height:56px;
+                                    background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
+                                    @include mobile{
+                                        bottom:2px;
+                                        width:20px;
+                                        height:20px;
+                                        background-size:20px;
+                                    }
+                                }
+                                &.fc-black {
+                                    color:#000;
+                                    &:after {
+                                        background-image:url('/lg5-common/images/PRS/btn-arrow-right-56-black.svg');
+                                    }
+                                }
+                                &.fc-white {
+                                    color:#fff;
                                 }
                             }
                         }
                     }
-                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-                        .slide-info-area {
-                            width:100%;
-                        }
-                    }
-                    .link {
-                        position:absolute;
-                        right:0;
-                        bottom:0;
-                        padding-right:60px;
-                        color:#fff;
-                        font-size:52px;
-                        font-weight:700;
-                        line-height:70px;
-                        text-align:right;
-                        @include mobile{
-                            padding-right:22px;
-                            font-size:16px;
-                            line-height:24px;
-                        }
-                        &:after {
-                            content:' ';
-                            position:absolute;
-                            right:0;
-                            bottom:8px;
-                            width:56px;
-                            height:56px;
-                            background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
-                            @include mobile{
-                                bottom:2px;
-                                width:20px;
-                                height:20px;
-                                background-size:20px;
-                            }
-                        }
-                        &.fc-black {
-                            color:#000;
-                            &:after {
-                                background-image:url('/lg5-common/images/PRS/btn-arrow-right-56-black.svg');
-                            }
-                        }
-                        &.fc-white {
-                            color:#fff;
-                        }
-                    }
                 }
-            }
-        }
-        .custom-indi-wrap {
-            display:none;
-            bottom:24px;
-            left:0;
-            right:0;
-            max-width:1380px;
-            margin:0 auto;
-            @include mobile{
-                bottom: 20px;
-                right: 16px;
-                left: 16px;
-                max-width: none;
-            }
-            .custom-indis {
-                max-width: (1380px + 30px);
-                @include mobile{
-                    margin: 0 -5px;
-                }
-                .indis {
-                    width: 100%;
-                    table-layout: fixed;
-                    li {
-                        width: auto;
-                        padding: 0 15px;
-                        @include mobile{
-                            padding: 0 5px;
-                        }
-                        &.on {
-                            width: auto;
-                        }
-                    }
-                }
-            }
-            .slide-controls {
-                position:relative;
-                top:auto;
-                left:auto;
-                right:54px;
-                transform:translateX(0);
-                max-width:1380px;
-                margin:0 auto;
-                @media screen and (max-width: (1460px + 30px)) {
-                    right:69px;
-                }
-                @include mobile{
-                    right:34px;
-                }
-                .controls{
-                    position:absolute;
-                    bottom:0;
+                .custom-indi-wrap {
+                    display:none;
+                    bottom:24px;
+                    left:0;
                     right:0;
-                    width:150px;
-                    height:46px;
-                    border-radius:26px;
-                    background:rgba(0, 0, 0, 0.35);
+                    max-width:1380px;
+                    margin:0 auto;
                     @include mobile{
-                        width:84px;
-                        height:26px;
-                        border-radius:13px;
+                        bottom: 20px;
+                        right: 16px;
+                        left: 16px;
+                        max-width: none;
                     }
-                }
-                .btn-arrow {
-                    position:absolute;
-                    top:9px;
-                    padding:0;
-                    width:24px;
-                    height:24px;
-                    @include mobile{
-                        top:3px;
-                        width:16px;
-                        height:16px;
-                    }
-                    &:before{
-                        content:'';
-                        display:block;
-                        width:24px;
-                        height:24px;
-                        box-shadow:none;
+                    .custom-indis {
+                        max-width: (1380px + 30px);
                         @include mobile{
-                            width:16px;
-                            height:16px;
+                            margin: 0 -5px;
                         }
-                    }
-                    &.ico-prev {
-                        left:16px;
-                        @include mobile{
-                            left:6px;
-                        }
-                        &:before{
-                            background-image: url(/lg5-common/images/icons/btn-arr-24x24-lt.svg);
-                            @include mobile{
-                                background-size:16px 16px;
+                        .indis {
+                            width: 100%;
+                            table-layout: fixed;
+                            li {
+                                width: auto;
+                                padding: 0 15px;
+                                @include mobile{
+                                    padding: 0 5px;
+                                }
+                                &.on {
+                                    width: auto;
+                                }
                             }
                         }
                     }
-                    &.ico-next {
-                        right:16px;
-                        @include mobile{
-                            right:6px;
+                    .slide-controls {
+                        position:relative;
+                        top:auto;
+                        left:auto;
+                        right:54px;
+                        transform:translateX(0);
+                        max-width:1380px;
+                        margin:0 auto;
+                        @media screen and (max-width: (1460px + 30px)) {
+                            right:69px;
                         }
-                        &:before{
-                            background-image: url(/lg5-common/images/icons/btn-arr-24x24-rt.svg);
+                        @include mobile{
+                            right:34px;
+                        }
+                        .controls{
+                            position:absolute;
+                            bottom:0;
+                            right:0;
+                            width:150px;
+                            height:46px;
+                            border-radius:26px;
+                            background:rgba(0, 0, 0, 0.35);
                             @include mobile{
-                                background-size:16px 16px;
+                                width:84px;
+                                height:26px;
+                                border-radius:13px;
+                            }
+                        }
+                        .btn-arrow {
+                            position:absolute;
+                            top:9px;
+                            padding:0;
+                            width:24px;
+                            height:24px;
+                            @include mobile{
+                                top:3px;
+                                width:16px;
+                                height:16px;
+                            }
+                            &:before{
+                                content:'';
+                                display:block;
+                                width:24px;
+                                height:24px;
+                                box-shadow:none;
+                                @include mobile{
+                                    width:16px;
+                                    height:16px;
+                                }
+                            }
+                            &.ico-prev {
+                                left:16px;
+                                @include mobile{
+                                    left:6px;
+                                }
+                                &:before{
+                                    background-image: url(/lg5-common/images/icons/btn-arr-24x24-lt.svg);
+                                    @include mobile{
+                                        background-size:16px 16px;
+                                    }
+                                }
+                            }
+                            &.ico-next {
+                                right:16px;
+                                @include mobile{
+                                    right:6px;
+                                }
+                                &:before{
+                                    background-image: url(/lg5-common/images/icons/btn-arr-24x24-rt.svg);
+                                    @include mobile{
+                                        background-size:16px 16px;
+                                    }
+                                }
+                            }
+                        }
+                        .slide-page{
+                            padding:0 4px;
+                            color:#fff;
+                            font-size:16px;
+                            line-height:42px;
+                            @include mobile{
+                                font-size:12px;
+                                line-height:23px;
+                            }
+                            .count{
+                                color:#d6d6d6;
+                                &:before{
+                                    content:'/';
+                                    margin:0 8px;
+                                    color:#fff;
+                                }
                             }
                         }
                     }
-                }
-                .slide-page{
-                    padding:0 4px;
-                    color:#fff;
-                    font-size:16px;
-                    line-height:42px;
-                    @include mobile{
-                        font-size:12px;
-                        line-height:23px;
-                    }
-                    .count{
+                    .indi-control {
+                        display: block !important;
+                        position: absolute;
+                        bottom:0;
+                        right:0;
+                        margin-right:0;
+                        width:46px;
+                        height:46px;
+                        @include mobile{
+                            width:26px;
+                            height:26px;
+                        }
                         &:before{
-                            content:'/';
-                            margin:0 8px;
+                            width:46px;
+                            height:46px;
+                            @include mobile{
+                                width:26px;
+                                height:26px;
+                            }
                         }
-                    }
-                }
-            }
-            .indi-control {
-                display: block !important;
-                position: absolute;
-                bottom:0;
-                right:0;
-                width:46px;
-                height:46px;
-                @include mobile{
-                    width:26px;
-                    height:26px;
-                }
-                &:before{
-                    width:46px;
-                    height:46px;
-                    @include mobile{
-                        width:26px;
-                        height:26px;
-                    }
-                }
-                &.play{
-                    &:before{
-                        background: url(/lg5-common/images/icons/btn-carousel-46-play.svg) no-repeat 0 0;
-                        @include mobile{
-                            background-size:26px 26px;
+                        &.play{
+                            &:before{
+                                background: url(/lg5-common/images/icons/btn-carousel-46-play.svg) no-repeat 0 0;
+                                @include mobile{
+                                    background-size:26px 26px;
+                                }
+                            }
                         }
-                    }
-                }
-                &.stop{
-                    &:before{
-                        background: url(/lg5-common/images/icons/btn-carousel-46-pause.svg) no-repeat 0 0;
-                        @include mobile{
-                            background-size:26px 26px;
+                        &.stop{
+                            &:before{
+                                background: url(/lg5-common/images/icons/btn-carousel-46-pause.svg) no-repeat 0 0;
+                                @include mobile{
+                                    background-size:26px 26px;
+                                }
+                            }
                         }
-                    }
-                }
-                @media screen and (max-width: (1460px + 30px)) {
-                    right: 15px;
-                    margin-right: 0;
-                    @include mobile {
-                        right: 0;
+                        @media screen and (max-width: (1460px + 30px)) {
+                            right: 15px;
+                            margin-right: 0;
+                            @include mobile {
+                                right: 0;
+                            }
+                        }
                     }
                 }
             }
@@ -453,7 +469,7 @@ br.pc {
         @include mobile{
             margin-left:-8px;
         }
-        .link-item{
+        >li{
             margin-left:24px;
             width:calc(33.33% - 24px);
             @include mobile{
@@ -461,6 +477,7 @@ br.pc {
                 width:calc(33.33% - 8px);
             }
             >a{
+                position:relative;
                 display:table;
                 padding:113px 0 30px;
                 width:100%;
@@ -470,19 +487,35 @@ br.pc {
                 box-shadow:1px 4px 12px 0 rgba(0, 0, 0, 0.14);
                 text-align:center;
                 @include mobile{
-                    padding:70px 5px 15px;
+                    padding:80px 5px 15px;
                     box-shadow:1px 2px 6px 0 rgba(0, 0, 0, 0.14);
                 }
-                >span{
+                .thumb{
+                    position:absolute;
+                    top:30px;
+                    left:50%;
+                    transform:translateX(-50%);
+                    width:64px;
+                    height:64px;
+                    @include mobile{
+                        top:20px;
+                        width:48px;
+                        height:48px;
+                    }
+                    img{
+                        width:100%;
+                    }
+                }
+                .tit{
                     display:table-cell;
                     position:relative;
                     vertical-align:middle;
-                    font-size:20px;
+                    font-size:24px;
                     font-weight:700;
-                    line-height:30px;
+                    line-height:34px;
                     @include mobile{
-                        font-size:12px;
-                        line-height:20px;
+                        font-size:13px;
+                        line-height:19px;
                         .pc-only{
                             display:none;
                         }
@@ -511,47 +544,13 @@ br.pc {
                         height:24px;
                         background:url('/lg5-common/images/icons/btn-arr-24.svg') no-repeat 0 0;
                         @include mobile{
-                            top:2px;
-                            width:12px;
-                            height:12px;
-                            background:url('/lg5-common/images/icons/btn_arrow_right_24.svg') no-repeat 0 0;
-                            background-size:100% 100%;
+                            display:none;
                         }
                     }
                 }
                 &:hover, &:focus{
                     border:2px solid #da0f47;
                     outline:none;
-                }
-            }
-            &.link{
-                &-benefit{
-                    background:url('/lg5-common/images/icons/ic-main-care-link-3-on.svg') center 30px no-repeat;
-                    @include mobile{
-                        background:url('/lg5-common/images/icons/ic-main-care-link-3-on.svg') center 15px no-repeat;
-                        background-size:48px 48px;
-                    }
-                }
-                &-planner{
-                    background:url('/lg5-common/images/icons/ic-main-care-link-2-on.svg') center 30px no-repeat;
-                    @include mobile{
-                        background:url('/lg5-common/images/icons/ic-main-care-link-2-on.svg') center 15px no-repeat;
-                        background-size:48px 48px;
-                    }
-                }
-                &-my{
-                    background:url('/lg5-common/images/icons/ic-main-care-link-1-on.svg') center 30px no-repeat;
-                    @include mobile{
-                        background:url('/lg5-common/images/icons/ic-main-care-link-1-on.svg') center 15px no-repeat;
-                        background-size:48px 48px;
-                    }
-                }
-            }
-            &.next-schedule{
-                background:url('/lg5-common/images/icons/ic-main-careship-cal-on.svg') center 30px no-repeat;
-                @include mobile{
-                    background:url('/lg5-common/images/icons/ic-main-careship-cal-on.svg') center 15px no-repeat;
-                    background-size:48px 48px;
                 }
             }
         }
@@ -568,23 +567,31 @@ br.pc {
     .care-home-list{
         display:flex;
         flex-wrap:wrap;
-        margin-top:-32px;
+        margin:-32px 0 0 -32px;
+        @include mobile{
+            margin:-23px 0 0 -8px;
+        }
         >li{
-            margin-top:32px;
-            width:33.33%;
+            margin:32px 0 0 32px;
+            width:calc(33.33% - 32px);
             @media screen and (max-width: 1024px){
                 text-align:center;
             }
+            @include mobile{
+                margin:23px 0 0 8px;
+                width:calc(33.33% - 8px);
+            }
             >a{
                 display:inline-block;
+                width:100%;
                 .thumb{
                     display:inline-block;
                     width:128px;
                     max-width:calc(100% - 8px);
                     height:128px;
                     @include mobile{
-                        width:104px;
-                        height:104px;
+                        width:auto;
+                        height:auto;
                     }
                     img{
                         width:100%;
@@ -616,7 +623,7 @@ br.pc {
     max-width:1444px;
     .prd-list-wrap {
         @include mobile {
-            margin-top:20px;
+            margin-top:14px;
             padding:0;
         }
         .inner {
@@ -628,7 +635,7 @@ br.pc {
                 @include mobile {
                     width:calc(50% - 4px);
                     margin:0;
-                    padding:4px;
+                    padding:0 4px;
                     &:nth-child(3), &:nth-child(4){
                         display:none;
                     }
@@ -653,19 +660,14 @@ br.pc {
                 }
                 .img-wrap {
                     text-align:center;
-                    a {
-                        display:block;
-                    }
                     img {
                         display:inline-block;
                         width:100%;
                         max-width:200px;
                         overflow:hidden;
                         @include mobile {
-                            max-width:160px;
-                            max-height:160px;
-                            width: 100%;
-                            height: auto;
+                            max-width:120px;
+                            max-height:120px;
                         }
                     }
                 }
@@ -674,42 +676,37 @@ br.pc {
                     height:82px;
                     @include mobile{
                         margin-top:20px;
-                    }
-                    a {
-                        display:block;
+                        height:60px;
                     }
                     .tit {
                         max-height:56px;
-                        @include font-large;
+                        font-size:18px;
+                        line-height:28px;
                         font-weight:700;
                         overflow:hidden;
                         @include textEllipsisClamp(2);
-                        
                         @include mobile {
-                            font-size: 16px;
-                            line-height: 24px;
+                            font-size: 14px;
+                            line-height: 20px;
                             max-height:52px;
                         }
                     }
                     .code {
                         margin-top:2px;
-                        color:#767676;
-                        @include font-small;
+                        color:#666;
+                        font-size:16px;
+                        line-height:24px;
                         overflow:hidden;
                         text-overflow:ellipsis;
                         white-space:nowrap;
                         @include mobile {
-                            font-size:14px;
-                            line-height:22px;
+                            font-size:13px;
+                            line-height:19px;
                         }
                     }
                 }
                 .info-wrap {
-                    padding-top:16px;
-                    @include mobile{
-                         padding:0;
-                    }
-                    
+                    margin-top:20px;
                     .price-wrap {
                         @include mobile {
                             position:static;
@@ -718,7 +715,6 @@ br.pc {
                             @include clearfix;
                             .price {
                                 display:inline-block;
-                                padding:20px 0 0;
                                 @include font-large-1;
                                 font-weight:700;
                                 vertical-align:middle;
@@ -772,6 +768,9 @@ br.pc {
                     }
                     @include mobile{
                         padding:18px 0;
+                    }
+                    &:first-child{
+                        padding-top:14px;
                     }
                     &:nth-child(odd){
                         margin-right:12px;
@@ -901,6 +900,7 @@ br.pc {
     .care-other-list{
         display:flex;
         margin-left:-24px;
+        justify-content:center;
         @media screen and (max-width: 1024px){
             flex-wrap:wrap;
             margin-left:0;
@@ -920,32 +920,9 @@ br.pc {
             @include mobile {
                 padding:0;
             }
-            &:before {
-                display: inline-block;
-                content: '';
-                position: absolute;
-                top: 54px;
-                left: 50px;
-                width: 64px;
-                height: 64px;
-                background:center no-repeat;
-                @include mobile{
-                    top:25px;
-                    left:50%;
-                    transform:translateX(-50%);
-                }
-            }
-            &.other1 {
-                &:before {
-                    background-image:url('/lg5-common/images/icons/icon-img04-64.svg');
-                }
-            }
-            &.other2 {
+            +li {
                 @include mobile{
                     margin-top:8px;
-                }
-                &:before {
-                    background-image:url('/lg5-common/images/icons/icon-img05-64.svg');
                 }
             }
             > a {
@@ -959,6 +936,18 @@ br.pc {
                     padding:25px 8px;
                     box-shadow:1px 2px 6px 0 rgba(0, 0, 0, 0.14);
                     text-align:center;
+                }
+                .thumb{
+                    position: absolute;
+                    top: 54px;
+                    left: 50px;
+                    width: 64px;
+                    height: 64px;
+                    @include mobile{
+                        top:25px;
+                        left:50%;
+                        transform:translateX(-50%);
+                    }
                 }
                 .tit {
                     position: relative;
@@ -1020,22 +1009,17 @@ br.pc {
         padding-left: 16px;
         padding-right: 16px;
     }
-    .tit-wrap {
-        margin-bottom: 48px;
-        @include mobile {
-            margin-bottom: 40px;
-        }
-    }
     .care-banner-list{
         display:flex;
         @media screen and (max-width: 1024px){
             flex-wrap:wrap;
         }
         li {
-            width: 33.33%;
+            flex:1;
             padding: 0 20px;
             vertical-align: top;
             @media screen and (max-width: 1024px){
+                flex:none;
                 width: 100%;
                 padding: 0;
                 margin-top: 40px;
@@ -1049,6 +1033,13 @@ br.pc {
                 min-height:64px;
                 @include mobile {
                     padding-left: 80px;
+                }
+                .thumb{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 64px;
+                    height: 64px;
                 }
                 .tit {
                     margin-bottom: 8px;
@@ -1065,32 +1056,7 @@ br.pc {
                     @include font-medium;
                     word-break:keep-all;
                 }
-                &:before {
-                    display: inline-block;
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 64px;
-                    height: 64px;
-                }
             }
-            &.banner1 {
-                .inner:before {
-                    background:url('/lg5-common/images/icons/icon-img06-64.svg') center no-repeat;
-                }
-            }
-            &.banner2 {
-                .inner:before {
-                    background:url('/lg5-common/images/icons/icon-img07-64.svg') center no-repeat;
-                }
-            }
-            &.banner3 {
-                .inner:before {
-                    background:url('/lg5-common/images/icons/icon-img08-64.svg') center no-repeat;
-                }
-            }
-
         }
     }
     .mob-only {

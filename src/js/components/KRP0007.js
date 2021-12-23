@@ -355,6 +355,9 @@
                             var ajaxUrl = self.$section.attr('data-wish-url');
                             lgkorUI.checkWishItem(ajaxUrl);
                             /* //BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
+
+                            // 비교하기 버튼 상태 변경 - 필터 복구시
+                            self.compareBtnStatus();
                         } else {
                             self.filterLayer.resetFilter(filterData, change);
                         }
@@ -368,6 +371,9 @@
 
                 var ajaxUrl = self.$section.attr('data-wish-url');
                 lgkorUI.checkWishItem(ajaxUrl);
+
+                
+
             },
 
             //21-04-15 모바일 사업부 종료에 따른 공지 팝업 뛰우기
@@ -455,9 +461,13 @@
                 self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
 
                 self.cateWrapStatus();
+
+                // 비교하기 버튼 상태 변경 - 초기화시
+                self.compareBtnStatus();
             },
 
             bindEvents: function() {
+                
                 var self = this;
 
                 self.$productList.on('click','a', function(e){
@@ -685,6 +695,24 @@
                     $(this).removeClass('on');
                 });
                 /* //BTOCSITE-2785 : 2021-07-14 add */
+
+                // BTOCSITe-9186
+                // BTOCSITe-9186
+                $('.sort-select-wrap .ui_selectbox').on('change', function(e){
+                    setTimeout(function(){
+                        var selectWidth = $(e.target).parents('.sort-select-wrap').find('.ui-selectbox-view').width();
+                        if( $(window).width() > 767){ 
+                            var currentWidth = selectWidth + 15;
+                            $('.btn-inchGuide').css('right', currentWidth)
+                        }else{
+                            var currentWidth = selectWidth + 11;
+                            $('.btn-inchGuide').css('right', currentWidth)
+                        }
+                    }, 100)
+                })
+                // BTOCSITe-9186
+                // BTOCSITe-9186
+           
             },
 
             setPageData: function(param) {
@@ -793,6 +821,11 @@
                             //self.$ttCount.hide(); //추가
                         /* //BTOCSITE-5157 : PLP 제품이 없을때 문구 미노출 이슈 2021-09-13 */
                     }
+
+
+
+                    // 비교하기 버튼 상태 변경 - ajax 통신시
+                    self.compareBtnStatus();
 
                     /* BTOCSITE-2150 add */
                     self.isLoading = false; 
@@ -1204,6 +1237,20 @@
                     if(isAdd) $this.addClass("on");
                 } else{
                     lgkorUI.removeCompareProd(categoryId, _id);
+                }
+            },
+
+            // 비교하기 버튼 상태 변경
+            compareBtnStatus:function(){
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+
+                console.log(storageCompare)
+                if(storageCompare && storageCompare['data'].length > 0){
+                    var data = storageCompare['data'][0];
+                    // 비교하기 버튼 상태 변경
+                    $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style')
+                    .parent().find('a[data-b2bcatemapping="'+(data.b2bcatemapping === 'Y' ? 'N' : 'Y')+'"]').hide();
                 }
             },
 

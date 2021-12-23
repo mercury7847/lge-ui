@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: [
+            "BMC/BMC",
+            "BMC/EVT_detailSilde"
+        ],
+        pageJS: ["event/EVT_detailSlide"]
+    })
+<body>
+    <div class="wrap">
+        <!-- 210311_H1추가 -->
+        @@include('./common/header.html', {
+            hiddenTitle: "기획전"
+        })
+        <!-- //210311_H1추가 -->
+
+        <main class="container">
+            <!-- event -->
+            <!-- 2021.2.10 data-cart-url, data-sibling-url 추가-->
+            <div class="contents event exhibition"
+                data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
+                data-sibling-url="/lg5-common/data-ajax/KRP0007/retrieveSiblingProductInfo.json"
+            ><!-- 210126 수정 - .exhibition 추가 -->
+                <div class="cont-wrap">
+                    <div class="ev-detail-wrap">
+
+                        <div class="ev-detail-top">
+                            <div class="top-inner">
+                                <div class="tit-wrap">
+                                    <p class="tit"><span class="blind">제목</span>LG Objet Collection 공간인테리어 가전 혜택</p>
+                                    <span class="sub-tit"><span class="blind">서브 제목</span>LG Objet Collection으로 우리집 인테리어 완성!  Objet Collection 제품을 구매하고 다양한 혜택을 누리세요.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ev-detail-con"><!-- 210329 수정 [종료된 기획전 .finish 클래스 추가] -->
+                            <div>이벤트 컨텐츠</div>
+                        </div>
+
+
+
+
+
+                        <!-- BTOCSITE-8333 [사용자행태분석 개선사항] 이벤트 상세페이지 이벤트 목록 적용 -->
+                        <div class="ev-detail-bottom evt_slide_warp"
+                            data-list-url="/lg5-common/data-ajax/event/retrieveEventSubList.json"
+                        >
+                            <div class="evt-detail_listSlide">
+                                <div class="tit-wrap event-type">
+                                    <span class="tit">
+                                        진행중인 이벤트
+                                    </span>
+                                </div>
+
+                                <div class="slide-wrap carousel-type carousel-4 ui_carousel_4_slider event-carousel">
+                                    <div class="indi-wrap">
+                                        <ul class="indi-conts ui_carousel_dots">
+                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                        </ul>
+                                    </div>
+                                    <div class="slide-content ui_carousel_list">
+                                        <div class="slide-track ui_carousel_track">
+                                            <!-- 슬라이드 컨텐츠 -->
+                                        </div>
+                                    </div>
+
+                                    <div class="slide-controls">
+                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //BTOCSITE-8333 [사용자행태분석 개선사항] 이벤트 상세페이지 이벤트 목록 적용 -->
+
+
+
+
+
+
+
+                            <!-- 210105 수정 -->
+                            <div class="btn-wrap">
+                                <a href="#n" class="btn border"><span>목록</span></a>
+                            </div>
+                            <!-- //210105 수정 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // event -->
+        </main>
+       
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

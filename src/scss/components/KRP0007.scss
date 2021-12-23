@@ -519,7 +519,8 @@
     position: relative;
     .btn-inchGuide{
         position:absolute;
-        right: 96px;
+        right: 75px;
+        transition:right 0.1s,;
         top:-4px;
         height: 30px;
         line-height: 22px;

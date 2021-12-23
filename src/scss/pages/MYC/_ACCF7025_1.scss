@@ -18,6 +18,9 @@
             @media screen and (max-width:1023px) {
                 display: block;
             }
+            @include mobile {
+                display: none;
+            }
         }
         .my-contract-info {
             position: relative;
@@ -60,7 +63,6 @@
                     margin-bottom: 16px;
                     font-weight: bold;
                 }
-                span {}
                 @include mobile {
                     padding-left: 12px;
                     padding-right: 12px;
@@ -71,6 +73,7 @@
             }
         }
         .lb-section-wrap {
+            position: relative;
             .lb-container {
                 // margin-bottom: 100px;
                 // .lb-careSolution_1 { display: none; }
@@ -81,6 +84,7 @@
                 padding-top: 20px;
                 @include mobile {
                     padding-top: 5px;
+                    margin: 0 -16px;
                 }
             }
             .sects {
@@ -144,13 +148,10 @@
                                     .lc-head {
                                         padding-bottom: 30px;
                                         margin-bottom: 30px;
-                                        border-bottom: 2px dashed #ddd;
+                                        border-bottom: 1px dashed #ddd;
                                         @include mobile {
                                             padding-bottom: 15px;
                                             margin-bottom: 15px;
-                                        }
-                                        i {
-                                            img {}
                                         }
                                         h4 {
                                             font-size: 22px;
@@ -172,6 +173,9 @@
                                             line-height: 26px;
                                             margin-bottom: 24px;
                                             word-break: keep-all;
+                                            @include mobile {
+                                                margin-bottom: 10px;
+                                            }
                                             span {
                                                 color: #da0f47;
                                             }
@@ -235,7 +239,7 @@
                     background-position: center bottom;
                     padding-bottom: 420px;
                     @include mobile {
-                        padding: 30px;
+                        padding: 15px 16px;
                         padding-bottom: 57.36636245110821vw;
                         border-radius: 0;
                         background-image: url("/lg5-common/images/MYC/care/benefit_bg_mobile.jpg");
@@ -291,6 +295,7 @@
                                     background-color: #e3e3e3;
                                     padding: 10px 25px 10px 35px;
                                     border-radius: 50px;
+                                    font-weight: 500;
                                     &::before {
                                         content: '';
                                         width: 3px;
@@ -327,6 +332,93 @@
                             }
 
                         }
+
+                        .lb-pcAppDown {
+                            margin-bottom: 70px;
+                            @media screen and (max-width:1024px){
+                                margin-bottom: 60px;
+                            }
+
+                            .type-sub {
+                                .tit {
+                                    font-size: 16px;
+                                    margin-bottom: 20px;
+                                }
+                            }
+                            .app-down{
+                                display:flex;
+                                justify-content:center;
+                                .inner{
+                                    display:flex;
+                                    align-items: center;
+                                    // padding:66px 84px 64px 40px;
+                                    padding:20px;
+                                    width:490px;
+                                    background:#f4f4f4;
+                                    border-radius:8px;
+                                    .txt-btn{
+                                        width:calc(100% - 108px);
+                                        >strong{
+                                            display:block;
+                                            font-size:18px;
+                                            line-height:28px;
+                                        }
+                                        .btn-app-down{
+                                            display:block;
+                                            margin-top:14px;
+                                            width:133px;
+                                            height:42px;
+                                            img{
+                                                width:100%;
+                                            }
+                                        }
+                                    }
+                                    .img-qr{
+                                        display:inline-block;
+                                        width:108px;
+                                        height:109px;
+                                        img{
+                                            width:100%;
+                                        }
+                                    }
+                                    +.inner{
+                                        margin-left:20px;
+                                    }
+                                }
+    
+                                @media screen and (max-width:1024px){
+                                    .inner {
+                                        position: relative;
+                                        width: 100%;
+                                        justify-content: center;
+                                        height: 130px;
+                                        padding: 0;
+                                        background-color: #fff;
+                                        .txt-btn {
+                                            position: absolute;
+                                            bottom: -10px;
+                                            width: auto;
+                                            margin-top: 0;
+                                            strong {
+                                                display: none;
+                                            }
+                                            .btn-app-down {
+                                                width: 106px;
+                                                height: 33.5px;
+                                                margin-top: 0;
+                                            }
+                                        }
+                                        .img-qr {
+                                            width: 72px;
+                                            height: 73px;
+                                            position: absolute;
+                                            top: 20px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
 
                         .lb-btn {
                             display: flex;

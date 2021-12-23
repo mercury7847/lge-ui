@@ -391,7 +391,9 @@ h2.title {
                     }
                 }
                 &[data-model_code="M872AAA451"],
-                &[data-model_code="M870AAA452"] {
+                &[data-model_code="M870AAA452"],
+                &[data-model_code="M622AAA352"] {
+                    //BTOCSITE-9444 빌트인 타입 모델명 추가 (M622AAA352 - 211214)
                     //노크온 매직스페이스
                     .model_door {
                         &[data-door-direction="LT"] {
@@ -472,7 +474,8 @@ h2.title {
                 }
 
                 // 210719 BTOCSITE-2346 start
-                &[data-model_code="M871AAA041"],
+                // 211214 BTOCSITE-9444 베이직 모델명 변경(M871AAA041 -> M872AAA041)
+                &[data-model_code="M872AAA041"],
                 &[data-model_code="M871AAA042"] {
                     //베이직
                     .model_door {
@@ -561,7 +564,8 @@ h2.title {
                 }
                 // 210903 BTOCSITE-4239 4도어 추가 - End
 
-                &[data-model_code="X320AA"],
+                // 211215 BTOCSITE-9627 컨버터블 > 냉장고 기본모델명 변경 (X320AA -> X321AA)
+                &[data-model_code="X321AA"],
                 &[data-model_code="Y320AA"],
                 &[data-model_code="Z320AA"] {
                     //컨버터블
@@ -1941,11 +1945,13 @@ h2.title {
         }
         // BTOCSITE-6441 제품 모델 CSS 별도 처리 - 211012 추가
         // BTOCSITE-6534 냉장고 제품 모델 업데이트 - 211102 추가
+        // BTOCSITE-9444 빌트인 타입 모델(M622AAA352) 업데이트 - 211214 추가
         &[data-model-default-code="W822AAA452"],
         &[data-model-default-code="W822AAA462"],
         &[data-model-default-code="M620AAA351"],
         &[data-model-default-code="M872AAA451"],
-        &[data-model-default-code="M870AAA452"] {
+        &[data-model-default-code="M870AAA452"],
+        &[data-model-default-code="M622AAA352"] {
             .mini_model_wrap {
                 background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator.png') center center no-repeat;
                 background-size: 100% 100%;
@@ -1977,9 +1983,10 @@ h2.title {
         }
         // 210719 BTOCSITE-2346 W822AAA152(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 패널 위치 조정
         // 211013 BTOCSITE-6441 W822AAA152 : 추천조합 패널 위치 조정
+        // 211214 BTOCSITE-9444 베이직 모델명 변경 (M871AAA041 -> M872AAA041)
         &[data-model-default-code="M872AAA151"],
         &[data-model-default-code="M872AAA252"],
-        &[data-model-default-code="M871AAA041"],
+        &[data-model-default-code="M872AAA041"],
         &[data-model-default-code="W822AAA152"] {
             .mini_model_wrap { 
                 .mini_model {

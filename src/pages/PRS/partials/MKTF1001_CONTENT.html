@@ -466,7 +466,7 @@
     <div class="banner-inner">
         <a href="/html/LLS/LLS0100.html">
             <!-- BTOCSITE-7335 : 2021-12-01 bg 이미지에서 img로 변경 -->
-            <div class="banner-img"><img data-pc-src="/lg5-common/images/PRS/img_lls-banner.jpg" data-m-src="/lg5-common/images/PRS/img_lls-banner_m.jpg" src="/lg5-common/images/PRS/img_lls-banner.jpg" alt=""></div>
+            <div class="banner-img"><img data-pc-src="/lg5-common/images/PRS/img_lls-banner.jpg" data-m-src="/lg5-common/images/PRS/img_lls-banner_m.jpg" alt=""></div>
             <!-- <div class="banner-bg only-pc" aria-hidden="true" style='background-image:url("/lg5-common/images/PRS/img_lls-banner.jpg")'></div>
             <div class="banner-bg only-mo" aria-hidden="true" style='background-image:url("/lg5-common/images/PRS/img_lls-banner_m.jpg")'></div> -->
             <!-- //BTOCSITE-7335 : 2021-12-01 bg 이미지에서 img로 변경 -->
@@ -1311,13 +1311,17 @@
 </div>
 <!-- //신제품 -->
 <!-- 신제품 -->
-<div class="module-box">
+<!-- BTOCSITE-7335-제품추천 : 제품 추천 슬라이드 JSP > AJAX로 처리 방식 변경 -->
+<!-- BTOCSITE-7335-제품추천 : style="display:none" 추가 -->
+<div class="module-box" style="display:none;">
     <div class="tit-wrap">
         <!-- 210311 수정 [.name 클래스 추가] -->
-        <p class="tit"><em class="name">김엘지</em>님을 위한 제품 추천</p>
+        <!-- BTOCSITE-7335-제품추천 : name (고객이름) 삭제 -->
+        <p class="tit"><em class="name"></em>님을 위한 제품 추천</p>
         <p class="desc">고객님이 좋아할 만한 제품을 추천드려요.</p>
     </div>
-    <div class="slide-wrap product-recom-slide ui_recom_carousel">
+    <!-- BTOCSITE-7335-제품추천 : data-ajax-url 추가 -->
+    <div class="slide-wrap product-recom-slide ui_recom_carousel" data-ajax-url="/lg5-common/data-ajax/store/requestRecommPrdAjax.json">
         <div class="indi-wrap">
             <ul class="indi-conts ui_carousel_dots" style="display: none;"> <!-- 210317 인디게이터 비노출수정-->
                 <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -1325,8 +1329,9 @@
         </div>
         <div class="slide-content ui_carousel_list">
             <ul class="slide-track ui_carousel_track">
+                <!-- BTOCSITE-7335-제품추천 : 컨텐츠 li 삭제 ( ajax 처리 ) -->
                 <!-- slide -->
-                <li class="slide-conts ui_carousel_slide">
+                <!-- <li class="slide-conts ui_carousel_slide">
                     <a href="#n" class="slide-box">
                         <div class="img"><img src="/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg" alt="처음 만나는 공간인테리어 가전 LG 오브제 컬렉션 냉장고"></div>
                         <div class="info">
@@ -1344,10 +1349,10 @@
                             </div>
                         </div>
                     </a>
-                </li>
+                </li> -->
                 <!-- //slide -->
                 <!-- slide -->
-                <li class="slide-conts ui_carousel_slide">
+                <!-- <li class="slide-conts ui_carousel_slide">
                     <a href="#n" class="slide-box">
                         <div class="img"><img src="/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg" alt="처음 만나는 공간인테리어 가전 LG 오브제 컬렉션 냉장고"></div>
                         <div class="info">
@@ -1365,10 +1370,10 @@
                             </div>
                         </div>
                     </a>
-                </li>
+                </li> -->
                 <!-- //slide -->
                 <!-- slide -->
-                <li class="slide-conts ui_carousel_slide">
+                <!-- <li class="slide-conts ui_carousel_slide">
                     <a href="#n" class="slide-box">
                         <div class="img"><img src="/lg5-common/images/PRS/img-plan-exhib-slide-list-01.svg" alt="처음 만나는 공간인테리어 가전 LG 오브제 컬렉션 냉장고"></div>
                         <div class="info">
@@ -1386,7 +1391,7 @@
                             </div>
                         </div>
                     </a>
-                </li>
+                </li> -->
                 <!-- //slide -->
             </ul>
         </div>
@@ -1396,3 +1401,4 @@
         </div>
     </div>
 </div>
+<!-- //BTOCSITE-7335-제품추천 : 제품 추천 슬라이드 JSP > AJAX로 처리 방식 변경 -->

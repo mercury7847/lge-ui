@@ -764,7 +764,10 @@
         //     setMethodReceiptPop();
         // });
 
-        
+        // BTOCSITE-5938-234 추가 요건 처리 - 팝업창 닫았을때 입력한 취소사유 count값 초기화
+        $('#popup-cancel, #popup-takeback').on('click', ".ui_modal_close", function(e){
+            $(this).closest('article').find('.count em').html('0');
+        });
     }
 
     function sendDetailPage(dataID){
@@ -1031,6 +1034,7 @@
 
         if(writeReasonTrim.length) reason = writeReason;
 
+        var getListData = (TAB_FLAG == TAB_FLAG_ORDER) ? datalayerResult.listData : datalayerResult.careListData; //4088 탭 구분 추가
         if(reason == ""){
             lgkorUI.alert("", {
                 title: "취소신청하시려면, 상세 사유가 필요합니다. 취소 사유를 입력해 주세요."
@@ -1105,23 +1109,23 @@
                                 }
                             }
   
-                            var pushDataEvent = {				
-                                'event': 'refund',				
+                            var pushDataEvent = {               
+                                'event': 'refund',              
                                 'actionField': {
                                     //'order_id' : getOrderID(datalayerResult)
                                     'order_id' : "ORD-" + list[idx].orderNumber
-                                },				
+                                },              
                                 'products': [{
-                                    'model_name': list[idx].productList[cdx].productNameKR,					
-                                    'model_id': list[idx].productList[cdx].modelID,					
-                                    'model_sku': list[idx].productList[cdx].productNameEN,					
-                                    'category': null,					
-                                    'brand': 'LG',					
+                                    'model_name': list[idx].productList[cdx].productNameKR,                 
+                                    'model_id': list[idx].productList[cdx].modelID,                 
+                                    'model_sku': list[idx].productList[cdx].productNameEN,                  
+                                    'category': null,                   
+                                    'brand': 'LG',                  
                                     'price': datalayerResult.payment.grandTotal,
-                                    'quantity': list[idx].productList[cdx].orderedQuantity,					
+                                    'quantity': list[idx].productList[cdx].orderedQuantity,                 
                                     'model_gubun': list[idx].productList[cdx].modelType,
                                     'ct_id': null
-                                }]				
+                                }]              
                             };
 
                             dataLayer.push(pushDataEvent);
@@ -1145,26 +1149,26 @@
                                 // if( orderProdutID == "" || orderProdutID == undefined) {
                                 //     return "ORD-" + orderProdutID
                                 // }
-                                return care_list_requestNo.replace('OR', 'OR-');
+                                return care_list_requestNo.replace('OR', 'ORD-');
                             }
                             
-                            var pushDataEvent = {				
-                                'event': 'refund',				
+                            var pushDataEvent = {               
+                                'event': 'refund',              
                                 'actionField': {
                                     'order_id' : getOrderID(datalayerResult)
                                     //'order_id' : CARE_list[idx].requestNo
-                                },				
+                                },              
                                 'products': [{
-                                    'model_name': CARE_list[idx].productList[CARE_cdx].productNameKR,					
-                                    'model_id': CARE_list[idx].productList[CARE_cdx].modelID,					
-                                    'model_sku': CARE_list[idx].productList[CARE_cdx].productNameEN,					
-                                    'category': null,					
-                                    'brand': 'LG',					
-                                    'price': CARE_list[idx].productList[CARE_cdx].paymentMethod.grandTotal,
-                                    'quantity': CARE_list[idx].productList[CARE_cdx].orderedQuantity,					
-                                    'model_gubun': CARE_list[idx].productList[CARE_cdx].modelType,
+                                    'model_name': CARE_list[idx].productList[CARE_cdx].productNameKR,                   
+                                    'model_id': CARE_list[idx].productList[CARE_cdx].modelID,                   
+                                    'model_sku': CARE_list[idx].productList[CARE_cdx].productNameEN,                    
+                                    'category': null,                   
+                                    'brand': 'LG',                  
+                                    'price': CARE_list[idx].productList[CARE_cdx].years1TotAmt,
+                                    'quantity': CARE_list[idx].productList[CARE_cdx].orderedQuantity,                   
+                                    'model_gubun': CARE_list[idx].productList[CARE_cdx].productFlag,
                                     'ct_id': null
-                                }]				
+                                }]              
                             };
     
                             dataLayer.push(pushDataEvent);
@@ -1197,6 +1201,7 @@
                 $('#popup-takeback').find('textarea').focus();
             }, 10);
         } else{
+            $('#popup-takeback').find('.count em').html('0'); // BTOCSITE-5938-234 추가
             $('#popup-takeback').find('textarea').attr('disabled', "disabled").val('');
         }
     }
@@ -1209,6 +1214,7 @@
                 $('#popup-cancel').find('textarea').focus();
             }, 10);
         } else{
+            $('#popup-cancel').find('.count em').html('0'); // BTOCSITE-5938-234 추가
             $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
         }
     }

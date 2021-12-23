@@ -170,14 +170,54 @@
                         '고객님, 안녕하세요!<br>' +
                         '고객님은 LG전자 케어솔루션/케어십 이달의 우수 고객으로 선정되셨습니다.<br><br>' +
 
-                        '<span>우수고객님께는 포인트 적립신청만 하시면 2만 멤버십포인트를 적립</span>해드립니다.<br class="pc-only">' +
-                        '지금 바로 아래 “멤버십포인트 적립 신청하기“ 버튼을 클릭 하시어 포인트 적립을 신청하세요!' +
+                        '<span>우수고객님께는 포인트 적립신청만 하시면 2만 멤버십포인트를 적립</span>해드립니다. <br class="pc-only">' +
+                        '{{#if !vcui.detect.isMobileDevice}}'+
+                            '지금 바로 아래 "LG전자 멤버십 APP"을 설치하시어 포인트 적립을 신청하세요!' +
+                            '{{#else}}' + 
+                            '지금 바로 아래 "LG전자 멤버십 바로가기"버튼을 선택하시어 포인트 적립을 신청하세요!' +
+                        '{{/if}}'+
                     '</p>' +
                 '</div>' +
 
-                '<div class="lb-btn">' +
-                    '<button type="button" class="btn"><span>멤버십포인트 적립 신청하기</span></button>' +
-                '</div>' +
+                '{{#if !vcui.detect.isMobileDevice}}'+
+                    '<div class="lb-pcAppDown">' + 
+                        '<div class="tit-wrap type-sub align-center">' + 
+                            '<h3 class="tit">LG전자 멤버십 APP 다운</h3>' + 
+                        '</div>' + 
+                        '<div class="section-inner">' + 
+                            '<div class="app-down">' + 
+                                '<div class="inner">' + 
+                                    '<span class="txt-btn">' + 
+                                        '<strong>안드로이드 앱 설치하기</strong>' + 
+                                        '<a href="https://play.google.com/store/apps/details?id=com.lge.lgemembership" class="btn-app-down">' + 
+                                            '<img src="/lg5-common/images/BMC/img-btn-googleplay.png" alt="Google Play"/>' + 
+                                        '</a>' + 
+                                    '</span>' + 
+                                    '<span class="img-qr">' + 
+                                        '<img src="/lg5-common/images/BMC/img-qr-googleplay.png" alt="Google Play Qr코드"/>' + 
+                                    '</span>' + 
+                                '</div>' + 
+                                '<div class="inner">' + 
+                                    '<span class="txt-btn">' + 
+                                        '<strong>iOS 앱 설치하기</strong>' + 
+                                        '<a href="https://apps.apple.com/kr/app/id1406622899" class="btn-app-down">' + 
+                                            '<img src="/lg5-common/images/BMC/img-btn-appstore.png" alt="App Store"/>' + 
+                                        '</a>' + 
+                                    '</span>' + 
+                                    '<span class="img-qr">' + 
+                                        '<img src="/lg5-common/images/BMC/img-qr-appstore.png" alt="App Store Qr코드"/>' + 
+                                    '</span>' + 
+                                '</div>' + 
+                            '</div>' + 
+                        '</div>' + 
+                    '</div>' + 
+
+                '{{#else}}' + 
+
+                    '<div class="lb-btn">' +
+                        '<button type="button" class="btn"><span>LG전자 멤버십 바로가기</span></button>' +
+                    '</div>' +
+                '{{/if}}'+
 
                 '<div class="lb-cont_bottom cont_bottom-custom">' +
                     '<div class="lb-bottom_text">' +
@@ -185,7 +225,7 @@
                         '<ul>' +
                             '<li>' +
                                 '<p class="dt">- 지급조건 :</p>' +
-                                '<p class="dd">혜택 유효기간 내 엘지전자 웹사이트 / 멤버십 앱에서 포인트 적립 신청 조건</p>' +
+                                '<p class="dd">혜택 유효기간 내 멤버십 앱에서 포인트 적립 신청 조건</p>' +
                             '</li>' +
                             '<li>' +
                                 '<p class="dt">- 지급일정 :</p>' +
@@ -628,34 +668,10 @@
         });
 
 
-        //주영
-        // $('.cctest').find('a').on('click', function(e){
-        //     //e.preventDefault();
-        //     //$(this).attr("href", "/html/MYC/ACCF7025_care_list.html");
-        //     tetetetetetete();
-        // });
+     
     }
 
-    //주영
-    // function tetetetetetete(result){
-    //     var sendata = {
-    //         contractID: $('select[name=contractInfo]').find('option:selected').val()
-    //     }
-
-    //     //var _href = $('.cctest').find('a').attr("href");
-    //     //console.log("sssssss", _href);
-    //     console.log("gggggg", sendata);
-
-    //     //$('.cctest').find('a').attr("href", _href + sendata.contractID);
-    //     //$('.cctest').find('a').attr("href", "/html/MYC/ACCF7025_care_list.html?");
-
-    //     /* BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
-    //     lgkorUI.requestAjaxData(CONTRACT_CARE, sendata, function(result){
-            
-    //         lgkorUI.hideLoading();
-
-    //     }, ajaxMethod);
-    // }
+    
 
     //계약서 발급 신청
     function sendRequestContract(){
@@ -1428,7 +1444,6 @@
         //console.log("sssss", mypage.find(".section-wrap"))
 
 
-        //주영 여기
         if(data != undefined && data != "" && data != null && $lc_select != ""){
             var info;
     
@@ -1507,7 +1522,7 @@
                 if(Date.now() >= (+$lc_join) && Date.now() <= (+CareShip_MonthLater)) {
                     console.log("------케어십 가입 14개월 이전!!!------")
                     //console.log("---가입시점부터 14개월 말일 까지 노출---")
-                    $lc_cont.html(vcui.template(lb_careShip, data));
+                    return $lc_cont.html(vcui.template(lb_careShip, data));
                 } else {
                     console.log("----케어십 14개월이 훨신 지난 조건----");
                     mypage.find(".lb-container").empty();
@@ -1524,7 +1539,7 @@
                     //console.log("mmm", MonthLater1);
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater1)) {
                         console.log("---1년차 - 3개월 까지만 노출---")
-                        $lc_cont.html(vcui.template(lb_careSolution_1, data));
+                        return $lc_cont.html(vcui.template(lb_careSolution_1, data));
                     }
                 } else {
                     console.log("------1년차 조건에 해당하지 않음------")
@@ -1535,7 +1550,7 @@
                     console.log("------2년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater2)) {
                         console.log("---2년차 - 3개월 까지만 노출---")
-                        $lc_cont.html(vcui.template(lb_careSolution_2, data));
+                        return $lc_cont.html(vcui.template(lb_careSolution_2, data));
                     }
                 } else {
                     console.log("------2년차 조건에 해당하지 않음------")
@@ -1546,7 +1561,7 @@
                     console.log("------3년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater3)) {
                         console.log("---3년차 - 3개월 까지만 노출---")
-                        $lc_cont.html(vcui.template(lb_careSolution_3, data));
+                        return $lc_cont.html(vcui.template(lb_careSolution_3, data));
                     }
                 } else {
                     console.log("------3년차 조건에 해당하지 않음------")
@@ -1557,7 +1572,7 @@
                     console.log("------4년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater4)) {
                         console.log("---4년차 - 3개월 까지만 노출---")
-                        $lc_cont.html(vcui.template(lb_careSolution_4, data));
+                        return $lc_cont.html(vcui.template(lb_careSolution_4, data));
                     }
                 } else {
                     console.log("------4년차 조건에 해당하지 않음------")
@@ -1568,7 +1583,7 @@
                     console.log("------5년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater5)) {
                         console.log("---5년차 - 3개월 까지만 노출---")
-                        $lc_cont.html(vcui.template(lb_careSolution_5, data));
+                        return $lc_cont.html(vcui.template(lb_careSolution_5, data));
                     }
                 } else {
                     mypage.find(".lb-container").empty();

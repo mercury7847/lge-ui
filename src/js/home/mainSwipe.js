@@ -292,7 +292,7 @@ MainSwiper.prototype = {
         });
 
         $.ajax({
-            method: 'POST',
+            method: 'GET',
             url : href,
             dataType : 'html',
             success : function( res ){
@@ -332,7 +332,7 @@ MainSwiper.prototype = {
                         setTimeout(function(){
                             mainSwiper.swiper.updateAutoHeight();
                             $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
-                        }, 200);
+                        }, 500);
                     });
                 });
             }

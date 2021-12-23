@@ -1512,7 +1512,7 @@
     // BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
     &.selected {
         .sort-area {
-            .sort-check-area,.sort-select-wrap,.sort-search-area  {
+            .sort-check-area.active,.sort-check-area,.sort-select-wrap,.sort-search-area  {
                 display:none;
             }
         }
@@ -1535,13 +1535,17 @@
             vertical-align: middle;
         }
         .sort-check-area {
-            display: inline-block;
+            display: none;
             vertical-align: middle;
             .chk-wrap input + label {
                 @include font-small; 
             }
 
             //BTOCSITE-16 검색 결과 구획 정리
+            &.active {
+                display:inline-block;
+            }
+
             &:first-child {
                 margin-right:16px;
 

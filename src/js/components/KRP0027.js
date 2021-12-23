@@ -48,7 +48,7 @@ $(window).ready(function(){
 				'{{#if modelList && modelList.length > 0}}'+
 				'<div class="btn-area">'+
 					'<div class="btn-wrap">'+
-						'<a href="#n" class="btn-text btn-modelName">{{#raw modelList[0].models[0].modelDisplayName}}</a>'+
+						'<a href="{{#raw modelList[0].models[0].modelUrlPath}}" class="btn-text btn-modelName">{{#raw modelList[0].models[0].modelDisplayName}}</a>'+ //BTOCSITE-5938-413 20211221
 						'{{#if isMoreModel}}'+
 						'<button type="button" class="btn-more btn-moreModel"><span class="hidden">수상내역 더보기</span></button>'+
 						'{{/if}}'+
@@ -138,6 +138,9 @@ $(window).ready(function(){
 
 
         function setting(){
+            if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+            }
             VIDEO_LIST_URL = $('.KRP0027').data("videoListUrl");
             VIEWER_DATA_URL = $('.KRP0027').data("viewerDataUrl");
 
@@ -160,25 +163,25 @@ $(window).ready(function(){
 
         function bindEvents(){
             superCategoryTab.on('tabchange', function(e, data){
+
+                console.log("superCategoryTab")
                 param = {
-                    mode : "superCategory",
-                    scrolled : false
+                    mode : "superCategory"
                 }
                 setContentsList(1);
             });
 
             categoryTab.find('.ui_tab').on('tabchange', function(e, data){
+                console.log("categoryTab")
                 param = {
-                    mode : "category",
-                    scrolled : false
+                    mode : "category"
                 }
                 setContentsList(1);
             });
 
             yearTab.on('tabchange', function(e, data){
                 param = {
-                    mode : "year",
-                    scrolled : true
+                    mode : "year"
                 }
                 setContentsList(1);
             }).vcTab();
@@ -214,7 +217,13 @@ $(window).ready(function(){
                 setViewContents(storyID);
             });
 
-            $(window).on('resize', function(){setContListScrolled();})
+            $(window).on('resize', function(){
+                setTimeout(function() {
+                    if(window.breakpoint.name == "pc"){
+                        $('.video-wrap').removeClass('fixed').removeAttr('style').find('.video-inner').removeAttr('style');
+                    }
+                },100)
+            })
 
             /* BTOCSITE-5938-337 [모니터링] 스토리 > 아카이브 > TV광고 IE 버튼 오류 */
             $(function(){
@@ -279,10 +288,10 @@ $(window).ready(function(){
         }
 
         function changeViewContents(data){
-            if(data != undefined && param.page == 1){
+            if(data != undefined){
                 $('.video-wrap').empty();
 
-                // console.log("### changeViewContents ###", data)
+                console.log("### changeViewContents ###", data)
 
                 var isMoreModel = false;
                 var modelist = data.modelList;
@@ -291,7 +300,6 @@ $(window).ready(function(){
                 }
                 data.isMoreModel = isMoreModel;
                 if(!data.videoType) data.videoType = "youtube";
-
 
                 data['shareUrl'] = vcui.uri.updateQueryParam(location.href, 'storyId', data.storyId);    
                 var templateList = vcui.template(viewerTemplate, data);
@@ -308,10 +316,14 @@ $(window).ready(function(){
         }
 
         function setContListScrolled(){
+            param = {
+                mode : "year"
+            };
+
             if(scrollAbled){
                 var page = parseInt(contList.data('page'));
                 var totalpage = contList.data('totalpage');
-                if(page < totalpage){
+                if(page <= totalpage){
                     var getList = false;
                     var scrolltop, wrapheight, listheight, scrolldist, contop;
                     if(window.breakpoint.name == "pc"){
@@ -320,38 +332,46 @@ $(window).ready(function(){
                         listheight = contList.find('.video-list').outerHeight(true);
                         scrolldist = listheight - wrapheight - 10;
 
-                        if(scrolltop >= scrolldist) getList = true;
-
-                        $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                        if(scrolltop >= scrolldist && page != totalpage) getList = true;
+                        $('.video-wrap').removeClass('fixed').removeAttr('style').find('.video-inner').removeAttr('style');
                     } else{
                         scrolltop = $(window).scrollTop();
                         contop = contList.offset().top;
                         wrapheight = contList.height();
-                        if(-scrolltop + contop + wrapheight < $(window).height()) getList = true;
+                        if(-scrolltop + contop + wrapheight < $(window).height() && page != totalpage) getList = true;
 
                         var videotop = $('.video-wrap').offset().top;
                         if(-scrolltop + videotop < 0){
-                            var innerwidth = $('.video-wrap').find('.video-inner').width();
-                            var innerheight = $('.video-wrap').find('.video-inner').height();
-                            $('.video-wrap').css({paddingTop:innerheight}).find('.video-inner').css({
-                                position: 'fixed',
-                                top:0,
-                                height: innerheight,
-                                width: innerwidth,
-                                zIndex: 10
-                            })
+                            if(!$('.video-wrap').hasClass('fixed')) {
+                                var innerwidth = $('.video-wrap').find('.video-inner').width();
+                                var innerheight = $('.video-wrap').find('.video-inner').height();
+                                $('.video-wrap').addClass('fixed').css({paddingTop:innerheight}).find('.video-inner').css({
+                                    position: 'fixed',
+                                    top:0,
+                                    height: innerheight,
+                                    width: innerwidth,
+                                    zIndex: 10
+                                })
+                            }
                         } else{
-                            $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                            $('.video-wrap').removeClass('fixed').removeAttr('style').find('.video-inner').removeAttr('style');
                         }
-                    }
+                    } //else {
 
-                    if(getList) setContentsList(page+1);
+
+
+
+                        // console.log("33");
+                        // //BTOCSITE-5938 - TV 광고 페이지 동영상 위치 오류 수정
+                        // if(window.breakpoint.name == "mobile"){
+                        //     $('.video-wrap').removeAttr('style').find('.video-inner').removeAttr('style');
+                        // }
                 }
             }
-        }
 
+            // },300);
+        }
         function setContentsList(page){
-            if(!param.scrolled) lgkorUI.showLoading();
 
             contLoadMode = param.mode;
 
@@ -369,7 +389,7 @@ $(window).ready(function(){
             // 연도 탭
             sendata.year = param.mode === "year" ? idxs.year : "";
 
-            // console.log("### setContentsList ###", sendata)
+            console.log("### setContentsList ###", sendata)
             lgkorUI.requestAjaxDataPost(VIDEO_LIST_URL, sendata, function(result){
                 var data = result.data[0];
                 var page = data.pagination.page;
@@ -379,7 +399,7 @@ $(window).ready(function(){
 
                 if(page == 1) {
                     contList.find('.video-list').empty();
-                    contList.find('.video-list').scrollTop(0);
+                    // contList.find('.video-list').scrollTop(0);
                 }
                 for(var key in data.storyList){
                     var contlistemplate = vcui.template(contListTemplate, data.storyList[key]);
@@ -411,15 +431,15 @@ $(window).ready(function(){
                 }
 
                 // 스크롤이 아닌경우
-                if(!param.scrolled) changeViewContents(data.storyinfo);
+                if(contLoadMode != "year") changeViewContents(data.storyinfo);
 
                 scrollAbled = true;
-
-                lgkorUI.hideLoading();
             });
         }
 
         function changeYearTab(data){
+
+            console.log("changeYearTab %o",data);
             var yeardata = vcui.array.filter(data, function(item, index){
                 return item.yearBaseDate != "TOTAL";
             });
@@ -428,7 +448,7 @@ $(window).ready(function(){
             });
             var tabTemplate = vcui.template(yearTabTemplate, {totalCnt: totalcnt[0].yearCnt, yearList: yeardata})
             yearTab.find('.tabs').empty().append(tabTemplate);
-            yearTab.vcTab('update').vcSmoothScroll('refresh');
+            yearTab.vcTab('update').vcSmoothScrollTab('refresh');
         }
 
         function getTabCateIDs(){

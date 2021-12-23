@@ -1,4 +1,4 @@
-;$(function() {
+;$(function() {   
     var thinQMain = {
         init: function(){
             var self = this;
@@ -14,7 +14,7 @@
                 self.contentTab();
                 self.resize();
                 self.appSmartTabMenu();
-                self.appSmartTabMobile.load();
+                self.appSmartTabMobile.load(); 
             });
         },
         settings: function(){
@@ -649,6 +649,48 @@
         thinQMain.scroll(scrollTop);
         
     })
+
+    //BTOCSITE-88 추가
+    $(window).on('thinQScroll', function(){
+        var hash = location.hash;
+        var hasHash = false;
+        switch (hash){
+            case '#intro':
+                setTimeout(function(){
+                    $('.thinq-tabs a[href="#thinq-cont1"]').trigger('click');
+                },100);
+                hasHash = true;
+                break;
+            case '#life-style':
+                setTimeout(function(){
+                    $('.thinq-tabs a[href="#thinq-cont2"]').trigger('click');
+                },100);
+                hasHash = true;
+                break;
+            case '#app':
+                setTimeout(function(){
+                    $('.thinq-tabs a[href="#thinq-cont3"]').trigger('click');
+                },100);
+                hasHash = true;
+                break;
+            case '#magazine':
+                setTimeout(function(){
+                    $('.thinq-tabs a[href="#thinq-cont4"]').trigger('click');
+                },100);
+                hasHash = true;
+                break;
+            default:
+
+        }
+    });
+
+    $(window).on('load', function(){
+        //BTOCSITE-88 추가
+        $(window).trigger('thinQScroll');
+    })
+
+    
+
 
     // 접근성 탭 이동시 화면처리
     $(document).on('focusin', function(e){
