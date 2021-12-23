@@ -149,19 +149,15 @@
         var memBtn = $('.mem-point .btn-box');
         var memPoint = parseInt($('.mem-point .input-wrap').text());
         
-
         loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
         if(lgkorUI.stringToBool(loginFlag)) {
-            console.log('로그인');
             memInp.css('display', 'block');
             memBtn.css('display', 'none');
             if( memPoint == 0 ) {
                 memInp.addClass('p-none');
             }
         } else{
-            //$('.mem-point .input-wrap').addClass('p-none');
             memBtn.css('display', 'block');
-            console.log('로그아웃');
         }    
     }
 
