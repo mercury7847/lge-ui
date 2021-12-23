@@ -507,7 +507,7 @@
                                     margin:16px 0;
                                 }
                                 .content{
-                                    @include mobile{
+                                    @media (max-width: $desktop-s-width) {
                                         margin-top:8px;
                                     }
                                 }
@@ -541,7 +541,7 @@
                                 .btn-box{
                                     .btn{
                                         &.size{
-                                            @include mobile{
+                                            @media (max-width: $desktop-s-width) {
                                                 width:100%;
                                             }
                                         }
@@ -560,6 +560,9 @@
                                     border-radius:8px;
                                     background:#fff;
                                     line-height:46px;
+                                    @media (max-width: $desktop-s-width) {
+                                        width:100%;
+                                    }
                                     &.p-none{
                                         background:#f4f4f4;
                                         color:#aaaaaa;
