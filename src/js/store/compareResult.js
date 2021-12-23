@@ -21,7 +21,10 @@
         if($('.compare-result-contents .section').length == 0) {
             $('.compare-result').vcSticky('destroy');
             $('.compare-result').removeClass('ui_sticky');
-        }
+        }      
+        
+        // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공
+        setDifferentBenefit();
     }
 
     function bindEvents(){
@@ -138,6 +141,24 @@
         $('.compare-result-contents .section').show();
         $('.compare-result-contents .section .lists .compare-result-list tr').show();
         $('.compare-result.ui_sticky').vcSticky('update');
+    }
+
+    // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공
+    function setDifferentBenefit(){
+        var memInp = $('.mem-point .input-wrap');
+        var memBtn = $('.mem-point .btn-box');
+        var memPoint = parseInt($('.mem-point .input-wrap').text());
+        
+        loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+        if(lgkorUI.stringToBool(loginFlag)) {
+            memInp.css('display', 'block');
+            memBtn.css('display', 'none');
+            if( memPoint == 0 ) {
+                memInp.addClass('p-none');
+            }
+        } else{
+            memBtn.css('display', 'block');
+        }    
     }
 
     $(document).ready(function(){

@@ -375,6 +375,377 @@
                     margin-bottom: 20px;
                 }
             }
+            /* BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 */
+            .pay-benefit-wrap{
+                display:flex;
+                margin:48px 0 0 -48px;
+                @media (min-width: $tablet-s-width + 1) and (max-width: $desktop-s-width) {
+                    margin-left:-24px;
+                }
+                @include mobile{
+                    margin:32px 0 0 -12px;
+                }
+                .benefit-box{
+                    margin-left:48px;
+                    width:calc(33.33% - 48px);
+                    padding:24px 24px 32px;
+                    border:1px solid #ddd;
+                    border-radius:8px;
+                    @media (min-width: $tablet-s-width + 1) and (max-width: $desktop-s-width) {
+                        margin-left:24px;
+                        width:calc(33.33% - 24px);
+                    }
+                    @include mobile{
+                        margin-left:12px;
+                        padding:0;
+                        width:calc(50% - 4px);
+                        border:0;
+                    }
+                    .payment-info{
+                        >li{
+                            margin-bottom:8px;
+                            &:first-of-type{
+                                margin-bottom:16px;
+                                @include mobile{
+                                    margin-bottom:16px !important;
+                                }
+                            }
+                            &:last-of-type{
+                                margin-bottom:0;
+                            }
+                            @include mobile{
+                                margin-bottom:12px !important;
+                            }
+                        }
+                        .price-info{
+                            display:flex;
+                            align-items:center;
+                            @media (max-width: $desktop-s-width) {
+                                display:block;
+                            }
+                            dt{
+                                flex:1;
+                                font-size:14px;
+                                font-weight:700;
+                                line-height:24px;
+                                @include mobile{
+                                    font-size:13px;
+                                    line-height:21px;
+                                }
+                            }
+                            dd{
+                                .price{
+                                    font-size:14px;
+                                    line-height:24px;
+                                    font-weight:700;
+                                }
+                                .discount-rate {
+                                    font-weight:700;
+                                    font-size:12px;
+                                    color:#da0f47;
+                                    &:after {
+                                        content:'';
+                                        display:inline-block;
+                                        width:16px;
+                                        height:16px;
+                                        background:url('/lg5-common/images/icons/icon-triangle-16-pink.svg') no-repeat 0 3px;
+                                    }
+                                }
+                            }
+                            &.total{
+                                .price{
+                                    font-size:20px;
+                                    line-height:30px;
+                                    @include mobile{
+                                        font-size:18px;
+                                        line-height:26px;
+                                    }
+                                }
+                            }
+                            &.discount{
+                                .text{
+                                    @include mobile{
+                                        margin-bottom:4px;
+                                    }
+                                }
+                                .price{
+                                    color:#da0f47;
+                                    @include mobile{
+                                        font-size:13px;
+                                        line-height:21px;
+                                    }
+                                }
+                            }
+                            &.total-discount{
+                                margin-top:12px;
+                                @include mobile{
+                                    margin-top:16px;
+                                }
+                                .text{
+                                    @include mobile{
+                                        margin-bottom:4px;
+                                    }
+                                }
+                                .price{
+                                    @include mobile{
+                                        font-size:13px;
+                                        line-height:21px;
+                                    }
+                                }
+                            }
+                            &.total-payment{
+                                .price{
+                                    font-size:20px;
+                                    line-height:30px;
+                                    color:#da0f47;
+                                }
+                            }
+                            &.mem-point{
+                                margin:12px 0;
+                                min-height:48px;
+                                @include mobile{
+                                    margin:16px 0;
+                                }
+                                .content{
+                                    @media (max-width: $desktop-s-width) {
+                                        margin-top:8px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .additional{
+                        margin-top:24px;
+                        padding-top:24px;
+                        border-top:1px solid #ddd;
+                        @include mobile{
+                            margin-top:18px;
+                            padding-top:16px;
+                        }
+                        .title{
+                            font-size:16px;
+                            line-height:24px;
+                            @include mobile{
+                                font-size:14px;
+                                line-height:22px;
+                            }
+                        }
+                        .membership{
+                            .payment-info{
+                                margin-top:20px;
+                                >li{
+                                    &:first-of-type{
+                                        margin-bottom:12px;
+                                    }
+                                }
+                                .btn-box{
+                                    .btn{
+                                        &.size{
+                                            @media (max-width: $desktop-s-width) {
+                                                width:100%;
+                                            }
+                                        }
+                                    }
+                                }
+                                .input-wrap{
+                                    display:none;
+                                    position:relative;
+                                    padding-right:28px;
+                                    width:160px;
+                                    height:48px;
+                                    text-align:right;
+                                    font-size:14px;
+                                    line-height:26px;
+                                    border:1px solid #ddd;
+                                    border-radius:8px;
+                                    background:#fff;
+                                    line-height:46px;
+                                    @media (max-width: $desktop-s-width) {
+                                        width:100%;
+                                    }
+                                    &.p-none{
+                                        background:#f4f4f4;
+                                        color:#aaaaaa;
+                                        &:after{
+                                            color:#aaaaaa;
+                                        }
+                                    }
+                                    em{
+                                        margin-left:1px;
+                                    }
+                                }
+                            }
+                        }
+                        .acco-box{
+                            position:relative;
+                            margin-top:12px;
+                            border:1px solid #ddd;
+                            border-radius:8px;
+                            width:100%;
+                            min-height:48px;
+                            transition:all 0.4s;
+                            @include mobile{
+                                margin-top:8px;
+                            }
+                            .cash-back-info{
+                                display:block;
+                                position:relative;
+                                padding:0 16px;
+                                font-size:14px;
+                                line-height:46px;
+                                font-weight:700;
+                                .ico {
+                                    position:absolute;
+                                    top:50%;
+                                    right:16px;
+                                    width:16px;
+                                    height:16px;
+                                    margin-top:-8px;
+                                    background: url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat 0 0;
+                                    transition:all 0.3s;
+                                    @include mobile {
+                                        right:12px;
+                                    }
+                                }
+                            }
+                            &.disabled{
+                                border:1px solid #ededed;
+                                background:#ededed;
+                                .cash-back-info{
+                                    color:#aaa;
+                                    font-weight:500;
+                                    cursor:default;
+                                    pointer-events:none;
+                                    .ico{
+                                        background: url('/lg5-common/images/icons/btn-down-16-gray.svg') no-repeat 0 0;
+                                    }
+                                }
+                            }
+                            &.on{
+                                border:1px solid #000;
+                                height:auto;
+                                .ico {
+                                    transform:rotate(180deg);
+                                }
+                            }
+                            .ui_accord_content{
+                                position:absolute;
+                                z-index:2;
+                                top:41px;
+                                left:-1px;
+                                right:-1px;
+                                padding:0 16px 24px;
+                                max-height:300px;
+                                border:1px solid #000;
+                                border-top:0;
+                                border-radius:0 0 8px 8px;
+                                background:#fff;
+                                overflow:auto;
+                                .bullet-list{
+                                    margin-top:14px;
+                                }
+                            }
+                            .info-box{
+                                .bullet-list{
+                                    font-size:14px;
+                                    line-height:24px;
+                                    .b-txt{
+                                        margin-top:16px;
+                                        &:first-child{
+                                            margin-top:0;
+                                        }
+                                        .card-list{
+                                            display:inline-block;
+                                            width:calc(100% - 4px);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .card-selec-box{
+                            position:relative;
+                            margin:12px 0;
+                            border:1px solid #ddd;
+                            border-radius:8px;
+                            width:100%;
+                            min-height:48px;
+                            @include mobile{
+                                margin:16px 0;
+                            }
+                            strong{
+                                position:absolute;
+                                top:16px;
+                                z-index:1;
+                                padding:0 16px;
+                                font-size:14px;
+                                border-radius:8px;
+                            }
+                            .select-wrap{
+                                position:absolute;
+                                top:0;
+                                right:0;
+                                .ui-selectbox-wrap{
+                                    .ui-select-button{
+                                        height:46px;
+                                        border:none;
+                                        text-align:right;
+                                        @include mobile{
+                                            text-align:left;
+                                        }
+                                        .ui-select-text{
+                                            font-size:14px;
+                                            line-height:26px;
+                                            color:#000;
+                                        }
+                                    }
+                                    .ui-selectbox-list{
+                                        text-align:right;
+                                        ul{
+                                            li{
+                                                &:first-child{
+                                                    display:none;
+                                                }
+                                                a{
+                                                    font-size:14px;
+                                                    line-height:26px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.zindex{
+                                border:1px solid #222;
+                                border-bottom:0;
+                                .ui_selectbox{
+                                    background:transparent;
+                                }
+                                .ui-selectbox-wrap{
+                                    .ui-selectbox-list{
+                                        top:42px;
+                                        left:-1px;
+                                        right:-1px;
+                                    }
+                                }
+                            }
+                        }
+                        .info-text{
+                            margin-top:24px;
+                            padding:16px 0 0 15px;
+                            border-top:1px solid #ddd;
+                            font-size:12px;
+                            line-height:22px;
+                            text-indent:-15px;
+                        }
+                    }
+                    &:nth-child(3){
+                        @include mobile{
+                            display:none;
+                        }
+                    }
+                }
+            }
+            /* //BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 */
         }
         .lists {
             @include clearfix;
