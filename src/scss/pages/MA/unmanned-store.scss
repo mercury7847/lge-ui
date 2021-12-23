@@ -3,6 +3,13 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+//BTOCSITE-9942
+@mixin unmanned-store-middle-target {
+    @media screen and (max-width: 1460px) and (min-width: 768px){
+        @content;
+    }
+}
+
 .cont-wrap {
     max-width:100%;
     padding: 0;
@@ -83,14 +90,11 @@
         }
     }
 }
-
+//BTOCSITE-9942
 .visual-wrap {
     position:relative;
     img {
         width:100%;
-    }
-    @include mobile {
-        // padding:0 20px;
     }
     .bg {
         display:block;
@@ -104,32 +108,21 @@
         position:absolute;
         top:50%;
         left:50%;
-        transform:translate(-573px,-50%);
-        @media screen and (max-width: 1146px) {
-            left:40px;
-            transform:translate(0,-50%);
-        }
+        width: 100%;
+        max-width: 1380px;
+        transform:translate(-50%,-50%);
+        color: $color-white;
         @include mobile {
             top:48px;
             right:20px;
             left: 20px;
+            padding-right:40px;
             transform:translateY(0);
-            color: $color-white;
-        }
-        @include pc {
-            color: $color-white;
         }
         .tit {
             font-size:48px;
             line-height:64px;
             font-weight:700;
-            @media screen and (max-width: 1411px) and (min-width: 768px) {
-                 font-size:48px;
-                line-height:64px;
-                 font-size: 4.20684vw;
-                line-height: 5.60911vw;
-
-            }
             @include mobile {
                 font-size:26px;
                 line-height:35px;
@@ -142,11 +135,6 @@
             font-size:24px;
             line-height:34px;
             font-weight:400;
-            @media screen and (max-width: 1411px) and (min-width: 768px) {
-                padding-top: 1.75285vw;
-                font-size: 2.10342vw;
-                line-height: 2.97984vw;
-            }
 
             sub{
                 @include font-small;
@@ -158,6 +146,18 @@
                 font-size:16px;
                 line-height:24px;
                 font-weight: 400;
+            }
+            .small-txt {
+                margin-top: 15px;
+                font-size: 13px;
+                line-height: 1.5;
+                @include mobile {
+                    font-size: 13px;
+                    line-height: 1.5;
+                }
+                & + .small-txt {
+                    margin-top:5px
+                }
             }
         }
         .btn-area {
@@ -177,6 +177,34 @@
                 &:active {
                     border-color: $color-primary !important;
                 }
+            }
+        }
+    }
+    @include unmanned-store-middle-target {
+        overflow: hidden;
+        height: 400px;
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        .tit-wrap {
+            padding-left: 20px;
+            .tit {
+                font-size: 36px;
+                line-height: 1.5;
+                font-weight: 700;
+            }
+            .txt {
+                font-size: 18px;
+                line-height: 1.5;
+            }
+            .small-txt {
+                font-size: 12px;
             }
         }
     }
