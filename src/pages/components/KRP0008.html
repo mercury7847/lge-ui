@@ -3,7 +3,12 @@
     <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
     @@include('./common/head.html', {
         componentID: "KRP0008",
-        isJScompile: true
+        isJScompile: true,
+        "digitalData": {
+            userInfo: {
+                "unifyId": "eae799fd07c188c80983e1939833fb0d", // 로그인 상태 : 로그인중 unifyId 값이 존재, 비로그인 :  unifyId 값이 null
+            }
+        }
     })
     <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0011.min.css">
     <script src="/lg5-common/js/components/KRP0015.min.js"></script>
