@@ -89,15 +89,27 @@
     var qnaPdp = {
         init : function (){
             loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+            
             var self = this;
-
+            var isUrl = document.location.search;
+            
             vcui.require(['ui/pagination', 'ui/validation'], function (){
                 self.settings();
                 self.bindEvents();
                 self.validation = new vcui.ui.Validation('#submitForm', { 
                 
                 });
-                self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","myQna":"N","page": "1"});
+
+                if(loginFlag == "Y"){
+                    if(isUrl){
+                        self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"Y","page": "1"});
+                        $('#myWriteView').prop("checked", true);
+                    } else {
+                        self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"N","page": "1"});
+                    }
+                } else {
+                    self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"N","page": "1"});
+                }
             });
         },
         settings : function (){
@@ -198,20 +210,31 @@
 
             // 내 문의 보기 체크
             self.$qnaType.find('#myWriteView').on('click', function(){
-                var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
-                var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
-                if(excludePrivate === "on" ) {
-                    excludePrivate = "Y";
+                if(lgkorUI.stringToBool(loginFlag)) {
+                    var questionTypeCode = self.$sortSelect.vcSelectbox('value');
+                    var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
+                    var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
+                    if(excludePrivate === "on" ) {
+                        excludePrivate = "Y";
+                    } else {
+                        excludePrivate = "N";
+                    }
+                    if(myQna === "on" ) {
+                        myQna = "Y";
+                    } else {
+                        myQna = "N";
+                    }
+                    self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
                 } else {
-                    excludePrivate = "N";
+                    lgkorUI.confirm('', {
+                        title:'로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까?', 
+                        okBtnName: '예', 
+                        cancelBtnName: '아니오', 
+                        ok : function (){ 
+                            window.location.href = "/sso/api/Login";
+                        }
+                    });
                 }
-                if(myQna === "on" ) {
-                    myQna = "Y";
-                } else {
-                    myQna = "N";
-                }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
             });
 
             self.$writePopup.find('.btn-confirm').on('click', function() {
@@ -278,6 +301,15 @@
                 self.requestQnaReadPop({"mode":mode,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
             });
         },
+        // hasParamChk: function(name){
+        //     if(params){
+        //         for (var i = 0; i < params.length; i++) {
+        //             var pair = params[i].split('=');
+        //             if (decodeURIComponent(pair[0]) == name)
+        //                 return true;
+        //         }
+        //     }
+        // },
         itemAccordionEnabledChk: function(item){
             if( item.blocked == "Y" ) {
                 this.enabled = "N";
