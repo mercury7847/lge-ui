@@ -99,7 +99,7 @@
                             }
                         });
                     } else {
-                        location.href = dataURL + '?myQna=Y#pdp_qna';
+                        location.href = dataURL + '?myQnaParam=Y#pdp_qna';
                     }
                 });
                 //BTOCSITE-9642 - Q&A로 이동 버튼 추가 end
