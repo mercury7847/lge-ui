@@ -93,13 +93,13 @@
 
                     if(!dataURL || dataURL == "URL_NOT_FOUND") {
                         lgkorUI.alert("", {
-                            title: "죄송합니다. 해당 제품은 단종되어 Q&A로 이동되지 않습니다.",
+                            title: "죄송합니다.<br>해당 제품은 단종되어<br>Q&A로 이동되지 않습니다.",
                             ok: function(){
                             
                             }
                         });
                     } else {
-                        location.href = dataURL + '#pdp_qna';
+                        location.href = dataURL + '?myQna=Y#pdp_qna';
                     }
                 });
                 //BTOCSITE-9642 - Q&A로 이동 버튼 추가 end

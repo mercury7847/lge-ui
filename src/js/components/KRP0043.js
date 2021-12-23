@@ -90,14 +90,23 @@
         init : function (){
             loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
             var self = this;
-
+            var isUrl = document.location.search;
+            
             vcui.require(['ui/pagination', 'ui/validation'], function (){
                 self.settings();
                 self.bindEvents();
                 self.validation = new vcui.ui.Validation('#submitForm', { 
                 
                 });
-                self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","myQna":"N","page": "1"});
+
+                
+                if(isUrl){                    
+                    self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","myQna":"Y","page": "1"});                    
+                    $('#myWriteView').prop("checked", true);
+                } else {
+                    self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","myQna":"N","page": "1"});
+                }
+                
             });
         },
         settings : function (){
@@ -278,6 +287,15 @@
                 self.requestQnaReadPop({"mode":mode,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
             });
         },
+        // hasParamChk: function(name){
+        //     if(params){
+        //         for (var i = 0; i < params.length; i++) {
+        //             var pair = params[i].split('=');
+        //             if (decodeURIComponent(pair[0]) == name)
+        //                 return true;
+        //         }
+        //     }
+        // },
         itemAccordionEnabledChk: function(item){
             if( item.blocked == "Y" ) {
                 this.enabled = "N";
