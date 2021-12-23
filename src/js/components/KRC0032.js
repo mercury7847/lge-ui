@@ -40,9 +40,10 @@ $(window).ready(function(){
 			});
 		});
 
-		var tetete = $('.KRC0032').find('.carousel-box');
+		/* BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
+		var infoDisclaimer = $('.KRC0032').find('.carousel-box');
 
-		tetete.each(function(cdx, item){
+		infoDisclaimer.each(function(cdx, item){
 			//console.log("11111", $(item).find('.title').attr('id'));
 			var titleAttr = $(item).attr("id");
 			var slideID = titleAttr;
@@ -50,9 +51,9 @@ $(window).ready(function(){
 			$(item).find('.drop-info .dropInfo_openBtn').on('click', function(e){
 				var mybtnAttr = $(this).attr('aria-describedby', slideID);
 
-				console.log("콘텐츠의 아이디", titleAttr);
-				console.log("내가 찍힌", mybtnAttr.attr('aria-describedby'));
-				console.log("sssss", titleAttr = mybtnAttr);
+				//console.log("콘텐츠의 아이디", titleAttr);
+				//console.log("내가 찍힌", mybtnAttr.attr('aria-describedby'));
+
 				if(titleAttr = mybtnAttr) {
 				    //console.log("111");
 				    $(item).find('.dropContent').addClass('on');
@@ -69,8 +70,8 @@ $(window).ready(function(){
 			        //$(item).find('.drop-info .dropInfo_openBtn').show();
 			    }
 			});
-			
 		});
+		/* //BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
 	});
 
 

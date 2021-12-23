@@ -9,9 +9,11 @@ $(window).ready(function(){
         //console.log("ssss", $(item).find('.unit-box .title').attr('id'));
     });
 
-    var tetete = $('.KRC0025').find('.unit-box');
 
-    tetete.each(function(cdx, item){
+    /* BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
+    var infoDisclaimer = $('.KRC0025').find('.unit-box');
+
+    infoDisclaimer.each(function(cdx, item){
         //console.log("11111", $(item).find('.title').attr('id'));
         var titleAttr = $(item).find('.title').attr('id');
 
@@ -20,7 +22,7 @@ $(window).ready(function(){
 
             //console.log("콘텐츠의 아이디", titleAttr);
             //console.log("내가 찍힌", mybtnAttr);
-            console.log("sssss", titleAttr == mybtnAttr);
+            //console.log("sssss", titleAttr == mybtnAttr);
             if(titleAttr == mybtnAttr) {
                 //console.log("111");
                 $(item).find('.dropContent').addClass('on');
@@ -39,4 +41,5 @@ $(window).ready(function(){
         });
         
     });
+    /* //BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
 })
