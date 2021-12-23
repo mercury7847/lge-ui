@@ -616,15 +616,11 @@
         },
         resize: function(){
             var self = this;
-            // self.appSmartTabMenu();
-            console.log('sdfsdfsdsdfsdfssfd');
-
             if( window.innerWidth > 1024) {
                 $('.app-tab-content').removeClass('tab-mobile-content');
 
             } else {
                 $('.app-tab-content').addClass('tab-mobile-content');
-                //self.appSmartTabMobile.load(); 
 
             }
         }
