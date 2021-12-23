@@ -3745,9 +3745,6 @@
 
     $(document).ready(function() {
 
-        /* TEST */
-        //$('.model_experience').attr('data-page-type', 'HIMART');
-
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
             if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
@@ -4138,7 +4135,7 @@
             modelSimulator.closeMyPickModel();
             modelSimulator.closeProposeModel();
             modelSimulator.childModel($(this));
-            modelSimulator.maxCountCheck();
+            //modelSimulator.maxCountCheck();
 
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
@@ -4184,7 +4181,7 @@
             modelSimulator.closeMyPickModel();
             modelSimulator.closeProposeModel();
             modelSimulator.stepOneNext(idx, _name, name, code, leadName);
-            modelSimulator.maxCountCheck();
+            //modelSimulator.maxCountCheck();
             modelSimulator.mobileStep(".simul_step2");
             $(".etc_area").addClass("is_active");
             /* BTOCSITE-1582 add */
@@ -4227,7 +4224,7 @@
                     if ($(".model_set_wrap").length == 1) {
                         $(".model_set_wrap").attr("data-del", "N");
                     }
-                    modelSimulator.maxCountCheck();
+                    //modelSimulator.maxCountCheck();
                     priceSumList.removeSlide(idx);
                     totalResulPrice();
                 }
@@ -4947,7 +4944,7 @@
             $(".model_choice_area .model_choice_tab .btn_model_pick").removeClass("is_active");
             $(".model_choice_area .model_choice_tab .btn_model_pick").removeClass("is_noActive");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "top", 0);
-            modelSimulator.maxCountCheck();
+            //modelSimulator.maxCountCheck();
             modelSimulator.closeProposeModel();
 
         },
