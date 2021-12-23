@@ -62,10 +62,10 @@
 
             bindEvents: function() {
                 var self = this;
-                self.$inputReceipt.on("input",function(){
-                    this.value = this.value.replace(/[^0-9]/g, '').substr(0,23);
-                    $(this).parent().find('.err-block:eq(0)').hide();
-                });
+                // self.$inputReceipt.on("input",function(){
+                //     this.value = this.value.replace(/[^0-9]/g, '').substr(0,23);
+                //     $(this).parent().find('.err-block:eq(0)').hide();
+                // });
                 
                 self.$categorySelect.on('change', function(e){
                     var selectValue = e.target.value;
@@ -156,6 +156,7 @@
                         self.requestData(self.validation.getAllValues());
                     } else {
                         if(result.validArray && result.validArray.length > 0) {
+                            console.log(result.validArray.length);
                             var item = result.validArray[0];
                             if(item.errmsg) {
                                 self.$inputReceipt.blur();
