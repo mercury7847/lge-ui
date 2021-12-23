@@ -207,20 +207,31 @@
 
             // 내 문의 보기 체크
             self.$qnaType.find('#myWriteView').on('click', function(){
-                var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
-                var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
-                if(excludePrivate === "on" ) {
-                    excludePrivate = "Y";
+                if(lgkorUI.stringToBool(loginFlag)) {
+                    var questionTypeCode = self.$sortSelect.vcSelectbox('value');
+                    var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
+                    var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
+                    if(excludePrivate === "on" ) {
+                        excludePrivate = "Y";
+                    } else {
+                        excludePrivate = "N";
+                    }
+                    if(myQna === "on" ) {
+                        myQna = "Y";
+                    } else {
+                        myQna = "N";
+                    }
+                    self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
                 } else {
-                    excludePrivate = "N";
+                    lgkorUI.confirm('', {
+                        title:'로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까?', 
+                        okBtnName: '예', 
+                        cancelBtnName: '아니오', 
+                        ok : function (){ 
+                            window.location.href = "/sso/api/Login";
+                        }
+                    });
                 }
-                if(myQna === "on" ) {
-                    myQna = "Y";
-                } else {
-                    myQna = "N";
-                }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
             });
 
             self.$writePopup.find('.btn-confirm').on('click', function() {
