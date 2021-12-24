@@ -1,9 +1,7 @@
 (function() {
     var validation;
-    // loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
-    // birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
-    var loginFlag = "Y";
-    var birthDt = 20010101;
+    loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+    birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
     // 아카데미 회원 임시 변수
     var academyMember = false;
 
@@ -19,7 +17,7 @@
                         $('.login-ok').show();
                         $('.login-no').hide();
                     } else {
-                        $('#academyPopup01').vcModal('show'); 
+                        $('#academyPopup01').vcModal('show');
                     }
                 }
             } else {
@@ -136,6 +134,5 @@
 
     $(window).ready(function() {
         emailCertified.init();
-       // $('#academyPopup02').vcModal('show');
     });
 })();
