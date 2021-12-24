@@ -30,7 +30,7 @@ var lls = {
         //self.backgroundSwitch();
         self.bindEvent();
         self.heroSlider();
-        self.highlightSlider();
+        //self.highlightSlider(); //BTOCISTE-9172 
         self.onbroadProductSlider();
         //self.appPushVisibleCheck();  BTOCSITE-5368
         self.requestSubscribeCheck()  //BTOCSITE-5368
@@ -164,22 +164,42 @@ var lls = {
 
 
         //최신 하이라이트 목록 클릭시 모바일 기기가 아니면 앱설치 팝업 활성화
-        self.$highSlider.find('.slide-item a').on('click', function(e){
-            if( self.$highSlider.hasClass('swipping')) {
-                e.preventDefault();
-            } else {
-                if( !vcui.detect.isMobileDevice ) {
-                    e.preventDefault();
-                    self.$appInstallPopup.vcModal({opener:$(this)});
-                } 
-            }
-        });
-
-        //이벤트 당첨자 발표 목록 클릭시 당첨자 발표 목록 윈도우팝업
+        //BTOCSITE-9172 수정
         self.$eventAnchor.on('click', function(e){
+            if( !vcui.detect.isMobileDevice ) {
+                e.preventDefault();
+                self.$appInstallPopup.vcModal({opener:$(this)});
+            } 
+        });
+        //BTOCSITE-9172 추가 : 텍스트를 a 태그 클릭 이벤트 처리
+        self.$eventList.find('.item-list-text').on('click', function(e){
+            var $this = $(this);
+            var $parent = $this.closest('li');
+            var $anchor = $parent.find('.item-list-anchor');
+
+            $anchor.trigger('click');
+            e.preventDefault();
+            
+        })
+
+        //BTOCSITE-9172 방송 혜택 보기
+        self.$eventList.find('.btn-lls-benefit').on('click', function(e){
             e.preventDefault();
             self.requestModal(this);
-        });
+        })
+
+        //BTOCSITE-9172 당첨자헤택 보기
+        self.$eventList.find('.btn-event-popup').on('click', function(e){
+            e.preventDefault();
+            self.requestModal(this);
+        })
+
+        //BTOCSITE-9172 삭제
+        //이벤트 당첨자 발표 목록 클릭시 당첨자 발표 목록 윈도우팝업
+        // self.$eventAnchor.on('click', function(e){
+        //     e.preventDefault();
+        //     self.requestModal(this);
+        // });
         
     },
     pushClickEvent: function(){
