@@ -165,15 +165,9 @@
             var url = $(this).attr('href');
             if(url) {
                 //BTOCSITE-5938-280 [IOS 앱] 매장 정보 화면에서 [매장 상담 예약] 선택 반응 없음
-                if(isApp()) {
-                    //location.href = url;
-                    if(vcui.detect.isIOS){ 
-                        var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': url, 'bottombar_show': 'Y'});
-                        webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                     }else{
-                        window.opener.location.href = url;
-                        window.close(); 
-                     }
+                if(isApp() && vcui.detect.isIOS) {
+                    var jsonString = JSON.stringify({'command':'closeAllInAppBrowser', 'url': url});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else{
                     window.opener.location.href = url;
                     window.close();
