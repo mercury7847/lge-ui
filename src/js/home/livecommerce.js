@@ -183,10 +183,10 @@ var lls = {
         })
 
         //BTOCSITE-9172 방송 혜택 보기
-        self.$eventList.find('.btn-lls-benefit').on('click', function(e){
-            e.preventDefault();
-            self.requestModal(this);
-        })
+        // self.$eventList.find('.btn-lls-benefit').on('click', function(e){
+        //     e.preventDefault();
+        //     self.requestModal(this);
+        // })
 
         //BTOCSITE-9172 당첨자헤택 보기
         self.$eventList.find('.btn-event-popup').on('click', function(e){
