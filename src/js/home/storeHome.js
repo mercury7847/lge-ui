@@ -17,7 +17,13 @@ $(function(){
         touchThreshold: 100,
         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
         speed: 150
-    });
+    }).on('carouselafterchange', function(e, slide){
+        // s BTOCSITE-5938-222 : 20211224 pauseOnFocus가 false인데 autoplay 멈춰서 강제로 다시 시작
+        if(slide.focussed) {
+            slide.play();
+        }
+        // e BTOCSITE-5938-222
+    })
 
 
     /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
