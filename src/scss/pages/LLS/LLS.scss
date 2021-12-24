@@ -835,7 +835,8 @@
                             .btn-column {
                                 & + .btn-column {
                                     margin-top:0;
-                                    @media screen and (max-width:320px){
+                                    margin-left:16px;
+                                    @media screen and (max-width:360px){
                                         margin-top:5px;
                                         margin-left:0;    
                                     }
