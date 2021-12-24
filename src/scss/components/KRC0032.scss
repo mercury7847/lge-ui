@@ -53,14 +53,7 @@
     }
     &.stage-wide {
         max-width:1600px;
-        margin:0 auto;
-        // .usp-banner-wrap {
-        //     .carousel-box {
-        //         .text-area {
-        //             padding:0 110px;
-        //         }
-        //     }
-        // }
+        margin:0 auto;               
     }
     &.stage-medium {
         max-width:1380px + 80px;
@@ -102,6 +95,14 @@
                 bottom:0;
             }
 		}
+
+        &.indi-type-bar {
+            .indi-wrap {
+                padding:0 80px;
+                max-width:1540px;
+                width:100%;
+            }
+        }
 
 		// Swipe Area
 		.ui_carousel_track {

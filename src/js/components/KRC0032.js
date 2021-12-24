@@ -4,52 +4,40 @@ $(window).ready(function(){
 	$('.KRC0032').buildCommonUI();
 
 	vcui.require(['ui/carousel', 'libs/intersection-observer.min'], function () {
-
-		var option = {
-			root: null,
-			threshold: 0.5
-		};
-
+		//해당 슬라이드 자동재생(autoplay) 시작 -BTOCSITE-8039
 		function carouselPlay(target){
-			$(target).find('.ui_carousel_play.play button').trigger('click');
+			$(target).vcCarousel('play');
+		}
+		
+		//해당 슬라이드 자동재생(autoplay) 멈춤 -BTOCSITE-8039
+		function carouselStop(target){
+			$(target).vcCarousel('pause');
 		}
 
-		function carouselStop(target){
-			$(target).find('.ui_carousel_play.stop button').trigger('click');
+		//슬라이드 이동 시 - 이전 슬라이드의 재생중인 비디오 정지 & 재생시간 초기화 -BTOCSITE-8039
+		function prevVideoPause(slide, prev){
+			if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
+				$(slide.$slides.get(prev)).find("video").get(0).currentTime = 0;
+				$(slide.$slides.get(prev)).find("video").get(0).pause();
+			}
 		}
-		  
-		var io = new IntersectionObserver((entries, observer) => {
+		//슬라이드 이동 시 - 이전 슬라이드의 활성화된 유튜브레이어 닫기 -BTOCSITE-8039
+		function prevYoutubeBoxClose(slide, prev){
+			if($(slide.$slides.get(prev)).find('.youtube-box .video-box-closeset').length){
+				$(slide.$slides.get(prev)).find(".close-video").trigger('click');
+			}
+		}
+		
+		//화면 스크롤시 슬라이드가 화면의 중앙에 올때 자동재생(autoplay) 시작, 중앙을 벗어나면 정지 -BTOCSITE-8039
+		var io = new IntersectionObserver(function(entries, observer) {
 			entries.forEach((entry) => {
 				entry.isIntersecting ? carouselPlay(entry.target) : carouselStop(entry.target);
 			});                            
-		}, option);
+		}, {root: null, threshold: 0.5});
 		
-		// function viewPortVideoPlay(target){
-		// 	$(target).each(function(idx, slide){
-		// 		var $slide = $(slide);
-		// 		var winTop = $(window).scrollTop();
-		// 		var _offTop = $slide.offset().top;
-		// 		var _height = $slide.outerHeight(true);
-		// 		var _offBottom = _offTop + _height;
-		// 		var viewTop = winTop + (window.innerHeight*0.25);
-		// 		var viewBottom = winTop + (window.innerHeight*0.75);
-
-		// 		if(viewBottom > _offTop && viewTop < _offBottom){
-		// 			console.log('enter22222')
-		// 			$slide.find('.ui_carousel_play.play .btn-play').trigger('click');
-		// 		} else {
-		// 			if( $slide.data('autoCount') != 'loop' && $slide.data('autoCount') > 0) {
-		// 				$slide.data('currentCount', 0);
-		// 			}
-		// 			$slide.find('.ui_carousel_play.stop .btn-play').trigger('click');
-		// 		}
-		// 	})
-		// }
-
 		$('.KRC0032').find(".ui_carousel_slider").each(function(cdx, slide){
 			var $slide = $(this);
 			var autoPlaySpeed = $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') != "" ? $slide.data('autoSpeed') : 5000;
-			var dotType = $slide.data('dotType') != undefined && $slide.data('dotType') != "" ? $slide.data('dotType') : '1';
 			var autoCount = $slide.data('autoCount') != undefined && $slide.data('autoCount') != "" ? $slide.data('autoCount') : false;
 
 			if( autoCount != 'loop' && autoCount != undefined) {
@@ -76,7 +64,6 @@ $(window).ready(function(){
 				autoplaySpeed: autoPlaySpeed,
 				prevArrow:'.btn-arrow.prev',
 				nextArrow:'.btn-arrow.next',
-				// dotsSelector: '.ui_wideslider_dots',
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				playSelector: '.btn-play.play',
@@ -88,29 +75,21 @@ $(window).ready(function(){
 					var $slide = $(slide.$slider);
 
 					if( $slide.hasClass('indi-type-bar')) {
-						console.log('indi-type-bar')
+						return $('<button type="button" class="btn-indi-bar" />').html('<span class="blind">' + i + 1 + '번 내용 보기</span>');
+					} else if($slide.hasClass('indi-type-bar-text')){
+						return $('<button type="button" class="btn-indi-bar-text" />').html('<span class="blind">' + i + 1 + '번 내용 보기</span>');
+					} else {
+						return $('<button type="button" class="btn-indi" />').html('<span class="blind">' + i + 1 + '번 내용 보기</span>');
 					}
 
-					if( $slide.hasClass('indi-type-bar-text')) {
-						console.log('indi-type-bar-text')
-					}
-
-					return $('<button type="button" class="btn-indi" />').html('<span class="blind">' + i + 1 + '번 내용 보깃</span>');
+					
 				},
 			}).on('carouselbeforechange', function(e, slide, prev, next){
 
-				if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
-					$(slide.$slides.get(prev)).find("video").get(0).currentTime = 0;
-					$(slide.$slides.get(prev)).find("video").get(0).pause();
-				}
+				prevVideoPause(slide, prev);
+				prevYoutubeBoxClose(slide, prev);
 
-				if($(slide.$slides.get(prev)).find('.youtube-box .video-box-closeset').length){
-					console.log('youtube')
-					$(slide.$slides.get(prev)).find(".close-video").trigger('click');
-				}
-
-
-				if( prev > next ) {
+				if( prev == slide.$slides.length-1 && prev > next ) {
 					var currentCount = $slide.data('currentCount');
 					var autoCount = $slide.data('autoCount');
 
