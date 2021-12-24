@@ -769,13 +769,15 @@
 
                     //BTOCSITE-9172 수정
                     &-title {
-                        $lineHeight: 1.56;
+                        $lineHeight:28px;
                         display: block;
                         font-size:18px;
                         font-weight:bold;
-                        line-height:1.56;
+                        line-height:$lineHeight;
                         color:#000;
+                        word-break: break-all;
                         
+                        max-height:$lineHeight * 3;
                         @include textEllipsisClamp(3);
                     }
 
@@ -818,8 +820,16 @@
                             font-size:11px;
                         }
                         &-title {
+                            $line-height:21px;
                             font-size:13px;
-                            line-height:1.62;
+                            line-height:$line-height;
+                            max-height:$line-height*2;
+                            -webkit-line-clamp: 2;
+
+                            @media screen and (max-width:360px){
+                                -webkit-line-clamp: 3;
+                                max-height:$line-height*3;
+                            }
                         }
 
                         &-btn {
