@@ -571,12 +571,12 @@
                         background-size: 100%;
                     }
                     .pin{
-                        &.idx01{ left: 59.9%; top: 80.7%; background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_reverse.svg') }
+                        &.idx01{ left: 59.9%; top: 80.7%; padding:14px 0 0 20px; background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_reverse.svg') }
                         &.idx02{ left: 65.6%; top: 60.5%; }
                         &.idx03{ left: 48.6%; top: 32.5%; }
                         &.idx04{ left: 53.6%; top: 70.5%; }
                         @include mobile{
-                            &.idx01 {left: 43.4%; top: 40.3%; background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m_revers.svg')}
+                            &.idx01 {left: 48.4%; top: 78.3%; padding: 3.56454vw 0 0 0;background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m_revers.svg'); background-size: 100%;}
                             &.idx02 {left: 57.6%; top: 59.5%; }
                             &.idx03{ left: 30%; top: 33.5%; }
                             &.idx04{ left: 36.6%; top: 67.5%; }
