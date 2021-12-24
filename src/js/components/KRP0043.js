@@ -226,6 +226,7 @@
                     }
                     self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
                 } else {
+                    $('#myWriteView').prop("checked", false);
                     lgkorUI.confirm('', {
                         title:'로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까?', 
                         okBtnName: '예', 
