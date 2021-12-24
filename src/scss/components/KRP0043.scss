@@ -3,10 +3,11 @@
 // import - form-field
 @import "../support/form-field";
 
-#pdp_qna {
+//pdp_review 하단 QnA 탭 시작되는 부분 영역 제거요청
+#pdp_review {
     @include mobile{
-        padding-top:0;
-    }    
+        padding-bottom:0;
+    }
 }
 
 .KRP0043 {
