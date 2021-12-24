@@ -164,7 +164,7 @@
             e.preventDefault();
             var url = $(this).attr('href');
             if(url) {
-                //BTOCSITE-5938-280 [IOS 앱] 매장 정보 화면에서 [매장 상담 예약] 선택 반응 없음
+                // BTOCSITE-5938-392 ,BTOCSITE-5938-280 [IOS 앱] 매장 정보 화면에서 [매장 상담 예약] 선택 반응 없음
                 if(isApp() && vcui.detect.isIOS) {
                     var jsonString = JSON.stringify({'command':'closeAllInAppBrowser', 'url': url});
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
