@@ -28,7 +28,8 @@
                     accountFlag:{
                         required: true,
                         errorMsg: "구매처를 선택해주세요.",
-                        msgTarget: '.err-block'
+                        // BTOCSITE-5938-359
+                        msgTarget: '.err-block:eq(0)'
                     },
                     localName:{
                         required: false,
@@ -36,13 +37,15 @@
                     spotName:{
                         required: true,
                         errorMsg: "구매처를 선택해주세요.",
-                        msgTarget: '.err-block'
+                        // BTOCSITE-5938-359
+                        msgTarget: '.err-block:eq(0)'
                     },
                     barcodeNo:{
                         required: true,
                         pattern: /^[0-9]+$/,
                         errorMsg: "영수증번호를 입력해주세요.",
-                        msgTarget: '.err-block'
+                        // BTOCSITE-5938-359
+                        msgTarget: '.err-block:eq(1)'
                     }
                 };
                 vcui.require(['ui/validation'], function () {
@@ -62,10 +65,10 @@
 
             bindEvents: function() {
                 var self = this;
-                // self.$inputReceipt.on("input",function(){
-                //     this.value = this.value.replace(/[^0-9]/g, '').substr(0,23);
-                //     $(this).parent().find('.err-block:eq(0)').hide();
-                // });
+                self.$inputReceipt.on("input",function(){
+                    this.value = this.value.replace(/[^0-9]/g, '').substr(0,23);
+                    $(this).parent().find('.err-block:eq(0)').hide();
+                });
                 
                 self.$categorySelect.on('change', function(e){
                     var selectValue = e.target.value;
@@ -156,7 +159,6 @@
                         self.requestData(self.validation.getAllValues());
                     } else {
                         if(result.validArray && result.validArray.length > 0) {
-                            console.log(result.validArray.length);
                             var item = result.validArray[0];
                             if(item.errmsg) {
                                 self.$inputReceipt.blur();
