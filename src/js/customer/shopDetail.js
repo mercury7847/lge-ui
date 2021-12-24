@@ -168,10 +168,11 @@
                 if(isApp()) {
                     //location.href = url;
                     if(vcui.detect.isIOS){ 
-                        var jsonString = JSON.stringify({'command':'closeInAppBrowser', 'url': url, 'bottombar_show': 'Y'});
+                        var jsonString = JSON.stringify({'command':'openInAppBrowser', 'url': url, 'bottombar_show': 'Y'});
                         webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                      }else{
-                         android.closeNewWebview(); 
+                        window.opener.location.href = url;
+                        window.close(); 
                      }
                 } else{
                     window.opener.location.href = url;
