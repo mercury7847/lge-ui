@@ -780,9 +780,12 @@
                     }
 
                     &-btn {
-                        .btn-link {
-                            & + .btn-link {
-                                margin-top:10px
+                        display: flex;
+                        flex-direction: column;
+
+                        .btn-column {
+                            & + .btn-column {
+                                margin-top:10px;
                             }
                         }
                     }
@@ -820,15 +823,20 @@
                         }
 
                         &-btn {
+                            flex-direction: row;
+
+                            @media screen and (max-width:360px){
+                                flex-direction: column;
+                                margin-top:10px;
+                            }
                             .btn-link {
                                 font-size:12px; 
-
-                                & + .btn-link {
+                            }
+                            .btn-column {
+                                & + .btn-column {
                                     margin-top:0;
-                                    margin-left:16px;
-
                                     @media screen and (max-width:320px){
-                                        margin-top:10px;
+                                        margin-top:5px;
                                         margin-left:0;    
                                     }
                                 }
