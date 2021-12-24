@@ -3,6 +3,11 @@
 // import - form-field
 @import "../support/form-field";
 
+#pdp_qna {
+    @include mobile{
+        padding-top:0;
+    }    
+}
 
 .KRP0043 {
     padding:0 40px;
