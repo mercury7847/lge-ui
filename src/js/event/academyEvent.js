@@ -82,14 +82,19 @@
                 if (result.success === true) {
 
                     var url = self.$submitForm.data('ajax');
-                    var allData = validation.getAllValues();
+                    var param = validation.getAllValues();
+                    var formData = new FormData();
+
+                    for (var key in param) {
+                        formData.append(key, param[key]);
+                    }
 
                     lgkorUI.showLoading();
 
-                    lgkorUI.requestAjaxFileData(url, allData, function(result) {
+                    lgkorUI.requestAjaxFileData(url, formData, function(result) {
                         var data = result.data;
-                        if (data.resultFlag == 'Y') {
-                            console.log(data.resultFlag, url);
+                        if (data.status == 'success') {
+                            console.log(data.status, url);
                             lgkorUI.hideLoading();
                             self.$submitForm.submit();
                             $('.email-certified-info').show();
@@ -100,7 +105,7 @@
                         } else {
                             lgkorUI.hideLoading();
                             // 이미 등록된 이메일경우 
-                            if (data.data == 'Y') {
+                            if (data.dupAuthEmail == '1') {
                                 lgkorUI.alert("", {
                                     title: '이미 인증을 받은 이메일 계정입니다. 다시 확인해 주시기 바랍니다.',
                                     okBtnName: '확인',
