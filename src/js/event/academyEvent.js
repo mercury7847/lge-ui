@@ -1,17 +1,19 @@
 (function() {
     var validation;
-    loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
-    birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
+    // loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+    // birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
     // 아카데미 회원 임시 변수
     var academyMember = false;
+    var loginFlag = 'Y';
+    var birthDt = 19920102;
+    
 
     var emailCertified = {
         init: function() {
             var self = this;
             if(lgkorUI.stringToBool(loginFlag)) {
                 if(academyMember){
-                    alert('아카데미기획전 상세페이지로 넘기기')
-                    // location.href='/benefits/exhibitions';
+                    location.href='/benefits/exhibitions/detail-PE00030001';
                 } else{
                     if( birthDt > 19920101 && birthDt < 20040102){
                         $('.login-ok').show();
@@ -29,7 +31,8 @@
             self.$submitForm = $('#emailCertifiedForm');
             self.$completeBtn = $('#btnCertified');
             self.$loginBtn = $('#btnLogin');
-
+            var checkEmail = $('#checkEmail').val();
+            var checklength = checkEmail.split(',').length
 
             vcui.require(['ui/validation'], function () {
                 var register = {
@@ -46,12 +49,14 @@
                             var _pattern = new RegExp(this.pattern);
                             if( _pattern.test(value) == true) {
                                 if( value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
-                                    console.log( value.split('@')[1]);
-                                    if(value.split('@')[1] === 'ac.kr'){
-                                        return true;
-                                    } else{
-                                        return false;
+                                    for(var i = 0 ; i < checklength ; i++) {
+                                        console.log(checkEmail.split(',')[i], i);
+                                        if(value.split('@')[1] === checkEmail.split(',')[i]){
+                                            return true;
+                                            break;
+                                        } 
                                     }
+                                    return false;
                                 } else {
                                     return false;
                                 }
@@ -89,7 +94,6 @@
 
                     lgkorUI.requestAjaxFileData(url, allData, function(result) {
                         var data = result.data;
-                        
                         if (data.resultFlag == 'Y') {
                             console.log(data.resultFlag, url);
                             lgkorUI.hideLoading();
@@ -101,12 +105,20 @@
                             }, 500);
                         } else {
                             lgkorUI.hideLoading();
+                            // 이미 등록된 이메일경우 
+                            if (data.data == 'Y') {
+                                lgkorUI.alert("", {
+                                    title: '이미 인증을 받은 이메일 계정입니다. 다시 확인해 주시기 바랍니다.',
+                                    okBtnName: '확인',
+                                    ok: function() {
+                                    }
+                                });
+                            }
                             if (data.resultMessage) {
                                 lgkorUI.alert("", {
                                     title: data.resultMessage,
                                     okBtnName: '확인',
                                     ok: function() {
-                                        alert(academyMember);
                                     }
                                 });
                             }
@@ -128,6 +140,14 @@
             $('#academyPopup02 .btn-confirm').on('click', function(e) {
                 $('#academyPopup02').vcModal('hide'); 
                 location.reload();
+            });
+
+            $('#agreeUserCheck').on('change', function(e) {
+                if($('#agreeUserCheck').prop('checked')){
+                    $('#agreeUserCheck').val(1);
+                }else{
+                    $('#agreeUserCheck').val(0);
+                }
             });
         }
     }
