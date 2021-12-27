@@ -1,9 +1,9 @@
 (function() {
     var validation;
-    // loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
-    // birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
-    var loginFlag = 'Y';
-    var birthDt = 19920102;
+    loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+    birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
+    // var loginFlag = 'Y';
+    // var birthDt = 19920102;
     
 
     var emailCertified = {
