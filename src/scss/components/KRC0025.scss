@@ -197,6 +197,9 @@
         &:first-child {
             margin-top:0;
         }
+        @include mobile {
+            margin-top: 32px;
+        }
         .quote {
             @include title-h4;
         }
