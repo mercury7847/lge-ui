@@ -140,7 +140,7 @@ br.pc {
                                 position: relative;
                                 width:100%;
                                 height:100%;
-                                img {
+                                img, video {
                                     position:absolute;
                                     top:0;
                                     left:50%;
@@ -163,6 +163,18 @@ br.pc {
                                         top:50%;
                                         left:0;
                                         transform:translateY(-50%);
+                                    }
+                                }
+                                img{
+                                    
+                                }
+                                video{
+                                    @include mobile {
+                                        width:auto;
+                                        height:100%;
+                                        top:0;
+                                        left:50%;
+                                        transform:translate(-50%, 0);
                                     }
                                 }
                             }
