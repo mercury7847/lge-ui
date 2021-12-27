@@ -1683,7 +1683,7 @@
        }
 
         var agreechk = requestAgreeChecker.getAllChecked();
-        if(!agreechk){
+        if(!agreechk && !getRentalAgreeAllChecked()){
             $(window).trigger("toastshow", "청약 신청을 위해 케어솔루션 청약신청 고객 동의가 필요합니다.");
             lgkorUI.hideLoading();
             requestButton.attr('disabled',false);
