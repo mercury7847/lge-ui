@@ -130,6 +130,9 @@ $(window).ready(function(){
 				$slide.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar').css({
 					'animation-duration' : autoSpeed/1000 + 's'
 				})
+				$slide.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar-text .bar').css({
+					'animation-duration' : autoSpeed/1000 + 's'
+				})
 				$slide.vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
 			});	
 

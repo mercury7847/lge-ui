@@ -64,6 +64,16 @@
                     padding:0 117px;
                 }
             }
+            &.indi-type-bar,
+            &.indi-type-bar-text {
+                .indi-wrap {
+                    padding:0 117px;
+
+                    .ui_carousel_play {
+                        right:117px;
+                    }
+                }
+            }
         }
     }
     
@@ -95,16 +105,6 @@
                 bottom:0;
             }
 		}
-
-        &.indi-type-bar,
-        &.indi-type-bar-text {
-            .indi-wrap {
-                padding:0 80px;
-                max-width:1540px;
-                width:100%;
-            }
-        }
-
 		// Swipe Area
 		.ui_carousel_track {
 			position: relative;
