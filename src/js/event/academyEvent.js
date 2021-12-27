@@ -1,26 +1,20 @@
 (function() {
     var validation;
-    // loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
-    // birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
-    // 아카데미 회원 임시 변수
-    var academyMember = false;
-    var loginFlag = 'Y';
-    var birthDt = 19920102;
+    loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+    birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
+    // var loginFlag = 'Y';
+    // var birthDt = 19920102;
     
 
     var emailCertified = {
         init: function() {
             var self = this;
             if(lgkorUI.stringToBool(loginFlag)) {
-                if(academyMember){
-                    location.href='/benefits/exhibitions/detail-PE00030001';
-                } else{
-                    if( birthDt > 19920101 && birthDt < 20040102){
-                        $('.login-ok').show();
-                        $('.login-no').hide();
-                    } else {
-                        $('#academyPopup01').vcModal('show');
-                    }
+                if( birthDt > 19920101 && birthDt < 20040102){
+                    $('.login-ok').show();
+                    $('.login-no').hide();
+                } else {
+                    $('#academyPopup01').vcModal('show');
                 }
             } else {
                 $('.login-no').show();
