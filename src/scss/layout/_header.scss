@@ -2180,27 +2180,25 @@ html {
                 .header-wrap {
                     border-bottom:1px solid #ddd;
                 }
-                .mobile-nav-wrap {
-                    &:not(.mainNav) {
-                        z-index: 101;
-                        position: fixed;
-                        top: 0;
+                .mobile-nav-wrap:not(.mainNav) {
+                    z-index: 101;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    .btn-back {
+                        top: 7px;
                         left: 0;
-                        .btn-back {
-                            top: 7px;
-                            left: 0;
-                            min-height:24px;
-                            padding:24px;
-                            background-size:24px;
-                            .text {
-                                overflow: hidden;
-                                position: absolute;
-                                width: 1px;
-                                height: 1px;
-                                padding: 0;
-                                clip: rect(0, 0, 0, 0);
-                                white-space: nowrap;
-                            }
+                        min-height:24px;
+                        padding:24px;
+                        background-size:24px;
+                        .text {
+                            overflow: hidden;
+                            position: absolute;
+                            width: 1px;
+                            height: 1px;
+                            padding: 0;
+                            clip: rect(0, 0, 0, 0);
+                            white-space: nowrap;
                         }
                     }
                     &.is-depth {
@@ -2215,7 +2213,7 @@ html {
                                 right:-8px;
                                 top: -3px;
                             }
-                            &.on {
+                            /*&.on {
                                 & + .hasDepth:before {
                                     content:"";
                                     position: fixed;
@@ -2228,12 +2226,67 @@ html {
                                     background:rgba(0,0,0,0.7);
                                     z-index: 99;
                                 }
-                            }
+                            }*/
                         }
-                        .hasDepth {
+                        .nav-category-container {
+                            top: 61px;
                             overflow-y: auto;
-                            top:61px;
-                            max-height: 406px;
+                            max-height: 50vh;
+                            padding: 0;
+                            .superCategory {
+                                position: relative;
+                                height: 100%;
+                                & > li {
+                                     &:not(:first-child) {
+                                        border-top: 1px solid $color-border;
+                                    }
+                                    &.isActive {
+                                        a {
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            white-space: nowrap;
+                                            padding: 12px 30px 12px 16px;
+                                            font-size: 14px;
+                                        }
+                                        > a {
+                                            position: relative;
+                                            color: $color-white;
+                                            background: $color-primary url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat right 12px center/16px;
+                                            font-weight: bold;
+                                        }
+                                    }
+                                }
+                            }
+                            &.hasDepth {
+                                .superCategory {
+                                    & > li {
+                                        width: 50%;
+                                        &.isActive {
+                                            .subCategory {
+                                                display: block;
+                                            }
+                                        }
+                                    }
+                                }
+                                .subCategory {
+                                    display: none;
+                                    overflow-y: auto;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 50%;
+                                    width: 50%;
+                                    height: 100%;
+                                    border-left: 1px solid $color-border;
+                                    background: $color-white;
+                                    z-index: 100;
+                                    .isActive {
+                                        a {
+                                            font-weight: bold;
+                                            background: url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat right 12px center/16px;
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

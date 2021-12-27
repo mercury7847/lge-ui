@@ -250,7 +250,19 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             $('.mobile-nav-wrap.is-depth > a.nav-item').on('click', function(e){
                 e.preventDefault();
 
-                $(this).toggleClass('on')
+                //[S] 211227 BTOCSITE-2117 공통 > 모바일 웹/앱 GNB 개선
+                if($(".wrap.subRenewWrap")){
+                    $(this).next(".nav-category-container").find(".superCategory li").each(function(){
+                        console.log("자식없음");
+                        if($(this).find(".subCategory").length) {
+                            $(this).closest(".nav-category-container").addClass("hasDepth");
+                            return false;
+                        }
+                    });
+                }
+                //[E] 211227 BTOCSITE-2117 공통 > 모바일 웹/앱 GNB 개선
+
+                $(this).toggleClass('on');
                 $(this).parent().find('.nav-category-container').toggle();
 
                 if($(this).hasClass('on')){
