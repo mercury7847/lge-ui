@@ -26,7 +26,7 @@
             self.$completeBtn = $('#btnCertified');
             self.$loginBtn = $('#btnLogin');
             var checkEmail = $('#checkEmail').val();
-            var checklength = checkEmail.split(',').length
+            var checklength = checkEmail.split(',').length;
 
             vcui.require(['ui/validation'], function () {
                 var register = {
