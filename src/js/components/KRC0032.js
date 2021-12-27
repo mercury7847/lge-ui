@@ -27,11 +27,21 @@ $(window).ready(function(){
 				$(slide.$slides.get(prev)).find(".close-video").trigger('click');
 			}
 		}
+
+		//슬라이드가 화면 중앙에 올 때 이벤트 -BTOCSITE-8039
+		function sectionEnterEvent(target){
+			carouselPlay(target)
+		}
+
+		//슬라이드가 화면 중앙에서 벗어날 때 이벤트 -BTOCSITE-8039
+		function sectionLeaveEvent(target){
+			carouselStop(target)
+		}
 		
-		//화면 스크롤시 슬라이드가 화면의 중앙에 올때 자동재생(autoplay) 시작, 중앙을 벗어나면 정지 -BTOCSITE-8039
+		//슬라이드가 화면 중앙인지 아닌지를 체크하여 해당 이벤트 실행 -BTOCSITE-8039
 		var io = new IntersectionObserver(function(entries, observer) {
 			entries.forEach((entry) => {
-				entry.isIntersecting ? carouselPlay(entry.target) : carouselStop(entry.target);
+				entry.isIntersecting ? sectionEnterEvent(entry.target) : sectionLeaveEvent(entry.target);
 			});                            
 		}, {root: null, threshold: 0.5});
 		
