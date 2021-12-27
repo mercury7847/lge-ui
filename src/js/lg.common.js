@@ -1171,8 +1171,6 @@ var goAppUrl = function(path) {
 
                     // 비교하기 버튼 상태 변경
                     if($('.KRP0007').size() > 0) {
-
-                        console.log("plp 첫상품 추가시 버튼 상태 변경")
                         $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style')
                         .parent().find('a[data-b2bcatemapping="'+(data.b2bcatemapping === 'Y' ? 'N' : 'Y')+'"]').hide();
                     }
@@ -1201,7 +1199,6 @@ var goAppUrl = function(path) {
                 });
 
                 if(!cateMapCheck) {
-                    // $(window).trigger("toastshow", "비교하기가 불가능한 제품을 선택했습니다. 다른 제품을 선택해주세요.");
                     console.log("비교하기가 불가능한 제품을 선택했습니다. 다른 제품을 선택해주세요.");
                     return false;
                 }
@@ -1230,8 +1227,6 @@ var goAppUrl = function(path) {
                     
                     // PDP 비교하기 아이템 삭제시 버튼 상태 변경
                     if($('.KRP0008').size() > 0) {
-                        console.log("ppd 비교하기 아이템 삭제시 ")
-                        // $('.KRP0008 .product-compare input[type=checkbox]').removeAttr('disabled');
                         $('.KRP0008 .product-compare').removeAttr('style');
                     }
 

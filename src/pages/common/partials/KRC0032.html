@@ -65,7 +65,7 @@
                     <!-- item -->
                     <div class="carousel-box ui_carousel_slide">
                         <!-- 210208 수정(a태그 감싸기 button 변경) -->
-                        <a href="#">
+                   
                             <div class="visual-area video-box youtube-box">
                                 <!-- [KR수정_201216] bg -> img 변경 -->
                                 <!-- 210416 수정 [피시, 모바일 이미지 분리] -->
@@ -87,41 +87,88 @@
                             <div class="text-area type-wide box-align-left align-top text-align-left">
                                 <!-- [KR수정_201214] .inner 감싸기 -->
                                 <div class="inner">
-                                    <span class="banner-tit-sup">아이브로우 최대 40자까지 작성가능합니다. </span>
-                                    <div class="title"><!-- [KR수정_201229] .title로 class명 변경(h2-h6 폰트사이즈 공통 대응 수정) -->
-                                        <h2>헤드라인 카피는<br> 최대 40자까지 작성가능합니다.</h2>
+
+
+
+                                    <!-- BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 -->
+                                    <div class="text-container">
+                                        <div class="text-top">
+                                            <span class="banner-tit-sup">아이브로우 최대 40자까지 작성가능합니다. </span>
+                                            <div class="title"><!-- [KR수정_201229] .title로 class명 변경(h2-h6 폰트사이즈 공통 대응 수정) -->
+                                                <h2>헤드라인 카피는<br> 최대 40자까지 작성가능합니다.</h2>
+                                            </div>
+                                            <p class="banner-txt">바디카피는 공백포함하여 최대 120자까지 작성가능합니다.</p>
+                                            @@include('./common/modules/bullet-list.html', {
+                                                "bulletTxt" : [
+                                                    "디스클레이머 최대 80자까지 입력가능합니다.",
+                                                ]
+                                            })
+                                        </div>
+
+                                        <div class="disclaimer-container">
+
+                                            <div class="drop-info">
+                                                <div class="disclaimer-btnArea">
+                                                    <button type="button" class="btn border size-m dropInfo_openBtn" aria-describedby="title01">자세히 보기</button>
+                                                </div>
+                                                <!--
+                                                    bg색상 class = slideBox-bg
+                                                    기본 색상 : 화이트 
+                                                    slideBox-bg : bg-lightgray <-- 라이트 그레이
+                                                -->
+                                                <div class="dropContent @@slideBox-bg">
+                                                    <div class="disclaimer-txtArea">
+                                                        <p>[테스트]</p>
+                                                        <ul class="bullet-list">
+                                                            <li class="b-txt">11111111</li>
+                                                            <li class="b-txt">22222222</li>
+                                                            <li class="b-txt">33333333</li>
+                                                        </ul>
+
+                                                        <button type="button" class="btn border size-m dropInfo_closeBtn" aria-describedby="title01">닫기</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="disclaimer-bottom">
+                                                <div class="banner-btn">
+                                                    <a href="#" class="btn border size-m" target="_blank"><span>H1 Line button</span></a>
+                                                </div>
+                                                <div class="banner-btn">
+                                                    <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
+                                                    <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
+                                                </div>
+                                                <div class="overlay-image">
+                                                    <img src="/lg5-common/images/KRC0032/@thumb.jpg" alt="">
+                                                    <p class="hidden">graphic description : </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
-                                    <p class="banner-txt">바디카피는 공백포함하여 최대 120자까지 작성가능합니다.</p>
-                                    @@include('./common/modules/bullet-list.html', {
-                                        "bulletTxt" : [
-                                            "디스클레이머 최대 80자까지 입력가능합니다.",
-                                        ]
-                                    })
-                                    <div class="banner-btn">
-                                        <button type="button" class="btn border size-m"><span>H1 Line button</span></button><!-- [KR수정_201214] class수정 -->
-                                    </div>
-                                    <div class="banner-btn">
-                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
-                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
-                                    </div>
-                                    <!-- [KR수정_201214] DOM 추가 -->
-                                    <div class="overlay-image">
-                                        <img src="/lg5-common/images/KRC0032/@thumb.jpg" alt="">
-                                        <p class="hidden">graphic description : </p>
-                                    </div>
-                                    <!-- // [KR수정_201214] DOM 추가 -->
+                                    <!-- //BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 -->
+
+                                    
                                 </div>
                                 <!-- // [KR수정_201214] .inner 감싸기 -->
                             </div>
                             <!-- // [KR수정_201214] DOM 위치 변경 -->
-                        </a>
+                      
                         <!-- //210208 수정(a태그 감싸기 button 변경) -->
                     </div>
                     <!-- //item -->
+
+
+
+
+
+
                     <!-- item -->
                     <div class="carousel-box animation-box ui_carousel_slide">
                         <!-- 210208 수정(a태그 감싸기 button 변경) -->
-                        <a href="#">
+
                             <div class="animation-area">
                                 <video autoplay="" muted="" loop="">
                                     <source src="/lg5-common/videos/signature_rain_view.mp4" type="video/mp4">
@@ -138,41 +185,94 @@
                             <div class="text-area type-narrow box-align-center align-middle text-align-center">
                                 <!-- [KR수정_201214] .inner 감싸기 -->
                                 <div class="inner">
-                                    <span class="banner-tit-sup">아이브로우 최대 40자까지 작성가능합니다. </span>
-                                    <div class="title"><!-- [KR수정_201229] .title로 class명 변경(h2-h6 폰트사이즈 공통 대응 수정) -->
-                                        <h2>헤드라인 카피는<br> 최대 40자까지 작성가능합니다.</h2>
+                            
+
+                                    <!-- BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 -->
+                                    <div class="text-container">
+                                        <div class="text-top">
+                                            <span class="banner-tit-sup">아이브로우 최대 40자까지 작성가능합니다. </span>
+                                            <div class="title"><!-- [KR수정_201229] .title로 class명 변경(h2-h6 폰트사이즈 공통 대응 수정) -->
+                                                <h2>헤드라인 카피는<br> 최대 40자까지 작성가능합니다.</h2>
+                                            </div>
+                                            <p class="banner-txt">바디카피는 공백포함하여 최대 120자까지 작성가능합니다.</p>
+                                            @@include('./common/modules/bullet-list.html', {
+                                                "bulletTxt" : [
+                                                    "디스클레이머 최대 80자까지 입력가능합니다.",
+                                                ]
+                                            })
+                                        </div>
+
+                                        <div class="disclaimer-container">
+
+                                            <div class="drop-info">
+                                                <div class="disclaimer-btnArea">
+                                                    <button type="button" class="btn border size-m dropInfo_openBtn" aria-describedby="title01">자세히 보기</button>
+                                                </div>
+                                                <!--
+                                                    bg색상 class = slideBox-bg
+                                                    기본 색상 : 화이트 
+                                                    slideBox-bg : bg-lightgray <-- 라이트 그레이
+                                                -->
+                                                <div class="dropContent @@slideBox-bg">
+                                                    <div class="disclaimer-txtArea">
+                                                        <p>[테스트]</p>
+                                                        <ul class="bullet-list">
+                                                            <li class="b-txt">11111111</li>
+                                                            <li class="b-txt">22222222</li>
+                                                            <li class="b-txt">33333333</li>
+                                                        </ul>
+
+                                                        <button type="button" class="btn border size-m dropInfo_closeBtn" aria-describedby="title01">닫기</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="disclaimer-bottom">
+                                                <div class="banner-btn">
+                                                    <a href="#" class="btn border size-m" target="_blank"><span>H1 Line button</span></a>
+                                                </div>
+                                                <div class="banner-btn">
+                                                    <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
+                                                    <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
+                                                </div>
+                                                <div class="overlay-image">
+                                                    <img src="/lg5-common/images/KRC0032/@thumb.jpg" alt="">
+                                                    <p class="hidden">graphic description : </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
-                                    <p class="banner-txt">바디카피는 공백포함하여 최대 120자까지 작성가능합니다.</p>
-                                    @@include('./common/modules/bullet-list.html', {
-                                        "bulletTxt" : [
-                                            "디스클레이머 최대 80자까지 입력가능합니다.",
-                                        ]
-                                    })
-                                    <div class="banner-btn">
-                                        <button type="button" class="btn border size-m"><span>H1 Line button</span></button><!-- [KR수정_201214] class수정 -->
-                                    </div>
-                                    <div class="banner-btn">
-                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
-                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
-                                    </div>
-                                    <!-- [KR수정_201214] DOM 추가 -->
-                                    <div class="overlay-image">
-                                        <img src="/lg5-common/images/KRC0032/@thumb.jpg" alt="">
-                                        <p class="hidden">graphic description : </p>
-                                    </div>
-                                    <!-- // [KR수정_201214] DOM 추가 -->
+                                    <!-- //BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 -->
+                                    
                                 </div>
                                 <!-- // [KR수정_201214] .inner 감싸기 -->
                             </div>
                             <!-- // [KR수정_201214] DOM 위치 변경 -->
-                        </a>
+
                         <!-- //210208 수정(a태그 감싸기 button 변경) -->
                     </div>
                     <!-- //item -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <!-- item -->
                     <div class="carousel-box ui_carousel_slide">
                         <!-- 210208 수정(a태그 감싸기 button 변경) -->
-                        <a href="#">
+
                             <div class="visual-area">
                                 <!-- [KR수정_201216] bg -> img 변경 -->
                                 <!-- 210416 수정 [피시, 모바일 이미지 분리] -->
@@ -186,37 +286,89 @@
                             <div class="text-area type-narrow box-align-right align-bottom">
                                 <!-- [KR수정_201214] .inner 감싸기 -->
                                 <div class="inner">
-                                    <span class="banner-tit-sup">아이브로우 최대 40자까지 작성가능합니다. </span>
-                                    <div class="title"><!-- [KR수정_201229] .title로 class명 변경(h2-h6 폰트사이즈 공통 대응 수정) -->
-                                        <h2>헤드라인 카피는<br> 최대 40자까지 작성가능합니다.</h2>
+                                    
+                                    
+                                    <!-- BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 -->
+                                    <div class="text-container">
+                                        <div class="text-top">
+                                            <span class="banner-tit-sup">아이브로우 최대 40자까지 작성가능합니다. </span>
+                                            <div class="title"><!-- [KR수정_201229] .title로 class명 변경(h2-h6 폰트사이즈 공통 대응 수정) -->
+                                                <h2>헤드라인 카피는<br> 최대 40자까지 작성가능합니다.</h2>
+                                            </div>
+                                            <p class="banner-txt">바디카피는 공백포함하여 최대 120자까지 작성가능합니다.</p>
+                                            @@include('./common/modules/bullet-list.html', {
+                                                "bulletTxt" : [
+                                                    "디스클레이머 최대 80자까지 입력가능합니다.",
+                                                ]
+                                            })
+                                        </div>
+
+                                        <div class="disclaimer-container">
+
+                                            <div class="drop-info">
+                                                <div class="disclaimer-btnArea">
+                                                    <button type="button" class="btn border size-m dropInfo_openBtn" aria-describedby="title01">자세히 보기</button>
+                                                </div>
+                                                <!--
+                                                    bg색상 class = slideBox-bg
+                                                    기본 색상 : 화이트 
+                                                    slideBox-bg : bg-lightgray <-- 라이트 그레이
+                                                -->
+                                                <div class="dropContent @@slideBox-bg">
+                                                    <div class="disclaimer-txtArea">
+                                                        <p>[테스트]</p>
+                                                        <ul class="bullet-list">
+                                                            <li class="b-txt">11111111</li>
+                                                            <li class="b-txt">22222222</li>
+                                                            <li class="b-txt">33333333</li>
+                                                        </ul>
+
+                                                        <button type="button" class="btn border size-m dropInfo_closeBtn" aria-describedby="title01">닫기</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="disclaimer-bottom">
+                                                <div class="banner-btn">
+                                                    <a href="#" class="btn border size-m" target="_blank"><span>H1 Line button</span></a>
+                                                </div>
+                                                <div class="banner-btn">
+                                                    <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
+                                                    <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
+                                                </div>
+                                                <div class="overlay-image">
+                                                    <img src="/lg5-common/images/KRC0032/@thumb.jpg" alt="">
+                                                    <p class="hidden">graphic description : </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
-                                    <p class="banner-txt">바디카피는 공백포함하여 최대 120자까지 작성가능합니다.</p>
-                                    @@include('./common/modules/bullet-list.html', {
-                                        "bulletTxt" : [
-                                            "디스클레이머 최대 80자까지 입력가능합니다.",
-                                        ]
-                                    })
-                                    <div class="banner-btn">
-                                        <button type="button" class="btn border size-m"><span>H1 Line button</span></button><!-- [KR수정_201214] class수정 -->               
-                                    </div>
-                                    <div class="banner-btn">
-                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
-                                        <button type="button" class="text-link"><span>자세히 보기</span></button>
-                                    </div>
-                                    <!-- [KR수정_201214] DOM 추가 -->
-                                    <div class="overlay-image">
-                                        <img src="/lg5-common/images/KRC0032/@thumb.jpg" alt="">
-                                        <p class="hidden">graphic description : </p>
-                                    </div>
-                                    <!-- // [KR수정_201214] DOM 추가 -->
+                                    <!-- //BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 -->
+
+                                    
                                 </div>
                                 <!-- // [KR수정_201214] .inner 감싸기 -->
                             </div>
                             <!-- // [KR수정_201214] DOM 위치 변경 -->
-                        </a>
+                  
                         <!-- //210208 수정(a태그 감싸기 button 변경) -->
                     </div>
                     <!-- //item -->
+
+
+
+
+
+
+
+
+
+
+
+                    
                     <!-- item -->
                     <!-- BTOCSITE-7276 라이브커머스 네이버 동시송출 관련 컴포넌트 수정건 // a->div 유형 추가 : 버튼 새창 열림 기능 오류 -->
                     <div class="carousel-box ui_carousel_slide">
@@ -232,27 +384,70 @@
                             </div>
                             <div class="text-area type-narrow box-align-right align-bottom">
                                 <div class="inner">
-                                    <span class="banner-tit-sup">11아이브로우 최대 40자까지 작성가능합니다. </span>
-                                    <div class="title">
-                                        <h2>헤드라인 카피는<br> 최대 40자까지 작성가능합니다.</h2>
+                                    
+                                    
+                                    <!-- BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 -->
+                                    <div class="text-container">
+                                        <div class="text-top">
+                                            <span class="banner-tit-sup">아이브로우 최대 40자까지 작성가능합니다. </span>
+                                            <div class="title"><!-- [KR수정_201229] .title로 class명 변경(h2-h6 폰트사이즈 공통 대응 수정) -->
+                                                <h2>헤드라인 카피는<br> 최대 40자까지 작성가능합니다.</h2>
+                                            </div>
+                                            <p class="banner-txt">바디카피는 공백포함하여 최대 120자까지 작성가능합니다.</p>
+                                            @@include('./common/modules/bullet-list.html', {
+                                                "bulletTxt" : [
+                                                    "디스클레이머 최대 80자까지 입력가능합니다.",
+                                                ]
+                                            })
+                                        </div>
+
+                                        <div class="disclaimer-container">
+
+                                            <div class="drop-info">
+                                                <div class="disclaimer-btnArea">
+                                                    <button type="button" class="btn border size-m dropInfo_openBtn" aria-describedby="title01">자세히 보기</button>
+                                                </div>
+                                                <!--
+                                                    bg색상 class = slideBox-bg
+                                                    기본 색상 : 화이트 
+                                                    slideBox-bg : bg-lightgray <-- 라이트 그레이
+                                                -->
+                                                <div class="dropContent @@slideBox-bg">
+                                                    <div class="disclaimer-txtArea">
+                                                        <p>[테스트]</p>
+                                                        <ul class="bullet-list">
+                                                            <li class="b-txt">11111111</li>
+                                                            <li class="b-txt">22222222</li>
+                                                            <li class="b-txt">33333333</li>
+                                                        </ul>
+
+                                                        <button type="button" class="btn border size-m dropInfo_closeBtn" aria-describedby="title01">닫기</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="disclaimer-bottom">
+                                                <div class="banner-btn">
+                                                    <a href="#" class="btn border size-m" target="_blank"><span>H1 Line button</span></a>
+                                                </div>
+                                                <div class="banner-btn">
+                                                    <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
+                                                    <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
+                                                </div>
+                                                <div class="overlay-image">
+                                                    <img src="/lg5-common/images/KRC0032/@thumb.jpg" alt="">
+                                                    <p class="hidden">graphic description : </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
-                                    <p class="banner-txt">바디카피는 공백포함하여 최대 120자까지 작성가능합니다.</p>
-                                    @@include('./common/modules/bullet-list.html', {
-                                        "bulletTxt" : [
-                                            "디스클레이머 최대 80자까지 입력가능합니다.",
-                                        ]
-                                    })
-                                    <div class="banner-btn">
-                                        <a href="#" class="btn border size-m" target="_blank"><span>H1 Line button</span></a>
-                                    </div>
-                                    <div class="banner-btn">
-                                        <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
-                                        <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
-                                    </div>
-                                    <div class="overlay-image">
-                                        <img src="/lg5-common/images/KRC0032/@thumb.jpg" alt="">
-                                        <p class="hidden">graphic description : </p>
-                                    </div>
+                                    <!-- //BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 -->
+
+
+
                                 </div>
                             </div>
                         </div>

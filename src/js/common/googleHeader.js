@@ -14,6 +14,8 @@
 	    			"preferStoreArea1": data.memberInfo.preferStoreArea1,
 	    			"preferStoreArea2": data.memberInfo.preferStoreArea2,
 	    			"preferStore": data.memberInfo.preferStore,
+					// BTOCSITE-8287 아카데미 시즌 할인 지원
+					"birthDt" :data.memberInfo.birthDt,
 	    			"birthYY" :data.memberInfo.birthYY,
 	    			"sexCd": data.memberInfo.sexCd,
 	    			"region": data.memberInfo.region,

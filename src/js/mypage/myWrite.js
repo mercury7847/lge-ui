@@ -28,6 +28,7 @@
             setting: function() {
                 var self = this;
                 self.$contWrap = $('div.cont-wrap');
+                self.$modalWrap = $('#event-modal'); // 추가 BTOCSITE-9642
                 self.$lnbContents = self.$contWrap.find('div.lnb-contents');
                 self.$mySort = self.$lnbContents.find('div.my-sort');
                 self.$sectionInner = self.$lnbContents.find('div.section-inner');
@@ -85,6 +86,23 @@
                         "page": data
                     });
                 });
+
+                //BTOCSITE-9642 - Q&A로 이동 버튼 추가 start
+                self.$modalWrap.on('click','.btn-qna',function(){
+                    var dataURL = $(this).data('url');
+
+                    if(!dataURL || dataURL == "URL_NOT_FOUND") {
+                        lgkorUI.alert("", {
+                            title: "죄송합니다.<br>해당 제품은 단종되어<br>Q&A로 이동되지 않습니다.",
+                            ok: function(){
+                            
+                            }
+                        });
+                    } else {
+                        location.href = dataURL + '?myQnaParam=Y#pdp_qna';
+                    }
+                });
+                //BTOCSITE-9642 - Q&A로 이동 버튼 추가 end
             },
 
             requestData: function(param) {
@@ -103,7 +121,7 @@
                             item.date = vcui.date.format(item.date,'yyyy.MM.dd');
                             self.$myLists.append(vcui.template(listItemTemplate, item));
                         });
-                        self.checkNoData();        
+                        self.checkNoData();
                     }
                 });
             },
@@ -125,12 +143,12 @@
                 var self = this;
                 if(url) {
                     lgkorUI.requestAjaxData(url, null, function(result){
-                        self.openModalFromHtml(result, eventTarget);
+                        self.openModalFromHtml(result, eventTarget, url); // url 추가 211221
                     }, null, "html");
                 }
             },
 
-            openModalFromHtml: function(html, eventTarget) {
+            openModalFromHtml: function(html, eventTarget, url) { // url 추가 211221
                 /*
                 $('#event-modal').off('.modal-link-event').on('click.modal-link-event','button.modal-link',function(e){
                     var title = $(this).data('title');
@@ -224,7 +242,7 @@
                 });
             }
         };
-        myWrite.init();                
+        myWrite.init();
 
         $(window).on('load', function(){
             myWrite.dataInit();

@@ -341,10 +341,15 @@ $(function(){
             autoplay: true
         }).on('carouselafterchange', function(e, slide, prev, next){
             heroBanner();
+            // s BTOCSITE-5938-222 : 20211224 pauseOnFocus가 false인데 autoplay 멈춰서 강제로 다시 시작
+            if(slide.focussed) {
+                slide.play();
+            }
+            // e BTOCSITE-5938-222
         })
 
         function heroBanner() {
-            var heroList = $('.hero-banner .slide-track > li');
+            var heroList = $('.contents.caresolution .hero-banner .slide-track > li');
             var heroListAct = heroList.siblings('.ui_carousel_current').index();
             var heroListLens = heroList.length;
             var custom = $('.custom-indi-wrap');

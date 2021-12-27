@@ -1,16 +1,32 @@
 (function() {
     var validation;
+    loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+    birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
+    // var loginFlag = 'Y';
+    // var birthDt = 19920102;
     
+
     var emailCertified = {
         init: function() {
             var self = this;
-            //self.param = {};
+            if(lgkorUI.stringToBool(loginFlag)) {
+                if( birthDt > 19920101 && birthDt < 20040102){
+                    $('.login-ok').show();
+                    $('.login-no').hide();
+                } else {
+                    $('#academyPopup01').vcModal('show');
+                }
+            } else {
+                $('.login-no').show();
+                $('.login-ok').hide();
+            }
 
             self.$cont = $('#academyPopup02');
-            self.$submitForm = self.$cont.find('#emailCertifiedForm');
+            self.$submitForm = $('#emailCertifiedForm');
             self.$completeBtn = $('#btnCertified');
             self.$loginBtn = $('#btnLogin');
-
+            var checkEmail = $('#checkEmail').val();
+            var checklength = checkEmail.split(',').length;
 
             vcui.require(['ui/validation'], function () {
                 var register = {
@@ -27,12 +43,14 @@
                             var _pattern = new RegExp(this.pattern);
                             if( _pattern.test(value) == true) {
                                 if( value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
-                                    console.log( value.split('@')[1]);
-                                    if(value.split('@')[1] === 'ac.kr'){
-                                        return true;
-                                    } else{
-                                        return false;
+                                    for(var i = 0 ; i < checklength ; i++) {
+                                        console.log(checkEmail.split(',')[i], i);
+                                        if(value.split('@')[1] === checkEmail.split(',')[i]){
+                                            return true;
+                                            break;
+                                        } 
                                     }
+                                    return false;
                                 } else {
                                     return false;
                                 }
@@ -57,30 +75,56 @@
             var self = this;
             //이메일 인증 버튼 클릭시
             self.$completeBtn.on('click', function(e) {
+                e.preventDefault();
+
                 var result = validation.validate();
-                //self.param = validation.getAllValues();
 
                 if (result.success === true) {
-                    $('.email-certified-info').show();
-                    $('#academyPopup02 .pop-footer').show();
-                    $('#academyPopup02 .pop-conts').animate({
-                        scrollTop: 200
-                    }, 500);
-                    // lgkorUI.showLoading();
-                    // $('html, body').animate({
-                    //     scrollTop: 0
-                    // }, 500);
-                    // lgkorUI.hideLoading();
-                }else{
+
+                    var url = self.$submitForm.data('ajax');
+                    var allData = validation.getAllValues();
+
+                    lgkorUI.showLoading();
+
+                    lgkorUI.requestAjaxFileData(url, allData, function(result) {
+                        var data = result.data;
+                        if (data.resultFlag == 'Y') {
+                            console.log(data.resultFlag, url);
+                            lgkorUI.hideLoading();
+                            self.$submitForm.submit();
+                            $('.email-certified-info').show();
+                            $('#academyPopup02 .pop-footer').show();
+                            $('#academyPopup02 .pop-conts').animate({
+                                scrollTop: 200
+                            }, 500);
+                        } else {
+                            lgkorUI.hideLoading();
+                            // 이미 등록된 이메일경우 
+                            if (data.data == 'Y') {
+                                lgkorUI.alert("", {
+                                    title: '이미 인증을 받은 이메일 계정입니다. 다시 확인해 주시기 바랍니다.',
+                                    okBtnName: '확인',
+                                    ok: function() {
+                                    }
+                                });
+                            }
+                            if (data.resultMessage) {
+                                lgkorUI.alert("", {
+                                    title: data.resultMessage,
+                                    okBtnName: '확인',
+                                    ok: function() {
+                                    }
+                                });
+                            }
+                        }
+                    }, 'POST');
+                } else{
                     $('.email-certified-info').hide();
                     $('#academyPopup02 .pop-footer').hide();
-                    // lgkorUI.alert('', {
-                    //     title:'필수 입력정보가<br>입력되지 않았습니다.'
-                    // });
                 }
             });
             $('#btnLogin').on('click', function(e) {
-                $('#academyPopup01').vcModal('show'); 
+                location.href='/sso/api/emp/Login';
             });
             $('#academyPopup01 .btn-list').on('click', function(e) {
                 $('#academyPopup01').vcModal('hide'); 
@@ -91,11 +135,18 @@
                 $('#academyPopup02').vcModal('hide'); 
                 location.reload();
             });
-        },
+
+            $('#agreeUserCheck').on('change', function(e) {
+                if($('#agreeUserCheck').prop('checked')){
+                    $('#agreeUserCheck').val(1);
+                }else{
+                    $('#agreeUserCheck').val(0);
+                }
+            });
+        }
     }
 
     $(window).ready(function() {
         emailCertified.init();
-       // $('#academyPopup02').vcModal('show');
     });
 })();

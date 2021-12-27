@@ -764,7 +764,10 @@
         //     setMethodReceiptPop();
         // });
 
-        
+        // BTOCSITE-5938-234 추가 요건 처리 - 팝업창 닫았을때 입력한 취소사유 count값 초기화
+        $('#popup-cancel, #popup-takeback').on('click', ".ui_modal_close", function(e){
+            $(this).closest('article').find('.count em').html('0');
+        });
     }
 
     function sendDetailPage(dataID){
@@ -1141,20 +1144,22 @@
             
                             }
 
-                            var care_list_requestNo = CARE_list[idx].requestNo;
+                            /* or, ord로 바꾸는 함수 삭제 */
+                            // var care_list_requestNo = CARE_list[idx].requestNo;
 
-                            function getOrderID(datalayerResult){
-                                // if( orderProdutID == "" || orderProdutID == undefined) {
-                                //     return "ORD-" + orderProdutID
-                                // }
-                                return care_list_requestNo.replace('OR', 'ORD-');
-                            }
+                            // function getOrderID(datalayerResult){
+                            //     // if( orderProdutID == "" || orderProdutID == undefined) {
+                            //     //     return "ORD-" + orderProdutID
+                            //     // }
+                            //     return care_list_requestNo.replace('OR', 'ORD-');
+                            // }
                             
                             var pushDataEvent = {				
                                 'event': 'refund',				
                                 'actionField': {
-                                    'order_id' : getOrderID(datalayerResult)
+                                    //'order_id' : getOrderID(datalayerResult)
                                     //'order_id' : CARE_list[idx].requestNo
+                                    'order_id' : "ORD-" + CARE_list[idx].orderNumber
                                 },				
                                 'products': [{
                                     'model_name': CARE_list[idx].productList[CARE_cdx].productNameKR,					
@@ -1199,6 +1204,7 @@
                 $('#popup-takeback').find('textarea').focus();
             }, 10);
         } else{
+            $('#popup-takeback').find('.count em').html('0'); // BTOCSITE-5938-234 추가
             $('#popup-takeback').find('textarea').attr('disabled', "disabled").val('');
         }
     }
@@ -1211,6 +1217,7 @@
                 $('#popup-cancel').find('textarea').focus();
             }, 10);
         } else{
+            $('#popup-cancel').find('.count em').html('0'); // BTOCSITE-5938-234 추가
             $('#popup-cancel').find('textarea').attr('disabled', "disabled").val('');
         }
     }
@@ -2324,7 +2331,7 @@
     
                     return;
                 }
-
+    //
                 if(result.data.success == "Y"){
                     var box = $('.box[data-id=' + dataId + ']');
                     var prodbox = box.find('.tbody .row .col-table[data-prod-id=' + prodId + ']');
@@ -2490,19 +2497,13 @@
                 // BTOCSITE-4124 210907 수정 - E
                 // //BTOCSITE-1775
 
-
                 /* BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
-                //팝업 데이터 불러온 자리
                 if(result.status == "success"){
-                    //if( datalayerResult == null ) { 
+                    //if( datalayerResult == null ) {
                         datalayerResult = result.data;
                     //}
                 }
-                //console.log("팝업 열렸을때 탭에 맞게 들어오는 데이터", getListData);
                 /* //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청 */
-
-
-                
             } else{
                 popup = $('#popup-takeback');
                 infoTypeName = "반품";

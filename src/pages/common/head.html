@@ -49,4 +49,14 @@
         }
     }
     <!-- <script src="/lg5-common/js/search/integratedSearch.min.js" async></script> -->
+    <script>
+        var digitalData = digitalData || {};
+
+        @@if ( context.digitalData && context.digitalData.userInfo && context.digitalData.userInfo.unifyId ) {
+            // 퍼블 digitalData userInfo 기본 데이터 세팅
+            digitalData.userInfo = {
+                "unifyId" : "@@digitalData.userInfo.unifyId"
+            }    
+        }
+    </script>
 </head>

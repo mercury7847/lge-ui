@@ -1314,7 +1314,7 @@
                     leaderImg: "/lg5-common/images/OBJ/experience/leader/default_model_cate_refrigerator_convertible.png",
                     typModel: [{
                         name: "냉장고",
-                        defaultCode: "X320AA",
+                        defaultCode: "X321AA",
                         leaderImg: "/lg5-common/images/OBJ/experience/leader/leader_img_X320AA.png",
                         simulImg: "/lg5-common/images/OBJ/experience/leader/simul_img_X320AA.png",
                         defaultPrice: "0",
@@ -2084,78 +2084,9 @@
                 door4: "",
             },
             {
-                defaultCode: "X320AA",
-                modelCode: "X320SSS",
-                door1: "B320TT-SSV",
-                door2: "",
-                door3: "",
-                door4: "",
-
-            },
-            {
-                defaultCode: "X320AA",
-                modelCode: "X320SGS",
-                door1: "B320TT-SGR",
-                door2: "",
-                door3: "",
-                door4: "",
-            },
-            {
-                defaultCode: "X320AA",
-                modelCode: "X320MMS",
-                door1: "B320TT-SMT",
-                door2: "",
-                door3: "",
-                door4: "",
-            },
-            {
-                defaultCode: "X320AA",
-                modelCode: "X320GB",
+                defaultCode: "X321AA",
+                modelCode: "X321GB",
                 door1: "B320TT-GBE",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
-                defaultCode: "X320AA",
-                modelCode: "X320GSS",
-                door1: "B320TT-GSV",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
-                defaultCode: "X320AA",
-                modelCode: "X320GPS",
-                door1: "B320TT-GPK",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
-                defaultCode: "X320AA",
-                modelCode: "X320GMS",
-                door1: "B320TT-GMN",
-                door2: "",
-                door3: "",
-                door4: "",
-            }, {
-                defaultCode: "X320AA",
-                modelCode: "X320MWS",
-                door1: "B320TT-MWH",
-                door2: "",
-                door3: "",
-                door4: "",
-            },
-            {
-                defaultCode: "X320AA",
-                modelCode: "X320MGS",
-                door1: "B320TT-MGY",
-                door2: "",
-                door3: "",
-                door4: "",
-            },
-            {
-                defaultCode: "X320AA",
-                modelCode: "X320MBS",
-                door1: "B320TT-MBK",
                 door2: "",
                 door3: "",
                 door4: "",
@@ -2172,14 +2103,6 @@
                 defaultCode: "Y320AA",
                 modelCode: "Y320SGS",
                 door1: "B320TT-SGR",
-                door2: "",
-                door3: "",
-                door4: "",
-            },
-            {
-                defaultCode: "Y320AA",
-                modelCode: "Y320MMS",
-                door1: "B320TT-SMT",
                 door2: "",
                 door3: "",
                 door4: "",
@@ -2248,14 +2171,6 @@
                 defaultCode: "Z320AA",
                 modelCode: "Z320SGS",
                 door1: "B320TT-SGR",
-                door2: "",
-                door3: "",
-                door4: "",
-            },
-            {
-                defaultCode: "Z320AA",
-                modelCode: "Z320MMS",
-                door1: "B320TT-SMT",
                 door2: "",
                 door3: "",
                 door4: "",
@@ -3830,9 +3745,6 @@
 
     $(document).ready(function() {
 
-        /* TEST */
-        //$('.model_experience').attr('data-page-type', 'HIMART');
-
         $("html, body").scrollTop(0);
         window.onpageshow = function(event) {
             if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
@@ -4223,7 +4135,7 @@
             modelSimulator.closeMyPickModel();
             modelSimulator.closeProposeModel();
             modelSimulator.childModel($(this));
-            modelSimulator.maxCountCheck();
+            //modelSimulator.maxCountCheck();
 
             /* BTOCSITE-1582 add */
             var $objContent = $('.model_experience');
@@ -4269,7 +4181,7 @@
             modelSimulator.closeMyPickModel();
             modelSimulator.closeProposeModel();
             modelSimulator.stepOneNext(idx, _name, name, code, leadName);
-            modelSimulator.maxCountCheck();
+            //modelSimulator.maxCountCheck();
             modelSimulator.mobileStep(".simul_step2");
             $(".etc_area").addClass("is_active");
             /* BTOCSITE-1582 add */
@@ -4312,7 +4224,7 @@
                     if ($(".model_set_wrap").length == 1) {
                         $(".model_set_wrap").attr("data-del", "N");
                     }
-                    modelSimulator.maxCountCheck();
+                    //modelSimulator.maxCountCheck();
                     priceSumList.removeSlide(idx);
                     totalResulPrice();
                 }
@@ -4549,9 +4461,6 @@
                 modelSimulator.priceCheck(idx, modelCate, modelName, defaultModel, defaultPrice, doorInfo);
                 }
                 //BTOCSITE-3198 211102 공통페이지에서만 견적비교 함수 실행되도록 변경 - E
-                // setTimeout(function() {
-                //     $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "bottom", 0);
-                // }, 500);
             } else {
                 let desc = "";
                 let obj = {
@@ -4897,10 +4806,10 @@
             }
         });
         let slideWrapW = (slideW * slideLeng);
-         //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
-        let subPickChkBasic = $('.btn_model_sub_pick[data-name="베이직"]');         
-        let subPickChkDoor4 = $('.btn_model_sub_pick[data-name="4도어"]'); //4도어 추가 BTOCSITE-4239 210915
-        let subPickChkDoor3 = $('.btn_model_sub_pick[data-name="3도어"]'); //3도어 추가 BTOCSITE-4239 210915
+        //210726 BTOCSITE-2346 "베이직" 일때, step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
+        //let subPickChkBasic = $('.btn_model_sub_pick[data-name="베이직"]');         
+        //let subPickChkDoor4 = $('.btn_model_sub_pick[data-name="4도어"]'); //4도어 추가 BTOCSITE-4239 210915
+        //let subPickChkDoor3 = $('.btn_model_sub_pick[data-name="3도어"]'); //3도어 추가 BTOCSITE-4239 210915
         //210906 BTOCSITE-4239 "4도어" 일때,  step2 우측으로 쏠려서 조합제품 안보이는 문제가 있어 width 고정값 적용 - Start
         // BTOCSITE-6534 요청사항(좌측 정렬로 변경) - S
         // if(subPickChkBasic.hasClass("is_selected") == true || subPickChkDoor4.hasClass("is_selected") == true || subPickChkDoor3.hasClass("is_selected") == true){
@@ -5035,7 +4944,7 @@
             $(".model_choice_area .model_choice_tab .btn_model_pick").removeClass("is_active");
             $(".model_choice_area .model_choice_tab .btn_model_pick").removeClass("is_noActive");
             $(".model_simul_step_wrap").mCustomScrollbar("scrollTo", "top", 0);
-            modelSimulator.maxCountCheck();
+            //modelSimulator.maxCountCheck();
             modelSimulator.closeProposeModel();
 
         },
