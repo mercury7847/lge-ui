@@ -96,7 +96,8 @@
             }
 		}
 
-        &.indi-type-bar {
+        &.indi-type-bar,
+        &.indi-type-bar-text {
             .indi-wrap {
                 padding:0 80px;
                 max-width:1540px;

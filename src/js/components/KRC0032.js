@@ -65,7 +65,7 @@ $(window).ready(function(){
 					var $currentSlide = $(data.$slides[data.currentSlide]);
 					if($currentSlide.attr("ui-modules") == "VideoBox"){
 						//$currentSlide.find("video").get(0).play()
- 					}
+ 					}					
 				});
 
 			}).vcCarousel({
@@ -85,9 +85,18 @@ $(window).ready(function(){
 					var $slide = $(slide.$slider);
 
 					if( $slide.hasClass('indi-type-bar')) {
-						return $('<button type="button" class="btn-indi-bar" />').html('<span class="blind">' + i + 1 + '번 내용 보기</span>');
+						var currentSpeed = 5000;
+						if( $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') > 0) {
+							currentSpeed = $slide.data('autoSpeed');
+						}
+						return $('<button type="button" class="btn-indi-bar" />').html('<span class="blind">' + i + 1 + '번 내용 보기</span><span class="bar" style="animation-duration:' + currentSpeed/1000 + 's"></span>');
 					} else if($slide.hasClass('indi-type-bar-text')){
-						return $('<button type="button" class="btn-indi-bar-text" />').html('<span class="blind">' + i + 1 + '번 내용 보기</span>');
+						var currentSpeed = 5000;
+						if( $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') > 0) {
+							currentSpeed = $slide.data('autoSpeed');
+						}
+
+						return $('<button type="button" class="btn-indi-bar-text" />').html('<span class="text">' + $(slide.$slides[i]).data('slideTitle') + '</span><span class="bar" style="animation-duration:' + currentSpeed/1000 + 's"></span>');
 					} else {
 						return $('<button type="button" class="btn-indi" />').html('<span class="blind">' + i + 1 + '번 내용 보기</span>');
 					}
@@ -118,6 +127,9 @@ $(window).ready(function(){
 					autoSpeed =	$currentSlide.find("video").get(0).duration * 1000;
 					$currentSlide.find("video").get(0).play();
 				} 
+				$slide.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar').css({
+					'animation-duration' : autoSpeed/1000 + 's'
+				})
 				$slide.vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
 			});	
 

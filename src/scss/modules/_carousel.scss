@@ -149,35 +149,157 @@
     }
 }
 
-.indi-type-bar {
-    .indi-wrap {
-        .indi-conts {
-            display: flex !important;
-        }
-        li {
-            flex:1;
-            & + li {
-                margin-left:29px;
+.component-wrap {
+    .indi-type-bar{
+        .indi-wrap {
+            .indi-conts {
+                display: flex !important;
             }
-            .btn-indi-bar {
-                position: relative;
-                width:100%;
-                height:3px;
-                background: rgba(#f4f4f4, .4);
+            li {
+                flex:1;
+                & + li {
+                    margin-left:29px;
+                }
+                .btn-indi-bar {
+                    position: relative;
+                    width:100%;
+                    height:3px;
+                    background: rgba(#f4f4f4, .4);
+    
+                    .bar {
+                        display: block;
+                        position: absolute;
+                        top:0;
+                        left:0;
+                        width:0;
+                        height:100%;
+                        background: #f4f4f4;
+                    }
+                }
 
-                &:after {
-                    content:"";
-                    display: block;
-                    position: absolute;
-                    top:0;
-                    left:0;
-                    width:0;
-                    height:100%;
+                &.on {
+                    .btn-indi-bar {
+                        .bar {
+                            width:100%;
+                            animation-name:bars;
+                            animation-duration:5s;
+
+                            @keyframes bars {
+                                from { width:0; }
+                                to { width:100%; }
+                            }                            
+                        }
+                    }
+                }
+            }
+            .ui_carousel_play {
+                position: absolute;
+                right:95px;
+                bottom:16px;
+    
+                .btn-play {
+                    width:26px;
+                    height:26px;
+                    background-repeat: no-repeat;
+                    background-position: 0 0;
+                }
+
+                &.play {
+                    .btn-play {
+                        background-image: url('/lg5-common/images/icons/btn-carousel-hero-play.svg') ;
+                    }
+                }
+    
+    
+                &.stop {
+                    .btn-play {
+                        background-image: url('/lg5-common/images/icons/btn-carousel-hero-pause.svg');
+                    }
+                }
+            }
+        }
+    }
+    .indi-type-bar-text {
+        .indi-wrap {
+            .indi-conts {
+                display: flex !important;
+            }
+            li {
+                flex:1;
+                & + li {
+                    margin-left:29px;
+                }
+                .btn-indi-bar-text {
+                    position: relative;
+                    width:100%;
+                    padding-bottom:3px;
+                    
+                    &:before {
+                        content:"";
+                        display: block;
+                        position: absolute;
+                        bottom:0;
+                        left:0;
+                        width:100%;
+                        height:3px;
+                        background: #ddd;
+                    }
+    
+                    .bar {
+                        display: block;
+                        position: absolute;
+                        bottom:0;
+                        left:0;
+                        width:0;
+                        height:3px;
+                        background: #000;
+                    }
+                }
+
+                &.on {
+                    .btn-indi-bar-text {
+                        .bar {
+                            width:100%;
+                            animation-name:bars;
+                            animation-duration:5s;
+
+                            @keyframes bars {
+                                from { width:0; }
+                                to { width:100%; }
+                            }                            
+                        }
+                    }
+                }
+            }
+            .ui_carousel_play {
+                position: absolute;
+                right:95px;
+                bottom:16px;
+    
+                .btn-play {
+                    width:26px;
+                    height:26px;
+                    background-repeat: no-repeat;
+                    background-position: 0 0;
+                }
+
+                &.play {
+                    .btn-play {
+                        background-image: url('/lg5-common/images/icons/btn-carousel-hero-play.svg') ;
+                    }
+                }
+    
+    
+                &.stop {
+                    .btn-play {
+                        background-image: url('/lg5-common/images/icons/btn-carousel-hero-pause.svg');
+                    }
                 }
             }
         }
     }
 }
+
 
 // visual slide COMMON
 .slide-wrap {
