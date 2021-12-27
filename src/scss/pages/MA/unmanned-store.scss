@@ -467,7 +467,7 @@
                 height: 536px;
                 position: relative;
 
-                @media screen and (max-width: 1400px) and (min-width: 768px) {
+                @include unmanned-store-middle-target {
                      width: 74.84615vw;
                     min-width: 74.84615vw;
                     height: 41.23077vw
@@ -518,7 +518,7 @@
                             -moz-column-count: 2;
                             -webkit-column-count: 2;
                             column-count: 2;
-                            @media screen and (max-width: 1400px) and (min-width: 768px) {
+                            @include unmanned-store-middle-target {
                                 -moz-column-count: auto;
                                 -webkit-column-count: auto;
                                 column-count: auto;
@@ -526,7 +526,7 @@
                             li:nth-child(9n){
                                 break-before: column;
                                 margin-top: 0;
-                                @media screen and (max-width: 1400px) and (min-width: 768px) {
+                                @include unmanned-store-middle-target {
                                     break-before: auto;
                                     margin-top: 2vw;
                                 }
@@ -611,8 +611,6 @@
                          @include mobile{
                             background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_wide-m.svg') no-repeat 0 0;
                             background-size: 100%;
-                            width: 160px;
-                            height: 63px;
                             width: 20.86050vw;
                             height: 8.21382vw;
                             &:hover,&:focus{
@@ -625,17 +623,8 @@
 
                     @include mobile{
                         background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m.svg') no-repeat 0 0;
-                        font-size: 26px;
-                        padding: 6px 24px 0;
-                        width: 142px;
-                        height: 63px;
                         background-size: 100% 100%;
                         font-size: 3.38542vw;
-                        
-                        padding: 0.78125vw 3.12500vw 0;
-                        padding: 1.04302vw 0 0 0;
-               
-
                         width: 18.51369vw;
                         height: 8.21382vw;    
                         padding: 1.56454vw 0 0 0;
@@ -670,7 +659,7 @@
                 flex-direction: column;
                 justify-content: space-between;
 
-                @media screen and (max-width: 1400px) and (min-width: 768px) {
+                @include unmanned-store-middle-target {
                     flex-basis: auto;
                     margin-left: 5vw;
                 }
@@ -707,19 +696,20 @@
                                 display: inline-block;
                                 width: 16px;
                                 height: 16px;
-                                background: url('/lg5-common/images/icons/btn_arrow_right_16.svg') 4px 3px;
-                                background-repeat: no-repeat;
-                                @media all and (max-width: 1200px) and (min-width: 768px) {
-                                        width: 1.33333vw;
-                                        height: 1.33333vw;
-                                        background: url('/lg5-common/images/icons/btn_arrow_right_16.svg') 0.33333vw 0.25000vw;
-                                        background-size: 100%;
+                                background: url('/lg5-common/images/icons/btn_arrow_right_16.svg') 4px 3px no-repeat;
+                                @include unmanned-store-middle-target {
+                                    width: 1.33333vw;
+                                    height: 1.33333vw;
+                                    background: url('/lg5-common/images/icons/btn_arrow_right_16.svg') 0.33333vw 0.25000vw;
+                                    background-size: 100%;
                                 }
                             }
                         }
                         &:not(:first-child){
                             margin-top: 24px;
-                            @media all and (max-width: 1400px) and (min-width: 768px) { margin-top: 2.00000vw }
+                            @include unmanned-store-middle-target {
+                                margin-top: 2.00000vw
+                            }
                         }
                         @include mobile{
                             margin-top: 18.5px;
@@ -727,35 +717,31 @@
                     }
                 }
 
-                    .bullet-list{
-                        // margin-top: 10px;
-
-                        @include mobile{
-                            margin-top: 40px;
-                        }
-                        > li{
-                            margin-top: 0;
-                            @include font-small;
-
-                             @media all and (max-width: 1200px) and (min-width: 768px) {
-                                    margin-top: 0.16667vw;
-                                    padding-left: 0.91667vw;
-                                    font-size: 1.16667vw;
-                                    line-height: 2.00000vw
-                            }
+                .bullet-list{
+                    @include mobile{
+                        margin-top: 40px;
+                    }
+                    > li{
+                        margin-top: 0;
+                        @include font-small;
+                        @include unmanned-store-middle-target {
+                            margin-top: 0.16667vw;
+                            padding-left: 0.91667vw;
+                            font-size: 1.16667vw;
+                            line-height: 2.00000vw
                         }
                     }
-                    .bullet-text{
-
-                        @include mobile{
-                            margin-top: 40px;
-                        }
-                        @media all and (max-width: 1200px) and (min-width: 768px) {
-                                margin-top: 0.16667vw;
-                                padding-left: 0.91667vw;
-                                font-size: 1.16667vw;
-                                line-height: 2.00000vw
-                        }
+                }
+                .bullet-text{
+                    @include mobile{
+                        margin-top: 40px;
+                    }
+                    @include unmanned-store-middle-target {
+                        margin-top: 0.16667vw;
+                        padding-left: 0.91667vw;
+                        font-size: 1.16667vw;
+                        line-height: 2.00000vw
+                    }
                 }
                 
             }
