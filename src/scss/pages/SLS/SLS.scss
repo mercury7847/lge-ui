@@ -24,7 +24,6 @@ br.pc {
     }
 }
 
-/* 렌탈/케어 공통 */
 .care-home-section {
     margin:100px auto 0;
     padding:0 20px;
@@ -61,9 +60,6 @@ br.pc {
             }
         }
     }
-}
-
-.care-home-section {
     .tabs-wrap,
     .scroll-wrap {
         margin-bottom: 32px;
@@ -118,7 +114,7 @@ br.pc {
     }
 }
 
-// top visual // 스토어 WSG 적용 후 변경(1월 작업 예정) 현재 caresolution에만 적용
+// hero banner
 .caresolution{
     .sub-main{
         .slide-wrap {
@@ -566,7 +562,7 @@ br.pc {
     }
 }
 
-// 플로우배너
+// 케어솔루션 제품
 .care-flowbanner {
     margin: 48px auto 0;
     overflow: hidden;
@@ -625,8 +621,8 @@ br.pc {
             }
         }
     }
-
 }
+
 // 케어솔루션 추천 제품
 .care-recommended {
     max-width:1444px;
