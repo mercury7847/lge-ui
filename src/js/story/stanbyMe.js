@@ -95,7 +95,7 @@
                             cancelBtnName: "아니오",
                             okBtnName: "네",
                             ok: function(){
-                                location.href = "/sso/api/emp/Login";
+                                location.href = "/sso/api/Login";
                             },
                             cancel: function() {
                                 location.href = "/story/stanbyme-club/stanbyme-club-list?tab=prod2";
