@@ -1,50 +1,6 @@
+<!-- BTOCSITE-6882 신규 WSG 적용 - 스토어 -->
 <!-- 히어로 -->
 <div class="hero-banner slide-wrap ui_wide_slider">
-    <!-- 210308_임시삭제 -->
-    <div class="custom-indi-wrap">
-        <div class="custom-indis">
-            <!-- 210405 수정 [인디케이터 수정] -->
-            <!-- 210407 수정 [인디케이터 수정] -->
-            <ul class="indis ui_wideslider_dots">
-                <li>
-                    <button type="button" class="btn-indi">
-                        <!-- <p>혜택보기</p> -->
-                        <div class="bar"></div>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="btn-indi">
-                        <!-- <p>혜택보기</p> -->
-                        <div class="bar"></div>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="btn-indi">
-                        <!-- <p>혜택보기</p> -->
-                        <div class="bar"></div>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="btn-indi">
-                        <!-- <p>상세보기</p> -->
-                        <div class="bar"></div>
-                    </button>
-                </li>
-                <li>
-                    <button type="button" class="btn-indi">
-                        <!-- <p>혜택보기</p> -->
-                        <div class="bar"></div>
-                    </button>
-                </li>
-            </ul>
-            <!-- // 210407 수정 [인디케이터 수정] -->
-            <!-- // 210405 수정 [인디케이터 수정] -->
-        </div>
-        <button type="button" class="indi-control ui_carousel_play play">
-            <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
-        </button>
-    </div>
-    <!-- //210308_임시삭제 -->
     <div class="slide-content ui_carousel_list">
         <ul class="slide-track ui_carousel_track">
             <!-- slide -->
@@ -201,9 +157,17 @@
             <!-- // 210407 수정 [슬라이드 추가] -->
         </ul>
     </div>
-    <div class="slide-controls">
-        <button type="button" class="btn-arrow prev ui_carousel_prev">이전</button>
-        <button type="button" class="btn-arrow next ui_carousel_next">다음</button>
+    <div class="custom-indi-wrap">
+        <div class="slide-controls">
+            <div class="controls">
+                <button type="button" class="btn-arrow ico-prev ui_carousel_prev">이전</button>
+                <span class="slide-page"><strong class="current"></strong><em class="count"></em></span>
+                <button type="button" class="btn-arrow ico-next ui_carousel_next">다음</button>
+            </div>
+        </div>
+        <button type="button" class="indi-control ui_carousel_play play">
+            <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+        </button>
     </div>
 </div>
 <!-- //히어로 -->
@@ -1402,3 +1366,4 @@
     </div>
 </div>
 <!-- //BTOCSITE-7335-제품추천 : 제품 추천 슬라이드 JSP > AJAX로 처리 방식 변경 -->
+<!-- //BTOCSITE-6882 신규 WSG 적용 - 스토어 -->

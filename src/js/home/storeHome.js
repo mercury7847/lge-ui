@@ -18,12 +18,30 @@ $(function(){
         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
         speed: 150
     }).on('carouselafterchange', function(e, slide){
+        heroBanner();
         // s BTOCSITE-5938-222 : 20211224 pauseOnFocus가 false인데 autoplay 멈춰서 강제로 다시 시작
         if(slide.focussed) {
             slide.play();
         }
         // e BTOCSITE-5938-222
     })
+
+    function heroBanner() {
+        var heroList = $('.contents .hero-banner .slide-track > li');
+        var heroListAct = heroList.siblings('.ui_carousel_current').index();
+        var heroListLens = heroList.length;
+        var custom = $('.custom-indi-wrap');
+        var slideCurrent = custom.find('.slide-page .current');
+        var slideCount = custom.find('.slide-page .count');        
+
+        if( heroListLens > 1) {
+            custom.show();
+            slideCurrent.text(heroListAct);
+            slideCount.text(heroListLens - 2);
+        }
+    }
+
+    heroBanner();
 
 
     /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
