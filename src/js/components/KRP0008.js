@@ -2791,7 +2791,7 @@
 
                 if(storageCompare && storageCompare['data'].length > 0){ 
                     var data = storageCompare['data'][0];
-                    self.$pdpInfo.find('.product-compare').hide();
+                    if(data.b2bcatemapping != lgePdpSendData.b2bCateMapping) self.$pdpInfo.find('.product-compare').hide();
                 }
             },
             setSiblingOptionCheck: function(target, currentIndex, modelsData){
