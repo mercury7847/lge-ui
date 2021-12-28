@@ -961,13 +961,23 @@
 
                     var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
 
+                    /* s : BTOCSITE-5938-408 : 찜하기 복수인 경우 */
+                    var $wishItem = self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]');
                     var success = function(data) {
-                        $this.data("wishItemId",data.wishItemId);
-                        $this.prop("checked",wish);
+                        // $this.data("wishItemId",data.wishItemId);
+                        // $this.prop("checked",wish);
+                        $wishItem.each(function(i){
+                            $(this).data("wishItemId",data.wishItemId);
+                            $(this).prop("checked",wish);
+                        });
                     };
                     var fail = function(data) {
-                        $this.prop("checked",!wish);
+                        // $this.prop("checked",!wish);
+                        $wishItem.each(function(){
+                            $(this).prop("checked",!wish);
+                        });
                     };
+                    /* e : BTOCSITE-5938-408 */
                     
                     lgkorUI.requestWish(
                         param,
