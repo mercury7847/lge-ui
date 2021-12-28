@@ -9,16 +9,17 @@
         init: function() {
             var self = this;
             // 이메일인증멤버 확인
+            var planEventId = $('#planEventId').val();
             var memberStatus = memberCheck();
             if (memberStatus == 'Y'){
-                location.href = "/benefits/exhibitions/detail-PE00030001"
+                location.href = "/benefits/exhibitions/detail-"+planEventId;
             }
             function memberCheck(){
                 var memberStatus = '';
                 $.ajax({
                     type: "POST",
                     async : false,
-                    url:  "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId=PE00030001",
+                    url:  "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId="+planEventId,
                     dataType:"json",
                     success: function(json) {
                         memberStatus = json.data;
@@ -119,7 +120,8 @@
                     lgkorUI.showLoading();
 
                     lgkorUI.requestAjaxFileData(url, formData, function(result) {
-                        if (result.status == 'success') {
+                        var data = result.data;
+                        if (data.resultFlag == 'Y') {
                             lgkorUI.hideLoading();
                             self.$submitForm.submit();
                             $('.email-certified-info').show();
@@ -130,7 +132,7 @@
                         } else {
                             lgkorUI.hideLoading();
                             // 이미 등록된 이메일경우 
-                            if (result.dupAuthEmail == '1') {
+                            if (data.dupAuthEmail == '1') {
                                 lgkorUI.alert("", {
                                     title: '이미 인증을 받은 이메일 계정입니다. 다시 확인해 주시기 바랍니다.',
                                     okBtnName: '확인',
