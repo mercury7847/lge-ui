@@ -37,6 +37,40 @@ $(window).ready(function(){
 		function sectionLeaveEvent(target){
 			carouselStop(target)
 		}
+
+		//자동재생 반복 횟수 체크 후 정지  -BTOCSITE-8039
+		function autoStateChange(slide, prev, next){
+			if( prev == slide.$slides.length-1 && prev > next ) {
+				var $slide = $(slide.$slider);
+				var currentCount = $slide.data('currentCount');
+				var autoCount = $slide.data('autoCount');
+
+				if( autoCount != 'loop' && autoCount > 0) {
+					if( currentCount < autoCount -1) {
+						$slide.data('currentCount', currentCount + 1);
+					} else {
+						carouselStop(slide.$slider);
+					}
+				}
+			}
+		}
+
+		//커스텀 인디케이터 -BTOCSITE-8039
+		function customDots(slide, index){
+			var $slider = $(slide.$slider);
+			var currentSpeed = $slider.data('autoSpeed') != undefined && $slider.data('autoSpeed') > 0 ?  $slider.data('autoSpeed') : 5000;
+			var buttonClass = $slider.hasClass('indi-type-bar') ? 'btn-indi-bar' : $slider.hasClass('indi-type-bar-text') ? 'btn-indi-bar-text' : 'btn-indi';
+			var buttonInnerEl = '';
+			
+			if( $slider.hasClass('indi-type-bar')) {
+				buttonInnerEl = '<span class="blind">' + index + 1 + '번 내용 보기</span><span class="bar" style="animation-duration:' + currentSpeed/1000 + 's"></span>';
+			} else if($slider.hasClass('indi-type-bar-text')){
+				buttonInnerEl = '<span class="text">' + $(slide.$slides[index]).data('slideTitle') + '</span><span class="bar" style="animation-duration:' + currentSpeed/1000 + 's"></span>';
+			} else {
+				buttonInnerEl = '<span class="blind">' + index + 1 + '번 내용 보기</span>';
+			}
+			return $('<button type="button" class="' + buttonClass + '" />').html(buttonInnerEl);
+		} 
 		
 		//슬라이드가 화면 중앙인지 아닌지를 체크하여 해당 이벤트 실행 -BTOCSITE-8039
 		var io = new IntersectionObserver(function(entries, observer) {
@@ -46,9 +80,9 @@ $(window).ready(function(){
 		}, {root: null, threshold: 0.5});
 		
 		$('.KRC0032').find(".ui_carousel_slider").each(function(cdx, slide){
-			var $slide = $(this);
-			var autoPlaySpeed = $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') != "" ? $slide.data('autoSpeed') : 5000;
-			var autoCount = $slide.data('autoCount') != undefined && $slide.data('autoCount') != "" ? $slide.data('autoCount') : false;
+			var $slide 			= $(this),
+				autoPlaySpeed 	= $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') != "" ? $slide.data('autoSpeed') : 5000,
+				autoCount 		= $slide.data('autoCount') != undefined && $slide.data('autoCount') != "" ? $slide.data('autoCount') : false;
 
 			if( autoCount != 'loop' && autoCount != undefined) {
 				$slide.data('currentCount', 0);
@@ -67,8 +101,8 @@ $(window).ready(function(){
 						//$currentSlide.find("video").get(0).play()
  					}					
 				});
-
-			}).vcCarousel({
+			})
+			.vcCarousel({
 				infinite: true,
 				autoplay: false,
 				autoplaySpeed: autoPlaySpeed,
@@ -81,59 +115,29 @@ $(window).ready(function(){
 				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
 				speed: 150,
 				touchThreshold: 100,
-				customPaging: function(slide, i) {      // 인디케이터 버튼 마크업
-					var $slide = $(slide.$slider);
-
-					if( $slide.hasClass('indi-type-bar')) {
-						var currentSpeed = 5000;
-						if( $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') > 0) {
-							currentSpeed = $slide.data('autoSpeed');
-						}
-						return $('<button type="button" class="btn-indi-bar" />').html('<span class="blind">' + i + 1 + '번 내용 보기</span><span class="bar" style="animation-duration:' + currentSpeed/1000 + 's"></span>');
-					} else if($slide.hasClass('indi-type-bar-text')){
-						var currentSpeed = 5000;
-						if( $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') > 0) {
-							currentSpeed = $slide.data('autoSpeed');
-						}
-
-						return $('<button type="button" class="btn-indi-bar-text" />').html('<span class="text">' + $(slide.$slides[i]).data('slideTitle') + '</span><span class="bar" style="animation-duration:' + currentSpeed/1000 + 's"></span>');
-					} else {
-						return $('<button type="button" class="btn-indi" />').html('<span class="blind">' + i + 1 + '번 내용 보기</span>');
-					}
-
-					
+				customPaging: function(slide, i) {
+					return customDots(slide, i)
 				},
-			}).on('carouselbeforechange', function(e, slide, prev, next){
+			})
+			.on('carouselbeforechange', function(e, slide, prev, next){
 
 				prevVideoPause(slide, prev);
 				prevYoutubeBoxClose(slide, prev);
-
-				if( prev == slide.$slides.length-1 && prev > next ) {
-					var currentCount = $slide.data('currentCount');
-					var autoCount = $slide.data('autoCount');
-
-					if( autoCount != 'loop' && autoCount > 0) {
-						if( currentCount < autoCount -1) {
-							$slide.data('currentCount', currentCount + 1);
-						} else {
-							$slide.find('.ui_carousel_play.stop button').trigger('click');
-						}
-					}
-				}
-			}).on('carouselafterchange', function(e, slide, currentSlide){
+				autoStateChange(slide, prev, next)
+			
+			})
+			.on('carouselafterchange', function(e, slide, currentSlide){
+				var $slider = $(slide.$slider);
 				var $currentSlide = $(slide.$slides.get(currentSlide));
-				var autoSpeed = $slide.data('autoSpeed') ? $slide.data('autoSpeed') : 5000;
+				var autoSpeed = $slider.data('autoSpeed') ? $slider.data('autoSpeed') : 5000;
 				if($currentSlide.attr("ui-modules") == "VideoBox"){
 					autoSpeed =	$currentSlide.find("video").get(0).duration * 1000;
 					$currentSlide.find("video").get(0).play();
 				} 
-				$slide.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar').css({
+				$slider.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar').css({
 					'animation-duration' : autoSpeed/1000 + 's'
 				})
-				$slide.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar-text .bar').css({
-					'animation-duration' : autoSpeed/1000 + 's'
-				})
-				$slide.vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
+				$slider.vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
 			});	
 
 			io.observe(slide);
