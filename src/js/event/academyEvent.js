@@ -134,7 +134,7 @@
                             // 이미 등록된 이메일경우 
                             if (data.dupAuthEmail == '1') {
                                 lgkorUI.alert("", {
-                                    title: '이미 인증을 받은 이메일 계정입니다. 다시 확인해 주시기 바랍니다.',
+                                    title: '이미 인증을 받은 이메일 계정입니다.<br>다시 확인해 주시기 바랍니다.',
                                     okBtnName: '확인',
                                     ok: function() {
                                     }
