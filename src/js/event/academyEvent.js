@@ -2,23 +2,43 @@
     var validation;
     loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
     birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
-    // 아카데미 회원 임시 변수
-    var academyMember = false;
+    // var loginFlag = 'Y';
+    // var birthDt = 19920102;
 
     var emailCertified = {
         init: function() {
             var self = this;
-            if(lgkorUI.stringToBool(loginFlag)) {
-                if(academyMember){
-                    alert('아카데미기획전 상세페이지로 넘기기')
-                    // location.href='/benefits/exhibitions';
-                } else{
-                    if( birthDt > 19920101 && birthDt < 20040102){
-                        $('.login-ok').show();
-                        $('.login-no').hide();
-                    } else {
-                        $('#academyPopup01').vcModal('show');
+            // 이메일인증멤버 확인
+            var planEventId = $('#planEventId').val();
+            var memberStatus = memberCheck();
+            if (memberStatus == 'Y'){
+                location.href = "/benefits/exhibitions/detail-"+planEventId;
+            }
+            function memberCheck(){
+                var memberStatus = '';
+                $.ajax({
+                    type: "POST",
+                    async : false,
+                    url:  "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId="+planEventId,
+                    dataType:"json",
+                    success: function(json) {
+                        memberStatus = json.data;
+                    },
+                    error: function(request, status, error) {
+                        alert("오류가 발생하였습니다.");
+                        return;
                     }
+                });
+                return memberStatus;
+            }
+
+            if(lgkorUI.stringToBool(loginFlag)) {
+                //if( birthDt > 19920101 && birthDt < 20040102){
+                if( birthDt > 19700101 && birthDt < 20040102){
+                    $('.login-ok').show();
+                    $('.login-no').hide();
+                } else {
+                    $('#academyPopup01').vcModal('show');
                 }
             } else {
                 $('.login-no').show();
@@ -29,7 +49,8 @@
             self.$submitForm = $('#emailCertifiedForm');
             self.$completeBtn = $('#btnCertified');
             self.$loginBtn = $('#btnLogin');
-
+            var checkEmail = $('#checkEmail').val();
+            var checklength = checkEmail.split(',').length;
 
             vcui.require(['ui/validation'], function () {
                 var register = {
@@ -46,12 +67,14 @@
                             var _pattern = new RegExp(this.pattern);
                             if( _pattern.test(value) == true) {
                                 if( value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
-                                    console.log( value.split('@')[1]);
-                                    if(value.split('@')[1] === 'ac.kr'){
-                                        return true;
-                                    } else{
-                                        return false;
+                                    for(var i = 0 ; i < checklength ; i++) {
+                                        console.log(checkEmail.split(',')[i], i);
+                                        if(value.split('@')[1] === checkEmail.split(',')[i]){
+                                            return true;
+                                            break;
+                                        } 
                                     }
+                                    return false;
                                 } else {
                                     return false;
                                 }
@@ -81,17 +104,24 @@
                 var result = validation.validate();
 
                 if (result.success === true) {
-
                     var url = self.$submitForm.data('ajax');
-                    var allData = validation.getAllValues();
+                    var param = validation.getAllValues();
 
+                    param['agreeUserCheck'] =  param['agreeUserCheck'] ? 1 : 0;
+
+
+
+                    var formData = new FormData();
+
+                    for (var key in param) {
+                        formData.append(key, param[key]);
+                    }
+                    console.log(url, formData)
                     lgkorUI.showLoading();
 
-                    lgkorUI.requestAjaxFileData(url, allData, function(result) {
+                    lgkorUI.requestAjaxFileData(url, formData, function(result) {
                         var data = result.data;
-                        
                         if (data.resultFlag == 'Y') {
-                            console.log(data.resultFlag, url);
                             lgkorUI.hideLoading();
                             self.$submitForm.submit();
                             $('.email-certified-info').show();
@@ -101,14 +131,21 @@
                             }, 500);
                         } else {
                             lgkorUI.hideLoading();
-                            if (data.resultMessage) {
+                            // 이미 등록된 이메일경우 
+                            if (data.dupAuthEmail == '1') {
                                 lgkorUI.alert("", {
-                                    title: data.resultMessage,
+                                    title: '이미 인증을 받은 이메일 계정입니다.<br>다시 확인해 주시기 바랍니다.',
                                     okBtnName: '확인',
                                     ok: function() {
-                                        alert(academyMember);
                                     }
                                 });
+                            } else {
+                                lgkorUI.hideLoading();
+                                if (data.resultMessage) {
+                                    lgkorUI.alert("", {
+                                        title: data.resultMessage
+                                    });
+                                }
                             }
                         }
                     }, 'POST');

@@ -1035,6 +1035,7 @@
         if(writeReasonTrim.length) reason = writeReason;
 
         var getListData = (TAB_FLAG == TAB_FLAG_ORDER) ? datalayerResult.listData : datalayerResult.careListData; //4088 탭 구분 추가
+
         if(reason == ""){
             lgkorUI.alert("", {
                 title: "취소신청하시려면, 상세 사유가 필요합니다. 취소 사유를 입력해 주세요."
@@ -1109,23 +1110,23 @@
                                 }
                             }
   
-                            var pushDataEvent = {               
-                                'event': 'refund',              
+                            var pushDataEvent = {				
+                                'event': 'refund',				
                                 'actionField': {
                                     //'order_id' : getOrderID(datalayerResult)
                                     'order_id' : "ORD-" + list[idx].orderNumber
-                                },              
+                                },				
                                 'products': [{
-                                    'model_name': list[idx].productList[cdx].productNameKR,                 
-                                    'model_id': list[idx].productList[cdx].modelID,                 
-                                    'model_sku': list[idx].productList[cdx].productNameEN,                  
-                                    'category': null,                   
-                                    'brand': 'LG',                  
+                                    'model_name': list[idx].productList[cdx].productNameKR,					
+                                    'model_id': list[idx].productList[cdx].modelID,					
+                                    'model_sku': list[idx].productList[cdx].productNameEN,					
+                                    'category': null,					
+                                    'brand': 'LG',					
                                     'price': datalayerResult.payment.grandTotal,
-                                    'quantity': list[idx].productList[cdx].orderedQuantity,                 
+                                    'quantity': list[idx].productList[cdx].orderedQuantity,					
                                     'model_gubun': list[idx].productList[cdx].modelType,
                                     'ct_id': null
-                                }]              
+                                }]				
                             };
 
                             dataLayer.push(pushDataEvent);
@@ -1143,32 +1144,34 @@
             
                             }
 
-                            var care_list_requestNo = CARE_list[idx].requestNo;
+                            /* or, ord로 바꾸는 함수 삭제 */
+                            // var care_list_requestNo = CARE_list[idx].requestNo;
 
-                            function getOrderID(datalayerResult){
-                                // if( orderProdutID == "" || orderProdutID == undefined) {
-                                //     return "ORD-" + orderProdutID
-                                // }
-                                return care_list_requestNo.replace('OR', 'ORD-');
-                            }
+                            // function getOrderID(datalayerResult){
+                            //     // if( orderProdutID == "" || orderProdutID == undefined) {
+                            //     //     return "ORD-" + orderProdutID
+                            //     // }
+                            //     return care_list_requestNo.replace('OR', 'ORD-');
+                            // }
                             
-                            var pushDataEvent = {               
-                                'event': 'refund',              
+                            var pushDataEvent = {				
+                                'event': 'refund',				
                                 'actionField': {
-                                    'order_id' : getOrderID(datalayerResult)
+                                    //'order_id' : getOrderID(datalayerResult)
                                     //'order_id' : CARE_list[idx].requestNo
-                                },              
+                                    'order_id' : "ORD-" + CARE_list[idx].orderNumber
+                                },				
                                 'products': [{
-                                    'model_name': CARE_list[idx].productList[CARE_cdx].productNameKR,                   
-                                    'model_id': CARE_list[idx].productList[CARE_cdx].modelID,                   
-                                    'model_sku': CARE_list[idx].productList[CARE_cdx].productNameEN,                    
-                                    'category': null,                   
-                                    'brand': 'LG',                  
+                                    'model_name': CARE_list[idx].productList[CARE_cdx].productNameKR,					
+                                    'model_id': CARE_list[idx].productList[CARE_cdx].modelID,					
+                                    'model_sku': CARE_list[idx].productList[CARE_cdx].productNameEN,					
+                                    'category': null,					
+                                    'brand': 'LG',					
                                     'price': CARE_list[idx].productList[CARE_cdx].years1TotAmt,
-                                    'quantity': CARE_list[idx].productList[CARE_cdx].orderedQuantity,                   
+                                    'quantity': CARE_list[idx].productList[CARE_cdx].orderedQuantity,					
                                     'model_gubun': CARE_list[idx].productList[CARE_cdx].productFlag,
                                     'ct_id': null
-                                }]              
+                                }]				
                             };
     
                             dataLayer.push(pushDataEvent);

@@ -100,7 +100,7 @@
                                 </header>
                                 <section class="pop-conts">
                                         <P class="p-title">@ac.kr 계정의 이메일로 인증해 주세요.</P>
-                                        <div class="form-wrap" id="emailCertifiedForm" data-ajax="../../../lg5-common/data-ajax/support/save.json" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
+                                        <div class="form-wrap" id="emailCertifiedForm" data-ajax="https://wwwdev50.lge.co.kr/evt/api/exhibitions/sendTheEmail.lgajax?planEventId=PE00030001" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
                                             <dl class="forms inner-type">
                                                 <dt class="tit"><label for="email" class="req">이메일<span class="blind">필수입력</span></label></dt>
                                                 <dd class="conts">
@@ -147,6 +147,9 @@
                             </article>
                         </div>
                         <!-- 로그인 후 e -->
+                        <!-- 2021.12.27 추가부분 -->
+                        <input type="hidden" value="ac.kr,cnspartner.com,lgepartner.com" id="checkEmail">
+                        <input type="hidden" value="PE00030001" id="planEventId">
                     </div>
                 </div>
             </div>

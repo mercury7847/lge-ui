@@ -478,7 +478,11 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                             })
                         }
                     }
-                    self._setOver(idx, 0);
+
+                    //BTOCSITE-7335
+                    if( window.innerWidth > 767) {
+                        self._setOver(idx, 0);
+                    }
                 });
             });
 

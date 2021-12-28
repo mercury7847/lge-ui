@@ -44,6 +44,7 @@
 		.tabs-wrap {
 			margin-bottom: 60px;
 			padding:32px 0 0;
+			overflow:hidden; //BTOCSITE-7335 수정
 			.tabs {
 				padding:0 16px;
 			}
