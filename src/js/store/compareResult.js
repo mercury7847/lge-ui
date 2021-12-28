@@ -59,7 +59,10 @@
         // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공
         $('.ui_selectbox').on('click touchstart', function(){
             var selTxt = $(this).siblings('.ui-selectbox-view').find('.ui-select-text').text();
-            if( selTxt ){
+            
+            if( !selTxt ){
+                $(this).parents('.card-selec-box').find('strong').removeClass('mo-sel');
+            }else{
                 $(this).parents('.card-selec-box').find('strong').addClass('mo-sel');
             }
         })
