@@ -892,7 +892,7 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인  */
+                        /* BTOCSITE-10166 : 롯데카드 혜택 배지 수정요청의 건  */
                         var isShow = lgkorUI.isShowDate('20210601','20220201') // 2022.01.01 00:00 ~ 2021.01.31 24:00  ( 신한/롯데 프로모션 적용 기간)
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
