@@ -139,9 +139,16 @@
                                     ok: function() {
                                     }
                                 });
+                            } else {
+                                lgkorUI.hideLoading();
+                                if (data.resultMessage) {
+                                    lgkorUI.alert("", {
+                                        title: data.resultMessage
+                                    });
+                                }
                             }
                         }
-                    }, 'POST','json',true);
+                    }, 'POST');
                 } else{
                     $('.email-certified-info').hide();
                     $('#academyPopup02 .pop-footer').hide();
