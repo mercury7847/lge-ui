@@ -4,11 +4,33 @@
     birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
     // var loginFlag = 'Y';
     // var birthDt = 19920102;
-    
 
     var emailCertified = {
         init: function() {
             var self = this;
+            // 이메일인증멤버 확인
+            var memberStatus = memberCheck();
+            if (memberStatus == 'Y'){
+                location.href = "/benefits/exhibitions/detail-PE00030001"
+            }
+            function memberCheck(){
+                var memberStatus = '';
+                $.ajax({
+                    type: "POST",
+                    async : false,
+                    url:  "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId=PE00030001",
+                    dataType:"json",
+                    success: function(json) {
+                        memberStatus = json.data;
+                    },
+                    error: function(request, status, error) {
+                        alert("오류가 발생하였습니다.");
+                        return;
+                    }
+                });
+                return memberStatus;
+            }
+            
             if(lgkorUI.stringToBool(loginFlag)) {
                 if( birthDt > 19920101 && birthDt < 20040102){
                     $('.login-ok').show();
@@ -80,21 +102,19 @@
                 var result = validation.validate();
 
                 if (result.success === true) {
-
-                    var url = self.$submitForm.data('ajax');
+                    var Parms  = '&userEmail='+$('#userEmail').val()+'&agreeUserCheck='+ $('#agreeUserCheck').val();
+                    var url = self.$submitForm.data('ajax') + Parms;
                     var param = validation.getAllValues();
                     var formData = new FormData();
 
                     for (var key in param) {
                         formData.append(key, param[key]);
                     }
-
+                    console.log(url, formData)
                     lgkorUI.showLoading();
 
                     lgkorUI.requestAjaxFileData(url, formData, function(result) {
-                        var data = result.data;
-                        if (data.status == 'success') {
-                            console.log(data.status, url);
+                        if (result.status == 'success') {
                             lgkorUI.hideLoading();
                             self.$submitForm.submit();
                             $('.email-certified-info').show();
@@ -105,17 +125,9 @@
                         } else {
                             lgkorUI.hideLoading();
                             // 이미 등록된 이메일경우 
-                            if (data.dupAuthEmail == '1') {
+                            if (result.dupAuthEmail == '1') {
                                 lgkorUI.alert("", {
                                     title: '이미 인증을 받은 이메일 계정입니다. 다시 확인해 주시기 바랍니다.',
-                                    okBtnName: '확인',
-                                    ok: function() {
-                                    }
-                                });
-                            }
-                            if (data.resultMessage) {
-                                lgkorUI.alert("", {
-                                    title: data.resultMessage,
                                     okBtnName: '확인',
                                     ok: function() {
                                     }
