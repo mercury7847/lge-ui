@@ -30,7 +30,7 @@
                 });
                 return memberStatus;
             }
-            
+
             if(lgkorUI.stringToBool(loginFlag)) {
                 if( birthDt > 19920101 && birthDt < 20040102){
                     $('.login-ok').show();
@@ -102,9 +102,13 @@
                 var result = validation.validate();
 
                 if (result.success === true) {
-                    var Parms  = '&userEmail='+$('#userEmail').val()+'&agreeUserCheck='+ $('#agreeUserCheck').val();
-                    var url = self.$submitForm.data('ajax') + Parms;
+                    var url = self.$submitForm.data('ajax');
                     var param = validation.getAllValues();
+
+                    param['agreeUserCheck'] =  param['agreeUserCheck'] ? 1 : 0;
+
+
+
                     var formData = new FormData();
 
                     for (var key in param) {
@@ -134,7 +138,7 @@
                                 });
                             }
                         }
-                    }, 'POST');
+                    }, 'POST','json',true);
                 } else{
                     $('.email-certified-info').hide();
                     $('#academyPopup02 .pop-footer').hide();
@@ -151,14 +155,6 @@
             $('#academyPopup02 .btn-confirm').on('click', function(e) {
                 $('#academyPopup02').vcModal('hide'); 
                 location.reload();
-            });
-
-            $('#agreeUserCheck').on('change', function(e) {
-                if($('#agreeUserCheck').prop('checked')){
-                    $('#agreeUserCheck').val(1);
-                }else{
-                    $('#agreeUserCheck').val(0);
-                }
             });
         }
     }
