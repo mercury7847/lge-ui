@@ -24,7 +24,7 @@
         }      
         
         // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 (테스트할때 주석처리 해야함, local 테스트시 오류뜸)
-        setDifferentBenefit();
+        //setDifferentBenefit();
     }
 
     function bindEvents(){
@@ -152,22 +152,22 @@
     }
 
     //BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 (테스트할때 주석처리 해야함, local 테스트시 오류뜸)
-    function setDifferentBenefit(){
-        var memInp = $('.mem-point .input-wrap');
-        var memBtn = $('.mem-point .btn-box');
-        var memPoint = parseInt($('.mem-point .input-wrap').text());
+    // function setDifferentBenefit(){
+    //     var memInp = $('.mem-point .input-wrap');
+    //     var memBtn = $('.mem-point .btn-box');
+    //     var memPoint = parseInt($('.mem-point .input-wrap').text());
         
-        loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
-        if(lgkorUI.stringToBool(loginFlag)) {
-            memInp.css('display', 'block');
-            memBtn.css('display', 'none');
-            if( memPoint == 0 ) {
-                memInp.addClass('p-none');
-            }
-        } else{
-            memBtn.css('display', 'block');
-        }    
-    }
+    //     loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+    //     if(lgkorUI.stringToBool(loginFlag)) {
+    //         memInp.css('display', 'block');
+    //         memBtn.css('display', 'none');
+    //         if( memPoint == 0 ) {
+    //             memInp.addClass('p-none');
+    //         }
+    //     } else{
+    //         memBtn.css('display', 'block');
+    //     }    
+    // }
 
     
 
