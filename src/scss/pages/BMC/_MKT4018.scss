@@ -296,8 +296,11 @@
         }
         .agree-cont-wrap .agree-cont-box{
             font-weight: 400;
-            p{
+            .s-title{
                 font-weight: 700;
+            }
+            .p-text+.s-title{
+                margin-top: 5px;
             }
         }
         .btn-area{
