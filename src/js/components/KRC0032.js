@@ -115,7 +115,7 @@ $(window).ready(function(){
 			})
 			.vcCarousel({
 				infinite: true,
-				autoplay: false,
+				autoplay: true,
 				autoplaySpeed: autoPlaySpeed,
 				prevArrow:'.btn-arrow.prev',
 				nextArrow:'.btn-arrow.next',
