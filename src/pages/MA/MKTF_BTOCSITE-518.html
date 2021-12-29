@@ -37,7 +37,7 @@
 
                         <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 태그 수정-->
                         <div class="inner bdb">
-                            <h1 class="tit mo-h2">개인정보(필수사항)</h2>
+                            <h1 class="tit mo-h2">개인정보(필수사항)</h1>
                         </div>
 
                         <p class="reqchk">필수 입력 사항</p>
@@ -99,7 +99,7 @@
                             <div class="sub-forms subbox">
                                 <div class="inner bdb">
                                     <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 텍스트 수정-->
-                                    <h1 class="tit mo-h2">시스템에어컨 설치정보</h2>
+                                    <h1 class="tit mo-h2">시스템에어컨 설치정보</h1>
                                     <div class="desc">하기 사항을 입력해주시면 보다 정확한 상담이 가능합니다.</div>
                                 </div>
                                 <dl class="forms dl1">
@@ -135,7 +135,7 @@
                             </div>
                             <div class="sub-forms subbox">
                                 <div class=sub-forms-box>
-                                    <h1 class="tit">설치 현장 정보</h2>
+                                    <h1 class="tit">설치 현장 정보</h1>
                                     <dl class="forms dl1">
                                         <dt class="tit"><label for="inp06" class="req">주소<span class="blind">필수입력</span></label></dt>
                                         <dd class="conts">
@@ -194,7 +194,9 @@
                                                 <dd class="conts">
                                                     <div class="input-wrap">
                                                          <!--  BTOCSITE-518 20210709 START -->
-                                                         <input type="text" id="inp07" name="inp07"><span class="unit">㎡</span>
+                                                        <!-- 211210 BTOCSITE-9224 시스템에어컨 B2C 온라인 견적 요청 화면 수정 요청-->
+                                                         <input type="text" id="inp07" name="inp07" data-required="true"><span class="unit">㎡</span>
+                                                        <!--// 211210 BTOCSITE-9224 시스템에어컨 B2C 온라인 견적 요청 화면 수정 요청-->
                                                          <!--  BTOCSITE-518 20210709 END -->
                                                     </div>
                                                 </dd>
@@ -250,12 +252,29 @@
                                             </div>
                                         </dd>
                                     </dl>
+
+                                    <!-- 211210 BTOCSITE-9224 시스템에어컨 B2C 온라인 견적 요청 화면 수정 요청-->
+                                    <dl class="forms dl2">
+                                        <dt class="tit"><label for="rdo2-1" class="req">현장방문 요청<span class="blind">필수입력</span></label></dt>
+                                        <dd class="conts">
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="rdo2-1" name="rdo2" checked value="방문">
+                                                <label for="rdo2-1">방문</label>
+                                            </span>
+                                            <span class="rdo-wrap">
+                                                <input type="radio" id="rdo2-2" name="rdo2" value="미 방문">
+                                                <label for="rdo2-2">미 방문</label>
+                                            </span>
+                                        </dd>
+                                    </dl>
+                                    <!--// 211210 BTOCSITE-9224 시스템에어컨 B2C 온라인 견적 요청 화면 수정 요청-->
+
                                 </div>
                             </div>
                             
                             <div class="sub-forms subbox">
                                 <div class=sub-forms-box>
-                                    <h1 class="tit">기존 사용 제품</h2>
+                                    <h1 class="tit">기존 사용 제품</h1>
                                     <!--  BTOCSITE-518 20210707 START -->
                                     <dl class="forms dl2">
                                         <!--  BTOCSITE-6128 시스템에어컨 B2C온라인 견적 요청시 선택사항→필수사항 변경 요청 : 필수 체크 -->
@@ -455,7 +474,7 @@
                                     <h2 class="tit mo-h2 mo-only">약관 동의</h2>
                                 </div>
                                 <div class="tit-head">
-                                    <h2 class="tit">* 개인정보 수집 및 이용 동의</strong>
+                                    <h2 class="tit">* 개인정보 수집 및 이용 동의</h2>
                                 </div>
                                 <div class="tit-center">
                                     <div class="txt-wrap">
@@ -491,10 +510,12 @@
                                                                </tr>
                                                                <tr>
                                                                   <td>
-                                                                     <p>[온라인 견적 서비스 요청] 상호/법인명, 사업자등록번호, 대표자명,<br class="onW"> 사업장주소, 대표전화번호, 담당자명, 휴대전화번호, 이메일, 업종, 제품설치지역</p>
+                                                                    <!-- BTOCSITE-10093 - [B2C온라인견적] 약관내용 텍스트 수정 -->
+                                                                     <p>[온라인 견적 서비스 요청] 이름, 휴대전화번호, 이메일, 주소, 제품설치지역 주소 변경 요청</p>
                                                                   </td>
                                                                   <td>
-                                                                     <p>B2B기업 이용자의 온라인 견적 요청 상담</p>
+                                                                      <!-- BTOCSITE-10093 - [B2C온라인견적] 약관내용 텍스트 수정 -->
+                                                                     <p>이용자의 온라인 견적 요청 상담</p>
                                                                   </td>
                                                                </tr>
                                                             </tbody>
@@ -559,7 +580,7 @@
                             <!-- 개인정보 제3자 제공 동의 -->
                             <div class="sub-forms bdn">
                                 <div class="tit-head">
-                                    <h2 class="tit">* 개인정보 제3자 제공 동의</strong>
+                                    <h2 class="tit">* 개인정보 제3자 제공 동의</h2>
                                 </div>
                                 <div class="tit-center">
                                     <div class="txt-wrap">
@@ -598,7 +619,8 @@
                                                                      <p>제품 및 견적 상담</p>
                                                                   </td>
                                                                   <td>
-                                                                     <p>사업체명, 대표자명, 사업자등록번호, 사업장주소, 대표전화번호, 담당자명, 이메일, 휴대폰번호, 업종, 제품설치지역</p>
+                                                                      <!-- BTOCSITE-10093 - [B2C온라인견적] 약관내용 텍스트 수정 -->
+                                                                     <p>이름, 휴대전화번호, 이메일, 주소, 제품설치지역 주소 변경요청</p>
                                                                   </td>
                                                                   <td>
                                                                      <p>개인정보 이용 목적 달성 시(서비스 이용 시)까지. 단, 관계법령에서 일정 기간 동안 정보보관 의무를 부과하는 경우 해당 기간 동안 보유</p>
@@ -661,7 +683,8 @@
                                                                    </tr>
                                                                    <tr>
                                                                       <td>
-                                                                         <p>케이티엠하우스</p>
+                                                                          <!-- BTOCSITE-10093 - [B2C온라인견적] 약관내용 텍스트 수정 -->
+                                                                         <p>케이티알파</p>
                                                                       </td>
                                                                       <td>
                                                                          <p>모바일 상품권 발송</p>
@@ -740,7 +763,8 @@
                                 <div class="table-wrap">
                                     <!--[S] BTOCSITE-5498-->
                                     <div class="link-agree">
-                                        <a href="https://www.lge.co.kr/kr/business/common/common/common-agreement-detail.do?part=C&fsite=AM0102&category=AM0202" target="_blank" title="새창열림" class="btn-link">개인정보취급방침</a>
+                                        <!-- BTOCSITE-10093 - [B2C온라인견적] 약관내용 텍스트 수정 -->
+                                        <a href="https://www.lge.co.kr/kr/business/common/common/common-agreement-detail.do?part=C&fsite=AM0102&category=AM0202" target="_blank" title="새창열림" class="btn-link">개인정보처리방침</a>
                                     </div>
                                     <!--//[E] BTOCSITE-5498-->
                                     <div class="btn-wrap pc-only">

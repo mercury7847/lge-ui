@@ -362,7 +362,12 @@
                 }
 
                 step++;
-                
+
+                // BTOCSITE-7914 케어십(일반판매케어십 및 보유제품케어십) 청약 화면 수정 요청
+                if(step === 1) {
+                    if($(".order-list .product-info .flag").data('salesType') === 'X') step2Block.find('.forAOP').hide();
+                }
+
                 var contop = $(data.header).offset().top;
                 $('html, body').stop().animate({scrollTop:contop}, 350);
             }
@@ -798,10 +803,8 @@
                         title: "설치 가능여부 확인이 필요합니다."
                     });
                 } else{
-                    if(allOwnedProductYn == "Y"){
-                        var installplace = step2Validation.validate(["inatallPlace"]);
-                        chk = installplace.success;
-                    } else{
+                    // BTOCSITE-7914 케어십(일반판매케어십 및 보유제품케어십) 청약 화면 수정 요청
+                    if(allOwnedProductYn != "Y"){
                         var restresult = step2Validation.validate(["inatallPlace", "inatallDate"]);
                         chk = restresult.success;
                         if(chk){
@@ -822,6 +825,10 @@
                                 if(!chk) $(window).trigger("toastshow", "서비스 제공을 위한 개인정보 수집/이용 동의가 필요합니다.");
                             }
                         }
+                    } else {
+                        // BTOCSITE-9372 보유제품케어십 청약화면 수정요청 : 보유케어십인경우 설치장소 필수 처리
+                        var restresult = step2Validation.validate(["inatallPlace"]);
+                        chk = restresult.success;
                     }
                 }
             }
@@ -1649,6 +1656,10 @@
 
     //청약신청하기...
     function rentalRequest(){
+        // 이중 클릭 방지
+        lgkorUI.showLoading();
+        requestButton.attr('disabled',true);
+
         var chk = false;
         //stepAccordion.expand(1, true)
         var stepperStatus = stepAccordion.getActivate();
@@ -1665,12 +1676,17 @@
         }
 
         if(!chk){
+            lgkorUI.hideLoading();
+            requestButton.attr('disabled',false);
+
             return;
        }
 
         var agreechk = requestAgreeChecker.getAllChecked();
-        if(!agreechk){
+        if(!agreechk || !getRentalAgreeAllChecked()){
             $(window).trigger("toastshow", "청약 신청을 위해 케어솔루션 청약신청 고객 동의가 필요합니다.");
+            lgkorUI.hideLoading();
+            requestButton.attr('disabled',false);
             return;
         }        
 
@@ -1731,7 +1747,6 @@
             preVisitRequest: preVisitRequest
         };
 
-        lgkorUI.showLoading();
 
         lgkorUI.requestAjaxData(REQUEST_SUBMIT_URL, sendata, function(result){
             if(result.data.success == "Y"){
@@ -1764,7 +1779,7 @@
                 }
             } else{
                 lgkorUI.hideLoading();
-
+                requestButton.attr('disabled',false);
                 lgkorUI.alert("", {
                     title: result.data.alert.title
                 });

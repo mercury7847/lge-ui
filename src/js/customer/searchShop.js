@@ -6,7 +6,7 @@
     */
         // BTOCSITE-4785 s
         var cartPrdList  = getParameter("cartPrdList");
-
+        var dpPdp  = getParameter("dpPdp");
         function getParameter(name) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -65,8 +65,10 @@
             subway: '<strong>"{{keyword}}역"</strong>과 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.',
             myLocation: '내 주소와 가까운 <strong>{{total}}개</strong>의 매장을 찾았습니다.'
         };
-    
-        var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
+        
+
+            var localOptTemplate = '<option value="{{value}}" data-code-desc="{{codeDesc}}">{{title}}</option>';
+
         // BTOCSITE-4785 : 매장 상담 예약 버튼 추가, 매장링크에 .shop-map-link class 추가
         var searchListTemplate = 
             '<li data-id="{{shopID}}">'+
@@ -230,6 +232,7 @@
                             });
                             
                             $(".sch-box .tabs-wrap").vcTab('select', 2); // 검색 탭으로 이동시킴.
+                            $(".view-info-btn").addClass("withtab3"); // BTOCSITE-5938-350 모니터링 수정
     
                             if(nArr.length > 0) {
                                 var shopName = nArr[0]['shopName'];
@@ -377,10 +380,19 @@
                     var item = arr[i];
                     var gpsInfo = item.gpsInfo;
                     var distance = self._getDistance(lat, long, parseFloat(gpsInfo.gpsy), parseFloat(gpsInfo.gpsx));
+                    // BTOCSITE-4785 s
+                    if(dpPdp){
+                        if(distance){
+                            item['distance'] = distance;
+                            newArr.push(item);
+                        }
+                    }else{
                     if(distance <= limit){
                         item['distance'] = distance;
                         newArr.push(item);
+                        }
                     }
+                    // BTOCSITE-4785 e
                 }
     
                 // 지도 중심에서 가까운 곳순으로 정렬 
@@ -493,6 +505,19 @@
     
                     // 필터 적용
                     e.preventDefault();
+                    var keywords = self._getKeyword();
+    
+                    if(keywords.searchCity == '') {
+                        lgkorUI.alert("", {
+                            title: "시/도를 선택해 주세요.",
+                            ok:function(){
+                                self._toggleOptContainer();
+                            }
+                        });
+                     
+                        return false;
+                    }
+
                     self._setOptApply();
                 });
     
@@ -594,7 +619,6 @@
     
             _requestSaleStoreData : function(){
                 var self = this;
-    
                 // lgkorUI.showLoading();
     
                 lgkorUI.requestAjaxDataFailCheck(self.bestShopUrl, {searchType:'search', salesCode:self.salesCode}, function(result){
@@ -620,10 +644,15 @@
                             defaultLat = self.userLatitude;
                             defaultLong = self.userLongitude;
                         }
-                        // BTOCSITE-4785 : 반경 100km 이내 거리순 7개로 변경
+                        // BTOCSITE-4785 s
                         //var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:10});
-                        var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:100}).slice(0, 7);
-    
+                        if(dpPdp){
+                            // 기획전에서 넘어올 경우:limit 값은 100으로 설정되어 있으나 _filterDistance에서 무시되고, 가까운순으로 30개까지 리스팅 됨
+                            var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:100}).slice(0, 30);
+                        }else{
+                            var nArr = self._filterDistance(arr , {lat: defaultLat, long:defaultLong, limit:100}).slice(0, 7);
+                        }
+                        // BTOCSITE-4785 e
                         if(nArr.length == 0){                       
                             // BTOCSITE-4785
                             lgkorUI.confirm("100Km이내에서 매장을 검색하지 못했습니다. <br>거리기준을 200Km를 기준으로 확장하여 매장을 검색 해보시겠습니까?", {
@@ -757,7 +786,13 @@
                     /* BTOCSITE-2890 : 전시매장 찾기개선 요청 2021-09-15 */
                     // 내주소로 검색 반경 5Km 내 검색
                     //var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:10}); //원본
-                    var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:100}).slice(0, 7);
+                    if(dpPdp){
+                        // 기획전에서 넘어올 경우, limit 값은 100으로 설정되어 있으나 _filterDistance에서 무시되고 매장이 가까운순으로 30개까지 리스팅 됨
+                        var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:100}).slice(0, 30);
+                    }else{
+                    	var nArr = self._filterDistance(self.totalStoreData, {lat:lat, long:long, limit:100}).slice(0, 7);
+                    }
+                    
     
                     nArr = self._filterOptions(nArr, keywords);
     
@@ -796,29 +831,51 @@
                 var resultLen = 0;
     
                 if(keywords.searchType =='local'){
+                    // BTOCSITE-4785 s
+                    if(dpPdp){
+                        var localGeo = keywords.searchLocationXY.split(',');
+                        console.log(keywords.searchLocationXY);
+                        if(localGeo.length>1){
+                            var nArr = self._filterDistance(self.totalStoreData, {lat:localGeo[0], long:localGeo[1], limit:100}).slice(0, 30);
+                            nArr = self._filterOptions(nArr, keywords);
+                            resultLen = nArr.length;
+                            self.$map.draw(nArr, localGeo[0], localGeo[1]);
+                        }
+                    } else {
                     var searchCity = self.$citySelect.find('option:selected').text();
                     var nArr = vcui.array.filter(self.totalStoreData, function(item,index){
                         return keywords.searchCity!==''? xsearch(item.shopAdress, searchCity).length > 0 : false;
                     });
-                    nArr = vcui.array.filter(nArr, function(item,index){
-                        return keywords.searchBorough!==''? xsearch(item.shopAdress, keywords.searchBorough).length > 0 : false;
-                    });
+
+                    if(keywords.searchBorough!=='') {
+                        nArr = vcui.array.filter(nArr, function(item,index){
+                            return keywords.searchBorough!==''? xsearch(item.shopAdress, keywords.searchBorough).length > 0 : false;
+                        });
+                    }
                     
                     nArr = self._filterOptions(nArr, keywords);
                     resultLen = nArr.length;
                     self.$map.draw(nArr);
+                    }
+                    // BTOCSITE-4785 s
     
                 }else if(keywords.searchType =='subway'){
     
                     var geo = keywords.searchCodeDesc.split(',');
                     if(geo.length>1){
-                        var nArr = self._filterDistance(self.totalStoreData, {lat:geo[0], long:geo[1], limit:1});
+                         // BTOCSITE-4785 s
+                        if(dpPdp){
+                            // 기획전에서 넘어올 경우:limit 값은 100으로 설정되어 있으나 _filterDistance에서 무시되고, 가까운순으로 30개까지 리스팅 됨
+                            var nArr = self._filterDistance(self.totalStoreData, {lat:geo[0], long:geo[1], limit:100}).slice(0, 30);
+                        }else{
+                            var nArr = self._filterDistance(self.totalStoreData, {lat:geo[0], long:geo[1], limit:1});
+                        }
+                        // BTOCSITE-4785 e
                         nArr = self._filterOptions(nArr, keywords);
                         resultLen = nArr.length;
                         self.$map.draw(nArr, geo[0], geo[1]);
                     }
                 }else if(keywords.searchType =='search'){
-    
                     var nArr = vcui.array.filter(self.totalStoreData, function(item,index){
                         return keywords.searchKeyword!==''? xsearch(item.shopName, keywords.searchKeyword).length > 0 : false;
                     });
@@ -838,6 +895,7 @@
                 lgkorUI.requestAjaxDataFailCheck(self.localUrl, {city:encodeURI(val)}, function(result){
                     self._setSelectOption(self.$boroughSelect, result.data);
                     self.$boroughSelect.vcSelectbox('update');
+                    console.log(result.data);
                 });
             },
     
@@ -1073,7 +1131,8 @@
     
                 var optdata = self._getOptions();
                 var selectCodeDesc = self.$subwayStationSelect.find('option:selected').data("codeDesc");
-    
+                // BTOCSITE-4785
+                var selectLocationXY = self.$boroughSelect.find('option:selected').data("codeDesc");
                 var keywords = {
                     searchType: self.searchType,
     
@@ -1082,6 +1141,9 @@
     
                     searchCity: self.$citySelect.val(),
                     searchBorough: self.$boroughSelect.val(),
+                    // BTOCSITE-4785
+                    searchLocationXY: selectLocationXY == undefined ? "" : selectLocationXY,
+
                     
                     searchSubwayLocal: self.$subwayCitySelect.val(),
                     searchSubwayLine: self.$subwayLineSelect.val(),
@@ -1375,8 +1437,8 @@
                     var resultop = $('.result-list-box').position().top;
                     var resultheight = $('.result-list-box').outerHeight(true);
                     var listop = self.$defaultListContainer.offset().top;
-    
-                    paddingtop = resultop + resultheight - listop;
+                    // BTOCSITE-8243
+                    paddingtop = (resultop + resultheight - listop) - 24;
     
                     $('.store-map-con').css({
                         'position':'relative',
@@ -1452,7 +1514,8 @@
                     var container = self.$leftContainer.height();
                     var listTop = self.$defaultListContainer.position().top;
                     var title = $('.store-list-wrap .tit').height();
-                    var opt = 80; //$('.store-list-box > .opt-cont').height();
+                    // BTOCSITE-8243 
+                    var opt = 64; //$('.store-list-box > .opt-cont').height();
                     var ht = container - listTop - title - opt;                   
     
                     $scrollWrap.css({
@@ -1550,13 +1613,26 @@
     
         $(window).ready(function(){
             searchShop.init();
-            // BTOCSITE-4785 s
             var dpPdp  = getParameter("dpPdp");
-            if(getParameter("dpPdp")){
+            if(dpPdp){
                 $(".store-list-wrap").addClass("display-product-search");
-                // $(".display-product-name").text(dpPdp);
             } 
-            // BTOCSITE-4785 e
+            function getParameter(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                    results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+            // BTOCSITE-8243 s
+            $(".tabs > li > a").click(function() {
+                var tabIdx = $(this).attr('href');
+                if (tabIdx=="#tab3"){
+                    $(".view-info-btn").addClass("withtab3");
+                }else{
+                    $(".view-info-btn").removeClass("withtab3");
+                }
+            });
+            // BTOCSITE-8243 e
         });
     })();
     

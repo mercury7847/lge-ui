@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+	@@include('./common/head.html', {
+		componentID: "KRP0041",
+		pageJS: ["libs/slick","components/KRP0041"],
+        pageCSS: ["modules/slick"]
+	})
+<body>
+	<div class="wrap">
+		<div class="container">
+			<div class="component-wrap">
+				<section class="component KRP0041">
+					<div class="component-inner">
+						<div class="title">
+                            <!-- H1, H2, H3, H4, H5, H6 사용가능 -->
+							<h2>제품 사용법</h2>
+						</div>
+                        <div class="withstory-list-slide"> 
+                            @@for ( var i=0; i < 4; i++ ) {
+                            <div class="slide-item">
+                                <div class="slide-box">
+                                    <a href="/html/STC/MKT5006.html">
+                                        <img src="/lg5-common/images/KRP0040/img@3x.jpg" aria-hidden="true" alt="">
+                                        <div class="info-area"> 
+                                            <div class="flag-wrap">
+                                                <span class="flag">사용가이드</span>
+                                            </div>
+                                            <p class="info-tit">
+                                                이젠 밖보단 집에서<br>수제 홈맥 타임!
+                                            </p>
+                                            <ul class="info-tag">
+                                                <li>#가을</li>
+                                                <li>#LG홈브루</li>
+                                            </ul>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            }
+                        </div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

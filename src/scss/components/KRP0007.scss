@@ -508,6 +508,49 @@
                 }
             }
             /* 20210820 BTOCSITE-4226 뱃지 생성 및 적용 요청 //--> */
+
+            
         }
     }
 }
+
+/* BTOCSITE-9186 */
+.product-list-area{
+    position: relative;
+    .btn-inchGuide{
+        position:absolute;
+        right: 75px;
+        transition:right 0.1s,;
+        top:-4px;
+        height: 30px;
+        line-height: 22px;
+        font-size:14px;
+        font-weight: 400;
+        padding-left:12px !important;
+        padding-right:12px !important;
+        @include mobile {
+            height: 34px;
+            line-height: 22px;
+            font-size:13px;
+            padding-left:16px !important;
+            padding-right:16px !important;
+            top:-8px;
+        }
+    }
+}
+.popup-inch-guide{
+    max-width: 444px;
+    .pop-conts.no-footer{
+        @include mobile{
+            overflow-y: hidden;
+        }
+    }
+    iframe{
+        min-height: 554px;
+        @include mobile{
+            height: calc(100% - 20px);
+            min-height: initial;
+        }
+    }
+}
+/* // BTOCSITE-9186 */

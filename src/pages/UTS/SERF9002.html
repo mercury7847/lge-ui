@@ -2,7 +2,6 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
-        pageJS: ["search/curation","search/filterLayer","search/search_all"]
     })
 <!--        pageJS: ["search/curation","search/search_all"]-->
 <body>
@@ -69,7 +68,7 @@
                 </div>
                 <!-- 추천 큐레이션 -->
                 <!-- 스마트 필터 -->
-                <div class="smart-filter">
+                <div class="smart-filter" style="display: none;" >
                     <div class="inner">
                         <h2 class="title">스마트 필터</h2>
                         <div class="filter-list">
@@ -179,7 +178,6 @@
                                         </div>
                                     </div>
                                 </li>
-                                <!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 : 스마트 필터 3단까지만 노출 
                                 <li class="row">
                                     <div class="label">메모리 용량</div>
                                     <div class="content">
@@ -265,20 +263,15 @@
                                             <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
                                         </div>
                                     </div>
-                                </li>-->
+                                </li>
                             </ul>
                         </div>
 
-                        <!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 -->
-                        <div class="smart-filter-btn-wrap">
-                            <div class="btn-filter">
-                                <a href="#n" id="filterModalLink" class="ico-filter"><em class="text">필터 더보기</em><span class="blind">옵션</span></a>
-                            </div>
-                        </div>
+                        <!-- 클릭 시 .fold 추가, toggle text - 필터 더보기 / 필터 접기 -->
+                        <button type="button" class="btn-moreview block"><span>필터 더보기</span></button>
 
                         <!-- 스마트 필터 선택한 항목 표시 -->
-                        <!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 :선택한 항목 미노출 s -->
-                        <!-- <div class="filter-result" style="display:none">
+                        <div class="filter-result" style="display:none">
                             <div class="ui_smooth_scrolltab">
                                 <div class="ui_smooth_tab">
                                     <ul class="rounded-list">
@@ -310,8 +303,7 @@
                                 </div>
                             </div>
                             <button type="button" class="btn-reset"><span>초기화</span></button>
-                        </div>-->
-                        <!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 :선택한 항목 미노출 e -->
+                        </div>
                         <!-- 스마트 필터 선택한 항목 표시 -->
                     </div>
                 </div>
@@ -359,16 +351,10 @@
                 <!-- // 210413 수정 [피시, 모바일 이미지 분리] -->
                 <!-- // 210218 수정 [이미지 변경, br 태그 위치 수정] -->
 
-				<!-- BTOCSITE-1716 스마트필터와 상세필터 합치기 -->
-                <div class="cont-wrap w-filter"><!-- filter 보임 class : w-filter -->                    
-                    @@include('./common/modules/list-filter.html', {
-                        "smartType" : true,
-                        "searchWord" : "에어컨",
-                        "searchNum" : "26,833",
-                        "search" : true,
-                        "serviceLinkClass" : "product",
-                    })
-                    <div class="search-result-wrap">
+
+                <div class="cont-wrap">
+                    <div class="search-result-wrap all">
+
                         <div class="list-sorting"><!-- 스크롤시 상단 고정 class : fixed -->
                             <div class="list-sorting-inner">
                                 <div class="sort-area left">
@@ -499,26 +485,26 @@
                             <div class="list-wrap">
                                 <ul class="result-list story-list">
                                     @@loop('./common/modules/result-list.html', [
-                                    {
-                                    "itemLink" : true,
-                                    "itemClass" : "item-type2",
-                                    "img" : "/lg5-common/images/dummy/@img-search.jpg",
-                                    "playbtn" : true,
-                                    "flags" : ["비하인드 스토리"],
-                                    "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결 LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결 LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
-                                    "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. ",
-                                    "hashtag" : ["가전", "여름가전"],
-                                    "date" : "2020.08.01"
-                                    }, {
-                                    "itemLink" : true,
-                                    "itemClass" : "item-type2",
-                                    "img" : "/lg5-common/images/dummy/@img-search.jpg",
-                                    "flags" : ["비하인드 스토리"],
-                                    "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
-                                    "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. ",
-                                    "hashtag" : ["가전", "여름가전"],
-                                    "date" : "2020.08.01"
-                                    }
+                                        {
+                                            "itemLink" : true,
+                                            "itemClass" : "item-type2",
+                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
+                                            "playbtn" : true,
+                                            "flags" : ["비하인드 스토리"],
+                                            "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결 LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결 LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
+                                            "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. ",
+                                            "hashtag" : ["가전", "여름가전"],
+                                            "date" : "2020.08.01"
+                                        }, {
+                                            "itemLink" : true,
+                                            "itemClass" : "item-type2",
+                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
+                                            "flags" : ["비하인드 스토리"],
+                                            "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
+                                            "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. ",
+                                            "hashtag" : ["가전", "여름가전"],
+                                            "date" : "2020.08.01"
+                                        }
                                     ])
                                 </ul>
                             </div>

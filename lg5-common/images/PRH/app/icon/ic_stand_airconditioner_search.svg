@@ -1,0 +1,21 @@
+<svg id="ic_stand_airconditioner_off" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+    <defs>
+        <style>
+            .cls-1{fill:none}
+        </style>
+    </defs>
+    <path id="Rectangle_168" data-name="Rectangle 168" class="cls-1" d="M0 0h128v128H0z"/>
+    <g id="Group_285" data-name="Group 285" transform="translate(37.904 10.112)">
+        <g id="Group_284" data-name="Group 284">
+            <path id="Path_119" data-name="Path 119" d="M1396.066 544.45v98.176h-42.56V544.45h42.56m1.6-4.8h-45.776a3.2 3.2 0 0 0-3.2 3.2v101.376a3.2 3.2 0 0 0 3.2 3.2h45.776a3.2 3.2 0 0 0 3.2-3.2V542.85a3.2 3.2 0 0 0-3.2-3.2z" transform="translate(-1348.69 -539.65)" style="fill:#8c8c8c"/>
+        </g>
+    </g>
+    <g id="Group_287" data-name="Group 287" transform="translate(47.584 21.296)">
+        <g id="Group_286" data-name="Group 286">
+            <g id="Ellipse_61" data-name="Ellipse 61" style="stroke:#8c8c8c;stroke-width:4.8px;fill:none">
+                <circle cx="16.416" cy="16.416" r="16.416" style="stroke:none"/>
+                <circle class="cls-1" cx="16.416" cy="16.416" r="14.016"/>
+            </g>
+        </g>
+    </g>
+</svg>

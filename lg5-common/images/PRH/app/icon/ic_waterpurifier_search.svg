@@ -1,0 +1,23 @@
+<svg id="ic_waterpurifier_off" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+    <defs>
+        <style>
+            .cls-3{fill:none}.cls-2{fill:#8c8c8c}.cls-3{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:4.8px}
+        </style>
+    </defs>
+    <path id="Rectangle_166" data-name="Rectangle 166" style="fill:none" d="M0 0h128v128H0z"/>
+    <g id="Group_272" data-name="Group 272" transform="translate(37.856 10.656)">
+        <g id="Group_269" data-name="Group 269" transform="translate(0 6)">
+            <path id="Path_110" data-name="Path 110" class="cls-2" d="M1646.132 162.18v4.608h-42.672v-4.608h42.672m1.6-4.8h-45.872a3.209 3.209 0 0 0-3.2 3.2v11.008h52.272V160.58a3.2 3.2 0 0 0-3.2-3.2z" transform="translate(-1598.66 -157.38)"/>
+        </g>
+        <path id="Line_81" data-name="Line 81" class="cls-3" transform="translate(26.144 39.536)" d="M0 0v12.672"/>
+        <path id="Line_82" data-name="Line 82" class="cls-3" transform="translate(6.016 17.024)" d="M0 0v12.672"/>
+        <path id="Line_83" data-name="Line 83" class="cls-3" transform="translate(46.32 17.024)" d="M0 0v12.672"/>
+        <g id="Group_270" data-name="Group 270" transform="translate(.08 25.264)">
+            <path id="Path_111" data-name="Path 111" class="cls-2" d="M1646.1 174.22v66.416a5.422 5.422 0 0 1-5.408 5.408h-31.776a5.422 5.422 0 0 1-5.408-5.408V174.22h42.592m4.8-4.8h-52.19v71.216a10.215 10.215 0 0 0 10.208 10.208h31.776a10.215 10.215 0 0 0 10.208-10.208V169.42z" transform="translate(-1598.71 -169.42)"/>
+        </g>
+        <g id="Group_271" data-name="Group 271" transform="translate(15.472)">
+            <path id="Path_112" data-name="Path 112" d="M1609.83 194.33v-38.4a.792.792 0 0 1 .8-.8h15.008a.792.792 0 0 1 .8.8v38.4z" transform="translate(-1607.43 -152.73)" style="fill:#fff"/>
+            <path id="Path_113" data-name="Path 113" class="cls-2" d="M1624.938 158.43v34.4h-11.808v-34.4h11.808m1.6-4.8h-15.008a3.21 3.21 0 0 0-3.2 3.2v40.8h21.408v-40.8a3.209 3.209 0 0 0-3.2-3.2z" transform="translate(-1608.33 -153.63)"/>
+        </g>
+    </g>
+</svg>

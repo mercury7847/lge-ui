@@ -41,29 +41,46 @@
         }
     }
 
+    @mixin recommendTablet {
+        @media screen and (max-width: $desktop-m-width) and (min-width: $tablet-s-width) {
+            @content;
+        }
+    }
+
     .recommend-wrap {
         max-width:1226px;
         margin:0 auto;
         padding:0 40px;
-        // padding:64px;
-        // border-radius:8px;
-        // background:#f4f4f4;
         @include mobile {
-            padding:40px 12px;
+            display: flex;
+            padding:40px 12px 20px;
             border-radius:0;
         }
         .prod-box {
             float:left;
+            @include recommendTablet {
+                float: none;
+            }
             @include mobile {
                 width:50%;
             }
+            p.tit {
+                @media screen and (max-width: 323px) {
+                    font-size: 15px;
+                }
+            }
             .product-items {
                 margin:0;
+                @include mobile {
+                    height: calc(100% - 30px);
+                }
                 > li {
                     width:366px;
+                    min-height: 466px;
                     padding:0;
                     @include mobile {
                         width:100%;
+                        min-height: auto;
                     }
                     .product-image {
                         width:240px;
@@ -72,6 +89,18 @@
                         @include mobile {
                             width:100%;
                             height:auto;
+                        }
+                    }
+                    .product-contents {
+                        .product-name {
+                            a {
+                                @include mobile {
+                                    display: block;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                }
+                            }
                         }
                     }
                 }
@@ -87,8 +116,23 @@
                     > li {
                         // width:100%;
                         // padding:0 12px;
+                        @include recommendTablet {
+                            margin: 0 auto;
+                        }
                         .item {
                             border:2px solid #da0f47;
+                            .product-contents {
+                                .product-name {
+                                    a {
+                                        pointer-events: none;
+                                    }
+                                }
+                            }
+                            .product-image {
+                                a {
+                                    pointer-events: none;
+                                }
+                            }
                         }
                     }
                 }
@@ -112,6 +156,10 @@
                 //     width:1px;
                 //     background:#ddd;
                 // }
+                @include recommendTablet {
+                    margin-top: 30px;
+                    padding: 0;
+                }
                 @include mobile {
                     width:50%;
                     padding:0 4px;
@@ -124,6 +172,9 @@
                     > li {
                         // width:50%;
                         // padding:0 12px;
+                        @include recommendTablet {
+                            width: calc(50% - 12px);
+                        }
                         & + li {
                             margin-left:24px;
                         }
@@ -158,6 +209,7 @@
             .item.rec-items {
                 padding:40px 32px 32px;
                 box-shadow:none;
+                border: 2px solid #fff;
                 a img {
                     max-width:240px;
                 }
@@ -193,6 +245,27 @@
                         color:#666;
                     }
                 }
+                .product-bottom {
+                    &.rental-type {
+                        position: relative;
+                        bottom: auto;
+                        right: auto;
+                        left: auto;
+                        .price-area {
+                            &.care {
+                                margin-top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include mobile {
+            .bottom-area {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
     }

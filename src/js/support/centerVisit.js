@@ -43,22 +43,43 @@
         '{{/each}}';
     var engineerTmpl =
         '{{#each (item, index) in engineerList}}' +
-        '<div class="slide-conts ui_carousel_slide">' +
-            '<div class="engineer-box">' +
-                '{{# if (index == 0) { #}}' +
+        /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+
+        // BTOCSITE-7660 슬라이드 원본
+        // '<div class="slide-conts ui_carousel_slide">' +
+        //     '<div class="engineer-box">' +
+        //         '{{# if (index == 0) { #}}' +
+        //         '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
+        //         '{{# } else { #}}' +
+        //         '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
+        //         '{{# } #}}' +
+        //         '<label for="engineer{{index}}">' +
+        //             '<div class="img">' +
+        //                 '<img src="{{item.image}}" alt="{{item.engineerName}} 엔지니어 사진" aria-hidden="true">' +
+        //             '</div>' +
+        //             '<p class="tit">{{item.engineerName}}</p>' +
+        //             '<p class="desc">{{item.centerName}}</p>' +
+        //         '</label>' +
+        //     '</div>' +  
+        // '</div>' +
+
+        '<li class="chk-wrap">' +
+            '{{# if (index == 0) { #}}' +
                 '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
-                '{{# } else { #}}' +
+            '{{# } else { #}}' +
                 '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
-                '{{# } #}}' +
-                '<label for="engineer{{index}}">' +
-                    '<div class="img">' +
-                        '<img src="{{item.image}}" alt="{{item.engineerName}} 엔지니어 사진" aria-hidden="true">' +
-                    '</div>' +
-                    '<p class="tit">{{item.engineerName}}</p>' +
-                    '<p class="desc">{{item.centerName}}</p>' +
-                '</label>' +
-            '</div>' +  
-        '</div>' +
+            '{{# } #}}' +
+            '<label for="engineer{{index}}">' +
+                // '<div class="img">' +
+                //     '<img src="{{item.image}}" alt="" aria-hidden="true">' +
+                // '</div>' +
+                // '<p class="tit">{{item.engineerName}}</p>' +
+                // '<p class="desc">{{item.centerName}}</p>' +
+                '<span>{{item.engineerName}}</span>' +
+                '<span>{{item.centerName}}</span>' +
+            '</label>' +
+        '</li>' +
+        /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
         '{{/each}}';
 
     var dateUtil = vcui.date;
@@ -112,7 +133,11 @@
             self.$engineerResult = self.$cont.find('.engineer-to-visit');
             self.$engineerOpener = $('[data-href="#choiceEngineerPopup"]');
             self.$engineerPopup = $('#choiceEngineerPopup');
-            self.$engineerSlider = self.$engineerPopup.find('.engineer-slider');
+
+            /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+            // self.$engineerSlider = self.$engineerPopup.find('.engineer-slider'); //원본
+            self.$engineerSlider = self.$engineerPopup.find('.engineer-popup');
+            /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
 
             // 정보입력
             self.$topicBox = self.$stepInput.find('#topicBox');
@@ -245,38 +270,39 @@
 
                 self.bindEvent();
 
-                self.$engineerSlider.vcCarousel({
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    infinite: false,
-                    responsive: [
-                        {
-                            breakpoint: 10000,
-                            settings: {
-                                infinite: false,
-                                slidesToShow: 4,
-                                slidesToScroll: 4,
-                            }
-                        },
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                infinite: false,
-                                slidesToShow: 3,
-                                slidesToScroll: 3,
-                            }
-                        },
-                        {
-                            breakpoint:767,
-                            settings: {
-                                infinite: false,
-                                variableWidth : true,
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
-                        }
-                    ]
-                });
+                /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 슬라이드 삭제 */
+                // self.$engineerSlider.vcCarousel({
+                //     slidesToShow: 4,
+                //     slidesToScroll: 4,
+                //     infinite: false,
+                //     responsive: [
+                //         {
+                //             breakpoint: 10000,
+                //             settings: {
+                //                 infinite: false,
+                //                 slidesToShow: 4,
+                //                 slidesToScroll: 4,
+                //             }
+                //         },
+                //         {
+                //             breakpoint: 1024,
+                //             settings: {
+                //                 infinite: false,
+                //                 slidesToShow: 3,
+                //                 slidesToScroll: 3,
+                //             }
+                //         },
+                //         {
+                //             breakpoint:767,
+                //             settings: {
+                //                 infinite: false,
+                //                 variableWidth : true,
+                //                 slidesToShow: 1,
+                //                 slidesToScroll: 1
+                //             }
+                //         }
+                //     ]
+                // });
 
                 self.$dateWrap.calendar({inputTarget:'#date'});
                 self.$timeWrap.timeCalendar({inputTarget:'#time'});
@@ -289,6 +315,12 @@
                 });
             });
         },
+
+        //BTOCSITE-9289 : 페이지 나갈때 param보내는 기능 끄기
+        clearPageLeventEvents : function() {
+            $(window).off("beforeunload");
+        },
+
         bindEvent: function() {
             var self = this;
 
@@ -429,8 +461,12 @@
                     if (data.resultFlag == 'Y') {  
                         if (arr.length) {
                             var html = vcui.template(engineerTmpl, data);
-                                
-                            self.$engineerSlider.find('.slide-track').html(html);
+                            
+                            /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+                            // self.$engineerSlider.find('.slide-track').html(html); // 원본
+                            self.$engineerSlider.find('.engineer-infoP').html(html);
+                            /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+
                             self.$engineerSlider.vcCarousel('reinit');
                         } else {
                             lgkorUI.alert('', {
@@ -517,6 +553,41 @@
             });
             self.$timeWrap.on('timeselected', function(e, time) {
                 self.data['time'] = time;
+
+                //주영
+                //BTOCSITE-9289 : 시간까지 선택된 상태에서 페이지 나갈때 param보내는 기능 추가
+                var unlockUrl = self.$stepDate.data('unlockUrl'); //데이터 가져오기
+                var unlockParam = {}; //unlockParam 빈 객체를 만들기
+
+                if( $('#productCode').val() != undefined) { //빈값이진 undefined인지 확인 : undefined 가 아니면 unlockParam.productCode 는 밸류값이 들어간다
+                    unlockParam.productCode = $('#productCode').val()
+                }
+                if( $('#serviceType').val() != undefined) {
+                    unlockParam.serviceType = $('#serviceType').val()
+                }
+                if( $('#lockUserId').val() != undefined) {
+                    unlockParam.lockUserId = $('#lockUserId').val()
+                }
+
+                lgkorUI.requestAjaxDataPost(unlockUrl, unlockParam, function(res){
+                    if (res.data.resultFlag == 'Y') {
+                        console.log('최초 unlockParam', unlockParam);
+                    }
+                })
+
+                // //console.log('페이지 나갈때 unlockParam', unlockParam);
+                $(window).on("beforeunload", function() {
+                    //alert("111111");
+                    lgkorUI.requestAjaxDataPost(unlockUrl, unlockParam, function(res){
+                        if (res.data.resultFlag == 'Y') {
+                            //alert("2222222");
+                            console.log('페이지 나갈때 unlockParam', unlockParam);
+                            //alert("3333333");
+                            //alert("4444444");
+                        }
+                    })
+                 });
+
                 self.reqestEngineer();
             });
 
@@ -594,6 +665,7 @@
                             okBtnName: '확인',
                             cancelBtnName: '취소',
                             ok: function() {
+                                self.clearPageLeventEvents() //BTOCSITE-9289 : 페이지 나갈때 param보내는 기능 끄기
                                 self.requestComplete();
                             }
                         });       
@@ -615,6 +687,38 @@
                 authManager.confirm(this, function(success, result) {
                     success && self.requestComplete();
                 });
+            });
+
+            //BTOCSITE-9289 : 예약 중일때 취소시 param 보내는 여부
+            $('#canclePopup .btn-cancel-confirm').on('click', function(e){
+                //e.preventDefault();
+                self.clearPageLeventEvents();
+
+                var unlockUrl = $('#canclePopup').data('unlockUrl'); //데이터 가져오기
+                var _href = $(this).attr('href');
+                var unlockParam = {}; //unlockParam 빈 객체를 만들기
+                
+                if( $('#productCode').val() != undefined) { //빈값이진 undefined인지 확인 : undefined 가 아니면 unlockParam.productCode 는 밸류값이 들어간다
+                    unlockParam.productCode = $('#productCode').val()
+                }
+                if( $('#serviceType').val() != undefined) {
+                    unlockParam.serviceType = $('#serviceType').val()
+                }
+                if( $('#lockUserId').val() != undefined) {
+                    unlockParam.lockUserId = $('#lockUserId').val()
+                }
+
+                //보내는 param 확인
+                console.log('unlockParam', unlockParam)
+
+                //데이터 통신
+                lgkorUI.requestAjaxDataPost(unlockUrl, unlockParam, function(res){
+                    if (res.data.resultFlag == 'Y') {
+                        location.href = _href; 
+                    } else {
+                        location.href = _href; 
+                    }
+                })
             });
         },
         reset: function() {
@@ -1219,7 +1323,8 @@
             $('#centerNm').val(data.centerName);
             $('#centerCode').val(data.centerCode);
 
-            $resultBox.find('.txt').html('<span>'+self.data.subCategoryNm+'</span> 제품의 해결을 위해 <span>'+data.centerName+'</span>의 <br class="pc-only">전문 엔지니어 <span>'+data.engineerName+'</span>(이) 가 <span>'+vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm")+'</span>에 예약이 가능합니다.<br><br>예약 완료를 위해 아래 정보를 추가 입력해 주시기 바랍니다.');
+            /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+            $resultBox.find('.txt').html('<span>'+vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm")+'</span>에 <span>'+data.engineerName+'</span> <span>('+data.centerName+')</span> 전문 엔지니어가 <span>'+self.data.subCategoryNm+'</span> <span class="bold">제품 점검이 가능합니다.</span><br><br>센터 방문 예약을 완료를 위해 아래 정보를 추가 입력해 주시기 바랍니다.');
 
             self.data['resrvSeq'] = data.resrvSeq;
         },

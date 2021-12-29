@@ -1,0 +1,26 @@
+<svg id="ic_airpurifier_off" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+    <defs>
+        <style>
+            .cls-5{fill:none}.cls-2{fill:#8c8c8c}.cls-5{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:4.8px;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <path id="Rectangle_170" data-name="Rectangle 170" style="fill:none" d="M0 0h128v128H0z"/>
+    <g id="Group_309" data-name="Group 309" transform="translate(40.912 12.08)">
+        <g id="Group_308" data-name="Group 308">
+            <g id="Group_306" data-name="Group 306" transform="translate(10.88 10.88)">
+                <path id="Path_125" data-name="Path 125" class="cls-2" d="M1619.274 554.73a7.1 7.1 0 1 1-7.1 7.1 7.108 7.108 0 0 1 7.1-7.1m0-4.8a11.9 11.9 0 1 0 11.9 11.9 11.9 11.9 0 0 0-11.9-11.9z" transform="translate(-1607.37 -549.93)"/>
+            </g>
+            <g id="Group_307" data-name="Group 307">
+                <path id="Path_126" data-name="Path 126" class="cls-2" d="M1623.354 547.93a17.984 17.984 0 1 1-17.984 17.984 18 18 0 0 1 17.984-17.984m0-4.8a22.784 22.784 0 1 0 22.784 22.784 22.783 22.783 0 0 0-22.784-22.784z" transform="translate(-1600.57 -543.13)"/>
+            </g>
+        </g>
+    </g>
+    <g id="Group_311" data-name="Group 311" transform="translate(37.68 51.712)">
+        <path id="Path_127" data-name="Path 127" d="M1599.85 624.94h47.856l-3.9-57.04h-40.544z" transform="translate(-1597.77 -567.9)" style="stroke-linecap:round;stroke-linejoin:round;stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:4.8px;fill:#fff"/>
+        <g id="Group_310" data-name="Group 310" transform="translate(0 56.688)">
+            <path id="Line_85" data-name="Line 85" transform="translate(0 7.52)" style="stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:4.8px;fill:none" d="M0 0h52.144"/>
+            <path id="Path_128" data-name="Path 128" class="cls-5" d="M1599.84 603.33s.432 5.616 7.424 7.2" transform="translate(-1597.776 -603.33)"/>
+            <path id="Path_129" data-name="Path 129" class="cls-5" d="M1632.554 603.33s-.432 5.616-7.424 7.2" transform="translate(-1582.602 -603.33)"/>
+        </g>
+    </g>
+</svg>

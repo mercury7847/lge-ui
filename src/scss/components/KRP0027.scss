@@ -135,8 +135,14 @@
         }
         .scroll-wrap {
             position: relative;
-            margin-bottom: 30px;
+            // margin-bottom: 30px;
             padding: 3px 0;
+            margin:0 32px 30px;
+
+            @include mobile {
+                margin:0 0 30px;
+            }
+
             .ui_smooth_tab {
                 .tabs {
                     display: flex;
@@ -192,14 +198,20 @@
                         background:url('/lg5-common/images/icons/btn-arr-16-black-sm.svg') #fff no-repeat center center;
                         box-shadow:none;
                     }
+                    &:focus {
+                        outline: none;
+                    }
                     &.prev {
-                        left: 0;
+                        // left: 0;
+                        left: -32px;
                         &:before {
                             transform:rotate(180deg);
                         }
                     }
                     &.next {
-                        right: 0;
+                        // right: 0;
+                        right: -32px;
+
                     }
                 }
                 @include mobile {
@@ -417,8 +429,8 @@
                 padding: 5px 16px;
                 border-radius: 16px;
                 border: 1px solid #222;  
+                /* BTOCSITE-5938-337 [모니터링] 스토리 > 아카이브 > TV광고 IE 버튼 오류 */
                 .btn-text {
-                    flex: 1;
                     display: -webkit-box;
                     max-height: 48px;
                     text-overflow:ellipsis;
@@ -430,8 +442,13 @@
                     @include mobile {
                         max-height: 42px;
                     }
+                    &.isMore{
+                        width:calc(100% - 30px);
+                        cursor:default;
+                    }
                 }
                 .btn-more {
+                    display:none;
                     position: relative;
                     width: 20px;
                     height: 20px;
@@ -439,6 +456,7 @@
                     background: url(/lg5-common/images/icons/icon-plus-40.svg) center no-repeat;
                     background-size: 20px 20px; 
                 }
+                /* //BTOCSITE-5938-337 [모니터링] 스토리 > 아카이브 > TV광고 IE 버튼 오류 */
             }
         }
         .tit-area {

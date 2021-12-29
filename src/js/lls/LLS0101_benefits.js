@@ -20,7 +20,7 @@ var llc = {
         //     e.preventDefault();
         //     location.href = self.homeUrl
         // });
-    },
+    }
 }
 
 

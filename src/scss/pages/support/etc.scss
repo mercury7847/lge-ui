@@ -388,11 +388,7 @@
 }
 
 .survey {
-    .cont-wrap {
-        @include mobile {
-            padding-bottom:0;
-        }
-    }
+    //BTOCSITE-8317 고객지원 - 설문 참여 버튼 수정
     .survey-banner {
         text-align:center;
         img {

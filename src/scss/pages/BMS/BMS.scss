@@ -14,6 +14,53 @@
     border-top: 1px solid #ddd;
     .slide-wrap.hero-banner .slide-content .slide-track, .slide-wrap.hero-banner .slide-content .slide-conts {
         height: 640px;
+
+        //BTOCSITE-7335 -start
+        position:relative;
+        .slide-img {
+            overflow:hidden;
+            position: relative;
+            width:100%;
+            height:100%;
+            img {
+                position:absolute;
+                top:0;
+                left:50%;
+                transform:translateX(-50%);
+                width: auto;
+                height: auto;
+                min-width: 100%;
+                min-height: 100%;
+                max-width:none;
+                // width:auto;
+                // max-width:100%;
+                // height:100%;
+
+                @media screen and (min-width:1920px) {
+                    width:100%;
+                    height:auto;
+                    top:50%;
+                    left:0;
+                    transform:translateY(-50%);
+                }
+
+                @include mobile {
+                    width:100%;
+                    height:auto;
+                    top:50%;
+                    left:0;
+                    transform:translateY(-50%);
+                }
+            }
+        }
+        
+        @include mobile {
+            .bg {
+                height:100%;
+                padding-bottom:0;
+            }
+        }
+        //BTOCSITE-7335 -end
     }
     .KRC0015 .align-top.text-area .text-wrap {
         padding-top: 102px;

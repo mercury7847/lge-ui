@@ -43,8 +43,8 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShowLotteCard)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인{{#if (isShowLotteCardEvent)}} (무이자 12개월){{/if}}</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한/롯데 5% 청구할인</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShowLotteCard)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인 (무이자 12개월)</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -103,7 +103,14 @@
                                 '<em class="text">기본 월 요금</em>' +
                                 '<span class="price"><em>월</em> {{years1TotAmt}}<em>원</em></span>' +
                             '</div>' +
-                            '<span class="small-text">({{visitPer}}개월/1회 방문)</span>' +
+                            //[S] BTOCSITE 7447
+                            '{{#if visitPer != "0"}}' +
+                                '<span class="small-text">({{visitPer}}개월/1회 방문)</span>' +
+                            '{{/if}}' +
+                            '{{#if visitPer == "0"}}' +
+                                '<span class="small-text">(방문없음/자가관리)</span>' +
+                            '{{/if}}' +
+                            //[E] BTOCSITE 7447
                         '</div>' +
                         
                     '{{#else}}' + 
@@ -162,7 +169,7 @@
                         '<span class="chk-wish-wrap large">' +
                             //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' +
                             //'<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-wish-item-id="" {{#if wishListFlag}}checked{{/if}} {{#if !checkBtnFlag}}disabled{{/if}}>' +
-                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-contents="{{modelDisplayName}} data-wish-item-id="" {{#if wishListFlag}}checked{{/if}}>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                            '<input type="checkbox" id="wish-{{modelId}}" name="wish-{{modelId}}" data-id="{{modelId}}" data-wish-model-name="{{sku}}" data-model-name="{{sku}}" data-wish-list-id="{{wishListId}}" data-contents="{{modelDisplayName}}" data-wish-item-id="" >' + //BTOCSITE-5938-28 [모니터링] 찜하기 오류 //BTOCSITE-1057 : data-contents 추가 2021-08-09
                             '<label for="wish-{{modelId}}"><span class="blind">찜하기</span></label>' +
                         '</span>' +
                     '</div>' +
@@ -171,7 +178,35 @@
                         '<a href="#n" class="btn-cart{{#if !checkBtnFlag}} disabled{{/if}}" data-id="{{modelId}}" data-model-name="{{sku}}" data-rtSeq="{{rtModelSeq}}" data-type-flag="{{bizType}}" data-contents="{{modelDisplayName}}" {{#if !checkBtnFlag}}disabled{{/if}}><span class="blind">장바구니 담기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
                     '</div>' +
                     '<div class="btn-area">' +
-                        '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}" data-contents="{{modelDisplayName}}">자세히 보기</a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                        // BTOCSITE-6375 s
+                        '<a href="{{modelUrlPath}}" class="btn border size-m" data-id="{{modelId}}" data-contents="{{modelDisplayName}}">' +
+                        '{{#if bizType == "CARESOLUTION"}}' +
+                            // 렌탈/케어일때
+                            '자세히 보기' +
+                        '{{#else}}' +
+                            // PRODUCT 일때
+                            // 케어쉽온니 (장바구니 항상 비노출)
+                            '{{#if careshipOnlyFlag == "Y"}}' +
+                                //구매 불가능
+                                '{{#if obsBtnRule != "enable"}}' +
+                                    '제품정보 보기' +
+                                //구매 가능
+                                '{{#else}}' +
+                                    '구매하기' +
+                                '{{/if}}' +
+                            '{{#else}}' +
+                            // 케어쉽온니가 아닐때
+                                '{{#if !checkBtnFlag}}' +
+                                    //구매 불가능
+                                    '제품정보 보기' +
+                                '{{#else}}' +
+                                    //구매 가능
+                                    '구매하기' +
+                                '{{/if}}' +
+                            '{{/if}}' +
+                        '{{/if}}' +
+                        '</a>'+
+                        // BTOCSITE-6375 e
                     '</div>' +
                 '</div>' +
             '</div>' +
@@ -182,7 +217,7 @@
             '{{/if}}' +
             '{{#if bizType != "DISPOSABLE"}}'+
             '<div class="product-compare">' +
-                '<a href="#" data-id="{{modelId}}" data-contents="{{#raw modelDisplayName}}"><span>비교하기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                '<a href="#" data-id="{{modelId}}" data-contents="{{#raw modelDisplayName}}" data-b2bcatemapping="{{b2bCateMapping}}"><span>비교하기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
             '</div>' +
             '{{/if}}'+
         '</div>' +
@@ -197,15 +232,10 @@
         lgkorUI.showAppBottomMenu(false);
 
         var categoryId = lgkorUI.getHiddenInputData().categoryId;
-
-        console.log("categoryId %o",categoryId);
         var storageName = categoryId+'_lgeProductFilter';
         var saveListDataStorageName = categoryId+'_lgeProductFilterSaveListData';
         
         var savedFilterArr = firstFilterList || []; // CMS에서 넣어준 firstFilterList를 이용
-
-
-        console.log("savedFilterArr %o",savedFilterArr);
 
         var KRP0007 = {
             init: function() {
@@ -217,12 +247,9 @@
                 self.savedPLPData.isNew = false;
                 self.isLoading = false; // BTOCSITE-2150 add	
                 self.isMobileSize = window.breakpoint.isMobile;  // BTOCSITE-2150 add :: device 상관없이 화면이 모바일 사이즈인지 여부
-    
+                
                 self.setting();
                 self.bindEvents();
-
- 
-
 
                 //더보기 버튼 체크
                 self.setPageData(lgkorUI.getHiddenInputData());
@@ -234,9 +261,6 @@
 
                 vcui.require(['search/filterLayer.min'], function () {
                     self.filterLayer = new FilterLayer(self.$layFilter, self.$categorySelect, self.$listSorting, self.$btnFilter, "defalutUnfoldFlag", function (data) {
-                        
-                        
-                        console.log("storageName set %o",data)                        
                         lgkorUI.setStorage(storageName, data, true);
     
                         var param = {};
@@ -248,8 +272,6 @@
                                 param[key] = filterValue;
                             }
                         }
-
-                        console.log("param %o",param);
                         var sort = data.sortType ? data.sortType : data.order;
                         param.sortType = sort;
                         param.page = 1;
@@ -266,7 +288,6 @@
                     // var storageFilters = {};//lgkorUI.getStorage(storageName);
                     //BTOCSITE 1842 - 2021-07-02 상품에서 뒤로가기시 스토리지에 저장된 필터체크 다시 활성화
                     var storageFilters = lgkorUI.getStorage(storageName);
-                    
                     if(!firstEnableFilter) {
                         var allId =  self.subCategoryFirstFilterId();
                         firstEnableFilter = {};
@@ -275,16 +296,8 @@
 
                     var filterData = firstEnableFilter;
 
-                    console.log("firstEnableFilter %o",firstEnableFilter);
-                    console.log("storageFilters %o",storageFilters);
-
-                    // debugger;
-
                     var change = false;
                     if(!(vcui.isEmpty(storageFilters)) && storageFilters.filterData) {
-
-
-                        console.log("cached ");
                         var storageFilterData = JSON.parse(storageFilters.filterData);
                         var firstSortType = self.$orderSorting.find('option').eq(0).val();
 
@@ -301,18 +314,12 @@
                         filterData = storageFilterData;
                     }
 
-
-                    console.log("init filterdata %o",filterData);
-
                     var hash = location.hash.replace("#","");
                     if(hash && hash.length == 8) {
-              
                         self.savedPLPData = lgkorUI.getStorage(saveListDataStorageName);
                         if(self.savedPLPData.listData && self.savedPLPData.listData.length > 0) {
-                            console.log(" hash 캐시 데이터");
                             //필터데이타 복구
                             self.filterLayer.resetFilter(filterData, false);
-
                             if(self.savedPLPData.isNew) {
                                 self.$productList.empty();
                             }
@@ -343,14 +350,18 @@
                                 });
                                 // $('html, body').animate({scrollTop: $li.offset().top - 100}, 0);
                             }
-                        } else {
 
-                            console.log("resetFilter hash 캐시 데이터 없는 경우 change %o",change);
+                            /* BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
+                            var ajaxUrl = self.$section.attr('data-wish-url');
+                            lgkorUI.checkWishItem(ajaxUrl);
+                            /* //BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
+
+                            // 비교하기 버튼 상태 변경 - 필터 복구시
+                            self.compareBtnStatus();
+                        } else {
                             self.filterLayer.resetFilter(filterData, change);
                         }
                     } else {
-
-                        console.log("resetFilter 최초 로딩시 change %o",change);
                         self.filterLayer.resetFilter(filterData, change);
                     }
 
@@ -360,6 +371,9 @@
 
                 var ajaxUrl = self.$section.attr('data-wish-url');
                 lgkorUI.checkWishItem(ajaxUrl);
+
+                
+
             },
 
             //21-04-15 모바일 사업부 종료에 따른 공지 팝업 뛰우기
@@ -423,9 +437,6 @@
                 self.$listSorting = self.$section.find('div.list-sorting');
                 //카테고리 셀렉트
                 self.$categorySelect = self.$section.find('div.cate-scroll-wrap.ui_smooth_scrolltab');
-                // // 카테고리 초기화
-                // self.$categorySelect.find('input').prop('checked', false);
-                               
 
                 //순서 셀렉트 풀다운
                 self.$orderSorting = self.$listSorting.find('select[name=sortType]');
@@ -450,19 +461,24 @@
                 self.$productList.find('.ui_smooth_scrolltab').vcSmoothScrollTab();
 
                 self.cateWrapStatus();
+
+                // 비교하기 버튼 상태 변경 - 초기화시
+                self.compareBtnStatus();
             },
 
             bindEvents: function() {
+                
                 var self = this;
 
                 self.$productList.on('click','a', function(e){
                     var $li = $(this).parents('li');
                     var uniqId = $li.data('uniqId');
                     if(uniqId && uniqId.length == 8) {
-                        // location.hash = uniqId;
-
+                        // BTOCSITE-7573 키오스크 제공 PLP,PDP 수정
                         var url = lgkorUI.parseUrl(location.href);
-                        var params = '?'+$.param(url.searchParams.getAll()) +  ('#'+uniqId || '');
+                        var params = url.searchParams.getAll();
+                            params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
+                            params +=  ('#'+uniqId || '');
                         window.history.replaceState('', '', url.pathname + params)
                     }        
                 });
@@ -667,7 +683,6 @@
                 var $productGBtn = $productG_content.find('button');
 
                 self.$categorySelect.on('click', '.ui_smooth_tab ul li', function(){ 
-                    //console.log("클릭");
                     $(this).addClass('on');
                     if($(this).hasClass('on')){
                         $productG_content.not('.cont_' + $(this).attr('data-productTarget')).hide();
@@ -680,6 +695,24 @@
                     $(this).removeClass('on');
                 });
                 /* //BTOCSITE-2785 : 2021-07-14 add */
+
+                // BTOCSITe-9186
+                // BTOCSITe-9186
+                $('.sort-select-wrap .ui_selectbox').on('change', function(e){
+                    setTimeout(function(){
+                        var selectWidth = $(e.target).parents('.sort-select-wrap').find('.ui-selectbox-view').width();
+                        if( $(window).width() > 767){ 
+                            var currentWidth = selectWidth + 15;
+                            $('.btn-inchGuide').css('right', currentWidth)
+                        }else{
+                            var currentWidth = selectWidth + 11;
+                            $('.btn-inchGuide').css('right', currentWidth)
+                        }
+                    }, 100)
+                })
+                // BTOCSITe-9186
+                // BTOCSITe-9186
+           
             },
 
             setPageData: function(param) {
@@ -716,8 +749,6 @@
             },
 
             requestSearch: function(data, isNew){
-
-                console.log("requestSearch %o",data);
                 var self = this;
 
                 if (self.isLoading) return; //BTOCSITE-2150 add	
@@ -758,14 +789,12 @@
                         self.setPageData(data.pagination);
 
                         self.savedPLPData.listData = self.savedPLPData.listData.concat(arr);
-
-                        console.log("saveListDataStorageName set %o",self.savedPLPData)   
                         lgkorUI.setStorage(saveListDataStorageName, self.savedPLPData, false);
-
-                        /*
+                        
+                        /* BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
                         var ajaxUrl = self.$section.attr('data-wish-url');
                         lgkorUI.checkWishItem(ajaxUrl);
-                        */
+                        /* //BTOCSITE-5938-28 [모니터링] 찜하기 오류 */
                     } else{
                         self.setPageData({page:0, totalCount:0});
                     }
@@ -793,10 +822,14 @@
                         /* //BTOCSITE-5157 : PLP 제품이 없을때 문구 미노출 이슈 2021-09-13 */
                     }
 
+
+
+                    // 비교하기 버튼 상태 변경 - ajax 통신시
+                    self.compareBtnStatus();
+
                     /* BTOCSITE-2150 add */
                     self.isLoading = false; 
                     if (isNew){
-                        console.log("animate");
                         //$(window).scrollTop($('.KRP0007').offset().top);
                         $('html, body').animate({scrollTop: $('.KRP0007').offset().top}, 300);
                     }
@@ -1082,19 +1115,19 @@
                 // item.isShow = true;
                 // console.log("item %o",item);
 
+                //BTOCSITE-8312 프로젝터>시네빔과 프로빔 스펙비교 예외처리 요청
+                item.b2bCateMapping = item.b2bCateMapping || "N";
 
                 if( typeof item.obsSellingPriceNumber == "string") {
                     item.isShowPrice = item.obsSellingPriceNumber.replace(/,/g, "");
                 } else {
                     item.isShowPrice = item.obsSellingPriceNumber;
                 }
-                /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
-                item.isShow = lgkorUI.isShowDate('20210601','20211001'); //(startTime, endTime, nowTime)
+                /* BTOCSITE-10166: 롯데카드 혜택 배지 수정요청의 건  */
+                item.isShow = kiosk ? false : lgkorUI.isShowDate('20220101','20220201'); //  2022.01.01 00:00 ~ 2021.01.31 24:00  ( 신한/롯데 프로모션 적용 기간)
 
-                /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인 */
-                item.isShowLotteCard = kiosk ? false : lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-6613 키오스크 조건 추가
-                item.isShowLotteCardEvent = kiosk ? false : lgkorUI.isShowDate('20211101','20211201') // 2021.11.1 00:00 ~ 2021.11.30 24:00 //BTOCSITE-7388 롯데카드 12개월 무이자 할인 적용기간
-
+                /* BTOCSITE-9006 : 롯데카드 5% 결제일 할인 */
+                item.isShowLotteCard = kiosk ? false : lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00 ( 롯데카드 12개월 무이자 할인 프로모션 적용기간)
                 
                 return vcui.template(productItemTemplate, item);
             },
@@ -1179,6 +1212,7 @@
             setCompareState:function(atag){
                 var $this = $(atag);
                 var _id = $this.data('id');
+                var b2bcatemapping = $this.data('b2bcatemapping');
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 if(!$this.hasClass('on')){
                     var compare = $this.closest('.product-compare');
@@ -1191,6 +1225,7 @@
 
                     var compareObj = {
                         "id": _id,
+                        "b2bcatemapping":b2bcatemapping,
                         "productName": productName,
                         "productID": productID,
                         "productImg": productImg,
@@ -1204,6 +1239,20 @@
                 }
             },
 
+            // 비교하기 버튼 상태 변경
+            compareBtnStatus:function(){
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+
+                console.log(storageCompare)
+                if(storageCompare && storageCompare['data'].length > 0){
+                    var data = storageCompare['data'][0];
+                    // 비교하기 버튼 상태 변경
+                    $('.KRP0007 a[data-b2bcatemapping]').removeAttr('style')
+                    .parent().find('a[data-b2bcatemapping="'+(data.b2bcatemapping === 'Y' ? 'N' : 'Y')+'"]').hide();
+                }
+            },
+
             cateWrapStatus: function(){
                 if(!$('.cate-m .cate-wrap').length){
                     if($(window).innerWidth() > 1024) $('.cate-m').hide();
@@ -1211,7 +1260,9 @@
                 }
             },
             subCategoryFirstFilterId: function() {
+                // BTOCSITE-7573 키오스크 제공 PLP,PDP 수정
                 var filterId = '';
+                var firstFilterList = window.hasOwnProperty('firstFilterList') && window.firstFilterList ? window.firstFilterList : [];
     
                 if(firstFilterList) {
                     firstFilterList.forEach(function(el) {

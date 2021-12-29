@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.4.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="ic_x5F_device_x5F_list_x5F_cooktop"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 240 240"
+	 style="enable-background:new 0 0 240 240;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#F4F4F4;}
+	.st1{fill:url(#outside_00000071559016599976321320000006007431379157285810_);}
+	.st2{fill:#353535;}
+	.st3{opacity:0.25;}
+	.st4{fill:url(#SVGID_1_);}
+	.st5{fill:#565656;}
+	.st6{fill:url(#fill_00000117661591296926963620000012844851042257282181_);}
+	.st7{fill:url(#fill_00000098205744781555178980000010394040823265317288_);}
+	.st8{fill:url(#fill_00000146501873869630078550000003826961148046733240_);}
+	.st9{opacity:0.4;}
+	.st10{fill:#FFFFFF;}
+	.st11{opacity:0.15;fill:#FFFFFF;enable-background:new    ;}
+	.st12{opacity:0.4;fill:#FFFFFF;enable-background:new    ;}
+	.st13{fill:#727272;}
+</style>
+<path class="st0" d="M208,240.5H32c-17.6,0-32-14.4-32-32v-176c0-17.6,14.4-32,32-32h176c17.6,0,32,14.4,32,32v176
+	C240,226.1,225.6,240.5,208,240.5z"/>
+<g id="_x5F_default_40_">
+	<g>
+		
+			<linearGradient id="outside_00000081629770835593706290000004327360648802013582_" gradientUnits="userSpaceOnUse" x1="120" y1="50" x2="120" y2="194" gradientTransform="matrix(1 0 0 -1 0 242)">
+			<stop  offset="0" style="stop-color:#9F9F9F"/>
+			<stop  offset="0.5" style="stop-color:#CCCCCC"/>
+			<stop  offset="1" style="stop-color:#9F9F9F"/>
+		</linearGradient>
+		<polygon id="outside_10_" style="fill:url(#outside_00000081629770835593706290000004327360648802013582_);" points="42,192 
+			42,48 198,48 198,192 		"/>
+		<rect id="outside_9_" x="45" y="51" class="st2" width="150" height="138"/>
+		<g id="outside_5_" class="st3">
+			
+				<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="36.0283" y1="250.6053" x2="115.1581" y2="129.4156" gradientTransform="matrix(1 0 0 -1 0 242)">
+				<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.7"/>
+				<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0"/>
+			</linearGradient>
+			<rect x="45" y="51" class="st4" width="150" height="138"/>
+		</g>
+		<path class="st5" d="M113,181L113,181c0,1.1,0.9,2,2,2h10c1.1,0,2-0.9,2-2l0,0c0-1.1-0.9-2-2-2h-10C113.9,179,113,179.9,113,181z"
+			/>
+		
+			<linearGradient id="fill_00000142865771478898735140000002235510926568340368_" gradientUnits="userSpaceOnUse" x1="80" y1="138" x2="80" y2="174" gradientTransform="matrix(1 0 0 -1 0 242)">
+			<stop  offset="0" style="stop-color:#EB8C3E"/>
+			<stop  offset="1" style="stop-color:#E74343"/>
+		</linearGradient>
+		<circle id="fill_14_" style="fill:url(#fill_00000142865771478898735140000002235510926568340368_);" cx="80" cy="86" r="18"/>
+		
+			<linearGradient id="fill_00000153682444500493697740000004930470747124459954_" gradientUnits="userSpaceOnUse" x1="80" y1="90" x2="80" y2="126" gradientTransform="matrix(1 0 0 -1 0 242)">
+			<stop  offset="0" style="stop-color:#EB8C3E"/>
+			<stop  offset="1" style="stop-color:#E74343"/>
+		</linearGradient>
+		<circle id="fill_13_" style="fill:url(#fill_00000153682444500493697740000004930470747124459954_);" cx="80" cy="134" r="18"/>
+		
+			<linearGradient id="fill_00000093882133649831979990000017221704566378277539_" gradientUnits="userSpaceOnUse" x1="157" y1="99" x2="157" y2="165" gradientTransform="matrix(1 0 0 -1 0 242)">
+			<stop  offset="0" style="stop-color:#EB8C3E"/>
+			<stop  offset="1" style="stop-color:#E74343"/>
+		</linearGradient>
+		<circle id="fill_1_" style="fill:url(#fill_00000093882133649831979990000017221704566378277539_);" cx="157" cy="110" r="33"/>
+	</g>
+	<g class="st9">
+		<g>
+			<polygon class="st10" points="183,109 158,109 158,84 156,84 156,109 131,109 131,111 156,111 156,136 158,136 158,111 183,111 
+							"/>
+		</g>
+	</g>
+	<rect x="54" y="109" class="st11" width="52" height="2"/>
+	<rect x="74.5" y="133" class="st12" width="11" height="2"/>
+	<rect x="54" y="157" class="st11" width="52" height="2"/>
+	<rect x="54" y="61" class="st11" width="52" height="2"/>
+	<rect x="74.5" y="85" class="st12" width="11" height="2"/>
+	<polygon class="st13" points="42,192 45,189 195,189 198,192 	"/>
+	<polygon class="st13" points="42,48 45,51 195,51 198,48 	"/>
+</g>
+</svg>

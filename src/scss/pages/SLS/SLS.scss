@@ -3,7 +3,7 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 // common
-
+// BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어
 br.m {
     display:none;
     @include mobile {
@@ -18,18 +18,25 @@ br.pc {
 }
 
 .sub-main {
-    padding-bottom: 120px;
+    padding-bottom: 133px;
+    @include mobile{
+        padding-bottom: 80px;
+    }
 }
+
 .care-home-section {
-    padding-top: 120px;
+    margin:100px auto 0;
+    padding:0 20px;
+    max-width:1420px;
     @include mobile {
-        padding-top: 60px;
+        margin-top:58px;
+        padding:0 16px;
     }
     .tit-wrap {
         margin-bottom: 32px;
         text-align: center;
         @include mobile {
-            margin-bottom: 24px;
+            margin-bottom:19px;
             & + .tabs-wrap {
                 padding-top: 0;
             }
@@ -38,13 +45,14 @@ br.pc {
             font-size: 32px;
             line-height: 52px;
             @include mobile {
-                font-size: 24px;
-                line-height: 33px;
+                font-size: 20px;
+                line-height: 26px;
             }
         }
         .desc {
             margin-top: 8px;
-            @include font-large-1;
+            font-size:24px;
+            line-height:30px;
             @include mobile {
                 margin-top: 16px;
                 font-size: 15px;
@@ -60,83 +68,214 @@ br.pc {
         }
     }
     &.care-recommended {
+        @include mobile{
+            padding:0 12px;
+        }
         .tabs-wrap,
         .scroll-wrap {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            text-align: center; //BTOCSITE-7335
+            //BTOCSITE-7335
+            .tabs {
+                display: inline-block;
+                li{
+                    a{
+                        @include mobile{
+                            font-size:15px;
+                            line-height:24px;
+                        }
+                    }
+                }
+            }
             @include mobile {
                 margin-bottom: 8px;
             }
+        }
+        //BTOCSITE-7335
+        .tab-content {
+            display: none;
         }
     }
     &.care-benefit {
         .tabs-wrap,
         .scroll-wrap {
-            margin-bottom: 20px;
+            margin-bottom:0;
+            //BTOCSITE-7335
+            text-align: center;
+            //BTOCSITE-7335
+            .tabs {
+                display: inline-block;
+            }
+        }
+        //BTOCSITE-7335
+        .tab-content {
+            display: none;
         }
     }
 }
 
-// top visual
-.slide-controls {
-    left:0;
-    transform:translate(0);
-}
-.slide-wrap {
-    &.hero-banner {
-        .slide-content {
-            .slide-track  {
-                height:640px;
-                .slide-conts {
-                    height:640px;
-                    .bg {
-                        background-size: cover;
-                       
-                        /* 클래스별이미지분기 */
-                        &.pc{
-                            display:inline-block;
+// hero banner
+.caresolution{
+    .sub-main{
+        .slide-wrap {
+            &.hero-banner {
+                .slide-content {
+                    .slide-track  {
+                        height:640px;
+                        @include mobile{
+                            height:460px;
                         }
-                        &.mobile{
-                            display:none;
-                        }
-                        @include mobile {
-                            &.pc{
-                                display:none;
+                        .slide-conts {
+                            position:relative;
+                            height:640px;
+                            @include mobile{
+                                height:460px;
                             }
-                            &.mobile{
-                                display:inline-block;
+                            .slide-img {
+                                overflow:hidden;
+                                position: relative;
+                                width:100%;
+                                height:100%;
+                                img, video {
+                                    position:absolute;
+                                    top:0;
+                                    left:50%;
+                                    transform:translateX(-50%);
+                                    width: auto;
+                                    height: auto;
+                                    min-width: 100%;
+                                    min-height: 100%;
+                                    max-width:none;
+                                    @media screen and (min-width:1920px) {
+                                        width:100%;
+                                        height:auto;
+                                        top:50%;
+                                        left:0;
+                                        transform:translateY(-50%);
+                                    }
+                                    @include mobile {
+                                        width:100%;
+                                        height:auto;
+                                        top:50%;
+                                        left:0;
+                                        transform:translateY(-50%);
+                                    }
+                                }
+                                video{
+                                    @include mobile {
+                                        width:auto;
+                                        height:100%;
+                                        top:0;
+                                        left:50%;
+                                        transform:translate(-50%, 0);
+                                    }
+                                }
                             }
-                        }
-                        /* //클래스별이미지분기 */
-
-                        @include mobile {
-                            height: 100%;
-                            padding-bottom: 0;
-                        }
-                    }
-                    .slide-info-area {
-                        top:96px;
-                        left:0;
-                        bottom:120px;
-                        max-width:1614px;
-                        margin:0 auto;
-                        padding: 0 40px;
-                        transform:translateX(0);
-                        .boxs {
-                            display:inline-block;
-                            .txt {
+                            .bg {
+                                background-size: cover;
+                                &.pc{
+                                    display:inline-block;
+                                }
+                                &.mobile{
+                                    display:none;
+                                }
+                                @include mobile {
+                                    height: 100%;
+                                    padding-bottom: 0;
+                                    &.pc{
+                                        display:none;
+                                    }
+                                    &.mobile{
+                                        display:inline-block;
+                                    }
+                                }
+                            }
+                            .slide-info-area {
+                                top:100px;
+                                left:0;
+                                bottom:120px;
+                                max-width:1614px;
+                                margin:0 auto;
+                                padding: 0 40px;
+                                transform:translateX(0);
+                                @include mobile {
+                                    top:32px;
+                                    right:20px;
+                                    bottom:102px;
+                                    left:20px;
+                                    padding: 0;
+                                }
+                                .boxs {
+                                    display:inline-block;
+                                    &.fc-black {
+                                        color:#000;
+                                    }
+                                    &.fc-white {
+                                        color:#fff;
+                                    }
+                                    .txt {
+                                        color:inherit;
+                                        font-size:52px;
+                                        font-weight:700;
+                                        line-height:62px;
+                                        @include mobile{
+                                            position:relative;
+                                            font-size:27px;
+                                            line-height:34px;
+                                        }
+                                    }
+                                    .small {
+                                        margin-top:16px;
+                                        font-size:24px;
+                                        line-height:32px;
+                                        @include mobile{
+                                            margin-top:7px;
+                                            font-size:16px;
+                                            line-height:22px;
+                                        }
+                                    }
+                                }
+                            }
+                            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                                .slide-info-area {
+                                    width:100%;
+                                }
+                            }
+                            .link {
+                                position:absolute;
+                                right:0;
+                                bottom:0;
+                                padding-right:60px;
                                 color:#fff;
                                 font-size:52px;
                                 font-weight:700;
                                 line-height:70px;
-                                small {
-                                    display:block;
-                                    padding-top:16px;
-                                    font-size:24px;
-                                    line-height:34px;
-                                    opacity:.6;
+                                text-align:right;
+                                @include mobile{
+                                    padding-right:22px;
+                                    font-size:16px;
+                                    line-height:24px;
+                                }
+                                &:after {
+                                    content:' ';
+                                    position:absolute;
+                                    right:0;
+                                    bottom:8px;
+                                    width:56px;
+                                    height:56px;
+                                    background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
+                                    @include mobile{
+                                        bottom:2px;
+                                        width:20px;
+                                        height:20px;
+                                        background-size:20px;
+                                    }
                                 }
                                 &.fc-black {
                                     color:#000;
+                                    &:after {
+                                        background-image:url('/lg5-common/images/PRS/btn-arrow-right-56-black.svg');
+                                    }
                                 }
                                 &.fc-white {
                                     color:#fff;
@@ -144,148 +283,178 @@ br.pc {
                             }
                         }
                     }
-                    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-                        .slide-info-area {
-                            width:100%;
-                        }
+                }
+                .custom-indi-wrap {
+                    display:none;
+                    bottom:24px;
+                    left:0;
+                    right:0;
+                    max-width:1380px;
+                    margin:0 auto;
+                    @include mobile{
+                        bottom: 20px;
+                        right: 16px;
+                        left: 16px;
+                        max-width: none;
                     }
-                    .link {
-                        position:absolute;
-                        right:0;
-                        bottom:0;
-                        padding-right:60px;
-                        color:#fff;
-                        font-size:52px;
-                        font-weight:700;
-                        line-height:70px;
-                        text-align:right;
-                        &:after {
-                            content:' ';
-                            position:absolute;
-                            right:0;
-                            bottom:8px;
-                            width:56px;
-                            height:56px;
-                            background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
+                    .custom-indis {
+                        max-width: (1380px + 30px);
+                        @include mobile{
+                            margin: 0 -5px;
                         }
-                        &.fc-black {
-                            color:#000;
-                            &:after {
-                                background-image:url('/lg5-common/images/PRS/btn-arrow-right-56-black.svg');
+                        .indis {
+                            width: 100%;
+                            table-layout: fixed;
+                            li {
+                                width: auto;
+                                padding: 0 15px;
+                                @include mobile{
+                                    padding: 0 5px;
+                                }
+                                &.on {
+                                    width: auto;
+                                }
                             }
                         }
-                        &.fc-white {
-                            color:#fff;
+                    }
+                    .slide-controls {
+                        position:relative;
+                        top:auto;
+                        left:auto;
+                        right:54px;
+                        transform:translateX(0);
+                        max-width:1380px;
+                        margin:0 auto;
+                        @media screen and (max-width: (1460px + 30px)) {
+                            right:69px;
                         }
-                    }
-                }
-            }
-        }
-        .custom-indi-wrap {
-            bottom:24px;
-            right: 40px;
-            left: 40px;
-            .custom-indis {
-                max-width: (1380px + 30px);
-                .indis {
-                    width: 100%;
-                    table-layout: fixed;
-                    li {
-                        width: auto;
-                        padding: 0 15px;
-                        &.on {
-                            width: auto;
+                        @include mobile{
+                            right:34px;
                         }
-                    }
-                }
-            }
-            .indi-control {
-                display: block !important;
-                position: absolute;
-                bottom: 16px;
-                right: 50%;
-                margin-right: -690px;
-                @media screen and (max-width: (1460px + 30px)) {
-                    right: 15px;
-                    margin-right: 0;
-                    @include mobile {
-                        right: 0;
-                    }
-                }
-            }
-        }
-        .slide-controls {
-            max-width:1758px;
-            margin:0 auto;
-            .btn-arrow {
-                position:absolute;
-                &.prev {
-                    left:0;
-                }
-                &.next {
-                    right:0;
-                }
-            }
-        }
-    }
-    @include mobile {
-        &.hero-banner {
-            .slide-content {
-                .slide-track  {
-                    height:460px;
-                    .slide-conts {
-                        height:460px;
-                        .slide-info-area {
-                            top:36px;
-                            right:20px;
-                            bottom:102px;
-                            left:20px;
-                            padding: 0;
-                            .boxs {
-                                .txt {
-                                    font-size:32px;
-                                    font-weight:700;
-                                    line-height:42px;
-                                    small {
-                                        padding-top:12px;
-                                        font-size:15px;
-                                        line-height:23px;
+                        .controls{
+                            position:absolute;
+                            bottom:0;
+                            right:0;
+                            width:150px;
+                            height:46px;
+                            border-radius:26px;
+                            background:rgba(0, 0, 0, 0.35);
+                            @include mobile{
+                                width:84px;
+                                height:26px;
+                                border-radius:13px;
+                            }
+                        }
+                        .btn-arrow {
+                            position:absolute;
+                            top:9px;
+                            padding:0;
+                            width:24px;
+                            height:24px;
+                            @include mobile{
+                                top:3px;
+                                width:16px;
+                                height:16px;
+                            }
+                            &:before{
+                                content:'';
+                                display:block;
+                                width:24px;
+                                height:24px;
+                                box-shadow:none;
+                                @include mobile{
+                                    width:16px;
+                                    height:16px;
+                                }
+                            }
+                            &.ico-prev {
+                                left:16px;
+                                @include mobile{
+                                    left:6px;
+                                }
+                                &:before{
+                                    background-image: url(/lg5-common/images/icons/btn-arr-24x24-lt.svg);
+                                    @include mobile{
+                                        background-size:16px 16px;
+                                    }
+                                }
+                            }
+                            &.ico-next {
+                                right:16px;
+                                @include mobile{
+                                    right:6px;
+                                }
+                                &:before{
+                                    background-image: url(/lg5-common/images/icons/btn-arr-24x24-rt.svg);
+                                    @include mobile{
+                                        background-size:16px 16px;
                                     }
                                 }
                             }
                         }
-                        .link {
-                            padding-right:22px;
+                        .slide-page{
+                            padding:0 4px;
+                            color:#fff;
                             font-size:16px;
-                            line-height:24px;
-                            &:after {
-                                bottom:2px;
-                                width:20px;
-                                height:20px;
-                                background-size:20px;
+                            line-height:42px;
+                            @include mobile{
+                                font-size:12px;
+                                line-height:23px;
+                            }
+                            .count{
+                                color:#d6d6d6;
+                                &:before{
+                                    content:'/';
+                                    margin:0 8px;
+                                    color:#fff;
+                                }
                             }
                         }
                     }
-                }
-            }
-            // .slide-controls {
-            //     display:none;
-            // }
-            .custom-indi-wrap {
-                bottom: 20px;
-                right: 16px;
-                left: 16px;
-                max-width: none;
-                .custom-indis {
-                    margin: 0 -5px;
-                    .indis {
-                        li {
-                            padding: 0 5px;
+                    .indi-control {
+                        display: block !important;
+                        position: absolute;
+                        bottom:0;
+                        right:0;
+                        margin-right:0;
+                        width:46px;
+                        height:46px;
+                        @include mobile{
+                            width:26px;
+                            height:26px;
+                        }
+                        &:before{
+                            width:46px;
+                            height:46px;
+                            @include mobile{
+                                width:26px;
+                                height:26px;
+                            }
+                        }
+                        &.play{
+                            &:before{
+                                background: url(/lg5-common/images/icons/btn-carousel-46-play.svg) no-repeat 0 0;
+                                @include mobile{
+                                    background-size:26px 26px;
+                                }
+                            }
+                        }
+                        &.stop{
+                            &:before{
+                                background: url(/lg5-common/images/icons/btn-carousel-46-pause.svg) no-repeat 0 0;
+                                @include mobile{
+                                    background-size:26px 26px;
+                                }
+                            }
+                        }
+                        @media screen and (max-width: (1460px + 30px)) {
+                            right: 15px;
+                            margin-right: 0;
+                            @include mobile {
+                                right: 0;
+                            }
                         }
                     }
-                }
-                .indi-control {
-                    bottom: 20px;
                 }
             }
         }
@@ -294,544 +463,263 @@ br.pc {
 
 // 케어솔루션 링크
 .care-home-link {
-    max-width: 1380px;
-    margin: 0 auto;
     .tit-wrap {
-        margin-bottom: 48px;
         @include mobile {
-            margin-bottom: 25px;
+            margin-bottom: 19px;
         }
     }
-    .link-list {
-        /* 210528 - 버튼 디자인 수정 */
-        padding: 0 82px 0 93px;
-        font-size: 0;
-        @media screen and (max-width: 1024px){
-        //@include mobile {
-            // margin-top: 50px;
-            padding: 20px 0  ;
-            text-align: center;
+    .link-list{
+        display:flex;
+        margin-left:-24px;
+        @include mobile{
+            margin-left:-8px;
         }
-        li {
-            display: inline-block;
-            width: calc(33.33% - 20px);
-            border-radius: 16px;
-            
-            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.16);
-            background-color: #ffffff;
-            border:2px solid #fff;
-            margin: 0 10px;
-            &:hover {
-                border: solid 2px #da0f47; 
+        >li{
+            margin-left:24px;
+            width:calc(33.33% - 24px);
+            @include mobile{
+                margin-left:8px;
+                width:calc(33.33% - 8px);
             }
-            @media screen and (max-width: 1024px){
-                margin: 0 5px;
-                min-height:140px;
-                border:4px solid #fff;
-            //@include mobile {                
-                & + li {
-                    // margin-top: 38px;
-                    margin-top: 0;
+            >a{
+                position:relative;
+                display:table;
+                padding:113px 0 30px;
+                width:100%;
+                height:100%;
+                border-radius:8px;
+                border:2px solid transparent;
+                box-shadow:1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                text-align:center;
+                @include mobile{
+                    padding:80px 5px 15px;
+                    box-shadow:1px 2px 6px 0 rgba(0, 0, 0, 0.14);
                 }
-                &:hover {
-                    border: solid 4px #da0f47; 
-                }
-            }
-            @include mobile{ //210629
-                width: calc(33.33% - 18px);
-            }
-            @media screen and (max-width:361px){
-                width: calc(33.33% - 10px);
-            }
-
-            > span, 
-            > a {
-                display: inline-block;
-                position: relative;
-                text-align: center;
-                padding: 105px 22px 30px;
-                font-size: 24px;
-                font-weight: bold;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: 1.42;
-                &:after {
-                    display: block;
-                    content:' ';
+                .thumb{
                     position:absolute;
-                    right:-10px;
-                    bottom:30px;
-                    width:32px;
-                    height:32px;
-                    background:url('/lg5-common/images/icons/btn-arr-32.svg') no-repeat 0 0;
-                    //210629
-                    @media screen and (max-width:1024px) {
-                        right:-5px;
-                        bottom:21px;
-                        width:16px;
-                        height:16px;
-                        background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
-                    }
+                    top:30px;
+                    left:50%;
+                    transform:translateX(-50%);
+                    width:64px;
+                    height:64px;
                     @include mobile{
-                        right:3px; 
-                        bottom:21px;
+                        top:20px;
+                        width:48px;
+                        height:48px;
                     }
-                    @media screen and (max-width :305px){
-                        right:30px;
-                        bottom:5px;
+                    img{
+                        width:100%;
                     }
-                    //210629
                 }
-                @include pc {
-                    &:hover {
-                        &:after {
-                            display: block;
+                .tit{
+                    display:table-cell;
+                    position:relative;
+                    vertical-align:middle;
+                    font-size:24px;
+                    font-weight:700;
+                    line-height:34px;
+                    @include mobile{
+                        font-size:13px;
+                        line-height:19px;
+                        .pc-only{
+                            display:none;
+                        }
+                    }
+                    @include pc{
+                        .mo-only{
+                            display:none;
+                        }
+                    }
+                    @media screen and (max-width: 980px){
+                        .mo-only{
+                            display:block;
+                        }
+                    }
+                    .day{
+                        display:inline-block;
+                        @include mobile{
+                            display:block;
+                        }
+                    }
+                    .ico-arr{
+                        display:inline-block;
+                        position:relative;
+                        top:4px;
+                        width:24px;
+                        height:24px;
+                        background:url('/lg5-common/images/icons/btn-arr-24.svg') no-repeat 0 0;
+                        @include mobile{
+                            display:none;
                         }
                     }
                 }
-                @media screen and (max-width: 1024px){
-                //@include mobile {
-                    padding:80px 3px 20px;
-                    margin: 0;
-                    text-align: center;
-                    max-width:100px;
-                    font-size:16px;
-                    line-height:24px;
-                }
-                //210629
-                @include mobile{
-                    padding:80px 10px 20px;
-                    max-width:90px;
-                    font-size:12px;
-                    line-height:20px;
-                }
-                @media screen and (max-width: 334px){
-                    padding: 80px 5px 20px;
-                }
-                @media screen and (max-width: 280px){
-                    padding: 80px 0 20px;
-                    max-width:79px;
-                }
-                //210629
-                &:before {
-                    display: inline-block;
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 50%;
-                    transform: translateX(-50%);                           
-                    margin: 20px 0;
-                    width: 64px;
-                    height: 64px;
-                    @media screen and (max-width: 1024px){
-                    //@include mobile {
-                        width: 48px;
-                        height: 48px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                    }
-                }
-            }
-            &.on {
-                > span, 
-                > a {
-                    color: $color-default;
-                }
-            }
-            &:nth-child(1) {
-                text-align: center;                
-            }
-            &:nth-child(2) {
-                text-align: center;
-            }
-            &:nth-child(3) {
-                text-align: center;
-                @media screen and (max-width: 1024px){
-                //@include mobile {
-                    text-align: center;
-                }
-            }
-            /* //210528 - 버튼 디자인 수정 */
-            &.link-benefit {
-                a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
-                    background-size: 100% 100%;
-
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    margin: 20px 0;
-                }
-                //&.on a:before,
-                //&:hover a:before {
-                //    background: url(/lg5-common/images/icons/ic-main-care-link-3-on.svg) 0 50% no-repeat;
-                //  background-size: 100% 100%;
-                //}
-            }
-            &.link-planner {
-                a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
-                    background-size: 100% 100%;
-                }
-                //&.on a:before,
-                //&:hover a:before {
-                //    background: url(/lg5-common/images/icons/ic-main-care-link-2-on.svg) 0 50% no-repeat;
-                //  background-size: 100% 100%;
-                //}
-            }
-            &.link-my {
-                a:before {
-                    background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
-                    background-size: 100% 100%;
-                }
-                //&.on a:before,
-                //&:hover a:before {
-                //    background: url(/lg5-common/images/icons/ic-main-care-link-1-on.svg) 0 50% no-repeat;
-                //  background-size: 100% 100%;
-                //}
-
-            }
-            &.next-schedule {
-                a:before {
-                    background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
-                    background-size: 100% 100%;
-                }
-                //&.on span:before,
-                //&:hover span:before {
-                //    background: url(/lg5-common/images/icons/ic-main-careship-cal-on.svg) 0 50% no-repeat;
-                //  background-size: 100% 100%;
-                //}
-                .day {
-                    display: inline-block;
+                &:hover, &:focus{
+                    border:2px solid #da0f47;
+                    outline:none;
                 }
             }
         }
-        //210629
-        li:nth-child(1), li:nth-child(2){
-            > a {
-                &:after{
-                    @media screen and (max-width: 1024px){
-                        right:5px;
-                        bottom:22px;
-                    }
-
-                    @include mobile{
-                        right:7px;
-                        bottom:21px;
-                    }
-
-                    @media screen and (max-width :305px){
-                        right:30px;
-                        bottom:5px;
-                    }
-                }
-            }
-        }
-        //210629
-    }
-    /* 210629 케어솔루션 홈 버튼 로그인후 버튼 영역 */
-    .link-list.list02 {
-        li {
-            a:after{
-                @media screen and (max-width:1207px){
-                    right:-5px;
-                    bottom:30px;
-                }
-                @media screen and (max-width: 1024px){
-                    right:-5px;
-                    bottom:22px;
-                }
-                @include mobile{
-                    right:3px; //210629
-                    bottom:21px; //210629
-                }
-                @media screen and (max-width :305px){
-                    right:30px; //210629
-                    bottom:5px; //210629
-                }
-            }
-        }
-        //210629
-        li:nth-child(1), li:nth-child(2) {
-            a:after{
-                @media screen and (max-width: 1024px){
-                    right:-10px;
-                    bottom:22px;
-                }
-
-                @include mobile{
-                    right:-2px; //210629
-                    bottom:21px; //210629
-                }
-
-                @media screen and (max-width :305px){
-                    right:30px; //210629
-                    bottom:5px; //210629
-                }
-            }
-        }
-        //210629
     }
 }
 
-// 플로우배너
+// 케어솔루션 제품
 .care-flowbanner {
-    //max-width: 1920px;
-    margin: 0 auto;
+    margin: 48px auto 0;
     overflow: hidden;
-    .slide-wrap {
-        .indi-wrap {
-           display: none;
+    @include mobile{
+        margin-top:36px;
+    }
+    .care-home-list{
+        display:flex;
+        flex-wrap:wrap;
+        margin:-32px 0 0 -32px;
+        @include mobile{
+            margin:-23px 0 0 -8px;
         }
-        .slide-content {
-            //@at-root: hidden;
-            margin-left: -12px;
-            margin-right: -12px;
-            @include mobile {
-                margin-left: -2px;
-                margin-right: -2px;
+        >li{
+            margin:32px 0 0 32px;
+            width:calc(33.33% - 32px);
+            @media screen and (max-width: 1024px){
+                text-align:center;
             }
-            .slide-track {
-                .slide-conts {
-                    display:none;
-                    position: relative;
-                    padding: 0 12px;
-                    @include mobile {
-                        padding: 0 2px;
+            @include mobile{
+                margin:23px 0 0 8px;
+                width:calc(33.33% - 8px);
+            }
+            >a{
+                display:inline-block;
+                width:100%;
+                .thumb{
+                    display:inline-block;
+                    width:128px;
+                    max-width:calc(100% - 8px);
+                    height:128px;
+                    @include mobile{
+                        width:auto;
+                        height:auto;
                     }
-                    .thumb {
-                        img {
-                            width: 100%;
-                            border-radius: 8px;
-                        }
+                    img{
+                        width:100%;
                     }
-                    .text-area {
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        padding: 28px;
-                        .inner {
-                            display: block;
-                            width: 100%;
-                            //height: 100%;
-                        }
-                        @include mobile {
-                            padding: 14px;
-                        }
-                        .tit {
-                            display: block;
-                            color: #fff;
-                            font-weight: 700;
-                            font-size: 32px;
-                            line-height: 52px;
-                            @include mobile {
-                                //font-size: 15px;
-                                //line-height: 23px;
-                                font-size: 20px;
-                                line-height: 32px;
-                            }
-                        }
-                        .btn-area {
-                            display: none;
-                            position: absolute;
-                            bottom: 24px;
-                            right: 36px;
-                            @include mobile {
-                                text-align: right;
-                            }
-                            .btn-border {
-                                display: inline-block;
-                                padding: 7px 30px;
-                                font-size: 14px;
-                                line-height: 24px;
-                                text-align: center;
-                                border: 1px solid #fff;
-                                border-radius: 20px;
-                                color: #fff;
-                                font-weight: 500;
-                                @include mobile {
-                                    min-width: auto;
-                                    padding: 6px 16px;
-                                    font-size: 13px;
-                                    line-height: 21px;
-                                }
-                            }
-                        }
+                }
+                .tit{
+                    display:inline-block;
+                    margin-left:16px;
+                    font-size:20px;
+                    @media screen and (max-width: 1024px){
+                        display:block;
+                        margin:12px 0 0;
+                        width:100%;
+                        text-align:center;
                     }
-                    &:hover,
-                    &.slide_on {
-                        &::after {
-                            display: block;
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            left: 12px;
-                            width: calc(100% - 24px);
-                            height: 100%;
-                            background-color: #000;
-                            border-radius: 8px;
-                            opacity: 0.3;
-                            @include mobile {
-                                left: 2px;
-                                width: calc(100% - 4px);
-                            }
-                        }
-                        .text-area {
-                            z-index: 2;
-                            .btn-area {
-                                display: block;
-                            }
-                        }
+                    @include mobile{
+                        margin:6px 0 0;
+                        font-size:13px;
+                        line-height:19px;
                     }
                 }
             }
         }
     }
-    .slide-wrap + .slide-wrap {
-        margin-top: 24px;
-        @include mobile {
-            margin-top: 4px;
-        }
-    }
-
 }
+
 // 케어솔루션 추천 제품
 .care-recommended {
+    max-width:1444px;
     .prd-list-wrap {
-        max-width:1380px + 80px + 24px;
-        margin:-12px auto 0; 
-        padding:0 40px;
         @include mobile {
-            margin-top:20px;
+            margin-top:14px;
             padding:0;
         }
-        .slide-content {
-            padding: 0 4px 48px;
-            .slide-track {
-                display:flex;
-                flex-wrap:wrap;
-                margin:0 auto;
-            }
-        }
         .inner {
-            @include clearfix;
-            //margin:0 -12px;
-            @include mobile {
-                margin:0;
-                
-            }
+            display:flex;
+            justify-content:center;
             .item {
-                float:left;
-                width:calc((100% - 96px) / 4);
-                margin:12px 12px;
-                @media screen and (max-width:1200px) {
-                    width:calc((100% - 72px) / 3);
-                }
-                @media screen and (max-width:900px) {
-                    width:calc((100% - 48px) / 2);
-                }
+                width:calc(25% - 24px);
+                margin:0 12px;
                 @include mobile {
-                    width:auto;
+                    width:calc(50% - 4px);
                     margin:0;
-                    padding: 12px;
+                    padding:0 4px;
+                    &:nth-child(3), &:nth-child(4){
+                        display:none;
+                    }
                 }
             }
             .prd-care-vertical {
+                display:block;
                 position:relative;
                 height:100%;
-                padding:12px 40px 32px;
+                padding:40px;
                 background:#fff;
                 border-radius:8px;
-                box-shadow:2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-                @media screen and (max-width:1400px) {
-                    padding:12px 20px 32px;
+                box-shadow:1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                @media screen and (max-width: 1024px){
+                    padding:20px 16px;
                 }
                 @include mobile {
                     // height:auto;
                     min-height:auto;
                     max-height:inherit;
-                    padding:12px 36px 32px;
-                    padding: 0;
+                    box-shadow:1px 2px 6px 0 rgba(0, 0, 0, 0.14);
                 }
                 .img-wrap {
                     text-align:center;
-                    a {
-                        display:block;
-                    }
                     img {
                         display:inline-block;
-                        width:226px;
-                        height:226px;
+                        width:100%;
+                        max-width:200px;
                         overflow:hidden;
                         @include mobile {
-                            max-width:160px;
-                            max-height:160px;
-                            width: 100%;
-                            height: auto;
+                            max-width:120px;
+                            max-height:120px;
                         }
                     }
                 }
                 .txt-wrap {
-                    margin-top:16px;
+                    margin-top:40px;
+                    height:82px;
                     @include mobile{
-                        padding: 0 15px;
-                    }
-                    a {
-                        display:block;
+                        margin-top:20px;
+                        height:60px;
                     }
                     .tit {
                         max-height:56px;
-                        @include font-large;
+                        font-size:18px;
+                        line-height:28px;
                         font-weight:700;
                         overflow:hidden;
-                        //word-break:break-all;
                         @include textEllipsisClamp(2);
-                        
                         @include mobile {
-                            font-size: 16px;
-                            line-height: 24px;
+                            font-size: 14px;
+                            line-height: 20px;
                             max-height:52px;
                         }
                     }
                     .code {
                         margin-top:2px;
-                        color:#767676;
-                        @include font-small;
+                        color:#666;
+                        font-size:16px;
+                        line-height:24px;
                         overflow:hidden;
                         text-overflow:ellipsis;
                         white-space:nowrap;
                         @include mobile {
-                            font-size:14px;
-                            line-height:22px;
+                            font-size:13px;
+                            line-height:19px;
                         }
                     }
                 }
                 .info-wrap {
-                    padding-top:16px;
-                    @include mobile{
-                         padding: 0 15px 24px;
-                    }
-                    
+                    margin-top:20px;
                     .price-wrap {
-                        //position:absolute;
-                        //left:40px;
-                        //right:40px;
-                        //bottom:32px;
-                        @media screen and (max-width:1400px) {
-                            //left:20px;
-                            //right:20px;
-                        }
                         @include mobile {
                             position:static;
-                            // margin-top:24px;
                         }
                         .total-price {
                             @include clearfix;
                             .price {
                                 display:inline-block;
-                                padding:10px 0;
                                 @include font-large-1;
                                 font-weight:700;
                                 vertical-align:middle;
@@ -839,9 +727,9 @@ br.pc {
                                     @include font-large;
                                 }
                                 @include mobile {
-                                    padding: 16px 0;
+                                    padding:0;
                                     font-size: 16px;
-                                    line-height: 24px;
+                                    line-height: 22px;
                                 }
                             }
                             .btn {
@@ -863,357 +751,133 @@ br.pc {
                 }
             }
         }
-        
     }
 }
 
-
-// WHY 케어솔루션
-.why-care {
-    max-width: 1380px;
-    margin: 0 auto;
-    .tit-wrap {
-        .set-tit {
-            font-size: 28px;
-            line-height: 38px;
-            @include mobile {
-                font-size: 18px;
-                line-height: 26px;
-            }
-        }
-    }
-    .slide-wrap {
-        padding-bottom: 60px;
-        @include mobile {
-            padding-bottom: 40px;
-        }
-        .indi-wrap {
-            bottom: 0;
-        }
-        .slide-content {
-            .slide-conts {
-                .text-cont {
-                    max-width: 1380px;
-                    padding: 0 100px;
-                    font-size: 40px;
-                    line-height: 56px;
-                    color: $color-gray-5;
-                    text-align: center;
-                    font-weight: 700;
-                    @include mobile {
-                        padding: 0 16px;
-                        font-size: 24px;
-                        line-height: 33px;
-                    }
-                    span {
-                        color: $color-default;
-                    }
-                    .btn-area {
-                        margin-top: 32px;
-                        @include mobile {
-                            margin-top: 20px;
-                        }
-                    }
-                    .btn.mix {
-                        min-width: 275px;
-                        @include mobile {
-                            width: 100%;
-                        }
-                    }
-                }
-            }
-        }
-        .slide-controls,
-        .slide-controls .btn-arrow {
-            display: none;
-        }
-    }
-}
-// 케어솔루션 가이드
-.care-guide-visual {
-    //height: 833px;
-    position: relative;
-    padding: 160px 0;
-    @media screen and (max-width: 1200px) {
-        padding: 100px 0;           
-    }
-    @media screen and (max-width: 900px) {
-        padding: 50px 0;           
-    }
-    @media screen and (max-width: 900px) {
-        padding: 0;
-    }
-    .bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-        > div {
-            display: none;
-            width: 100%;
-            height: 100%;
-            &.current {
-                display: block;
-            }
-        }
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-    .slide-wrap {
-        //max-width: 1920px;
-    }
-    .slide-content {
-        .ui_carousel_list {
-            padding: 0 25% !important;
-            @include mobile {
-                padding: 0 35px !important;
-            }
-        }
-        .slide-track {
-        }
-        
-        .slide-conts {
-            margin: 0 60px;
-            padding: 50px 30px;
-            @media screen and (max-width: 1200px) {
-                margin: 0 40px;
-                padding: 40px 20px;      
-            }
-            @include mobile {
-                margin: 10px;
-                padding: 40px 17px;  
-            }
-            .inner {
-                position: relative;
-            }
-            .thumb {
-                display: inline-block;
-                width: 100%;
-                text-align: center;
-                @media screen and (max-width: 1024px){
-                //@include mobile {
-                    width: auto;
-                }
-
-                img {
-                    width: 100%;
-                    border-radius: 8px;
-                }
-            }
-            .text-area {
-                display: none;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                padding: 6% 4.3% 4.3% 4.3%;
-                z-index: 1;
-                @media screen and (max-width: 1024px){
-                //@include mobile {
-                    position: static;
-                    margin-top: 16px;
-                    padding: 0;
-                }
-                .flag-wrap {
-                    margin-bottom: 10px;
-                    @media screen and (max-width: 1024px){
-                    //@include mobile {
-                        position: absolute;
-                        top: 12px;
-                        left: 12px;
-                    }
-                    .flag {
-                        height: auto;
-                        padding: 4px 8px;
-                        @include font-large;
-                        color: #000;
-                        background: #fff;
-                        opacity: 0.5;
-                        border-radius: 8px;
-                        @media screen and (max-width: 1024px){
-                        //@include mobile {
-                            padding: 4px 6px;
-                            font-size: 11px;
-                            line-height: 100%;
-                        }
-                    }
-                }
-                .tit {
-                    max-height: 108px;
-                    margin-bottom: 16px;
-                    @include textEllipsisClamp(2);
-                    @include font-large-6;
-                    color: #fff;
-                    font-weight: bold;
-                    @media screen and (max-width: 1024px){
-                    //@include mobile {
-                        max-height: 46px;
-                        margin-bottom: 4px;
-                        font-size: 15px;
-                        line-height: 23px;
-                        color: $color-default;
-                    }
-                }
-                .desc {
-                    max-height: 28px;
-                    @include font-large;
-                    @include textEllipsisClamp(1);
-                    color: #fff;
-                    @media screen and (max-width: 1024px){
-                    //@include mobile {
-                        max-height: 20px;
-                        font-size: 12px;
-                        line-height: 20px;
-                        color: $color-default;
-                    }
-                }
-                .btn-video {
-                    display: inline-block;
-                    position: absolute;
-                    bottom: 4.3%;
-                    left: 4.3%;
-                    width: 60px;
-                    height: 60px;
-                    background-image: url(/lg5-common/images/icons/btn-play-32-black.svg);
-                    background-size: 100%;
-                    @media screen and (max-width: 1024px){
-                    //@include mobile {
-                        top: 40%;
-                        bottom: auto;
-                        left: 12px;
-                        width: 40px;
-                        height: 40px;
-                    }
-                }
-            }
-            &.ui_carousel_center {
-                width: 100%;
-                @include mobile {
-                    width: auto;
-                }
-                .inner {
-                    transform: scale( 1.2);
-                    transition: all 300ms ease;
-                }
-                .thumb {
-                    img {
-                        //max-width: 912px;
-                        //max-height: 513px;
-                        //transform: scale( 1.16);
-                        //transform: scale(1.08);
-                        //transition: all 300ms ease;
-                    }
-                }
-                .text-area {
-                    display: block;
-                }
-            }
-        } 
-    }
-    .slide-controls {
-        max-width: 100%;
-        padding: 0 25%;
-        @include mobile {
-            top: 35%;
-            padding: 0 30px; 
-        }
-        .btn-arrow {
-            box-shadow: none;
-            opacity: 1;
-            
-            &:before {
-                background-image: url(/lg5-common/images/icons/btn-arr-40x40-rt.svg);
-            }
-            &.disabled {
-                opacity: 0.5;
-            }
-            &.prev {
-                left: 25%;
-                margin-left: -10px;
-                @include mobile {
-                    left: 30px; 
-                    margin-left: -5px;
-                }
-                &:before {
-                    background-image: url(/lg5-common/images/icons/btn-arr-40x40-lt.svg);
-                }
-            }
-            &.next {
-                right: 25%;
-                margin-right: -10px;
-                @include mobile {
-                    right:30px; 
-                    margin-right: -5px;
-                }
-            }
-        }
-    }
-}
 // 케어솔루션 혜택
 .care-benefit {
-    margin-top: 80px;
-    padding: 80px 0;
-    // background-color: #f4f4f4;
-    @include mobile {
-        margin-top: 40px;
-        padding: 40px 0;
-    }
     .benefit-cont {
-        max-width: calc(1380px + 80px);
-        margin: 0 auto;
-        padding: 0 28px;
-        @include mobile {
-            padding:0 16px;
-        }
         .benefit-list {
-            border-top:1px solid #000;
-            ul {
-                li {
+            >ul {
+                display:flex;
+                flex-wrap:wrap;
+                >li {
+                    display: flex;
                     position:relative;
-                    padding:24px 16px 24px 152px;
+                    padding:24px 40px 24px 0px; 
+                    width:calc(50% - 12px);
                     border-bottom:1px solid #ddd;
-                    .thumb {
-                        position:absolute;
-                        top:24px;
-                        left:0;
-                        width:120px;
-                        height:88px;
-                        border-radius:8px;
-                        overflow:hidden;
-                        img {
+                    @media screen and (max-width: 1024px){
+                        margin:0;
+                        width:100%;
+                    }
+                    @include mobile{
+                        padding:18px 0;
+                    }
+                    &:first-child{
+                        padding-top:14px;
+                    }
+                    &:nth-child(odd){
+                        margin-right:12px;
+                        @include mobile{
+                            margin:0;
+                            width:100%;
+                        }
+                        &:nth-last-child(2){
+                            border-bottom:0;
+                        }
+                    }
+                    &:nth-child(even){
+                        margin-left:12px;
+                        @media screen and (max-width: 1024px){
+                            margin:0;
                             width:100%;
                         }
                     }
+                    &:last-of-type{
+                        border-bottom:0;
+                    }
+                    .thumb {
+                        flex:none;
+                        position:relative;
+                        overflow:hidden;
+                        width:120px;
+                        height:88px;
+                        margin-right:32px;
+                        border-radius:8px;
+                        @include mobile{
+                            width:90px;
+                            height:66px;
+                            margin-right:20px;
+                        }
+                        img {
+                            width:100%;
+                        }
+                        //BTOCSITE-7335 ui_bg_switch 추가
+                        .ui_bg_switch {
+                            display: block;
+                            position:absolute;
+                            top:0;
+                            left:0;
+                            width:100%;
+                            height:100%;
+                            background-position: 0 0;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            &.pc {
+                                display: inline-block !important;
+                                @include mobile {
+                                    display: none !important;
+                                }
+                            }
+                            &.mo {
+                                display: none !important;
+                                @include mobile {
+                                    display: inline-block !important;
+                                }
+                            }
+                        }
+                    }
                     .cont {
-                        padding:11px 0;
                         dl {
                             dt {
                                 font-size:20px;
                                 font-weight:700;
                                 line-height:30px;
+                                @include mobile{
+                                    font-size:14px;
+                                    line-height:24px;
+                                }
                             }
                             dd {
                                 margin-top:8px;
                                 font-size:18px;
                                 line-height:28px;
+                                word-break:keep-all;
+                                @include mobile{
+                                    margin-top:4px;
+                                    font-size:14px;
+                                    line-height:20px;
+                                }
                             }
                         }
-
                         ul {
                             margin-top: 2px;
+                            @include mobile{
+                                margin-top: 12px;
+                            }
                             li {
                                 position: relative;
                                 padding: 0;
                                 border-bottom: 0;
                                 padding-left: 12px;
-                                line-height: 18px;
                                 font-size: 14px;
-                                &::before {
+                                line-height:24px;
+                                @include mobile{
+                                    font-size:13px;
+                                    line-height:20px;
+                                }
+                                &:before {
                                     content: '';
                                     width: 3px;
                                     height: 3px;
@@ -1221,50 +885,10 @@ br.pc {
                                     display: block;
                                     background-color: #000;
                                     position: absolute;
-                                    top: 8px;
+                                    top:12px;
                                     left: 0;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            @include mobile {
-                ul {
-                    li {
-                        padding:20px 0 20px 120px;
-                        .thumb {
-                            width:90px;
-                            height:66px;
-                        }
-                        .cont {
-                            padding:4px 0 0;
-                            dl {
-                                dt {
-                                    font-size:14px;
-                                    line-height:24px;
-                                }
-                                dd {
-                                    margin-top:2px;
-                                    font-size:14px;
-                                    line-height:24px;
-                                }
-                            }
-
-                            ul {
-                                margin-top: 13px;
-                                li {
-                                    position: relative;
-                                    padding: 0;
-                                    border-bottom: 0;
-                                    padding-left: 12px;
-                                    line-height: 24px;
-                                    font-size: 14px;
-                                    &::before {
-                                        width: 3px;
-                                        height: 3px;
-                                        top: 10px;
-                                        left: 0;
+                                    @include mobile{
+                                        top:8px;
                                     }
                                 }
                             }
@@ -1273,259 +897,75 @@ br.pc {
                 }
             }
         }
-
-
-        @include mobile {
-            // padding: 0;
-            .slide-wrap .indi-wrap {
-                bottom: 0;
-            }
-            .slide-content {
-                padding: 0 8px 31px;
-            }
-        }
-        .slide-controls,
-        .slide-controls button {
-            display: none;
-        }
-        .conts {
-            font-size: 0;
-            li {
-                position: relative;
-                display: inline-block;
-                width: 33.33%;
-                padding: 12px;
-                @include mobile {
-                    width: 100%;
-                    padding: 0 4px;
-                }
-                .thumb {
-                    img {
-                        width: 100%;
-                        //height:333px;
-                        border-radius: 8px;
-                    }
-                }
-                .text-area {
-                    position: absolute;
-                    bottom: 12px;
-                    right: 12px;
-                    left: 12px;
-                    padding: 40px;
-                    .tit {
-                        font-weight: 700;
-                        font-size: 24px;
-                        line-height: 34px;
-                    }
-                    .desc {
-                        margin-top: 8px;
-                        font-weight: 500;
-                        font-size: 18px;
-                        line-height: 28px;
-                    }
-                    @include mobile {
-                        font-size: 24px;
-                        line-height: 33px;
-                    }                
-                } 
-            }
-        }
-        &.benefit-cont-1 {
-            .conts li {
-                &:nth-child(2) {
-                    width: 66.66%;
-                }
-                .text-area {
-                    color: #fff;
-                }
-            }
-        }
-        &.benefit-cont-2,
-        &.benefit-cont-3 {
-            .conts {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: stretch;
-                li {
-                    .inner {
-                        display: flex;
-                        justify-content: flex-end;
-                        height: 100%;
-                        padding-top: 133px;
-                        border-radius: 8px;
-                        background: #fff;
-                        @media screen and (max-width: 1024px){
-                        //@include mobile {
-                            flex-direction: column;
-                            justify-content: start;
-                            padding: 32px 0 0 0;
-                        }
-                    }
-                    .thumb {
-                        //flex: 1;
-                        max-width: 200px;
-                        align-self: flex-end;
-                        @media screen and (max-width: 1024px){
-                        //@include mobile {
-                            width: 280px;
-                            //height: 280px;
-                            margin-top: auto;
-                        }
-                        img {
-                            @media screen and (max-width: 1024px){
-                            //@include mobile {
-                                height: 100%;
-                            } 
-                        }
-                    }
-                    .text-area {
-                        position: absolute;
-                        top: 12px;
-                        left: 12px;
-                        @media screen and (max-width: 1024px){
-                        //@include mobile {
-                            top: 32px;
-                            left: 0;
-                            padding: 0 32px;
-                        }
-                        .tit {
-                            @media screen and (max-width: 1024px){
-                            //@include mobile {
-                                font-size: 24px;
-                                line-height: 33px;
-                            }
-                        }
-                        .flag-wrap {
-                            margin-bottom: 12px;
-                            @media screen and (max-width: 1024px){
-                            //@include mobile {
-                                margin-bottom: 10px;
-                            }
-                            .flag {
-                                height: auto;
-                                padding: 4px 16px;
-                                border-radius: 8px;
-                                background: #000;
-                                @include font-medium;
-                                color: #fff;
-                                font-weight: 700;
-                                opacity: 0.5;
-                                @media screen and (max-width: 1024px){
-                                //@include mobile {
-                                    padding: 2px 8px;
-                                    font-size: 14px;
-                                    line-height: 20px;
-                                }
-                            }
-                        }
-                        .btn-area {
-                            margin-top: 28px;
-                            .btn {
-                                min-width: auto;
-                                padding: 6px 16px;
-                                @include font-small;
-                            }
-                        }
-                    }
-                    &:nth-child(5) {
-                        width: 66.66%;
-                        .inner {
-                            padding-top: 0;
-                        }
-                        .thumb {
-                            max-width: 742px;
-                            @media screen and (max-width: 1024px){
-                            //@include mobile {
-                                width: 100%;
-                                //height: 200px;
-                            }
-                        }
-                    }
-                }
-            }    
-        }
     }
 }
 
 // 다른 케어솔루션 
 .care-other {
-    padding-top: 80px;
-    @include mobile {
-        padding-top: 40px;
-    }
-    .slide-wrap {
-        @media screen and (max-width: 1024px){
-            margin-top: -12px;
-            padding-bottom: 31px;
-            .indi-wrap {
-                bottom: 0;
-            }
-            .slide-controls,
-            .slide-controls button {
-                display: none;
-            }
-        }
-
-    }
-    .conts {
+    .care-other-list{
         display:flex;
-        flex-wrap:wrap;
-        max-width: (1380px + 80px);
-        margin: 0 auto;
-        padding: 0 28px;
-        font-size: 0;
+        margin-left:-24px;
+        justify-content:center;
         @media screen and (max-width: 1024px){
-            max-width: initial;
-            padding: 0;
+            flex-wrap:wrap;
+            margin-left:0;
         }
         li {
+            position:relative;
             display: inline-block;
-            width: 50%;
-            padding: 12px;
+            margin-left:24px;
+            width:calc(50% - 24px);
             @media screen and (max-width: 1024px){
+                display:block;
+                margin-left:0;
                 max-width: 100%;
                 width: 100%;
-                padding: 12px 16px;
+                padding: 12px 0;
             }
             @include mobile {
-                display:block;
+                padding:0;
+            }
+            +li {
+                @include mobile{
+                    margin-top:8px;
+                }
             }
             > a {
                 display: inline-block;
                 width: 100%;
                 height:100%;
-                padding: 32px 32px 40px;
+                padding:48px 48px 48px 154px;
                 border-radius: 8px;
-                box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.06);
-                text-align: center;
+                box-shadow:1px 4px 12px 0 rgba(0, 0, 0, 0.14);
                 @include mobile {
-                    padding: 24px 24px 40px;
-                    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.16);
+                    padding:25px 8px;
+                    box-shadow:1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+                    text-align:center;
+                }
+                .thumb{
+                    position: absolute;
+                    top: 54px;
+                    left: 50px;
+                    width: 64px;
+                    height: 64px;
+                    @include mobile{
+                        top:25px;
+                        left:50%;
+                        transform:translateX(-50%);
+                    }
                 }
                 .tit {
                     position: relative;
-                    margin-bottom: 12px;
-                    padding-top: 80px;
-                    font-size: 24px;
-                    line-height: 34px;
+                    margin-bottom: 6px;
+                    font-size: 28px;
+                    line-height: 38px;
                     font-weight: 700;
                     word-break: keep-all;
-                    &:before {
-                        display: inline-block;
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 50%;
-                        width: 64px;
-                        height: 64px;
-                        margin-left: -32px;
-                        background:center no-repeat;
-                    }
                     @include mobile {
                         margin-bottom: 8px;
-                        padding-top: 72px;
-                        font-size: 18px;
-                        line-height: 26px;
+                        padding-top: 79px;
+                        font-size:16px;
+                        line-height:22px;
                         &:before {
                             width: 56px;
                             height: 56px;
@@ -1534,19 +974,21 @@ br.pc {
                     }    
                 }
                 .desc {
-                    margin-bottom: 20px;
                     font-size: 18px;
                     line-height: 28px;
                     @include mobile {
-                        margin-bottom: 16px;
                         font-size: 14px;
-                        line-height: 22px;
+                        line-height: 20px;
                     }
                 }
                 .link-text {
                     font-size: 16px;
                     line-height: 26px;
                     text-decoration: underline;
+                    @include mobile {
+                        font-size: 14px;
+                        line-height: 22px;
+                    }
                     &:after {
                         display: inline-block;
                         content: '';
@@ -1556,25 +998,7 @@ br.pc {
                         background-size: 16px 16px;
                         vertical-align: -1px;
                     }
-                    @include mobile {
-                        font-size: 14px;
-                        line-height: 22px;
-                    }
                 }
-            }
-            &.other1 {
-                .tit {
-                    &:before {
-                        background-image:url('/lg5-common/images/icons/icon-img04-64.svg');
-                    }
-                }
-            }
-            &.other2 {
-                .tit {
-                    &:before {
-                        background-image:url('/lg5-common/images/icons/icon-img05-64.svg');
-                    }
-                }    
             }
         }
     }
@@ -1586,32 +1010,21 @@ br.pc {
 }
 // 내삶을바꾸는케솔
 .care-banner {
-    max-width: calc(1380px + 80px);
-    margin: 0 auto;
-    padding-right: 40px;
-    padding-left: 40px;
-    .tit-wrap {
-        margin-bottom: 48px;
-    }
     @include mobile {
         padding-left: 16px;
         padding-right: 16px;
-        .tit-wrap {
-            margin-bottom: 40px;
-        }
     }
-    ul {
-        margin: 0 -20px;
-        font-size: 0;
-        @include mobile {
-            margin: 0;
+    .care-banner-list{
+        display:flex;
+        @media screen and (max-width: 1024px){
+            flex-wrap:wrap;
         }
         li {
-            display: inline-block;
-            width: 33.33%;
+            flex:1;
             padding: 0 20px;
             vertical-align: top;
-            @include mobile {
+            @media screen and (max-width: 1024px){
+                flex:none;
                 width: 100%;
                 padding: 0;
                 margin-top: 40px;
@@ -1622,15 +1035,23 @@ br.pc {
             .inner {
                 position: relative;
                 padding-left: 88px;
+                min-height:64px;
+                @include mobile {
+                    padding-left: 80px;
+                }
+                .thumb{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 64px;
+                    height: 64px;
+                }
                 .tit {
                     margin-bottom: 8px;
                     font-weight: 700;
                     font-size: 18px;
                     line-height: 28px;
-                }
-                @include mobile {
-                    padding-left: 80px;
-                    .tit {
+                    @include mobile {
                         margin-bottom: 4px;
                         font-size: 14px;
                         line-height: 22px;
@@ -1638,33 +1059,9 @@ br.pc {
                 }
                 .desc {
                     @include font-medium;
-                }
-                &:before {
-                    display: inline-block;
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 64px;
-                    height: 64px;
+                    word-break:keep-all;
                 }
             }
-            &.banner1 {
-                .inner:before {
-                    background:url('/lg5-common/images/icons/icon-img06-64.svg') center no-repeat;
-                }
-            }
-            &.banner2 {
-                .inner:before {
-                    background:url('/lg5-common/images/icons/icon-img07-64.svg') center no-repeat;
-                }
-            }
-            &.banner3 {
-                .inner:before {
-                    background:url('/lg5-common/images/icons/icon-img08-64.svg') center no-repeat;
-                }
-            }
-
         }
     }
     .mob-only {

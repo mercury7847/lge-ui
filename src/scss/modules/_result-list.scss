@@ -135,6 +135,7 @@
                 }
             }
         }
+        // -S- BTOCSITE-16 검색 결과 구획 정리
         .result-info {
             display: flex;
             flex: 1;
@@ -143,6 +144,7 @@
             .info-text {
                 display: flex;
                 flex-direction: column;
+                width:100%;
                 //align-items: start;
                 //flex: 1;
                 padding-top: 12px;
@@ -163,35 +165,39 @@
             }
             .spec-info {
                 font-size: 0;
-                li {
-                    @include font-x-small;
-                    span {
-                        color: $color-gray-1;
-                    }
-                }
-                @include pc {
-                    max-width: 569px;
-                    margin-top: 8px;
-                    padding-top: 4px;
-                    border-top: 1px solid $color-border;
-                    li {
-                        display: inline-block;
-                        margin-right: 16px;
-                        &:last-child {
-                            margin-right: 0;
-                        }
-                        span {
-                            margin-right: 4px;
-                        }
-                    }
-                }
+                // max-width: 569px;
+                margin-top: 8px;
+                padding-top: 4px;
+                border-top: 1px solid $color-border;
+
                 @include mobile {
                     margin: 12px 0 0 -126px;
                     padding: 8px 12px;
                     border-radius: 8px;
                     background-color: $color-bg;
+                    border-top: 0;
+                }
+
+                li {
+                    display: inline-block;
+                    margin-right: 16px;
+                    @include font-x-small;
+                    &.rentalModel {
+                        display:none;
+                        @include mobile {
+                            display:block;
+                        }
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
                     span {
-                        margin-right: 8px;
+                        color: $color-gray-1;
+                        margin-right: 4px;
+
+                        @include mobile {
+                            margin-right: 8px;
+                        }
                     }
                 }
             }
@@ -212,15 +218,31 @@
                         background-color: $color-border;
                         content: '';
                     }
+
+                    &.pc-only { 
+                        &:empty:before {
+                            display:none;
+                        }
+                    }
+                    &.mo-only { display:none; }
                 }
                 @include mobile {
                     display: block;
                     width: 100%;
-                    margin-top: 12px;
-                    padding-top: 12px;
-                    border-top: 1px solid $color-border;
+                    margin-top: 6px;
+                    padding-top: 6px;
+                    // border-top: 1px solid $color-border;
                     text-align: left;
+                    &.mo-only { 
+                        display:block;
+                        &:empty {
+                            display:none;
+                        }
+                    }
+                    &.pc-only { display:none; }
                 }
+
+
                 &.type2 {
                     align-items: center;
                     margin-top: 0;  
@@ -233,7 +255,7 @@
                     &.rental {
                         @include mobile {
                             display: flex;
-                            justify-content: space-between;
+                            justify-content: flex-end;
                         }
                     }
                     &.sales {
@@ -261,13 +283,15 @@
                         }
                     }
                 }
-            }
-            .price-info + .price-info {
-                margin-top: 12px;
-                @include mobile {
-                    margin-top: 5px;
+
+                a + a .price-info{
+                    margin-top: 12px;
+                    @include mobile {
+                        margin-top: 5px;
+                    }
                 }
             }
+
             .btn-area {
                 .btn + .btn {
                     margin-left: 4px;
@@ -275,6 +299,7 @@
             }
             
         }
+        // -E- BTOCSITE-16 검색 결과 구획 정리
         .item-type2 {
             .info-price {
                 display: block;
@@ -283,6 +308,9 @@
         
         .flag-wrap {
             margin-bottom: 2px;
+            .flag {
+                display:inline;    
+            }
         }
         .result-tit {
             margin-bottom: 1px;
@@ -337,11 +365,6 @@
                         min-height: 83px;
                     }
                 }
-            }
-        }
-        @include pc {
-            .sku {
-                margin-right: 8px;
             }
         }
         .info-btm {
@@ -482,12 +505,34 @@
             }
         }
         
+        // -S- BTOCSITE-16 검색 결과 구획 정리
         .sku {
             display: inline-block;
             font-weight: 500;
-            @include font-small;
             vertical-align: top;
+            margin-right: 6px;
+
+            @include font-small;
+
+            .search-word {
+                color:#000;
+            }
         }
+
+        .result-detail {
+            .rentalModel {
+                display: inline-block;
+                font-weight: 500;
+                margin-right:6px;
+                @include font-small;
+                vertical-align: top;
+    
+                @include mobile {
+                    display:none;
+                }
+            }
+        }
+        // -E- BTOCSITE-16 검색 결과 구획 정리
         .hashtag-wrap + .careflag  {
             @include mobile {
                 display: block;
@@ -510,6 +555,7 @@
             }
         }
 
+        // -S- BTOCSITE-16 검색 결과 구획 정리
         .review-info {
             display: inline-block;
             margin-right: 12px;
@@ -521,7 +567,7 @@
             }
             @include mobile {
                 margin-right: 0;
-                margin-left: 6px;
+                margin-left: 0;
             }
             .star,
             .average-rating,
@@ -539,7 +585,9 @@
                     background-image: url("/lg5-common/images/icons/icon-star-on-20.svg");
                 }
             }
+
         }
+        // -E- BTOCSITE-16 검색 결과 구획 정리
         
         .shop-info {
             .desc {
@@ -592,27 +640,36 @@
                 }
             }
         }
+        // -S- BTOCSITE-16 검색 결과 구획 정리
         .price-info {
             white-space: nowrap;
             .tit {
-                //margin-bottom: 4px;
-                @include font-x-small;
-                color: $color-default;
+                display:inline-block;
+                vertical-align: middle;
+                @include font(16px,26px);
+                color: #666666;
+                font-weight: $font-weight-bold;
+                padding-right:5px;
                 @include mobile {
-                    font-size: 13px;
+                    font-size: 14px;
                     line-height: 22px;
 
                 }
             }
             .price {
                 display: inline-block;
-                vertical-align: bottom;
+                vertical-align: middle;
                 @include font(16px,26px);
                 color: $color-default;
                 font-weight: $font-weight-bold;
                 @include mobile {
                     @include font(14px,22px);
                 }
+
+                @media screen and (max-width:320px) {
+                    @include font(12px,22px);
+                }
+
             }
             .original {
                 margin-left: 8px;
@@ -630,8 +687,16 @@
                         @include font(11px,19px);
                     }
                 }
+
+                @media screen and (max-width:320px) {
+                    .price {
+                        @include font(10px,19px);
+                    }
+                }
+                
             }
         }
+        // -E- BTOCSITE-16 검색 결과 구획 정리
     }
 
     &.product-list {

@@ -105,6 +105,103 @@
             @include mobile {
                 margin:0 -16px;
             }
+            .latter-btnWarp {
+                position: relative;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                @media screen and (max-width:1023px) {
+                    flex-direction: column;
+                }
+                li {
+                    border-radius: 8px;
+                    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.14);
+                    width: 50%;
+                    margin: 0px 12px;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    a {
+                        position: relative;
+                        display: flex;
+                        padding: 20px 20px 20px 40px;
+                        height: 100%;
+                        .latter-btn-text {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            align-content: center;
+                            i {
+                                margin-right: 30px;
+                                img {
+                                    @include mobile {
+                                        max-width: 64px;
+                                    }
+                                }
+                            }
+                            p {
+                                font-size: 22px;
+                                line-height: 32px;
+                                padding-right: 25px;
+                                span {
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                        &::after {
+                            content: '';
+                            width: 29px;
+                            height: 27px;
+                            background-image: url("/lg5-common/images/icons/care/icon_arrow.png");
+                            background-position: 0 0;
+                            background-repeat: no-repeat;
+                            position: absolute;
+                            top: 50%;
+                            right: 20px;
+                            margin-top: -14px;
+                        }
+                    }
+                    @media screen and (max-width:1023px) {
+                        width: 100%;
+                        margin-left: 0;
+                        margin-right: 0;
+                        margin-bottom: 25px;
+                    }
+                }
+                
+                @include mobile {
+                    flex-direction: column;
+                    li {
+                        width: 100%;
+                        margin: 0 0 25px 0;
+                        a {
+                            padding : 10px 12px;
+                            .latter-btn-text {
+                                i {
+                                    margin-right: 10px;
+                                    img {}
+                                }
+                                p {
+                                    font-size: 14px;
+                                    line-height: 22px;
+                                }
+                            }
+                            &::after {
+                                width: 32px;
+                                height: 32px;
+                                background-image: url("/lg5-common/images/icons/care/icon_arrow.png");
+                                background-position: center;
+                                top: 50%;
+                                right: 12px;
+                                margin-top: -16px;
+                            }
+                        }
+                    }
+                }
+            }
             // contents
             .section-inner {
                 .inner-box {
@@ -372,6 +469,10 @@
 
     // 케어솔루션 계약현황
     @import "ACCF7025";
+
+    // BTOCSITE-3407  레터 및 연차별 혜택 메뉴(페이지)생성
+    // 케어솔루션 레터
+    @import "ACCF7025_1";
 
     // 방문 알리미
     @import "ACCF7030";
@@ -1034,7 +1135,27 @@
     }
 }
 
+// BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
+.popup-wrap {
+    .pop-conts {
+        @include mobile {
+            height:calc(100vh - 122px);
+            max-height:calc(100vh - 122px);
+            padding-bottom: calc(env(safe-area-inset-bottom) + 174px);
+            padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
+        }
+    }
+}
 
+.pop-footer {
+    @include mobile {
+        position:fixed;
+        width:100%;
+        bottom: 0;
+        bottom: env(safe-area-inset-bottom);
+        bottom: constant(safe-area-inset-bottom);
+    }
+}
 
 /* 20210624 납부내역 : 팝업*/
 #popup-paymentHistory {
@@ -1166,7 +1287,7 @@
     .pop-conts{
         max-height: 560px;
         @include mobile{
-            max-height: calc(100% - 122px);
+            max-height: calc(100vh - 122px);
         }
     }
     .pop-footer{
@@ -1252,6 +1373,38 @@
         background: #f4f4f4;
         cursor: default;
     }
+    // -S- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
+    .info-msg { 
+        
+        border-top:1px solid #ddd; 
+        margin-top:48px;
+        padding-top:13px;
+        li {
+            position:relative;
+            font-size:14px;
+            &::before {
+                content : '';
+                position:absolute;
+                width: 3px; height:3px;
+                left:0; top:50%; transform: translateY(-50%);
+                background:#000;
+            }
+            line-height:19px; padding-left:11px; margin:3px 0;
+        }
+       
+        @include mobile{
+            margin-top:40px;
+            padding-top:4px;
+            li {
+                font-size:13px;
+                &::before {
+                    width: 2px; height:2px;
+                }
+                line-height:20px; padding-left:12px; margin:8px 0;
+            }
+        }
+    }
+    // -E- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
 } 
 
 #registMyProductPopup .common-pop .form-wrap .forms .tit .app-exec{
@@ -1411,7 +1564,7 @@
     display: block;
     position: relative;
     height: 196px;
-    margin-top: 64px;
+    margin-top: 45px;
     padding: 42px 0 24px 213px;
     border-radius: 8px;
     background-color: $color-bg;
@@ -1502,3 +1655,204 @@
     }
 }
 // BTOCSITE-5938-17 e
+
+/* BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차) */
+.popup-package-model {
+	width: 678px;
+	min-height: auto;
+	max-height: 696px;
+	@include mobile {
+		width: 100%;
+		height: auto;
+		max-height: 100vh;
+	}
+	.pop-header {
+		padding: 28px 0 15px;
+		@include mobile {
+			padding: 28px 0 10px;
+		}
+    }
+    .pop-conts {
+        padding: 24px 40px 20px;
+        max-height: 479px;
+        @include mobile {
+            height: calc(100vh - 120px);
+            max-height: calc(100vh - 120px);
+            padding: 20px 16px 54px;
+			padding-bottom: calc(env(safe-area-inset-bottom) + 174px);
+			padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
+			
+        }
+        .desc {
+            padding-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.63;
+            @include mobile {
+                font-size: 14px;
+                line-height: 1.57;
+                padding-bottom: 20px;
+            }
+        }
+        .model-list {
+            height: auto;
+            li {
+                margin-top: 13px;
+                &:first-child {
+                    margin-top: 0;
+                }
+                @include mobile {
+                    margin-top: 14px;
+                }
+                .rdo-wrap {
+                    display: block;
+                    &.btn-type2 div.item {
+                        display: flex;
+                        width: 100% !important;
+                        padding: 11px 50px;  
+                        border-radius: 8px;                  
+                        border-width:0;
+                        position: relative;
+                        &:before {
+                            position: absolute;
+                            top:0;
+                            left:0;
+                            right:0;
+                            bottom:0;
+                            content:"";
+                            display: block;
+                            border:1px solid #000;
+                            border-radius: 8px;  
+                        }
+                        @include mobile {
+                            padding: 15px 17px;
+                        }
+                        .thumb {
+                            width: 100px;
+                            height: 100px;
+                            @include mobile {
+                                flex-shrink: 0;
+                            }
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                        .text-wrap {
+                            margin-left: 32px;
+                            @include mobile {
+                                margin-left: 16px;
+                            }
+                            > p {
+                                font-size: 14px;
+                                line-height: 1.71;
+                                text-align: left;
+                                @include mobile {
+                                    line-height: 1.57;
+                                }
+                                &.model-name {
+                                    margin: 22px 0 10px;
+                                    font-size: 16px;
+                                    line-height: 1.63;
+                                    font-weight: 700;
+                                    @include mobile {
+                                        font-size: 15px;
+                                        line-height: 1.53;
+                                        margin: 12px 0 7px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.btn-type2 div.item.active {
+                        color: #000;
+                        &:before {
+                            border: 2px solid #da0f47; 
+                        }
+                    }
+                }
+                &:hover {
+                    .rdo-wrap {
+                        &.btn-type2 div.item {
+                            &:before {
+                                border: 2px solid #da0f47; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .pop-footer {
+        padding: 20px 48px 50px;
+        @include mobile {
+            padding: 0;    
+        }
+        .btn {
+            min-width: 140px;
+            @include mobile {
+                padding: 15px 0;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+        }
+    }
+    @include mobile {
+        .btn-close {
+            width: 26px;
+            height: 26px;
+            &::before {
+                width: 26px;
+                height: 26px;
+                background-size: 26px;
+            }
+        }
+    }
+}
+
+// BTOCSITE-8035 [비회원] 주문 취소신청 생년월일 UI 수정 - (모바일)
+#popup-cancel, #popup-takeback {
+    .form-wrap{
+        .forms {
+            .conts {
+                .date-select-box {
+                    .cell{
+                        @include mobile{
+                            display: inline-block;
+                            width: 47%;
+                            &:nth-child(1){
+                                width: 100%;
+                                margin-bottom:10px;
+                                .text{
+                                    padding-right: 8px;
+                                }
+                            }
+                        }
+                        .text {
+                            @include mobile{
+                                padding-right : 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //BTOCSITE-8035 최하단 텍스트 잘림으로 인한 하단 패딩값 추가 211110 - S
+    .bullet-list.top-border {
+        padding-bottom:42px;
+    }
+    //BTOCSITE-8035 최하단 텍스트 잘림으로 인한 하단 패딩값 추가 211110 - E
+}
+
+
+//출장예약 확인 팝업, 일정변경 팝업, 보유제품 직접 등록팝업 - 높이가 낮은 해상도 일 경우 버튼 잘림 대응
+@media screen and (min-width: 768px) and (max-height: 768px)  {
+    #event-modal.popup-wrap .pop-conts.mypage,
+    #registMyProductPopup.popup-wrap .pop-conts {max-height: calc(100vh - 208px);}
+
+    #registMyProductPopup.popup-wrap .pop-conts {min-height:auto;}
+
+    #event-modal.popup-wrap .pop-conts.mypage ~ .pop-footer,
+    #registMyProductPopup.popup-wrap .pop-footer {padding:32px}
+}
+

@@ -10,6 +10,28 @@ $(function () {
     var isMobileScreen = function() {
         return vcui.detect.isMobileDevice || window.innerWidth < 768
     }
+
+    //BTOCSITE-7335
+    function setVideoCurrentSrc(type){
+        var $scene = $('.scene');
+        var $visual = $scene.find('.scene-visual');
+
+        if( type != "" && type != "undefined" && type != undefined) {
+            $visual.each(function(idx){
+                var $video = $(this).find('video');
+
+                if( $video.attr('src') != $video.data(type + '-src') ) {
+                    $video.attr('src', $video.data(type + '-src'))
+                }
+    
+                if( $video.attr('poster') != $video.data(type + '-poster') ) {
+                    $video.attr('poster', $video.data(type + '-poster'))
+                }
+    
+                return;
+            });
+        }
+    }
     
     var $context = !!$('[data-hash="home"]').length ? $('[data-hash="home"]') : $(document);
 
@@ -18,7 +40,8 @@ $(function () {
         
         $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
         
-        $('body').addClass('ignore-overflow-hidden');
+        // BTOCSITE-5938-285 메인 검색창 스크롤 밀림 현상 수정
+        // $('body').addClass('ignore-overflow-hidden');
 
         $context.find('.ui_carousel_slider_banner1,.ui_carousel_slider_banner2').find('.flow-bar').css({
             'transition': 'all 0.5s ease-out'
@@ -151,54 +174,24 @@ $(function () {
             }            
         });
 
-        // BTOCSITE-2193 s
-        // $window.on('breakpointchange', function(e){
+        
 
-        //     var data = window.breakpoint;
-        //     var isRecom = $context.find('.recom-list-slide').data('ui_carousel');
-        //     var isBenefit = $context.find('.benefit-list-slide').data('ui_carousel');
-
-        //     if(data.name == 'mobile'){
-
-        //         if(!isRecom){
-        //             $context.find('.recom-list-slide').vcCarousel({                        
-        //                 infinite: true,
-        //                 slidesToShow: 1,
-        //                 slidesToScroll: 1,
-        //                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-        //                 speed: 150,
-        //                 touchThreshold: 100
-        //             });
-        //         }
-
-        //         if(!isBenefit){
-        //             $context.find('.benefit-list-slide').vcCarousel({
-        //                 infinite: true,
-        //                 slidesToShow: 1,
-        //                 slidesToScroll: 1,
-        //                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-        //                 speed: 150,
-        //                 touchThreshold: 100                            
-        //             });
-        //         }
-
-
-        //     }else if(data.name == 'pc'){
-
-        //         $context.find('.recom-list-slide').find('.ui_carousel_dots').hide();
-        //         $context.find('.benefit-list-slide').find('.ui_carousel_dots').hide();
-        //         if(isRecom){
-        //             $context.find('.recom-list-slide').vcCarousel('destroy');
-        //         }
-        //         if(isBenefit){
-        //             $context.find('.benefit-list-slide').vcCarousel('destroy');
-        //         }
-        //     }
-
-        // });   
+        
         $window.on('breakpointchange', function(e){
             var data = window.breakpoint;
+            
+            if(data.name == 'mobile'){
+                sliderSet();
+                setVideoCurrentSrc('m') //BTOCSITE-7335
+            }else if(data.name == 'pc'){
+                sliderSet()
+                setVideoCurrentSrc('pc') //BTOCSITE-7335
+            }           
+            
 
+        });   
+
+        function sliderSet() {
             var recomSlider01 = $('.recom-list-slide01');
             var recomSlider02 = $('.recom-list-slide02');
             var recomSlider03 = $('.recom-list-slide03');
@@ -208,76 +201,7 @@ $(function () {
             var recomSlider03Num = recomSlider03.find('.slide-item').length;
             var infoSliderNum = $('.info-area').find('.slide-item').length;
 
-            if(recomSlider01Num > 1){
-                recomSlider(recomSlider01);
-            }
-            if(recomSlider02Num > 1){
-                recomSlider(recomSlider02);
-            }
-            if(recomSlider03Num > 1){
-                recomSlider(recomSlider03);
-            }
-
-            $('.membership-type-slide').slick({
-                arrows: false,
-                dots: false,
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                infinite:false,
-                variableWidth:false,
-                outerEdgeLimit: false,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            dots: false,
-                            arrows:false,
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            infinite:false,
-                            variableWidth:true,
-                            outerEdgeLimit: true
-                        }
-                    }
-                ]
-            });
-            if(infoSliderNum == 0) {
-                $('.info-section').hide();
-            } else if(infoSliderNum == 1) {
-                $('.info-area-wrap').addClass('info-solo');
-            } else if(infoSliderNum > 1) {
-                $('.info-area').slick({
-                    arrows: true,
-                    dots: false,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite:true,
-                    vertical: true,
-                    autoplay: true,
-                    autoplaySpeed: 3000,
-                    pauseOnHover: true,
-                    pauseOnFocus: true
-                });
-            } 
-
-            
-            $('.btn-info-play').on('click', function() {
-                if($(this).hasClass('pause')){
-                    $(this).removeClass('pause');
-                    $('.info-area').slick('slickPause')
-                    $('.btn-info-play span').text('재생');
-                } else {
-                    $(this).addClass('pause');
-                    $('.info-area').slick('slickPlay');
-                    $('.btn-info-play span').text('멈춤');
-                }
-            });
-
-        });   
-
-        function recomSlider(slider) {
-            var slider = slider;
-            slider.slick({
+            var recomOpt = {
                 arrows: true,
                 dots: true,
                 slidesToShow: 1,
@@ -299,7 +223,86 @@ $(function () {
                         }
                     }
                 ]
-            });
+            }
+            var memberOpt = {
+                arrows: false,
+                dots: false,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite:false,
+                variableWidth:false,
+                outerEdgeLimit: false,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            dots: false,
+                            arrows:false,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            infinite:false,
+                            variableWidth:true,
+                            outerEdgeLimit: true
+                        }
+                    }
+                ]
+            }
+            var infoOpt = {
+                arrows: true,
+                    dots: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite:true,
+                    vertical: true,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    pauseOnHover: true,
+                    pauseOnFocus: true
+            }
+
+            if(recomSlider01.hasClass('slick-slider')){
+                recomSlider01.not('.slick-initialized').slick(recomOpt);
+            } else {
+                if(recomSlider01Num > 1){
+                    recomSlider(recomSlider01,recomOpt);
+                }
+            }
+            if(recomSlider02.hasClass('slick-slider')){
+                recomSlider02.not('.slick-initialized').slick(recomOpt);
+            } else {
+                if(recomSlider02Num > 1){
+                    recomSlider(recomSlider02,recomOpt);
+                }
+            }
+            if(recomSlider03.hasClass('slick-slider')){
+                recomSlider03.not('.slick-initialized').slick(recomOpt);
+            } else {
+                if(recomSlider03Num > 1){
+                    recomSlider(recomSlider03,recomOpt);
+                }
+            }
+            if($('.info-area').hasClass('slick-slider')){
+                $('.info-area').not('.slick-initialized').slick(infoOpt);
+            } else {
+                if(infoSliderNum == 0) {
+                    $('.info-section').hide();
+                } else if(infoSliderNum == 1) {
+                    $('.info-area-wrap').addClass('info-solo');
+                } else if(infoSliderNum > 1) {
+                    $('.info-area').slick(infoOpt);
+                } 
+            }
+            if($('.membership-type-slide').hasClass('slick-slider')){
+                $('.membership-type-slide').not('.slick-initialized').slick(memberOpt);
+            } else {
+                $('.membership-type-slide').slick(memberOpt);
+            }
+        }
+
+        function recomSlider(slider,recomOpt) {
+            var slider = slider;
+            var recomOpt = recomOpt;
+            slider.slick(recomOpt);
         }
 
         // BTOCSITE-2193 e                 
@@ -327,12 +330,32 @@ $(function () {
 
         }, observerOption)
 
-        $('.img.only-' + (isMobileScreen() ? "mobile" : "desktop") + ' > video').each(function() {
+        // $('.img.only-' + (isMobileScreen() ? "mobile" : "desktop") + ' > video').each(function() {
+        //     // 이미 생성된 비디오 요소 옵저브
+        //     this.muted = true
+        //     this.parentElement.classList.add('video')
+        //     sceneIO.observe(this)
+        // })
+
+        $('.img.scene-visual > video').each(function() {
             // 이미 생성된 비디오 요소 옵저브
             this.muted = true
             this.parentElement.classList.add('video')
             sceneIO.observe(this)
         })
+
+        // 재생/멈춤 클릭이벤트 위치 수정
+        $('.btn-info-play').on('click', function() {
+            if($(this).hasClass('pause')){
+                $(this).removeClass('pause');
+                $('.info-area').slick('slickPause')
+                $('.btn-info-play span').text('재생');
+            } else {
+                $(this).addClass('pause');
+                $('.info-area').slick('slickPlay');
+                $('.btn-info-play span').text('멈춤');
+            }
+        });
         
         if(isApplication){
             $('header').find('.header-bottom').addClass('app-btm');
@@ -429,3 +452,23 @@ $(function () {
         // E BTOCSITE-7225 앱 AR 버튼 노출 건
     });
 });
+//BTOCSITE-2193 s
+$(document).on('click', '.scene a, .section a', function(e){
+    var target = this.getAttribute('target');
+    if(target == "_blank"){
+        if(isApp()) {
+            e.preventDefault();
+            var appUrl = $(this).attr('href');
+            if (!(appUrl.match('https://'))) {
+                appUrl = 'https://'+window.LGEAPPHostName+appUrl;
+            } 
+            if(vcui.detect.isIOS){
+                var jsonString = JSON.stringify({'url': appUrl, 'command':'sendOutLink'});
+                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+            } else {
+                android.openLinkOut(appUrl);
+            }
+        } 
+    }
+})
+//BTOCSITE-2193 e

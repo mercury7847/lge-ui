@@ -123,6 +123,9 @@ var res = {
 				//BTOCSITE-1814 모바일 GNB 멤버십/이벤트 탭 추가 : KRP0039 신규작업분 추가
 				"KRP0039 Event/Exhibition Recommendation[KRP0039]" : ["/html/components/KRP0039.html","",""],
 				//BTOCSITE-7314 PDP > 프로모션 배너 구좌 추가 요청 (+CMS Admin) : KRP0042 신규작업분 추가
+				// BTOCSITE-6632 PDP 컨텐츠 개선
+				"KRP0040 PDP Product experience Installation [KRP0040]" : ["/html/components/KRP0040.html","",""],
+				"KRP0041 PDP  Product instructions [KRP0041]" : ["/html/components/KRP0041.html","",""],
 				"KRP0042 PDP promotion banner [KRP0042]" : ["/html/components/KRP0042.html","",""],
 				//BTOCSITE-6032 PDP에 Q&A게시판 생성 요청
 				"KRP0043 PDP/Q&A 게시판[KRP0043]" : ["/html/components/KRP0043.html","",""]
@@ -268,8 +271,10 @@ var res = {
 				"홈(서브메인)" : ["/html/STS/OBS5001.html","",""],
 				"팝업(NS)" : ["/html/STS/OBS5001_popup.html","",""],
 				"스탠바이미(리스트)" : ["/html/STS/SBMF1001.html","","검수완료"],
+				"스탠바이미(리스트 - 공지)" : ["/html/STS/SBMF1001_notice.html","",""],
 				"스탠바이미(리스트-게시글없음)" : ["/html/STS/SBMF1001_nodata.html","","검수완료"],
 				"스탠바이미(상세)" : ["/html/STS/SBMF1002.html","","검수완료"],
+				"스탠바이미(상세 - 공지)" : ["/html/STS/SBMF1002_notice.html","",""],
 				"스탠바이미(상세-댓글없음)" : ["/html/STS/SBMF1002_nodata.html","","검수완료"],
 				"스탠바이미(등록하기))" : ["/html/STS/SBMF1003.html","","검수완료"],
 				"스탠바이미(수정하기)" : ["/html/STS/SBMF1004.html","","검수완료"]
@@ -341,6 +346,7 @@ var res = {
 				"기획전" : {
 					// "리스트" : ["/html/BMC/OBS4001.html","","검수완료"],
 					"상세_기본타입" : ["/html/BMC/OBS4002.html","","검수완료"],
+					"LG전자 아카데미 스토어" : ["/html/BMC/MKT4018.html","","검수완료"],
 				},
 				"멤버십" : {
 					"멤버십 메인" : ["/html/BMC/ACC4001.html","","검수완료"],

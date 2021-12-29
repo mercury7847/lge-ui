@@ -310,9 +310,10 @@ h2.title {
                         }
                     }
                 }
-                // 210719 BTOCSITE-2346 - W821AAA463 추가 
-                &[data-model_code="W821AAA453"],
-                &[data-model_code="W821AAA463"] {
+                // 210719 BTOCSITE-2346 - W822AAA462 추가 
+                // 211102 BTOCSITE-6534 - 냉장고 모델명 업데이트 
+                &[data-model_code="W822AAA452"],
+                &[data-model_code="W822AAA462"] {
                     //노크온 매직스페이스
                     .model_door {
                         &[data-door-direction="LT"] {
@@ -335,8 +336,8 @@ h2.title {
                         }
                     }
                 }
-                &[data-model_code="W821AAA153"] {
-                    //매직 스페이스 210719 BTOCSITE-2346 W821AAA153 모델(얼음정수기 > 매직 스페이스) 추가
+                &[data-model_code="W822AAA152"] {
+                    //매직 스페이스 210719 BTOCSITE-2346 W822AAA152 모델(얼음정수기 > 매직 스페이스) 추가
                     .model_door {
                         &[data-door-direction="LT"] {
                             width: 49.1%;
@@ -365,7 +366,7 @@ h2.title {
                         }
                     }
                 }
-                &[data-model_code="M871AAA551"],
+                &[data-model_code="M872AAA551"],
                 &[data-model_code="M871AAA552"] {
                     //노크온 더블 매직스페이스
                     .model_door {
@@ -389,8 +390,10 @@ h2.title {
                         }
                     }
                 }
-                &[data-model_code="M870AAA451"],
-                &[data-model_code="M870AAA452"] {
+                &[data-model_code="M872AAA451"],
+                &[data-model_code="M870AAA452"],
+                &[data-model_code="M622AAA352"] {
+                    //BTOCSITE-9444 빌트인 타입 모델명 추가 (M622AAA352 - 211214)
                     //노크온 매직스페이스
                     .model_door {
                         &[data-door-direction="LT"] {
@@ -438,8 +441,8 @@ h2.title {
                     }
                 }
                 
-                &[data-model_code="M871AAA252"],
-                &[data-model_code="M871AAA151"],
+                &[data-model_code="M872AAA252"],
+                &[data-model_code="M872AAA151"],
                 &[data-model_code="M871AAA152"] {
                     //매직 스페이스 
                     .model_door {
@@ -471,7 +474,8 @@ h2.title {
                 }
 
                 // 210719 BTOCSITE-2346 start
-                &[data-model_code="M871AAA041"],
+                // 211214 BTOCSITE-9444 베이직 모델명 변경(M871AAA041 -> M872AAA041)
+                &[data-model_code="M872AAA041"],
                 &[data-model_code="M871AAA042"] {
                     //베이직
                     .model_door {
@@ -560,7 +564,8 @@ h2.title {
                 }
                 // 210903 BTOCSITE-4239 4도어 추가 - End
 
-                &[data-model_code="X320AA"],
+                // 211215 BTOCSITE-9627 컨버터블 > 냉장고 기본모델명 변경 (X320AA -> X321AA)
+                &[data-model_code="X321AA"],
                 &[data-model_code="Y320AA"],
                 &[data-model_code="Z320AA"] {
                     //컨버터블
@@ -1387,10 +1392,10 @@ h2.title {
                             .price_info {
                                 .product_list {
                                     position: relative;
-                                    padding-bottom: 30px;
+                                    padding-bottom: 15px; // BTOCSITE-9269
                                     @include mobile {
                                         //padding: 0 25px 30px 25px;
-                                        padding: 0 10px 30px 10px;
+                                        padding: 0 10px 10px 10px;
                                     }
                                     li {
                                         display: flex;
@@ -1402,8 +1407,11 @@ h2.title {
                                             font-size: 16px;
                                             color: #666666;
                                             font-weight: 500;
+                                            text-align:left; // BTOCSITE-9269  
+                                            flex:1; // BTOCSITE-9269  
                                             @include mobile {
                                                 font-size: 13px;
+                                                padding-right:3px;
                                             }
                                         }
                                         .product_price {
@@ -1416,14 +1424,18 @@ h2.title {
                                             em {}
                                         }
                                         &.sum {
-                                            position: absolute;
-                                            bottom: 0;
-                                            left: 0;
-                                            right: 0;
-                                            @include mobile {
-                                                left: 10px;
-                                                right: 10px;
-                                            }
+                                            /* BTOCSITE-9269 */
+                                            padding:0;
+                                            margin-top: 13px;
+                                            // position: absolute; 
+                                            // bottom: 0; 
+                                            // left: 0; 
+                                            // right: 0; 
+                                            // @include mobile { 
+                                            //     left: 10px; 
+                                            //     right: 10px; 
+                                            // } 
+                                            /* //BTOCSITE-9269 */
                                             .product_name {
                                                 color: #000000;
                                             }
@@ -1470,6 +1482,10 @@ h2.title {
                                         .product_name {
                                             margin-left:10px;
                                             align-self: center;
+                                            @include mobile{
+                                                margin-left:3px; // BTOCSITE-9269
+                                                flex:1;
+                                            }
                                         }
                                         .product_price {
                                             margin-left:auto; // display:flex 일때, 우측 정렬하기 위하여 사용
@@ -1512,7 +1528,7 @@ h2.title {
                                     // right: 7.5%;
                                     //bottom: 20px;
                                     // bottom: 10px;
-                                    margin-top: 15px;
+                                    // margin-top: 15px; //BTOCSITE-9269
                                     color: #000000;
                                     font-size: 14px;
                                     text-align: left;
@@ -1928,11 +1944,14 @@ h2.title {
             }
         }
         // BTOCSITE-6441 제품 모델 CSS 별도 처리 - 211012 추가
-        &[data-model-default-code="W821AAA453"],
-        &[data-model-default-code="W821AAA463"],
+        // BTOCSITE-6534 냉장고 제품 모델 업데이트 - 211102 추가
+        // BTOCSITE-9444 빌트인 타입 모델(M622AAA352) 업데이트 - 211214 추가
+        &[data-model-default-code="W822AAA452"],
+        &[data-model-default-code="W822AAA462"],
         &[data-model-default-code="M620AAA351"],
-        &[data-model-default-code="M870AAA451"],
-        &[data-model-default-code="M870AAA452"] {
+        &[data-model-default-code="M872AAA451"],
+        &[data-model-default-code="M870AAA452"],
+        &[data-model-default-code="M622AAA352"] {
             .mini_model_wrap {
                 background: url('/lg5-common/images/OBJ/experience/propose/propose_refrigerator.png') center center no-repeat;
                 background-size: 100% 100%;
@@ -1962,12 +1981,13 @@ h2.title {
                 }
             }
         }
-        // 210719 BTOCSITE-2346 W821AAA153(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 패널 위치 조정
-        // 211013 BTOCSITE-6441 W821AAA153 : 추천조합 패널 위치 조정
-        &[data-model-default-code="M871AAA151"],
-        &[data-model-default-code="M871AAA252"],
-        &[data-model-default-code="M871AAA041"],
-        &[data-model-default-code="W821AAA153"] {
+        // 210719 BTOCSITE-2346 W822AAA152(얼음정수기>매직스페이스), M871AAA041(베이직) 케이스 추가 : 추천조합 패널 위치 조정
+        // 211013 BTOCSITE-6441 W822AAA152 : 추천조합 패널 위치 조정
+        // 211214 BTOCSITE-9444 베이직 모델명 변경 (M871AAA041 -> M872AAA041)
+        &[data-model-default-code="M872AAA151"],
+        &[data-model-default-code="M872AAA252"],
+        &[data-model-default-code="M872AAA041"],
+        &[data-model-default-code="W822AAA152"] {
             .mini_model_wrap { 
                 .mini_model {
                     &:nth-child(1) {
@@ -2328,3 +2348,17 @@ h2.title {
     height:auto;
 }
 /* //BTOCSITE-2852 add */
+
+/* BTOCSITE-9269 */
+.err-msg.err-msg-pannel{
+    display:none;
+    margin-top: 10px;
+    margin-left: 27px;
+    @include mobile{
+        margin-top: 10px;
+        margin-left:0;
+        text-align: center !important;
+        margin-bottom: 10px; 
+    }
+}
+/* //BTOCSITE-9269 */

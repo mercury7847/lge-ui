@@ -24,6 +24,19 @@
                     '</div>'+
                 '</div>'+
                 '<div class="buttons">'+
+                    // BTOCSITE-5938-51 s
+                    // '{{#if memberInfoAddress}}'+
+                    //     '<a href="{{modHref}}" class="btn size border mod-link"><span>수정</span></a>'+
+                    // '{{#else}}' + 
+                    //     '<button type="button" class="btn size border edit-btn" data-edit-type="modify"><span>수정</span></button>'+
+                    // '{{/if}}'+
+                    // // '{{#if !defaultAddress}}<button type="button" class="btn size border edit-btn" data-edit-type="delete"><span>삭제</span></button>{{/if}}'+
+                    // '{{#if !defaultAddress}}'+
+                    //     '{{#if !memberInfoAddress}}'+
+                    //         '<button type="button" class="btn size border edit-btn" data-edit-type="delete"><span>삭제</span></button>'+
+                    //     '{{/if}}'+
+                    // '{{/if}}'+
+                    // BTOCSITE-5938-51 e
                     '<button type="button" class="btn size border edit-btn" data-edit-type="modify"><span>수정</span></button>'+
                     '{{#if !defaultAddress}}<button type="button" class="btn size border edit-btn" data-edit-type="delete"><span>삭제</span></button>{{/if}}'+
                 '</div>'+
@@ -52,12 +65,33 @@
             addressNickName:{
                 required: true,
                 errorMsg: "주소별칭을 입력해주세요.",
-                msgTarget: '.err-block'
+                msgTarget: '.err-block',
+                // BTOCSITE-5938-396 s
+                validate : function(value){
+                    if( value.replace(/\s|　/gi, '') == 0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+                // BTOCSITE-5938-396 e
             },
             receiverUser: {
                 required: true,
+                // BTOCSITE-5938-396
+                minLength: 1,
+                maxLength: 30,
                 errorMsg: "이름을 입력해주세요.",
-                msgTarget: '.err-block'
+                msgTarget: '.err-block',
+                // BTOCSITE-5938-396 s
+                validate : function(value){
+                    if( value.replace(/\s|　/gi, '') == 0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+                // BTOCSITE-5938-396 e
             },
             zipCode: {
                 required: true,
@@ -73,9 +107,19 @@
                 required: true,
                 errorMsg: "상세주소를 입력해주세요.",
                 // msgTarget: '.err-block'
+                // BTOCSITE-5938-396 s
+                validate : function(value){
+                    if( value.replace(/\s|　/gi, '') == 0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+                // BTOCSITE-5938-396 e
             },
             phoneNumber: {
                 required: true,
+                minLength:10,
                 errorMsg: "휴대폰번호를 입력해주세요.",
                 msgTarget: '.err-block'
             },
@@ -88,7 +132,8 @@
         $('#address-regist-form').find('input[name="detailAddress"]').attr('maxlength', '50'); // 상세주소 글자수 제한 50
 
         addressInfoValidation = new vcui.ui.Validation('#address-regist-form',{register:register});
-        addressInfoValidation.on()
+        // BTOCSITE-5938-396
+        //addressInfoValidation.on()
 
         addressInfoValidation.on('errors', function(e,data){
 
@@ -163,6 +208,21 @@
 
             sendaddressInfo();
         })
+
+
+        // BTOCSITE-5938-438
+        $(document).on('input', 'input[type="text"]', function(){
+            console.log(1);
+            var $this = $(this),
+                value = $this.val(),
+                regex = /(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|\ud83c[\ude32-\ude3a]|\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])/g;
+                if (regex.test(value)) {
+                    $this.val(value.replace(regex,""));
+                    return;
+                }
+        });
+
+        
     }
 
     function deleteAddressData(id){
@@ -220,7 +280,8 @@
 
     function loadaddressList(type, formdata){
         lgkorUI.showLoading();
-
+        // BTOCSITE-5938-51
+        //var modHref = $('.myp-sub li .mod-link').attr('href');
         var sendata = {
             type: type,
             addressID: formdata ? formdata.addressID : "",
@@ -233,6 +294,9 @@
             phoneNumber: formdata ? formdata.phoneNumber : "",
             telephonenumber: formdata ? (formdata.telephoneNumber ? formdata.telephoneNumber : "") : "",
             city: formdata ? formdata.city : ""
+            // BTOCSITE-5938-51
+            // memberInfoAddress: formdata ? formdata.memberInfoAddress : "",
+            // modHref: formdata ? formdata.modHref : ""
         }
 
         lgkorUI.requestAjaxData(DELIVERY_ADDRESS_LIST, sendata, function(result){
@@ -249,6 +313,10 @@
                         addressListData[idx]["addressMasking"] = addressListData[idx].userAddress + addressListData[idx].detailAddress;
                         addressListData[idx]["phoneNumberMasking"] = addressListData[idx].phoneNumber;
                         if(!addressListData[idx].addressNickName) addressListData[idx].addressNickName = "집";
+                        // BTOCSITE-5938-51 s
+                        // addressListData[idx]["memberInfoAddress"] = addressListData[idx].member_info_address;
+                        // addressListData[idx]["modHref"] = modHref;
+                         // BTOCSITE-5938-51 e
                         $('.addressListWrap').append(vcui.template(addressListTemplate, addressListData[idx]));
 
                         if(addressListData[idx].defaultAddress) isDefault = true;
@@ -262,7 +330,33 @@
         });
     }
 
+    /* BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
+    $(function () {
+        var isAndroid = vcui.detect.isAndroid;
+        var phNum = $('#address-regist-form .forms input[name=detailAddress], #address-regist-form .forms input#ipt4, #address-regist-form .forms input#ipt5');
+        
+        if(isAndroid) {
+            phNum.on('focusin', function(){
+                $('html').css('overflow', 'visible');
+                $('body').css('overflow', 'visible');
+                $('.wrap').css('display', 'none');
+                $('.ui_modal_dim').css('display', 'none');
+                $('.ui_modal_wrap').css('position', 'relative');
+                $('.pop-conts').scrollTop( $(document).height() );
+            });
+            phNum.on('focusout', function(){
+                $('html').css('overflow', 'hidden');
+                $('body').css('overflow', 'hidden');
+                $('.wrap').css('display', 'block');
+                $('.ui_modal_dim').css('display', 'block');
+                $('.ui_modal_wrap').css('position', 'fixed');
+            });
+        }
+    });
+    /* //BTOCSITE-5938-140 [모니터링] 안드로이드 키패드 관련 오류 */
+
     $(window).load(function(){
         init();
+
     })
 })();

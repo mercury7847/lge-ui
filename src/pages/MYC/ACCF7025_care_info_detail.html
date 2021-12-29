@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/careSolutionLatter"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "케어솔루션 레터"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+            
+                
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        <!-- BTOCSITE-7449 렌탈/케어>방문알리미 메뉴명에 대한 용어변경 요청 // 방문 알리미 -> 방문일정 / 예약 -->
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문일정 / 예약" },
+                                { "on": "on", "page": "케어솔루션 레터" },
+                                { "on": "", "page": "연차별 혜택" }
+                            ]
+                        })
+                        <div class="lnb-contents latter-contents">
+                            <!-- 상단 배너 -->
+                            <div class="my-contract-info latter-topBanner">
+                                <p class="tit">오직 케어솔루션/케어십 고객님께만!</p>
+                                <span>유익한 정보도 확인해 보시고 베스트샵에서<br class="mob-only"> 사용 가능한 특별 쿠폰도 확인해 보세요.</span>
+                            </div>
+                            <!-- // 상단 배너 -->
+
+                            <!-- 탭 -->
+                            <div class="tabs-wrap new-type">
+                                <ul class="tabs">
+                                    <li><a href="#" class="cl_info_detail_bTn">정보<em class="blind">선택됨</em></a></li>
+                                    <li><a href="#" class="cl_coupon_detail_bTn">쿠폰</a></li>
+                                </ul>
+                            </div>
+                            <!-- //탭 -->
+
+                            <!-- 정보 컨텐츠 -->
+                            <div id="tab-info" class="tab-contents">
+
+                                <!-- info detail -->
+                                <div class="latter-detail">
+                                    <div class="latter-detailCont">
+                                        <div class="detail-cont">
+                                            <img src="/lg5-common/images/MYC/care/Component.jpg" alt="디테일 이미지">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // info detail -->
+
+                            </div>
+                            <!-- //정보 컨텐츠 -->
+                            
+                            <!-- 쿠폰 컨텐츠 -->
+                            <!--
+                                info, coupon에 해당하는 id값 div구조만 살리고 필요없는 돔은 삭제 
+
+                            <div id="tab-coupon" class="tab-contents" style="display:none;">
+                                44444<br>
+                                44444<br>
+                                44444<br>
+                                44444<br>
+                                44444<br>
+                                44444<br>
+                                44444<br>
+                            </div>
+                            -->
+                            <!-- //쿠폰 컨텐츠 -->
+
+                            <button type="button" class="btn latter-detail_btn"><span>목록</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+
+           
+        @@include('./common/footer.html')
+
+    </div>
+</body>
+</html>

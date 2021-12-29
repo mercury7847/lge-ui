@@ -477,7 +477,17 @@
                 }
 
                 // 주요 서비스 
-                self.main_service.el.slider.not(self.activeClass).slick(self.main_service.config);
+                self.main_service.el.slider.slick(self.main_service.config);
+                self.main_service.el.slider.off('DOMNodeInserted').on('DOMNodeInserted', function(e) {
+                    var element = e.target;
+
+                    if($(element).is('.slick-arrow')) {
+                        var index = $(element).hasClass('slick-prev') ? 0 : 1;
+                        // BTOCSITE-7261 뷰저블 쿼리셀렉터 이슈 해결 (CS)
+                        $(element).attr("id","beu_cst_sc_main_service_20211126_"+vcui.number.zeroPad(index+1,2));
+                    }
+                });
+
 
                 //수상목록
                 self.award.el.slider.not(self.activeClass).slick(self.award.config);
@@ -793,6 +803,7 @@
                 this.reservInquiry.init();
             }
         },
+        // BTOCSITE-7261 뷰저블 쿼리셀렉터 이슈 해결 (CS)
         getRegisterdProduct : {
             el : {
                 container :'.popular-find',
@@ -807,7 +818,7 @@
                 '{{#else}}' + 
                 '<div class="item-list" data-more="hidden">' +
                 '{{/if}}'+
-                    '<a href="/support/solutions-{{item.item_id}}?category={{item.parent_category}}&subCategory={{item.category}}">' + 
+                    '<a href="/support/solutions-{{item.item_id}}?category={{item.parent_category}}&subCategory={{item.category}}" id="beu_cst_sc_{{item.item_id}}">' + 
                         '<div class="item-category"><span class="category-thumb"><img src="{{item.icon_path}}" alt=""></span> {{item.cate_name}}</div>' + 
                         '<strong class="item-tit">{{item.item_title}}</strong>' + 
                         '<ul class="bullet-list">' + 

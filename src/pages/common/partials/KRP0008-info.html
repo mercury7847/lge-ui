@@ -225,7 +225,7 @@
                         </div>
                     </li>
                     <!-- //20210607 스펙선택 추가 -->
-                    <!-- BTOCSITE-5781 제품 PDP 페이지 개선요청건 -->
+                    <!-- BTOCSITE-9588 PDP > 혜택가 노출 및 배송정보 노출 원복 요청 (BTOCSITE-5781 제품 PDP 페이지 개선요청건 삭제) -->
                     <li class="lists member">
                         <div class="head">
                             <dl class="price-info total">
@@ -235,20 +235,43 @@
                                     <strong class="price">1,853,000원</strong>
                                 </dd>
                             </dl>
+                            <a href="#n" class="btn-toggle ui_accord_toggle"><span class="blind">내용 더보기</span></a>
                         </div>
                         <div class="ui_accord_content">
                             <ul>
                                 <li>
                                     <dl class="price-info discount">
-                                        <!-- BTOCSITE-7379 PDP > 버튼 UI 변경건 -->
-                                        <dt class="text">할인금액합계<a href="#" class="btn-link btn-discount-popup">자세히 보기</a></dt>
+                                        <dt class="text">회원할인</dt>
                                         <dd class="content"><span class="price">59,700원</span></dd>
                                     </dl>
                                 </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">즉시할인</dt>
+                                        <dd class="content"><span class="price">77,210원</span></dd>
+                                    </dl>
+                                </li>
+                                <!-- 20210729 BTOCSITE-3738 C타입 이어폰 할인판매 운영의 건 -->
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">특별할인</dt>
+                                        <dd class="content"><span class="price">77,210원</span></dd>
+                                    </dl>
+                                </li>
+                                <!-- 20210729 BTOCSITE-3738 C타입 이어폰 할인판매 운영의 건 -->
+                                <li>
+                                    <dl class="price-info total-discount">
+                                        <dt class="text">할인금액합계</dt>
+                                        <dd class="content"><span class="price">136,900원</span></dd>
+                                    </dl>
+                                </li>
                             </ul>
+                            <!-- 20210526 텍스트 문구 추가-->
+                            <p class="desc">할인적용가는 회원에게 적용되는 가격이며 로그인하여 주문시에 적용되는 혜택 가격입니다.</p>
+                            <!-- //20210526 텍스트 문구 추가-->
                         </div>
                     </li>
-                    <!-- //BTOCSITE-5781 제품 PDP 페이지 개선요청건 -->
+                    <!-- //BTOCSITE-9588 PDP > 혜택가 노출 및 배송정보 노출 원복 요청 (BTOCSITE-5781 제품 PDP 페이지 개선요청건 삭제) -->
                     <!-- 20210602 BTOCSITE-495 구매혜택 수정 -->
                     <li class="lists benefit">
                         <div class="head">
@@ -1187,8 +1210,29 @@
                     <img src="/kr/pdp-common/rental_banner_pc_20210818.png" class="pc" alt="Tip : 케어솔루션 신규 요금제 출시"> 
                     <img src="/kr/pdp-common/rental_banner_m_20210818.png" class="mobile" alt="Tip : 케어솔루션 신규 요금제 출시"> 
                     -->
-                    <img src="/lg5-common/images/dummy/rental_banner_pc_20210818.png" class="pc" alt="Tip : 케어솔루션 신규 요금제 출시"> 
-                    <img src="/lg5-common/images/dummy/rental_banner_m_20210818.png" class="mobile" alt="Tip : 케어솔루션 신규 요금제 출시"> 
+                    <!--<img src="/lg5-common/images/dummy/rental_banner_pc_20210818.png" class="pc" alt="Tip : 케어솔루션 신규 요금제 출시">
+                    <img src="/lg5-common/images/dummy/rental_banner_m_20210818.png" class="mobile" alt="Tip : 케어솔루션 신규 요금제 출시">-->
+
+                    <!--BTOCSITE-7447 Tip 박스-->
+                    <!--[caseA] : 계약기간 6년 & 방문주기 0개월인 노출 요금제-->
+                    <div class="banner-type">
+                        <strong class="banner-title">케어솔루션 신규 요금제 출시!</strong>
+                        <p class="banner-desc">오랫동안 합리적인 가격으로 사용하고 싶다면<br> "계약기간 6년" 선택하세요!</p>
+                        <p class="banner-desc">매니저 방문 없이 필터만 정기배송 받고 싶다면<br> “방문없음(자가관리)” 선택하세요!</p>
+                    </div>
+                    <!--[caseB] : 계약기간 7년 & 방문주기 0개월인 노출 요금제 || 계약기간 7년 & 계약기간 6년 & 방문주기 0개월인 노출 요금제 (7년 및 6년 요금제가 동시에 있다면 7년 우선으로 표기)-->
+                    <div class="banner-type">
+                        <strong class="banner-title">케어솔루션 신규 요금제 출시!</strong>
+                        <p class="banner-desc">오랫동안 합리적인 가격으로 사용하고 싶다면<br> “계약기간 7년” 선택하세요!</p>
+                        <p class="banner-desc">매니저 방문 없이 필터만 정기배송 받고 싶다면<br> “방문없음(자가관리)” 선택하세요!</p>
+                    </div>
+                    <!--[caseC] : 방문주기 0개월인 노출 요금제 (6년 및 7년 요금제 중 노출 요금제가 없을 경우)-->
+                    <div class="banner-type">
+                        <strong class="banner-title">케어솔루션 신규 요금제 출시!</strong>
+                        <p class="banner-desc">매니저 방문 없이 필터만 정기배송 받고 싶다면<br> “방문없음(자가관리)” 선택하세요!</p>
+                    </div>
+                    <!--//BTOCSITE-7447 Tip 박스-->
+
                 </div>
                 <!-- // 20210813 BTOCSITE-3499 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발 후속 수정  -->
                 <div class="care-sibling-option">

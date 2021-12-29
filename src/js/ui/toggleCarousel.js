@@ -18,7 +18,7 @@ vcui.define('ui/toggleCarousel', ['jquery', 'vcui', 'ui/carousel'], function ($,
         _bindEvents: function(){
             var self = this;
 
-            $(window).off("breakpointchange.togglecarousel").on("breakpointchange.togglecarousel", function(){
+            $(window).off("breakpointchange"+self.eventNS).on("breakpointchange"+self.eventNS, function(){
                 self._setting();
             })
         },
@@ -44,7 +44,7 @@ vcui.define('ui/toggleCarousel', ['jquery', 'vcui', 'ui/carousel'], function ($,
         },
         destroy: function () {
             var self = this;
-            $(window).off("breakpointchange.togglecarousel");
+            $(window).off("breakpointchange"+self.eventNS);
             if(self.$el) self.$el.vcCarousel('destroy');            
 
             self.supr();

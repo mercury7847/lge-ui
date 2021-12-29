@@ -28,7 +28,8 @@
                     accountFlag:{
                         required: true,
                         errorMsg: "구매처를 선택해주세요.",
-                        msgTarget: '.err-block'
+                        // BTOCSITE-5938-359
+                        msgTarget: '.err-block:eq(0)'
                     },
                     localName:{
                         required: false,
@@ -36,13 +37,15 @@
                     spotName:{
                         required: true,
                         errorMsg: "구매처를 선택해주세요.",
-                        msgTarget: '.err-block'
+                        // BTOCSITE-5938-359
+                        msgTarget: '.err-block:eq(0)'
                     },
                     barcodeNo:{
                         required: true,
                         pattern: /^[0-9]+$/,
                         errorMsg: "영수증번호를 입력해주세요.",
-                        msgTarget: '.err-block'
+                        // BTOCSITE-5938-359
+                        msgTarget: '.err-block:eq(1)'
                     }
                 };
                 vcui.require(['ui/validation'], function () {
@@ -158,6 +161,7 @@
                         if(result.validArray && result.validArray.length > 0) {
                             var item = result.validArray[0];
                             if(item.errmsg) {
+                                self.$inputReceipt.blur();
                                 lgkorUI.alert("", {title: item.errmsg});
                             }
                         }

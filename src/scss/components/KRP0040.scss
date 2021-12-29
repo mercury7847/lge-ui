@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+@import "../components-app";
+
+.KRP0040 {
+	.component-inner {
+		@include mobile {
+			padding:0 16px;
+		}
+	}
+	.title {
+		text-align:center;
+		@include mobile {
+			padding:0 16px;
+		}
+		* {
+			font-size:32px;
+			font-weight:700;
+			line-height:46px;
+			color:#000;
+			@include mobile {
+				font-size:24px;
+				line-height:35px;
+			}
+		}
+	}
+	.withstory-list-slide {
+		margin-top:32px;
+        margin-left: -12px;
+        margin-right: -12px;
+		@include mobile {
+			margin-top:19px;
+            margin-left: 0;
+            margin-right: 0;
+		}
+        .slick-list {
+            @include mobile{
+                margin-left: -16px;
+                margin-right: -16px;
+                padding-left: 12px;
+            }
+        }
+        .slide-item {
+            padding: 0 12px;
+            max-width: 33.4%;
+            float: left;
+            @include mobile{
+                width: 77.777vw;
+                max-width: 77.777vw;
+                padding: 0 4px;
+            }
+        }
+        .slide-box{
+            a {
+                display:block;
+                position: relative;
+                border-radius:8px;
+                overflow:hidden;
+                &:after {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    border-radius: 8px;
+                    background: url("/lg5-common/images/KRP0040/dimmed.svg") no-repeat 0 0;
+                    background-size: 100% 100%;
+                    content: '';
+                }
+                > img {
+                    width:100%;
+                }
+                .info-area {
+                    position:absolute;
+                    left:0;
+                    right:0;
+                    top:0;
+                    z-index: 1;
+                    padding:75.45% 32px 0 32px;
+                    color:#fff;
+                    @media screen and (max-width: 1300px){
+                        padding:73% 32px 0 32px;
+                    }
+                    @include tablet {
+                        padding:72% 20px 0 20px;
+                    }
+                    @include mobile {
+                        padding:72.06% 20px 0 20px;
+                    }
+                    .flag {
+                        height:24px;
+                        padding:0 8px;
+                        border:1px solid;
+                        border-radius:4px;
+                        border-color:#fff;
+                        color:inherit;
+                        font-weight:500;
+                        line-height:22px;
+                        @include mobile {
+                            font-size:11px;
+                            line-height:23px;
+                        }
+                    }
+                    .info-tit {
+                        padding-top:8px;
+                        font-weight:700;
+                        font-size:40px;
+                        line-height:48px;
+                        height: 104px;
+                        min-height: 104px;
+                        @include textEllipsisClamp(2);
+                        @media screen and (max-width: 1300px){
+                            font-size:30px;
+                            line-height:36px;
+                            height: 82px;
+                            min-height: 82px;
+                        }
+                        @include tablet {
+                            padding-top:6px;
+                            font-size:20px;
+                            line-height:26px;
+                            height: 60px;
+                            min-height: 60px;
+                        }
+                        @include mobile {
+                            padding-top:6px;
+                            font-size:24px;
+                            line-height:30px;
+                            height: 65px;
+                            min-height: 65px;
+                        }
+                    }
+                    .info-tag {
+                        display:block;
+                        width:100%;
+                        margin-top:28px;
+                        height: 24px;
+                        @include textClipClamp(1);
+                        @media screen and (max-width: 1300px){
+                            margin-top:2.5%;
+                        }
+                        @include mobile {
+                            margin-top:15px;
+                        }
+                        li {
+                            display:inline-block;
+                            font-size:16px;
+                            line-height:24px;
+                            font-weight: 400;
+                            text-decoration:underline;
+                            @include tablet {
+                                font-size:13px;
+                                line-height:18px;
+                            }
+                            @include mobile {
+                                font-size:14px;
+                                line-height:20px;
+                            }
+                            +li{
+                                padding-left: 8px;
+                            }
+                        }
+                    }
+                }
+            } 
+        }
+        .slick-prev{
+            left: -6px;
+        }
+        .slick-next {
+            right: -6px;
+        }
+        .slick-dots {
+            position: static;
+            bottom: auto;
+            left: auto;
+            width: 100%;
+            text-align: center;
+            font-size: 0;
+            padding-top: 16px;
+            li{
+                button {
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    border: 0;
+                    background: #e4e4e4;
+                    vertical-align: top;
+                    font-size: 0;
+                    overflow: hidden;
+                }
+                &.slick-active button {
+                    background:#000000;
+                }
+            }
+        }
+        &.unslick{
+            .slick-track{
+                width:100% !important;
+            }
+        }
+	}
+}

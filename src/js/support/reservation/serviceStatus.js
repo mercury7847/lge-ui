@@ -16,22 +16,43 @@
         '</li>';
     var engineerTmpl =
         '{{#each (item, index) in engineerList}}' +
-        '<div class="slide-conts ui_carousel_slide">' +
-            '<div class="engineer-box">' +
-                '{{# if (index == 0) { #}}' +
+
+        /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+        // BTOCSITE-7660 슬라이드 원본
+        // '<div class="slide-conts ui_carousel_slide">' +
+        //     '<div class="engineer-box">' +
+        //         '{{# if (index == 0) { #}}' +
+        //         '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
+        //         '{{# } else { #}}' +
+        //         '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
+        //         '{{# } #}}' +
+        //         '<label for="engineer{{index}}">' +
+        //             '<div class="img">' +
+        //                 '<img src="{{item.image}}" alt="" aria-hidden="true">' +
+        //             '</div>' +
+        //             '<p class="tit">{{item.engineerName}}</p>' +
+        //             '<p class="desc">{{item.centerName}}</p>' +
+        //         '</label>' +
+        //     '</div>' +  
+        // '</div>' +
+
+        '<li class="chk-wrap">' +
+            '{{# if (index == 0) { #}}' +
                 '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}" checked>' +
-                '{{# } else { #}}' +
+            '{{# } else { #}}' +
                 '<input type="radio" name="engineer" id="engineer{{index}}" data-engineer-name="{{item.engineerName}}" data-engineer-code="{{item.engineerCode}}" data-center-name="{{item.centerName}}" data-center-code="{{item.centerCode}}" data-image="{{item.image}}" data-resrv-seq="{{item.resrvSeq}}" value="{{index}}">' +
-                '{{# } #}}' +
-                '<label for="engineer{{index}}">' +
-                    '<div class="img">' +
-                        '<img src="{{item.image}}" alt="" aria-hidden="true">' +
-                    '</div>' +
-                    '<p class="tit">{{item.engineerName}}</p>' +
-                    '<p class="desc">{{item.centerName}}</p>' +
-                '</label>' +
-            '</div>' +  
-        '</div>' +
+            '{{# } #}}' +
+            '<label for="engineer{{index}}">' +
+                // '<div class="img">' +
+                //     '<img src="{{item.image}}" alt="" aria-hidden="true">' +
+                // '</div>' +
+                // '<p class="tit">{{item.engineerName}}</p>' +
+                // '<p class="desc">{{item.centerName}}</p>' +
+                '<span>{{item.engineerName}}</span>' +
+                '<span>{{item.centerName}}</span>' +
+            '</label>' +
+        '</li>' +
+        /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
         '{{/each}}';
     var detect = vcui.detect;
     
@@ -617,7 +638,12 @@
                             self.update(arr[0]);
                             if (arr.length > 1) {
                                 var html = vcui.template(engineerTmpl, data);
-                                self.el.slider.find('.slide-track').html(html);
+                                
+                                /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+                                // self.el.slider.find('.slide-track').html(html); //주영
+                                self.el.slider.find('.engineer-infoP').html(html);
+                                /* //BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
+
                                 self.el.stepEngineer.find('.btn').show();
                             } else {
                                 self.el.stepEngineer.find('.btn').hide();
@@ -645,7 +671,7 @@
             update: function(data) {
                 var self = this,
                     $stepEngineer = $('#stepEngineer'),
-                    $engineerBox = $stepEngineer.find('.engineer-info'),
+                    $engineerBox = $stepEngineer.find('.engineer-infoP'),
                     $resultBox = $stepEngineer.find('.engineer-desc'),
                     topicNm = $('#topic').val(),
                     subTopicNm = $('#subtopic').val(),
@@ -657,10 +683,12 @@
                 });                             
                 $engineerBox.find('.name').html(data.engineerName);
                 $engineerBox.find('.center').html(data.centerName);
-    
+                
+                /* BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
                 $resultBox.find('.date').html(vcui.date.format($('#date').val() + '' + $('#time').val() + '00', "yyyy.MM.dd hh:mm"));
                 $resultBox.find('.topic').html(topicNm + '&gt;' + subTopicNm);
                 $resultBox.find('.name').html(data.engineerName);
+                $resultBox.find('.store').html('(' + data.centerName + ')');
     
                 $('#engineerNm').val(data.engineerName);
                 $('#engineerCode').val(data.engineerCode);

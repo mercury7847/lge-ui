@@ -1,0 +1,25 @@
+<svg id="ic_step03" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-1,.cls-4{fill:none}.cls-4{stroke:#fff;stroke-miterlimit:10;stroke-width:2.5px}
+        </style>
+    </defs>
+    <path id="Rectangle" class="cls-1" d="M0 0h80v80H0z"/>
+    <g id="ic" transform="translate(13 14)">
+        <g id="Group_18" data-name="Group 18" transform="translate(25 26)">
+            <g id="ic-2" data-name="ic">
+                <path id="Subtraction_1" data-name="Subtraction 1" d="M-1270.711-591H-1299a4 4 0 0 1-4-4v-32h51v23.748a12.775 12.775 0 0 0-6-1.5A12.764 12.764 0 0 0-1270.75-592c0 .333.013.669.039 1z" transform="translate(1279 608)" style="stroke-linecap:round;stroke-linejoin:round;stroke:#fff;stroke-miterlimit:10;stroke-width:2.5px;fill:transparent"/>
+                <g id="Group_591" data-name="Group 591" transform="translate(2 2)">
+                    <path id="Path" d="m0 3.194 4.3 4L10.6 0" transform="translate(13.72 10.806)" style="stroke-linecap:round;stroke-linejoin:round;stroke:#fff;stroke-miterlimit:10;stroke-width:2.5px;fill:none"/>
+                    <g id="Oval" class="cls-4" transform="translate(5)">
+                        <circle cx="14" cy="14" r="14" style="stroke:none"/>
+                        <circle class="cls-1" cx="14" cy="14" r="12.75"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+        <g id="Group_590" data-name="Group 590" transform="translate(-.5)">
+            <path id="Rectangle-2" data-name="Rectangle" class="cls-4" d="M2.778 0c-1.483 0-2.1.987-.9 1.873l22.759 17.745a2.52 2.52 0 0 0 3 0l24.03-17.744A1.039 1.039 0 0 0 51.066 0z" transform="translate(.334 7.207)"/>
+        </g>
+    </g>
+</svg>

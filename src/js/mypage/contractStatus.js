@@ -1,10 +1,388 @@
 (function(){
+    //케어십 - 14개월 미만
+    var lb_careShip = '<div class="sects lb-pdlr lb-careShip">' +
+        '<div class="latter-benefits_detail">' +
+            '<div class="lb-cont">' +
+                '<div class="lb-cont_top">' +
+                    '<div class="lb-head_cont">' +
+                        '<h3>케이십 가입 기념 특별 혜택</h3>' +
+                        '<p class="lb-term">혜택 유효 기간 : <span>{{ contStartDate }}</span> ~ <span>{{ contEndDate }}</span></p>' +
+                    '</div>' +
+
+                    '<p class="lb-top_text">' +
+                        '고객님, 안녕하세요!<br>' +
+                        '고객님과 LG전자 케어십이 함께하는 최소 1년동안 <span>케어솔루션 제품 추가 결합 시 모바일 상품권</span>을 드립니다.<br>' +
+                        '물, 공기 뿐만 아니라 라이프 스타일까지 한번에 케어솔루션 하시고 추가 혜택까지 받아보세요!' +
+                    '</p>' +
+                '</div>' +
+
+                '<div class="lb-cont_bottom">' +
+                    '<div class="lb-icon">' +
+                        '<i>' +
+                            '<img src="/lg5-common/images/MYC/care/gift_20000_pc.png" class="pc" alt="상품권 아이콘">' +
+                            '<img src="/lg5-common/images/MYC/care/gift_20000_mobile.png" class="mobile" alt="상품권 아이콘">' +
+                        '</i>' +
+                    '</div>' +
+                    '<div class="lb-bottom_text">' +
+                        '<p class="lb-TTxt">이 메시지를 받으신 고객님께서 <span><br class="mob-only">케어솔루션 추가 결합 시 혜택</span></p>' +
+
+                        '<h5>모바일 상품권 관련 상세 기준</h5>' +
+
+                        '<ul>' +
+                            '<li>' +
+                                '<p class="dt">- 지급조건 :</p>' +
+                                '<p class="dd">혜택 유효기간 내 베스트샵에서 1백만원 이상 구매조건</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt">- 지급일정 :</p>' +
+                                '<p class="dd">추가 결합 제품 설치 익월말 계약자 휴대폰번호로 증정</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt">- 사용방법 :</p>' +
+                                '<p class="dd">문자메세지 내 인증번호로 상품권교환처에서 상품권 교환(유효기간 1년)</p>' +
+                            '</li>' +
+                        '</ul>' +
+
+                        '<span class="lb-bTxt">공급사 사정에 따라 타브랜드로 변경될 수 있습니다.</span>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+
+
+
+    //1년 차 케어솔루션
+    var lb_careSolution_1 = '<div class="sects lb-pdlr lb-careSolution_1">' +
+        '<div class="latter-benefits_detail">' +
+            '<div class="lb-cont">' +
+                '<div class="lb-cont_top">' +
+                    '<div class="lb-head_cont">' +
+                        '<h3>케어솔루션 1년 사용 기념 특별 혜택</h3>' +
+                        '<p class="lb-term">혜택 유효 기간 : <span>{{ contStartDate }}</span> ~ <span>{{ contEndDate }}</span></p>' +
+                    '</div>' +
+
+                    '<p class="lb-top_text">' +
+                        '고객님, 안녕하세요!<br>' +
+                        '고객님과 LG전자 케어솔루션이 함께한 1년을 기념하여 <span>케어솔루션 제품 추가 결합 시 모바일 상품권</span>을 드립니다.<br>' +
+                        '물, 공기 뿐만 아니라 라이프 스타일까지 한번에 케어솔루션 하시고 추가 혜택까지 받아보세요!' +
+                    '</p>' +
+                '</div>' +
+
+                '<div class="lb-cont_bottom">' +
+                    '<div class="lb-icon">' +
+                        '<i>' +
+                            '<img src="/lg5-common/images/MYC/care/gift_20000_pc.png" class="pc" alt="상품권 아이콘">' +
+                            '<img src="/lg5-common/images/MYC/care/gift_20000_mobile.png" class="mobile" alt="상품권 아이콘">' +
+                        '</i>' +
+                    '</div>' +
+                    '<div class="lb-bottom_text">' +
+                        '<p class="lb-TTxt">이 메시지를 받으신 고객님께서 <span><br class="mob-only">케어솔루션 추가 결합 시 혜택</span></p>' +
+
+                        '<h5>모바일 상품권 관련 상세 기준</h5>' +
+
+                        '<ul>' +
+                            '<li>' +
+                                '<p class="dt">- 지급조건 :</p>' +
+                                '<p class="dd">혜택 유효기간 내 베스트샵에서 1백만원 이상 구매조건</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt">- 지급일정 :</p>' +
+                                '<p class="dd">추가 결합 제품 설치 익월말 계약자 휴대폰번호로 증정</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt">- 사용방법 :</p>' +
+                                '<p class="dd">문자메세지 내 인증번호로 상품권교환처에서 상품권 교환(유효기간 1년)</p>' +
+                            '</li>' +
+                        '</ul>' +
+
+                        '<span class="lb-bTxt">공급사 사정에 따라 타브랜드로 변경될 수 있습니다.</span>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+
+    //2년 차 케어솔루션
+    var lb_careSolution_2 = '<div class="sects lb-pdlr lb-careSolution_2">' +
+        '<div class="latter-benefits_detail">' +
+            '<div class="lb-cont">' +
+                '<div class="lb-cont_top">' +
+                    '<div class="lb-head_cont">' +
+                        '<h3>케어솔루션 / 케어십  2년 사용 기념 특별 혜택</h3>' +
+                        '<p class="lb-term">혜택 유효 기간 : <span>{{ contStartDate }}</span> ~ <span>{{ contEndDate }}</span></p>' +
+                    '</div>' +
+
+                    '<p class="lb-top_text">' +
+                        '고객님, 안녕하세요!<br>' +
+                        'LG전자 케어솔루션/케어십과 함께 즐거운 날들 보내고 계신가요?<br class="pc-only">' +
+                        '2년간 케어솔루션을 사랑해주신 성원에 보답하고자 <span>LG전자 제품 구매 시 멤버십포인트 적립 혜택</span>을 드립니다.<br class="pc-only">' +
+                        '갖고싶던 전자제품, 케어솔루션 매니저와 상담하시고 바로 지금 장만하세요!' +
+                    '</p>' +
+                '</div>' +
+
+                '<div class="lb-cont_bottom">' +
+                    '<div class="lb-icon">' +
+                        '<i>' +
+                            '<img src="/lg5-common/images/MYC/care/gift_30000_pc.png" class="pc" alt="상품권 아이콘">' +
+                            '<img src="/lg5-common/images/MYC/care/gift_30000_mobile.png" class="mobile" alt="상품권 아이콘">' +
+                        '</i>' +
+                    '</div>' +
+                    '<div class="lb-bottom_text">' +
+                        '<p class="lb-TTxt">이 메시지를 받으신 고객님께서 <span><br class="mob-only">베스트샵에서 LG전자 제품 구매 시 혜택</span></p>' +
+
+                        '<h5>추가 3만 포인트 적립 관련 상세 기준</h5>' +
+
+                        '<ul>' +
+                            '<li>' +
+                                '<p class="dt">- 지급조건 :</p>' +
+                                '<p class="dd">혜택 유효기간 내 베스트샵에서 1백만원 이상 구매조건</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt">- 지급일정 :</p>' +
+                                '<p class="dd">구매제품 배송완료 익월말 적립</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt dt-custom">-&nbsp;</p>' +
+                                '<p class="dd dd-custom">' +
+                                    '적립포인트는 전국 LG전자 베스트샵 또는 케어솔루션 월요금으로 차감 가능합니다.<br class="pc-only">' +
+                                    '(월요금 차감 신청 : 1577-4090 / 월 5천원씩 차감)' +
+                                '</p>' +
+                            '</li>' +
+                        '</ul>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+
+    //3년 차 케어솔루션
+    var lb_careSolution_3 = '<div class="sects lb-pdlr lb-careSolution_3">' +
+        '<div class="latter-benefits_detail">' +
+            '<div class="lb-cont">' +
+                '<div class="lb-cont_top">' +
+                    '<div class="lb-head_cont">' +
+                        '<h3>케어솔루션 / 케어십  3년 사용 기념 특별 혜택</h3>' +
+                        '<p class="lb-term">혜택 유효 기간 : <span>{{ contStartDate }}</span> ~ <span>{{ contEndDate }}</span></p>' +
+                    '</div>' +
+
+                    '<p class="lb-top_text">' +
+                        '고객님, 안녕하세요!<br>' +
+                        '고객님은 LG전자 케어솔루션/케어십 이달의 우수 고객으로 선정되셨습니다.<br><br>' +
+
+                        '<span>우수고객님께는 포인트 적립신청만 하시면 2만 멤버십포인트를 적립</span>해드립니다. <br class="pc-only">' +
+                        '{{#if !vcui.detect.isMobileDevice}}'+
+                            '지금 바로 아래 "LG전자 멤버십 APP"을 설치하시어 포인트 적립을 신청하세요!' +
+                            '{{#else}}' + 
+                            '지금 바로 아래 "LG전자 멤버십 바로가기"버튼을 선택하시어 포인트 적립을 신청하세요!' +
+                        '{{/if}}'+
+                    '</p>' +
+                '</div>' +
+
+                '{{#if !vcui.detect.isMobileDevice}}'+
+                    '<div class="lb-pcAppDown">' + 
+                        '<div class="tit-wrap type-sub align-center">' + 
+                            '<h3 class="tit">LG전자 멤버십 APP 다운</h3>' + 
+                        '</div>' + 
+                        '<div class="section-inner">' + 
+                            '<div class="app-down">' + 
+                                '<div class="inner">' + 
+                                    '<span class="txt-btn">' + 
+                                        '<strong>안드로이드 앱 설치하기</strong>' + 
+                                        '<a href="https://play.google.com/store/apps/details?id=com.lge.lgemembership" class="btn-app-down">' + 
+                                            '<img src="/lg5-common/images/BMC/img-btn-googleplay.png" alt="Google Play"/>' + 
+                                        '</a>' + 
+                                    '</span>' + 
+                                    '<span class="img-qr">' + 
+                                        '<img src="/lg5-common/images/BMC/img-qr-googleplay.png" alt="Google Play Qr코드"/>' + 
+                                    '</span>' + 
+                                '</div>' + 
+                                '<div class="inner">' + 
+                                    '<span class="txt-btn">' + 
+                                        '<strong>iOS 앱 설치하기</strong>' + 
+                                        '<a href="https://apps.apple.com/kr/app/id1406622899" class="btn-app-down">' + 
+                                            '<img src="/lg5-common/images/BMC/img-btn-appstore.png" alt="App Store"/>' + 
+                                        '</a>' + 
+                                    '</span>' + 
+                                    '<span class="img-qr">' + 
+                                        '<img src="/lg5-common/images/BMC/img-qr-appstore.png" alt="App Store Qr코드"/>' + 
+                                    '</span>' + 
+                                '</div>' + 
+                            '</div>' + 
+                        '</div>' + 
+                    '</div>' + 
+
+                '{{#else}}' + 
+
+                    '<div class="lb-btn">' +
+                        '<button type="button" class="btn"><span>LG전자 멤버십 바로가기</span></button>' +
+                    '</div>' +
+                '{{/if}}'+
+
+                '<div class="lb-cont_bottom cont_bottom-custom">' +
+                    '<div class="lb-bottom_text">' +
+                        '<h5>포인트 적립 상세 기준</h5>' +
+                        '<ul>' +
+                            '<li>' +
+                                '<p class="dt">- 지급조건 :</p>' +
+                                '<p class="dd">혜택 유효기간 내 멤버십 앱에서 포인트 적립 신청 조건</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt">- 지급일정 :</p>' +
+                                '<p class="dd">적립 신청 익월말 적립</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt">- 지급일정 :</p>' +
+                                '<p class="dd">전국 LG전자 베스트샵 또는 케어솔루션 월요금으로 차감 가능합니다.(월요금 차감 신청 : 1577-4090/월 5천원씩 차감)</p>' +
+                            '</li>' +
+                        '</ul>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+
+    //4년 차 케어솔루션
+    var lb_careSolution_4 = '<div class="sects lb-pdlr lb-careSolution_4">' +
+        '<div class="latter-benefits_detail">' +
+            '<div class="lb-cont">' +
+                '<div class="lb-cont_top">' +
+                    '<div class="lb-head_cont">' +
+                        '<h3>케어솔루션 / 케어십  4년 사용<br class="mob-only"> 기념 특별 혜택</h3>' +
+                        '<p class="lb-term">혜택 유효 기간 : <span>{{ contStartDate }}</span> ~ <span>{{ contEndDate }}</span></p>' +
+                    '</div>' +
+
+                    '<p class="lb-top_text">' +
+                        '고객님, 안녕하세요!<br>' +
+                        'LG전자 케어솔루션/케어십과 함께 즐거운 날들 보내고 계신가요?<br>' +
+                        '4년간 케어솔루션을 사랑해주신 성원에 보답하고자 <span>LG전자 제품 구매 시 멤버십포인트 적립 혜택</span>을 드립니다.<br class="pc-only">' +
+                        '갖고싶던 전자제품, 케어솔루션 매니저와 상담하시고 바로 지금 장만하세요!' +
+                    '</p>' +
+                '</div>' +
+
+                '<div class="lb-cont_bottom">' +
+                    '<div class="lb-icon">' +
+                        '<i>' +
+                            '<img src="/lg5-common/images/MYC/care/gift_50000_pc.png" class="pc" alt="상품권 아이콘">' +
+                            '<img src="/lg5-common/images/MYC/care/gift_50000_mobile.png" class="mobile" alt="상품권 아이콘">' +
+                        '</i>' +
+                    '</div>' +
+                    '<div class="lb-bottom_text">' +
+                        '<p class="lb-TTxt">이 메시지를 받으신 고객님께서 <span><br class="mob-only">베스트샵에서 LG전자 제품 구매 시 혜택</span></p>' +
+
+                        '<h5>추가 5만 포인트 적립 관련 상세 기준</h5>' +
+
+                        '<ul>' +
+                            '<li>' +
+                                '<p class="dt">- 지급조건 :</p>' +
+                                '<p class="dd">혜택 유효기간 내 베스트샵에서 1백만원 이상 구매조건</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt">- 지급일정 :</p>' +
+                                '<p class="dd">구매제품 배송완료 익월말 적립</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt dt-custom">-&nbsp;</p>' +
+                                '<p class="dd dd-custom">' +
+                                    '적립포인트는 전국 LG전자 베스트샵 또는 케어솔루션 월요금으로 차감 가능합니다.<br>' +
+                                    '(월요금 차감 신청 : 1577-4090 / 월 5천원씩 차감)' +
+                                '</p>' +
+                            '</li>' +
+                        '</ul>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+
+    //5년 차 케어솔루션
+    var lb_careSolution_5 = '<div class="sects lb-pdlr lb-careSolution_5">' +
+        '<div class="latter-benefits_detail lb-5year">' +
+            '<div class="lb-cont">' +
+                '<div class="lb-cont_top cont_top-custom">' +
+                    '<div class="lb-head_cont">' +
+                        '<h3>케어솔루션/케어십 5년 사용 <br class="mob-only">기념 특별 혜택</h3>' +
+                        '<p class="lb-term">혜택 유효 기간 : <span>{{ contStartDate }}</span> ~ <span>{{ contEndDate }}</span></p>' +
+                    '</div>' +
+
+                    '<p class="lb-top_text">' +
+                        '고객님, 안녕하세요!<br>' +
+                        '5년간 LG전자 케어솔루션/케어십을 <br class="mob-only">이용해주셔서 감사합니다.<br><br>' +
+
+                        '<span>고객님의 정수기/공기청정기 케어 솔루션 계약 및 케어 서비스가 곧 종료</span>되어 안내드립니다.<br>' +
+                        '정수기/공기청정기는 전문가의 주기적 점검 및 관리와 필터교체가 필요한 제품입니다.' +
+                    '</p>' +
+                '</div>' +
+
+                '<div class="lb-cont_img">' +
+                    '<div class="lb-img-cotent">' +
+                        '<div class="lb-cont-i_text pdr-custom">' +
+                            '<h3>' +
+                                '새 정수기/공기청정기로 바꿔보고 싶다면?<br>' +
+                                '‘케어솔루션 재계약’ 하세요!' +
+                            '</h3>' +
+                            '<p>5년 사용 고객 재계약 시 월요금 할인!</p>' +
+                        '</div>' +
+                        '<div class="lb-cont-i_img">' +
+                            '<ul>' +
+                                '<li><img src="/lg5-common/images/MYC/care/benefit_img_1.jpg" alt="공기청정기 이미지"></li>' +
+                                '<li><img src="/lg5-common/images/MYC/care/benefit_img_2.jpg" alt="식기세척기 이미지"></li>' +
+                            '</ul>' +
+                        '</div>' +
+                    '</div>' +
+
+                    '<div class="lb-img-cotent">' +
+                        '<div class="lb-cont-i_text pdl-custom fl-r">' +
+                            '<h3>' +
+                                '내 정수기/공기청정기,<br>' +
+                                '지금처럼 안심하고 사용하고 싶다면?<br>' +
+                                '‘케어십’에 가입하세요!' +
+                            '</h3>' +
+                        '</div>' +
+                        '<div class="lb-cont-i_img fl-l">' +
+                            '<ul>' +
+                                '<li><img src="/lg5-common/images/MYC/care/benefit_img_3.jpg" alt="정수기 케어 이미지"></li>' +
+                                '<li><img src="/lg5-common/images/MYC/care/benefit_img_4.jpg" alt="공기청정기 상담 이미지"></li>' +
+                            '</ul>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+
+                '<div class="lb-cont_bottom cont_bottom-custom">' +
+                    '<div class="lb-bottom_text">' +
+                        '<ul>' +
+                            '<li>' +
+                                '<p class="dt dt-custom">-&nbsp;</p>' +
+                                '<p class="dd dd-custom">' +
+                                    '정기적인 세척관리와 필터교체를 하지 않으면 정수기의 수질이 저하되어 위생상 문제가 발생할 수 있습니다.' +
+                                '</p>' +
+                            '</li>' +
+                            '<li>' +
+                                '<p class="dt dt-custom">-&nbsp;</p>' +
+                                '<p class="dd dd-custom">' +
+                                    '서비스 종료 이후 케어십 가입시에는 필터초기화 비용이 발생할 수 있습니다.' +
+                                '</p>' +
+                            '</li>' +
+                        '</ul>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>' +
+    '</div>';
+
+
+
+
+    
     var MODE_USER = "USER";
     var MODE_PAYMENT = "PAYMENT";
     var METHOD_CARD = "CARD";
     var METHOD_BANK = "BANK";
 
     var CONTRACT_INFO;
+
+    var CONTRACT_CARE; //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성
+
     var INFO_MODIFY_CONFIRM;
     var INFO_MODIFY_SAVE;
     var PAYMENT_METHOD_CONFIRM;
@@ -45,8 +423,12 @@
     var isClickedarsAgreeConfirmBtn = false;
     var isClickedarsAgreeConfirmCheckBtn = false;
 
+
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
+
+        CONTRACT_CARE = $('.contents.mypage').data('contractCareUrl'); //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성
+
         INFO_MODIFY_CONFIRM = $('.contents.mypage').data('modifyConfirmUrl');
         INFO_MODIFY_SAVE = $('.contents.mypage').data('modifySaveUrl');
         PAYMENT_METHOD_CONFIRM = $('.contents.mypage').data('paymentMethodUrl');
@@ -284,7 +666,12 @@
         $('select[name="contractInfo"]').on('change', function(e){
             changeContractInfo();
         });
+
+
+     
     }
+
+    
 
     //계약서 발급 신청
     function sendRequestContract(){
@@ -868,20 +1255,30 @@
         }
     }
 
+    
+    // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
     function setContractInfo(data){
         mypage.find(".no-data").remove();
-
-        console.log("setContractInfo %o",data);
         if(data != undefined && data != "" && data != null){
             var info;
     
             mypage.find(".section-wrap").show();
-    
+            
             info = getMaskingData(data.userInfo.user);
             changeFieldValue('user-info', info);
     
             info = getMaskingData(data.userInfo.actualUser);
             changeFieldValue('actual-info', info);
+
+
+            ///BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 : 파라미터 값 보내는 버튼
+            var clParm = data.contractInfo.contractID;
+
+            if( $('.cl_listBtn > a').attr('data-current-href') == undefined) {
+                $('.cl_listBtn > a').attr('data-current-href', $('.cl_listBtn > a').attr('href'))
+            }
+            $('.cl_listBtn > a').attr('href', $('.cl_listBtn > a').attr('data-current-href') + '?contractID=' + clParm);
+
 
             data.contractInfo.contractID = "<span>" + data.contractInfo.contractID + "</span>";
             if(data.contractInfo.cancelRequestYn == "Y") data.contractInfo.contractID += "<a href='" + data.contractInfo.cancelResultUrl + "' class='btn-link cancelConsult-btn'>해지요청 조회</a>";
@@ -913,7 +1310,7 @@
                     data.contractInfo.period =  '<div>'+ periodYear +'년 ('+data.contractInfo.contStartDate  +' ~ ' + data.contractInfo.contEndDate +')</div>';
                 }
             }
-            // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청  : 비노출처리 : 계약서 발급신청버튼, 납부정보, 멤버십포인트 , 무상할인회차
+             // BTOCSITE-175 케어솔루션 > 무상케어십 정보 추가 노출 요청  : 비노출처리 : 계약서 발급신청버튼, 납부정보, 멤버십포인트 , 무상할인회차
             if( data.contractInfo.contDtlType === 'C00' ) {
                 $('.contract-btn').hide();
                 $('.sects.payment.viewer').hide();
@@ -1025,12 +1422,186 @@
             bankValidation.setValues(bankInfo);
 
             setPaymentModeCont();
+           
         } else{
             mypage.find(".section-wrap").hide();
 
             mypage.find(".section-wrap").before('<div class="no-data"><p>보유하신 케어솔루션 계약 정보가 없습니다.</p></div>');
         }
     }
+
+
+    /* BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
+    function setContractCare(data){
+        mypage.find(".no-data").remove();
+
+        var $lc_select = $('select[name=contractInfo]').find('option:selected').val();
+        var $lc_cont = $('.lb-container');
+
+        //console.log("setContractInfo_의 데이터 %o",data);
+        //console.log("셀렉", $lc_select);
+        //mypage.find(".section-wrap").hide();
+        //console.log("sssss", mypage.find(".section-wrap"))
+
+
+        if(data != undefined && data != "" && data != null && $lc_select != ""){
+            var info;
+    
+            mypage.find(".section-wrap").show();
+            mypage.find(".lb-common").show();
+        
+
+            //날짜 데이터
+            var $contract_startDate = data.contStartDate;
+            var $contract_endDate = data.contEndDate;
+
+            //날짜 데이터 형태 변환
+            var $st_date = $contract_startDate.replace(/\./g, '/');
+            var $ed_date = $contract_endDate.replace(/\./g, '/');
+            
+
+            //날짜 출력
+            var $lc_StartDate1 = new Date($st_date);
+            var $lc_EndDate2 = new Date($ed_date);
+
+
+            //가입 한 데이터
+            var $lc_join = new Date($st_date);
+
+            //케어십
+            //년
+            var $lc_careShip_Year = new Date($st_date);
+            //개월
+            var $lc_careShip_Month = new Date($st_date);
+
+
+            //케어솔루션 
+            //년
+            var $lc_Year_1 = new Date($st_date);
+            var $lc_Year_2 = new Date($st_date);
+            var $lc_Year_3 = new Date($st_date);
+            var $lc_Year_4 = new Date($st_date);
+            var $lc_Year_5 = new Date($st_date);
+            //개월
+            var $lc_Month_1 = new Date($st_date);
+            var $lc_Month_2 = new Date($st_date);
+            var $lc_Month_3 = new Date($st_date);
+            var $lc_Month_4 = new Date($st_date);
+            var $lc_Month_5 = new Date($st_date);
+
+            //console.log("----------------");
+
+            //케어십
+            //1년 후
+            //var CareShip_YearLater = new Date($lc_careShip_Year.setFullYear($lc_careShip_Year.getFullYear() + 1));
+            //2개월 차 말일 까지
+            var CareShip_MonthLater = new Date($lc_careShip_Month.setFullYear($lc_careShip_Month.getFullYear() + 1, $lc_careShip_Month.getMonth() + 3, 0));
+
+
+            //케어솔루션 
+            //년 후
+            var YearLater1 = new Date($lc_Year_1.setFullYear($lc_Year_1.getFullYear() + 1, $lc_Year_1.getMonth(), 1));
+            var YearLater2 = new Date($lc_Year_2.setFullYear($lc_Year_2.getFullYear() + 2, $lc_Year_2.getMonth(), 1));
+            var YearLater3 = new Date($lc_Year_3.setFullYear($lc_Year_3.getFullYear() + 3, $lc_Year_3.getMonth(), 1));
+            var YearLater4 = new Date($lc_Year_4.setFullYear($lc_Year_4.getFullYear() + 4, $lc_Year_4.getMonth(), 1));
+            var YearLater5 = new Date($lc_Year_5.setFullYear($lc_Year_5.getFullYear() + 5, $lc_Year_5.getMonth(), 1));
+            //3개월 차 첫쨋날 까지
+            var MonthLater1 = new Date($lc_Month_1.setFullYear($lc_Month_1.getFullYear() + 1, $lc_Month_1.getMonth() + 4, 1));
+            var MonthLater2 = new Date($lc_Month_2.setFullYear($lc_Month_2.getFullYear() + 2, $lc_Month_2.getMonth() + 4, 1));
+            var MonthLater3 = new Date($lc_Month_3.setFullYear($lc_Month_3.getFullYear() + 3, $lc_Month_3.getMonth() + 4, 1));
+            var MonthLater4 = new Date($lc_Month_4.setFullYear($lc_Month_4.getFullYear() + 4, $lc_Month_4.getMonth() + 4, 1));
+            var MonthLater5 = new Date($lc_Month_5.setFullYear($lc_Month_5.getFullYear() + 5, $lc_Month_5.getMonth() + 4, 1));
+            
+            console.log("가입:", $lc_join)
+            //console.log("1년후", CareShip_YearLater);
+            console.log("1년 2개월", CareShip_MonthLater);
+            console.log("1년차 첫날", YearLater1);
+
+            //케어십 조건
+            if(data.contractType === 'C') {
+                if(Date.now() >= (+$lc_join) && Date.now() <= (+CareShip_MonthLater)) {
+                    console.log("------케어십 가입 14개월 이전!!!------")
+                    //console.log("---가입시점부터 14개월 말일 까지 노출---")
+                    return $lc_cont.html(vcui.template(lb_careShip, data));
+                } else {
+                    console.log("----케어십 14개월이 훨신 지난 조건----");
+                    mypage.find(".lb-container").empty();
+                }
+            } else {
+                console.log("------no------")
+                mypage.find(".lb-container").empty();
+            }
+
+            //케어솔루션 조건
+            if(data.contractType === 'R') {
+                if(Date.now() >= (+YearLater1) && Date.now() <= (+YearLater2)) {
+                    console.log("------1년차!!!------")
+                    //console.log("mmm", MonthLater1);
+                    if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater1)) {
+                        console.log("---1년차 - 3개월 까지만 노출---")
+                        return $lc_cont.html(vcui.template(lb_careSolution_1, data));
+                    }
+                } else {
+                    console.log("------1년차 조건에 해당하지 않음------")
+                    mypage.find(".lb-container").empty();
+                }
+
+                if(Date.now() >= (+YearLater2) && Date.now() <= (+YearLater3)) {
+                    console.log("------2년차!!!------")
+                    if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater2)) {
+                        console.log("---2년차 - 3개월 까지만 노출---")
+                        return $lc_cont.html(vcui.template(lb_careSolution_2, data));
+                    }
+                } else {
+                    console.log("------2년차 조건에 해당하지 않음------")
+                    mypage.find(".lb-container").empty();
+                }
+
+                if(Date.now() >= (+YearLater3) && Date.now() <= (+YearLater4)) {
+                    console.log("------3년차!!!------")
+                    if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater3)) {
+                        console.log("---3년차 - 3개월 까지만 노출---")
+                        return $lc_cont.html(vcui.template(lb_careSolution_3, data));
+                    }
+                } else {
+                    console.log("------3년차 조건에 해당하지 않음------")
+                    mypage.find(".lb-container").empty();
+                }
+
+                if(Date.now() >= (+YearLater4) && Date.now() <= (+YearLater5)) {
+                    console.log("------4년차!!!------")
+                    if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater4)) {
+                        console.log("---4년차 - 3개월 까지만 노출---")
+                        return $lc_cont.html(vcui.template(lb_careSolution_4, data));
+                    }
+                } else {
+                    console.log("------4년차 조건에 해당하지 않음------")
+                    mypage.find(".lb-container").empty();
+                }
+
+                if(Date.now() >= (+YearLater5)) {
+                    console.log("------5년차!!!------")
+                    if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater5)) {
+                        console.log("---5년차 - 3개월 까지만 노출---")
+                        return $lc_cont.html(vcui.template(lb_careSolution_5, data));
+                    }
+                } else {
+                    mypage.find(".lb-container").empty();
+                    console.log("------5년차 조건에 해당하지 않음------")
+                }
+            }
+           
+            //setPaymentModeCont();
+
+        } else{
+            mypage.find(".section-wrap").hide();
+            mypage.find(".lb-container").empty();
+            //mypage.find(".lb-common").hide();
+
+            mypage.find(".section-wrap").before('<div class="no-data"><p>보유하신 케어솔루션 계약 정보가 없습니다.</p></div>');
+        }
+    }
+    /* //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
 
     function setPaymentModeCont(){
         $('.mypage .section-wrap .sects.payment.modify input[data-visible-target]').prop("checked", false);
@@ -1068,11 +1639,11 @@
         
         lgkorUI.requestAjaxData(CONTRACT_INFO, sendata, function(result){
 
+            // console.log("result_1111111 %o",result);
+            // console.log("test", lb_careShip);
+            // console.log("changeContractInfo의 select", sendata);
 
-            console.log("result %o",result);
-            setContractInfo(result.data);
-
-        
+            setContractInfo(result.data);       
 
             lgkorUI.hideLoading();
 
@@ -1101,6 +1672,45 @@
                 // BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
             }
         }, ajaxMethod);
+
+        /* BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
+        lgkorUI.requestAjaxData(CONTRACT_CARE, sendata, function(result){
+
+            // console.log("result_1111111 %o",result);
+            // console.log("test", lb_careShip);
+            // console.log("changeContractInfo의 select", sendata);
+
+            setContractCare(result.data);
+
+            lgkorUI.hideLoading();
+
+            //BTOCSITE-3407 삭제
+            // if(requestPartnerCardYn == "Y"){
+            //     requestPartnerCardYn = "";
+
+            //     var viewertop = $('.sects.payment.viewer').offset().top;
+            //     $('html, body').animate({scrollTop:viewertop}, 200, function(){
+            //         setTimeout(function(){
+            //             setRequestCard();
+            //         }, 100);
+            //     });
+            // } else {
+            //     // BTOCSITE-2838 : 고객혜택에서 왔을때  매니저 정보로 이동 s
+            //     var managerInfoLink= 'managerInfoLink';
+            //         if (lgkorUI.getStorage('managerInfoLink') == true){ 
+            //             if ($('.section-inner').hasClass('manager-info') == true) {
+            //                 var managerInfoPosition = document.querySelector('.manager-info').offsetTop;
+            //                 $('html, body').animate({scrollTop:managerInfoPosition - 70}, 0);
+            //             }       
+            //             lgkorUI.removeStorage(managerInfoLink);
+            //         } else {
+            //             lgkorUI.removeStorage(managerInfoLink);
+            //             $('html, body').animate({scrollTop:0}, 220);
+            //         }
+            //     // BTOCSITE-2838 :고객혜택에서 왔을때  매니저 정보로 이동 e
+            // }
+        }, ajaxMethod);
+        /* //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 */
     }
 
     function setHiddenData(iptname, value){
@@ -1118,18 +1728,41 @@
 
     /* BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 */
     $(function () {
-        var addressFinder = new AddressFind();
 
-        $('#addrBtn').on('click', function(e){
-            addressFinder.open(function(data){
-                $('input[name=rcvPostCode]').val(data.zonecode);
-                $('input[name=rcvBasAddr]').val(data.roadAddress);
-                
-                // 상세정보로 포커스 이동
-                $('input[name=rcvDtlAddr]').focus();
-                $('input[name=rcvDtlAddr]').val('');
+        /* BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 - 링크 경로로 해당 스크립트 돌도록 삭제 */
+        var cl_benefisLocation = $(location).attr('href');
+
+        //오류가 있다면 indexOf URL 경로를 확인 해야함
+        if (cl_benefisLocation.indexOf('benefits') == -1) {
+            var addressFinder = new AddressFind();
+
+            $('#addrBtn').on('click', function(e){
+                addressFinder.open(function(data){
+                    $('input[name=rcvPostCode]').val(data.zonecode);
+                    $('input[name=rcvBasAddr]').val(data.roadAddress);
+                    
+                    // 상세정보로 포커스 이동
+                    $('input[name=rcvDtlAddr]').focus();
+                    $('input[name=rcvDtlAddr]').val('');
+                });
             });
-        });
+        } 
+
+        //분기 태움
+        // var addressFinder = new AddressFind();
+
+        // $('#addrBtn').on('click', function(e){
+        //     addressFinder.open(function(data){
+        //         $('input[name=rcvPostCode]').val(data.zonecode);
+        //         $('input[name=rcvBasAddr]').val(data.roadAddress);
+                
+        //         // 상세정보로 포커스 이동
+        //         $('input[name=rcvDtlAddr]').focus();
+        //         $('input[name=rcvDtlAddr]').val('');
+        //     });
+        // });
     });
     /* //BTOCSITE-5138 210906 마이페이지>렌탈/케어>고객 실사용자 주소 변경 기능 추가 */
+
+    /* //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 - 링크 경로로 해당 스크립트 돌도록 삭제 */
 })();

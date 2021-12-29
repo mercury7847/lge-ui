@@ -1,0 +1,31 @@
+<svg id="ic_dryer_off" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+    <defs>
+        <style>
+            .cls-3{fill:none}.cls-2{fill:#8c8c8c}.cls-3{stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:4.8px}
+        </style>
+    </defs>
+    <path id="Rectangle_157" data-name="Rectangle 157" style="fill:none" d="M0 0h128v128H0z"/>
+    <g id="Group_193" data-name="Group 193" transform="translate(27.232 14.272)">
+        <g id="Group_190" data-name="Group 190">
+            <g id="Group_189" data-name="Group 189">
+                <g id="Group_188" data-name="Group 188">
+                    <path id="Path_84" data-name="Path 84" class="cls-2" d="M660.74 553.72v89.872h-63.92V553.72h63.92m1.6-4.8h-67.12a3.209 3.209 0 0 0-3.2 3.2v93.072a3.209 3.209 0 0 0 3.2 3.2h67.12a3.209 3.209 0 0 0 3.2-3.2V552.12a3.189 3.189 0 0 0-3.2-3.2z" transform="translate(-592.02 -548.92)"/>
+                </g>
+                <path id="Line_71" data-name="Line 71" class="cls-3" transform="translate(.016 21.472)" d="M0 0h73.504"/>
+                <path id="Line_86" data-name="Line 86" class="cls-3" transform="translate(.016 87.072)" d="M0 0h73.504"/>
+                <path id="Line_72" data-name="Line 72" class="cls-3" transform="translate(45.056 11.936)" d="M0 0h19.072"/>
+            </g>
+        </g>
+        <g id="Group_192" data-name="Group 192" transform="translate(33.568 8.64)">
+            <g id="Group_191" data-name="Group 191">
+                <path id="Path_85" data-name="Path 85" class="cls-2" d="M616.2 554.32a3.2 3.2 0 1 0 3.2 3.2 3.209 3.209 0 0 0-3.2-3.2z" transform="translate(-613 -554.32)"/>
+            </g>
+        </g>
+    </g>
+    <g id="Group_195" data-name="Group 195" transform="translate(39.024 44.384)">
+        <g id="Group_194" data-name="Group 194">
+            <path id="Path_86" data-name="Path 86" class="cls-2" d="M624.366 574.54a20.176 20.176 0 1 1-20.176 20.176 20.2 20.2 0 0 1 20.176-20.176m0-4.8a24.976 24.976 0 1 0 24.976 24.976 24.978 24.978 0 0 0-24.976-24.976z" transform="translate(-599.39 -569.74)"/>
+        </g>
+        <path id="Path_143" data-name="Path 143" d="M380.166 597.982h-.353a4.877 4.877 0 0 1-4.883-4.883v-6.877a4.877 4.877 0 0 1 4.883-4.883h.353c2.701.022 2.701 16.643 0 16.643z" transform="translate(-334.899 -564.493)" style="stroke-linejoin:round;stroke:#8c8c8c;stroke-miterlimit:10;stroke-width:4.8px;fill:none"/>
+    </g>
+</svg>

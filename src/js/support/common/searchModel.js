@@ -252,8 +252,9 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 var $this = $(this),
                     value = $this.val().toUpperCase(),
                     opt = self.options;
-
-                var regex = /[^a-zA-Z0-9.\-]/g;
+                // BTOCSITE-9665 고객지원 모델명 검색창 한글 입력 허용
+                // var regex = /[^a-zA-Z0-9.\-]/g;
+                var regex =/[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9.\-]/g;
 
                 if (regex.test(value)) {
                     $this.val(value.replace(regex,""));
@@ -326,7 +327,9 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 var $this = $(this),
                     value = $this.val().toUpperCase();
 
-                var regex = /[^a-zA-Z0-9.\-]/g;
+                // BTOCSITE-9665 고객지원 모델명 검색창 한글 입력 허용
+                // var regex = /[^a-zA-Z0-9.\-]/g;
+                var regex =/[^가-힣ㄱ-ㅎㅏ-ㅣa-zA-Z0-9.\-]/g;
 
                 if (regex.test(value)) {
                     $this.val(value.replace(regex,""));
@@ -674,9 +677,12 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
 
                 var $this = $(this),
                     data = $this.data();
-
                 if ($this.hasClass('disabled')) {
                     $(window).trigger("toastshow", "예약가능한 제품이 아닙니다.");
+                // BTOCSITE-7947
+                } else if ($this.hasClass('regist-type')) {
+                    var href = $(this).attr('href');
+                    location.href = href;
                 } else {
                     self.complete(data);
                 }

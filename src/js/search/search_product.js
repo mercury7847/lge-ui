@@ -17,7 +17,7 @@ if ('scrollRestoration' in history) {
     var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}" data-ec-product="{{ga}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
-            '<div class="info-text">' +
+            '<div class="info-text{{#if (obsFlag == "N" && rentalTabFlag == "N") || originalPrice == 0}} mar{{/if}}">' +
                 '<div class="detail-wrap">' +
                     '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                     '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
@@ -25,24 +25,56 @@ if ('scrollRestoration' in history) {
                         '<div class="sku">{{#raw sku}}</div>' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
-                            '<a href="{{url}}">' +
-                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
-                                '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
-                                '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
-                            '</a>' +
+                                '<a href="{{url}}">' +
+                                    '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                    '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
+                                    '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
+                                '</a>' +
                             '{{/if}}' +
                         '</div>' +
-                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
-                        '<div class="info-btm">' +
-                            '<div class="care">' +
-                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
-                            '{{#if (subCategoryId == "CT50000070")}}<span class="care-n"></span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
-                            '</div>' +
-                            /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
-                            '<div class="text hashtag-wrap">' +
-                                '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
-                            '</div>' +
+                        // BTOCSITE-16 검색 결과 구획 정리
+                        '<div class="info-price mo-only">' +
+                            '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
+                                '<a href="{{url}}">' +
+                                    '<div class="price-info rental">' +
+                                        '<p class="tit">렌탈</p><span class="price"><em>월</em> {{vcui.number.addComma(carePrice)}}<em>원</em></span>' +
+                                    '</div>' +
+                                '</a>' +
+                            '{{/if}}' +
+                            '{{#if obsFlag=="Y" && originalPrice != 0}}' +
+                                '<a href="{{url}}">' +
+                                    '<div class="price-info sales">' +
+                                        '{{#if obsFlag=="Y"}}' +
+                                            '{{#if price == originalPrice}}' +
+                                                '<div class="price-in">' +
+                                                    '<span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>' +
+                                                '</div>' +
+                                            '{{#else}}' +
+                                                '<div class="original">' +
+                                                    '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>{{/if}}' +
+                                                '</div>' +
+                                                '<div class="price-in">' +
+                                                    '{{#if price != 0}}<span class="price">{{vcui.number.addComma(price)}}<em>원</em></span>{{/if}}' +
+                                                '</div>' +
+                                            '{{/if}}' +
+                                        '{{/if}}' +
+                                    '</div>' +
+                                '</a>' +
+                            '{{/if}}' +
                         '</div>' +
+
+                        // BTOCSITE-16 검색 결과 구획 정리 -삭제
+                        // '<div class="info-btm">' +
+                        //     /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/ 
+                        //     '<div class="care">'+
+                        //     '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
+                        //     '{{#if (subCategoryId == "CT50000070")}}<span class="care-n"></span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
+                        //     '</div>'+
+                        //     /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
+                        //     '<div class="text hashtag-wrap">' +
+                        //         '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                        //     '</div>' +
+                        // '</div>' +
                     '</div>' +
                 '</div>' +
                 '{{#if techSpecs && techSpecs.length > 0}}' +
@@ -54,47 +86,36 @@ if ('scrollRestoration' in history) {
                 '{{/if}}' +
             '</div>' +
 
-            /* BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
-            '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
-
-                '{{#if originalPrice != 0}}' + // BTOCSITE-5387 시그니처 모델 가격 정책 - 추가 : 오리지날 가격이 0원이였을때 가격 태크 비 노출
-
-                    '<div class="info-price">' +
-                        '<a href="{{url}}">' +
-                        
-                            '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
-                                '<div class="price-info rental">' +
-                                    '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
-                                '</div>' +
-                            '{{/if}}' +
-
-                            '<div class="price-info sales">' +
-                                '{{#if obsFlag=="Y"}}' +
-                                
-                                    '{{#if price == originalPrice}}' +
-                                        '<div class="price-in">' +
-                                            '<p class="tit">구매</p><span class="price">{{originalPrice}}<em>원</em></span>' +
-                                        '</div>' +
-
-                                    '{{#else}}' +
-
-                                        '<div class="original">' +
-                                            '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
-                                        '</div>' +
-                                        '<div class="price-in">' +
-                                            '{{#if price != 0}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
-                                        '</div>' +
-                                        
-                                    '{{/if}}' +
-
+            // BTOCSITE-16 검색 결과 구획 정리
+            '<div class="info-price pc-only">' +
+                '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
+                    '<a href="{{url}}">' +
+                        '<div class="price-info rental">' +
+                            '<p class="tit">렌탈</p><span class="price"><em>월</em> {{vcui.number.addComma(carePrice)}}<em>원</em></span>' +
+                        '</div>' +
+                    '</a>' +
+                    '{{/if}}' +
+                    '{{#if obsFlag=="Y" && originalPrice != 0}}' +
+                    '<a href="{{url}}">' +
+                        '<div class="price-info sales">' +
+                            '{{#if obsFlag=="Y"}}' +
+                                '{{#if price == originalPrice}}' +
+                                    '<div class="price-in">' +
+                                        '<span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>' +
+                                    '</div>' +
+                                '{{#else}}' +
+                                    '<div class="original">' +
+                                        '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>{{/if}}' +
+                                    '</div>' +
+                                    '<div class="price-in">' +
+                                        '{{#if price != 0}}<span class="price">{{vcui.number.addComma(price)}}<em>원</em></span>{{/if}}' +
+                                    '</div>' +
                                 '{{/if}}' +
-                            '</div>' +
-                        '</a>' +
-                    '</div>' +
+                            '{{/if}}' +
+                        '</div>' +
+                    '</a>' +
                 '{{/if}}' +
-            '{{/if}}' +
-            /* //BTOCSITE-5387 시그니처 모델 가격 정책 : 2021-09-27 */
-
+            '</div>' +
         '</div>' +
     '</div></li>';
 
@@ -132,26 +153,24 @@ if ('scrollRestoration' in history) {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
                 $(window).scrollTop(0); //BTOCSITE-2216
-                // BTOCSITE-1716
-                vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion','/lg5-common/js/search/filterLayer.min.js'], function () {
+
+                vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
                     self.setting();
                     self.updateRecentSearchList();
                     self.bindEvents();
 
+                    self.savedSmartFilterData = null;
                     self.curationLayer = new Curation(self.$contentsSearch, function(data, sendData){
-
-                        console.log("스마트필터 진입 %o",data);
+                        self.savedSmartFilterData = JSON.parse(JSON.stringify(data));
 
                         var filterData  = self.filterLayer.getDataFromFilter();
-                        
-                        // BTOCISTE-1716
-                        filterData.filterData = "{}";
+                        if(data && data.data && data.data.length > 0) {
+                            //스마트 필터가 있으면 사이드 필터 제거
+                            filterData.filterData = null;
+                        }
                         filterData.smartFilter = sendData;
-
                         self.requestSearch(self.makeFilterData(filterData));
                     }, function(data){
-
-                        console.log("큐레이션 %o",data);
                         //큐레이션 선택
                         //큐레이션이 선택되면 sort, 검색내검색, 구매가능 등을 숨긴다
                         //BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
@@ -169,9 +188,7 @@ if ('scrollRestoration' in history) {
                     });
                     
                     self.savedFilterData = null;
-                    // BTOCSITE-1716
-                    self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, 'unfold_flag', function (data) {
-
+                    self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, null, function (data) {
                         if(self.savedFilterData) {
                             var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
                             var category2 = self.getCategoryFromFilter(data.filterData);
@@ -186,26 +203,15 @@ if ('scrollRestoration' in history) {
                                 }
                             }
                         }
-
-                        // BTOCISTE-1716
-                        if(self.$layFilter.hasClass('smart-type')) {
-                            data.filterData = "{}";
-                        }
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
                         data.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
-
-                 
-                        console.log("filterLayer data %o",data);
                         self.requestSearch(self.makeFilterData(data));
                     });
 
                     var hash = location.hash.replace("#","");
                     var savedData = lgkorUI.getStorage(hash);
                     if(savedData && savedData.search) {
-             
                         self.savedFilterData = JSON.parse(JSON.stringify(savedData));
-
-                        console.log("savedata %o %o",self.savedFilterData,hash);
                         if(self.savedFilterData.filterData) {
                             var filterData = JSON.parse(self.savedFilterData.filterData);
                             var str;
@@ -214,26 +220,9 @@ if ('scrollRestoration' in history) {
                                 filterData[key] = str.split("||");
                             }
                             self.savedFilterData.filterData =  JSON.stringify(filterData);
-
-                            console.log("savedata 2322 %o",self.savedFilterData);
                         }
-
-                        // if(self.savedFilterData.smartFilter) {
-
-                        //     // var smartFilter = JSON.parse(self.savedFilterData.smartFilter);
-                 
-                        //     // self.savedFilterData.smartFilter = decodeURIComponent(self.savedFilterData.smartFilter)
-                        //     // self.savedFilterData.search = "정수기";
-                        //     // self.savedFilterData.smartFilter = "{\"타입\":\"MD08747120,MD08747119\"}";
-
-                            
-                        //     console.log("savedata 3333 %o",self.savedFilterData);
-                        // }
-
-
                         if(savedData.href) self.scrollHref = savedData.href;
                         if(savedData.search) self.$inputSearch.val(savedData.search);
-                        // self.requestSearchData(self.savedFilterData.search,self.savedFilterData.force,self.savedFilterData, true);
                         self.requestSearchData(savedData.search,savedData.force,savedData, true);
                     } else {
                         //입력된 검색어가 있으면 선택된 카테고리로 값 조회
@@ -284,20 +273,6 @@ if ('scrollRestoration' in history) {
                 data.filterData = JSON.stringify(makeData);
                 return data;
             },
-
-            // makeSmaertFilterData: function(data) {
-            //     var filterdata = JSON.parse(data.filterData);
-            //     var makeData = {};
-            //     for(key in filterdata) {
-            //         makeData[key] = filterdata[key].join(",");
-            //     }
-            //     data.filterData = JSON.stringify(makeData);
-
-
-            //     console.log("data %o",data);
-            //     return data;
-            // },
-
 
             makeProductGAData: function(item) {
                 var param = {
@@ -482,7 +457,7 @@ if ('scrollRestoration' in history) {
                 //검색 타이머
                 self.$inputSearch.on("input", function(e) {
                     clearTimeout(self.searchTimer);
-                    
+                  
                     var searchVal = this.value;
                     if (searchVal.length < lgkorUI.SEARCH_AUTOCOMPLETE_MIN_LENGTH) {
                         self.$searchKeywordArea.show();
@@ -739,6 +714,7 @@ if ('scrollRestoration' in history) {
                 //BTOCSITE-91 검색 바로가기 개발요청
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.attr('data-search-url');
+
                 lgkorUI.requestAjaxData('/search/searchKeyword.lgajax', {"keyword":value}, function(result) {
                     if(result.data && result.data.success == 'Y' && result.data.url) {
                         if(result.data.linkTarget == 'self') {
@@ -805,12 +781,6 @@ if ('scrollRestoration' in history) {
                     self.$listSorting.addClass('selected');
                 }
 
-                // BTOCSITE-1716
-                if(postData.smartFilter) {
-                    postData.smartFilter=     postData.smartFilter.replace(/\|\|/g,',');
-                }
-
-
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
@@ -818,9 +788,23 @@ if ('scrollRestoration' in history) {
                     var data = result.data;
                     var param = result.param;
 
-
                     var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
+
+                    console.log("data %o",data);
+
+                    // 구매가능 렌탈가능 버튼 노출 상태
+                    if(data.availableforpurchaseyn === 'Y') {
+                        $('[name="availableforpurchase"]').closest('.sort-check-area').addClass('active');
+                    } else {
+                        $('[name="availableforpurchase"]').closest('.sort-check-area').removeClass('active');
+                    }
+
+                    if(data.availableforrentalyn === 'Y') {
+                        $('[name="availableforrental"]').closest('.sort-check-area').addClass('active');
+                    } else {
+                        $('[name="availableforrental"]').closest('.sort-check-area').removeClass('active');
+                    }
 
                     //검색내 검색어 세팅
                     if(self.$listSorting.find('div.search-inner input').length > 0) {
@@ -873,63 +857,27 @@ if ('scrollRestoration' in history) {
                         noData = false;
                     }
                     */
-                    // BTOCSITE-1716
+
                     //필터세팅
-                    // 1. 스마트 필터 있음 필터 레이어 스마트 필터로
-                    // 2. 스마트 필터 없음 일반 필터로
-                    var isSmartFiler = data.smartFilterList.hasOwnProperty("data") && !!data.smartFilterList.data.length;
-                    var isFilterList = data.hasOwnProperty("filterList") && !!data.filterList.length;
-           
                     var filterShow = false;
-                    // BTOCSITE-1716 start
-                    if(isSmartFiler || isFilterList) {
+                    if(data.filterList && data.filterList.length > 0) {
                         filterShow = true;
-                        var smartFilterList = data.smartFilterList.data;
-                
-                        if(isSmartFiler) {
-                            // api 에서 smartFilterList 에 filtertype 을 넣어주든
-                            // 일반 필터에 스마트 필터를 넣어주든 하나는 해야함
-                            smartFilterList.forEach(function(item, index) {
-                                if(!item.filterType) item.filterType = "checkbox";
-                                // item.unfold_flag = 'N';
-                            });
-                        }
-                           
-                        if(isSmartFiler) {
-                            if(!filterQueryData.smartFilter) {
-                                $(".lay-filter .filter-head h1").html('필터<span>'+data.smartFilterList.count+'개 제품</span>');
-                            } 
-                            
-                        } else {
-                            $(".lay-filter .filter-head h1").html('상세 필터');
-                        }
-
-                        if(!isSmartFiler) {
-                            self.$layFilter.removeClass('smart-type')
-                        }
-                    
-                        // 스마트 필터일경우 layFilter pc 타이틀
-                        if(isSmartFiler && self.$layFilter.hasClass('smart-type')) {
-                            var txt = lgkorUI.getParameterByName('search');
-                            $('.lay-filter.smart-type').find('.filter-head-pc .tit').html(txt+' 상세 검색');
-                        }
-
-                        self.filterLayer.updateFilter(isSmartFiler ? smartFilterList : data.filterList);
-
+                        self.filterLayer.updateFilter(data.filterList);
                         //모바일일 경우 필터섹션이 2개 이하이면 모두 열어둔다
                         if(vcui.detect.isMobile){
                             self.filterLayer.openFilterSectionAll(2);
                         }
 
-                        if(self.savedFilterData && self.savedFilterData.filterData) {
-                            var filterData = JSON.parse(self.savedFilterData.filterData);
-
-                            console.log("savedFilterData %o",self.savedFilterData );
-                            self.filterLayer.resetFilter(filterData);
+                        if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
+                            //스마트 필터가 존재하면 사이드 필터 숨김
+                            filterShow = false;
+                        } else {
+                            if(self.savedFilterData && self.savedFilterData.filterData) {
+                                var filterData = JSON.parse(self.savedFilterData.filterData);
+                                self.filterLayer.resetFilter(filterData);
+                            }
                         }
-        
-                   }
-                   // BTOCSITE-1716 end
+                    }
 
                     //리스트 세팅
                     var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
@@ -955,12 +903,22 @@ if ('scrollRestoration' in history) {
                                     obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
                                 });
                             }
+
+                            // BTOCSITE-16 검색 결과 구획 정리
+                            if(item.salesModelFlag === "Y" && item.caresolutionSalesModelCode) {
+                                if(!item.techSpecs) item.techSpecs = [];
+                                item.techSpecs.push({
+                                    'SPEC_NAME' : '렌탈제품모델명',
+                                    'SPEC_VALUE_NAME' : item.caresolutionSalesModelCode
+                                });
+                            }   
+
                             item.ga = self.makeProductGAData(item);
                             //item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
                             item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
-                            item.price = item.price ? vcui.number.addComma(item.price) : null;
-                            item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
-                            item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
+                            // item.price = item.price ? vcui.number.addComma(item.price) : null;
+                            // item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
+                            // item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
                             item.rentalFlag = lgkorUI.stringToBool(item.rentalFlag);
                             item.ctypeCnt = item.ctypeCnt ? parseInt(item.ctypeCnt) : 0;
                             $list_ul.append(vcui.template(productItemTemplate, item));
@@ -1055,10 +1013,8 @@ if ('scrollRestoration' in history) {
 
                         self.$pagination.hide();
                         self.$recommendListBox.hide();
-
-                        // BTOCSITE-1716 
-                        // self.$contWrap.removeClass('w-filter');
-                        // self.$layFilter.hide();
+                        self.$contWrap.removeClass('w-filter');
+                        self.$layFilter.hide();
                         self.$btnFilter.hide();
                         //
                         //정렬 셀렉트 박스
@@ -1079,8 +1035,7 @@ if ('scrollRestoration' in history) {
                             self.$layFilter.hide();
                         }
 
-                        // BTOCSITE-1716 
-                        if(!vcui.isEmpty(data.smartFilterList.data) || !vcui.isEmpty(data.curation)) {
+                        if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
                             self.$btnFilter.hide();
                         } else {
                             self.$btnFilter.show();

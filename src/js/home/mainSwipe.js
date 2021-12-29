@@ -37,7 +37,9 @@ function MainSwiper( ID ){
         'home', 'store', 'story', 'support', 'care-solutions','benefits'  // BTOCSITE-1814 
     ];
 
-    this.init();
+    if(vcui.detect.isMobileDevice){
+        this.init();
+    }
     
 }
 
@@ -46,6 +48,7 @@ MainSwiper.prototype = {
         this.setMobileNav();
         this.setSwipe();
         this.setUrlEvent();
+        
     },
     setSwipe : function(){
         var self = this;
@@ -72,8 +75,6 @@ MainSwiper.prototype = {
                 'init' : function(swiper){   
                     self.isSwiped = false;    // BTOCSITE-2947 add
 
-                    
-
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         //var nextSlide = swiper.slides[swiper.activeIndex + 1];
@@ -96,16 +97,14 @@ MainSwiper.prototype = {
                         */
                       
                     }
+                    
 
-                    
-                    
                     swiper.allowSlidePrev = swiper.activeIndex == 0 ? false: true;
                     self.removeStatusBar();//BTOCSITE-1967
 
                 },
                 'slideChange' : function(swiper){                    
                     var currentSlide = swiper.slides[swiper.activeIndex];
-
                     // GA 이벤트 액션값 
                     mainSwiper.customEventActionString = '';
 
@@ -149,8 +148,10 @@ MainSwiper.prototype = {
                     //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
+
                     //BTOCSITE_1967
                     //self.setStatusBar(swiper);
+
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
                         //$('html,body').stop().animate({scrollTop:0}, 300);
@@ -291,7 +292,7 @@ MainSwiper.prototype = {
         });
 
         $.ajax({
-            method: 'POST',
+            method: 'GET',
             url : href,
             dataType : 'html',
             success : function( res ){
@@ -456,7 +457,7 @@ MainSwiper.prototype = {
         } else {
             $('.floating-menu.cs-cst.btn-app-ar').hide();
         }
-    },
+    },    
     removeStatusBar: function(){
         //BTOCSITE_1967
         if( !$('.swiper-slide').find('.mobile-status-bar').length ) {
@@ -484,9 +485,3 @@ $(function(){
     //$('#floatBox').hide();
 
 });
-
-
-
-
-
-

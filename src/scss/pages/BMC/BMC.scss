@@ -567,3 +567,26 @@
     }
 }
 // BTOCSITE-4785 e
+
+// BTOCSITE-7637
+.ev-detail-wrap .evt-item {
+    .flag-wrap{
+        .flag{
+            margin-right: 10px;
+            position: relative;
+            margin-top: 3px;
+            margin-bottom: 4px;
+            &:before {
+                position: absolute;
+                top: 7px;
+                left: -5px;
+                margin: 0;
+            }
+        }
+    }
+}
+
+// BTOCSITE-7637
+
+// BTOCSITE-8287 아카데미 시즌 할인 지원
+@import "MKT4018";

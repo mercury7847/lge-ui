@@ -236,6 +236,9 @@
 
                         <!-- component -->
                         <div class="product-list-area">
+                            <!-- BTOCSITE-9186 -->
+                            <button type="button" class="btn border size btn-inchGuide" data-href="#popupInchGuide" data-control="modal"><span>화면 사이즈(cm) 안내</span></button> <!-- BTOCSITE-9186 -->
+                            <!-- BTOCSITE-//9186 -->
                             @@include('./common/modules/list-sorting.html', {
                                 "select" : [
                                     {"option" : "인기순", "default":'value="sort_popular"'},
@@ -887,5 +890,18 @@
         </div>
         @@include('./common/footer.html')
     </div>
+
+    <!-- BTOCSITE-9186 -->
+    <article  class="popup-wrap popup-inch-guide" id="popupInchGuide">
+        <header class="pop-header">
+            <h1 class="tit"><span>TV 화면 사이즈(cm) 안내</span></h1>
+        </header>
+        <section class="pop-conts no-footer">
+            <iframe src="./KRP0007_table.html" frameborder="0" width="100%" >
+            </iframe>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- //BTOCSITE-9186 -->
 </body>
 </html>

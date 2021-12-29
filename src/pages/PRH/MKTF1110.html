@@ -2,6 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["PRH/PRH"],
+        componentID: "KRC0015",
         pageTitle: "LG ThinQ | LG전자",
         pageDesc: "LG ThinQ는 LG만의 인공지능기술이 적용된 제품과 서비스 브랜드입니다. 일상 속에서 LG ThinQ를 통해 한 번도 느껴보지 못한 자유를 누려보세요."
     })
@@ -18,121 +19,127 @@
             <!-- LG ThinQ -->
             <div class="contents thinq-main" >
                 <div class="sub-main">
-                    <!-- 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 -->
-                    <!-- 히어로 -->
-                    <div class="hero-banner slide-wrap ui_wide_slider">
-						<div class="custom-indi-wrap">
-							<div class="custom-indis">
-								<ul class="indis ui_wideslider_dots">
-									<li>
-										<button type="button" class="btn-indi">
-											<div class="bar"></div>
-										</button>
-									</li>
-                                    <li>
-										<button type="button" class="btn-indi">
-											<div class="bar"></div>
-										</button>
-									</li>
-                                    <li>
-										<button type="button" class="btn-indi">
-											<div class="bar"></div>
-										</button>
-									</li>
-								</ul>
-							</div>
-							<button type="button" class="indi-control ui_carousel_play play">
-								<span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
-							</button>
-						</div>
-						<div class="slide-content ui_carousel_list">
-							<ul class="slide-track ui_carousel_track">
-								<!-- slide -->
-								<li class="slide-conts ui_carousel_slide">
-									<!-- 210406_반응형이미지방식변경 -->
-									<!-- <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span> -->
-									<span class="pc bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img-visual02.jpg');" aria-hidden="hidden"></span>
-									<span class="mobile bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img_ThinQ_hero_01_m.png');" aria-hidden="hidden"></span>
-									<!-- //210406_반응형이미지방식변경 -->
-                                    <div class="slide-con-area">
-                                        <div class="content_thinQ">
-                                            <!-- 210407 수정 [문구 수정] -->
-                                            <div class="cont1_q">
-                                                <span class="pc-only">우리는 늘 다양한 <br class="mo-only">바람을 가지고 <br>더 나은 삶을 원합니다</span>
-                                                <span class="mo-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는<br>늘 더 나은 삶을 원합니다.</span>
-                                            </div>
-                                            <div class="cont2_q">
-                                                <!-- 210421 lg thinq 로고이미지 추가 -->
-                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 이러한 당신의 <br class="mo-only">기대에 맞춰 <br class="pc-only">인공지능과 스마트 <br class="mo-only">기술을 통합한 플랫폼입니다</span>
-                                                <span class="mo-only">당신의 기대에 맞춰<br>인공지능과 스마트 기술을 통합한 플랫폼입니다.</span>
-                                                <!-- //210421 lg thinq 로고이미지 추가 -->
-                                            </div>
-                                            <!-- // 210407 수정 [문구 수정] -->
-                                        </div>
-                                    </div>
-								</li>
-								<!-- // slide -->
-                                <!-- slide -->
-								<li class="slide-conts ui_carousel_slide">
-									<!-- 210406_반응형이미지방식변경 -->
-									<!-- <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span> -->
-									<span class="pc bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img-visual03.jpg');" aria-hidden="hidden"></span>
-									<span class="mobile bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png');" aria-hidden="hidden"></span>
-									<!-- //210406_반응형이미지방식변경 -->
-                                    <div class="slide-con-area">
-                                        <div class="content_thinQ">
-                                            <!-- 210407 수정 [문구 수정] -->
-                                            <div class="cont1_q">
-                                                <!-- 210421 lg thinq 로고이미지 추가 -->
-                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 변화하는 시대와 <br>라이프 스타일에 맞춰 <br>늘 당신을 배우고 케어합니다</span>
-                                                <span class="mo-only">변화하는 시대와<br>라이프 스타일을 맞춘<br><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ"></span>
-                                                <!-- //210421 lg thinq 로고이미지 추가 -->
-                                            </div>
-                                            <div class="cont2_q">
-                                                <span class="pc-only">하나의 플랫폼으로 가전들을 <br class="mo-only">연결해서 제어하고 <br class="pc-only">당신의 일상을 케어하며 필요로 하는 것을 <br class="mo-only">더 쉽게 구할 수 있게 합니다</span>
-                                                <span class="mo-only">하나의 플랫폼으로 당신의 일상을 케어합니다.</span>
-                                            </div>
-                                            <!-- // 210407 수정 [문구 수정] -->
-                                        </div>
-                                    </div>
-								</li>
-								<!-- // slide -->
-                                <!-- slide -->
-								<li class="slide-conts ui_carousel_slide">
-									<!-- 210406_반응형이미지방식변경 -->
-									<!-- <span class="bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRS/img-visual01.jpg');" data-pc-src="/lg5-common/images/PRS/img-visual01.jpg" data-m-src="/lg5-common/images/PRS/img-visual01-m.jpg" aria-hidden="hidden"></span> -->
-									<span class="pc bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img-visual04.jpg');" aria-hidden="hidden"></span>
-									<span class="mobile bg ui_bg_switch" style="background-image:url('/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png');" aria-hidden="hidden"></span>
-									<!-- //210406_반응형이미지방식변경 -->
-                                    <div class="slide-con-area">
-                                        <div class="content_thinQ">
-                                            <div class="cont1_q">
-                                                <span>
-                                                    <img src="/lg5-common/images/PRH/logo-lg-thinq.svg" alt="LG ThinQ">를 통해<br>당신이 원하는 삶을 <br class="mo-only">누려보세요.
-                                                </span>
-                                            </div>
-                                            <!-- 210407 수정 [문구 수정] -->
-                                            <div class="cont2_q">
-                                                <!-- 210421 lg thinq 로고이미지 추가 -->
-                                                <span class="pc-only"><img src="/lg5-common/images/PRH/logo-lg-thinq.svg" class="logo" alt="LG ThinQ">는 언제나 당신의 삶이 <br>더 편리하고 더 안심되고 <br class="mo-only">더 즐거울 수 있도록 합니다</span>
-                                                <span class="mo-only">언제나 더 편리하고 안심된<br>즐거운 삶을 만들어줍니다.</span>
-                                                <!-- //210421 lg thinq 로고이미지 추가 -->
-                                            </div>
-                                            <!-- // 210407 수정 [문구 수정] -->
-                                        </div>
-                                    </div>
-								</li>
-								<!-- // slide -->
-							</ul>
-						</div>
-						<div class="slide-controls">
-							<button type="button" class="btn-arrow prev ui_carousel_prev">이전</button>
-							<button type="button" class="btn-arrow next ui_carousel_next">다음</button>
-						</div>
-					</div>
-                    <!-- //히어로 -->
-                    <!-- 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 -->
-                         
+                    <!-- BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)  -->
+                    <!-- D: 카피위치는 text-area 옵션 클래스 참고 -->
+                    @@include('./common/partials/KRC0015-hero-brand.html', {
+                        "common": {
+                            "zero": "zero-top zero-btm",
+                            "bg-color": "",
+                            "className": 'hero-brand'
+                        },
+                        "title": {
+                            "font-class1": "font-regular",
+                            "font-class2": "font-underline",
+                        },
+                        "carousel": {
+                            "type": "hero-banner",
+                            "itemArr": [
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual02.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_01_m.png",
+                                    "boxAlign" : "box-align-left", 
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":"",
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual03.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual03.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_02_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-top",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-regular",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-left",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                    
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-middle",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-left",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-center",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                },
+                                {
+                                    "visual1":"/lg5-common/images/PRH/thinq/img-visual04.jpg",
+                                    "visual2":"/lg5-common/images/PRH/thinq/img_ThinQ_hero_03_m.png",
+                                    "boxAlign" : "box-align-right",
+                                    "alignClass1":"align-bottom",
+                                    "alignClass2":"",
+                                    "widthClass":"",
+                                    "fontColor":"text-white",
+                                    "fontClass1":"font-bold",
+                                    "fontClass2":""
+                                }
+                            ]
+                        }
+                    })
+                    <!-- //BTOCSITE-4251 hero carousel-->
+                    <!-- //BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel) -->
+
 
                     <div class="brand-wrap thinq-wrap"  >
                         <div class="thinq-tabs">
@@ -498,8 +505,7 @@
                                                             정수기 활용 레시피 제안</span>
                                                     </li>
                                                     <li>
-                                                        <span>공통<br>
-                                                            HMR 주문</span>
+                                                        <span>공통<br>간편식 주문</span><!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                     </li>
                                                 </ul>
                                             </div>
@@ -544,7 +550,7 @@
                                                 </p>
                                                 <ul class="thinq-life-icons morning">
                                                     <li> <span>건조기<br> 아웃도어 코스 다운로드</span> </li>
-                                                    <li> <span>공기청정기<br> 우리집 공기질이 모니터링<br> 및 예약 권유</span> </li>
+                                                    <li> <span>공기청정기<br> 우리집 공기질 모니터링<br> 및 예약 권유</span></li> <!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                     <li> <span>냉장고<br> 냉동실 온도 이상 감지 알림<br>
                                                             → 원스탑서비스</span> </li>
                                                 </ul>
@@ -561,7 +567,7 @@
                                                     겉옷도, 다른 생각도 다 잠시 미뤄두고, 오롯이 따뜻한 휴식을 즐겨보세요.<br>
                                                     내일 하루가 달라집니다. ThinQ와 함께라면!
                                                 </p>
-                                                <ul class="thinq-life-icons morning">
+                                                <ul class="thinq-life-icons evening"> <!-- 2021-11-03 BTOCSITE-77 클래스 evening 수정 -->
                                                     <li> <span>스타일러<br> 아로마 향기 시트 정기구매</span> </li>
                                                     <li> <span>에어컨<br> 실외기 온도 높음 알림<br>
                                                             및 해결 방안 제시</span> </li>
@@ -574,7 +580,7 @@
                             <div class="thinq-section life-style-bottom-wrap">
                                 <div class="inner">
                                     <div class="title-area">
-                                        <span class="eyebrow">Special Life</span>
+                                        <span class="eyebrow">Control Life</span><!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                         <h3 class="title"><span>
                                                 언제 어디서든<br class="pc-only">
                                                 안심할 수 있게,<br class="pc-only">
@@ -612,10 +618,12 @@
                                                 </p>
                                                 <ul class="thinq-life-icons morning">
                                                     <li>
-                                                        <span>인덕션 <br>원격제어(Off)</span>
+                                                        <!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
+                                                        <span>전기레인지 <br>원격제어(Off)</span>
+                                                        <!-- //2021-11-03 BTOCSITE-77 문구 수정 -->
                                                     </li>
                                                     <li>
-                                                        <span>건조기 <br>구김방지 기능 사용 후 의류 방치 알림</span>
+                                                        <span>냉장고 <br>절전모드</span> <!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                     </li>
                                                 </ul>
                                             </div>
@@ -689,7 +697,7 @@
                                                     <div class="menu-item"><a href="#tab-waterpurifier"><div class="icon-wrap"><i class="icon icon-waterpurifier"></i></div><span class="txt">정수기</span></a></div>
                                                     <!-- <div class="menu-item"><a href="#tab-homebrew"><div class="icon-wrap"><i class="icon icon-beerMaker"></i></div><span class="txt">맥주제조기</span></a></div> -->
                                                     <div class="menu-item"><a href="#tab-drum_washer"><div class="icon-wrap"><i class="icon icon-drum_washer"></i></div><span class="txt">세탁기</span></a></div>
-                                                    <div class="menu-item"><a href="#tab-dryer"><div class="icon-wrap"><i class="icon icon-dryer"></i></div><span class="txt">의류<br class="mo-only">건조기</span></a></div>
+                                                    <div class="menu-item"><a href="#tab-dryer"><div class="icon-wrap"><i class="icon icon-dryer"></i></div><span class="txt">건조기</span></a></div> <!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                     <div class="menu-item"><a href="#tab-styler"><div class="icon-wrap"><i class="icon icon-styler"></i></div><span class="txt">스타일러</span></a></div>
                                                     <div class="menu-item"><a href="#tab-stickcleaner"><div class="icon-wrap"><i class="icon icon-stickcleaner"></i></div><span class="txt">청소기</span></a></div>
                                                     <div class="menu-item"><a href="#tab-stand_airconditioner"><div class="icon-wrap"><i class="icon icon-stand_airconditioner"></i></div><span class="txt">에어컨</span></a></div>
@@ -835,7 +843,9 @@
                                                                 </div>
                                                                 <div class="text-area">
                                                                     <strong class="tit">사용량 모니터링</strong>
-                                                                    <p class="desc">냉장고에 보관한 식품을 추가하고 보관기간 지난 <br>알림을 받아보세요.</p>
+                                                                    <!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
+                                                                    <p class="desc">전기레인지 화구 사용 이력을 <br>간편하고 쉽게 확인할 수 있습니다.</p>
+                                                                    <!--// 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -964,6 +974,19 @@
                                                                 </div>
                                                             </div>
                                                         </li>
+                                                        <!-- 2021-11-03 BTOCSITE-77 문구 추가 -->
+                                                        <li>
+                                                            <div class="detail-inner">
+                                                                <div class="image">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_waterpurifier_03.png" alt="정수기 앱 화면3">
+                                                                </div>
+                                                                <div class="text-area">
+                                                                    <strong class="tit">자가관리</strong>
+                                                                    <p class="desc">텍스트 미수급</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <!--// 2021-11-03 BTOCSITE-77 문구 추가 -->
                                                     </ul>
                                                 </div>
                                             </div>
@@ -1020,8 +1043,10 @@
                                                                 </div>
                                                                 <div class="text-area">
                                                                     <strong class="tit">원격제어</strong>
+                                                                    <!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                                     <p class="desc">'원격제어' 설정 후 스마트폰으로 간편하게 <br>
-                                                                        세탁/건조 코스를 작동시켜 보세요.</p>
+                                                                        세탁 코스를 작동시켜 보세요.</p>
+                                                                    <!-- //2021-11-03 BTOCSITE-77 문구 수정 -->
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -1032,8 +1057,10 @@
                                                                 </div>
                                                                 <div class="text-area">
                                                                     <strong class="tit">다운로드 코스</strong>
-                                                                    <p class="desc">세탁기/건조기에 없는 추가 코스를 <br>
+                                                                    <!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
+                                                                    <p class="desc">세탁기에 없는 추가 코스를 <br>
                                                                         다운로드해서 사용해 보세요.</p>
+                                                                    <!-- //2021-11-03 BTOCSITE-77 문구 수정 -->
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -1056,10 +1083,8 @@
                                                                     <img src="/lg5-common/images/PRH/app/img_app_washer_04.png" alt="">
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <strong class="tit">세탁/건조 완료 알림</strong>
-                                                                    <p class="desc">
-                                                                        코스(관리)가 종료됨을 쉽게 알 수 있습니다.
-                                                                    </p>
+                                                                    <strong class="tit">세탁 완료 알림</strong>
+                                                                    <p class="desc">언제 어디서나 세탁 코스가 종료됨을<br>쉽게 알 수 있습니다.</p><!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -1074,31 +1099,29 @@
                                                         <li>
                                                             <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_01.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_dry_01.png" alt=""> <!-- 2021-11-03 BTOCSITE-77 파일명 수정 -->
                                                                 </div>
                                                                 <div class="text-area">
                                                                     <strong class="tit">원격제어</strong>
-                                                                    <p class="desc">'원격제어' 설정 후 스마트폰으로 간편하게 <br>
-                                                                        세탁/건조 코스를 작동시켜 보세요.</p>
+                                                                    <p class="desc">'원격제어' 설정 후 스마트폰으로 간편하게 <br>건조 코스를 작동시켜 보세요.</p> <!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                                 </div>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_02.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_dry_02.png" alt=""> <!-- 2021-11-03 BTOCSITE-77 파일명 수정 -->
                                                                 </div>
                                                                 <div class="text-area">
                                                                     <strong class="tit">다운로드 코스</strong>
-                                                                    <p class="desc">세탁기/건조기에 없는 추가 코스를 <br>
-                                                                        다운로드해서 사용해 보세요.</p>
+                                                                    <p class="desc">건조기에 없는 추가 코스를 <br>다운로드해서 사용해 보세요.</p><!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                                 </div>
                                                             </div>
                                                         </li>
                                                         <li>
                                                             <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_03.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_dry_03.png" alt=""> <!-- 2021-11-03 BTOCSITE-77 파일명 수정 -->
                                                                 </div>
                                                                 <div class="text-area">
                                                                     <strong class="tit">에너지 모니터링</strong>
@@ -1111,13 +1134,11 @@
                                                         <li>
                                                             <div class="detail-inner">
                                                                 <div class="image">
-                                                                    <img src="/lg5-common/images/PRH/app/img_app_washer_04.png" alt="">
+                                                                    <img src="/lg5-common/images/PRH/app/img_app_dry_04.png" alt=""> <!-- 2021-11-03 BTOCSITE-77 파일명 수정 -->
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <strong class="tit">세탁/건조 완료 알림</strong>
-                                                                    <p class="desc">
-                                                                        코스(관리)가 종료됨을 쉽게 알 수 있습니다.
-                                                                    </p>
+                                                                    <strong class="tit">건조 완료 알림</strong><!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
+                                                                    <p class="desc">언제 어디서나 건조 코스가 종료됨을 <br>쉽게 알 수 있습니다.</p><!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -1176,8 +1197,7 @@
                                                                 </div>
                                                                 <div class="text-area">
                                                                     <strong class="tit">스타일링 완료 알림</strong>
-                                                                    <p class="desc">알림음을 통해 코스(관리)가 종료됨을 <br>
-                                                                        쉽게 알 수 있습니다.</p>
+                                                                    <p class="desc">언제 어디서나 스타일링 코스가 종료됨을 <br>쉽게 알 수 있습니다.</p><!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -1299,9 +1319,8 @@
                                                                     <img src="/lg5-common/images/PRH/app/img_app_aircleaner_02.png" alt="">
                                                                 </div>
                                                                 <div class="text-area">
-                                                                    <strong class="tit">미리알림 기능</strong>
-                                                                    <p class="desc">집안 공기가 나쁘거나,필터교체 시기가 되면 <br>
-                                                                        미리 알려줍니다.</p>
+                                                                    <strong class="tit">필터관리</strong><!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
+                                                                    <p class="desc">사용중인 공기청정기의 <br>필터 사용시간과 잔여시간을 한눈으로 확인하고 <br>교체 및 청소 관리해보세요.</p><!-- 2021-11-03 BTOCSITE-77 문구 수정 -->
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -1406,6 +1425,16 @@
                                         </div>
                                         <!-- tab content -->
                                     </div>
+
+                                    <!-- 2021-11-03 BTOCSITE-77 문구 추가 -->
+                                    <div class="app-tab-desc">
+                                        <ul class="bullet-list">
+                                            <li class="b-txt">해당 기능 사용을 위해서는 스마트폰에 따라 구글 플레이(Android) 또는 앱 스토어(iOS)에서 'LG ThinQ' 앱을 설치하여, 제품을 Wi-Fi에 연결, 등록한 후, 초기 연결과 동일한 Wi-Fi 환경에서 제품이 동작되어야 합니다.</li>
+                                            <li class="b-txt">일부 스마트폰에서는 기능 사용에 제약이 발생하거나 작동하지 않을 수 있으며, LG ThinQ 앱은 Android 운영체제 7.0 이상, iOS 운영체제 11.0 이상을 지원합니다.</li>
+                                            <li class="b-txt">제공된 기능은 모델 및 앱 버전마다 다를 수 있으며, 자세한 사용 방법은 제품 사용 설명서를 참고해 주시기 바랍니다.</li>
+                                        </ul>
+                                    </div>
+                                    <!--// 2021-11-03 BTOCSITE-77 문구 추가 -->
                                     <!-- //스마트 탭 -->
 
                                     <!-- 연동기기 찾기 -->
@@ -1440,7 +1469,7 @@
                                             <h1 class="tit"><span>LG ThinQ앱 체험</span></h1>
                                         </header>
                                         <section class="pop-conts no-footer">
-                                            <iframe src="https://thinq-s3-bucket.s3.ap-northeast-2.amazonaws.com/work-experience/index.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                            <iframe src="https://s3-an2-op-t20-css-contents.s3.ap-northeast-2.amazonaws.com/workexperience/index.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </section>
                                         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
                                     </article>
@@ -1506,7 +1535,6 @@
                                     </div>
                                     <!-- //ThinQ 앱 다운 안내 slide -->
 
-                                    
                                 </div>
                             </div>
                             <div class="bottom-banner">

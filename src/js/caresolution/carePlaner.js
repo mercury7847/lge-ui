@@ -294,9 +294,10 @@
 
             loadCategoryList();
 
-
-
-
+            // BTOCSITE-5938-204 하단 푸터 가리는 현상 수정
+            if($('.default-bottom-wrap').is(':visible')) {
+                $('footer').addClass('default-bottom-wrap');
+            }
         });
     }
 
@@ -476,6 +477,7 @@
             //var statusBarHeight = 0; //BTOCSITE-1967
             if(isOpen){
                 // console.log(1)
+                $putItemContainer.find('.contract-slide').removeAttr('style'); // BTOCSITE-5938-403 : BTOCSITE-5938-403 : 20211215 safari 버그 (transition, scroll 동시 사용할때 버그 있음)
                 $putItemContainer.find('.total-info').removeAttr('style');
                 $putItemContainer.find('.total-info dl').show();
                 wraptop = $putItemContainer.find('.total-info').outerHeight(true) + $putItemContainer.find('.tit-wrap').outerHeight(true) + $putItemContainer.find('.slide-wrap').outerHeight(true) + 10;
@@ -483,7 +485,10 @@
                 item.css({transform:'rotate(0deg)'});
             } else{
                 // console.log(2)
-                $putItemContainer.find('.total-info').css({background:'#ffffff'})
+                /* s BTOCSITE-5938-403 : 20211215 safari 버그 (transition, scroll 동시 사용할때 버그 있음) */
+                $putItemContainer.find('.contract-slide').css({transform: 'translateZ(0px)'})
+                $putItemContainer.find('.total-info').css({background:'#ffffff', transform: 'translateZ(1px)'})
+                /* e BTOCSITE-5938-403 */
                 $putItemContainer.find('.total-info dl').hide();
                 wraptop = $putItemContainer.find('.total-info').outerHeight(true) + $putItemContainer.find('.tit-wrap').outerHeight(true) - 5;
                 item.css({transform:'rotate(180deg)'});
@@ -1166,7 +1171,14 @@
                 var selectList = $cardInfo.find('ul.select-list');
                 selectList.empty();
                 var groupItemTemplate = '<li class="divide"><span class="inner"><em>{{groupTitle}}</em></span></li>';
-                var cardItemTemplate = '<li><a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">{{label}}</a></li>';
+                
+                /* BTOCSITE-8334 제휴카드 별 할인가 표기 */
+                var cardItemTemplate = '<li>' +
+                    '<a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">' +
+                        '<span>{{label}}</span>' +
+                        '<span class="card-discount">월 최대 -{{vcui.number.addComma(salePrice)}}원</span>' +
+                    '</a>' +
+                '</li>';
 
                 cardData.forEach(function(obj, idx) {
                     if(obj.groupTitle) {
@@ -1175,14 +1187,29 @@
                     if(obj.listItem) {
                         obj.listItem.forEach(function(item, index) {
                             item.label = item.title;
+                            //item.salePrice = vcui.number.addComma(item.salePrice); //salePrice에 콤마 추가 하니 총합 계산이 오류 템플릿에 콤마 기능 추가.
+
                             if(!item.cardId) {
                                 item.label = "선택취소"
+                                cardItemTemplate = '<li>' +
+                                    '<a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">' +
+                                        '<span>{{label}}</span>' +
+                                    '</a>' +
+                                '</li>';
+                            } else {
+                                cardItemTemplate = '<li>' +
+                                    '<a href="#" data-desc-id="{{descId}}" data-card-id="{{cardId}}" data-card-sale="{{salePrice}}" data-card-title="{{title}}">' +
+                                        '<span>{{label}}</span>' +
+                                        '<span class="card-discount">월 최대 -{{vcui.number.addComma(salePrice)}}원</span>' +
+                                    '</a>' +
+                                '</li>';
                             }
                             item.descId = idx;
                             selectList.append(vcui.template(cardItemTemplate, item));
                         });
                     }
                 });
+                /* //BTOCSITE-8334 제휴카드 별 할인가 표기 */
 
                 $('#pop-estimate').data("cardDescription", result.data.paymentInfo.cardDescription);
                 $cardInfo.find('.ui_dropdown a.ui_dropdown_toggle').text(result.data.paymentInfo.cardDescription);

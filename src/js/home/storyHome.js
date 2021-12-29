@@ -20,11 +20,12 @@
             '</div>'+
         '</div>';
 
+    //BTOCSITE-7260 뷰저블 셀렉터 id 추가
     var storyListTemplate = 
         '<div class="flexbox" data-contents-type="{{contentsType}}">'+
             //'<div class="box-wrap">'+
                 '<div class="box {{contentsType}}">'+
-                    '<a href="{{storyUrl}}" class="visual-area">'+
+                    '<a href="{{storyUrl}}" class="visual-area" id="beu_storylist_{{storyId}}">'+
                         '{{#if contentsType == "image"}}'+
                         '<span class="image">'+
                             '<img aria-hidden="true" onerror="lgkorUI.addImgErrorEvent(this)" src="{{largeImage}}" alt="{{title}}">'+
@@ -156,12 +157,16 @@
                 if(breakpoint.name == 'mobile'){ 
                     $context.find('.story-review').find('.indi-wrap').show();
                     $context.find('.story-review').vcCarousel({
-                        variableWidth: true,
-                        slidesToShow: 1,
+                        // variableWidth: true,
+                        slidesToShow: 2.16,
                         slidesToScroll: 1,
-                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                         speed: 150,
-                        touchThreshold: 100
+                        touchThreshold: 100,
+                        dots:false,
+                        centerMode:false,
+                        centerPadding:0,
+                        infinite:false,
+
                     });
                 }else if(breakpoint.name == 'pc'){   
                     $context.find('.story-review').find('.indi-wrap').hide();
@@ -172,7 +177,7 @@
             bindEvent();
 
             var moveScrollTop = 0;
-            if(window.sessionStorage){                
+            if(window.sessionStorage){    
                 var storyUserHeight = sessionStorage.getItem('storyUserHeight');
                 var storyNewHeight = sessionStorage.getItem('storyNewHeight');
                 var storyHomeScrollTop = sessionStorage.getItem('storyHomeScrollTop');
@@ -201,12 +206,15 @@
                 $('html, body').animate({scrollTop:moveScrollTop}, 120);
             }, 10);
         });
+
+        
     }
 
     var userHeight = 0;
     var newsHeight = 0;
 
     function bindEvent(){
+        
         $(window).on('resize', function(){
             resize();
         });
@@ -308,6 +316,8 @@
                 }
             }
         });
+
+        
     }
 
     function setTagMngChecked(){
@@ -613,8 +623,11 @@
         var boxmap = [];
         for(var i=0;i<status.rawnum;i++) boxmap.push([]);
 
+        /* BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
         item.find('.flexbox').each(function(idx, box){
             var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight, titleheight, tagheight, overflow;
+            var boxheight = $('.flexbox').height();
+            var boxwidth = $('.flexbox').width();
             if(idx >= status.rawnum){
                 boxtop = 1000000000;
                 for(i=0;i<status.rawnum;i++){
@@ -622,14 +635,15 @@
                     lastbox = boxmap[i][leng-1];
 
                     contype = lastbox.data('contentsType');
-                    if(contype == 'image') boxheight = status.imgheight;
-                    else if(contype == "video"){
-                        txtheight = lastbox.find('.text-area').outerHeight(true);
-                        boxheight = status.videoheight + txtheight;
-                    } else{
-                        titleheight = lastbox.find('.title').outerHeight(true);
-                        tagheight = lastbox.find('.tag-lists').outerHeight(true);
-                        boxheight = titleheight + tagheight;
+
+                    if(window.innerWidth < 480){
+                        //boxheight = boxwidth * 1.25 + 50;
+                        //BTOCSITE-9038
+                        boxheight = boxwidth * 1.7969;
+                    }else{
+                        //boxheight = boxwidth * 1.25;
+                         //BTOCSITE-9038
+                         boxheight = boxwidth * 1.6544;
                     }
 
                     lasty = lastbox.position().top + boxheight + status.distance;
@@ -643,21 +657,12 @@
 
             overflow = "auto";
             contype = $(box).data('contentsType');
-            if(contype == 'image') boxheight = status.imgheight;
-            else if(contype == "video"){
-                txtheight = $(box).find('.text-area').outerHeight(true);
-                boxheight = status.videoheight + txtheight;
-            } else{
-                titleheight = $(box).find('.title').outerHeight(true);
-                tagheight = $(box).find('.tag-lists').outerHeight(true);
-                boxheight = titleheight + tagheight;       
-                overflow = "visible";         
-            }
+           
             var boxleft = raw * (status.boxwidth + status.distance);
             $(box).css({
                 position:'absolute',
                 width: status.boxwidth,
-                height: boxheight,
+                // height: boxheight,
                 left: boxleft,
                 top: boxtop
             });
@@ -665,7 +670,9 @@
 
             var bottom = $(box).position().top + boxheight;
             maxBottom = Math.max(maxBottom, bottom);
+            $('.new_story .flexbox, .user_story .flexbox').css('height', boxheight);
         });
+        /* //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
 
         item.find('.flexbox-wrap').height(maxBottom);
     }
@@ -677,16 +684,25 @@
         var wrapwidth = item.find('.inner').width();
         var boxwidth = parseInt((wrapwidth-distances)/rawnum);
 
-        while(boxwidth < 310){
-            rawnum--;
+        // BTOCSITE-6881 
+        if(window.innerWidth < 768){
+            rawnum = 2;
+            distance = 8;
             distances = distance * (rawnum-1);
             boxwidth = parseInt((wrapwidth-distances)/rawnum);
-        }
+        }else{
+            while(boxwidth < 310){
+                rawnum--;
+                distances = distance * (rawnum-1);
+                boxwidth = parseInt((wrapwidth-distances)/rawnum);
+            }
 
-        if(rawnum < 1){
-            rawnum = 1;
-            boxwidth = wrapwidth;
+            if(rawnum < 1){
+                rawnum = 1;
+                boxwidth = wrapwidth;
+            }
         }
+        // BTOCSITE-6881 
         
         return {
             rawnum: rawnum,

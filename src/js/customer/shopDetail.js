@@ -164,10 +164,31 @@
             e.preventDefault();
             var url = $(this).attr('href');
             if(url) {
-                window.opener.location.href = url;
-                window.close();
+                // BTOCSITE-5938-392 ,BTOCSITE-5938-280 [IOS 앱] 매장 정보 화면에서 [매장 상담 예약] 선택 반응 없음
+                if(isApp() && vcui.detect.isIOS) {
+                    var jsonString = JSON.stringify({'command':'closeAllInAppBrowser', 'url': url});
+                    webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                } else{
+                    window.opener.location.href = url;
+                    window.close();
+                }
             }
         });
+
+        // 서비스 센타 링크 처리
+        if(isApp()) {
+            $('a.btn-link').on('click', function(e){
+                    e.preventDefault();
+                    var $el = $(this);
+                    var url = $el.attr('href');
+                        url = lgkorUI.parseUrl(location.origin+url);
+
+                    var params = $.extend(url.searchParams.getAll(),{'openMode' : 'inAppBrowser'});
+                        params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
+
+                    lgkorUI.goUrl({ href :  url.origin + url.pathname + params , target:$el.attr('target'), openMode : 'inAppBrowser' });   
+            });
+        }
 
         // 카카오톡 공유하기 url 생성
         var kakaoShareUrl = $('.ico-btn.kk').attr("data-url") || location.href;
@@ -177,6 +198,15 @@
         });
 
         $('.ico-btn.kk').attr("data-url",kakaoShareLoc.origin + kakaoShareLoc.pathname +'?'+ $.param(kakaoShareParam)); 
+
+        /* BTOCSITE-5938-281 베스트샵 매장 찾기 상세 팝업 서비스 센터명 영역 오류 */
+        $(function () {
+            var flag = $('.flag-wrap .flag').length;
+            if(flag){
+                $('.tit-info-r').addClass('isFlag');
+            }
+        });
+        /* //BTOCSITE-5938-281 베스트샵 매장 찾기 상세 팝업 서비스 센터명 영역 오류 */
     }
 
     $(document).ready(function() {

@@ -1,0 +1,19 @@
+<svg id="devices_ic_thingq_sensor_white" data-name="devices/ic_thingq_sensor_white" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+    <defs>
+        <style>
+            .cls-6{fill:none}.cls-5{stroke:none}
+        </style>
+    </defs>
+    <rect id="Rectangle_171" data-name="Rectangle 171" width="120" height="120" rx="16" style="fill:#f4f4f4"/>
+    <g id="Group_318" data-name="Group 318" transform="translate(28.521 34)">
+        <path id="Path_132" data-name="Path 132" d="M297.419 883.5v-11.651h-15.054v22.022h32.855v-31.558l-25.226-18.233-24.794 18v20.573" transform="translate(-258.73 -844.08)" style="stroke:#be1e42;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:4.8px;fill:transparent"/>
+        <g id="Ellipse_56" data-name="Ellipse 56" transform="translate(-.521 38.78)" style="fill:none;stroke:#be1e42;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:4.8px">
+            <circle class="cls-5" cx="6.99" cy="6.99" r="6.99"/>
+            <circle class="cls-6" cx="6.99" cy="6.99" r="4.59"/>
+        </g>
+        <g id="Ellipse_57" data-name="Ellipse 57" transform="translate(49.499 11.307)" style="stroke:#be1e42;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:4.8px;fill:#f4f4f4">
+            <circle class="cls-5" cx="6.99" cy="6.99" r="6.99"/>
+            <circle class="cls-6" cx="6.99" cy="6.99" r="4.59"/>
+        </g>
+    </g>
+</svg>

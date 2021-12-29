@@ -135,6 +135,8 @@
 
                 // BTOCSITE-659 
                 self.addAWSPdpUp();
+                // BTOCSITE-8312 프로젝터>시네빔과 프로빔 스펙비교 예외처리 요청
+                self.compareBtnStatus();
             },
 
             prepare: function() {
@@ -470,7 +472,7 @@
                         var contractTerm = ("" + item.contractTerm);
                         var dutyTerm     = ("" + item.dutyTerm) ;
 
-                        var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음' : '1회 / '+item.visitPer+'개월';
+                        var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음/자가관리' : '1회 / '+item.visitPer+'개월'; //BTOCSITE-7447
                         var visitPerKey  = visitPerTxt;
                         var rtRgstFeePre = ("" + item.rtRgstFeePre);
 
@@ -481,9 +483,9 @@
                             dataByFee.push(item);
 
 
-                        dataByVisit[visitPerKey] = dataByFee; // 세번째 갑
-                        dataByDuty[dutyTerm] = dataByVisit; // 두번째 갑
-                        rentalPriceData[contractTerm] = dataByDuty; // 첫번째 갑
+                        dataByVisit[visitPerKey] = dataByFee; // 세번째 값
+                        dataByDuty[dutyTerm] = dataByVisit; // 두번째 값
+                        rentalPriceData[contractTerm] = dataByDuty; // 첫번째 값
 
                         if(item.representChargeFlag == "Y") {
                             selectRtModelSeq = item.rtModelSeq;
@@ -890,8 +892,8 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인  */
-                        var isShow = lgkorUI.isShowDate('20210601','20220101') // 홋데 카드 변경일 : 2021.10.1 00:00 ~ 2021.12.31 24:00
+                        /* BTOCSITE-10166 : 롯데카드 혜택 배지 수정요청의 건  */
+                        var isShow = lgkorUI.isShowDate('20210601','20220201') // 2022.01.01 00:00 ~ 2021.01.31 24:00  ( 신한/롯데 프로모션 적용 기간)
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
@@ -959,13 +961,23 @@
 
                     var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
 
+                    /* s : BTOCSITE-5938-408 : 찜하기 복수인 경우 */
+                    var $wishItem = self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]');
                     var success = function(data) {
-                        $this.data("wishItemId",data.wishItemId);
-                        $this.prop("checked",wish);
+                        // $this.data("wishItemId",data.wishItemId);
+                        // $this.prop("checked",wish);
+                        $wishItem.each(function(i){
+                            $(this).data("wishItemId",data.wishItemId);
+                            $(this).prop("checked",wish);
+                        });
                     };
                     var fail = function(data) {
-                        $this.prop("checked",!wish);
+                        // $this.prop("checked",!wish);
+                        $wishItem.each(function(){
+                            $(this).prop("checked",!wish);
+                        });
                     };
+                    /* e : BTOCSITE-5938-408 */
                     
                     lgkorUI.requestWish(
                         param,
@@ -1967,7 +1979,12 @@
                     $selectBox.empty();
                     if(selectData instanceof Array) {
                         selectData.forEach(function(item, index){
-                            $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"1회 / "+ item.visitPer + "개월", "json":JSON.stringify(item)}));
+                            //BTOCSITE-7447
+                            if(item.visitPer == 0){
+                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"방문없음(자가관리)", "json":JSON.stringify(item)}));
+                            }else{
+                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"1회 / "+ item.visitPer + "개월", "json":JSON.stringify(item)}));
+                            }
                         });
                     }
                     $selectBox.vcSelectbox('update');
@@ -2083,7 +2100,7 @@
                 });
 
                 var $infoBox = self.$pdpInfoCareSiblingOption.find('.info-box');
-                var visitPerTxt = selectInfoData.visitPer === '0' ? '원(방문없음 기준)' : '원('+selectInfoData.visitPer+'개월 방문 기준)';
+                var visitPerTxt = selectInfoData.visitPer === '0' ? '원(방문없음/자가관리 기준)' : '원('+selectInfoData.visitPer+'개월 방문 기준)'; //BTOCSITE-7447
                 $infoBox.find('p.text:eq(0)').text('케어솔루션 총요금 : ' + vcui.number.addComma(infoTotal) + (selectInfoData.visitPer ? visitPerTxt : '원(대표요금제 기준)'));
                 $paymentAmount.data('popupData',popupData);
             },
@@ -2380,34 +2397,30 @@
                 }
 
                 var ajaxUrl;
+                //BTOCSITE-6011 
                 if(isRental) {
                     var isDirectBuy = !$paymentAmount.find('.purchase-button').hasClass('rental');
-
-                    if(self.loginCheckEnd) {
-                        if(lgkorUI.stringToBool(loginFlag)) {
-                            //BTOCSITE-6011 
-                            if( (careshipOnlyFlag == 'Y') && (!careShipInfo.length) && isDirectBuy){
-                                console.log('careShipInfo 없음 일반구매 페이지로'); 
-                                ajaxUrl = self.$pdpInfo.attr('data-buy-url');
-                                //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
-                                if(ajaxUrl) {
-                                    lgkorUI.showLoading();
-                                    lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
-                                        //console.log(result);
-                                        var data = result.data;
-                                        var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
-                                        if(obsDirectPurchaseUrl){
-                                            location.href = obsDirectPurchaseUrl;
-                                        }
-                                    });
+                    if( (careshipOnlyFlag == 'Y') && (!careShipInfo.length) && isDirectBuy ){
+                        ajaxUrl = self.$pdpInfo.attr('data-buy-url');
+                        //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
+                        if(ajaxUrl) {
+                            lgkorUI.showLoading();
+                            lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                                //console.log(result);
+                                var data = result.data;
+                                var obsDirectPurchaseUrl = data.obsDirectPurchaseUrl;
+                                if(obsDirectPurchaseUrl){
+                                    location.href = obsDirectPurchaseUrl;
                                 }
-                            }
-                            else{
+                            });
+                        }
+                    }else{
+                        if(self.loginCheckEnd) {
+                            if(lgkorUI.stringToBool(loginFlag)) {
                                 ajaxUrl = self.$pdpInfo.attr('data-rental-url');
                                 var url = ajaxUrl + "?rtModelSeq=" + param.rtModelSeq + (param.easyRequestCard ? ("&easyRequestCard=" + param.easyRequestCard) : "");
                                 if(ajaxUrl) {
                                     if(isDirectBuy) {
-                                        console.log('케어십 서비스 가능, 청약신청 페이지로 ');
                                         $('#careRequireBuyPopup').data('sendUrl',url);
                                         /*
                                         $('#careRequireBuyPopup').find('.btn-group button').removeAttr('data-link-url');
@@ -2422,47 +2435,45 @@
                                             $('#careRequireBuyPopup').vcModal();
                                         }
                                     } else {
-                                        console.log('렌탈 케어솔루션페이지로');
                                         location.href = url;
                                     }
                                 }
-                            }
-                            //BTOCSITE-6011 
-                        } else {
-                            ajaxUrl = self.$pdpInfo.attr('data-rental-url-notlogin');
-                            //스테이지 세팅후 제거 코드
-                            ajaxUrl = ajaxUrl ? ajaxUrl : "/mkt/rental-care-solution.lgajax";
-                            var sendParam = {
-                                "rtModelSeq":param.rtModelSeq
-                            };
-                            if(sendParam.easyRequestCard) {
-                                sendParam.easyRequestCard = param.easyRequestCard
-                            }
-
-                            sendParam.modelUrlPath = location.pathname + location.search;
-                            /*
-                            if(typeof modelUrlPath !== 'undefined') {
-                                var queryString = location.search;
-                                sendParam.modelUrlPath = modelUrlPath + queryString;
-                            }
-                            */
-
-                            if(isDirectBuy) {
-                                lgkorUI.showLoading();
-                                lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                    //console.log(result);
-                                });
                             } else {
-                                lgkorUI.showLoading();
-                                lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
-                                    //console.log(result);
-                                });
+                                ajaxUrl = self.$pdpInfo.attr('data-rental-url-notlogin');
+                                //스테이지 세팅후 제거 코드
+                                ajaxUrl = ajaxUrl ? ajaxUrl : "/mkt/rental-care-solution.lgajax";
+                                var sendParam = {
+                                    "rtModelSeq":param.rtModelSeq
+                                };
+                                if(sendParam.easyRequestCard) {
+                                    sendParam.easyRequestCard = param.easyRequestCard
+                                }
+    
+                                sendParam.modelUrlPath = location.pathname + location.search;
+                                /*
+                                if(typeof modelUrlPath !== 'undefined') {
+                                    var queryString = location.search;
+                                    sendParam.modelUrlPath = modelUrlPath + queryString;
+                                }
+                                */
+    
+                                if(isDirectBuy) {
+                                    lgkorUI.showLoading();
+                                    lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
+                                        //console.log(result);
+                                    });
+                                } else {
+                                    lgkorUI.showLoading();
+                                    lgkorUI.requestAjaxDataPost(ajaxUrl, sendParam, function(result){
+                                        //console.log(result);
+                                    });
+                                }
                             }
+                        } else {
+                            self.processProductBuy = $dm;
                         }
-                    } else {
-                        self.processProductBuy = $dm;
                     }
-                } else {
+                }else {
                     ajaxUrl = self.$pdpInfo.attr('data-buy-url');
                     //ajaxUrl = "https://wwwdev50.lge.co.kr/mkt/product/addCartDirectPurchase.lgajax"
                     if(ajaxUrl) {
@@ -2477,6 +2488,7 @@
                         });
                     }
                 }
+                //BTOCSITE-6011
             },
 
             //로그인 데이타 정보 가져오기
@@ -2743,6 +2755,7 @@
                 if(compare){
                     var compareObj = {
                         "id": compareData.id,
+                        "b2bcatemapping":compareData.b2bCateMapping,
                         "productName": compareData.productName,
                         "productID": compareId,
                         "productImg": compareData.productImg,
@@ -2778,6 +2791,17 @@
                     $dm.addClass('compare-select');
                 } else {
                     $dm.removeClass('compare-select');
+                }
+            },
+            // 비교하기 버튼 상태 변경
+            compareBtnStatus:function(){
+                var self = this;
+                var categoryId = lgkorUI.getHiddenInputData().categoryId;
+                var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
+
+                if(storageCompare && storageCompare['data'].length > 0){ 
+                    var data = storageCompare['data'][0];
+                    if(data.b2bcatemapping != lgePdpSendData.b2bCateMapping) self.$pdpInfo.find('.product-compare').hide();
                 }
             },
             setSiblingOptionCheck: function(target, currentIndex, modelsData){
