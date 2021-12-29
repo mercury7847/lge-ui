@@ -1148,11 +1148,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         break;
                     case 'focusout':
 
-                        //BTOCSITE-8039 컴포넌트 수정건 
+                        //BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 
+                        //슬라이드에 포커스 아웃될때 반복재생 실행안되는 오류 수정
                         //if (self.$slider && self.$slider[0] && e.relatedTarget && !$.contains(self.$slider[0], e.relatedTarget)) {
                             
-                        if (self.$slider && self.$slider[0] && !e.relatedTarget && !$.contains(self.$slider[0], e.relatedTarget)) {
-                            console.log('out 1111')
+                        if (self.$slider && self.$slider[0] && !e.relatedTarget && !$.contains(self.$slider[0], e.relatedTarget)) {                            
                             self.focussed = false;
                             self.autoPlay();
                             self.triggerHandler('carouseldeactive');
@@ -1496,7 +1496,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             if (self.$playButon.length) {
                 opt.pauseOnHover = true;
 
-                self.$playButon.on('click', function (e) {
+                //BTOCSITE-8039 클릭이벤트 중첩 방지 .off('click) 추가
+                self.$playButon.off('click').on('click', function (e) {
                     if (self.paused === false) {
                         self.pause();
                     } else {

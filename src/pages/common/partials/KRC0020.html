@@ -57,8 +57,12 @@
 		.align-top : 아이콘 아래 정렬
 		.align-bottom : 아이콘 위 정렬
 		// <- 해당 아이콘 align 사용하지 않음. DOM순서 변경되도록 수정
+
+		4. 반복재생 - BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
+		data-autoplay : true 반복재생, false 수동재생
+		data-auto-speed : 반복재생 속도 ex) 1000(1초) 2000(2초) 3000(3초)
 	-->
-	<section class="component KRC0020 @@bg-color @@img-none @@stageType">
+	<section class="component KRC0020 @@bg-color @@img-none @@stageType" data-autoplay="@@autoplay" data-auto-speed="@@autoSpeed">
 		<div class="component-inner ui_carousel_slider"><!-- [KR수정_201229] .ui_carousel_slider class 추가 -->
 			@@if ( context.iconType && context.top ) {
 			<div class="icon-area"><!-- [KR수정_201229] .ui_carousel_slider class 삭제 -->
@@ -86,9 +90,18 @@
 				<!-- // [KR수정_201222] slider control button DOM 추가 -->
 			</div>
 			<!-- [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->
-			<ul id="dots" class="indi-wrap ui_carousel_dots">
-				<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-			</ul>
+			<!-- Indicator Area -->
+			<!-- BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 -->
+			<div class="indi-wrap">
+				<ul class="ui_carousel_dots indi-conts">
+					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+				</ul>
+				<span class="component_controls play">
+					<button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+				</span>
+			</div>
+			<!-- //BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 -->
+			<!-- //Indicator Area -->
 			<!-- // [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->
 			}
 			@@if ( context.textType && context.top ) {
@@ -112,9 +125,16 @@
 				<!-- // [KR수정_201222] slider control button DOM 추가 -->
 			</div>
 			<!-- [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->
-			<ul class="indi-wrap ui_carousel_dots">
-				<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-			</ul>
+			<!-- BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 -->
+			<div class="indi-wrap">
+				<ul class="ui_carousel_dots indi-conts">
+					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+				</ul>
+				<span class="component_controls play">
+					<button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+				</span>
+			</div>
+			<!-- //BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 -->
 			<!-- // [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->
 			<!-- // [KR수정_201222] 이미지 아이콘 없는 타입 추가 -->
 			}
@@ -308,9 +328,18 @@
 				<!-- // [KR수정_201222] slider control button DOM 추가 -->
 			</div>
 			<!-- [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->
-			<ul class="indi-wrap ui_carousel_dots">
-				<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-			</ul>
+			<!-- Indicator Area -->
+			<!-- BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 -->
+			<div class="indi-wrap">
+				<ul class="ui_carousel_dots indi-conts">
+					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+				</ul>
+				<span class="component_controls play">
+					<button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+				</span>
+			</div>
+			<!-- //BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 -->
+			<!-- //Indicator Area -->
 			<!-- // [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->
 			}
 			@@if ( context.textType && context.bottom ) {
@@ -334,9 +363,18 @@
 				<!-- // [KR수정_201222] slider control button DOM 추가 -->
 			</div>
 			<!-- [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->
-			<ul class="indi-wrap ui_carousel_dots">
-				<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-			</ul>
+			<!-- Indicator Area -->
+			<!-- BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 -->
+			<div class="indi-wrap">
+				<ul class="ui_carousel_dots indi-conts">
+					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+				</ul>
+				<span class="component_controls play">
+					<button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+				</span>
+			</div>
+			<!-- //BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 -->
+			<!-- //Indicator Area -->
 			<!-- // [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->
 			<!-- // [KR수정_201222] 이미지 아이콘 없는 타입 추가 -->
 			}
@@ -364,10 +402,20 @@
 				<button type="button" class="btn-arrow next">다음</button>
 				<!-- // [KR수정_201222] slider control button DOM 추가 -->
 			</div>
-			<!-- [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->
-			<ul class="indi-wrap ui_carousel_dots">
-				<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
-			</ul>
+			<!-- [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->			
+
+			<!-- Indicator Area -->
+			<!-- BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 -->
+			<div class="indi-wrap">
+				<ul class="ui_carousel_dots indi-conts">
+					<li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+				</ul>
+				<span class="component_controls play">
+					<button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
+				</span>
+			</div>
+			<!-- //BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 -->
+			<!-- //Indicator Area -->
 			<!-- // [KR수정_201229] 인디케이터 DOM 밖으로 위치 변경 -->
 			<!-- // [KR수정_201222] 이미지 아이콘 없는 타입 추가 -->
 			}
