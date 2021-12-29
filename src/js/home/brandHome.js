@@ -14,7 +14,6 @@
                 self.contentTab();
                 self.resize();
                 self.appSmartTabMenu();
-                self.appSmartTabMobile.load(); 
             });
         },
         settings: function(){
