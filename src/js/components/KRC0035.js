@@ -26,4 +26,22 @@ $(document).ready(function(){
 		});
 		//$('body').vcLazyLoaderSwitch('reload',$KRC0035);
 	});
+
+
+	/* BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
+	var infoDisclaimer = $('.KRC0035').find('.text-wrap');
+    infoDisclaimer.each(function(cdx, item){
+
+        $(item).find('.drop-info .dropInfo_openBtn').on('click', function(e){
+			$(item).find('.dropContent').addClass('on');
+			$(this).hide();
+        });
+
+        $(item).find('.drop-info .dropInfo_closeBtn').on('click', function(e){
+			$(item).find('.dropContent').removeClass('on');
+			$(item).find('.drop-info .dropInfo_openBtn').show();
+        });
+        
+    });
+	/* //BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
 })
