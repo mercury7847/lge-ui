@@ -607,6 +607,11 @@ br.pc-only {
         @include mobile {
             padding-bottom: 60px;
             border:none;
+            /* s : BTOCSITE-5938-378 */
+            &.selected-prd {
+                padding-bottom: 300px;
+            }
+            /* e : BTOCSITE-5938-378 */
         }
     }
     .slide-wrap {
