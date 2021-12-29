@@ -13,6 +13,7 @@
 						<!-- 작성 내용 -->
 						<div class="inner-box">
 							<p class="inner-tit">작성 내용</p>
+							<!-- 
 							@@include('./common/modules/dl-infolist.html', {
 								"list" : [
 									{ "dt" : "구분", "dd" : "Q&A" },
@@ -21,7 +22,58 @@
 									{ "dt" : "제목", "dd" : "제목이 출력됩니다." },
 									{ "dt" : "내용", "dd" : "문의글 내용이 출력됩니다." }
 								]
-							})
+							}) 
+							-->
+							
+							<div class="dl-infolist-wrap">
+								<ul class="lists">
+									<li>
+										<dl>
+											<dt>구분</dt>
+											<dd>Q&amp;A</dd>
+										</dl>
+									</li>
+									<li>
+										<dl>
+											<dt>등록일</dt>
+											<dd>2021.12.10</dd>
+										</dl>
+									</li>
+									<li>
+										<dl>
+											<dt>진행상태</dt>
+											<dd><em>답변대기</em></dd>
+										</dl>
+									</li>
+									<li>
+										<dl>
+											<dt>제목</dt>
+											<dd>테스트 이미지 등록 수정!</dd>
+										</dl>
+									</li>
+									<li>
+										<dl>
+											<dt>내용</dt>
+											<dd>
+												<!-- BTOCSITE-9642 div 태그 추가 -->
+												<div class="line">
+												문의내용이 노출됩니다.문의내용이 노출됩니다.문의내용이 노출됩니다.
+												개행처리 테스트......
+													<!-- BTOCSITE-9642 img-wrap 태그 추가 - s -->
+													<div class="img-wrap">
+														<img src="/lg5-common/images/BMC/event_01.jpeg">
+														<img src="/lg5-common/images/BMC/event_01.jpeg">
+														<img src="/lg5-common/images/BMC/event_01.jpeg">
+														<img src="/lg5-common/images/BMC/event_01.jpeg">
+													</div>
+													<!-- BTOCSITE-9642 img-wrap 태그 추가 - e -->
+												</div>
+												<!-- //BTOCSITE-9642 div 태그 추가 -->
+											</dd>
+										</dl>
+									</li>
+								</ul>
+							</div> 
 						</div>
 						<!-- //작성 내용 -->
 						<!-- 답변 -->
@@ -44,8 +96,11 @@
     <footer class="pop-footer center">
         <div class="btn-group">
 			<!-- 210312 수정 -->
-            <button type="button" class="btn pink ui_modal_close"><span>닫기</span></button>
+            <button type="button" class="btn gray ui_modal_close"><span>닫기</span></button>
 			<!-- //210312 수정 -->
+			<!-- BTOCSITE-9642 추가 -->
+            <button type="button" class="btn pink btn-qna" data-url="/tvs/27art10akpl"><span>Q&amp;A로 이동</span></button>
+			<!-- //BTOCSITE-9642 추가 -->
         </div>
     </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>

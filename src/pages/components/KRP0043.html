@@ -41,14 +41,23 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <!-- BTOCSITE-9642 추가 - s -->
                                     <div class="sort-area">
                                         <div class="sort-list">
                                             <span class="chk-wrap">
-                                                <input type="checkbox" id="secretSort" name="privateFlag">
+                                                <input type="checkbox" id="myWriteView" name="myWriteFlag">
+                                                <label for="myWriteView">내 문의 보기</label>
+                                            </span>
+                                        </div>
+                                        <div class="sort-list">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="secretSort" name="secret">
                                                 <label for="secretSort">비밀글 제외</label>
                                             </span>
                                         </div>
                                     </div>
+                                    <!-- //BTOCSITE-9642 추가 - e -->
                                     <button type="button" class="btn border ico-req" data-href="" data-control="modal" data-name="write"><span>문의하기</span></button>
                                 </div>
                             </div>
@@ -446,7 +455,7 @@
                 <!-- // 등록하기, 수정하기-->
             </div>
             <!-- //component KRP0043 -->
-		</div>
+        </div>
     </div>
 
 </body>

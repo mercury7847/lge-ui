@@ -89,20 +89,32 @@
     var qnaPdp = {
         init : function (){
             loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+            
             var self = this;
-
+            var isUrl = document.location.search;
+            
             vcui.require(['ui/pagination', 'ui/validation'], function (){
                 self.settings();
                 self.bindEvents();
                 self.validation = new vcui.ui.Validation('#submitForm', { 
                 
                 });
-                self.requestQnaListData({"questionTypeCode":"ALL","listTypeName":"문의유형 전체","excludePrivate":"N","page": "1"});
+
+                if(loginFlag == "Y"){
+                    if(isUrl){
+                        self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"Y","page": "1"});
+                        $('#myWriteView').prop("checked", true);
+                    } else {
+                        self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"N","page": "1"});
+                    }
+                } else {
+                    self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"N","page": "1"});
+                }
             });
         },
         settings : function (){
-            var self = this;            
-            
+            var self = this;
+
             self.$pdpQna = $('#pdp_qna');
             
             // QnA 리스트 상단 영역
@@ -140,25 +152,37 @@
             // QnA 리스트 : 페이징 선택
             self.$pagination.off('page_click.page').on('page_click.page',  function(e, data) {
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var excludePrivate  = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
+                var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked) 
+                var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
                 if(excludePrivate === "on" ) {
                     excludePrivate = "Y";
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": data});                
+                if(myQna === "on" ) {
+                    myQna = "Y";
+                } else {
+                    myQna = "N";
+                }
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": data});
             });
             
             // QnA 리스트 : selectbox 선택
             self.$sortSelect.off('change').on('change', function(e){
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var excludePrivate = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined
+                var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked) 
+                var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
                 if(excludePrivate === "on" ) {
                     excludePrivate = "Y";
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": "1"});
+                if(myQna === "on" ) {
+                    myQna = "Y";
+                } else {
+                    myQna = "N";
+                }
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
             });
 
             // 닫기 버튼 클릭 시 form 전체 입력 값 초기화
@@ -167,16 +191,51 @@
             });
 
             // 비밀글 제외 체크
-            self.$qnaType.find('#secretSort').off('click').on('click', function(){
+            self.$qnaType.find('#secretSort').on('click', function(){
                 var questionTypeCode = self.$sortSelect.vcSelectbox('value');
-                var excludePrivate  = self.$sortSecChk.find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
-                //var questionTypeName = self.$sortSelect.vcSelectbox('text');
+                var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
+                var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
                 if(excludePrivate === "on" ) {
                     excludePrivate = "Y";
                 } else {
                     excludePrivate = "N";
                 }
-                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"page": "1"});
+                if(myQna === "on" ) {
+                    myQna = "Y";
+                } else {
+                    myQna = "N";
+                }
+                self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
+            });
+
+            // 내 문의 보기 체크
+            self.$qnaType.find('#myWriteView').on('click', function(){
+                if(lgkorUI.stringToBool(loginFlag)) {
+                    var questionTypeCode = self.$sortSelect.vcSelectbox('value');
+                    var excludePrivate = $('#secretSort').closest(".chk-wrap").find('input[type=checkbox]:checked').val(); // on , undefined(not-checked)
+                    var myQna = $('#myWriteView').closest(".chk-wrap").find('input[type=checkbox]:checked').val();// on , undefined(not-checked) 
+                    if(excludePrivate === "on" ) {
+                        excludePrivate = "Y";
+                    } else {
+                        excludePrivate = "N";
+                    }
+                    if(myQna === "on" ) {
+                        myQna = "Y";
+                    } else {
+                        myQna = "N";
+                    }
+                    self.requestQnaListData({"questionTypeCode":questionTypeCode,"excludePrivate":excludePrivate ,"myQna":myQna,"page": "1"});
+                } else {
+                    $('#myWriteView').prop("checked", false);
+                    lgkorUI.confirm('', {
+                        title:'로그인 후 등록이 가능합니다.<br>로그인 하시겠습니까?', 
+                        okBtnName: '예', 
+                        cancelBtnName: '아니오', 
+                        ok : function (){ 
+                            window.location.href = "/sso/api/Login";
+                        }
+                    });
+                }
             });
 
             self.$writePopup.find('.btn-confirm').on('click', function() {
@@ -230,7 +289,7 @@
             //문의하기 
             self.$reqBtn.on('click', function(){
                 var mode = self.$reqBtn.attr('data-name');
-                console.log(mode);
+                //console.log(mode);
                 self.requestQnaReadPop({"mode":mode});
                 
             });
@@ -243,6 +302,15 @@
                 self.requestQnaReadPop({"mode":mode,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
             });
         },
+        // hasParamChk: function(name){
+        //     if(params){
+        //         for (var i = 0; i < params.length; i++) {
+        //             var pair = params[i].split('=');
+        //             if (decodeURIComponent(pair[0]) == name)
+        //                 return true;
+        //         }
+        //     }
+        // },
         itemAccordionEnabledChk: function(item){
             if( item.blocked == "Y" ) {
                 this.enabled = "N";
@@ -268,8 +336,8 @@
         },
         // qna-list - get
         requestQnaListData : function(param){
-            console.log("QnA List - API request !!");
-            console.log(param);
+            //console.log("QnA List - API request !!");
+            //console.log(param);
         
             var self = this;
             var ajaxUrl = self.$qnaType.data('ajax') + "?modelId=" + self.$dataModelId + "&page=" + param.page ;
@@ -329,11 +397,11 @@
         },
         // qna-read-popup - get
         requestQnaReadPop : function(param) {
-            console.log("QnA 조회 팝업 - API request !!");
+            //console.log("QnA 조회 팝업 - API request !!");
             var self = this;
             
             //수정하기용, 문의하기일땐 READ API거칠 필요 없음
-            console.log("param.mode", param.mode)
+            //console.log("param.mode", param.mode)
             var paramCheck = param.mode == "write" ?  "" : "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
             var ajaxUrl = self.$qnaType.data('readAjax') + paramCheck;
 
@@ -367,7 +435,7 @@
 
                 } else {
                     // modify
-                    console.log("modify");
+                    //console.log("modify");
 
                     // 함수 추가 - 211207 
                     self.fileHideCheck();
@@ -393,7 +461,7 @@
                             var imgfiles = data.files;
                             
 
-                            console.log(imgfiles);
+                            //console.log(imgfiles);
 
                             self.$writeTitle.val(qTitle);
                             self.$writeDesc.val(qContent);
@@ -469,7 +537,7 @@
             self = this;
             ajaxUrl = self.$writeForm.data('createAjax');
 
-            console.log("QnA 등록하기 - API request !!" + ajaxUrl);
+            //console.log("QnA 등록하기 - API request !!" + ajaxUrl);
 
             if(ajaxUrl) {
                 var param = self.validation.getAllValues();
@@ -532,7 +600,7 @@
             var self = this;
             var queNo = el.queNo;
             ajaxUrl = self.$writeForm.data('updateAjax');
-            console.log("QnA 수정하기 - API request !!" + ajaxUrl);
+            //console.log("QnA 수정하기 - API request !!" + ajaxUrl);
 
             if(ajaxUrl) {
                 var param = self.validation.getAllValues(); 
@@ -597,7 +665,7 @@
         },
         // qna-delete-popup - post
         requestQnaDelete :function(param) {
-            console.log("QnA 삭제하기 - API request !!");
+            //console.log("QnA 삭제하기 - API request !!");
             var self = this;
             var ajaxUrl = self.$qnaType.data('deleteAjax') + "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
             if(lgkorUI.stringToBool(loginFlag)) {
@@ -643,10 +711,10 @@
 
             self.$writeForm.find('.ui_imageinput').vcImageFileInput({
                 individualFlag:true,
-                totalSize: 4 * 1024 * 1024, //  전체 파일 토탈 용량 값 : 4 * 1024 * 1024(4MB):dev test용 / 40 * 1024 * 1024 (40MB):stg,prd
+                totalSize: 40 * 1024 * 1024, //  전체 파일 토탈 용량 값 : 4 * 1024 * 1024(4MB):dev test용 / 40 * 1024 * 1024 (40MB):stg,prd
                 fileNameSize : 50, // 파일명 최대 50자 이내(.확장자 포함)
                 individual: {
-                    size: 1 * 1024 * 1024 // 개인 파일 업로드 시 용량 값 : 1 * 1024 * 1024(1MB):dev / 10 * 1024 * 1024 (10MB)
+                    size: 10 * 1024 * 1024 // 개인 파일 업로드 시 용량 값 : 1 * 1024 * 1024(1MB):dev / 10 * 1024 * 1024 (10MB)
                 },
                 message: {
                     name: '파일 명에 특수기호(? ! , . & ^ ~ )를 제거해 주시기 바랍니다.',
