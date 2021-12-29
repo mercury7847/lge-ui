@@ -13,30 +13,10 @@
             // 이메일인증멤버 확인
             var planEventId = $('#planEventId').val();
             console.log('호출전', planEventId);
-            var memberStatus = memberCheck();
+            var memberStatus = self.memberCheck();
             console.log(memberStatus);
             if (memberStatus == 'Y') {
                 location.href = "/benefits/exhibitions/detail-" + planEventId;
-            }
-
-            function memberCheck() {
-                var planEventId = $('#planEventId').val();
-                var memberStatus = '';
-                console.log('호출', planEventId);
-                $.ajax({
-                    type: "POST",
-                    async: false,
-                    url: "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId=" + planEventId,
-                    dataType: "json",
-                    success: function(json) {
-                        memberStatus = json.data;
-                    },
-                    error: function(request, status, error) {
-                        alert("오류가 발생하였습니다.");
-                        return;
-                    }
-                });
-                return memberStatus;
             }
 
             if (lgkorUI.stringToBool(loginFlag)) {
@@ -111,28 +91,9 @@
             self.$completeBtn.on('click', function(e) {
                 e.preventDefault();
                 var planEventId = $('#planEventId').val();
-                var memberStatus = memberCheck();
+                var memberStatus = self.memberCheck();
                 console.log(memberStatus);
 
-                function memberCheck() {
-                    var planEventId = $('#planEventId').val();
-                    var memberStatus = '';
-                    console.log('호출', planEventId);
-                    $.ajax({
-                        type: "POST",
-                        async: false,
-                        url: "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId=" + planEventId,
-                        dataType: "json",
-                        success: function(json) {
-                            memberStatus = json.data;
-                        },
-                        error: function(request, status, error) {
-                            alert("오류가 발생하였습니다.");
-                            return;
-                        }
-                    });
-                    return memberStatus;
-                }
                 if (memberStatus == 'Y') {
                     lgkorUI.alert("", {
                         title: '이미 인증 받은 회원입니다.<br>확인 버튼을 통해<br>아카데미 스토어를 이용해 주시기 바랍니다.',
@@ -220,6 +181,26 @@
                 }
             });
 
+        },
+
+        memberCheck : function() {
+            var planEventId = $('#planEventId').val();
+            var memberStatus = '';
+            console.log('호출', planEventId);
+            $.ajax({
+                type: "POST",
+                async: false,
+                url: "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId=" + planEventId,
+                dataType: "json",
+                success: function(json) {
+                    memberStatus = json.data;
+                },
+                error: function(request, status, error) {
+                    alert("오류가 발생하였습니다.");
+                    return;
+                }
+            });
+            return memberStatus;
         }
 
 
