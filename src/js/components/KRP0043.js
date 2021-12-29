@@ -289,7 +289,7 @@
             //문의하기 
             self.$reqBtn.on('click', function(){
                 var mode = self.$reqBtn.attr('data-name');
-                console.log(mode);
+                //console.log(mode);
                 self.requestQnaReadPop({"mode":mode});
                 
             });
@@ -336,8 +336,8 @@
         },
         // qna-list - get
         requestQnaListData : function(param){
-            console.log("QnA List - API request !!");
-            console.log(param);
+            //console.log("QnA List - API request !!");
+            //console.log(param);
         
             var self = this;
             var ajaxUrl = self.$qnaType.data('ajax') + "?modelId=" + self.$dataModelId + "&page=" + param.page ;
@@ -397,11 +397,11 @@
         },
         // qna-read-popup - get
         requestQnaReadPop : function(param) {
-            console.log("QnA 조회 팝업 - API request !!");
+            //console.log("QnA 조회 팝업 - API request !!");
             var self = this;
             
             //수정하기용, 문의하기일땐 READ API거칠 필요 없음
-            console.log("param.mode", param.mode)
+            //console.log("param.mode", param.mode)
             var paramCheck = param.mode == "write" ?  "" : "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
             var ajaxUrl = self.$qnaType.data('readAjax') + paramCheck;
 
@@ -435,7 +435,7 @@
 
                 } else {
                     // modify
-                    console.log("modify");
+                    //console.log("modify");
 
                     // 함수 추가 - 211207 
                     self.fileHideCheck();
@@ -461,7 +461,7 @@
                             var imgfiles = data.files;
                             
 
-                            console.log(imgfiles);
+                            //console.log(imgfiles);
 
                             self.$writeTitle.val(qTitle);
                             self.$writeDesc.val(qContent);
@@ -537,7 +537,7 @@
             self = this;
             ajaxUrl = self.$writeForm.data('createAjax');
 
-            console.log("QnA 등록하기 - API request !!" + ajaxUrl);
+            //console.log("QnA 등록하기 - API request !!" + ajaxUrl);
 
             if(ajaxUrl) {
                 var param = self.validation.getAllValues();
@@ -600,7 +600,7 @@
             var self = this;
             var queNo = el.queNo;
             ajaxUrl = self.$writeForm.data('updateAjax');
-            console.log("QnA 수정하기 - API request !!" + ajaxUrl);
+            //console.log("QnA 수정하기 - API request !!" + ajaxUrl);
 
             if(ajaxUrl) {
                 var param = self.validation.getAllValues(); 
@@ -665,7 +665,7 @@
         },
         // qna-delete-popup - post
         requestQnaDelete :function(param) {
-            console.log("QnA 삭제하기 - API request !!");
+            //console.log("QnA 삭제하기 - API request !!");
             var self = this;
             var ajaxUrl = self.$qnaType.data('deleteAjax') + "?modelId=" + param.modelId +"&questionNo="+ param.queNo;
             if(lgkorUI.stringToBool(loginFlag)) {
