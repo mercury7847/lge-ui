@@ -77,8 +77,8 @@
                         // }
                         // item.ecProduct = JSON.stringify(ecProduct);
                     }
-                    console.log(list)
-                    EVT_detail_slideList.empty().append(vcui.template(EVT_ItemTemplate, list)); // BTOCSITE-5938-455
+                    //console.log(list)
+                    EVT_detail_slideList.append(vcui.template(EVT_ItemTemplate, list));
                     
                     //슬라이드 옵션
                     $('.ui_carousel_4_slider').vcCarousel('setOption', 'responsive', [
