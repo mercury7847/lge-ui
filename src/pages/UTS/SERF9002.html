@@ -5,10 +5,12 @@
     })
 <!--        pageJS: ["search/curation","search/search_all"]-->
 <body>
-    <div class="wrap">
+    <!--BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB 개선 - 서브페이지만 subRenewWrap 클래스 추가-->
+    <div class="wrap subRenewWrap">
         <!-- 210311_H1추가 -->
         @@include('./common/header.html', {
-            hiddenTitle: "통합검색"
+            hiddenTitle: "통합검색",
+            mobileCase: "undefined"
         })
         <!-- //210311_H1추가 -->
 

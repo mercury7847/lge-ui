@@ -2180,16 +2180,97 @@ html {
                 .header-wrap {
                     border-bottom:1px solid #ddd;
                 }
-                .mobile-nav-wrap:not(.mainNav) {
+                .sub-renew-nav-wrap {
                     z-index: 101;
                     position: fixed;
                     top: 0;
                     left: 0;
+                    width: calc(100% - 86px);
+                    height: 61px;
+                    padding-left: 76px;
+                    text-align: center;
+                    .nav-item {
+                        position: relative;
+                        display: inline-block;
+                        width: 100%;
+                        padding:18px 0 19px;
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 24px;
+                    }
+                    .nav-category-container {
+                        top: 61px;
+                        overflow-y: auto;
+                        width: 100vw;
+                        max-height: 50vh;
+                        padding: 0;
+                        .superCategory {
+                            position: relative;
+                            height: 100%;
+                            & > li {
+                                &:not(:first-child) {
+                                    border-top: 1px solid $color-border;
+                                }
+                                a {
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                }
+                                > a {
+                                    border-right: 1px solid $color-border;
+                                    font-weight: bold;
+                                }
+                                &.isActive {
+                                    a {
+                                        padding: 12px 30px 12px 16px;
+                                        font-size: 14px;
+                                    }
+                                    > a {
+                                        position: relative;
+                                        color: $color-white;
+                                        background: $color-primary url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat right 12px center/16px;
+                                        border-right: none;
+                                    }
+                                }
+                            }
+                        }
+                        &.hasDepth {
+                            .superCategory {
+                                & > li {
+                                    width: 50%;
+                                    &.isActive {
+                                        .subCategory {
+                                            display: block;
+                                        }
+                                    }
+                                }
+                            }
+                            .subCategory {
+                                display: none;
+                                overflow-y: auto;
+                                position: absolute;
+                                top: 0;
+                                left: 50%;
+                                width: 50%;
+                                height: 100%;
+                                background: $color-white;
+                                z-index: 100;
+                                .isActive {
+                                    a {
+                                        font-weight: bold;
+                                        background: url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat right 12px center/16px;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     .btn-back {
+                        position: absolute;
                         top: 7px;
                         left: 0;
                         min-height:24px;
                         padding:24px;
+                        background-position: left 16px top 9px;
                         background-size:24px;
                         .text {
                             overflow: hidden;
@@ -2201,97 +2282,70 @@ html {
                             white-space: nowrap;
                         }
                     }
+                    &.isActive + .sub-renew-dimmed{
+                        display: block;
+                    }
                     &.is-depth {
-                        width: 100%;
-                        height: 61px;
                         .nav-item {
-                            width: calc(100% - 48px - 120px);
-                            padding:18px 0 19px;
                             &:after {
                                 position:relative;
                                 display:inline-block;
                                 right:-8px;
                                 top: -3px;
+                                width: 16px;
+                                height: 16px;
+                                margin-top: -12px;
+                                background: url('/lg5-common/images/icons/btn-arr-32-left.svg') no-repeat left center;
+                                background-size: 100% 100%;
+                                transform: rotate(-90deg);
+                                transition: all ease 200ms;
+                                vertical-align: bottom;
+                                content: '';
                             }
-                            /*&.on {
-                                & + .hasDepth:before {
-                                    content:"";
-                                    position: fixed;
-                                    top:0;
-                                    left:0;
-                                    right:0;
-                                    bottom:0;
-                                    width: 100%;
-                                    height: 100%;
-                                    background:rgba(0,0,0,0.7);
-                                    z-index: 99;
+                            &.on {
+                                &:after {
+                                    transform: rotate(90deg);
                                 }
-                            }*/
+                            }
                         }
-                        .nav-category-container {
-                            top: 61px;
-                            overflow-y: auto;
-                            max-height: 50vh;
-                            padding: 0;
-                            .superCategory {
-                                position: relative;
-                                height: 100%;
-                                & > li {
-                                     &:not(:first-child) {
-                                        border-top: 1px solid $color-border;
-                                    }
-                                    &.isActive {
-                                        a {
-                                            overflow: hidden;
-                                            text-overflow: ellipsis;
-                                            white-space: nowrap;
-                                            padding: 12px 30px 12px 16px;
-                                            font-size: 14px;
-                                        }
-                                        > a {
-                                            position: relative;
-                                            color: $color-white;
-                                            background: $color-primary url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat right 12px center/16px;
-                                            font-weight: bold;
-                                        }
-                                    }
-                                }
-                            }
-                            &.hasDepth {
-                                .superCategory {
-                                    & > li {
-                                        width: 50%;
-                                        &.isActive {
-                                            .subCategory {
-                                                display: block;
-                                            }
-                                        }
-                                    }
-                                }
-                                .subCategory {
-                                    display: none;
-                                    overflow-y: auto;
-                                    position: absolute;
-                                    top: 0;
-                                    left: 50%;
-                                    width: 50%;
-                                    height: 100%;
-                                    border-left: 1px solid $color-border;
-                                    background: $color-white;
-                                    z-index: 100;
-                                    .isActive {
-                                        a {
-                                            font-weight: bold;
-                                            background: url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat right 12px center/16px;
-                                        }
-                                    }
-                                }
-                            }
+                    }
+                    //not(.is-depth) : 2depth가 존재하지 않는 경우
+                    &:not(.is-depth) {
+                        .nav-item {
+                            pointer-events: none;
                         }
                     }
                 }
                 .utility {
                     top:13px;
+                }
+                .sub-renew-dimmed {
+                    display: none;
+                    position: fixed;
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                    width: 100%;
+                    height: 100%;
+                    background:rgba(0,0,0,0.7);
+                    z-index: 99;
+                }
+                &.isActive {
+                    .header {
+                        z-index: 8000;
+                    }
+                    .sub-renew-nav-wrap {
+                        z-index: 8000;
+                    }
+                    .sub-renew-dimmed {
+                        z-index: 7000;
+                    }
+                }
+                &.isHide {
+                    .sub-renew-nav-wrap {
+                        z-index: 99;
+                    }
                 }
             }
         }
