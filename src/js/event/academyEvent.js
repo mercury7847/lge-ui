@@ -2,21 +2,14 @@
     var validation;
     loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
     birthDt = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.birthDt;
-    // var loginFlag = 'Y';
-    // var birthDt = 19920102;
-
-
     var emailCertified = {
         init: function() {
             var self = this;
 
-            // 이메일인증멤버 확인
             var planEventId = $('#planEventId').val();
-            console.log('호출전', planEventId);
             var memberStatus = self.memberCheck();
-            console.log(memberStatus);
             if (memberStatus == 'Y') {
-                location.href = "/benefits/exhibitions/detail-" + planEventId;
+                location.href = "/benefits/exhibitions/detail-"+planEventId;
             }
 
             if (lgkorUI.stringToBool(loginFlag)) {
@@ -40,6 +33,8 @@
             var checkEmail = $('#checkEmail').val();
             var checklength = checkEmail.split(',').length;
 
+            self.$emailInput.attr('maxlength', 50);
+
             vcui.require(['ui/validation'], function() {
                 var register = {
                     //이메일
@@ -56,7 +51,6 @@
                             if (_pattern.test(value) == true) {
                                 if (value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
                                     for (var i = 0; i < checklength; i++) {
-                                        console.log(checkEmail.split(',')[i], i);
                                         if (value.split('@')[1] === checkEmail.split(',')[i]) {
                                             return true;
                                             break;
@@ -92,7 +86,6 @@
                 e.preventDefault();
                 var planEventId = $('#planEventId').val();
                 var memberStatus = self.memberCheck();
-                console.log(memberStatus);
 
                 if (memberStatus == 'Y') {
                     lgkorUI.alert("", {
@@ -103,7 +96,6 @@
                         }
                     });
                 } else {
-                    console.log('뚦림', memberStatus);
                     var result = validation.validate();
 
                     if (result.success === true) {
@@ -117,7 +109,6 @@
                         for (var key in param) {
                             formData.append(key, param[key]);
                         }
-                        console.log(url, formData)
                         lgkorUI.showLoading();
 
                         lgkorUI.requestAjaxFileData(url, formData, function(result) {
@@ -186,7 +177,6 @@
         memberCheck : function() {
             var planEventId = $('#planEventId').val();
             var memberStatus = '';
-            console.log('호출', planEventId);
             $.ajax({
                 type: "POST",
                 async: false,
@@ -202,11 +192,9 @@
             });
             return memberStatus;
         }
-
-
     }
 
     $(window).ready(function() {
-        emailCertified.init();
+        emailCertified.init();        
     });
 })();
