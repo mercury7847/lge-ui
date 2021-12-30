@@ -13,8 +13,7 @@
             }
 
             if (lgkorUI.stringToBool(loginFlag)) {
-                //if( birthDt > 19920101 && birthDt < 20040102){
-                if (birthDt > 19700101 && birthDt < 20040102) {
+                if( birthDt > 19920101 && birthDt < 20040102){
                     $('.login-ok').show();
                     $('.login-no').hide();
                 } else {
