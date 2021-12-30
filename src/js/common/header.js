@@ -142,8 +142,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             // self.$mobileNaviWrapper.find('img').remove();
             // self.$mobileNaviWrapper.find('.nav-category-wrap').removeClass('super-category-content on')
 
+            //BTOCSITE-10034 야간무인매장 추가
+            self.$marketingLink = $('.marketing-link');
+
             //BTOCSITE-7335
             self.$mobileMktSlider = $('.marketing-link .ui_carousel_slider');
+
+            //BTOCSITE-10034 야간무인매장 추가
+            self.$marketingLinkSlide = $('.marketing-link .ui_carousel_slide');
             
             self.$hamburger = self.$el.find('.mobile-nav-button');
             self.$headerBottom = self.$el.find('.header-bottom');            
@@ -848,6 +854,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
                 replaceText.text("메뉴 닫기");
                 self.$dimmed.show();
+
+                /* BTOCSITE-10034 야간무인매장 추가 */
+                if(self.$marketingLinkSlide.length <= 0) {
+                    self.$marketingLink.hide()
+                }
+                /* //BTOCSITE-10034 야간무인매장 추가 */
             }
 
         },
