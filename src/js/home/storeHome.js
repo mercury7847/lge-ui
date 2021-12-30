@@ -18,7 +18,7 @@ $(function(){
         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
         speed: 150
     }).on('carouselafterchange', function(e, slide){
-        heroBanner();
+        heroBanner(); //BTOCSITE-6882 신규 WSG 적용 - 스토어 
         // s BTOCSITE-5938-222 : 20211224 pauseOnFocus가 false인데 autoplay 멈춰서 강제로 다시 시작
         if(slide.focussed) {
             slide.play();
@@ -26,6 +26,7 @@ $(function(){
         // e BTOCSITE-5938-222
     })
 
+    /* BTOCSITE-6882 신규 WSG 적용 - 스토어 */
     function heroBanner() {
         var heroList = $('.contents .hero-banner .slide-track > li');
         var heroListAct = heroList.siblings('.ui_carousel_current').index();
@@ -43,20 +44,34 @@ $(function(){
 
     heroBanner();
 
-    /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
-    $context.find('.ui_lifestyle_list').vcCarousel({
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-        speed: 150,
-        touchThreshold: 100,
-        responsive: [{
-            breakpoint: 100000,
-            settings: { slidesToShow: 4, slidesToScroll: 1, }
-        }, { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } }]
-    });
-    /* BTOCSITE-654 : 속도|터치감도|easing 조정 */
+    $(window).on('breakpointchange.product_lifestyle', function(e){
+        var breakpoint = window.breakpoint;    
+        if(breakpoint.name == 'mobile'){                    
+            $context.find('.ui_lifestyle_list').vcCarousel({
+                infinite: false,
+                dots: false,
+                slidesToShow: 1.2,
+                slidesToScroll: 1,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100
+            });
+            
+        }else if(breakpoint.name == 'pc'){    
+            $context.find('.ui_lifestyle_list').vcCarousel({
+                infinite: false,
+                dots: false,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100
+            });
+        }    
+    })
+
+    $(window).trigger('breakpointchange.product_lifestyle');
+    /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 */
 
     $context.find('.ui_exhib_carousel').vcCarousel({
         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
@@ -69,8 +84,9 @@ $(function(){
         var breakpoint = window.breakpoint;    
         if(breakpoint.name == 'mobile'){                    
             $context.find('.ui_product_lifestyle').vcCarousel({
-                infinite: true,
-                slidesToShow: 1,
+                infinite: false,
+                dots: false,
+                slidesToShow: 1.2,
                 slidesToScroll: 1,
                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                 speed: 150,
@@ -78,7 +94,15 @@ $(function(){
             });
             
         }else if(breakpoint.name == 'pc'){    
-            $context.find('.ui_product_lifestyle').vcCarousel('destroy');
+            $context.find('.ui_product_lifestyle').vcCarousel({
+                infinite: false,
+                dots: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100
+            });
         }    
     })
 
