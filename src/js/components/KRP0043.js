@@ -104,6 +104,7 @@
                     if(isUrl){
                         self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"Y","page": "1"});
                         $('#myWriteView').prop("checked", true);
+                        history.replaceState({}, null, location.pathname); //파라미터 url 삭제
                     } else {
                         self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"N","page": "1"});
                     }
@@ -301,16 +302,7 @@
                 var queNo = $(this).closest('li.lists').attr("data-que-no");
                 self.requestQnaReadPop({"mode":mode,"selector":this, "modelId":modelId, "queNo":queNo}); //qna read popup
             });
-        },
-        // hasParamChk: function(name){
-        //     if(params){
-        //         for (var i = 0; i < params.length; i++) {
-        //             var pair = params[i].split('=');
-        //             if (decodeURIComponent(pair[0]) == name)
-        //                 return true;
-        //         }
-        //     }
-        // },
+        }, 
         itemAccordionEnabledChk: function(item){
             if( item.blocked == "Y" ) {
                 this.enabled = "N";
