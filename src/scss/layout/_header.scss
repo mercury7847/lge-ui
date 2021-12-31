@@ -2165,8 +2165,8 @@ html {
         &.mdevice {
             .subRenewWrap {
                 .header {
-                    z-index: 100; //임시 확인해야함
-                    position: sticky;
+                    z-index: 100;
+                    position: fixed;
                     top:0;
                     width:100%;
                     background: #fff;
@@ -2346,6 +2346,13 @@ html {
                     .sub-renew-nav-wrap {
                         z-index: 99;
                     }
+                }
+
+                &.iw_viewport-wrapper {
+                    padding-top: 70px;
+                }
+                > main.container {
+                    padding-top: 70px;
                 }
             }
         }
