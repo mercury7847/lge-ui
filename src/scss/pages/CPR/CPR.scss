@@ -703,6 +703,7 @@
                                         border:none;
                                         text-align:right;
                                         @include mobile{
+                                            padding:10px 36px 10px 12px;
                                             text-align:left;
                                         }
                                         .ui-select-text{
