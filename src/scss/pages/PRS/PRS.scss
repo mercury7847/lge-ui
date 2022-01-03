@@ -1239,36 +1239,34 @@
 						padding:4px;
 					}
 					.slide-box {
+						display:block;
 						height:100%;
 						padding:40px;
 						border-radius:8px;
 						box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
 						@include mobile {
-							width: 234px;
-							padding: 16px 32px 24px;
+							padding:20px 16px;
 							box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
 						}
 					}
 					.img {
-						a {
-							display:block;
-							text-align:center;
-							img {
-								max-width:200px;
-								width:100%;
-								@include mobile{
-									max-width:170px;
-								}
+						display:block;
+						text-align:center;
+						img {
+							max-width:200px;
+							width:100%;
+							@include mobile{
+								max-width:103px;
 							}
 						}
 					}
 					.product-contents {
 						position:relative;
 						// min-height:114px;
-						padding-top:34px;
+						padding-top:61px;
 						.flag-wrap {
 							position:absolute;
-							top:10px;
+							top:40px;
 							left:0;
 							.flag {
 								&:before {
@@ -1284,7 +1282,7 @@
 							// max-height:56px;
 							font-size:18px;
 							font-weight:700;
-							line-height:28px;
+							line-height:26px;
 							overflow: hidden;
 							text-overflow: ellipsis;
 							> a {
@@ -1293,9 +1291,11 @@
 						}
 						.product-sku {
 							display: inline-block;
-							margin-right: 6px;
-							@include font-small;
+							margin-right:12px;
+							font-size:14px;
+							line-height:20px;
 							vertical-align: top;
+							color:#666;
 						}
 						.review-info {
 							display: inline-block;
@@ -1308,7 +1308,9 @@
 							.average-rating,
 							.review-count {
 								display: inline-block;
-								@include font-small;
+								color:#666;
+								font-size:14px;
+								line-height:20px;
 							}
 							.review-count {
 								padding-left:4px;
@@ -1336,11 +1338,9 @@
 							display:block;
 						}
 						.total {
-							float: left;
-							margin-right: 8px;
 							font-weight: 700;
-							font-size: $font-large-1;
-							line-height: 30px;
+							font-size:20px;
+							line-height:28px;
 							@include mobile{
 								font-size: 16px;
 								line-height: 24px;
@@ -1348,11 +1348,11 @@
 						}
 						.original {
 							position: relative;
-							display: inline-block;
-							margin-top: 8px;
-							font-size: $font-small;
-							line-height: 22px;
-							color: $color-gray-5;
+							margin-top:20px;
+							min-height:24px;
+							font-size:16px;
+							line-height:24px;
+							color:#666666;
 							text-decoration:line-through;
 							@include mobile{
 								margin-top: 0;
@@ -1376,7 +1376,7 @@
 								right:0;
 								bottom:29px;
 								left:0;
-								padding:0 38px;
+								padding:0 16px;
 							}
 						}
 						.img {
@@ -1392,6 +1392,7 @@
 								bottom: 0;
 								left:50%;
 								transform:translateX(-50%);
+								max-width:none;
 							}
 						}
 						.product-contents {

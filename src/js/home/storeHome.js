@@ -121,9 +121,9 @@ $(function(){
 
                 $context.find('.ui_new_product_carousel').vcCarousel({
                     infinite: false,
-                    slidesToShow: 1,
+                    dots: false,
+                    slidesToShow: 2.2,
                     slidesToScroll: 1,
-                    variableWidth: true,
                     lastFix: true,
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                     speed: 150,
