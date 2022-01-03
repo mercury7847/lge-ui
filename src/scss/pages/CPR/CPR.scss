@@ -591,10 +591,13 @@
                             .cash-back-info{
                                 display:block;
                                 position:relative;
-                                padding:0 12px;
+                                padding:0 16px;
                                 font-size:14px;
                                 line-height:46px;
                                 font-weight:700;
+                                @include mobile{
+                                    padding:0 12px;
+                                }
                                 .ico {
                                     position:absolute;
                                     top:50%;
@@ -680,6 +683,9 @@
                                 padding:0 16px;
                                 font-size:14px;
                                 border-radius:8px;
+                                @include mobile{
+                                    padding:0 12px;
+                                }
                                 &.mo-sel{
                                     @include mobile{
                                         display:none;
@@ -705,7 +711,10 @@
                                             color:#000;
                                         }
                                         .ico{
-                                            right:12px;
+                                            right:16px;
+                                            @include mobile{
+                                                right:12px;
+                                            }
                                         }
                                     }
                                     .ui-selectbox-list{
