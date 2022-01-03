@@ -331,7 +331,7 @@
             .result-tabs {
                 margin-top: 24px;
                 @include mobile {
-                    margin: 10px -16px 0;
+                    margin:17px -16px 0; //BTOCSITE-8348 추가 요건으로 STG 배포 이후 위치 수정(PRD 반영 완료, STG 싱크 맞춰야함)
                     //padding-right:85px;
                 }
             }
