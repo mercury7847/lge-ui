@@ -661,6 +661,9 @@
                                         .card-list{
                                             display:inline-block;
                                             width:calc(100% - 4px);
+                                            li{
+                                                word-break:keep-all;
+                                            }
                                         }
                                     }
                                 }
