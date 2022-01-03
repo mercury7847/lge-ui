@@ -277,17 +277,23 @@
             //전체 탭
             var self = this;
             var appCateSticky = false;
+
             self.$stickyTab.on('tabchange', function(e, data){
                 appCateSticky = false;
 
-                $('html, body').stop().animate({scrollTop:self.stickyTabOffsetTop});
+                //주영 테스트
+                //window.hasHash는 최초 false. false 가 아니라면 스크롤 이벤트가 걸린다
+                if(!window.hasHash) $('html, body').animate({scrollTop:self.stickyTabOffsetTop});
+                else window.hasHash = false;
+                console.log("asaa")
+                //$('html, body').animate({scrollTop:self.stickyTabOffsetTop});
 
                 if( data.content[0] == $('.thinq-app')[0]) {
                     if( window.innerWidth > 1024) {
-                        console.log('pc');
+                        //console.log('pc');
                         self.appSmartTab.load();
                     }else{
-                        console.log('mobile !');
+                        //console.log('mobile !');
                         self.appSmartTabMobile.load();
                         self.appCateMenuScroll(true);
                     }
@@ -645,10 +651,32 @@
         
     })
 
+
+    //주영
     //BTOCSITE-88 추가
     $(window).on('thinQScroll', function(){
+        var sel = '';
+
         var hash = location.hash;
         var hasHash = false;
+        window.hasHash = false
+
+        // var sel  = '';
+        // switch(hash){
+        //     case '#intro' :  sel = 'thinq-tab a[href="thinq-cont1"]'; hasHash  = true; brfeak;
+        //     case '#life-style' :  sel = 'thinq-tab a[href="thinq-cont2"]'; hasHash  = true; brfeak;
+        //     case '#app' :  sel = 'thinq-tab a[href="thinq-cont3"]'; hasHash  = true; brfeak;
+        //     case '#magazine' :  sel = 'thinq-tab a[href="thinq-cont4"]'; hasHash  = true; brfeak;
+
+        //     case '#test1' :  sel = 'thinq-tab a[href="thinq-cont4"]'; hasHash  = true; brfeak;
+        // }
+
+        // if( hasHash ){
+        //     setTimeOut(function() {
+        //         $( sel ).trigger('click');
+        //     })
+        // }
+
         switch (hash){
             case '#intro':
                 setTimeout(function(){
@@ -674,8 +702,29 @@
                 },100);
                 hasHash = true;
                 break;
-            default:
+            
+            //주영 테스트
+            case '#test1':
+                setTimeout(function(){
+                    window.hasHash = true; //window.hasHash 가 false 라면 스크롤 이벤트가 걸리지 마라
 
+                    $('.thinq-tabs a[href="#thinq-cont3"]').trigger('click');
+                    $('html, body').animate({scrollTop:$('.app-experience-intro').offset().top - 100});
+                },100);
+                
+                hasHash = true;
+                break;
+            case '#test2':
+                setTimeout(function(){
+                    window.hasHash = true; //window.hasHash 가 false 라면 스크롤 이벤트가 걸리지 마라
+
+                    $('.thinq-tabs a[href="#thinq-cont3"]').trigger('click');
+                    $('html, body').animate({scrollTop:$('.app-download-guide').offset().top - 100});
+                },100);
+                
+                hasHash = true;
+                break;
+            default:
         }
     });
 
@@ -683,6 +732,7 @@
         //BTOCSITE-88 추가
         $(window).trigger('thinQScroll');
     })
+
 
     
 
