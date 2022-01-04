@@ -281,11 +281,16 @@
             self.$stickyTab.on('tabchange', function(e, data){
                 appCateSticky = false;
 
-                //주영 테스트
+                /* BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성 */
                 //window.hasHash는 최초 false. false 가 아니라면 스크롤 이벤트가 걸린다
-                if(!window.hasHash) $('html, body').animate({scrollTop:self.stickyTabOffsetTop});
-                else window.hasHash = false;
-                console.log("asaa")
+                if(!window.hasHash) {
+                    $('html, body').animate({scrollTop:self.stickyTabOffsetTop});
+                } else {
+                    //false면 #특정 링크로 접근했을시 기본 스크롤이벤트는 안걸린다.
+                    window.hasHash = false;
+                }
+                /* //BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성 */
+
                 //$('html, body').animate({scrollTop:self.stickyTabOffsetTop});
 
                 if( data.content[0] == $('.thinq-app')[0]) {
@@ -651,31 +656,13 @@
         
     })
 
-
-    //주영
     //BTOCSITE-88 추가
     $(window).on('thinQScroll', function(){
-        var sel = '';
 
         var hash = location.hash;
         var hasHash = false;
-        window.hasHash = false
 
-        // var sel  = '';
-        // switch(hash){
-        //     case '#intro' :  sel = 'thinq-tab a[href="thinq-cont1"]'; hasHash  = true; brfeak;
-        //     case '#life-style' :  sel = 'thinq-tab a[href="thinq-cont2"]'; hasHash  = true; brfeak;
-        //     case '#app' :  sel = 'thinq-tab a[href="thinq-cont3"]'; hasHash  = true; brfeak;
-        //     case '#magazine' :  sel = 'thinq-tab a[href="thinq-cont4"]'; hasHash  = true; brfeak;
-
-        //     case '#test1' :  sel = 'thinq-tab a[href="thinq-cont4"]'; hasHash  = true; brfeak;
-        // }
-
-        // if( hasHash ){
-        //     setTimeOut(function() {
-        //         $( sel ).trigger('click');
-        //     })
-        // }
+        window.hasHash = false //BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성
 
         switch (hash){
             case '#intro':
@@ -703,8 +690,8 @@
                 hasHash = true;
                 break;
             
-            //주영 테스트
-            case '#test1':
+            /* BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성 */
+            case '#appExperience':
                 setTimeout(function(){
                     window.hasHash = true; //window.hasHash 가 false 라면 스크롤 이벤트가 걸리지 마라
 
@@ -714,7 +701,7 @@
                 
                 hasHash = true;
                 break;
-            case '#test2':
+            case '#appDownload':
                 setTimeout(function(){
                     window.hasHash = true; //window.hasHash 가 false 라면 스크롤 이벤트가 걸리지 마라
 
@@ -724,6 +711,7 @@
                 
                 hasHash = true;
                 break;
+            /* //BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성 */
             default:
         }
     });
