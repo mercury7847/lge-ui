@@ -1027,13 +1027,16 @@
 
             var abled = "N";
             if(lgkorUI.stringToBool(result.data.success)){
+
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
                 abled = "Y";
             } else{
+                
                 var total = parseInt(productPriceInfo.total.count);
                 if(total) abled = "Y";
+                // BTOCSITE-4220
                 
                 lgkorUI.confirm(result.data.alert.desc, {
                     typeClass: "type2",
