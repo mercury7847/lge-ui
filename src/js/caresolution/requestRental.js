@@ -1027,13 +1027,18 @@
 
             var abled = "N";
             if(lgkorUI.stringToBool(result.data.success)){
+
+                console.log("1");
                 lgkorUI.alert(result.data.alert.desc, {
                     title: result.data.alert.title
                 });
                 abled = "Y";
             } else{
+                console.log("2");
                 var total = parseInt(productPriceInfo.total.count);
                 if(total) abled = "Y";
+
+                console.log(result.data.alert.desc);
                 
                 lgkorUI.confirm(result.data.alert.desc, {
                     typeClass: "type2",
@@ -1064,6 +1069,8 @@
 
             cardDiscountPrice = result.data.cardDiscountPrice || 0;
             changeProductPriceInfo();
+
+            console.log("result %o",result);
             
             if(abled == "Y"){
                 setInstallAdress();
@@ -1077,7 +1084,7 @@
                 } else{
                     step2Block.find('.forAOP').show().find('input, select, button').prop('disabled', false);
                     step2Block.find('.forAOP').find('.ui_selectbox').vcSelectbox('update');
-                    step2Block.find('.datepicker').removeClass('disabled');
+
 
                     var rbv = step2Block.find(".requestBeforeVisit");
                     rbv.show();
@@ -1095,15 +1102,50 @@
                         rbv.hide();
                     }
                     
-                    var mindate = vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd");
-                    var maxdate = vcui.date.add(vcui.date.parse(mindate), "d", 14);
-                    var disabledDays = vcui.array.map(result.data.holidaysSet, function(item){
-                        return vcui.date.format(item, "yyyy-MM-dd");
-                    });
-                    $('.ui_calendar').vcCalendar("setMinDate", mindate);
-                    $('.ui_calendar').vcCalendar("setMaxDate", maxdate);
-                    $('.ui_calendar').vcCalendar("setOption", "disabledDays", disabledDays);
-                    $('.ui_calendar').vcCalendar('update');
+
+                    // BTOCSITE-4220 배송 희망일 분기 처리
+                    // Onhand,Plan, Onhand + Plan, Safety Stock 인경우 설치 희망일 2주 세팅
+                    var consumeTypeEnable = [
+                        'Onhand',
+                        'Plan',
+                        'Onhand + Plan',
+                        'Safety Stock'
+                    ]
+
+                    console.log(consumeTypeEnable.indexOf($.trim(result.data.consumeType)));
+
+                    if(consumeTypeEnable.indexOf($.trim(result.data.consumeType)) > -1) {
+                        step2Block.find('.datepicker').removeClass('disabled');
+                        var mindate = vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd");
+                        var maxdate = vcui.date.add(vcui.date.parse(mindate), "d", 14);
+                        var disabledDays = vcui.array.map(result.data.holidaysSet, function(item){
+                            return vcui.date.format(item, "yyyy-MM-dd");
+                        });
+                        $('.ui_calendar').vcCalendar("setMinDate", mindate);
+                        $('.ui_calendar').vcCalendar("setMaxDate", maxdate);
+                        $('.ui_calendar').vcCalendar("setOption", "disabledDays", disabledDays);
+                        $('.ui_calendar').vcCalendar('update');
+                    } else {
+
+                        if( $('.datepicker').siblings('.info-text').size() == 0) {
+                            $('.ui_calendar').parents(".conts").append(
+                                "<ul class='info-text show'>"+
+                                    "<li>본 제품은 배송희망일 선택이 불가한 제품입니다.</li>"+
+                                    "<li>배송 전 배송일정 알림톡이 발송되며, 배송 당일 오전에 설치기사가 연락드립니다.</li>"+
+                                    "<li>배송 관련 문의 사항은 콜센터(1544-6351)로 연락 부탁드립니다.</li>"+
+                                "</ul>"
+                            );
+                        }
+
+
+                        $('input[name="inatallDate"]').val("희망일 선택불가");
+                        $('input[name="inatallDate"]').data("deliveryDateNotSelect",vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd"));
+
+
+                        $('.ui_calendar').attr('disabled',true);
+                        $('.ui_calendar').vcCalendar('update');
+                    }
+
                 }
 
                 step2Block.find('select[name=inatallPlace]').prop('disabled', false);
@@ -1697,7 +1739,10 @@
         var payment = getPaymentMethod() == "bank";
 
         var notes = step2Block.find('input[name=installRequriement]').val();
-        var instReqDate = step2Value.inatallDate;
+
+        // BTOCSITE-4220 희망일 선택 불가 인경우 데이터를 변경하여 보낸다.
+        var  deliveryDateNotSelect = $('input[name="inatallDate"]').data("deliveryDateNotSelect");
+        var instReqDate =  deliveryDateNotSelect ? deliveryDateNotSelect : step2Value.inatallDate;
         var collectRequest = step2Block.find('input[name=collectRequest]:checked').val();
         var preVisitRequest = step2Block.find('input[name=preVisitRequest]:checked').val();
 
