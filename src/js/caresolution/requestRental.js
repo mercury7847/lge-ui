@@ -1085,7 +1085,6 @@
                     step2Block.find('.forAOP').show().find('input, select, button').prop('disabled', false);
                     step2Block.find('.forAOP').find('.ui_selectbox').vcSelectbox('update');
 
-
                     var rbv = step2Block.find(".requestBeforeVisit");
                     rbv.show();
                     rbv.find('.tit .label').removeClass('req');
@@ -1102,7 +1101,6 @@
                         rbv.hide();
                     }
                     
-
                     // BTOCSITE-4220 배송 희망일 분기 처리
                     // Onhand,Plan, Onhand + Plan, Safety Stock 인경우 설치 희망일 2주 세팅
                     var consumeTypeEnable = [
@@ -1111,8 +1109,6 @@
                         'Onhand + Plan',
                         'Safety Stock'
                     ]
-
-                    console.log(consumeTypeEnable.indexOf($.trim(result.data.consumeType)));
 
                     if(consumeTypeEnable.indexOf($.trim(result.data.consumeType)) > -1) {
                         step2Block.find('.datepicker').removeClass('disabled');
@@ -1126,7 +1122,6 @@
                         $('.ui_calendar').vcCalendar("setOption", "disabledDays", disabledDays);
                         $('.ui_calendar').vcCalendar('update');
                     } else {
-
                         if( $('.datepicker').siblings('.info-text').size() == 0) {
                             $('.ui_calendar').parents(".conts").append(
                                 "<ul class='info-text show'>"+
@@ -1137,15 +1132,12 @@
                             );
                         }
 
-
                         $('input[name="inatallDate"]').val("희망일 선택불가");
                         $('input[name="inatallDate"]').data("deliveryDateNotSelect",vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd"));
-
 
                         $('.ui_calendar').attr('disabled',true);
                         $('.ui_calendar').vcCalendar('update');
                     }
-
                 }
 
                 step2Block.find('select[name=inatallPlace]').prop('disabled', false);
