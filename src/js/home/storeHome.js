@@ -3,6 +3,7 @@ $(function(){
     var $context = !!$('[data-hash="store"]').length ? $('[data-hash="store"]') : $(document);
 
     // 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
+    /* BTOCSITE-6882 신규 WSG 적용 - 스토어 */
     $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
         autoplay: true,
         autoplaySpped: 5000,
@@ -18,7 +19,7 @@ $(function(){
         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
         speed: 150
     }).on('carouselafterchange', function(e, slide){
-        heroBanner(); //BTOCSITE-6882 신규 WSG 적용 - 스토어 
+        heroBanner();
         // s BTOCSITE-5938-222 : 20211224 pauseOnFocus가 false인데 autoplay 멈춰서 강제로 다시 시작
         if(slide.focussed) {
             slide.play();
@@ -26,7 +27,7 @@ $(function(){
         // e BTOCSITE-5938-222
     })
 
-    /* BTOCSITE-6882 신규 WSG 적용 - 스토어 */
+    // 히어로 배너
     function heroBanner() {
         var heroList = $('.contents .hero-banner .slide-track > li');
         var heroListAct = heroList.siblings('.ui_carousel_current').index();
@@ -40,10 +41,10 @@ $(function(){
             slideCurrent.text(heroListAct);
             slideCount.text(heroListLens - 2);
         }
-    }
-
+    }   
     heroBanner();
 
+    // 추천 제품
     $(window).on('breakpointchange.product_lifestyle', function(e){
         var breakpoint = window.breakpoint;    
         if(breakpoint.name == 'mobile'){                    
@@ -57,28 +58,59 @@ $(function(){
                 touchThreshold: 100
             });
             
-        }else if(breakpoint.name == 'pc'){    
-            $context.find('.ui_lifestyle_list').vcCarousel({
-                infinite: false,
-                dots: false,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                speed: 150,
-                touchThreshold: 100
-            });
+        }else if(breakpoint.name == 'pc'){
+            $context.find('.ui_lifestyle_list').vcCarousel('destroy');
         }    
     })
 
-    $(window).trigger('breakpointchange.product_lifestyle');
-    /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 */
+    // slide 1개일 경우 모바일 full 이미지
+    var lifestyleLeng = $('.ui_lifestyle_list .slide-track > li').length;
+    if( lifestyleLeng == 1) {
+        $('.ui_lifestyle_list .slide-track').addClass('solo');
+    }
+    // slide 1개일 경우 모바일 full 이미지
+    var productLeng = $('.product-slide .slide-track > li').length;
+    if( productLeng == 1) {
+        $('.product-slide .slide-track').addClass('solo');
+        $('.product-slide').css('padding-bottom', '0');
+    }
+    
+    $(window).trigger('breakpointchange.product_lifestyle');  
 
-    $context.find('.ui_exhib_carousel').vcCarousel({
+
+    // 추천 드리는 기획전
+    $('.ui_product_lifestyle').vcCarousel({
+        infinite: false,
+        dots: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
         speed: 150,
-        touchThreshold: 100
+        touchThreshold: 100,
+        responsive: [
+            {
+                breakpoint: 10000,
+                settings: {
+                    infinite: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    infinite: false,
+                    dots: false,
+                    slidesToShow: 1.2,
+                    slidesToScroll: 1,
+                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                    speed: 150,
+                    touchThreshold: 100,
+                }
+            }
+        ]
     });
-
 
     $(window).on('breakpointchange.lifestyle', function(e){
         var breakpoint = window.breakpoint;    
@@ -90,10 +122,10 @@ $(function(){
                 slidesToScroll: 1,
                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                 speed: 150,
-                touchThreshold: 100
+                touchThreshold: 100,
             });
             
-        }else if(breakpoint.name == 'pc'){    
+        }else if(breakpoint.name == 'pc'){
             $context.find('.ui_product_lifestyle').vcCarousel({
                 infinite: false,
                 dots: true,
@@ -101,14 +133,68 @@ $(function(){
                 slidesToScroll: 1,
                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                 speed: 150,
-                touchThreshold: 100
+                touchThreshold: 100,
             });
         }    
     })
+    
+     $(window).trigger('breakpointchange.lifestyle');  
+    
+    // $('.ui_lifestyle_list').vcCarousel({
+    //     settings: "unslick",
+    //     responsive: [
+    //         {
+    //             breakpoint: 10000,
+    //             settings: "unslick"
+    //         },
+    //         {
+    //             breakpoint: 768,
+    //             settings: {
+    //                 infinite: false,
+    //                 dots: false,
+    //                 //slidesToShow: 1.2,
+    //                 variableWidth : false,
+    //                 slidesToScroll: 1,
+    //                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+    //                 speed: 150,
+    //                 touchThreshold: 100
+    //             }
+    //         }
+    //     ]
+    // });    
 
-    $(window).trigger('breakpointchange.lifestyle');
+    // 추천 드리는 기획전
+    // $(window).on('breakpointchange.lifestyle', function(e){
+    //     var breakpoint = window.breakpoint;    
+    //     if(breakpoint.name == 'mobile'){                    
+    //         $context.find('.ui_product_lifestyle').vcCarousel({
+    //             infinite: false,
+    //             dots: false,
+    //             slidesToShow: 1.2,
+    //             slidesToScroll: 1,
+    //             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+    //             speed: 150,
+    //             touchThreshold: 100
+    //         });
+            
+    //     }else if(breakpoint.name == 'pc'){    
+    //         $context.find('.ui_product_lifestyle').vcCarousel({
+    //             infinite: false,
+    //             dots: true,
+    //             slidesToShow: 1,
+    //             slidesToScroll: 1,
+    //             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+    //             speed: 150,
+    //             touchThreshold: 100
+    //         });
+    //     }    
+    // })
 
+    // $(window).trigger('breakpointchange.lifestyle');
 
+    
+    
+    
     // 직접관리하는 영역                
     // 많이 구매하는 제품 -> Best 이미지관리
 
@@ -140,6 +226,8 @@ $(function(){
 
     }
     buildNewRecommend();
+    /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 */
+
     // 추천 렌더링
     function buildRecommend(){
         //BTOCSITE-7335 : 스토어 홈 고객 추천제품 ajax 처리
