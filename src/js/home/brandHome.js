@@ -14,7 +14,6 @@
                 self.contentTab();
                 self.resize();
                 self.appSmartTabMenu();
-                self.appSmartTabMobile.load(); 
             });
         },
         settings: function(){
@@ -278,17 +277,28 @@
             //전체 탭
             var self = this;
             var appCateSticky = false;
+
             self.$stickyTab.on('tabchange', function(e, data){
                 appCateSticky = false;
 
-                $('html, body').stop().animate({scrollTop:self.stickyTabOffsetTop});
+                /* BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성 */
+                //window.hasHash는 최초 false. false 가 아니라면 스크롤 이벤트가 걸린다
+                if(!window.hasHash) {
+                    $('html, body').animate({scrollTop:self.stickyTabOffsetTop});
+                } else {
+                    //false면 #특정 링크로 접근했을시 기본 스크롤이벤트는 안걸린다.
+                    window.hasHash = false;
+                }
+                /* //BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성 */
+
+                //$('html, body').animate({scrollTop:self.stickyTabOffsetTop});
 
                 if( data.content[0] == $('.thinq-app')[0]) {
                     if( window.innerWidth > 1024) {
-                        console.log('pc');
+                        //console.log('pc');
                         self.appSmartTab.load();
                     }else{
-                        console.log('mobile !');
+                        //console.log('mobile !');
                         self.appSmartTabMobile.load();
                         self.appCateMenuScroll(true);
                     }
@@ -648,8 +658,12 @@
 
     //BTOCSITE-88 추가
     $(window).on('thinQScroll', function(){
+
         var hash = location.hash;
         var hasHash = false;
+
+        window.hasHash = false //BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성
+
         switch (hash){
             case '#intro':
                 setTimeout(function(){
@@ -675,8 +689,30 @@
                 },100);
                 hasHash = true;
                 break;
-            default:
+            
+            /* BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성 */
+            case '#appExperience':
+                setTimeout(function(){
+                    window.hasHash = true; //window.hasHash 가 false 라면 스크롤 이벤트가 걸리지 마라
 
+                    $('.thinq-tabs a[href="#thinq-cont3"]').trigger('click');
+                    $('html, body').animate({scrollTop:$('.app-experience-intro').offset().top - 100});
+                },100);
+                
+                hasHash = true;
+                break;
+            case '#appDownload':
+                setTimeout(function(){
+                    window.hasHash = true; //window.hasHash 가 false 라면 스크롤 이벤트가 걸리지 마라
+
+                    $('.thinq-tabs a[href="#thinq-cont3"]').trigger('click');
+                    $('html, body').animate({scrollTop:$('.app-download-guide').offset().top - 100});
+                },100);
+                
+                hasHash = true;
+                break;
+            /* //BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성 */
+            default:
         }
     });
 
@@ -684,6 +720,7 @@
         //BTOCSITE-88 추가
         $(window).trigger('thinQScroll');
     })
+
 
     
 

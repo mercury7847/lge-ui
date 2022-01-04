@@ -2154,6 +2154,81 @@ html {
                     width:100%;
                 }
             }
+
+            /* BTOCSITE-10034 야간무인매장 추가 */
+            .mob_navBanner-content {
+                position: relative;
+                width: 100%;
+                font-size: 13px;
+                background-color: #f4f4f4;
+                display: flex;
+                justify-content: space-between;
+                padding: 12px;
+                .mob_navBanner-type1 {
+                    display: flex;
+                    justify-content: space-around;
+                    background-color: #fff;
+                    padding: 18px 0px;
+                    border-radius: 8px;
+                    width: 68%;
+                    box-shadow: 1px 1px 16px 0 rgba(0, 0, 0, 0.04);
+                    li {
+                        // padding: 0 12px;
+                        width: 50%;
+                        text-align: center;
+                        &:first-child {
+                            position: relative;
+                            &::after {
+                                content: '';
+                                width: 1px;
+                                height: 100%;
+                                background-color: #ddd;
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                            }
+                        }
+                        &.store_reservation {
+                            position: relative;
+                            a {
+                                background-image: url('/lg5-common/images/icons/moBanIcon_storeReservation.png');
+                            }
+                        }
+                        &.store_unmanned {
+                            position: relative;
+                            a {
+                                background-image: url('/lg5-common/images/icons/moBanIcon_bestshop.png');
+                            }
+                        }
+                        a {
+                            display: block;
+                            padding-top: 51px;
+                            background-repeat: no-repeat;
+                            background-size: 40px;
+                            background-position: center 0px;
+                        }
+                    }
+                }
+                .mob_navBanner-type2 {
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    background-color: #fff;
+                    padding: 18px 12px;
+                    border-radius: 8px;
+                    width: 30%;
+                    margin-left: 12px;
+                    box-shadow: 1px 1px 16px 0 rgba(0, 0, 0, 0.04);
+                    a {
+                        background-image: url('/lg5-common/images/icons/moBanIcon_catalogue.png');
+                        background-repeat: no-repeat;
+                        background-size: 40px;
+                        background-position: center 0px;
+                        padding-top: 51px;
+                    }
+                }
+            }
+            /* //BTOCSITE-10034 야간무인매장 추가 */
         }
     }
 }

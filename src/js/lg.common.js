@@ -2378,7 +2378,7 @@ var goAppUrl = function(path) {
                 if(location.hostname == "www.lge.co.kr") {
                     r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
                 } else {
-                    r = isMobile ? "//widgets.cre.ma/lge.co.kr/mobile/init.js" : "//widgets.cre.ma/lge.co.kr/init.js";
+                    r = isMobile ? "//swidgets.cre.ma/lge.co.kr/mobile/init.js" : "//swidgets.cre.ma/lge.co.kr/init.js";
                 }
             
                 if(s.getElementById(g)){

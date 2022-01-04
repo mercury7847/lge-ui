@@ -1097,6 +1097,7 @@
         $('.default-bottom-wrap').stop().transition({y:height}, 450, "easeInOutCubic", function(){
             $('.default-bottom-wrap').hide();
         });
+        $('div.contents.care-plan').find('.cont-wrap').addClass('selected-prd'); // BTOCSITE-5938-378
     }
 
     function closePutItemBox(){
@@ -1112,6 +1113,7 @@
 
         height = $('.default-bottom-wrap').outerHeight(true);
         $('.default-bottom-wrap').stop().show().transition({y:0}, 450, "easeInOutCubic");
+        $('div.contents.care-plan').find('.cont-wrap').removeClass('selected-prd'); // BTOCSITE-5938-378
     }
 
     function putItemToggleStatus(){

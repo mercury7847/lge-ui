@@ -196,6 +196,7 @@
 		&.top, &.bottom {
 			.square:first-child{
 				@include square(mr, 24px, 795px);
+				@include mobile {margin-right: 0;} //BTOCSITE-10304
 			}
 		}
 	}

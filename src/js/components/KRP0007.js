@@ -43,7 +43,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한/롯데 5% 청구할인</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한/롯데카드 5% 결제일 할인</span>{{/if}}' +
                 '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShowLotteCard)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인 (무이자 12개월)</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
