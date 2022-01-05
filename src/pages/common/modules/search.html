@@ -1,5 +1,8 @@
 <!-- 스크롤 시 .fixed-top 추가 (mobile만 해당) -->
 <div class="input-keyword-wrap">
+    <!--[S]BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB 개선-->
+    <a href="javascript:historyBack();" class="btn-back"><span class="blind">이전</span></a>
+    <!--//[E]BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB 개선-->
     <!-- input focus 시 .focus-on 추가 -->
     <div class="input-keyword" @@if(context.value){data-searchValue="@@value"}>
         @@include('./common/modules/search-input.html', {

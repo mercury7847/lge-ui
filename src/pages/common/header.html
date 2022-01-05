@@ -2630,6 +2630,82 @@
 <!-- // 210324 수정 [모바일 gnb 타이틀 케이스 추가] -->
 }
 
+
+<!--[S]BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB -->
+@@if (context.mobileCase === "subDepth") {
+<!-- Mobile Sub Depth Header -->
+<!--
+    [.sub-renew-nav-wrap] : 리뉴얼 개선으로 추가
+    [.is-depth] : 2뎁스(서브카테고리) 메뉴가 있는 경우 추가
+    [.superCategory] : 1뎁스 메뉴 (대카테고리)
+    [.subCategory] : 2뎁스 메뉴 (서브카테고리)
+    [.isActive] : 현재 활성화 페이지에 해당하는 카테고리 li에 class 추가
+    [data-current="on"] : 현재 활성화 페이지에 해당하는 카테고리 li에 data 추가 (레이어 닫힌 후 재 활성화 표시 위하여)
+-->
+<div class="mobile-nav-wrap is-depth sub-renew-nav-wrap">
+    <a href="#" class="btn-back"><span class="blind">이전</span></a>
+    <!--현재 페이지의 타이틀이 노출되는 경우 하기 영역 노출-->
+    <a href="#n" class="nav-item">노트북</a>
+    <!--//현재 페이지의 타이틀이 노출되는 경우 하기 영역 노출-->
+    <div class="nav-category-container">
+        <ul class="superCategory">
+            <!--[D] 현재 활성화 페이지 일 경우 대카테고리, 서브카테고리 각각에 class 및 data-current="on" 추가 -->
+            <li class="isActive" data-current="on"><a href="http://www.lge.co.kr">Tv/AVTv/AVTv/ AVTv/AVTv/AV</a>
+                <ul class="subCategory">
+                    <li><a href="#">sub1</a></li>
+                    <li class="isActive" data-current="on"><a href="http://www.lge.co.kr">sub1sub1sub1sub1 sub1sub1</a></li>
+                    <li><a href="#">sub1</a></li>
+                    <li><a href="#">sub1</a></li>
+                </ul>
+            </li>
+            <li><a href="#">IT</a>
+                <ul class="subCategory">
+                    <li><a href="#">sub2</a></li>
+                    <li><a href="#">sub2</a></li>
+                    <li><a href="#">sub2</a></li>
+                    <li><a href="#">sub2</a></li>
+                </ul>
+            </li>
+            <li><a href="#">주방가전</a>
+                <ul class="subCategory">
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                </ul>
+            </li>
+            <li><a href="#">생활가전</a></li>
+            <li><a href="#">에어컨/에어케어</a></li>
+            <li><a href="#">뷰티/의료기기</a></li>
+            <li><a href="#">LG SIGNATURE</a></li>
+            <li><a href="#">LG Objet Collection</a></li>
+            <li><a href="http://www.lge.co.kr">케어용품/소모품</a></li>
+        </ul>
+    </div>
+</div>
+<div class="sub-renew-dimmed"></div>
+<!--// Mobile Sub Depth Header -->
+}
+<!--//[E]BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB -->
+
 @@if (context.pageCase === undefined) {
 <!-- Breadcrumb -->
 @@include('./common/modules/breadcrumb.html', {

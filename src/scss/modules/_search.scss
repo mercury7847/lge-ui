@@ -442,3 +442,62 @@
         }
     }
 }
+
+/*BTOCSITE-2117 공통 > 모바일 웹/앱 GNB 개선*/
+@media screen and (max-width: 767px) {
+    .subRenewWrap {
+        .contents {
+            &.search {
+                .input-keyword-wrap {
+                    position: fixed;
+                    top: 0;
+                    width: 100%;
+                    padding: 12px 16px 12px;
+                    z-index: 100;
+                    background: $color-bg-wt;
+                    .btn-back {
+                        position: relative;
+                        display: inline-block;
+                        width: 24px;
+                        height: 24px;
+                        margin: 11px 8px 11px 0;
+                        background: url(/lg5-common/images/icons/btn-arr-32-left.svg) no-repeat 50% 50%;
+                        background-size: 24px;
+                        vertical-align: top;
+                    }
+                    .input-keyword {
+                        display: inline-block;
+                        width: calc(100% - 36px);
+                        .sch-input-wrap {
+                            .input-sch {
+                                input {
+                                    &.txt {
+                                        padding: 0 82px 0 21px;
+                                        font-size: 15px;
+                                        line-height: 1.6;
+                                        border: 1px solid $color-border;
+                                        border-radius: 46px;
+                                    }
+                                }
+                                .btn-search {
+                                    right: 16px;
+                                }
+                                .btn-delete {
+                                    right: 56px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .search-tabs-wrap {
+                    padding-top: 5px;
+                }
+            }
+        }
+        &.isHide {
+            .input-keyword-wrap {
+                z-index: 99;
+            }
+        }
+    }
+}

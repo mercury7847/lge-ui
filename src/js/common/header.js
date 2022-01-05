@@ -45,6 +45,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             vcui.require(['ui/carousel', 'ui/smoothScroll', 'libs/jquery.transit.min'], function () {            
                 self._setting();
+                self._setSubSpreadMenu(); //BTOCSITE-2117
                 self._bindEvents();
                 self._resize();
                 self._arrowState();
@@ -155,7 +156,17 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$headerBottom = self.$el.find('.header-bottom');            
 
             self.$leftArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .prev');
-            self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next'); 
+            self.$rightArrow = self.$el.find('.nav-wrap .nav-arrow-wrap .next');
+
+
+            //BTOCSITE-2117
+            self.$subRenewPage = $('.wrap.subRenewWrap');
+            self.$subRenewNavWrap = $('.wrap.subRenewWrap .sub-renew-nav-wrap');
+            self.$subNavContainer = $('.nav-category-container');
+            self.$superCategoryList = $('.superCategory li');
+            self.$superCategoryAnchor = $('.superCategory > li > a');
+            self.$subCategory = $('.subCategory');
+
    
             // BTOCSITE-1814
             // pc 상태 on class 붙히는곳
@@ -229,7 +240,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
             self.$hamburger.on('click', function(e){
                 e.preventDefault();
-                
+
+                self.$subRenewPage.toggleClass('isHide'); //BTOCSITE-2117
+
                 self._menuToggle();
                 var active = self.$hamburger.hasClass('active');
 
@@ -256,7 +269,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             $('.mobile-nav-wrap.is-depth > a.nav-item').on('click', function(e){
                 e.preventDefault();
 
-                $(this).toggleClass('on')
+                $(this).toggleClass('on');
                 $(this).parent().find('.nav-category-container').toggle();
 
                 if($(this).hasClass('on')){
@@ -264,10 +277,25 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 } else{
                     $(this).find('.blind').text("접힘");
                 }
+
+                //BTOCSITE-2117
+                self.$subRenewNavWrap.toggleClass('isActive');
+                self.$subRenewPage.toggleClass('isActive');
+                if($(this).hasClass('on') && self.$subRenewNavWrap.length){
+                    self.$subRenewNavWrap.find(self.$superCategoryList).removeClass('isActive');
+                    self.$subRenewNavWrap.find(self.$subCategory).hide();
+                    self.$subRenewNavWrap.find(self.$superCategoryList).each(function(){
+                        if($(this).data('current') === "on"){
+                            $(this).addClass('isActive');
+                            $(this).find('.subCategory').show();
+                        }
+                    })
+                }
             });
             
             self._pcSetting();
             self._mobileSetting();
+            self._subSpreadMenuAction(); //BTOCSITE-2117
         },
 
         _focusFn:function(e){
@@ -888,6 +916,49 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 })
             }
         },
+
+        _setSubSpreadMenu: function(){
+            var self = this;
+
+            if(self.$subRenewNavWrap){
+                if(!self.$subRenewNavWrap.hasClass('is-depth')){
+
+                }
+                self.$subRenewNavWrap.find('.superCategory > li').each(function(){
+                    if($(this).find(self.$subCategory).length) {
+                        $(this).closest(self.$subNavContainer).addClass('hasDepth');
+                        return false;
+                    }
+                });
+                if(self.$subNavContainer.hasClass('hasDepth')){
+                    self.$subRenewNavWrap.find('.superCategory > li').each(function(){
+                        if($(this).find(self.$subCategory).length === 0){
+                            $(this).append('<ul class="subCategory"></ul>');
+                        }
+                    });
+                };
+            }
+        },
+        _subSpreadMenuAction: function(){
+            var self = this;
+
+            self.$subRenewNavWrap.find(self.$superCategoryAnchor).on("click",function(e){
+                if($(this).closest(self.$subNavContainer).hasClass('hasDepth')){
+                    if($(this).next(self.$subCategory).find('li').length > 0){
+                        e.preventDefault();
+                    }
+                    $(this).closest(self.$subNavContainer).find(self.$subCategory).hide();
+                    $(this).closest(self.$subNavContainer).find('li').removeClass('isActive');
+                    $(this).parent('li').addClass('isActive');
+                    $(this).next(self.$subCategory).show();
+                }
+            });
+            $('.sub-renew-dimmed').on('click',function(){
+                if($(this).is(':visible')){
+                    $('.mobile-nav-wrap.is-depth > a.nav-item').trigger('click');
+                }
+            })
+        }
     });
 
     return Header;
