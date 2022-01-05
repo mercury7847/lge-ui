@@ -114,345 +114,343 @@ br.pc {
     }
 }
 
-// hero banner
-.caresolution{
-    .sub-main{
-        .slide-wrap {
-            &.hero-banner {
-                .slide-content {
-                    .slide-track  {
+// hero banner (제품 홈, 렌탈/케어 홈 공통)
+.sub-main{
+    .slide-wrap {
+        &.hero-banner {
+            .slide-content {
+                .slide-track  {
+                    height:640px;
+                    @include mobile{
+                        height:460px;
+                    }
+                    .slide-conts {
+                        position:relative;
                         height:640px;
                         @include mobile{
                             height:460px;
                         }
-                        .slide-conts {
-                            position:relative;
-                            height:640px;
-                            @include mobile{
-                                height:460px;
+                        .slide-img {
+                            overflow:hidden;
+                            position: relative;
+                            width:100%;
+                            height:100%;
+                            img, video {
+                                position:absolute;
+                                top:0;
+                                left:50%;
+                                transform:translateX(-50%);
+                                width: auto;
+                                height: auto;
+                                min-width: 100%;
+                                min-height: 100%;
+                                max-width:none;
+                                @media screen and (min-width:1920px) {
+                                    width:100%;
+                                    height:auto;
+                                    top:50%;
+                                    left:0;
+                                    transform:translateY(-50%);
+                                }
+                                @include mobile {
+                                    width:100%;
+                                    height:auto;
+                                    top:50%;
+                                    left:0;
+                                    transform:translateY(-50%);
+                                }
                             }
-                            .slide-img {
-                                overflow:hidden;
-                                position: relative;
-                                width:100%;
-                                height:100%;
-                                img, video {
-                                    position:absolute;
+                            video{
+                                @include mobile {
+                                    width:auto;
+                                    height:100%;
                                     top:0;
                                     left:50%;
-                                    transform:translateX(-50%);
-                                    width: auto;
-                                    height: auto;
-                                    min-width: 100%;
-                                    min-height: 100%;
-                                    max-width:none;
-                                    @media screen and (min-width:1920px) {
-                                        width:100%;
-                                        height:auto;
-                                        top:50%;
-                                        left:0;
-                                        transform:translateY(-50%);
-                                    }
-                                    @include mobile {
-                                        width:100%;
-                                        height:auto;
-                                        top:50%;
-                                        left:0;
-                                        transform:translateY(-50%);
-                                    }
-                                }
-                                video{
-                                    @include mobile {
-                                        width:auto;
-                                        height:100%;
-                                        top:0;
-                                        left:50%;
-                                        transform:translate(-50%, 0);
-                                    }
+                                    transform:translate(-50%, 0);
                                 }
                             }
-                            .bg {
-                                background-size: cover;
+                        }
+                        .bg {
+                            background-size: cover;
+                            &.pc{
+                                display:inline-block;
+                            }
+                            &.mobile{
+                                display:none;
+                            }
+                            @include mobile {
+                                height: 100%;
+                                padding-bottom: 0;
                                 &.pc{
-                                    display:inline-block;
-                                }
-                                &.mobile{
                                     display:none;
                                 }
-                                @include mobile {
-                                    height: 100%;
-                                    padding-bottom: 0;
-                                    &.pc{
-                                        display:none;
-                                    }
-                                    &.mobile{
-                                        display:inline-block;
-                                    }
-                                }
-                            }
-                            .slide-info-area {
-                                top:100px;
-                                left:0;
-                                bottom:120px;
-                                max-width:1614px;
-                                margin:0 auto;
-                                padding: 0 40px;
-                                transform:translateX(0);
-                                @include mobile {
-                                    top:32px;
-                                    right:20px;
-                                    bottom:102px;
-                                    left:20px;
-                                    padding: 0;
-                                }
-                                .boxs {
+                                &.mobile{
                                     display:inline-block;
-                                    &.fc-black {
-                                        color:#000;
-                                    }
-                                    &.fc-white {
-                                        color:#fff;
-                                    }
-                                    .txt {
-                                        color:inherit;
-                                        font-size:52px;
-                                        font-weight:700;
-                                        line-height:62px;
-                                        @include mobile{
-                                            position:relative;
-                                            font-size:27px;
-                                            line-height:34px;
-                                        }
-                                    }
-                                    .small {
-                                        margin-top:16px;
-                                        font-size:24px;
-                                        line-height:32px;
-                                        @include mobile{
-                                            margin-top:7px;
-                                            font-size:16px;
-                                            line-height:22px;
-                                        }
-                                    }
                                 }
                             }
-                            @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-                                .slide-info-area {
-                                    width:100%;
-                                }
+                        }
+                        .slide-info-area {
+                            top:100px;
+                            left:0;
+                            bottom:120px;
+                            max-width:1614px;
+                            margin:0 auto;
+                            padding: 0 40px;
+                            transform:translateX(0);
+                            @include mobile {
+                                top:32px;
+                                right:20px;
+                                bottom:102px;
+                                left:20px;
+                                padding: 0;
                             }
-                            .link {
-                                position:absolute;
-                                right:0;
-                                bottom:0;
-                                padding-right:60px;
-                                color:#fff;
-                                font-size:52px;
-                                font-weight:700;
-                                line-height:70px;
-                                text-align:right;
-                                @include mobile{
-                                    padding-right:22px;
-                                    font-size:16px;
-                                    line-height:24px;
-                                }
-                                &:after {
-                                    content:' ';
-                                    position:absolute;
-                                    right:0;
-                                    bottom:8px;
-                                    width:56px;
-                                    height:56px;
-                                    background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
-                                    @include mobile{
-                                        bottom:2px;
-                                        width:20px;
-                                        height:20px;
-                                        background-size:20px;
-                                    }
-                                }
+                            .boxs {
+                                display:inline-block;
                                 &.fc-black {
                                     color:#000;
-                                    &:after {
-                                        background-image:url('/lg5-common/images/PRS/btn-arrow-right-56-black.svg');
-                                    }
                                 }
                                 &.fc-white {
                                     color:#fff;
                                 }
+                                .txt {
+                                    color:inherit;
+                                    font-size:52px;
+                                    font-weight:700;
+                                    line-height:62px;
+                                    @include mobile{
+                                        position:relative;
+                                        font-size:27px;
+                                        line-height:34px;
+                                    }
+                                }
+                                .small {
+                                    margin-top:16px;
+                                    font-size:24px;
+                                    line-height:32px;
+                                    @include mobile{
+                                        margin-top:7px;
+                                        font-size:16px;
+                                        line-height:22px;
+                                    }
+                                }
+                            }
+                        }
+                        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                            .slide-info-area {
+                                width:100%;
+                            }
+                        }
+                        .link {
+                            position:absolute;
+                            right:0;
+                            bottom:0;
+                            padding-right:60px;
+                            color:#fff;
+                            font-size:52px;
+                            font-weight:700;
+                            line-height:70px;
+                            text-align:right;
+                            @include mobile{
+                                padding-right:22px;
+                                font-size:16px;
+                                line-height:24px;
+                            }
+                            &:after {
+                                content:' ';
+                                position:absolute;
+                                right:0;
+                                bottom:8px;
+                                width:56px;
+                                height:56px;
+                                background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
+                                @include mobile{
+                                    bottom:2px;
+                                    width:20px;
+                                    height:20px;
+                                    background-size:20px;
+                                }
+                            }
+                            &.fc-black {
+                                color:#000;
+                                &:after {
+                                    background-image:url('/lg5-common/images/PRS/btn-arrow-right-56-black.svg');
+                                }
+                            }
+                            &.fc-white {
+                                color:#fff;
                             }
                         }
                     }
                 }
-                .custom-indi-wrap {
-                    display:none;
-                    bottom:24px;
-                    left:0;
-                    right:0;
+            }
+            .custom-indi-wrap {
+                display:none;
+                bottom:24px;
+                left:0;
+                right:0;
+                max-width:1380px;
+                margin:0 auto;
+                @include mobile{
+                    bottom: 20px;
+                    right: 16px;
+                    left: 16px;
+                    max-width: none;
+                }
+                .custom-indis {
+                    max-width: (1380px + 30px);
+                    @include mobile{
+                        margin: 0 -5px;
+                    }
+                    .indis {
+                        width: 100%;
+                        table-layout: fixed;
+                        li {
+                            width: auto;
+                            padding: 0 15px;
+                            @include mobile{
+                                padding: 0 5px;
+                            }
+                            &.on {
+                                width: auto;
+                            }
+                        }
+                    }
+                }
+                .slide-controls {
+                    position:relative;
+                    top:auto;
+                    left:auto;
+                    right:54px;
+                    transform:translateX(0);
                     max-width:1380px;
                     margin:0 auto;
+                    @media screen and (max-width: (1460px + 30px)) {
+                        right:69px;
+                    }
                     @include mobile{
-                        bottom: 20px;
-                        right: 16px;
-                        left: 16px;
-                        max-width: none;
+                        right:34px;
                     }
-                    .custom-indis {
-                        max-width: (1380px + 30px);
+                    .controls{
+                        position:absolute;
+                        bottom:0;
+                        right:0;
+                        width:150px;
+                        height:46px;
+                        border-radius:26px;
+                        background:rgba(0, 0, 0, 0.35);
                         @include mobile{
-                            margin: 0 -5px;
-                        }
-                        .indis {
-                            width: 100%;
-                            table-layout: fixed;
-                            li {
-                                width: auto;
-                                padding: 0 15px;
-                                @include mobile{
-                                    padding: 0 5px;
-                                }
-                                &.on {
-                                    width: auto;
-                                }
-                            }
+                            width:84px;
+                            height:26px;
+                            border-radius:13px;
                         }
                     }
-                    .slide-controls {
-                        position:relative;
-                        top:auto;
-                        left:auto;
-                        right:54px;
-                        transform:translateX(0);
-                        max-width:1380px;
-                        margin:0 auto;
-                        @media screen and (max-width: (1460px + 30px)) {
-                            right:69px;
-                        }
+                    .btn-arrow {
+                        position:absolute;
+                        top:9px;
+                        padding:0;
+                        width:24px;
+                        height:24px;
                         @include mobile{
-                            right:34px;
+                            top:3px;
+                            width:16px;
+                            height:16px;
                         }
-                        .controls{
-                            position:absolute;
-                            bottom:0;
-                            right:0;
-                            width:150px;
-                            height:46px;
-                            border-radius:26px;
-                            background:rgba(0, 0, 0, 0.35);
-                            @include mobile{
-                                width:84px;
-                                height:26px;
-                                border-radius:13px;
-                            }
-                        }
-                        .btn-arrow {
-                            position:absolute;
-                            top:9px;
-                            padding:0;
+                        &:before{
+                            content:'';
+                            display:block;
                             width:24px;
                             height:24px;
+                            box-shadow:none;
                             @include mobile{
-                                top:3px;
                                 width:16px;
                                 height:16px;
                             }
+                        }
+                        &.ico-prev {
+                            left:16px;
+                            @include mobile{
+                                left:6px;
+                            }
                             &:before{
-                                content:'';
-                                display:block;
-                                width:24px;
-                                height:24px;
-                                box-shadow:none;
+                                background-image: url(/lg5-common/images/icons/btn-arr-24x24-lt.svg);
                                 @include mobile{
-                                    width:16px;
-                                    height:16px;
-                                }
-                            }
-                            &.ico-prev {
-                                left:16px;
-                                @include mobile{
-                                    left:6px;
-                                }
-                                &:before{
-                                    background-image: url(/lg5-common/images/icons/btn-arr-24x24-lt.svg);
-                                    @include mobile{
-                                        background-size:16px 16px;
-                                    }
-                                }
-                            }
-                            &.ico-next {
-                                right:16px;
-                                @include mobile{
-                                    right:6px;
-                                }
-                                &:before{
-                                    background-image: url(/lg5-common/images/icons/btn-arr-24x24-rt.svg);
-                                    @include mobile{
-                                        background-size:16px 16px;
-                                    }
+                                    background-size:16px 16px;
                                 }
                             }
                         }
-                        .slide-page{
-                            padding:0 4px;
-                            color:#fff;
-                            font-size:16px;
-                            line-height:42px;
+                        &.ico-next {
+                            right:16px;
                             @include mobile{
-                                font-size:12px;
-                                line-height:23px;
+                                right:6px;
                             }
-                            .count{
-                                color:#d6d6d6;
-                                &:before{
-                                    content:'/';
-                                    margin:0 8px;
-                                    color:#fff;
+                            &:before{
+                                background-image: url(/lg5-common/images/icons/btn-arr-24x24-rt.svg);
+                                @include mobile{
+                                    background-size:16px 16px;
                                 }
                             }
                         }
                     }
-                    .indi-control {
-                        display: block !important;
-                        position: absolute;
-                        bottom:0;
-                        right:0;
-                        margin-right:0;
+                    .slide-page{
+                        padding:0 4px;
+                        color:#fff;
+                        font-size:16px;
+                        line-height:42px;
+                        @include mobile{
+                            font-size:12px;
+                            line-height:23px;
+                        }
+                        .count{
+                            color:#d6d6d6;
+                            &:before{
+                                content:'/';
+                                margin:0 8px;
+                                color:#fff;
+                            }
+                        }
+                    }
+                }
+                .indi-control {
+                    display: block !important;
+                    position: absolute;
+                    bottom:0;
+                    right:0;
+                    margin-right:0;
+                    width:46px;
+                    height:46px;
+                    @include mobile{
+                        width:26px;
+                        height:26px;
+                    }
+                    &:before{
                         width:46px;
                         height:46px;
                         @include mobile{
                             width:26px;
                             height:26px;
                         }
+                    }
+                    &.play{
                         &:before{
-                            width:46px;
-                            height:46px;
+                            background: url(/lg5-common/images/icons/btn-carousel-46-play.svg) no-repeat 0 0;
                             @include mobile{
-                                width:26px;
-                                height:26px;
+                                background-size:26px 26px;
                             }
                         }
-                        &.play{
-                            &:before{
-                                background: url(/lg5-common/images/icons/btn-carousel-46-play.svg) no-repeat 0 0;
-                                @include mobile{
-                                    background-size:26px 26px;
-                                }
+                    }
+                    &.stop{
+                        &:before{
+                            background: url(/lg5-common/images/icons/btn-carousel-46-pause.svg) no-repeat 0 0;
+                            @include mobile{
+                                background-size:26px 26px;
                             }
                         }
-                        &.stop{
-                            &:before{
-                                background: url(/lg5-common/images/icons/btn-carousel-46-pause.svg) no-repeat 0 0;
-                                @include mobile{
-                                    background-size:26px 26px;
-                                }
-                            }
-                        }
-                        @media screen and (max-width: (1460px + 30px)) {
-                            right: 15px;
-                            margin-right: 0;
-                            @include mobile {
-                                right: 0;
-                            }
+                    }
+                    @media screen and (max-width: (1460px + 30px)) {
+                        right: 15px;
+                        margin-right: 0;
+                        @include mobile {
+                            right: 0;
                         }
                     }
                 }
