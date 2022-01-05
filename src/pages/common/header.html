@@ -2594,7 +2594,7 @@
 
 
 <!--[S]BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB -->
-@@if (context.mobileCase === "all" || context.mobileCase === "subDepth") {
+@@if (context.mobileCase === "subDepth") {
 <!-- Mobile Sub Depth Header -->
 <!--
     [.sub-renew-nav-wrap] : 리뉴얼 개선으로 추가
@@ -2606,7 +2606,9 @@
 -->
 <div class="mobile-nav-wrap is-depth sub-renew-nav-wrap">
     <a href="#" class="btn-back"><span class="blind">이전</span></a>
+    <!--현재 페이지의 타이틀이 노출되는 경우 하기 영역 노출-->
     <a href="#n" class="nav-item">노트북</a>
+    <!--//현재 페이지의 타이틀이 노출되는 경우 하기 영역 노출-->
     <div class="nav-category-container">
         <ul class="superCategory">
             <!--[D] 현재 활성화 페이지 일 경우 대카테고리, 서브카테고리 각각에 class 및 data-current="on" 추가 -->

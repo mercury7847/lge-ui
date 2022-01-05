@@ -154,8 +154,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
 
             //BTOCSITE-2117
-            self.$subRenewPage = $('.mobile.mdevice .wrap.subRenewWrap');
-            self.$subRenewNavWrap = $('.mobile.mdevice .wrap.subRenewWrap .sub-renew-nav-wrap');
+            self.$subRenewPage = $('.wrap.subRenewWrap');
+            self.$subRenewNavWrap = $('.wrap.subRenewWrap .sub-renew-nav-wrap');
             self.$subNavContainer = $('.nav-category-container');
             self.$superCategoryList = $('.superCategory li');
             self.$superCategoryAnchor = $('.superCategory > li > a');
