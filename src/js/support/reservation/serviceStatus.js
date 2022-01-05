@@ -262,6 +262,15 @@
                 self.cancelSetting();
                 self.centerSetting();
                 self.solutionsSetting();
+
+                // 모니터링 391 : 이동된 페이지에서 하단 메뉴바가 노출되지 않고 있습니다. 그리고 좌측 상단의 '이전' 버튼 선택 시 반응이 없습니다.
+                $('#info-btn').on('click',function(){
+                    if(isApp()) {
+                        location.href = $(this).data("href");
+                    } else {
+                        window.open($(this).data("href"));
+                    }
+                });
             });
         },
         setPage: function() {
