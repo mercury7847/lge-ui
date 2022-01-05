@@ -573,12 +573,25 @@
                         background-size: 100%;
                     }
                     .pin{
-                        &.idx01{ left: 59.9%; top: 80.7%; padding:14px 0 0 20px; background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_reverse.svg') }
+                        &.idx01{
+                            left: 59.9%;
+                            top: 80.7%;
+                            padding:14px 0 0 20px;
+                            background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_reverse.svg');
+                            &:hover,&:focus{
+                                background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_reverse_over.svg') no-repeat 0 0;
+                                background-size: 100%;
+                                @include mobile{
+                                    background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m_reverse_over.svg') no-repeat 0 0;
+                                    background-size: 100%;
+                                }
+                            }
+                        }
                         &.idx02{ left: 65.6%; top: 60.5%; }
                         &.idx03{ left: 48.6%; top: 32.5%; }
                         &.idx04{ left: 53.6%; top: 70.5%; }
                         @include mobile{
-                            &.idx01 {left: 51.3%; top: 78.3%; padding: 3vw 0 0 0;background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m_revers.svg'); background-size: 100%;}
+                            &.idx01 {left: 51.3%; top: 78.3%; padding: 3vw 0 0 0;background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m_reverse.svg'); background-size: 100%;}
                             &.idx02 {left: 56.5%; top: 58.5%; }
                             &.idx03{ left: 30%; top: 32.5%; }
                             &.idx04{ left: 36.6%; top: 69.5%; }

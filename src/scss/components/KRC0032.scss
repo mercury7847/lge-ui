@@ -58,6 +58,9 @@
                 .carousel-box {
                     .text-area {
                         padding:0 117px;
+                        @include mobile {
+                            padding: 0;
+                        }
                     }
                 }
             }
@@ -101,8 +104,6 @@
                 .controller-wrap {
                     z-index:10;
                 }
-
-                //주영
                 .text-area {
                     &.align-top {
                         .text-container {
@@ -336,7 +337,6 @@
             }
 
             // Navigation Area
-            //주영 이거 아니다
             .controls-wrap {
                 position:absolute;
                 top:50%;

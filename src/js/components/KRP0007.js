@@ -43,8 +43,8 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한카드 5% 청구할인</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShowLotteCard)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인{{#if (isShowLotteCardEvent)}} (무이자 12개월){{/if}}</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한/롯데카드 5% 결제일 할인</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShowLotteCard)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인 (무이자 12개월)</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -1123,12 +1123,11 @@
                 } else {
                     item.isShowPrice = item.obsSellingPriceNumber;
                 }
-                /* BTOCSITE-5206 : 신한카드 5% 청구할인 뱃지 미노출건 */
-                item.isShow = lgkorUI.isShowDate('20210601','20211001'); //(startTime, endTime, nowTime)
+                /* BTOCSITE-10166: 롯데카드 혜택 배지 수정요청의 건  */
+                item.isShow = kiosk ? false : lgkorUI.isShowDate('20220101','20220201'); //  2022.01.01 00:00 ~ 2021.01.31 24:00  ( 신한/롯데 프로모션 적용 기간)
 
-                /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인 */
-                item.isShowLotteCard = kiosk ? false : lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-6613 키오스크 조건 추가
-                item.isShowLotteCardEvent = kiosk ? false : lgkorUI.isShowDate('20211101','20220101') // 2021.11.1 00:00 ~ 2021.12.31 24:00 //BTOCSITE-9006 롯데카드 12개월 무이자 할인 적용기간
+                /* BTOCSITE-9006 : 롯데카드 5% 결제일 할인 */
+                item.isShowLotteCard = kiosk ? false : lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00 ( 롯데카드 12개월 무이자 할인 프로모션 적용기간)
                 
                 return vcui.template(productItemTemplate, item);
             },

@@ -41,6 +41,28 @@
             .checkBorder {
                 border: 1px solid #ec455a;
             }
+
+            .info-text {
+                display:none;
+                margin-top:16px;
+                &.show { display:block; }
+                li {
+                    position:relative;
+                    line-height: 1.42857143;
+                    font-size : 14px;
+                    padding-left:10px;
+
+                    &::before {
+                        content : '-';
+                        position:absolute;
+                        left:0;top:0;
+                    }
+                    @include mobile {
+                        font-size : 13px;
+                    }
+                }
+               
+            }
         }
     }
     @media screen and (min-width: 1284px) {
