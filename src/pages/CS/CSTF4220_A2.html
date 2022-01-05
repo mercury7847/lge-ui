@@ -91,7 +91,12 @@
                                     <button type="button" data-href="#cancelServicePopup" data-control="modal" class="btn border"><span>예약 취소</span></button>
                                     <button type="button" data-href="#reservationTimePopup" class="btn border"><span>예약 변경</span></button>
                                     <button type="button" class="btn border" data-href="#solutionsPopup"><span>자가 해결 컨텐츠</span></button>
-                                    <button type="button" class="btn border"><span>제품 주요 정보</span></button>
+                                    <!-- 
+                                        BTOCSITE-5938-391 이동된 페이지에서 하단 메뉴바가 노출되지 않고 있습니다. 그리고 좌측 상단의 '이전' 버튼 선택 시 반응이 없습니다.
+                                        마크업 아래 처럼 바꿔 주시구 data-href="#" 이부분에 링크 넣어 주세요 
+                                     -->
+                                    <button data-href="#" type="button" class="btn border" id="info-btn"><span>제품 주요 정보</span></button>
+					                
                                 </div>
                             </div>
                         </div>
