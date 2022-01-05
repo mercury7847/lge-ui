@@ -61,7 +61,7 @@ $(function(){
         }else if(breakpoint.name == 'pc'){
             $context.find('.ui_lifestyle_list').vcCarousel('destroy');
         }    
-    })
+    });
 
     // slide 1개일 경우 모바일 full 이미지
     var lifestyleLeng = $('.ui_lifestyle_list .slide-track > li').length;
