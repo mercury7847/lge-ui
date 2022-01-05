@@ -5,7 +5,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
         '<div class="box">' +
             '<div class="prod-info">' +
                 '{{# if (typeof tit != "undefined") { #}}' +
-                '<p class="tit">서비스 이용을 위해 제품을 선택해주세요.</p>' +
+                '<p class="tit">제품을 선택해 주세요.</p>' +
                 '{{# } #}}' +
                 '{{# if (typeof product != "undefined") { #}}' +
                     '<ul class="product">' +
