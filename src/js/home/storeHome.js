@@ -25,7 +25,7 @@ $(function(){
             slide.play();
         }
         // e BTOCSITE-5938-222
-    })
+    });
 
     // 히어로 배너
     function heroBanner() {
