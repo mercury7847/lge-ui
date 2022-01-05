@@ -24,7 +24,7 @@ $(function(){
 
     // 히어로 배너
     function heroBanner() {
-        var heroList = $('.contents .hero-banner .slide-track > li');
+        var heroList = $('.contents.store .hero-banner .slide-track > li');
         var heroListAct = heroList.siblings('.ui_carousel_current').index();
         var heroListLens = heroList.length;
         var custom = $('.custom-indi-wrap');
