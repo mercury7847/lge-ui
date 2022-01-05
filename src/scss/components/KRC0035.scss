@@ -294,13 +294,18 @@
             .dropContent {
                 display: none;
                 background-color: #fff;
-                padding: 24px 0;
+                padding: 24px;
                 color: #000;
                 @include mobile {
-                    padding: 20px 0;
+                    padding: 20px 16px;
                 }
                 &.on {
                     display: block;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					z-index: 1;
                 }
                 &.bg-lightgray {
                     background-color: #f4f4f4;
