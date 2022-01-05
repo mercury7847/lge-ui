@@ -34,7 +34,7 @@ $(document).ready(function(){
 
         $(item).find('.drop-info .dropInfo_openBtn').on('click', function(e){
 			$(item).find('.dropContent').addClass('on');
-			$(this).hide();
+			//$(this).hide(); //버튼이 사라지면서 컨텐츠 높낮이의 변화가 생겨 삭제
         });
 
         $(item).find('.drop-info .dropInfo_closeBtn').on('click', function(e){
