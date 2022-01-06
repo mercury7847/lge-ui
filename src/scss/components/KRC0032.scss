@@ -718,38 +718,46 @@
                     @include mobile {
                         padding-left: 0px;
                     }
-                    .disclaimer-btnArea {
-                        position: relative;
-                        @include mobile {
-                            max-width: 100%;
-                            padding-left: 16px;
-                        }
-                        .dropInfo_openBtn {
-                            position: relative;
-                            width: 100%;
-                            height: 32px;
-                            line-height: 0;
-                            padding: 0px 0px 0px 12px !important;
-                            max-width: 112px;
-                            text-align: left;
-                            @include mobile {
-                                max-width: 115px;
-                                height: 34px;
-                                font-size: 13px;
-                            }
-                            &::after {
-                                content: '+';
-                                width: 10px;
-                                height: 10px;
-                                position: absolute;
-                                right: 12px;
-                                top: 14px;
-                                text-align: center;
-                                vertical-align: middle;
-                                font-weight: 400;
+                    .btn{
+                        &.btn.border {
+                            &.dropInfo_openBtn {
+                                position: relative;
+                                width: 100%;
+                                height: 32px;
+                                line-height: 0;
+                                padding: 0px 0px 0px 12px !important;
+                                max-width: 112px;
+                                text-align: left;
+                                &.fc-white {
+                                    border-color: #fff !important;
+                                    color: #fff !important;
+                                    &:hover,
+                                    &:active,
+                                    &:focus {
+                                        border-color:#fa263e !important;
+                                        //background-image: linear-gradient(280deg, #fb5a72, #fa263e) !important;
+                                        //color:#fff !important;
+                                    }
+                                }
                                 @include mobile {
-                                    right: 18px;
-                                    top: 16px;
+                                    max-width: 115px;
+                                    height: 34px;
+                                    font-size: 13px;
+                                }
+                                &::after {
+                                    content: '+';
+                                    width: 10px;
+                                    height: 10px;
+                                    position: absolute;
+                                    right: 12px;
+                                    top: 14px;
+                                    text-align: center;
+                                    vertical-align: middle;
+                                    font-weight: 400;
+                                    @include mobile {
+                                        right: 18px;
+                                        top: 16px;
+                                    }
                                 }
                             }
                         }
