@@ -627,6 +627,7 @@ br.pc {
 .care-recommended {
     max-width:1444px;
     .prd-list-wrap {
+        margin-top:-8px;
         @include mobile {
             margin-top:14px;
             padding:0;
@@ -634,15 +635,21 @@ br.pc {
         .inner {
             display:flex;
             justify-content:center;
+            @media screen and (max-width: 1200px){
+                width: 100% !important;
+                transform: translate3d(0px, 0px, 0px) !important;
+            }
             .item {
                 width:calc(25% - 24px);
-                margin:0 12px;
+                padding:8px 12px;
                 @include mobile {
                     width:calc(50% - 4px);
                     margin:0;
-                    padding:0 4px;
+                    padding:6px 4px;
+                }
+                @media screen and (max-width: 1200px){
                     &:nth-child(3), &:nth-child(4){
-                        display:none;
+                        display:none !important;
                     }
                 }
             }
