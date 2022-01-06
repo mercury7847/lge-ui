@@ -68,7 +68,9 @@ br.pc {
         }
     }
     &.care-recommended {
+        margin-bottom:-8px;
         @include mobile{
+            margin-bottom:-4px;
             padding:0 12px;
         }
         .tabs-wrap,
