@@ -624,6 +624,7 @@
 			max-width:1872px;
 			.slide-wrap.carousel-type.carousel-4 {
 				max-width:100%;
+				padding-bottom:0;
 				@include mobile{
 					margin:0;
 					padding:0;
@@ -1818,11 +1819,12 @@
 						.img {
 							position:absolute;
 							top:50%;
-							left:24px;
+							left:40px;
 							width:160px;
 							height:160px;
 							transform:translateY(-50%);
 							@include mobile{
+								left:20px;
 								width:90px;
 								height:90px;
 							}
