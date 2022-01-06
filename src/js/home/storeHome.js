@@ -39,7 +39,7 @@ $(function(){
     }   
     heroBanner();
 
-    // 추천 제품
+    // 추천제품 (LG와 함께하는 # 라이프)
     $(window).on('breakpointchange.product_lifestyle', function(e){
         var breakpoint = window.breakpoint;    
         if(breakpoint.name == 'mobile'){                    
@@ -58,23 +58,29 @@ $(function(){
         }    
     })
 
+    $(window).trigger('breakpointchange.product_lifestyle');
+
     // slide 1개일 경우 모바일 full 이미지
-    var lifestyleLeng = $('.ui_lifestyle_list .slide-track > li').length;
+    var lifestyleLeng = $('.ui_lifestyle_list .slide-track > li').length; // 추천제품 (LG와 함께하는 # 라이프)
+    var exhibLeng = $('.product-slide.ui_exhib_carousel .slide-track > li').length; // 추천 기획전
+    var productLeng = $('.product-slide.ui_product_lifestyle .slide-track > li').length; // 카테고리 추천 배너
+
     if( lifestyleLeng == 1) {
         $('.ui_lifestyle_list .slide-track').addClass('solo');
     }
-    // slide 1개일 경우 모바일 full 이미지
-    var productLeng = $('.product-slide .slide-track > li').length;
-    if( productLeng == 1) {
-        $('.product-slide .slide-track').addClass('solo');
-        $('.product-slide').css('padding-bottom', '0');
+    if( exhibLeng == 1) {
+        console.log('t1 : ' + exhibLeng );
+        $('.product-slide.ui_exhib_carousel').css('padding-bottom', '0');
+        $('.product-slide.ui_exhib_carousel .slide-track').addClass('solo');
     }
-    
-    $(window).trigger('breakpointchange.product_lifestyle');  
+    if( productLeng == 1) {
+        console.log('t2 : ' + productLeng);
+        $('.product-slide.ui_product_lifestyle').css('padding-bottom', '0');
+        $('.product-slide.ui_product_lifestyle .slide-track').addClass('solo');
+    }
 
-
-    // 추천 드리는 기획전
-    $('.ui_product_lifestyle').vcCarousel({
+    // 추천 기획전, 카테고리 추천 배너
+    $('.ui_exhib_carousel, .ui_product_lifestyle').vcCarousel({
         infinite: false,
         dots: true,
         slidesToShow: 1,
@@ -110,7 +116,7 @@ $(function(){
     $(window).on('breakpointchange.lifestyle', function(e){
         var breakpoint = window.breakpoint;    
         if(breakpoint.name == 'mobile'){                    
-            $context.find('.ui_product_lifestyle').vcCarousel({
+            $context.find('.ui_exhib_carousel, .ui_product_lifestyle').vcCarousel({
                 infinite: false,
                 dots: false,
                 slidesToShow: 1.2,
@@ -121,7 +127,7 @@ $(function(){
             });
             
         }else if(breakpoint.name == 'pc'){
-            $context.find('.ui_product_lifestyle').vcCarousel({
+            $context.find('.ui_exhib_carousel, .ui_product_lifestyle').vcCarousel({
                 infinite: false,
                 dots: true,
                 slidesToShow: 1,
@@ -134,62 +140,7 @@ $(function(){
     })
     
      $(window).trigger('breakpointchange.lifestyle');  
-    
-    // $('.ui_lifestyle_list').vcCarousel({
-    //     settings: "unslick",
-    //     responsive: [
-    //         {
-    //             breakpoint: 10000,
-    //             settings: "unslick"
-    //         },
-    //         {
-    //             breakpoint: 768,
-    //             settings: {
-    //                 infinite: false,
-    //                 dots: false,
-    //                 //slidesToShow: 1.2,
-    //                 variableWidth : false,
-    //                 slidesToScroll: 1,
-    //                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-    //                 speed: 150,
-    //                 touchThreshold: 100
-    //             }
-    //         }
-    //     ]
-    // });    
 
-    // 추천 드리는 기획전
-    // $(window).on('breakpointchange.lifestyle', function(e){
-    //     var breakpoint = window.breakpoint;    
-    //     if(breakpoint.name == 'mobile'){                    
-    //         $context.find('.ui_product_lifestyle').vcCarousel({
-    //             infinite: false,
-    //             dots: false,
-    //             slidesToShow: 1.2,
-    //             slidesToScroll: 1,
-    //             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-    //             speed: 150,
-    //             touchThreshold: 100
-    //         });
-            
-    //     }else if(breakpoint.name == 'pc'){    
-    //         $context.find('.ui_product_lifestyle').vcCarousel({
-    //             infinite: false,
-    //             dots: true,
-    //             slidesToShow: 1,
-    //             slidesToScroll: 1,
-    //             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-    //             speed: 150,
-    //             touchThreshold: 100
-    //         });
-    //     }    
-    // })
-
-    // $(window).trigger('breakpointchange.lifestyle');
-
-    
-    
-    
     // 직접관리하는 영역                
     // 많이 구매하는 제품 -> Best 이미지관리
 
@@ -437,4 +388,97 @@ $(function(){
         }).vcTab();
         $buyProduct.vcSmoothScroll('refresh');
     }
+
+    /* BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가 */
+    $context.find('.ui_product_tab').vcTab({selectors:{
+        prevButton:".ui_smooth_prev",
+        nextButton:".ui_smooth_next",
+        smoothScroll:'.ui_smooth_tab'
+    }});
+
+    var store_product = $context.find('.module-buy-product');
+    var care_slider = store_product.find('.ui_product_carousel_slider');
+    var store_tabs = store_product.find('.ui_smooth_tab .tabs');
+
+    var tab = {
+        totalSize: function () {
+            return store_tabs.find('li').size();
+        },
+        currentTab: function () {
+            return store_tabs.find('li.on').index() + 1;
+        },
+        triggerTab: function (idx) {
+
+            store_tabs.find('li').eq(idx).find('a').trigger('click');
+        },
+        nav: {
+            prev: function () {
+
+                var idx = (1 === tab.currentTab()) ? tab.totalSize() - 1 : tab.currentTab() - 2;
+                tab.triggerTab(idx);
+            },
+            next: function () {
+
+                var idx = (tab.totalSize() === tab.currentTab()) ? 0 : tab.currentTab();
+                tab.triggerTab(idx);
+            }
+        }
+    };
+    
+    if( !vcui.detect.isMobileDevice) {
+        store_product.vcGesture({
+            direction: 'horizontal'
+        }, { passive: false }).on('gestureend', function (e, data) {
+            // gesturestart gesturemove gestureend gesturecancel
+            /* 탭 방향 전환 */
+            if (data.direction === 'left') {
+                tab.nav.next();
+            } else {
+                tab.nav.prev();
+            }
+        });
+    } else {
+        var touchFlag = true;
+        var touchFlagTid = 0;
+
+        store_product.on('touchstart', function(e){
+            var $this = $(this);
+            var startX = e.changedTouches[0].clientX;
+            var startY = e.changedTouches[0].clientY;
+            var endX = 0;
+            var endY = 0;
+
+            $this.on('touchend', function(ev){
+                endX = ev.changedTouches[0].clientX;
+                endY = ev.changedTouches[0].clientY;
+
+                var dirLeft = startX - endX < 0;
+                var rangeX = Math.abs(startX - endX);
+                var rangeY = Math.abs(startY - endY);
+
+                if( rangeY > 30) return;
+                
+                if( touchFlag == true && rangeX > 100 ) {
+                    touchFlag = false;
+                    if(dirLeft) {
+                        tab.nav.prev();
+                        console.log('left')
+                    } else {
+                        tab.nav.next();
+                        console.log('right')
+                    }
+
+                    clearTimeout(touchFlagTid);
+                    touchFlagTid = setTimeout(function(){
+                        touchFlag = true;
+
+                        console.log("rangeX", rangeX)
+                        console.log("rangeY", rangeY)
+                    }, 50);
+                }
+                
+            });
+        });
+    }
+    /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가 */
 });

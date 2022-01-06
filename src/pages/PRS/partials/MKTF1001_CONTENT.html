@@ -310,6 +310,7 @@
 <!-- -S- 20211014 BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정 
     data-ajax-url : 새로 바귄 api 로 적용해주세요/
 -->
+
 <!-- 많이 구매하는 제품 -->
 <div class="module-box module-buy-product" data-ajax-url="">
     <div class="tit-wrap">
@@ -322,8 +323,8 @@
         </span> 
         <!-- //2021.08.25 BTOCSITE-4348 : 스토어 홈 내 문구 수정 -->
     </div>
-    <div class="buy-product-tab">
-        <div class="tabs-wrap round-type ui_category_tab ui_smooth_scroll">
+    <div class="scroll-wrap border-type ui_product_tab">
+        <div class="ui_smooth_tab">
             <ul class="tabs">
                 <li><a href="#buyTabAll" data-category="" role="tab">ALL<em class="blind">선택됨</em></a></li>
                 <li><a href="#buyTab01" data-category="CT50000024" role="tab">TV/AV</a></li>
@@ -333,691 +334,737 @@
                 <li><a href="#buyTab05" data-category="CT50000130" role="tab">에어컨/에어케어</a></li>
             </ul>
         </div>
+        <div class="scroll-controls ui_smooth_controls">
+            <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
+            <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
+        </div>
     </div>
     <div class="buy-product-tabcontent">
-        <div class="buy-product" id="buyTabAll">
-            <div class="inner">
-                <div class="best">
-                    <a href="/vacuum-cleaners/as9571ikt" data-model-id="MD08920858"
-                        data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S ThinQ&quot;,&quot;model_id&quot;:&quot;MD08920858&quot;,&quot;model_sku&quot;:&quot;AS9571IKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,420,800&quot;,&quot;discounted_price&quot;:&quot;1,282,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
-                        <div class="flag"><span class="num">1</span></div>
-                        <div class="img"><img src="/kr/images/vacuum-cleaners/md08920858/md08920858-450x450.jpg" alt="LG 코드제로 A9S ThinQ " onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                        <div class="product-info">
-                            <p class="tit">LG 코드제로 A9S ThinQ </p>
-                            <span class="code">M870FBS451</span>
-                            <div class="price-area">
-                                <div class="original">
-                                    <em class="blind">기존가격</em>
-                                    <span class="price">1,308,900<em>원</em></span>
+        <div id="buyTabAll" class="tab-content" aria-labelledby="buyTabAll" role="tabpanel">
+            <div class="prd-list-wrap">
+                <div class="slide-wrap ui_product_carousel_slider">
+                    <div class="slide-content ui_carousel_list">
+                        <ul class="inner slide-track ui_carousel_track">
+                            <li class="item ui_carousel_slide ui_carousel_current on">
+                                <div class="best">
+                                    <a href="/vacuum-cleaners/as9571ikt" data-model-id="MD08920858"
+                                        data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S ThinQ&quot;,&quot;model_id&quot;:&quot;MD08920858&quot;,&quot;model_sku&quot;:&quot;AS9571IKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,420,800&quot;,&quot;discounted_price&quot;:&quot;1,282,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                        <div class="flag"><span class="num">1</span></div>
+                                        <div class="img"><img src="/kr/images/vacuum-cleaners/md08920858/md08920858-450x450.jpg" alt="LG 코드제로 A9S ThinQ " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                        <div class="product-info">
+                                            <p class="tit">LG 코드제로 A9S ThinQ </p>
+                                            <span class="code">M870FBS451</span>
+                                            <div class="price-area">
+                                                <div class="original">
+                                                    <em class="blind">기존가격</em>
+                                                    <span class="price">1,308,900<em>원</em></span>
+                                                </div>
+                                                <div class="total">
+                                                    <em class="blind">판매가격</em>
+                                                    <span class="price">1,282,200<em>원</em></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="total">
-                                    <em class="blind">판매가격</em>
-                                    <span class="price">1,282,200<em>원</em></span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                                <ol class="list">
+                                    <li>
+                                        <a href="/vacuum-cleaners/ao9571wkt" data-model-id="MD08918449"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S 오브제컬렉션&quot;,&quot;model_id&quot;:&quot;MD08918449&quot;,&quot;model_sku&quot;:&quot;AO9571WKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,554,000&quot;,&quot;discounted_price&quot;:&quot;1,402,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">2</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08918449/md08918449-350x350.jpg" alt="LG 코드제로 A9S 오브제컬렉션" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9S 오브제컬렉션</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/as9100st" data-model-id="MD09022826"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9&quot;,&quot;model_id&quot;:&quot;MD09022826&quot;,&quot;model_sku&quot;:&quot;AS9100ST&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,053,300&quot;,&quot;discounted_price&quot;:&quot;950,500&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">3</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md09022826/md09022826-350x350.jpg" alt="LG 코드제로 A9 " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9 </p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/c40sgy" data-model-id="MD08745434"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 싸이킹 POWER&quot;,&quot;model_id&quot;:&quot;MD08745434&quot;,&quot;model_sku&quot;:&quot;C40SGY&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;182,000&quot;,&quot;discounted_price&quot;:&quot;164,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/싸이킹&quot;,&quot;ct_id&quot;:&quot;CT50000113&quot;}">
+                                            <div class="flag"><span class="num">4</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08745434/md08745434-350x350.jpg" alt="LG 싸이킹 POWER" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 싸이킹 POWER</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/notebook/16z90p-ga50k" data-model-id="MD08917850"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 그램 16&quot;,&quot;model_id&quot;:&quot;MD08917850&quot;,&quot;model_sku&quot;:&quot;16Z90P-GA50K&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,931,400&quot;,&quot;discounted_price&quot;:&quot;1,743,000&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/노트북/그램&quot;,&quot;ct_id&quot;:&quot;CT50000050&quot;}">
+                                            <div class="flag"><span class="num">5</span></div>
+                                            <div class="img"><img src="/kr/images/notebook/md08917850/md08917850-350x350.jpg" alt="LG 그램 16" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 그램 16</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <ol class="list">
-                    <li>
-                        <a href="/vacuum-cleaners/ao9571wkt" data-model-id="MD08918449"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S 오브제컬렉션&quot;,&quot;model_id&quot;:&quot;MD08918449&quot;,&quot;model_sku&quot;:&quot;AO9571WKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,554,000&quot;,&quot;discounted_price&quot;:&quot;1,402,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
-                            <div class="flag"><span class="num">2</span></div>
-                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08918449/md08918449-350x350.jpg" alt="LG 코드제로 A9S 오브제컬렉션" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 코드제로 A9S 오브제컬렉션</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/vacuum-cleaners/as9100st" data-model-id="MD09022826"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9&quot;,&quot;model_id&quot;:&quot;MD09022826&quot;,&quot;model_sku&quot;:&quot;AS9100ST&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,053,300&quot;,&quot;discounted_price&quot;:&quot;950,500&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
-                            <div class="flag"><span class="num">3</span></div>
-                            <div class="img"><img src="/kr/images/vacuum-cleaners/md09022826/md09022826-350x350.jpg" alt="LG 코드제로 A9 " onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 코드제로 A9 </p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/vacuum-cleaners/c40sgy" data-model-id="MD08745434"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 싸이킹 POWER&quot;,&quot;model_id&quot;:&quot;MD08745434&quot;,&quot;model_sku&quot;:&quot;C40SGY&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;182,000&quot;,&quot;discounted_price&quot;:&quot;164,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/싸이킹&quot;,&quot;ct_id&quot;:&quot;CT50000113&quot;}">
-                            <div class="flag"><span class="num">4</span></div>
-                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08745434/md08745434-350x350.jpg" alt="LG 싸이킹 POWER" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 싸이킹 POWER</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/notebook/16z90p-ga50k" data-model-id="MD08917850"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 그램 16&quot;,&quot;model_id&quot;:&quot;MD08917850&quot;,&quot;model_sku&quot;:&quot;16Z90P-GA50K&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,931,400&quot;,&quot;discounted_price&quot;:&quot;1,743,000&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/노트북/그램&quot;,&quot;ct_id&quot;:&quot;CT50000050&quot;}">
-                            <div class="flag"><span class="num">5</span></div>
-                            <div class="img"><img src="/kr/images/notebook/md08917850/md08917850-350x350.jpg" alt="LG 그램 16" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 그램 16</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ol>
             </div>
         </div>
-        <div class="buy-product" id="buyTab01">
-            <div class="inner">
-                <div class="best">
-                    <a href="/tvs/32lm635bkna-stand" data-model-id="MD08947827"
-                        data-ec-product="{&quot;model_name&quot;:&quot;LG 일반 LED TV(스탠드형)&quot;,&quot;model_id&quot;:&quot;MD08947827&quot;,&quot;model_sku&quot;:&quot;32LM635BKNA&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;599,400&quot;,&quot;discounted_price&quot;:&quot;540,900&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;TV/AV/TV/일반 LED TV&quot;,&quot;ct_id&quot;:&quot;CT50000026&quot;}">
-                        <div class="flag"><span class="num">1</span></div>
-                        <div class="img"><img src="/kr/images/tvs/md08947827/md08947827-450x450.jpg" alt="LG 일반 LED TV(스탠드형)" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                        <div class="product-info">
-                            <p class="tit">LG 일반 LED TV(스탠드형)</p>
-                            <span class="code">M870FBS451</span>
-                            <div class="price-area">
-                                <div class="original">
-                                    <em class="blind">기존가격</em>
-                                    <span class="price">1,308,900<em>원</em></span>
+        <div id="buyTab01" class="tab-content" aria-labelledby="buyTab01" role="tabpanel">
+            <div class="prd-list-wrap">
+                <div class="slide-wrap ui_product_carousel_slider">
+                    <div class="slide-content ui_carousel_list">
+                        <ul class="inner slide-track ui_carousel_track">
+                            <li class="item ui_carousel_slide ui_carousel_current on">
+                                <div class="best">
+                                    <a href="/vacuum-cleaners/as9571ikt" data-model-id="MD08920858"
+                                        data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S ThinQ&quot;,&quot;model_id&quot;:&quot;MD08920858&quot;,&quot;model_sku&quot;:&quot;AS9571IKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,420,800&quot;,&quot;discounted_price&quot;:&quot;1,282,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                        <div class="flag"><span class="num">1</span></div>
+                                        <div class="img"><img src="/kr/images/vacuum-cleaners/md08920858/md08920858-450x450.jpg" alt="LG 코드제로 A9S ThinQ " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                        <div class="product-info">
+                                            <p class="tit">LG 코드제로 A9S ThinQ </p>
+                                            <span class="code">M870FBS451</span>
+                                            <div class="price-area">
+                                                <div class="original">
+                                                    <em class="blind">기존가격</em>
+                                                    <span class="price">1,308,900<em>원</em></span>
+                                                </div>
+                                                <div class="total">
+                                                    <em class="blind">판매가격</em>
+                                                    <span class="price">1,282,200<em>원</em></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="total">
-                                    <em class="blind">판매가격</em>
-                                    <span class="price">1,282,200<em>원</em></span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                                <ol class="list">
+                                    <li>
+                                        <a href="/vacuum-cleaners/ao9571wkt" data-model-id="MD08918449"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S 오브제컬렉션&quot;,&quot;model_id&quot;:&quot;MD08918449&quot;,&quot;model_sku&quot;:&quot;AO9571WKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,554,000&quot;,&quot;discounted_price&quot;:&quot;1,402,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">2</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08918449/md08918449-350x350.jpg" alt="LG 코드제로 A9S 오브제컬렉션" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9S 오브제컬렉션</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/as9100st" data-model-id="MD09022826"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9&quot;,&quot;model_id&quot;:&quot;MD09022826&quot;,&quot;model_sku&quot;:&quot;AS9100ST&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,053,300&quot;,&quot;discounted_price&quot;:&quot;950,500&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">3</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md09022826/md09022826-350x350.jpg" alt="LG 코드제로 A9 " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9 </p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/c40sgy" data-model-id="MD08745434"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 싸이킹 POWER&quot;,&quot;model_id&quot;:&quot;MD08745434&quot;,&quot;model_sku&quot;:&quot;C40SGY&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;182,000&quot;,&quot;discounted_price&quot;:&quot;164,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/싸이킹&quot;,&quot;ct_id&quot;:&quot;CT50000113&quot;}">
+                                            <div class="flag"><span class="num">4</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08745434/md08745434-350x350.jpg" alt="LG 싸이킹 POWER" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 싸이킹 POWER</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/notebook/16z90p-ga50k" data-model-id="MD08917850"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 그램 16&quot;,&quot;model_id&quot;:&quot;MD08917850&quot;,&quot;model_sku&quot;:&quot;16Z90P-GA50K&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,931,400&quot;,&quot;discounted_price&quot;:&quot;1,743,000&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/노트북/그램&quot;,&quot;ct_id&quot;:&quot;CT50000050&quot;}">
+                                            <div class="flag"><span class="num">5</span></div>
+                                            <div class="img"><img src="/kr/images/notebook/md08917850/md08917850-350x350.jpg" alt="LG 그램 16" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 그램 16</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <ol class="list">
-                    <li>
-                        <a href="/home-audio/hbs-pl7" data-model-id="MD08044286"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG TONE+&quot;,&quot;model_id&quot;:&quot;MD08044286&quot;,&quot;model_sku&quot;:&quot;HBS-PL7&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;220,800&quot;,&quot;discounted_price&quot;:&quot;199,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;TV/AV/AV/블루투스 이어폰(톤 프리)&quot;,&quot;ct_id&quot;:&quot;CT50000044&quot;}">
-                            <div class="flag"><span class="num">2</span></div>
-                            <div class="img"><img src="/kr/images/home-audio/md08044286/md08044286-350x350.jpg" alt="LG TONE+" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG TONE+</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/home-audio/tone-tfp8w-white" data-model-id="MD08987827"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG TONE Free&quot;,&quot;model_id&quot;:&quot;MD08987827&quot;,&quot;model_sku&quot;:&quot;TONE-TFP8W&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;242,800&quot;,&quot;discounted_price&quot;:&quot;219,000&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;TV/AV/AV/블루투스 이어폰(톤 프리)&quot;,&quot;ct_id&quot;:&quot;CT50000044&quot;}">
-                            <div class="flag"><span class="num">3</span></div>
-                            <div class="img"><img src="/kr/images/home-audio/md08987827/md08987827-350x350.jpg" alt="LG TONE Free" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG TONE Free</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/home-audio/tone-tfp8-black" data-model-id="MD08988829"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG TONE Free&quot;,&quot;model_id&quot;:&quot;MD08988829&quot;,&quot;model_sku&quot;:&quot;TONE-TFP8&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;242,800&quot;,&quot;discounted_price&quot;:&quot;219,000&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;TV/AV/AV/블루투스 이어폰(톤 프리)&quot;,&quot;ct_id&quot;:&quot;CT50000044&quot;}">
-                            <div class="flag"><span class="num">4</span></div>
-                            <div class="img"><img src="/kr/images/home-audio/md08988829/md08988829-350x350.jpg" alt="LG TONE Free" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG TONE Free</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/tvs/43up8300kna-stand" data-model-id="MD08920388"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 울트라 HD TV (스탠드형)&quot;,&quot;model_id&quot;:&quot;MD08920388&quot;,&quot;model_sku&quot;:&quot;43UP8300KNA&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;935,000&quot;,&quot;discounted_price&quot;:&quot;852,600&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;TV/AV/TV/울트라 HD TV&quot;,&quot;ct_id&quot;:&quot;CT50000030&quot;}">
-                            <div class="flag"><span class="num">5</span></div>
-                            <div class="img"><img src="/kr/images/tvs/md08920388/md08920388-350x350.jpg" alt="LG 울트라 HD TV (스탠드형)" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 울트라 HD TV (스탠드형)</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ol>
             </div>
         </div>
-        <div class="buy-product" id="buyTab02">
-            <div class="inner">
-                <div class="best">
-                    <a href="/notebook/16z90p-ga50k" data-model-id="MD08917850"
-                        data-ec-product="{&quot;model_name&quot;:&quot;LG 그램 16&quot;,&quot;model_id&quot;:&quot;MD08917850&quot;,&quot;model_sku&quot;:&quot;16Z90P-GA50K&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,931,400&quot;,&quot;discounted_price&quot;:&quot;1,743,000&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/노트북/그램&quot;,&quot;ct_id&quot;:&quot;CT50000050&quot;}">
-                        <div class="flag"><span class="num">1</span></div>
-                        <div class="img"><img src="/kr/images/notebook/md08917850/md08917850-450x450.jpg" alt="LG 그램 16"
-                                onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                        <div class="product-info">
-                            <p class="tit">LG 그램 16</p>
-                            <span class="code">M870FBS451</span>
-                            <div class="price-area">
-                                <div class="original">
-                                    <em class="blind">기존가격</em>
-                                    <span class="price">1,308,900<em>원</em></span>
+        <div id="buyTab02" class="tab-content" aria-labelledby="buyTab01" role="buyTab02">
+            <div class="prd-list-wrap">
+                <div class="slide-wrap ui_product_carousel_slider">
+                    <div class="slide-content ui_carousel_list">
+                        <ul class="inner slide-track ui_carousel_track">
+                            <li class="item ui_carousel_slide ui_carousel_current on">
+                                <div class="best">
+                                    <a href="/vacuum-cleaners/as9571ikt" data-model-id="MD08920858"
+                                        data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S ThinQ&quot;,&quot;model_id&quot;:&quot;MD08920858&quot;,&quot;model_sku&quot;:&quot;AS9571IKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,420,800&quot;,&quot;discounted_price&quot;:&quot;1,282,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                        <div class="flag"><span class="num">1</span></div>
+                                        <div class="img"><img src="/kr/images/vacuum-cleaners/md08920858/md08920858-450x450.jpg" alt="LG 코드제로 A9S ThinQ " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                        <div class="product-info">
+                                            <p class="tit">LG 코드제로 A9S ThinQ </p>
+                                            <span class="code">M870FBS451</span>
+                                            <div class="price-area">
+                                                <div class="original">
+                                                    <em class="blind">기존가격</em>
+                                                    <span class="price">1,308,900<em>원</em></span>
+                                                </div>
+                                                <div class="total">
+                                                    <em class="blind">판매가격</em>
+                                                    <span class="price">1,282,200<em>원</em></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="total">
-                                    <em class="blind">판매가격</em>
-                                    <span class="price">1,282,200<em>원</em></span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                                <ol class="list">
+                                    <li>
+                                        <a href="/vacuum-cleaners/ao9571wkt" data-model-id="MD08918449"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S 오브제컬렉션&quot;,&quot;model_id&quot;:&quot;MD08918449&quot;,&quot;model_sku&quot;:&quot;AO9571WKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,554,000&quot;,&quot;discounted_price&quot;:&quot;1,402,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">2</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08918449/md08918449-350x350.jpg" alt="LG 코드제로 A9S 오브제컬렉션" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9S 오브제컬렉션</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/as9100st" data-model-id="MD09022826"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9&quot;,&quot;model_id&quot;:&quot;MD09022826&quot;,&quot;model_sku&quot;:&quot;AS9100ST&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,053,300&quot;,&quot;discounted_price&quot;:&quot;950,500&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">3</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md09022826/md09022826-350x350.jpg" alt="LG 코드제로 A9 " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9 </p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/c40sgy" data-model-id="MD08745434"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 싸이킹 POWER&quot;,&quot;model_id&quot;:&quot;MD08745434&quot;,&quot;model_sku&quot;:&quot;C40SGY&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;182,000&quot;,&quot;discounted_price&quot;:&quot;164,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/싸이킹&quot;,&quot;ct_id&quot;:&quot;CT50000113&quot;}">
+                                            <div class="flag"><span class="num">4</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08745434/md08745434-350x350.jpg" alt="LG 싸이킹 POWER" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 싸이킹 POWER</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/notebook/16z90p-ga50k" data-model-id="MD08917850"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 그램 16&quot;,&quot;model_id&quot;:&quot;MD08917850&quot;,&quot;model_sku&quot;:&quot;16Z90P-GA50K&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,931,400&quot;,&quot;discounted_price&quot;:&quot;1,743,000&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/노트북/그램&quot;,&quot;ct_id&quot;:&quot;CT50000050&quot;}">
+                                            <div class="flag"><span class="num">5</span></div>
+                                            <div class="img"><img src="/kr/images/notebook/md08917850/md08917850-350x350.jpg" alt="LG 그램 16" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 그램 16</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <ol class="list">
-                    <li>
-                        <a href="/monitors/32gn500" data-model-id="MD08045420"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 울트라기어 게이밍모니터&quot;,&quot;model_id&quot;:&quot;MD08045420&quot;,&quot;model_sku&quot;:&quot;32GN500&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;387,300&quot;,&quot;discounted_price&quot;:&quot;349,500&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/모니터/울트라기어 게이밍모니터&quot;,&quot;ct_id&quot;:&quot;CT50000059&quot;}">
-                            <div class="flag"><span class="num">2</span></div>
-                            <div class="img"><img src="/kr/images/monitors/md08045420/md08045420-350x350.jpg" alt="LG 울트라기어 게이밍모니터" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 울트라기어 게이밍모니터</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/monitors/32sp510m" data-model-id="MD08918290"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG IPTV 모니터&quot;,&quot;model_id&quot;:&quot;MD08918290&quot;,&quot;model_sku&quot;:&quot;32SP510M&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;331,800&quot;,&quot;discounted_price&quot;:&quot;299,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/모니터/IPTV 모니터&quot;,&quot;ct_id&quot;:&quot;CT50000061&quot;}">
-                            <div class="flag"><span class="num">3</span></div>
-                            <div class="img"><img src="/kr/images/monitors/md08918290/md08918290-350x350.jpg" alt="LG IPTV 모니터" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG IPTV 모니터</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/notebook/15u40q-gr30k" data-model-id="MD09034859"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 울트라PC&quot;,&quot;model_id&quot;:&quot;MD09034859&quot;,&quot;model_sku&quot;:&quot;15U40Q-GR30K&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;0&quot;,&quot;discounted_price&quot;:&quot;0&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/노트북/울트라 PC&quot;,&quot;ct_id&quot;:&quot;CT50000047&quot;}">
-                            <div class="flag"><span class="num">4</span></div>
-                            <div class="img"><img src="/kr/images/notebook/md09034859/md09034859-350x350.jpg" alt="LG 울트라PC" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 울트라PC</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/monitors/27tn600s" data-model-id="MD09004835"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG TV 모니터&quot;,&quot;model_id&quot;:&quot;MD09004835&quot;,&quot;model_sku&quot;:&quot;27TN600S&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;387,300&quot;,&quot;discounted_price&quot;:&quot;349,500&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/모니터/TV 모니터&quot;,&quot;ct_id&quot;:&quot;CT50000058&quot;}">
-                            <div class="flag"><span class="num">5</span></div>
-                            <div class="img"><img src="/kr/images/monitors/md08044924/md08044924-350x350.jpg" alt="LG TV 모니터" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG TV 모니터</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ol>
             </div>
         </div>
-        <div class="buy-product" id="buyTab03">
-            <div class="inner">
-                <div class="best">
-                    <a href="/microwaves-and-ovens/mw25b" data-model-id="MD08039645"
-                        data-ec-product="{&quot;model_name&quot;:&quot;LG 전자레인지&quot;,&quot;model_id&quot;:&quot;MD08039645&quot;,&quot;model_sku&quot;:&quot;MW25B&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;220,800&quot;,&quot;discounted_price&quot;:&quot;199,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;주방가전/광파오븐/전자레인지/전자레인지&quot;,&quot;ct_id&quot;:&quot;CT50022013&quot;}">
-                        <div class="flag"><span class="num">1</span></div>
-                        <div class="img"><img src="/kr/images/microwaves-and-ovens/md08039645/md08039645-450x450.jpg" alt="LG 전자레인지" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                        <div class="product-info">
-                            <p class="tit">LG 전자레인지</p>
-                            <span class="code">M870FBS451</span>
-                            <div class="price-area">
-                                <div class="original">
-                                    <em class="blind">기존가격</em>
-                                    <span class="price">1,308,900<em>원</em></span>
+        <div id="buyTab03" class="tab-content" aria-labelledby="buyTab01" role="buyTab03">
+            <div class="prd-list-wrap">
+                <div class="slide-wrap ui_product_carousel_slider">
+                    <div class="slide-content ui_carousel_list">
+                        <ul class="inner slide-track ui_carousel_track">
+                            <li class="item ui_carousel_slide ui_carousel_current on">
+                                <div class="best">
+                                    <a href="/vacuum-cleaners/as9571ikt" data-model-id="MD08920858"
+                                        data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S ThinQ&quot;,&quot;model_id&quot;:&quot;MD08920858&quot;,&quot;model_sku&quot;:&quot;AS9571IKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,420,800&quot;,&quot;discounted_price&quot;:&quot;1,282,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                        <div class="flag"><span class="num">1</span></div>
+                                        <div class="img"><img src="/kr/images/vacuum-cleaners/md08920858/md08920858-450x450.jpg" alt="LG 코드제로 A9S ThinQ " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                        <div class="product-info">
+                                            <p class="tit">LG 코드제로 A9S ThinQ </p>
+                                            <span class="code">M870FBS451</span>
+                                            <div class="price-area">
+                                                <div class="original">
+                                                    <em class="blind">기존가격</em>
+                                                    <span class="price">1,308,900<em>원</em></span>
+                                                </div>
+                                                <div class="total">
+                                                    <em class="blind">판매가격</em>
+                                                    <span class="price">1,282,200<em>원</em></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="total">
-                                    <em class="blind">판매가격</em>
-                                    <span class="price">1,282,200<em>원</em></span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                                <ol class="list">
+                                    <li>
+                                        <a href="/vacuum-cleaners/ao9571wkt" data-model-id="MD08918449"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S 오브제컬렉션&quot;,&quot;model_id&quot;:&quot;MD08918449&quot;,&quot;model_sku&quot;:&quot;AO9571WKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,554,000&quot;,&quot;discounted_price&quot;:&quot;1,402,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">2</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08918449/md08918449-350x350.jpg" alt="LG 코드제로 A9S 오브제컬렉션" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9S 오브제컬렉션</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/as9100st" data-model-id="MD09022826"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9&quot;,&quot;model_id&quot;:&quot;MD09022826&quot;,&quot;model_sku&quot;:&quot;AS9100ST&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,053,300&quot;,&quot;discounted_price&quot;:&quot;950,500&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">3</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md09022826/md09022826-350x350.jpg" alt="LG 코드제로 A9 " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9 </p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/c40sgy" data-model-id="MD08745434"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 싸이킹 POWER&quot;,&quot;model_id&quot;:&quot;MD08745434&quot;,&quot;model_sku&quot;:&quot;C40SGY&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;182,000&quot;,&quot;discounted_price&quot;:&quot;164,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/싸이킹&quot;,&quot;ct_id&quot;:&quot;CT50000113&quot;}">
+                                            <div class="flag"><span class="num">4</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08745434/md08745434-350x350.jpg" alt="LG 싸이킹 POWER" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 싸이킹 POWER</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/notebook/16z90p-ga50k" data-model-id="MD08917850"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 그램 16&quot;,&quot;model_id&quot;:&quot;MD08917850&quot;,&quot;model_sku&quot;:&quot;16Z90P-GA50K&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,931,400&quot;,&quot;discounted_price&quot;:&quot;1,743,000&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/노트북/그램&quot;,&quot;ct_id&quot;:&quot;CT50000050&quot;}">
+                                            <div class="flag"><span class="num">5</span></div>
+                                            <div class="img"><img src="/kr/images/notebook/md08917850/md08917850-350x350.jpg" alt="LG 그램 16" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 그램 16</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <ol class="list">
-                    <li>
-                        <a href="/microwaves-and-ovens/mw23gd" data-model-id="MD08039643"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 전자레인지&quot;,&quot;model_id&quot;:&quot;MD08039643&quot;,&quot;model_sku&quot;:&quot;MW23GD&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;183,100&quot;,&quot;discounted_price&quot;:&quot;165,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;주방가전/광파오븐/전자레인지/전자레인지&quot;,&quot;ct_id&quot;:&quot;CT50022013&quot;}">
-                            <div class="flag"><span class="num">2</span></div>
-                            <div class="img"><img src="/kr/images/microwaves-and-ovens/md08039643/md08039643-350x350.jpg" alt="LG 전자레인지" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 전자레인지</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/microwaves-and-ovens/mw22cd" data-model-id="MD08042799"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 전자레인지&quot;,&quot;model_id&quot;:&quot;MD08042799&quot;,&quot;model_sku&quot;:&quot;MW22CD&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;167,600&quot;,&quot;discounted_price&quot;:&quot;151,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;주방가전/광파오븐/전자레인지/전자레인지&quot;,&quot;ct_id&quot;:&quot;CT50022013&quot;}">
-                            <div class="flag"><span class="num">3</span></div>
-                            <div class="img"><img src="/kr/images/microwave/md08042799/md08042799-350x350.jpg" alt="LG 전자레인지" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 전자레인지</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/microwaves-and-ovens/mw23bd" data-model-id="MD08039641"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 전자레인지&quot;,&quot;model_id&quot;:&quot;MD08039641&quot;,&quot;model_sku&quot;:&quot;MW23BD&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;198,600&quot;,&quot;discounted_price&quot;:&quot;179,100&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;주방가전/광파오븐/전자레인지/전자레인지&quot;,&quot;ct_id&quot;:&quot;CT50022013&quot;}">
-                            <div class="flag"><span class="num">4</span></div>
-                            <div class="img"><img
-                                    src="/kr/images/microwaves-and-ovens/md08039641/md08039641-350x350.jpg" alt="LG 전자레인지" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 전자레인지</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/microwaves-and-ovens/mw25p" data-model-id="MD08042632"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 전자레인지&quot;,&quot;model_id&quot;:&quot;MD08042632&quot;,&quot;model_sku&quot;:&quot;MW25P&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;263,000&quot;,&quot;discounted_price&quot;:&quot;237,300&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;주방가전/광파오븐/전자레인지/전자레인지&quot;,&quot;ct_id&quot;:&quot;CT50022013&quot;}">
-                            <div class="flag"><span class="num">5</span></div>
-                            <div class="img"><img src="/kr/images/microwaves-and-ovens/md08042632/md08042632-350x350.jpg" alt="LG 전자레인지" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 전자레인지</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ol>
             </div>
         </div>
-        <div class="buy-product" id="buyTab04">
-            <div class="inner">
-                <div class="best">
-                    <a href="/vacuum-cleaners/as9571ikt" data-model-id="MD08920858"
-                        data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S ThinQ&quot;,&quot;model_id&quot;:&quot;MD08920858&quot;,&quot;model_sku&quot;:&quot;AS9571IKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,420,800&quot;,&quot;discounted_price&quot;:&quot;1,282,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
-                        <div class="flag"><span class="num">1</span></div>
-                        <div class="img"><img src="/kr/images/vacuum-cleaners/md08920858/md08920858-450x450.jpg" alt="LG 코드제로 A9S ThinQ " onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                        <div class="product-info">
-                            <p class="tit">LG 코드제로 A9S ThinQ </p>
-                            <span class="code">M870FBS451</span>
-                            <div class="price-area">
-                                <div class="original">
-                                    <em class="blind">기존가격</em>
-                                    <span class="price">1,308,900<em>원</em></span>
+        <div id="buyTab04" class="tab-content" aria-labelledby="buyTab01" role="buyTab04">
+            <div class="prd-list-wrap">
+                <div class="slide-wrap ui_product_carousel_slider">
+                    <div class="slide-content ui_carousel_list">
+                        <ul class="inner slide-track ui_carousel_track">
+                            <li class="item ui_carousel_slide ui_carousel_current on">
+                                <div class="best">
+                                    <a href="/vacuum-cleaners/as9571ikt" data-model-id="MD08920858"
+                                        data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S ThinQ&quot;,&quot;model_id&quot;:&quot;MD08920858&quot;,&quot;model_sku&quot;:&quot;AS9571IKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,420,800&quot;,&quot;discounted_price&quot;:&quot;1,282,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                        <div class="flag"><span class="num">1</span></div>
+                                        <div class="img"><img src="/kr/images/vacuum-cleaners/md08920858/md08920858-450x450.jpg" alt="LG 코드제로 A9S ThinQ " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                        <div class="product-info">
+                                            <p class="tit">LG 코드제로 A9S ThinQ </p>
+                                            <span class="code">M870FBS451</span>
+                                            <div class="price-area">
+                                                <div class="original">
+                                                    <em class="blind">기존가격</em>
+                                                    <span class="price">1,308,900<em>원</em></span>
+                                                </div>
+                                                <div class="total">
+                                                    <em class="blind">판매가격</em>
+                                                    <span class="price">1,282,200<em>원</em></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="total">
-                                    <em class="blind">판매가격</em>
-                                    <span class="price">1,282,200<em>원</em></span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                                <ol class="list">
+                                    <li>
+                                        <a href="/vacuum-cleaners/ao9571wkt" data-model-id="MD08918449"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S 오브제컬렉션&quot;,&quot;model_id&quot;:&quot;MD08918449&quot;,&quot;model_sku&quot;:&quot;AO9571WKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,554,000&quot;,&quot;discounted_price&quot;:&quot;1,402,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">2</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08918449/md08918449-350x350.jpg" alt="LG 코드제로 A9S 오브제컬렉션" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9S 오브제컬렉션</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/as9100st" data-model-id="MD09022826"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9&quot;,&quot;model_id&quot;:&quot;MD09022826&quot;,&quot;model_sku&quot;:&quot;AS9100ST&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,053,300&quot;,&quot;discounted_price&quot;:&quot;950,500&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">3</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md09022826/md09022826-350x350.jpg" alt="LG 코드제로 A9 " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9 </p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/c40sgy" data-model-id="MD08745434"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 싸이킹 POWER&quot;,&quot;model_id&quot;:&quot;MD08745434&quot;,&quot;model_sku&quot;:&quot;C40SGY&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;182,000&quot;,&quot;discounted_price&quot;:&quot;164,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/싸이킹&quot;,&quot;ct_id&quot;:&quot;CT50000113&quot;}">
+                                            <div class="flag"><span class="num">4</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08745434/md08745434-350x350.jpg" alt="LG 싸이킹 POWER" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 싸이킹 POWER</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/notebook/16z90p-ga50k" data-model-id="MD08917850"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 그램 16&quot;,&quot;model_id&quot;:&quot;MD08917850&quot;,&quot;model_sku&quot;:&quot;16Z90P-GA50K&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,931,400&quot;,&quot;discounted_price&quot;:&quot;1,743,000&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/노트북/그램&quot;,&quot;ct_id&quot;:&quot;CT50000050&quot;}">
+                                            <div class="flag"><span class="num">5</span></div>
+                                            <div class="img"><img src="/kr/images/notebook/md08917850/md08917850-350x350.jpg" alt="LG 그램 16" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 그램 16</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <ol class="list">
-                    <li>
-                        <a href="/vacuum-cleaners/ao9571wkt" data-model-id="MD08918449"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S 오브제컬렉션&quot;,&quot;model_id&quot;:&quot;MD08918449&quot;,&quot;model_sku&quot;:&quot;AO9571WKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,554,000&quot;,&quot;discounted_price&quot;:&quot;1,402,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
-                            <div class="flag"><span class="num">2</span></div>
-                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08918449/md08918449-350x350.jpg" alt="LG 코드제로 A9S 오브제컬렉션" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 코드제로 A9S 오브제컬렉션</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/vacuum-cleaners/as9100st" data-model-id="MD09022826"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9&quot;,&quot;model_id&quot;:&quot;MD09022826&quot;,&quot;model_sku&quot;:&quot;AS9100ST&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,053,300&quot;,&quot;discounted_price&quot;:&quot;950,500&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
-                            <div class="flag"><span class="num">3</span></div>
-                            <div class="img"><img src="/kr/images/vacuum-cleaners/md09022826/md09022826-350x350.jpg" alt="LG 코드제로 A9 " onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 코드제로 A9 </p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/vacuum-cleaners/c40sgy" data-model-id="MD08745434"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 싸이킹 POWER&quot;,&quot;model_id&quot;:&quot;MD08745434&quot;,&quot;model_sku&quot;:&quot;C40SGY&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;182,000&quot;,&quot;discounted_price&quot;:&quot;164,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/싸이킹&quot;,&quot;ct_id&quot;:&quot;CT50000113&quot;}">
-                            <div class="flag"><span class="num">4</span></div>
-                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08745434/md08745434-350x350.jpg" alt="LG 싸이킹 POWER" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 싸이킹 POWER</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/vacuum-cleaners/k83igy" data-model-id="MD08046024"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 싸이킹 K8&quot;,&quot;model_id&quot;:&quot;MD08046024&quot;,&quot;model_sku&quot;:&quot;K83IGY&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;331,800&quot;,&quot;discounted_price&quot;:&quot;299,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/싸이킹&quot;,&quot;ct_id&quot;:&quot;CT50000113&quot;}">
-                            <div class="flag"><span class="num">5</span></div>
-                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08046024/md08046024-350x350.jpg" alt="LG 싸이킹 K8" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 싸이킹 K8</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ol>
             </div>
         </div>
-        <div class="buy-product" id="buyTab05">
-            <div class="inner">
-                <div class="best">
-                    <a href="/dehumidifiers-and-humidifiers/dq160psaa" data-model-id="MD08044916"
-                        data-ec-product="{&quot;model_name&quot;:&quot;LG 휘센 제습기&quot;,&quot;model_id&quot;:&quot;MD08044916&quot;,&quot;model_sku&quot;:&quot;DQ160PSAA&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;664,800&quot;,&quot;discounted_price&quot;:&quot;599,900&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;에어컨/에어케어/제습/가습기/제습기&quot;,&quot;ct_id&quot;:&quot;CT50022000&quot;}">
-                        <div class="flag"><span class="num">1</span></div>
-                        <div class="img"><img src="/kr/images/dehumidifiers-and-humidifiers/md08044916/md08044916-450x450.jpg" alt="LG 휘센 제습기" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                        <div class="product-info">
-                            <p class="tit">LG 휘센 제습기</p>
-                            <span class="code">M870FBS451</span>
-                            <div class="price-area">
-                                <div class="original">
-                                    <em class="blind">기존가격</em>
-                                    <span class="price">1,308,900<em>원</em></span>
+        <div id="buyTab05" class="tab-content" aria-labelledby="buyTab01" role="buyTab05">
+            <div class="prd-list-wrap">
+                <div class="slide-wrap ui_product_carousel_slider">
+                    <div class="slide-content ui_carousel_list">
+                        <ul class="inner slide-track ui_carousel_track">
+                            <li class="item ui_carousel_slide ui_carousel_current on">
+                                <div class="best">
+                                    <a href="/vacuum-cleaners/as9571ikt" data-model-id="MD08920858"
+                                        data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S ThinQ&quot;,&quot;model_id&quot;:&quot;MD08920858&quot;,&quot;model_sku&quot;:&quot;AS9571IKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,420,800&quot;,&quot;discounted_price&quot;:&quot;1,282,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                        <div class="flag"><span class="num">1</span></div>
+                                        <div class="img"><img src="/kr/images/vacuum-cleaners/md08920858/md08920858-450x450.jpg" alt="LG 코드제로 A9S ThinQ " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                        <div class="product-info">
+                                            <p class="tit">LG 코드제로 A9S ThinQ </p>
+                                            <span class="code">M870FBS451</span>
+                                            <div class="price-area">
+                                                <div class="original">
+                                                    <em class="blind">기존가격</em>
+                                                    <span class="price">1,308,900<em>원</em></span>
+                                                </div>
+                                                <div class="total">
+                                                    <em class="blind">판매가격</em>
+                                                    <span class="price">1,282,200<em>원</em></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="total">
-                                    <em class="blind">판매가격</em>
-                                    <span class="price">1,282,200<em>원</em></span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                                <ol class="list">
+                                    <li>
+                                        <a href="/vacuum-cleaners/ao9571wkt" data-model-id="MD08918449"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9S 오브제컬렉션&quot;,&quot;model_id&quot;:&quot;MD08918449&quot;,&quot;model_sku&quot;:&quot;AO9571WKT&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,554,000&quot;,&quot;discounted_price&quot;:&quot;1,402,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">2</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08918449/md08918449-350x350.jpg" alt="LG 코드제로 A9S 오브제컬렉션" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9S 오브제컬렉션</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/as9100st" data-model-id="MD09022826"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 코드제로 A9&quot;,&quot;model_id&quot;:&quot;MD09022826&quot;,&quot;model_sku&quot;:&quot;AS9100ST&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,053,300&quot;,&quot;discounted_price&quot;:&quot;950,500&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/코드제로 A9S&quot;,&quot;ct_id&quot;:&quot;CT50000115&quot;}">
+                                            <div class="flag"><span class="num">3</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md09022826/md09022826-350x350.jpg" alt="LG 코드제로 A9 " onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 코드제로 A9 </p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/vacuum-cleaners/c40sgy" data-model-id="MD08745434"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 싸이킹 POWER&quot;,&quot;model_id&quot;:&quot;MD08745434&quot;,&quot;model_sku&quot;:&quot;C40SGY&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;182,000&quot;,&quot;discounted_price&quot;:&quot;164,200&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;생활가전/청소기/싸이킹&quot;,&quot;ct_id&quot;:&quot;CT50000113&quot;}">
+                                            <div class="flag"><span class="num">4</span></div>
+                                            <div class="img"><img src="/kr/images/vacuum-cleaners/md08745434/md08745434-350x350.jpg" alt="LG 싸이킹 POWER" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 싸이킹 POWER</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/notebook/16z90p-ga50k" data-model-id="MD08917850"
+                                            data-ec-product="{&quot;model_name&quot;:&quot;LG 그램 16&quot;,&quot;model_id&quot;:&quot;MD08917850&quot;,&quot;model_sku&quot;:&quot;16Z90P-GA50K&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,931,400&quot;,&quot;discounted_price&quot;:&quot;1,743,000&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;IT/노트북/그램&quot;,&quot;ct_id&quot;:&quot;CT50000050&quot;}">
+                                            <div class="flag"><span class="num">5</span></div>
+                                            <div class="img"><img src="/kr/images/notebook/md08917850/md08917850-350x350.jpg" alt="LG 그램 16" onerror="lgkorUI.addImgErrorEvent(this)"></div>
+                                            <div class="product-info">
+                                                <p class="tit">LG 그램 16</p>
+                                                <span class="code">M870FBS451</span>
+                                                <div class="price-area">
+                                                    <div class="original">
+                                                        <em class="blind">기존가격</em>
+                                                        <span class="price">1,308,900<em>원</em></span>
+                                                    </div>
+                                                    <div class="total">
+                                                        <em class="blind">판매가격</em>
+                                                        <span class="price">1,282,200<em>원</em></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <ol class="list">
-                    <li>
-                        <a href="/air-purifier/as120vela" data-model-id="MD08044947"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 퓨리케어 공기청정기&quot;,&quot;model_id&quot;:&quot;MD08044947&quot;,&quot;model_sku&quot;:&quot;AS120VELA&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;331,800&quot;,&quot;discounted_price&quot;:&quot;299,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;에어컨/에어케어/공기청정기/공기청정기&quot;,&quot;ct_id&quot;:&quot;CT50000144&quot;}">
-                            <div class="flag"><span class="num">2</span></div>
-                            <div class="img"><img src="/kr/images/air-purifier/md08044947/md08044947-350x350.jpg" alt="LG 퓨리케어 공기청정기" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 퓨리케어 공기청정기</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/air-conditioners/sq07pbjwaj" data-model-id="MD08918335"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 휘센 2in1 벽걸이&quot;,&quot;model_id&quot;:&quot;MD08918335&quot;,&quot;model_sku&quot;:&quot;SQ07PBJWAJ&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;624,800&quot;,&quot;discounted_price&quot;:&quot;563,800&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;에어컨/에어케어/에어컨/벽걸이형&quot;,&quot;ct_id&quot;:&quot;CT50000135&quot;}">
-                            <div class="flag"><span class="num">3</span></div>
-                            <div class="img"><img src="/kr/images/air-conditioners/md08918335/md08918335-350x350.jpg" alt="LG 휘센 2in1 벽걸이" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 휘센 2in1 벽걸이</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/air-conditioners/sq07bbawaj" data-model-id="MD08918332"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 휘센 2in1 벽걸이&quot;,&quot;model_id&quot;:&quot;MD08918332&quot;,&quot;model_sku&quot;:&quot;SQ07BBAWAJ&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;382,800&quot;,&quot;discounted_price&quot;:&quot;345,400&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;에어컨/에어케어/에어컨/벽걸이형&quot;,&quot;ct_id&quot;:&quot;CT50000135&quot;}">
-                            <div class="flag"><span class="num">4</span></div>
-                            <div class="img"><img src="/kr/images/air-conditioners/md08918332/md08918332-350x350.jpg" alt="LG 휘센 2in1 벽걸이" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 휘센 2in1 벽걸이</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/air-purifier/as301drpa" data-model-id="MD08917839"
-                            data-ec-product="{&quot;model_name&quot;:&quot;LG 퓨리케어 360˚ 공기청정기 펫 플러스&quot;,&quot;model_id&quot;:&quot;MD08917839&quot;,&quot;model_sku&quot;:&quot;AS301DRPA&quot;,&quot;model_gubun&quot;:&quot;일반제품&quot;,&quot;price&quot;:&quot;1,741,500&quot;,&quot;discounted_price&quot;:&quot;1,571,600&quot;,&quot;brand&quot;:&quot;LG&quot;,&quot;category&quot;:&quot;에어컨/에어케어/공기청정기/공기청정기&quot;,&quot;ct_id&quot;:&quot;CT50000144&quot;}">
-                            <div class="flag"><span class="num">5</span></div>
-                            <div class="img"><img src="/kr/images/air-purifier/md08917839/md08917839-350x350.jpg" alt="LG 퓨리케어 360˚ 공기청정기 펫 플러스" onerror="lgkorUI.addImgErrorEvent(this)"></div>
-                            <div class="product-info">
-                                <p class="tit">LG 퓨리케어 360˚ 공기청정기 펫 플러스</p>
-                                <span class="code">M870FBS451</span>
-                                <div class="price-area">
-                                    <div class="original">
-                                        <em class="blind">기존가격</em>
-                                        <span class="price">1,308,900<em>원</em></span>
-                                    </div>
-                                    <div class="total">
-                                        <em class="blind">판매가격</em>
-                                        <span class="price">1,282,200<em>원</em></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ol>
             </div>
         </div>
     </div>
-    
 </div>
 <!-- //많이 구매하는 제품 -->
 <!-- -E- 20211014 BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정 -->
 
-<!-- 추천 기획전 //BTOCSITE-6882 삭제 -->
-
-<!-- 추천 드리는 기획전 -->
+<!-- 추천 기획전 -->
 <div class="module-box">
     <div class="tit-wrap">
         <h3 class="tit">추천 드리는 기획전</h3>
     </div>
-    <!-- 210413 롤링배너로 수정(모바일버전) -->
-    <div class="slide-wrap product-slide ui_product_lifestyle">
+    <div class="slide-wrap product-slide ui_exhib_carousel">
         <div class="indi-wrap">
             <ul class="indi-conts ui_carousel_dots">
                 <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
@@ -1035,6 +1082,42 @@
                                 <p class="tit">2021 아카데미 앵콜 Festival</p>
                                 <div class="btn-area">
                                     <a href="https://www.lge.co.kr/signature" class="btn border"><span>자세히 보기</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- //slide -->
+            </ul>
+        </div>
+        <div class="slide-controls">
+            <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+            <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+        </div>
+    </div>
+</div>
+<!-- //추천 기획전 -->
+
+<!-- 카테고리 추천 배너  -->
+<div class="module-box">
+    <!-- 210413 롤링배너로 수정(모바일버전) -->
+    <div class="slide-wrap product-slide ui_product_lifestyle">
+        <div class="indi-wrap">
+            <ul class="indi-conts ui_carousel_dots">
+                <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+            </ul>
+        </div>
+        <div class="slide-content ui_carousel_list">
+            <ul class="slide-track ui_carousel_track">
+                <!-- slide -->
+                <li class="slide-conts ui_carousel_slide">
+                    <div class="slide-box">
+                        <div class="product-banner">
+                            <img src="/lg5-common/images/PRS/img-banner-product-category-06.jpg" alt="" class="ignore-lazyload" data-pc-src="/lg5-common/images/PRS/img-banner-product-category-06.jpg" data-m-src="/lg5-common/images/PRS/img-banner-product-category-06-m.jpg">
+                            <div class="product-info-link fc-white type-l">
+                                <p class="tit">초 프리미엄 가전</p>
+                                <div class="btn-area">
+                                    <a href="https://www.lge.co.kr/object-collection" class="btn border"><span>LG SIGNATURE</span></a>
                                 </div>
                             </div>
                         </div>
@@ -1060,12 +1143,11 @@
                 <li class="slide-conts ui_carousel_slide">
                     <div class="slide-box">
                         <div class="product-banner">
-                            <img src="/lg5-common/images/PRS/img-banner-product-category-05.jpg" alt="" class="ignore-lazyload" data-pc-src="/lg5-common/images/PRS/img-banner-product-category-05.jpg" data-m-src="/lg5-common/images/PRS/img-banner-product-category-05-m.jpg">
-                            <div class="product-info-link fc-black type-l">
-                                <p class="sub-tit">딱! 찾던 LG전자 가전 혜택</p>
-                                <p class="tit">2021 아카데미 앵콜 Festival</p>
+                            <img src="/lg5-common/images/PRS/img-banner-product-category-06.jpg" alt="" class="ignore-lazyload" data-pc-src="/lg5-common/images/PRS/img-banner-product-category-06.jpg" data-m-src="/lg5-common/images/PRS/img-banner-product-category-06-m.jpg">
+                            <div class="product-info-link fc-white type-l">
+                                <p class="tit">초 프리미엄 가전</p>
                                 <div class="btn-area">
-                                    <a href="https://www.lge.co.kr/signature" class="btn border"><span>자세히 보기</span></a>
+                                    <a href="https://www.lge.co.kr/object-collection" class="btn border"><span>LG SIGNATURE</span></a>
                                 </div>
                             </div>
                         </div>
@@ -1081,7 +1163,7 @@
     </div>
     <!-- //210413 롤링배너로 수정(모바일버전) -->
 </div>
-<!-- //추천 드리는 기획전 -->
+<!-- //카테고리 추천 배너  -->
 
 <!-- 신제품 -->
 <div class="module-box">

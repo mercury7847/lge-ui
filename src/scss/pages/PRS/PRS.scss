@@ -350,6 +350,8 @@
     }
 }
 
+
+
 // 서브메인
 .sub-main {
 	padding-bottom:120px;
@@ -624,6 +626,7 @@
 			max-width:1872px;
 			.slide-wrap.carousel-type.carousel-4 {
 				max-width:100%;
+				padding-bottom:0;
 				@include mobile{
 					margin:0;
 					padding:0;
@@ -733,74 +736,55 @@
 		//이달의 추천 제품
 		// BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
 		&.module-buy-product {
-			padding:60px 40px 80px;
+			padding:60px 40px 70px;
 			max-width:none;
 			background:#f4f4f4;
 			@include mobile{
 				padding:40px 0 50px;
 			}
-			.buy-product-tab {
-				margin:0 auto;
-				max-width:1380px;
-				@include mobile{
-					position:relative;
-					&:before,
-					&:after {
-						position: absolute;
-						top:50%;
-						z-index: 1;
-						width: 16px;
-						height: 43px;
-						content: '';
-						background:none;
-						transform:translateY(-50%);
-					}
-					&:before {
-						left: 0;
-						background-image: linear-gradient(to left, rgba(244, 244, 244, 0), #f4f4f4);
-					}
-					&:after {
-						right: 0;
-						background-image: linear-gradient(to right, rgba(244, 244, 244, 0), #f4f4f4);
-					}
+
+			.scroll-wrap {
+				margin-bottom:14px;
+				text-align: center;
+				@include mobile {
+					margin-bottom: 3px;
 				}
-				.tabs-wrap {
+				&.border-type {
+					margin-top:0;
+					.tabs {
+						display: inline-block;
+						li {
+							margin-left:8px;
+							padding:0;
+							a {
+								position:relative;
+								padding:0 24px;
+								height:38px;
+								font-size:18px;
+								font-weight:700;
+								line-height:36px;
+								border:1px solid transparent;
+								@include mobile{
+									padding:0 10px;
+									height:32px;
+									font-size:14px;
+									line-height:30px;
+								}
+							}
+							&.on {
+								a{
+									border:1px solid #000;
+									border-radius:19px;
+								}
+							}
+							&:first-child{
+								margin-left:0;
+							}
+						}
+					}
 					&:before {
 						@include mobile{
 							display:block;
-						}
-					}
-					&.round-type {
-						margin-top:0;
-						.tabs {
-							li {
-								margin-left:8px;
-								padding:0;
-								a {
-									position:relative;
-									padding:0 24px;
-									height:38px;
-									font-size:18px;
-									font-weight:700;
-									line-height:36px;
-									border:1px solid transparent;
-									@include mobile{
-										padding:0 10px;
-										height:32px;
-										font-size:14px;
-										line-height:30px;
-									}
-								}
-								&.on {
-									a{
-										border:1px solid #000;
-										border-radius:19px;
-									}
-								}
-								&:first-child{
-									margin-left:0;
-								}
-							}
 						}
 					}
 				}
@@ -809,6 +793,14 @@
 			.buy-product-tabcontent{
 				margin:0 auto;
 				max-width:1380px;
+				.prd-list-wrap{
+					padding:0 -10px;
+					.slide-wrap{
+						@include mobile{
+							padding-bottom:0;
+						}
+					}
+				}
 			}
 
 			.tooltip-wrap {
@@ -831,22 +823,28 @@
 				}
 			}
 
-			.buy-product {
-				margin-top:36px;
+			.tab-content {
+				margin-top:14px;
 				font-size:0;
 				@include mobile{
-					margin-top:14px;
-					padding:0 16px;
+					margin-top:3px;
+					padding:0 6px;
 				}
 				&:after {
 					content:' ';
 					display:block;
 					clear:both;
 				}
-				.inner {
+				.inner{
+					width:100% !important;
+				}
+				.item {
 					display:flex;
+					padding:10px;
+					width:100% !important;
 					@include mobile{
 						display:block;
+						width:100% !important;
 					}
 				}
 				.best {
@@ -1372,6 +1370,11 @@
 			@include mobile{
 				padding-bottom:0;
 			}
+			.indi-wrap{
+				@include mobile{
+					display:none;
+				}
+			}
 			.slide-content {
 				@include mobile{
 					padding:0 12px;
@@ -1818,11 +1821,12 @@
 						.img {
 							position:absolute;
 							top:50%;
-							left:24px;
+							left:40px;
 							width:160px;
 							height:160px;
 							transform:translateY(-50%);
 							@include mobile{
+								left:20px;
 								width:90px;
 								height:90px;
 							}
