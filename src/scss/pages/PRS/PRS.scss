@@ -947,7 +947,7 @@
 							text-align: center;
 							@media screen and (max-width:980px) {
 								margin-right:5.9%;
-								width:clac(100% - 120px - 5.9%);
+								width:calc(100% - 120px - 5.9%);
 							}
 							@include mobile{
 								position:relative;
