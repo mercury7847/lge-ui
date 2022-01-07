@@ -5,15 +5,16 @@ $(window).ready(function(){
 
     vcui.require(['ui/toggleCarousel'], function () {
 
-        $('.KRC0023').find('.ui_carousel_slider2').vcToggleCarousel({
+        //BTOCSITE-8625 LGE.COM PDP 내 캐로셀 컴포넌트 수정요청
+        $('.KRC0023.slidesToShowMore').find('.ui_carousel_slider2').vcToggleCarousel({
             pcOption: "unbuild",
             cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
             touchThreshold: 100,
             speed: 150,
             mobileOption: {
-                infinite: true,
+                infinite: false,
                 dots: true,
-                slidesToShow: 1, 
+                slidesToShow: 1.28,
                 slidesToScroll: 1,
                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                 speed: 150,
@@ -21,6 +22,21 @@ $(window).ready(function(){
             }
         });
 
+        $(".KRC0023").not(".slidesToShowMore").find('.ui_carousel_slider2').vcToggleCarousel({
+            pcOption: "unbuild",
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            touchThreshold: 100,
+            speed: 150,
+            mobileOption: {
+                infinite: true,
+                dots: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100
+            }
+        });
     });    
 
 })

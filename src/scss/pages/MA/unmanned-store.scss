@@ -3,6 +3,13 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+//BTOCSITE-9942
+@mixin unmanned-store-middle-target {
+    @media screen and (max-width: 1460px) and (min-width: 768px){
+        @content;
+    }
+}
+
 .cont-wrap {
     max-width:100%;
     padding: 0;
@@ -83,14 +90,11 @@
         }
     }
 }
-
+//BTOCSITE-9942
 .visual-wrap {
     position:relative;
     img {
         width:100%;
-    }
-    @include mobile {
-        // padding:0 20px;
     }
     .bg {
         display:block;
@@ -104,32 +108,22 @@
         position:absolute;
         top:50%;
         left:50%;
-        transform:translate(-573px,-50%);
-        @media screen and (max-width: 1146px) {
-            left:40px;
-            transform:translate(0,-50%);
-        }
+        width: 100%;
+        max-width: 1380px;
+        transform:translate(-50%,-50%);
+        color: $color-white;
         @include mobile {
             top:48px;
             right:20px;
             left: 20px;
+            width: calc(100% - 20px);
+            padding-right:20px;
             transform:translateY(0);
-            color: $color-white;
-        }
-        @include pc {
-            color: $color-white;
         }
         .tit {
             font-size:48px;
             line-height:64px;
             font-weight:700;
-            @media screen and (max-width: 1411px) and (min-width: 768px) {
-                 font-size:48px;
-                line-height:64px;
-                 font-size: 4.20684vw;
-                line-height: 5.60911vw;
-
-            }
             @include mobile {
                 font-size:26px;
                 line-height:35px;
@@ -142,11 +136,6 @@
             font-size:24px;
             line-height:34px;
             font-weight:400;
-            @media screen and (max-width: 1411px) and (min-width: 768px) {
-                padding-top: 1.75285vw;
-                font-size: 2.10342vw;
-                line-height: 2.97984vw;
-            }
 
             sub{
                 @include font-small;
@@ -158,6 +147,18 @@
                 font-size:16px;
                 line-height:24px;
                 font-weight: 400;
+            }
+            .small-txt {
+                margin-top: 15px;
+                font-size: 13px;
+                line-height: 1.5;
+                @include mobile {
+                    font-size: 13px;
+                    line-height: 1.5;
+                }
+                & + .small-txt {
+                    margin-top:5px
+                }
             }
         }
         .btn-area {
@@ -177,6 +178,35 @@
                 &:active {
                     border-color: $color-primary !important;
                 }
+            }
+        }
+    }
+    @include unmanned-store-middle-target {
+        overflow: hidden;
+        height: 400px;
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: auto;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        .tit-wrap {
+            width: calc(100% - 20px);
+            padding-left: 20px;
+            .tit {
+                font-size: 36px;
+                line-height: 1.5;
+                font-weight: 700;
+            }
+            .txt {
+                font-size: 18px;
+                line-height: 1.5;
+            }
+            .small-txt {
+                font-size: 12px;
             }
         }
     }
@@ -340,19 +370,6 @@
 
             @include mobile {
                 text-align: center;
-
-                .tabs-wrap {
-                    .tabs {
-                        overflow-x:hidden;
-                        margin:0 auto;
-                        > li {
-                            width:46vw;
-                            a {
-                                text-align: center;
-                            }
-                        }
-                    }
-                }
             }
 
             .btn-experience-guide {
@@ -450,7 +467,7 @@
                 height: 536px;
                 position: relative;
 
-                @media screen and (max-width: 1300px) and (min-width: 768px) {
+                @include unmanned-store-middle-target {
                      width: 74.84615vw;
                     min-width: 74.84615vw;
                     height: 41.23077vw
@@ -459,7 +476,7 @@
                 @include mobile{
                     width: 100vw;
                     min-width: 100%;
-                    height: 89.96089vw;
+                    height: 92.96089vw;
                 }
                 &.seoul{
 
@@ -469,35 +486,116 @@
                     @include mobile{ background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_seoul-m.svg') no-repeat 0 0; background-size: 100%; }
 
                     .pin{
-                        &.idx01{ left: 53.5%; top: 73.7%; }
-                        &.idx02{ left: 33.5%; top: 50.7%; }
-                        &.idx03{ left: 38.5%; top: 78.7%; }
-                        &.idx04{ left: 41.5%; top: 70.7%; }
-                        &.idx05{ left: 57.5%; top: 14.7%; }
-                        &.idx06{ left: 43.5%; top: 33.7%; }
+                        &.idx01{ left: 53.5%; top: 70.7%; }
+                        &.idx02{ left: 33.5%; top: 47.7%; }
+                        &.idx03{ left: 39.5%; top: 75.7%; }
+                        &.idx04{ left: 43.5%; top: 65.7%; }
+                        &.idx05{ left: 57.5%; top: 11.7%; }
+                        &.idx06{ left: 42.5%; top: 30.7%; }
                         &.idx07{ left: 17.5%; top: 66.7%; }
-                        &.idx08{ left: 26.5%; top: 19.7%}          
+                        &.idx08{ left: 26.5%; top: 17.5%; }
+                        &.idx09{ left: 71%; top: 51%; }
+                        &.idx10{ left: 5%; top: 48.7%; }
+                        &.idx11{ left: 46.5%; top: 91.7%; }
+                        &.idx12{ left: 17.5%; top: 6.7%; }
                         @include mobile{
-                            &.idx01 {left: 65.5%; top: 77.7%; }
-                            &.idx02 {left: 31.5%; top: 51.7%; }
-                            &.idx03 {left: 38.5%; top: 79.7%; }
-                            &.idx04 {left: 46.5%; top: 70.7%; }
-                            &.idx05 {left: 71.5%; top: 11.7%; }
-                            &.idx06 {left: 48.5%; top: 27%; }
-                            &.idx07 {left: 3.5%; top: 65.7%; }
-                            &.idx08 {left: 10.5%; top: 15.7%; }                            
+                            &.idx01 {left: 58.7%; top: 61.7%; }
+                            &.idx02 {left: 32.5%; top: 45.7%; }
+                            &.idx03 {left: 41.6%; top: 67.7%; }
+                            &.idx04 {left: 47.5%; top: 56.7%; }
+                            &.idx05 {left: 62.5%; top: 18%; }
+                            &.idx06 {left: 43.5%; top: 32%; }
+                            &.idx07 {left: 11.5%; top: 58.7%; }
+                            &.idx08 {left: 22.5%; top: 25.7%; }
+                            &.idx09 {left: 79%; top: 48%; }
+                            &.idx10 {left: 4.5%; top: 48.7%; }
+                            &.idx11 {left: 42.5%; top: 82.7%; }
+                            &.idx12 {left: 13%; top: 15.7%; }
                         }          
                     }
+                    & ~ .list {
+                        > ol {
+                            -moz-column-count: 2;
+                            -webkit-column-count: 2;
+                            column-count: 2;
+                            @include unmanned-store-middle-target {
+                                -moz-column-count: auto;
+                                -webkit-column-count: auto;
+                                column-count: auto;
+                            }
+                            li:nth-child(9n){
+                                break-before: column;
+                                margin-top: 0;
+                                @include unmanned-store-middle-target {
+                                    break-before: auto;
+                                    margin-top: 2vw;
+                                }
+                            }
+                        }
+                    }
                 }
-                &.gyeongsang{ 
-                    background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_gyeongsang.svg') no-repeat 0 0; 
+                &.chungcheong{
+                    background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_chungcheong.svg') no-repeat 0 0;
                     background-size: 100%;
                     @include mobile{
-                        background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_gyeongsang-m.svg') no-repeat 0 0; 
+                        background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_chungcheong-m.svg') no-repeat 0 0;
                         background-size: 100%;
                     }
                     .pin{
-                        &.idx01{ left: 41.9%; top: 49.7%; }
+                        &.idx01{ left: 44.4%; top: 44.3%; }
+                        @include mobile{
+                            &.idx01 {left: 44.4%; top: 41.3%; }
+                        }
+                    }
+                }
+                &.jeolla{
+                    background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_jeolla.svg') no-repeat 0 0;
+                    background-size: 100%;
+                    @include mobile{
+                        background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_jeolla-m.svg') no-repeat 0 0;
+                        background-size: 100%;
+                    }
+                    .pin{
+                        &.idx01{ left: 45.3%; top: 14.7%; }
+                        &.idx02{ left: 36.9%; top: 48.7%; }
+
+                        @include mobile{
+                            &.idx01 {left: 54.4%; top: 8.4%; }
+                            &.idx02 {left: 34.9%; top: 44.7%; }
+                        }
+                    }
+                }
+                &.gyeongsang{ 
+                    background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_gyeongsang.svg') no-repeat 0 0;
+                    background-size: 100%;
+                    @include mobile{
+                        background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_gyeongsang-m.svg') no-repeat 0 0;
+                        background-size: 100%;
+                    }
+                    .pin{
+                        &.idx01{
+                            left: 59.9%;
+                            top: 80.7%;
+                            padding:14px 0 0 20px;
+                            background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_reverse.svg');
+                            &:hover,&:focus{
+                                background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_reverse_over.svg') no-repeat 0 0;
+                                background-size: 100%;
+                                @include mobile{
+                                    background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m_reverse_over.svg') no-repeat 0 0;
+                                    background-size: 100%;
+                                }
+                            }
+                        }
+                        &.idx02{ left: 65.6%; top: 60.5%; }
+                        &.idx03{ left: 48.6%; top: 32.5%; }
+                        &.idx04{ left: 53.6%; top: 70.5%; }
+                        @include mobile{
+                            &.idx01 {left: 51.3%; top: 78.3%; padding: 3vw 0 0 0;background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m_reverse.svg'); background-size: 100%;}
+                            &.idx02 {left: 56.5%; top: 58.5%; }
+                            &.idx03{ left: 30%; top: 32.5%; }
+                            &.idx04{ left: 36.6%; top: 69.5%; }
+                        }
                     }
                 }
                 
@@ -526,8 +624,6 @@
                          @include mobile{
                             background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin_wide-m.svg') no-repeat 0 0;
                             background-size: 100%;
-                            width: 160px;
-                            height: 63px;
                             width: 20.86050vw;
                             height: 8.21382vw;
                             &:hover,&:focus{
@@ -540,17 +636,8 @@
 
                     @include mobile{
                         background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m.svg') no-repeat 0 0;
-                        font-size: 26px;
-                        padding: 6px 24px 0;
-                        width: 142px;
-                        height: 63px;
                         background-size: 100% 100%;
                         font-size: 3.38542vw;
-                        
-                        padding: 0.78125vw 3.12500vw 0;
-                        padding: 1.04302vw 0 0 0;
-               
-
                         width: 18.51369vw;
                         height: 8.21382vw;    
                         padding: 1.56454vw 0 0 0;
@@ -578,30 +665,26 @@
             
             }
             .list{
-                // min-width: 345px;
-                max-width: 100%;
-                margin-left: 30px;
-                @media screen and (max-width: 1200px) and (min-width: 768px) {
-                    margin-left: 2.50000vw
-                    // margin-left: 0px;
-                    // margin-top: 25px;
-                }
-                // padding-left: 82px;
+                flex-basis: calc(100% - 70% - 6.5%);
+                margin-left: 6.5%;
                 position: relative;
-                // text-align: right;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
 
+                @include unmanned-store-middle-target {
+                    flex-basis: auto;
+                    margin-left: 5vw;
+                }
                 @include mobile{
+                    flex-basis: auto;
                     margin-top: 6.5px;
                     margin-left: 0;
                     padding: 0 30px;
                 }
-                
-                
-                > ol{
 
+
+                > ol{
                     @include mobile{
                         display: flex;
                         flex-direction: row;
@@ -618,6 +701,7 @@
                             @media screen and (max-width: 1200px) and (min-width: 768px) {
                                         font-size: 1.33333vw; line-height: 2.16667vw
                             }
+                            display: block;
                             font-weight: $font-weight-regular;
                             text-decoration: underline;
                             &::after {
@@ -625,58 +709,52 @@
                                 display: inline-block;
                                 width: 16px;
                                 height: 16px;
-                                background: url('/lg5-common/images/icons/btn_arrow_right_16.svg') 4px 3px;
-                                background-repeat: no-repeat;
-                                @media all and (max-width: 1200px) and (min-width: 768px) {
-                                        width: 1.33333vw;
-                                        height: 1.33333vw;
-                                        background: url('/lg5-common/images/icons/btn_arrow_right_16.svg') 0.33333vw 0.25000vw;
-                                        background-size: 100%;
+                                background: url('/lg5-common/images/icons/btn_arrow_right_16.svg') 4px 3px no-repeat;
+                                @include unmanned-store-middle-target {
+                                    width: 1.33333vw;
+                                    height: 1.33333vw;
+                                    background: url('/lg5-common/images/icons/btn_arrow_right_16.svg') 0.33333vw 0.25000vw;
+                                    background-size: 100%;
                                 }
                             }
                         }
                         &:not(:first-child){
                             margin-top: 24px;
-                            @media all and (max-width: 1200px) and (min-width: 768px) { margin-top: 2.00000vw }                            
-                        }
-                        
-                          @include mobile{
-                                margin-top: 18.5px;
+                            @include unmanned-store-middle-target {
+                                margin-top: 2.00000vw
                             }
-
-                        
+                        }
+                        @include mobile{
+                            margin-top: 18.5px;
+                        }
                     }
                 }
 
-                    .bullet-list{
-                        // margin-top: 10px;
-
-                        @include mobile{
-                            margin-top: 40px;
-                        }
-                        > li{
-                            margin-top: 0;
-                            @include font-small;
-
-                             @media all and (max-width: 1200px) and (min-width: 768px) {
-                                    margin-top: 0.16667vw;
-                                    padding-left: 0.91667vw;
-                                    font-size: 1.16667vw;
-                                    line-height: 2.00000vw
-                            }
+                .bullet-list{
+                    @include mobile{
+                        margin-top: 40px;
+                    }
+                    > li{
+                        margin-top: 0;
+                        @include font-small;
+                        @include unmanned-store-middle-target {
+                            margin-top: 0.16667vw;
+                            padding-left: 0.91667vw;
+                            font-size: 1.16667vw;
+                            line-height: 2.00000vw
                         }
                     }
-                    .bullet-text{
-                    
-                        @include mobile{
-                            margin-top: 40px;
-                        }
-                        @media all and (max-width: 1200px) and (min-width: 768px) {
-                                margin-top: 0.16667vw;
-                                padding-left: 0.91667vw;
-                                font-size: 1.16667vw;
-                                line-height: 2.00000vw
-                        }
+                }
+                .bullet-text{
+                    @include mobile{
+                        margin-top: 40px;
+                    }
+                    @include unmanned-store-middle-target {
+                        margin-top: 0.16667vw;
+                        padding-left: 0.91667vw;
+                        font-size: 1.16667vw;
+                        line-height: 2.00000vw
+                    }
                 }
                 
             }

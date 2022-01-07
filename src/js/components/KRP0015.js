@@ -144,7 +144,6 @@ $(window).ready(function(){
                         console.log(storageCompare['data'].length);
                         $('.sticy-compare .list-inner li').empty();
                         storageCompare['data'].forEach(function(item,i){ 
-                            console.log("item:",item)
                             list = $('.sticy-compare .list-inner li').eq(i);                    
                             listItem = vcui.template(itemTemplate, item);
                             list.html(listItem);

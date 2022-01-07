@@ -40,6 +40,7 @@
                         if( paramFlag == "true" || paramFlag == true || paramFlagDisc == "Y" ) {
                             e.preventDefault();
                             window.close();
+                            window.history.back(); //BTOCSITE-5938-429 : 팝업이 아닌경우
                         }
                     } 
                 });

@@ -250,6 +250,9 @@
             }
             .pop-conts {
                 padding:32px 16px 40px;
+                &.no-footer {
+                    max-height:calc(100vh - 200px); // BTOCSITE-5938-233 20211217 내용이 긴 경우 팝업 뷰포트 넘어감
+                }
             }
             .pop-footer.check-type {
                 padding: 10px 16px;
@@ -683,7 +686,7 @@
             text-align:left;
             @include mobile {
                 height:calc(100% - 62px);
-                max-height:calc(100vh - 200px); // BTOCSITE-5938-233 20211214 내용이 긴 경우 팝업 뷰포트 넘어감
+                max-height:calc(100% - 62px);
             }
         }
         &.no-footer:after {

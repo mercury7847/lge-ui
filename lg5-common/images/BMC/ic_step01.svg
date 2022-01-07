@@ -1,0 +1,22 @@
+<svg id="ic_step01" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .cls-2,.cls-3{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.5px}.cls-2{stroke-miterlimit:10}
+        </style>
+    </defs>
+    <path id="Rectangle" style="fill:none" d="M0 0h80v80H0z"/>
+    <g id="ic" transform="translate(-427.059 -125.778)">
+        <g id="Group" transform="rotate(90 173.668 314.933)">
+            <path id="Line" class="cls-2" d="M0 0v2.6" transform="rotate(-45 4.395 1.82)"/>
+            <path id="Line-2" data-name="Line" class="cls-2" d="M1.837 0 0 1.837" transform="translate(11.121 3.451)"/>
+            <path id="Line-3" data-name="Line" class="cls-2" d="m0 0 .091 2.6" transform="rotate(2 3.15 179.888)"/>
+        </g>
+        <g id="ic-2" data-name="ic" transform="translate(444.497 137.197)">
+            <g id="Group_18" data-name="Group 18">
+                <path id="Path" class="cls-3" d="M481.933 150.819c0-5.713-5.332-10.346-11.909-10.346s-11.909 4.633-11.909 10.346v10.3" transform="translate(-447.795 -140.473)"/>
+                <rect id="Rectangle-2" data-name="Rectangle" class="cls-3" width="44.459" height="36.52" rx="4.125" transform="translate(0 20.641)"/>
+            </g>
+            <path id="Combined_Shape" data-name="Combined Shape" class="cls-2" d="M0 11.54a5.2 5.2 0 0 1 2.905-4.666V2.362A2.327 2.327 0 0 1 5.2 0a2.327 2.327 0 0 1 2.288 2.362v4.512A5.2 5.2 0 1 1 0 11.54z" transform="translate(16.889 30.066)"/>
+        </g>
+    </g>
+</svg>

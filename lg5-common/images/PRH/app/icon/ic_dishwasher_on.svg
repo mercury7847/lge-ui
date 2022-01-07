@@ -1,34 +1,101 @@
-<svg id="ic_dishwasher_on" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
-    <defs>
-        <linearGradient id="linear-gradient" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
-            <stop offset="0" stop-color="#87a0be"/>
-            <stop offset="1" stop-color="#4182b4"/>
-        </linearGradient>
-        <style>
-            .cls-4{fill:none}.cls-3{fill:#404040}.cls-4{stroke:#404040;stroke-miterlimit:10;stroke-width:3px}
-        </style>
-    </defs>
-    <g id="Group_127" data-name="Group 127" transform="translate(-985 -146.97)">
-        <path id="Rectangle_150" data-name="Rectangle 150" transform="translate(985 146.97)" style="fill:none" d="M0 0h80v80H0z"/>
-    </g>
-    <g id="Group_133" data-name="Group 133" transform="translate(-985 -146.97)">
-        <g id="Group_131" data-name="Group 131">
-            <g id="Group_128" data-name="Group 128">
-                <path id="Rectangle_151" data-name="Rectangle 151" transform="translate(1007.2 176.63)" style="fill:url(#linear-gradient)" d="M0 0h35.52v28.87H0z"/>
-            </g>
-            <g id="Group_130" data-name="Group 130">
-                <g id="Group_129" data-name="Group 129">
-                    <path id="Path_73" data-name="Path 73" class="cls-3" d="M1044.97 158.89v56.17h-39.95v-56.17h39.95m1-3h-41.95a2.006 2.006 0 0 0-2 2v58.17a2.006 2.006 0 0 0 2 2h41.95a2.006 2.006 0 0 0 2-2v-58.17a1.993 1.993 0 0 0-2-2z"/>
-                </g>
-                <path id="Line_59" data-name="Line 59" class="cls-4" transform="translate(1002.03 209.23)" d="M0 0h45.94"/>
-                <path id="Line_60" data-name="Line 60" class="cls-4" transform="translate(1002.03 172.91)" d="M0 0h45.94"/>
-                <path id="Line_61" data-name="Line 61" class="cls-4" transform="translate(1002.03 162.6)" d="M0 0h45.94"/>
-            </g>
-        </g>
-        <g id="Group_132" data-name="Group 132">
-            <circle id="Ellipse_9" data-name="Ellipse 9" class="cls-3" cx="1.5" cy="1.5" r="1.5" transform="translate(1018.28 166.24)"/>
-            <circle id="Ellipse_10" data-name="Ellipse 10" class="cls-3" cx="1.5" cy="1.5" r="1.5" transform="translate(1023.5 166.24)"/>
-            <circle id="Ellipse_11" data-name="Ellipse 11" class="cls-3" cx="1.5" cy="1.5" r="1.5" transform="translate(1028.72 166.24)"/>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="ic_x5F_device_x5F_list_x5F_dish_x5F_washer_x5F_default"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 240 240"
+	 style="enable-background:new 0 0 240 240;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#E5E5E5;}
+	.st1{fill:url(#SVGID_1_);}
+	.st2{fill:url(#SVGID_2_);}
+	.st3{opacity:0.2;fill:url(#SVGID_3_);}
+	.st4{opacity:0.2;fill:url(#SVGID_4_);}
+	.st5{fill:url(#SVGID_5_);}
+	.st6{fill:url(#SVGID_6_);}
+	.st7{opacity:0.9;}
+	.st8{fill:#5B88B0;}
+	.st9{fill:#FFFFFF;}
+</style>
+<g id="icon_x2F_drum_x5F_washer_x5F_off_4_">
+	<path class="st0" d="M176,208H64c-4.4,0-8-3.6-8-8V40c0-4.4,3.6-8,8-8h112c4.4,0,8,3.6,8,8v160C184,204.4,180.4,208,176,208z"/>
+</g>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="120" y1="182" x2="120" y2="59.5">
+	<stop  offset="0" style="stop-color:#C5C5C5"/>
+	<stop  offset="1" style="stop-color:#E4E4E4"/>
+</linearGradient>
+<rect x="56" y="59.5" class="st1" width="128" height="122.5"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="120" y1="182" x2="120" y2="208">
+	<stop  offset="0.1" style="stop-color:#9F9F9F"/>
+	<stop  offset="0.9" style="stop-color:#D2D2D2"/>
+</linearGradient>
+<path class="st2" d="M176,208H64c-4.4,0-8-3.6-8-8v-18h128v18C184,204.4,180.4,208,176,208z"/>
+<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="195.7039" y1="120" x2="128.1872" y2="120">
+	<stop  offset="0" style="stop-color:#B6B6B6"/>
+	<stop  offset="3.622764e-02" style="stop-color:#B3B3B3;stop-opacity:0.9638"/>
+	<stop  offset="0.4115" style="stop-color:#989898;stop-opacity:0.5885"/>
+	<stop  offset="0.7449" style="stop-color:#888888;stop-opacity:0.2551"/>
+	<stop  offset="1" style="stop-color:#828282;stop-opacity:0"/>
+</linearGradient>
+<path class="st3" d="M176,32h-53v176h53c4.4,0,8-3.6,8-8V40C184,35.6,180.4,32,176,32z"/>
+<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="253.5356" y1="120" x2="186.0189" y2="120" gradientTransform="matrix(-1 0 0 1 297.8317 0)">
+	<stop  offset="0" style="stop-color:#B6B6B6"/>
+	<stop  offset="3.622764e-02" style="stop-color:#B3B3B3;stop-opacity:0.9638"/>
+	<stop  offset="0.4115" style="stop-color:#989898;stop-opacity:0.5885"/>
+	<stop  offset="0.7449" style="stop-color:#888888;stop-opacity:0.2551"/>
+	<stop  offset="1" style="stop-color:#828282;stop-opacity:0"/>
+</linearGradient>
+<path class="st4" d="M64,32h53v176H64c-4.4,0-8-3.6-8-8V40C56,35.6,59.6,32,64,32z"/>
+<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="120" y1="48.5" x2="120" y2="59.5">
+	<stop  offset="0" style="stop-color:#9F9F9F"/>
+	<stop  offset="0.2454" style="stop-color:#BCBCBC"/>
+	<stop  offset="0.7" style="stop-color:#FAFAFA"/>
+</linearGradient>
+<rect x="56" y="48.5" class="st5" width="128" height="11"/>
+<g>
+	<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="120" y1="66.5" x2="120" y2="174.5">
+		<stop  offset="0" style="stop-color:#448CF6"/>
+		<stop  offset="1" style="stop-color:#5FCBF7"/>
+	</linearGradient>
+	<path class="st6" d="M168,174.5H72c-3.3,0-6-2.7-6-6v-96c0-3.3,2.7-6,6-6h96c3.3,0,6,2.7,6,6v96C174,171.8,171.3,174.5,168,174.5z"
+		/>
+	<g class="st7">
+		<circle class="st8" cx="98" cy="137" r="23.9"/>
+		<g>
+			<g>
+				<path class="st8" d="M120,113.1c-1.8,0-3.6,0.2-5.3,0.6c7.3,5.2,12,13.7,12,23.3s-4.7,18.1-12,23.3c1.7,0.4,3.5,0.6,5.3,0.6
+					c13.2,0,23.9-10.7,23.9-23.9S133.2,113.1,120,113.1z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="st8" d="M142,113.1c-1.8,0-3.6,0.2-5.3,0.6c7.3,5.2,12,13.7,12,23.3s-4.7,18.1-12,23.3c1.7,0.4,3.5,0.6,5.3,0.6
+					c13.2,0,23.9-10.7,23.9-23.9S155.2,113.1,142,113.1z"/>
+			</g>
+		</g>
+		<path class="st8" d="M136.7,101.4l6.7-1.3c0.8-0.2,0.8-1.3,0-1.5l-6.7-1.3c-1.1-0.2-2-1.1-2.2-2.2l-1.3-6.7
+			c-0.2-0.8-1.3-0.8-1.5,0l-1.3,6.7c-0.2,1.1-1.1,2-2.2,2.2l-6.7,1.3c-0.8,0.2-0.8,1.3,0,1.5l6.7,1.3c1.1,0.2,2,1.1,2.2,2.2l1.3,6.7
+			c0.2,0.8,1.3,0.8,1.5,0l1.3-6.7C134.8,102.5,135.6,101.7,136.7,101.4z"/>
+		<path class="st8" d="M146,86.3l4.7-1c0.6-0.1,0.6-0.9,0-1l-4.7-1c-0.8-0.2-1.4-0.8-1.6-1.6l-1-4.7c-0.1-0.6-0.9-0.6-1,0l-1,4.7
+			c-0.2,0.8-0.8,1.4-1.6,1.6l-4.7,1c-0.6,0.1-0.6,0.9,0,1l4.7,1c0.8,0.2,1.4,0.8,1.6,1.6l1,4.7c0.1,0.6,0.9,0.6,1,0l1-4.7
+			C144.6,87.1,145.2,86.5,146,86.3z"/>
+		<circle class="st9" cx="98" cy="137" r="23.9"/>
+		<g>
+			<g>
+				<path class="st9" d="M120,113.1c-1.8,0-3.6,0.2-5.3,0.6c7.3,5.2,12,13.7,12,23.3s-4.7,18.1-12,23.3c1.7,0.4,3.5,0.6,5.3,0.6
+					c13.2,0,23.9-10.7,23.9-23.9S133.2,113.1,120,113.1z"/>
+			</g>
+		</g>
+		<g>
+			<g>
+				<path class="st9" d="M142,113.1c-1.8,0-3.6,0.2-5.3,0.6c7.3,5.2,12,13.7,12,23.3s-4.7,18.1-12,23.3c1.7,0.4,3.5,0.6,5.3,0.6
+					c13.2,0,23.9-10.7,23.9-23.9S155.2,113.1,142,113.1z"/>
+			</g>
+		</g>
+		<path class="st9" d="M136.7,101.4l6.7-1.3c0.8-0.2,0.8-1.3,0-1.5l-6.7-1.3c-1.1-0.2-2-1.1-2.2-2.2l-1.3-6.7
+			c-0.2-0.8-1.3-0.8-1.5,0l-1.3,6.7c-0.2,1.1-1.1,2-2.2,2.2l-6.7,1.3c-0.8,0.2-0.8,1.3,0,1.5l6.7,1.3c1.1,0.2,2,1.1,2.2,2.2l1.3,6.7
+			c0.2,0.8,1.3,0.8,1.5,0l1.3-6.7C134.8,102.5,135.6,101.7,136.7,101.4z"/>
+		<path class="st9" d="M146,86.3l4.7-1c0.6-0.1,0.6-0.9,0-1l-4.7-1c-0.8-0.2-1.4-0.8-1.6-1.6l-1-4.7c-0.1-0.6-0.9-0.6-1,0l-1,4.7
+			c-0.2,0.8-0.8,1.4-1.6,1.6l-4.7,1c-0.6,0.1-0.6,0.9,0,1l4.7,1c0.8,0.2,1.4,0.8,1.6,1.6l1,4.7c0.1,0.6,0.9,0.6,1,0l1-4.7
+			C144.6,87.1,145.2,86.5,146,86.3z"/>
+	</g>
+</g>
 </svg>

@@ -44,7 +44,6 @@
             margin-bottom: 0px;
         }
         .tit {
-            padding-left: 10px;
             font-size: 28px;
             line-height: 32px;
             font-weight: 700;
@@ -72,9 +71,10 @@
                     margin: 0;
                 }
                 .slide-content {
+                    position: relative;
+                    margin: 0px -10px 0;
                     @include mobile {
-                        padding-left: 12px;
-                        padding-right: 40px;
+                        margin: 0px 7px 0;
                     }
                     .slide-track {
                         @include mobile {
@@ -84,12 +84,17 @@
                             // padding: 50px;
                         }
                         .slide-conts {
+                            padding: 0 8px;
                             padding-top: 12px; 
                             padding-bottom: 12px;
+                            // padding-left: 0px;
+                            // padding-right: 24px;
                             @include mobile {
-                                // width: 44.5vw!important;
-                                padding-left: 7px;
-                                padding-right: 7px;
+                                width: 44.5vw!important;
+                                // width: 37.5vw!important;
+                                // padding-left: 8px;
+                                // padding-right: 8px;
+                                // padding-right: 16px;
                             }
                             .slide-box {
                                 box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
@@ -205,6 +210,18 @@
                         }
                     }
                 } 
+            }
+
+            .slide-controls {
+                margin-top: -12px;
+                .btn-arrow {
+                    &.prev {
+                        left: -24px;
+                    }
+                    &.next {
+                        right: -24px;
+                    }
+                }
             }
         }
         

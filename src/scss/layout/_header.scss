@@ -2112,9 +2112,19 @@ html {
             }
         }
         .scroll-down {
+            //BTOCSITE-7335
+            .mobile-nav-button.active {
+                top:54px;
+                & + .header-bottom {
+                    .login-mobile:before {
+                        top:43px;
+                    }
+                }
+            }
             .header-bottom {
                 height:100vh;
-                transform:translateY(43px);
+                top:43px;
+                // transform:translateY(43px);
             }
             .dimmed {
                 height:100vh;
@@ -2144,6 +2154,281 @@ html {
                     width:100%;
                 }
             }
+
+            /* BTOCSITE-10034 야간무인매장 추가 */
+            .mob_navBanner-content {
+                position: relative;
+                width: 100%;
+                font-size: 13px;
+                background-color: #f4f4f4;
+                display: flex;
+                justify-content: space-between;
+                padding: 12px;
+                .mob_navBanner-type1 {
+                    display: flex;
+                    justify-content: space-around;
+                    background-color: #fff;
+                    padding: 18px 0px;
+                    border-radius: 8px;
+                    width: 68%;
+                    box-shadow: 1px 1px 16px 0 rgba(0, 0, 0, 0.04);
+                    li {
+                        // padding: 0 12px;
+                        width: 50%;
+                        text-align: center;
+                        &:first-child {
+                            position: relative;
+                            &::after {
+                                content: '';
+                                width: 1px;
+                                height: 100%;
+                                background-color: #ddd;
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                            }
+                        }
+                        &.store_reservation {
+                            position: relative;
+                            a {
+                                background-image: url('/lg5-common/images/icons/moBanIcon_storeReservation.png');
+                            }
+                        }
+                        &.store_unmanned {
+                            position: relative;
+                            a {
+                                background-image: url('/lg5-common/images/icons/moBanIcon_bestshop.png');
+                            }
+                        }
+                        a {
+                            display: block;
+                            padding-top: 51px;
+                            background-repeat: no-repeat;
+                            background-size: 40px;
+                            background-position: center 0px;
+                        }
+                    }
+                }
+                .mob_navBanner-type2 {
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    background-color: #fff;
+                    padding: 18px 12px;
+                    border-radius: 8px;
+                    width: 30%;
+                    margin-left: 12px;
+                    box-shadow: 1px 1px 16px 0 rgba(0, 0, 0, 0.04);
+                    a {
+                        background-image: url('/lg5-common/images/icons/moBanIcon_catalogue.png');
+                        background-repeat: no-repeat;
+                        background-size: 40px;
+                        background-position: center 0px;
+                        padding-top: 51px;
+                    }
+                }
+            }
+            /* //BTOCSITE-10034 야간무인매장 추가 */
         }
     }
 }
+
+
+/*BTOCSITE-2117 공통 > 모바일 웹/앱 GNB 개선*/
+@media screen and (max-width: 767px) {
+    .subRenewWrap {
+        .header {
+            z-index: 100;
+            position: fixed;
+            top:0;
+            width:100%;
+            background: #fff;
+        }
+        .header-top {
+            min-height: 60px;
+        }
+        .logo {
+            display: none;
+        }
+        .header-wrap {
+            border-bottom:1px solid #ddd;
+        }
+        .sub-renew-nav-wrap {
+            z-index: 101;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: calc(100% - 86px);
+            height: 61px;
+            padding-left: 76px;
+            text-align: center;
+            .nav-item {
+                position: relative;
+                display: inline-block;
+                width: 100%;
+                padding:18px 0 19px;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 24px;
+            }
+            .nav-category-container {
+                top: 61px;
+                overflow-y: auto;
+                width: 100vw;
+                max-height: 50vh;
+                padding: 0;
+                .superCategory {
+                    position: relative;
+                    height: 100%;
+                    & > li {
+                        &:not(:first-child) {
+                            border-top: 1px solid $color-border;
+                        }
+                        a {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+                        > a {
+                            border-right: 1px solid $color-border;
+                            font-weight: bold;
+                        }
+                        &.isActive {
+                            a {
+                                padding: 12px 30px 12px 16px;
+                                font-size: 14px;
+                            }
+                            > a {
+                                position: relative;
+                                color: $color-white;
+                                background: $color-primary url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat right 12px center/16px;
+                                border-right: none;
+                            }
+                        }
+                    }
+                }
+                &.hasDepth {
+                    .superCategory {
+                        & > li {
+                            width: 50%;
+                            &.isActive {
+                                .subCategory {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                    .subCategory {
+                        display: none;
+                        overflow-y: auto;
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        width: 50%;
+                        height: 100%;
+                        background: $color-white;
+                        z-index: 100;
+                        .isActive {
+                            a {
+                                font-weight: bold;
+                                background: url('/lg5-common/images/icons/btn-arr-16-black.svg') no-repeat right 12px center/16px;
+                            }
+                        }
+                    }
+                }
+            }
+            .btn-back {
+                position: absolute;
+                top: 7px;
+                left: 0;
+                min-height:24px;
+                padding:24px;
+                background-position: left 16px top 9px;
+                background-size:24px;
+                .text {
+                    overflow: hidden;
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0;
+                    clip: rect(0, 0, 0, 0);
+                    white-space: nowrap;
+                }
+            }
+            &.isActive + .sub-renew-dimmed{
+                display: block;
+            }
+            &.is-depth {
+                .nav-item {
+                    &:after {
+                        position:relative;
+                        display:inline-block;
+                        right:-8px;
+                        top: -3px;
+                        width: 16px;
+                        height: 16px;
+                        margin-top: -12px;
+                        background: url('/lg5-common/images/icons/btn-arr-32-left.svg') no-repeat left center;
+                        background-size: 100% 100%;
+                        transform: rotate(-90deg);
+                        transition: all ease 200ms;
+                        vertical-align: bottom;
+                        content: '';
+                    }
+                    &.on {
+                        &:after {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+            }
+            //not(.is-depth) : 2depth가 존재하지 않는 경우
+            &:not(.is-depth) {
+                .nav-item {
+                    pointer-events: none;
+                }
+            }
+        }
+        .utility {
+            top:13px;
+        }
+        .sub-renew-dimmed {
+            display: none;
+            position: fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            width: 100%;
+            height: 100%;
+            background:rgba(0,0,0,0.7);
+            z-index: 99;
+        }
+        &.isActive {
+            .header {
+                z-index: 8000;
+            }
+            .sub-renew-nav-wrap {
+                z-index: 8000;
+            }
+            .sub-renew-dimmed {
+                z-index: 7000;
+            }
+        }
+        &.isHide {
+            .sub-renew-nav-wrap {
+                z-index: 99;
+            }
+        }
+
+        &.iw_viewport-wrapper {
+            padding-top: 70px;
+        }
+        > main.container {
+            padding-top: 70px;
+        }
+    }
+}
+
+
+

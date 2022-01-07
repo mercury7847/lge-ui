@@ -24,7 +24,11 @@
                 .infos {
                     display:table-cell;
                     vertical-align:top;
+                    // BTOCSITE-5938-437
+                    width: calc(100% - 200px);
                     @include mobile {
+                        // BTOCSITE-5938-437
+                        width:100%;
                         display:block;
                     }
                     .title {
@@ -89,9 +93,13 @@
                     text-align:right;
                     vertical-align:bottom;
                     font-size:0;
+                    // BTOCSITE-5938-437
+                    width:200px;
                     @include mobile {
                         display:block;
                         margin-top:12px;
+                         // BTOCSITE-5938-437
+                        width:100%;
                     }
                     .btn {
                         margin-left:8px;

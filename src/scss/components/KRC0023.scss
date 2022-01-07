@@ -3,6 +3,21 @@
 @import "../components-app";
 
 .KRC0023 {
+    @include mobile {
+        //[S] BTOCSITE-9570 진열기획전 페이지 수정 요청
+        &.slidesToShowMore {
+            .ui_carousel_list {
+                margin-left: -16px;
+            }
+            .ui_carousel_slide {
+                margin-left: 16px;
+            }
+            .slide-controls {
+                display: none;
+            }
+        }
+        //[E] BTOCSITE-9570 진열기획전 페이지 수정 요청
+    }
     .component-inner {
         @include mobile {
             padding: 0 !important;

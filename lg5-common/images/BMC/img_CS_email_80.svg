@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+    <g data-name="Group 599">
+        <g data-name="Rectangle 22" style="stroke-width:2.5px;stroke:#000;fill:none">
+            <path d="M4 0h51a4 4 0 0 1 4 4v29a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8V4a4 4 0 0 1 4-4z" style="stroke:none" transform="translate(11 20)"/>
+            <path d="M4 1.25h51A2.75 2.75 0 0 1 57.75 4v29A6.75 6.75 0 0 1 51 39.75H8A6.75 6.75 0 0 1 1.25 33V4A2.75 2.75 0 0 1 4 1.25z" style="fill:none" transform="translate(11 20)"/>
+        </g>
+        <path d="m0-3 23.045 17.36h0L46.091-3" transform="translate(17.455 29.35)" style="stroke:#da0f47;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2.5px;fill:none"/>
+    </g>
+</svg>

@@ -102,9 +102,10 @@
                     <ul class="nav">
                         <!-- [D] Click, Hover - .active 추가 -->
 
-                        <!-- BTOCSITE-1937 스프레드메뉴 수정: 스토어 메뉴 수정 -->
+                        <!-- BTOCSITE-1937 스프레드메뉴 수정: 제품 메뉴 수정 -->
                         <li class="">
-                            <a href="/store" class="nav-item" target="_self" data-super-category-item="스토어 홈">스토어</a>
+                            <!-- BTOCSITE-7335 스토어홈 > 제품홈 명칭변경 -->
+                            <a href="/store" class="nav-item" target="_self" data-super-category-item="제품 홈">제품</a>
                             <div class="nav-category-layer">
                                 <div class="nav-category-inner">
                                     <div class="super-category-nav swiper-container">
@@ -1342,6 +1343,8 @@
                 <div class="marketing-link">
                     <div class="ui_carousel_slider">
                         <div class="items ui_carousel_track">
+
+                            <!-- 주영 갯수 -->
                             <div class="ui_carousel_slide">
                                 <a href="#n" class="banner-box">
                                     <!-- 210407 이미지속성변경(src)및lazyload 삭제 -->
@@ -1378,6 +1381,7 @@
                                     </div>
                                 </a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -1387,20 +1391,52 @@
                     <button type="button" class="btn-nav-arrow next"><span class="blind">다음</span></button>
                 </div>
                 <!-- // 메뉴 슬라이드 버튼 -->
+
+
+
+                
+                
                 <!-- BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) -->
                 <div class="store-counsel-banner">
-                    <!-- BTOCSITE-7335 : src > data-active-src로 속성 변경 -->
-                    <a href="#"><img data-active-src="/lg5-common/images/header/img-banner-counsel.svg" alt="매장 상담 예약"></a>
+
+                    <!-- BTOCSITE-10034 야간무인매장 추가 7335보다 src로선 반영 이미지 태그 개선된 작업은 data-active-src -->
+                        <!-- BTOCSITE-7335 : src > data-active-src로 속성 변경 -->
+                        <!-- <a href="#"><img data-active-src="/lg5-common/images/header/img-banner-counsel.svg" alt="매장 상담 예약"></a>  -->
+
+                    <div class="mob_navBanner-content">
+                        <ul class="mob_navBanner-type1">
+                            <li class="store_reservation">
+                                <a href="https://www.lge.co.kr/support/visit-store-reservation">
+                                    매장 상담 예약
+                                </a>
+                            </li>
+                            <li class="store_unmanned">
+                                <a href="https://www.lge.co.kr/untact-store">
+                                    야간 무인 매장
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="mob_navBanner-type2">
+                            <a href="https://www.lge.co.kr/ebook">
+                                제품 카탈로그
+                            </a>
+                        </div>
+                    </div>
+                    <!-- //BTOCSITE-10034 야간무인매장 추가 7335보다 src로선 반영 이미지 태그 개선된 작업은 data-active-src -->
                 </div>
                 <!-- //BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) -->
+
+
 
 
                 <!-- BTOCSITE-7335 : mobile nav 추가-->
                 <ul class="nav mo-nav">
                     <li>
-                        <a href="/store" class="nav-item" data-super-category-item="스토어 홈">스토어</a>
+                        <!-- BTOCSITE-7335 스토어홈 > 제품홈 명칭변경 -->
+                        <a href="/store" class="nav-item" data-super-category-item="제품 홈">제품</a>
                         <div class="nav-category-container">
-                            <div class="category-home"><a href="/store" class="super-category-item">스토어 홈</a></div>
+                            <!-- BTOCSITE-7335 스토어홈 > 제품홈 명칭변경 -->
+                            <div class="category-home"><a href="/store" class="super-category-item">제품 홈</a></div>
                             <ul>
                                 <li><a href="#" class="super-category-item">TV/AV </a>
                                     <div class="nav-category-layer">
@@ -2523,7 +2559,8 @@
     <!-- 20210813 BTOCSITE-1814 모바일 GNB 멤버십 이벤트 탭 추가 -->
     <ul class="nav">
         <li><a href="/" class="nav-item">홈</a></li>
-        <li><a href="/store" class="nav-item">스토어</a></li>
+        <!-- BTOCSITE-7335 스토어홈 > 제품홈 명칭변경 -->
+        <li><a href="/store" class="nav-item">제품</a></li>
         <li><a href="story" class="nav-item">스토리</a></li>
         <li><a href="/support" class="nav-item">고객지원</a></li>
         <li><a href="/care-solutions" class="nav-item">렌탈/케어</a></li>
@@ -2543,7 +2580,8 @@
     <ul class="nav">
         <!-- BTOCSITE-27 스와이프 스크립트 해쉬값 추가 -->
         <li><a href="#home" class="nav-item on">홈</a></li>
-        <li><a href="#store" class="nav-item">스토어</a></li>
+        <!-- BTOCSITE-7335 스토어홈 > 제품홈 명칭변경 -->
+        <li><a href="#store" class="nav-item">제품</a></li>
         <li><a href="#story" class="nav-item">스토리</a></li>
         <li><a href="#support" class="nav-item">고객지원</a></li>
         <li><a href="#care-solutions" class="nav-item">렌탈/케어</a></li>
@@ -2591,6 +2629,82 @@
 </div>
 <!-- // 210324 수정 [모바일 gnb 타이틀 케이스 추가] -->
 }
+
+
+<!--[S]BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB -->
+@@if (context.mobileCase === "subDepth") {
+<!-- Mobile Sub Depth Header -->
+<!--
+    [.sub-renew-nav-wrap] : 리뉴얼 개선으로 추가
+    [.is-depth] : 2뎁스(서브카테고리) 메뉴가 있는 경우 추가
+    [.superCategory] : 1뎁스 메뉴 (대카테고리)
+    [.subCategory] : 2뎁스 메뉴 (서브카테고리)
+    [.isActive] : 현재 활성화 페이지에 해당하는 카테고리 li에 class 추가
+    [data-current="on"] : 현재 활성화 페이지에 해당하는 카테고리 li에 data 추가 (레이어 닫힌 후 재 활성화 표시 위하여)
+-->
+<div class="mobile-nav-wrap is-depth sub-renew-nav-wrap">
+    <a href="#" class="btn-back"><span class="blind">이전</span></a>
+    <!--현재 페이지의 타이틀이 노출되는 경우 하기 영역 노출-->
+    <a href="#n" class="nav-item">노트북</a>
+    <!--//현재 페이지의 타이틀이 노출되는 경우 하기 영역 노출-->
+    <div class="nav-category-container">
+        <ul class="superCategory">
+            <!--[D] 현재 활성화 페이지 일 경우 대카테고리, 서브카테고리 각각에 class 및 data-current="on" 추가 -->
+            <li class="isActive" data-current="on"><a href="http://www.lge.co.kr">Tv/AVTv/AVTv/ AVTv/AVTv/AV</a>
+                <ul class="subCategory">
+                    <li><a href="#">sub1</a></li>
+                    <li class="isActive" data-current="on"><a href="http://www.lge.co.kr">sub1sub1sub1sub1 sub1sub1</a></li>
+                    <li><a href="#">sub1</a></li>
+                    <li><a href="#">sub1</a></li>
+                </ul>
+            </li>
+            <li><a href="#">IT</a>
+                <ul class="subCategory">
+                    <li><a href="#">sub2</a></li>
+                    <li><a href="#">sub2</a></li>
+                    <li><a href="#">sub2</a></li>
+                    <li><a href="#">sub2</a></li>
+                </ul>
+            </li>
+            <li><a href="#">주방가전</a>
+                <ul class="subCategory">
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                    <li><a href="#">sub3</a></li>
+                </ul>
+            </li>
+            <li><a href="#">생활가전</a></li>
+            <li><a href="#">에어컨/에어케어</a></li>
+            <li><a href="#">뷰티/의료기기</a></li>
+            <li><a href="#">LG SIGNATURE</a></li>
+            <li><a href="#">LG Objet Collection</a></li>
+            <li><a href="http://www.lge.co.kr">케어용품/소모품</a></li>
+        </ul>
+    </div>
+</div>
+<div class="sub-renew-dimmed"></div>
+<!--// Mobile Sub Depth Header -->
+}
+<!--//[E]BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB -->
 
 @@if (context.pageCase === undefined) {
 <!-- Breadcrumb -->

@@ -170,14 +170,54 @@
                         '고객님, 안녕하세요!<br>' +
                         '고객님은 LG전자 케어솔루션/케어십 이달의 우수 고객으로 선정되셨습니다.<br><br>' +
 
-                        '<span>우수고객님께는 포인트 적립신청만 하시면 2만 멤버십포인트를 적립</span>해드립니다.<br class="pc-only">' +
-                        '지금 바로 아래 “멤버십포인트 적립 신청하기“ 버튼을 클릭 하시어 포인트 적립을 신청하세요!' +
+                        '<span>우수고객님께는 포인트 적립신청만 하시면 2만 멤버십포인트를 적립</span>해드립니다. <br class="pc-only">' +
+                        '{{#if !vcui.detect.isMobileDevice}}'+
+                            '지금 바로 아래 "LG전자 멤버십 APP"을 설치하시어 포인트 적립을 신청하세요!' +
+                            '{{#else}}' + 
+                            '지금 바로 아래 "LG전자 멤버십 바로가기"버튼을 선택하시어 포인트 적립을 신청하세요!' +
+                        '{{/if}}'+
                     '</p>' +
                 '</div>' +
 
-                '<div class="lb-btn">' +
-                    '<button type="button" class="btn"><span>멤버십포인트 적립 신청하기</span></button>' +
-                '</div>' +
+                '{{#if !vcui.detect.isMobileDevice}}'+
+                    '<div class="lb-pcAppDown">' + 
+                        '<div class="tit-wrap type-sub align-center">' + 
+                            '<h3 class="tit">LG전자 멤버십 APP 다운</h3>' + 
+                        '</div>' + 
+                        '<div class="section-inner">' + 
+                            '<div class="app-down">' + 
+                                '<div class="inner">' + 
+                                    '<span class="txt-btn">' + 
+                                        '<strong>안드로이드 앱 설치하기</strong>' + 
+                                        '<a href="https://play.google.com/store/apps/details?id=com.lge.lgemembership" class="btn-app-down">' + 
+                                            '<img src="/lg5-common/images/BMC/img-btn-googleplay.png" alt="Google Play"/>' + 
+                                        '</a>' + 
+                                    '</span>' + 
+                                    '<span class="img-qr">' + 
+                                        '<img src="/lg5-common/images/BMC/img-qr-googleplay.png" alt="Google Play Qr코드"/>' + 
+                                    '</span>' + 
+                                '</div>' + 
+                                '<div class="inner">' + 
+                                    '<span class="txt-btn">' + 
+                                        '<strong>iOS 앱 설치하기</strong>' + 
+                                        '<a href="https://apps.apple.com/kr/app/id1406622899" class="btn-app-down">' + 
+                                            '<img src="/lg5-common/images/BMC/img-btn-appstore.png" alt="App Store"/>' + 
+                                        '</a>' + 
+                                    '</span>' + 
+                                    '<span class="img-qr">' + 
+                                        '<img src="/lg5-common/images/BMC/img-qr-appstore.png" alt="App Store Qr코드"/>' + 
+                                    '</span>' + 
+                                '</div>' + 
+                            '</div>' + 
+                        '</div>' + 
+                    '</div>' + 
+
+                '{{#else}}' + 
+
+                    '<div class="lb-btn">' +
+                        '<button type="button" class="btn"><span>LG전자 멤버십 바로가기</span></button>' +
+                    '</div>' +
+                '{{/if}}'+
 
                 '<div class="lb-cont_bottom cont_bottom-custom">' +
                     '<div class="lb-bottom_text">' +
@@ -185,7 +225,7 @@
                         '<ul>' +
                             '<li>' +
                                 '<p class="dt">- 지급조건 :</p>' +
-                                '<p class="dd">혜택 유효기간 내 엘지전자 웹사이트 / 멤버십 앱에서 포인트 적립 신청 조건</p>' +
+                                '<p class="dd">혜택 유효기간 내 멤버십 앱에서 포인트 적립 신청 조건</p>' +
                             '</li>' +
                             '<li>' +
                                 '<p class="dt">- 지급일정 :</p>' +

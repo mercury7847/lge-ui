@@ -2,7 +2,9 @@
 <html lang="ko">
 	<!-- 210330 스키티챗JS 추가 -->
     @@include('./common/head.html', {
-		pageCSS: ["PRS/PRS"],
+		pageCSS: [
+        	"PRS/PRS", "STS/STS", "SLS/SLS"
+        ],
 		pageJS: [
 			"home/storeHome", "components/KRP0005"
 		],
@@ -21,7 +23,7 @@
 		<!-- //210311_H1추가 -->
 
 		<div class="container">
-			<div class="contents">
+			<div class="contents store"> <!-- BTOCSITE-6882 신규 WSG 적용 - 스토어  -->
 				<div class="sub-main">
 					@@include('./PRS/partials/MKTF1001_CONTENT.html')	
 				</div>

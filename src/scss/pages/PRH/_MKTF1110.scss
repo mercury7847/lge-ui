@@ -2230,8 +2230,15 @@
             left: 50%;
             transform: translate(-50%, 0%);
             z-index: 5;
-            @include mobile {
+            @include tablet {
+                top:0;
                 padding:25px 16px 24px;
+                z-index: 50;
+                &.fixed{
+                    position: fixed;
+                    top:0;
+                    z-index: 50;
+                }
             }
             .menu-slide-inner {
                 display: flex;
@@ -2370,6 +2377,9 @@
                 display:none;
                 &.is-active {
                     display: block;
+                }
+                @include tablet{
+                    display:block;
                 }
             }
 
@@ -2804,13 +2814,18 @@
             background-image: url('/lg5-common/images/icons/noimage-79.png');
         }
     }
-    $prdIconLists: (refrigerator, kimchi_refrigerator, cooktop, dishwasher, oven, waterpurifier, drum_washer, dryer, styler, stickcleaner, stand_airconditioner, airpurifier, winecellar, ceilingfan, homebrew, dehumidifier);
+    $prdIconLists: (refrigerator, kimchi_refrigerator, tv, dishwasher, cooktop, oven, waterpurifier, drum_washer, dryer, styler, stickcleaner, stand_airconditioner, airpurifier, winecellar, ceilingfan, homebrew, dehumidifier);
     @each $name in $prdIconLists {
         @at-root .menu-item .icon-#{$name} {
             background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_off.svg');
         }
         @at-root .menu-item.is-active .icon-#{$name} {
             background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.svg');
+        }
+        @include tablet{
+            @at-root .menu-item.slick-current .icon-#{$name} {
+                background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_on.svg');
+            }
         }
         @at-root .prd-result-lists .icon-#{$name} {
             background-image:url('/lg5-common/images/PRH/app/icon/ic_#{$name}_search.svg');

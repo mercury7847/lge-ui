@@ -344,7 +344,7 @@ $(function(){
         })
 
         function heroBanner() {
-            var heroList = $('.hero-banner .slide-track > li');
+            var heroList = $('.contents.caresolution .hero-banner .slide-track > li');
             var heroListAct = heroList.siblings('.ui_carousel_current').index();
             var heroListLens = heroList.length;
             var custom = $('.custom-indi-wrap');

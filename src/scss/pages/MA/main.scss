@@ -2072,3 +2072,12 @@ img{
         width:100% !important;
     }
 }
+
+//BTOCSITE-5938 모니터링 228 추가
+.mdevice:not(.app) {
+    .container {
+        .floating-menu {
+            z-index:99;
+        }
+    }
+}
