@@ -56,7 +56,7 @@
     <section class="component KRC0035 @@align-class1 @@imgSizeType @@bg-color">
     }
     @@if ( context.mHdlineTop ) {
-    <section class="component KRC0035 @@align-class1 @@imgSizeType m-hdline-top">
+    <section class="component KRC0035 @@align-class1 @@imgSizeType m-hdline-top ffffffffffffffffff">
     }
         <div class="component-inner">
             <div class="inner">
@@ -89,7 +89,7 @@
                         <a href="#none" class="text-link" data-link-area="side_image_text-cta" data-link-name="{Link Text}" aria-describedby="title02"><span>텍스트 링크 버튼</span></a>
                     </div>
                     <ul class="bullet-list">
-                        <li class="b-txt">디스클레이머 영역입니다.</li>
+                        <li class="b-txt">디스클레이머 영역입니다.pppppppppppppppp</li>
                     </ul>
 
 
@@ -163,8 +163,27 @@
                     <!-- // carousel slide -->
                     @@if ( context.mHdlineTop ) {
                     <ul class="bullet-list">
-                        <li class="b-txt">디스클레이머 영역입니다.</li>
+                        <li class="b-txt">디스클레이머 영역입니다.mmmmmmmmmmmmmm</li>
                     </ul>
+
+                    <div class="drop-info">
+                        <button type="button" class="btn border size-m dropInfo_openBtn @@disclaimerBtn" aria-describedby="title02">자세히 보기</button>
+                        <!--
+                            bg색상 class = slideBox-bg
+                            기본 색상 : 화이트 
+                            slideBox-bg : bg-lightgray <-- 라이트 그레이
+                        -->
+                        <div class="dropContent @@slideBox-bg">
+                            <p>[테스트]</p>
+                            <ul class="bullet-list">
+                                <li class="b-txt">11111111</li>
+                                <li class="b-txt">22222222</li>
+                                <li class="b-txt">33333333</li>
+                            </ul>
+
+                            <button type="button" class="btn border size-m dropInfo_closeBtn" aria-describedby="title02">닫기</button>
+                        </div>
+                    </div>
                     }
                 </div>
                 @@if ( context.type1 ) {
