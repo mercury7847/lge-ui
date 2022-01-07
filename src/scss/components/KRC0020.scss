@@ -26,12 +26,35 @@
             padding-bottom:32px;
         }
     }
+    // s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
+    &[data-autoplay=true] .component-inner {
+        @include pc {
+            &, &.ui_carousel_slider.slide-solo {
+                padding-bottom:48px !important;
+            }
+        }
+        @include mobile {
+            padding-bottom:32px;
+        }
+    }
+    // e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
 	.component-inner {
         position: relative;
         padding:0;
         @include mobile {
             padding-bottom:32px;
         }
+        // s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
+        &.slide-solo {
+            @include pc {
+                .icon-area {
+                    .btn-arrow {
+                        display: none;
+                    }
+                }
+            }
+        }
+        // e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
 	}
 
     .icon-area {
@@ -100,6 +123,7 @@
                     color:#aaa !important;
                     @include font-medium;
                     font-weight:700;
+                    word-break: break-word; // BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
                     @include mobile {
                         font-size:15px;
                         line-height:23px;
@@ -161,21 +185,18 @@
 			}
 		}
 		.btn-arrow {
-            @include pc {
-                display:none !important;
+            // s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            z-index:50;
+            &.prev {
+                left:4px;
             }
-            @include mobile {
-                position:absolute;
-                top:50%;
-                transform:translateY(-50%);
-                z-index:50;
-                &.prev {
-                    left:4px;
-                }
-                &.next {
-                    right:4px;
-                }
+            &.next {
+                right:4px;
             }
+            // e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
         }
     }
     

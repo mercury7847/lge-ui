@@ -329,6 +329,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (opt.slidesToShow === 1 && opt.adaptiveHeight === true && opt.vertical === false) {
                 var targetHeight = self.$slides.eq(self.currentSlide).outerHeight(true);
+                /* s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 */
+                if(self.$el.hasClass('slide-show-right')) {
+                    targetHeight = Math.max(self.$slides.eq(self.currentSlide).outerHeight(true), self.$slides.eq(self.currentSlide+1).outerHeight(true));
+                }
+                /* e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 */
                 self.$list.animate({
                     height: targetHeight
                 }, opt.speed);
@@ -1148,7 +1153,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         break;
                     case 'focusout':
 
-                        if (self.$slider && self.$slider[0] && e.relatedTarget && !$.contains(self.$slider[0], e.relatedTarget)) {
+                        //BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 
+                        //슬라이드에 포커스 아웃될때 반복재생 실행안되는 오류 수정
+                        //if (self.$slider && self.$slider[0] && e.relatedTarget && !$.contains(self.$slider[0], e.relatedTarget)) {
+                            
+                        if (self.$slider && self.$slider[0] && !e.relatedTarget && !$.contains(self.$slider[0], e.relatedTarget)) {                            
                             self.focussed = false;
                             self.autoPlay();
                             self.triggerHandler('carouseldeactive');
@@ -1475,8 +1484,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 }
             }
 
-            if(self.$el.find('.indi-wrap').find('li').length < 2){
-                self.$el.find('.indi-wrap').hide();
+            if(self.$el.find('.indi-wrap').find('li').length < 2 ){
+                if(!self.$el.find('.indi-wrap').hasClass('dots-true')) self.$el.find('.indi-wrap').hide(); // BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정
                 self.$el.addClass('slide-solo');
             }
 
@@ -1492,7 +1501,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
             if (self.$playButon.length) {
                 opt.pauseOnHover = true;
 
-                self.$playButon.on('click', function (e) {
+                //BTOCSITE-8039 클릭이벤트 중첩 방지 .off('click) 추가
+                self.$playButon.off('click').on('click', function (e) {
                     if (self.paused === false) {
                         self.pause();
                     } else {
@@ -2321,8 +2331,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if(self.$el && self.$el[0]){
 
                         if (self.$el.find('.indi-wrap').find('li').length < 2){
-                            self.$el.find('.indi-wrap').hide();
-            
+                            if(!self.$el.find('.indi-wrap').hasClass('dots-true')) self.$el.find('.indi-wrap').hide(); //BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정
                             self.$el.addClass('slide-solo');
                         } else {
                             self.$el.find('.indi-wrap').show();
@@ -2504,6 +2513,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (opt.slidesToShow === 1 && opt.adaptiveHeight === true && opt.vertical === false) {
                 var targetHeight = self.$slides.eq(self.currentSlide).outerHeight(true);
+                /* s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 */
+                if(self.$el.hasClass('slide-show-right')) {
+                    targetHeight = Math.max(self.$slides.eq(self.currentSlide).outerHeight(true), self.$slides.eq(self.currentSlide+1).outerHeight(true));
+                }
+                /* e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 */
                 self.$list.css('height', targetHeight);
             }
         },

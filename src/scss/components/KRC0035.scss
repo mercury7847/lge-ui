@@ -87,27 +87,54 @@
 	/* BTOCSITE-4492 */
 	&.m-hdline-top{
 		.visual-wrap{
+			//BTOCSITE-8039
+			.text {
+				display: none;
+			}
 			.bullet-list{
 				display:none;
 			}
+<<<<<<< src/scss/components/KRC0035.scss
+			.drop-info { // BTOCSITE-9207
+=======
 			.drop-info {
+>>>>>>> src/scss/components/KRC0035.scss
 				display: none;
 			}
 		}
 		@include mobile{
 			.visual-wrap{
+				//BTOCSITE-8039
+				.text {
+					display: block;
+					margin-top:20px;
+					font-size:15px;
+					line-height:1.53;
+				}
 				.bullet-list{
 					display:block;
 				}
+<<<<<<< src/scss/components/KRC0035.scss
+				.drop-info { // BTOCSITE-9207
+=======
 				.drop-info {
+>>>>>>> src/scss/components/KRC0035.scss
 					display: block;
 				}
 			}
 			.text-wrap{
+				//BTOCSITE-8039
+				.text {
+					display: none;
+				}
 				.bullet-list{
 					display:none;
 				}
+<<<<<<< src/scss/components/KRC0035.scss
+				.drop-info { // BTOCSITE-9207
+=======
 				.drop-info {
+>>>>>>> src/scss/components/KRC0035.scss
 					display: none;
 				}
 			}
@@ -396,4 +423,8 @@
         }
     }
 }
+<<<<<<< src/scss/components/KRC0035.scss
 /* //BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 */
+=======
+/* //BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 */
+>>>>>>> src/scss/components/KRC0035.scss

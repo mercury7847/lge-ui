@@ -947,7 +947,7 @@
 							text-align: center;
 							@media screen and (max-width:980px) {
 								margin-right:5.9%;
-								width:clac(100% - 120px - 5.9%);
+								width:calc(100% - 120px - 5.9%);
 							}
 							@include mobile{
 								position:relative;
@@ -1041,6 +1041,10 @@
 								position:absolute;
 								top:12px;
 								left:24px;
+								@media screen and (max-width:980px) {
+									top:8px;
+									left:14px;
+								}
 								@include mobile{
 									top:6px;
 									left:12px;
@@ -1080,6 +1084,10 @@
 								position:relative;
 								margin-left:40px;
 								width:calc(100% - 160px);
+								@media screen and (max-width:980px) {
+									margin-left:5.9%;
+								width:calc(100% - 120px - 5.9%);
+								}
 								@include mobile{
 									margin-left:20px;
 									width:calc(100% - 100px);
@@ -1664,8 +1672,10 @@
 							text-overflow: ellipsis;
 							@include mobile{
 								-webkit-line-clamp:2;
-								max-height:70px;
+								max-height:40px;
 								white-space:normal;
+								font-size:14px;
+								line-height:20px;
 							}
 							> a {
 								display:block;
@@ -1678,6 +1688,9 @@
 							line-height:20px;
 							vertical-align: top;
 							color:#666;
+							@include mobile{
+								margin-top:3px;
+							}
 						}
 						.review-info {
 							display: inline-block;
