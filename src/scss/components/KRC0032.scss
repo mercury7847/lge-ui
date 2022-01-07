@@ -970,7 +970,7 @@
                     margin-top: 12px;
                     padding-left: 80px;
                     @include mobile {
-                        padding-left: 16px; // BTOCSITE-9207 
+                        padding-left: 16px;
                     }
                     .btn{
                         &.btn.border {
