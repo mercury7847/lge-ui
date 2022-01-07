@@ -90,16 +90,25 @@
 			.bullet-list{
 				display:none;
 			}
+			.drop-info {
+				display: none;
+			}
 		}
 		@include mobile{
 			.visual-wrap{
 				.bullet-list{
 					display:block;
 				}
+				.drop-info {
+					display: block;
+				}
 			}
 			.text-wrap{
 				.bullet-list{
 					display:none;
+				}
+				.drop-info {
+					display: none;
 				}
 			}
 			.inner{
