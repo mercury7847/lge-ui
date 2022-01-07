@@ -69,12 +69,10 @@ $(function(){
         $('.ui_lifestyle_list .slide-track').addClass('solo');
     }
     if( exhibLeng == 1) {
-        console.log('t1 : ' + exhibLeng );
         $('.product-slide.ui_exhib_carousel').css('padding-bottom', '0');
         $('.product-slide.ui_exhib_carousel .slide-track').addClass('solo');
     }
     if( productLeng == 1) {
-        console.log('t2 : ' + productLeng);
         $('.product-slide.ui_product_lifestyle').css('padding-bottom', '0');
         $('.product-slide.ui_product_lifestyle .slide-track').addClass('solo');
     }

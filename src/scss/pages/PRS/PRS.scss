@@ -581,8 +581,12 @@
 								padding:0 18px 0 16px;
 								font-size:20px;
 								font-weight:500;
-								line-height:30px;
+								line-height:28px;
 								vertical-align:middle;
+								@media screen and (max-width:980px) {
+									font-size:18px;
+									line-height:26px;
+								}
 								@include mobile{
 									overflow: hidden;
 									text-overflow: ellipsis;
@@ -592,7 +596,7 @@
 									margin-top:6px;
 									padding:0 2px;
 									font-size:13px;
-									line-height:1.38;
+									line-height:19px;
 									-webkit-line-clamp: 2;
 									-webkit-box-orient: vertical;
 									word-break: break-all;
@@ -809,7 +813,7 @@
 
 			.buy-product-tabcontent{
 				margin:0 auto;
-				max-width:1380px;
+				max-width:1400px;
 				.prd-list-wrap{
 					padding:0 -10px;
 					.slide-wrap{
@@ -941,6 +945,10 @@
 							right: 48px;
 							left:48px;
 							text-align: center;
+							@media screen and (max-width:980px) {
+								margin-right:5.9%;
+								width:clac(100% - 120px - 5.9%);
+							}
 							@include mobile{
 								position:relative;
 								bottom:auto;
@@ -1031,8 +1039,8 @@
 							&.no-border { box-shadow:none; }
 							.flag {
 								position:absolute;
-								top:16px;
-								left:32px;
+								top:12px;
+								left:24px;
 								@include mobile{
 									top:6px;
 									left:12px;
@@ -1516,16 +1524,6 @@
 							color:#fff;
 						}
 					}
-					@media screen and (min-width:768px) and (max-width:1200px) {
-						.tit {
-							display:inline-block;
-						}
-						.btn {
-							margin:0 0 0 10px;
-							padding:6px 20px;
-							font-size:14px;
-						}
-					}
 				}
 				.link-area {
 					margin-top:32px;
@@ -1612,9 +1610,12 @@
 					.slide-box {
 						display:block;
 						height:100%;
-						padding:40px 12%;
+						padding:40px;
 						border-radius:8px;
 						box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+						@media screen and (max-width:980px) {
+							padding:12%;
+						}
 						@include mobile {
 							padding:20px 16px;
 							box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
@@ -1831,6 +1832,9 @@
 						border-radius:8px;
 						background-color:#fff;
 						box-shadow: 1px 4px 12px 0 rgba(0, 0, 0, 0.14);
+						@media screen and (max-width:980px) {
+							padding:32px 5.9%;
+						}
 						@include mobile {
 							height:auto;
 							min-height:135px;
@@ -1844,6 +1848,10 @@
 							width:160px;
 							height:160px;
 							transform:translateY(-50%);
+							@media screen and (max-width:980px) {
+								width:120px;
+								height:120px;
+							}
 							@include mobile{
 								left:20px;
 								width:90px;
@@ -1854,9 +1862,12 @@
 							}
 						}
 						.info {
-							padding:12px 0 0 212px;
+							padding:12px 0 0 200px;
+							@media screen and (max-width:980px) {
+								padding:12px 0 0 160px;
+							}
 							@include mobile{
-								padding:0 0 0 114px;
+								padding:0 0 0 110px;
 							}
 							.model {
 								display: -webkit-box;
