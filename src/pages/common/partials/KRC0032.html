@@ -45,14 +45,35 @@
         2. 폰트 스타일:
         기본은 언더라인 없음
         .font-underline : 언더라인
+
+        [도트 타입 class] - BTOCSITE-8039 추가
+        1. indi-type-default: 기본 도트 타입
+            - slideShowType : 기본 도트 타입에만 slide-show-right 클래스 적용 가능
+        2. indi-type-bar: 바 타입
+        3. indi-type-bar-text: 바 + 텍스트 타입 (상단형?)
+
+        [data-auto-speed 옵션] - BTOCSITE-8039 추가
+        type : Number (ex: 1000, 2000, 3000)
+        어드민에서 입력된 값으로 자동재생 속도 지정
+        입력된 값이 없는 경우 기본 값은 3000
+
+        [data-auto-count] - BTOCSITE-8039 추가
+        type: 'loop' or Number (1~3)
+        값이 loop 이거나 Number(0) 경우 - 해당 슬라이드 영역이 화면의 중앙에 위치할때 슬라이드 무한 자동재생
+        값이 Number 경우 - 해당 슬라이드 영역이 화면의 중앙에 위치할때 슬라이드가 Number 값만큼만 자동재생후 자동재생 정지. 
     -->
 	<section class="component KRC0032 @@stageSize">
         <div class="component-box">
-            <div class="usp-banner-wrap ui_carousel_slider">
+            
+            <div class="usp-banner-wrap ui_carousel_slider indi-type-@@dotType @@if( context.slideShowType) {@@slideShowType}" 
+                data-auto-speed="@@autoSpeed" 
+                data-autoplay="@@autoplay"
+                data-auto-count="@@autoCount"                
+            >
                 <!-- Indicator Area -->
                 <div class="indi-wrap">
                     <ul class="ui_carousel_dots indi-conts">
-                        <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                        <!-- <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li> -->
                     </ul>
                     <span class="ui_carousel_play play">
                         <button type="button" class="btn-play"><span class="blind">슬라이드 일시정지</span></button>
@@ -63,7 +84,7 @@
                 <!-- Swipe Area -->
                 <div class="ui_carousel_track">
                     <!-- item -->
-                    <div class="carousel-box ui_carousel_slide">
+                    <div class="carousel-box ui_carousel_slide" data-slide-title="SOLID">
                         <!-- 210208 수정(a태그 감싸기 button 변경) -->
                    
                             <div class="visual-area video-box youtube-box">
@@ -166,7 +187,7 @@
 
 
                     <!-- item -->
-                    <div class="carousel-box animation-box ui_carousel_slide">
+                    <div class="carousel-box animation-box ui_carousel_slide" data-slide-title="FENIX">
                         <!-- 210208 수정(a태그 감싸기 button 변경) -->
 
                             <div class="animation-area">
@@ -270,7 +291,7 @@
 
 
                     <!-- item -->
-                    <div class="carousel-box ui_carousel_slide">
+                    <div class="carousel-box ui_carousel_slide" data-slide-title="MIST">
                         <!-- 210208 수정(a태그 감싸기 button 변경) -->
 
                             <div class="visual-area">
@@ -371,7 +392,7 @@
                     
                     <!-- item -->
                     <!-- BTOCSITE-7276 라이브커머스 네이버 동시송출 관련 컴포넌트 수정건 // a->div 유형 추가 : 버튼 새창 열림 기능 오류 -->
-                    <div class="carousel-box ui_carousel_slide">
+                    <div class="carousel-box ui_carousel_slide" data-slide-title="NATURE">
                         <div class="cont">
                             <div class="visual-area">
                                 <!-- [KR수정_201216] bg -> img 변경 -->
@@ -406,6 +427,92 @@
                                             <div class="drop-info">
                                                 <div class="disclaimer-btnArea">
                                                     <button type="button" class="btn border size-m dropInfo_openBtn @@disclaimerBtn" aria-describedby="title01">자세히 보기</button>
+                                                </div>
+                                                <!--
+                                                    bg색상 class = slideBox-bg
+                                                    기본 색상 : 화이트 
+                                                    slideBox-bg : bg-lightgray <-- 라이트 그레이
+                                                -->
+                                                <div class="dropContent @@slideBox-bg">
+                                                    <div class="disclaimer-txtArea">
+                                                        <p>[테스트]</p>
+                                                        <ul class="bullet-list">
+                                                            <li class="b-txt">11111111</li>
+                                                            <li class="b-txt">22222222</li>
+                                                            <li class="b-txt">33333333</li>
+                                                        </ul>
+
+                                                        <button type="button" class="btn border size-m dropInfo_closeBtn" aria-describedby="title01">닫기</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="disclaimer-bottom">
+                                                <div class="banner-btn">
+                                                    <a href="#" class="btn border size-m" target="_blank"><span>H1 Line button</span></a>
+                                                </div>
+                                                <div class="banner-btn">
+                                                    <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
+                                                    <a href="#" class="text-link" target="_blank"><span>자세히 보기</span></a>
+                                                </div>
+                                                <div class="overlay-image">
+                                                    <img src="/lg5-common/images/KRC0032/@thumb.jpg" alt="">
+                                                    <p class="hidden">graphic description : </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- //BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 -->
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BTOCSITE-7276 라이브커머스 네이버 동시송출 관련 컴포넌트 수정건 // a->div 유형 추가 : 버튼 새창 열림 기능 오류 -->
+                    <!-- //item -->
+
+                    <!-- item -->
+                    <!-- BTOCSITE-7276 라이브커머스 네이버 동시송출 관련 컴포넌트 수정건 // a->div 유형 추가 : 버튼 새창 열림 기능 오류 -->
+                    <div class="carousel-box ui_carousel_slide" data-slide-title="TEXT">
+                        <div class="cont">
+                            <div class="visual-area">
+                                <!-- [KR수정_201216] bg -> img 변경 -->
+                                <!-- 210416 수정 [피시, 모바일 이미지 분리] -->
+                                <img src="/lg5-common/images/KRC0032/@KRC0032-BG.jpg" alt="" class="pc-only">
+                                <img src="/lg5-common/images/KRC0032/@KRC0032-BG-m.jpg" alt="" class="mo-only">
+                                <!-- // 210416 수정 [피시, 모바일 이미지 분리] -->
+                                <!-- // [KR수정_201216] bg -> img 변경 -->
+                                <p class="hidden">graphic description : </p>
+                            </div>
+                            <div class="text-area type-narrow box-align-right align-bottom">
+                                <div class="inner">
+                                    
+                                    
+                                    <!-- BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 -->
+                                    <div class="text-container">
+                                        <div class="text-top">
+                                            <span class="banner-tit-sup">아이브로우 최대 40자까지 작성가능합니다. </span>
+                                            <div class="title"><!-- [KR수정_201229] .title로 class명 변경(h2-h6 폰트사이즈 공통 대응 수정) -->
+                                                <h2>헤드라인 카피는<br> 최대 40자까지 작성가능합니다.</h2>
+                                            </div>
+                                            <p class="banner-txt">바디카피는 공백포함하여 최대 120자까지 작성가능합니다.</p>
+                                            @@include('./common/modules/bullet-list.html', {
+                                                "bulletTxt" : [
+                                                    "디스클레이머 최대 80자까지 입력가능합니다.",
+                                                ]
+                                            })
+                                        </div>
+
+                                        <div class="disclaimer-container">
+
+                                            <div class="drop-info">
+                                                <div class="disclaimer-btnArea">
+                                                    <button type="button" class="btn border size-m dropInfo_openBtn" aria-describedby="title01">자세히 보기</button>
                                                 </div>
                                                 <!--
                                                     bg색상 class = slideBox-bg
