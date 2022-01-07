@@ -15,6 +15,17 @@
         .component-box {
             @include mobile {
                 padding-bottom:0;
+                // s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
+                .slide-show-right {
+                    .ui_carousel_slide {
+                        padding-right: 15vw;
+                        &.on + .ui_carousel_slide {
+                            margin-left: -15vw;
+                            padding-left: 16px;
+                        }
+                    }
+                }
+                // e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
             }
         }
     }

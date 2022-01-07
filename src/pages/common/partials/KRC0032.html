@@ -48,24 +48,24 @@
 
         [도트 타입 class] - BTOCSITE-8039 추가
         1. indi-type-default: 기본 도트 타입
-            - defaultTypeEdge : 기본 도트 타입에만 default-type-edge 클래스 적용 가능
+            - slideShowType : 기본 도트 타입에만 slide-show-right 클래스 적용 가능
         2. indi-type-bar: 바 타입
         3. indi-type-bar-text: 바 + 텍스트 타입 (상단형?)
 
         [data-auto-speed 옵션] - BTOCSITE-8039 추가
         type : Number (ex: 1000, 2000, 3000)
         어드민에서 입력된 값으로 자동재생 속도 지정
-        입력된 값이 없는 경우 기본 값은 5000
+        입력된 값이 없는 경우 기본 값은 3000
 
         [data-auto-count] - BTOCSITE-8039 추가
         type: 'loop' or Number (1~3)
-        값이 loop인 경우 - 해당 슬라이드 영역이 화면의 중앙에 위치할때 슬라이드 무한 자동재생
+        값이 loop 이거나 Number(0) 경우 - 해당 슬라이드 영역이 화면의 중앙에 위치할때 슬라이드 무한 자동재생
         값이 Number 경우 - 해당 슬라이드 영역이 화면의 중앙에 위치할때 슬라이드가 Number 값만큼만 자동재생후 자동재생 정지. 
     -->
 	<section class="component KRC0032 @@stageSize">
         <div class="component-box">
             
-            <div class="usp-banner-wrap ui_carousel_slider indi-type-@@dotType @@defaultTypeEdge" 
+            <div class="usp-banner-wrap ui_carousel_slider indi-type-@@dotType @@if( context.slideShowType) {@@slideShowType}" 
                 data-auto-speed="@@autoSpeed" 
                 data-autoplay="@@autoplay"
                 data-auto-count="@@autoCount"                

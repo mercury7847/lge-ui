@@ -69,7 +69,7 @@ $(window).ready(function(){
 		//커스텀 인디케이터 -BTOCSITE-8039
 		function customDots(slide, index){
 			var $slider = $(slide.$slider);
-			var currentSpeed = $slider.data('autoSpeed') != undefined && $slider.data('autoSpeed') > 0 ?  $slider.data('autoSpeed') : 5000;
+			var currentSpeed = $slider.data('autoSpeed') != undefined && $slider.data('autoSpeed') > 0 ?  $slider.data('autoSpeed') : 3000;
 			var buttonClass = $slider.hasClass('indi-type-bar') ? 'btn-indi-bar' : $slider.hasClass('indi-type-bar-text') ? 'btn-indi-bar-text' : 'btn-indi';
 			var buttonInnerEl = '';
 			
@@ -92,7 +92,8 @@ $(window).ready(function(){
 		
 		$('.KRC0032').find(".ui_carousel_slider").each(function(cdx, slide){
 			var $slide 			= $(this),
-				autoPlaySpeed 	= $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') != "" ? $slide.data('autoSpeed') : 5000,
+				autoPlay 		= $slide.data('autoPlay') != undefined && $slide.data('autoPlay') != "" ? $slide.data('autoPlay') : true,
+				autoPlaySpeed 	= $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') != "" ? $slide.data('autoSpeed') : 3000,
 				autoCount 		= $slide.data('autoCount') != undefined && $slide.data('autoCount') != "" ? $slide.data('autoCount') : false;
 
 			if( autoCount != 'loop' && autoCount != undefined) {
@@ -115,7 +116,7 @@ $(window).ready(function(){
 			})
 			.vcCarousel({
 				infinite: true,
-				autoplay: true,
+				autoplay: autoPlay,
 				autoplaySpeed: autoPlaySpeed,
 				prevArrow:'.btn-arrow.prev',
 				nextArrow:'.btn-arrow.next',

@@ -329,6 +329,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (opt.slidesToShow === 1 && opt.adaptiveHeight === true && opt.vertical === false) {
                 var targetHeight = self.$slides.eq(self.currentSlide).outerHeight(true);
+                /* s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 */
+                if(self.$el.hasClass('slide-show-right')) {
+                    targetHeight = Math.max(self.$slides.eq(self.currentSlide).outerHeight(true), self.$slides.eq(self.currentSlide+1).outerHeight(true));
+                }
+                /* e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 */
                 self.$list.animate({
                     height: targetHeight
                 }, opt.speed);
@@ -1479,8 +1484,8 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 }
             }
 
-            if(self.$el.find('.indi-wrap').find('li').length < 2){
-                self.$el.find('.indi-wrap').hide();
+            if(self.$el.find('.indi-wrap').find('li').length < 2 ){
+                if(!self.$el.find('.indi-wrap').hasClass('dots-true')) self.$el.find('.indi-wrap').hide(); // BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정
                 self.$el.addClass('slide-solo');
             }
 
@@ -2326,8 +2331,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if(self.$el && self.$el[0]){
 
                         if (self.$el.find('.indi-wrap').find('li').length < 2){
-                            self.$el.find('.indi-wrap').hide();
-            
+                            if(!self.$el.find('.indi-wrap').hasClass('dots-true')) self.$el.find('.indi-wrap').hide(); //BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정
                             self.$el.addClass('slide-solo');
                         } else {
                             self.$el.find('.indi-wrap').show();
@@ -2509,6 +2513,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
 
             if (opt.slidesToShow === 1 && opt.adaptiveHeight === true && opt.vertical === false) {
                 var targetHeight = self.$slides.eq(self.currentSlide).outerHeight(true);
+                /* s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 */
+                if(self.$el.hasClass('slide-show-right')) {
+                    targetHeight = Math.max(self.$slides.eq(self.currentSlide).outerHeight(true), self.$slides.eq(self.currentSlide+1).outerHeight(true));
+                }
+                /* e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 수정 */
                 self.$list.css('height', targetHeight);
             }
         },
