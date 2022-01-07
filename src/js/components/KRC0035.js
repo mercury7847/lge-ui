@@ -43,19 +43,19 @@ $(document).ready(function(){
 		if ($('.KRC0035.m-hdline-top').length) {
 			//console.log("모바일11")
 			$(item).find(visualWrapBtn).on('click', function(e){
-				console.log("모바일에만 작동");
+				//console.log("모바일에만 작동");
 				$(item).find('.visual-wrap .dropContent').addClass('on');
 				//$(this).hide(); //버튼이 사라지면서 컨텐츠 높낮이의 변화가 생겨 삭제
 			});
 
 			$(item).find(textWrapBtn).on('click', function(e){
-				console.log("피씨에만 작동");
+				//console.log("피씨에만 작동");
 				$(item).find('.text-wrap .dropContent').addClass('on');
 				//$(this).hide(); //버튼이 사라지면서 컨텐츠 높낮이의 변화가 생겨 삭제
 			});
 		} else {
 			$(item).find('.drop-info .dropInfo_openBtn').on('click', function(e){
-				console.log("공통");
+				//console.log("공통");
 				$(item).find('.dropContent').addClass('on');
 				//$(this).hide(); //버튼이 사라지면서 컨텐츠 높낮이의 변화가 생겨 삭제
 			});
