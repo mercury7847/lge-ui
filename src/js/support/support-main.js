@@ -461,6 +461,23 @@
                     }
                 })
 
+
+                // BTOCSITE-5938-371 : 화살표(위 또는 아래)를 한 번 누른 뒤 공지사항이 자동 롤링되지 않습니다.
+                $context.find('[data-role="slide-container"]').on('click', '.slick-arrow', function(e){
+                    var $this = $(this);
+                    var $container = $this.closest('[data-role="slide-container"]');
+                    var $slider = $container.find('.slick-initialized');
+                    var options = $slider.get(0).slick.options;
+                    e.preventDefault();
+
+                    if(options.autoplay) {
+                        $slider.slick('slickPause');
+                        setTimeout(function(){
+                            $slider.slick('slickPlay');
+                        },100)
+                    }
+                })
+
                 //히어로 보유제품 슬라이드
                 $(self.heroPd.el.slider).not(self.activeClass).slick(self.heroPd.config);
                 
