@@ -679,12 +679,14 @@ br.pc {
         .inner {
             display:flex;
             justify-content:center;
+            margin:0 auto;
             @media screen and (max-width: 1200px){
                 width: 100% !important;
                 transform: translate3d(0px, 0px, 0px) !important;
             }
             .item {
                 width:calc(25% - 24px);
+                max-width:351px;
                 padding:8px 12px;
                 @include mobile {
                     width:calc(50% - 4px);
