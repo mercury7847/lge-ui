@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path style="fill:none" d="M0 0h24v24H0z"/>
+    <g transform="translate(2 2)">
+        <rect data-name="Rectangle" width="20" height="20" rx="10" style="opacity:.35"/>
+        <path d="m0 0 4 3.961-4 3.961" transform="rotate(-90 8.895 2.855)" style="stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2px;fill:none" data-name="ic"/>
+    </g>
+</svg>

@@ -2,7 +2,9 @@
 <!-- 2021.03.16 마크업 수정 -->
 <a href="" class="tooltip-login">
     <div class="tooltip-inner">
-        <p><strong>회원전용 서비스</strong>로 더 편리하게 이용할 수 있어요. </p>
+        <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_문구 변경 - S -->
+        <p>LG전자에서 제공하는 <strong>회원전용 서비스</strong>로 더 편리하게 이용할 수 있어요. </p>
+        <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_문구 변경 - E -->
         <span class="btn-link">로그인</span>
         <button class="btn-tooltip-close"><span class="blind">접기</span></button>
     </div>
@@ -16,67 +18,48 @@
     <div class="hero-container">
         <div class="support-nav-container">
             <div class="home-cont-top">
-                <h1 class="cont-top-tit">환영합니다. <br class="mo-only">무엇을 도와드릴까요?</h1>
-                <a href="#" class="btn-fast-support">빠른 제품지원</a>
+                <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_문구 변경 및 slider 영역 삭제- S -->
+                <h1 class="cont-top-tit">무엇을 도와드릴까요?</h1>
+                <h3 class="cont-sub-copy">제품 문제 해결 방법, 상담/서비스 예약 등을 고객센터 전화 연결없이 빠르게 확인/해결할 수 있습니다.</h3>
+                <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_문구 변경 및 slider 영역 삭제 - E -->
             </div>
-            <div class="support-list-slider">
+        </div>
+    </div>
 
-                <div class="support-toggle-list-wrap" data-toggle-list="container">
-                    <div class="support-list product-support" data-toggle-list="wrap">
-                        <div class="list-header">
-                            <!-- 2021.06.29 문구 수정 -->
-                            <strong class="list-tit">직접 <span class="txt-highlight">해결</span>하는 <span class="txt-highlight">방법</span>을<br>알려드릴게요.</strong>
-                            <!-- //2021.06.29 문구 수정 -->
-                            <!-- 2021.03.30 버튼 문구 수정 -->
-                            <button class="btn-list-toggle" data-toggle-list="btn"><span
-                                    class="blind">문제점 해결방안 목록 펼치기</span></button>
-                            <!-- //2021.03.30 버튼 문구 수정 -->
-                        </div>
-                        <ul data-toggle-list="list" class="list-dir-col">
-                            <li><a href="">제품 문제 해결</a></li>
-                            <li><a href="">동영상 가이드</a></li>
-                            <li><a href="">드라이버/SW</a></li>
-                            <li><a href="">사용설명서</a></li>
-                        </ul>
+    <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_공지사항 위치 변경 - S -->
+    <!-- 공지사항 -->
+    <div class="home-notice" data-role="slide-container">
+        <div class="notice-inner">
+            <div class="notice-title">
+                <strong class="title">NOTICE</strong>
+            </div>
+            <div class="notice-list-wrap notice-slider" data-auto-type="button">
+                <div class="notice-list">
+                    소모품/케어용품 택배사 [우체국 택배] 배송 지연안내
+                    <div class="flag-wrap">
+                        <span class="flag">NEW</span>
                     </div>
-                    <div class="support-list consult" data-toggle-list="wrap">
-                        <div class="list-header">
-                            <!-- 2021.06.29 문구 수정 -->
-                            <strong class="list-tit">서비스 및 제품 <span class="txt-highlight">궁금증</span>을<br><span class="txt-highlight">상담</span>해드릴게요.</strong>
-                            <!-- //2021.06.29 문구 수정 -->
-                            <!-- 2021.03.31 버튼 문구 수정 -->
-                            <button class="btn-list-toggle" data-toggle-list="btn"><span
-                                    class="blind">서비스 상담 목록 펼치기</span></button>
-                            <!-- //2021.03.31 버튼 문구 수정 -->
-                        </div>
-                        <ul data-toggle-list="list">
-                            <li><a href="">전화 상담 예약</a></li>
-                            <li><a href="">이메일 문의</a></li>
-                            <li><a href="">영상 상담 예약</a></li>
-                            <li><a href="">원격 상담 예약</a></li>
-                        </ul>
+                </div>
+                <div class="notice-list">
+                    소모품/케어용품 택배사 [우체국 택배] 배송 지연안내
+                    <div class="flag-wrap">
+                        <span class="flag">NEW</span>
                     </div>
-                    <div class="support-list reservation" data-toggle-list="wrap">
-                        <div class="list-header">
-                            <!-- 2021.06.29 문구 수정 -->
-                            <strong class="list-tit"><span class="txt-highlight">출장/방문 예약</span>을<br>도와드릴게요.</strong>
-                            <!-- 2021.03.31 버튼 문구 수정 -->
-                            <button class="btn-list-toggle" data-toggle-list="btn"><span
-                                    class="blind">출장/방문 예약 목록 펼치기</span></button>
-                            <!-- //2021.03.31 버튼 문구 수정 -->
-                        </div>
-                        <ul data-toggle-list="list">
-                            <li><a href="">출장 서비스 예약</a></li>
-                            <!-- <li><a href="https://move.pantos.com/mvinst/order.jsp" target="_blank">제품 설치/철거 예약</a></li> -->
-                            <li><a href="">센터 방문 예약</a></li>
-                            <li><a href="https://www.lge.co.kr/lgekor/bestshop/counsel/counselMain.do?device=w&inflow=service"
-                                    target="_blank">매장 방문 예약</a></li>
-                        </ul>
+                </div>
+                <div class="notice-list">
+                    소모품/케어용품 택배사 [우체국 택배] 배송 지연안내
+
+                    <div class="flag-wrap">
+                        <span class="flag">NEW</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- //공지사항 -->
+    <!-- //BTOCSITE-9066 신규 WSG 적용 - 고객지원_공지사항 위치 변경 - E -->
+
+
     <!-- 검색 -->
     <div class="keyword-search ui_search"
         data-search-url="/search/result/support?category=customer&force=false&search="
@@ -135,61 +118,96 @@
         </div>
     </div>
     <!-- //검색 -->
-
-    <!-- 공지사항 -->
-    <div class="home-notice" data-role="slide-container">
-        <div class="notice-inner">
-            <div class="notice-title">
-                <strong class="title">NOTICE</strong>
-            </div>
-            <div class="notice-list-wrap notice-slider" data-auto-type="button">
-                <div class="notice-list">
-                    <div class="flag-wrap">
-                        <span class="flag">NEW</span>
-                    </div>
-                    최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는
-                    지속적으로
-                </div>
-                <div class="notice-list">
-                    <div class="flag-wrap">
-                        <span class="flag">NEW</span>
-                    </div>
-                    최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는
-                    지속적으로
-                </div>
-                <div class="notice-list">
-                    <div class="flag-wrap">
-                        <span class="flag">NEW</span>
-                    </div>
-                    최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는 지속적으로 고객 최근 코로나 19재 확산에 따라 방역대책이 강화되고 있으며, LG전자는
-                    지속적으로
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //공지사항 -->
 </div>
 <!-- //hero 영역 -->
 
-
+<!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_ 고객지원 리스트 추가 - S -->
+<!-- 고객지원 리스트 -->
+<div class="support-list">
+    <div class="list-wrap">
+        <div class="items-wrap">
+            <div class="icon-wrap">
+                <div class="icon">
+                    <img src="/lg5-common/images/CS/prd-support-icon.png" alt="제품 사용 지원">
+                </div>
+                <div class="icon-txt">
+                    제품 사용 지원
+                </div>
+            </div>
+        
+            <ul data-toggle-list="list" class="list-dir-col">
+                <li><a href="">제품 문제 해결</a></li>
+                <li><a href="">동영상 가이드</a></li>
+                <li><a href="">드라이버/SW</a></li>
+                <li><a href="">사용설명서</a></li>
+            </ul>
+        </div>
+        <div class="items-wrap">
+            <div class="icon-wrap">
+                <div class="icon">
+                    <img src="/lg5-common/images/CS/chat-icon.png" alt="서비스 상담">
+                </div>
+                <div class="icon-txt">
+                    서비스 상담
+                </div>
+            </div>
+            <ul data-toggle-list="list">
+                <li><a href="">챗봇 상담</a></li>
+                <li><a href="">전화 상담 예약</a></li>
+                <li><a href="">이메일 문의</a></li>
+                <li><a href="">영상 상담 예약</a></li>
+                <li><a href="">원격 상담 예약</a></li>
+            </ul>
+        </div>
+        <div class="items-wrap">
+            <div class="icon-wrap">
+                <div class="icon">
+                    <img src="/lg5-common/images/CS/service-reserv-icon.png" alt="서비스 예약">
+                </div>
+                <div class="icon-txt">
+                    서비스 예약
+                </div>
+            </div>
+            <ul data-toggle-list="list">
+                <li><a href="">출장 서비스 예약</a></li>
+                <li><a href="">센터 방문 예약</a></li>
+                <li><a href="https://move.pantos.com/mvinst/order.jsp" target="_blank">제품 설치/철거 예약</a></li>
+                <li><a href="" target="_blank">예약결과 조회/변경</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- //고객지원 리스트 -->
+<!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_ 고객지원 리스트 추가 - E -->
 
 <!-- 인기 컨텐츠 -->
 <div class="home-section popular-find" data-more="container">
     <!-- 2021.02.19 데이터 속성 추가 -->
     <div class="section-inner">
         <div class="headline">
-            <a href="#" class="btn-solution-link">제품 문제해결</a>
+            <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_변경(로그인후) - S -->
+            <h3 class="title">제품 문제 해결에서<br>가장 많이 찾아본 콘텐츠에요</h3>
+            <a href="#" class="btn-solution-link">제품 문제 해결</a>
             <!-- 2021.03.03 br 삭제 -->
             <!-- BTOCSITE-9875 고객지원 홈 '가장 많이 찾아본 콘텐츠에요' 문구 변경 -->
-            <h3 class="title">추천하는 콘텐츠에요.</h3>
+            
+            
+            <!-- 
             <div class="list-filter">
                 <span>보유제품 기준</span>
-
-                <!-- 비로그인시 로그인창으로 이동 -->
-                <!-- 2021.02.22 data-href 속성값 추가 -->
+                
                 <button class="btn-filter-toggle" data-href="/html/CS/CSRF6001_member.html"><span
                         class="blind">보유 제품 목록 보기</span></button>
+            </div>  
+            -->
+           
+            <div class="sort-list">
+                <span class="chk-wrap">
+                    <input type="checkbox" class="btn-filter-toggle" id="myPrdChkfilter" name="myPrdChk" data-href="/html/CS/CSRF6001_member.html">
+                    <label for="myPrdChkfilter">보유제품 기준</label>
+                </span>
             </div>
+            <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_변경(로그인후) - E -->
         </div>
 
         <!-- default list -->
@@ -218,7 +236,7 @@
                             ]
                             })
                         </a>
-                </div>
+                    </div>
                 }
 
                 <!-- <div class="item-list">
@@ -407,7 +425,8 @@
                         </div>
                         <div class="btn-wrap">
                             <!-- 2021.03.17 disabled 삭제 -->
-                            <button type="button" class="btn size-m btn-reservation"><span>예약하기</span></button>
+                            <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_size-m 클래스 제거 -->
+                            <button type="button" class="btn btn-reservation"><span>예약하기</span></button>
                         </div>
                     </form>
                 </div>
@@ -528,7 +547,8 @@
                         </div>
                     </div>
                     <div class="btn-wrap">
-                        <button type="button" class="btn size-m btn-inquiry"><span>조회하기</span></button>
+                        <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_size-m 클래스 제거 -->
+                        <button type="button" class="btn btn-inquiry"><span>조회하기</span></button>
                     </div>
                 </div>
             </div>
@@ -556,70 +576,45 @@
 </div>
 <!-- //로그인 박스 -->
 
-<!-- 주요 서비스 -->
+<!-- 주요 서비스  -->
 <div class="common-banner main-service">
     <div class="banner">
-        <h3 class="banner-tit">LG제품에 관련된 <br class="mo-only">주요 서비스를 확인하세요!</h3>
-
-        <!-- 2021.04.13 전체 수정 -->
-        <div class="main-service-slider">
-            <div class="main-list-wrap">
-                <div class="slide-item">
-                    <div class="item-thumb">
-                        <img src="/lg5-common/images/CS/img_main_service01.jpg" alt="">
+        <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_ 주요 서비스 마크업 변경 - S -->
+        <div class="bann_head">
+            <h3 class="banner-tit">LG전자 서비스센터의 소식을 <br class="mo-only">안내해 드립니다</h3>
+        </div>
+        <div class="bann_content">
+            <div class="slide-cover">
+                <div class="main-service-slider">
+                    @@for ( var i=0; i < 9; i++ ) {
+                    <div class="slide-item">
+                        <a href="">
+                            <div class="slide-thumb-area">
+                                <img src="/lg5-common/images/CS/img_main_service01.jpg" alt="">
+                            </div>
+                            <div class="slide-cont-area">
+                                <strong class="slide-title">
+                                    새로운 소식을
+                                    카드뉴스로
+                                    만나보세요.
+                                </strong>
+                            </div>
+                        </a>
                     </div>
-                    <div class="item-cont">
-                        <strong class="item-tit">
-                            새로운 소식을
-                            카드뉴스로
-                            만나보세요.
-                        </strong>
-                        <a href="#" class="item-link">카드뉴스</a>
-                    </div>
+                    }
                 </div>
-                <div class="slide-item">
-                    <div class="item-thumb">
-                        <img src="/lg5-common/images/CS/img_main_service02.jpg" alt="">
-                    </div>
-                    <div class="item-cont">
-                        <strong class="item-tit">
-                            가전제품
-                            얼마나 알고
-                            쓰세요?
-                        </strong>
-                        <a href="#" class="item-link">가전제품 생활의 팁</a>
-                    </div>
-                </div>
-                <div class="slide-item">
-                    <div class="item-thumb"><img src="/lg5-common/images/CS/img_main_service03.jpg" alt="">
-                    </div>
-                    <div class="item-cont">
-                        <strong class="item-tit">
-                            근처 서비스
-                            센터에서 A/S를
-                            받고 싶다면
-                        </strong>
-                        <a href="#" class="item-link">서비스 센터 찾기</a>
-                    </div>
-                </div>
-                <div class="slide-item">
-                    <div class="item-thumb"><img src="/lg5-common/images/CS/img_main_service04.jpg" alt="">
-                    </div>
-                    <div class="item-cont">
-                        <strong class="item-tit">
-                            내 제품에 딱맞는
-                            소모품 알아보기
-                        </strong>
-                        <a href="#" class="item-link">LG전자 소모품샵</a>
-                    </div>
-
-                </div>
+                <!-- slick-arrow 비노출 처리
+                <div class="slide-button-controls">
+                    <button class="slick-arrow slick-prev"><span class="blind">이전</span></button>
+                    <button class="slick-arrow slick-next"><span class="blind">다음</span></button>
+                </div> 
+                -->
             </div>
         </div>
-        <!-- //2021.04.13 전체 수정 -->
+        <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_ 주요 서비스 마크업 변경 - E -->
     </div>
 </div>
-<!-- //주요 서비스 -->
+<!-- //주요 서비스  --> 
 
 <!-- 관련 정보 -->
 <div class="common-banner related-pages">
@@ -633,7 +628,7 @@
                         <div class=item-thumb"><img src="/lg5-common/images/CS/img_related_pages01.jpg" alt="">
                         </div>
                         <div class="item-cont">
-                            <strong class="item-text">일부 TV모델, 파워보드 <br>자발적 무상 교체 <br>서비스</strong>
+                            <strong class="item-text">세탁기/건조기 동결 및<br>에어컨 난방 기능 관련<br>주요 문제 해결 방법</strong>
                         </div>
                     </a>
                 </div>
@@ -716,7 +711,7 @@
                 <!-- //숨겨진 목록 class hidden  -->
             </div>
         </div>
-        <button type="button" class="btn-moreview block" data-more="btn"><span>더보기</span></button>
+        <!-- <button type="button" class="btn-moreview block" data-more="btn"><span>더보기</span></button> -->
     </div>
 </div>
 <!-- //관련 정보 -->
@@ -733,8 +728,42 @@
                         <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_kca.png" alt="">
                         </div>
                         <div class="slide-text">
-                            2020 한국의 소비자 대상 <br>
-                            가전제품A/S 부문
+                            소비자 중심경영
+                        </div>
+                    </a>
+                </div>
+                <div class="slide-item">
+                    <a href="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_nsa.png" alt=""></div>
+                        <div class="slide-text">
+                            2019 국가 서비스 대상
+                        </div>
+                    </a>
+                </div>
+                <div class="slide-item">
+                    <a href="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_kssqi.png" alt=""></div>
+                        <div class="slide-text">
+                            2019 KS-SQI <br>
+                            가전 AS부문 1위
+                        </div>
+                    </a>
+                </div>
+                <div class="slide-item">
+                    <a href="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_esq.png" alt=""></div>
+                        <div class="slide-text">
+                            한국 서비스 품질 <br>
+                            우수 기업
+                        </div>
+                    </a>
+                </div>
+                <div class="slide-item">
+                    <a href="">
+                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_kca.png" alt="">
+                        </div>
+                        <div class="slide-text">
+                            2020 한국의 소비자 대상
                         </div>
                     </a>
                 </div>
@@ -765,33 +794,30 @@
                         </div>
                     </a>
                 </div>
-
-
                 <div class="slide-item">
                     <a href="">
-                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_kca.png" alt="">
-                        </div>
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_esq.png" alt=""></div>
                         <div class="slide-text">
-                            2020 한국의 소비자 대상 <br>
-                            가전제품A/S 부문
+                            한국 서비스 품질 <br>
+                            우수 기업
                         </div>
                     </a>
                 </div>
                 <div class="slide-item">
                     <a href="">
-                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_nsa.png" alt=""></div>
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_esq.png" alt=""></div>
                         <div class="slide-text">
-                            2019 국가 서비스 대상 <br>
-                            가전 A/S 부문
+                            한국 서비스 품질 <br>
+                            우수 기업
                         </div>
                     </a>
                 </div>
                 <div class="slide-item">
                     <a href="">
-                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_kssqi.png" alt=""></div>
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_esq.png" alt=""></div>
                         <div class="slide-text">
-                            2019 KS-SQI <br>
-                            가전 AS부문 1위
+                            한국 서비스 품질 <br>
+                            우수 기업
                         </div>
                     </a>
                 </div>
