@@ -14,8 +14,8 @@
 
             if (lgkorUI.stringToBool(loginFlag)) {
                 // 테스트를 위한 나이제한 변경 부분
-                // if(birthDt > 19920101 && birthDt < 20040102){
-                if(birthDt > 19750101 && birthDt < 20040102){
+                // if(birthDt > 19750101 && birthDt < 20040102){
+                if(birthDt > 19920101 && birthDt < 20040102){
                     $('.login-ok').show();
                     $('.login-no').hide();
                 } else {
