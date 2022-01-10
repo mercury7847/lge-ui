@@ -164,7 +164,19 @@
                                 slidesToShow: 1,
                                 variableWidth : true
                             }
+                        },
+                        //BTOCSITE-9066 모바일 사이즈 수정 - S
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                arrows : false,
+                                dots : false,
+                                slidesToScroll: 1,
+                                slidesToShow: 1,
+                                variableWidth : true
+                            }
                         }
+                        //BTOCSITE-9066 모바일 사이즈 수정 - E
                     ]
                 },
                 init : function(){
@@ -237,71 +249,39 @@
                     touchThreshold: 100
                 },
             },
+            // BTOCSITE-9066 신규 WSG 적용 - 고객지원_main_service 슬라이드 변경
             main_service : {
                 el : {
-                    slider : $context.find('.main-service-slider .main-list-wrap'),
+                    slider : $context.find('.main-service-slider'),
                 },
                 config : {
-                    infinite: false,
-                    autoplay: false,
-                    slidesToScroll: 1,
+                    arrows: false,
                     slidesToShow: 4,
-                    dots : false,
-                    arrows : false,
-                    draggable : false, 
-                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 150,
-                    touchThreshold: 100,
+                    slidesToScroll: 4,
+                    infinite:false,
+                    variableWidth:false,
+                    outerEdgeLimit: false,
+                    prevArrow : $context.find('.slick-prev'),
+                    nextArrow : $context.find('.slick-next'),
                     responsive: [
                         {
-                            breakpoint: 9999,
-                            settings: {
-                                dots : false,
-                                arrows : false,
-                                draggable : false, 
-                                slidesToScroll: 1,
-                                slidesToShow: 4,
-                            }
+                          breakpoint: 1200,
+                          settings: {
+                            arrows:true,
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            variableWidth:false
+                          }
                         },
                         {
-                            breakpoint: 1920,
-                            settings: {
-                                dots : false,
-                                arrows : false,
-                                draggable : false, 
-                                slidesToScroll: 1,
-                                slidesToShow: 4,
-                            }
-                        },
-                        {
-                            breakpoint: 1460,
-                            settings: {
-                                dots : true,
-                                arrows : true,
-                                draggable : true, 
-                                slidesToScroll: 1,
-                                slidesToShow: 3,
-                            }
-                        },
-                        {
-                            breakpoint: 1024,
-                            settings: {
-                                dots : true,
-                                arrows : true,
-                                draggable : true, 
-                                slidesToScroll: 1,
-                                slidesToShow: 2,
-                            }
-                        },
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                dots : true,
-                                arrows : true,
-                                draggable : true, 
-                                slidesToScroll: 1,
-                                slidesToShow: 1
-                            }
+                          breakpoint: 768,
+                          settings: {
+                            arrows:false,
+                            slidesToShow: 2,
+                            slidesToScroll: 2,
+                            variableWidth:true,
+                            outerEdgeLimit: true,
+                          }
                         }
                     ]
                 }
@@ -345,17 +325,18 @@
                     ]
                 }
             },
+            // BTOCSITE-9066 신규 WSG 적용 - 고객지원_award 슬라이드 변경
             award : {
                 el : {
-                    slider : $context.find('.award-slider .award-list'),
+                    slider : $context.find('.award-slider .award-list')
                 },                
                 config : {
                     infinite: true,
                     autoplay: true,
                     dots : true,
                     autoplaySpeed : 5000,
-                    slidesToScroll: 4,
-                    slidesToShow: 4,
+                    slidesToScroll: 3,
+                    slidesToShow: 3,
                     appendDots : '.awards .slick-dot-container',
                     cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                     speed: 150,
@@ -373,14 +354,17 @@
                             settings: {
                                 slidesToScroll: 2,
                                 slidesToShow: 2,
+                                variableWidth : true
                             }
                         },
                         {
                             breakpoint: 768,
                             settings: {
                                 arrows: false,
+                                dots : false,
                                 slidesToScroll: 1,
                                 slidesToShow: 1,
+                                variableWidth : true
                             }
                         }
                     ],
@@ -929,15 +913,18 @@
                 
                 $container.find(self.el.toggleBtn).on('click', function(e){
                     var $this = $(this);
-
+                    // BTOCSITE-9066 신규 WSG 적용 - 고객지원_prop checkd 속성 추가 - s
                     if( lgkorUI.isLogin ) {
                         e.preventDefault();
-                        if( $this.hasClass('active') ) {
+                        if( $this.hasClass('active') ) {                            
                             $this.removeClass('active');
                             $pdCont.filter('.default-pd').addClass('active').siblings().removeClass('active').find('.btn-moreview').removeClass('close').text('더보기');
+                            $("#myPrdChkfilter").prop("checked", false);
                         } else {
+                            $("#myPrdChkfilter").prop("checked", true);
                             self.getProduct();
                         }
+                    // BTOCSITE-9066 신규 WSG 적용 - 고객지원_prop checkd 속성 추가 - e
                     } else {
                         //비로그인
 
@@ -950,8 +937,11 @@
                             cancelBtnName: '아니요',
                             ok: function() {
                                 location.href = _url;
+                                
                             },
                             cancel: function() {
+                                //BTOCSITE-9066 신규 WSG 적용 - prop checked false
+                                $("#myPrdChkfilter").prop("checked", false);
                                 
                             }
                         }, $this[0]);
