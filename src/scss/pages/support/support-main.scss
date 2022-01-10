@@ -2971,7 +2971,6 @@
                     img {
                         width:100%;
                         max-width:327px;
-                        max-height:358px;
                         border-radius: 8px;
                     }
                 }
@@ -3013,7 +3012,10 @@
                     &-thumb-area {
                         max-width:143px;
                         img {
-                            
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+
                         }
                     }
                     &-cont-area {
