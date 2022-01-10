@@ -2317,6 +2317,9 @@ html {
         .utility {
             top:13px;
         }
+        .story-page {
+            display: none;
+        }
         .sub-renew-dimmed {
             display: none;
             position: fixed;
@@ -2328,6 +2331,28 @@ html {
             height: 100%;
             background:rgba(0,0,0,0.7);
             z-index: 99;
+        }
+        &.snsHead {
+            .utility {
+                display: none;
+            }
+            .story-page {
+                display: inline-block;
+                position: absolute;
+                top: 15px;
+                right: 15px;
+            }
+            .sub-renew-nav-wrap {
+                width: calc(100% - 58px);
+            }
+        }
+        &.cartHead {
+            .utility {
+                display: none;
+            }
+            .sub-renew-nav-wrap {
+                width: calc(100% - 76px);
+            }
         }
         &.isActive {
             .header {

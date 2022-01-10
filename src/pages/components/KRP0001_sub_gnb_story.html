@@ -6,7 +6,8 @@
     })
 <body>
     <!--BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB 개선 - 서브페이지만 subRenewWrap 클래스 추가-->
-    <div class="wrap subRenewWrap">
+    <!--BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB 개선 - header에 sns 기능 들어가는 경우 클래스 추가 snsHead-->
+    <div class="wrap subRenewWrap snsHead">
 
 
         <script src="/lg5-common/js/search/integratedSearch.min.js" async></script>
@@ -73,6 +74,26 @@
                             </li>
                             <!-- // 20201230 수정 -->
                         </ul>
+                    </div>
+                    <div class="story-page">
+                        <div class="sns-cont">
+                            <div class="sns-share">
+                                <div class="tooltip-wrap share"><a href="#" class="tooltip-icon ui_tooltip-target" data-fixed="fixed-right" ui-modules="TooltipTarget,TooltipTarget"><span class="blind">제품 공유하기</span></a>
+                                    <div class="tooltip-box">
+                                        <span class="title">공유</span>
+                                        <div class="sns-wrap">
+                                            <ul class="sns-list">
+                                                <li><a href="#" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>
+                                                <li><a href="#" class="ico-btn tw" title="component-twiiterShareBlank" data-link-name="twitter">트위터<span class="blind">로 페이지 공유하기</span></a></li>
+                                                <li><a href="#" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지 공유하기</span></a></li>
+                                                <li><a href="#" class="ico-btn url" data-link-name="copy_url">URL복사<span class="blind">하기</span></a></li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -2606,26 +2627,12 @@
         <!--//[E]BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB -->
 
 
-        <div class="lgestg-sns-box">
-            <div class="grid">
-                <div class="tooltip-wrap share">
-                    <a href="#" class="tooltip-icon ui_tooltip-target" data-fixed="fixed-right" ui-modules="TooltipTarget,TooltipTarget"><span class="blind">제품 공유하기</span></a>
-                    <div class="tooltip-box">
-                        <span class="title">공유</span>
-                        <div class="sns-wrap">
-                            <ul class="sns-list">
-                                <li><a href="#" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>
-                                <li><a href="#" class="ico-btn tw" title="component-twiiterShareBlank" data-link-name="twitter">트위터<span class="blind">로 페이지 공유하기</span></a></li>
-                                <li><a href="#" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지 공유하기</span></a></li>
-                                <li><a href="#" class="ico-btn url" data-link-name="copy_url">URL복사<span class="blind">하기</span></a></li>
-                            </ul>
-                        </div>
-                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+
+
+        <div class="con-wrap">
+
+        </div>
 
 
 
