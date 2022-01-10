@@ -187,38 +187,6 @@ $(window).ready(function(){
 			    }
 			});
 		});
-
-		/* BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
-		var infoDisclaimer = $('.KRC0032').find('.carousel-box');
-
-		infoDisclaimer.each(function(cdx, item){
-			//console.log("11111", $(item).find('.title').attr('id'));
-			var titleAttr = $(item).attr("id");
-			var slideID = titleAttr;
-
-			$(item).find('.drop-info .dropInfo_openBtn').on('click', function(e){
-				var mybtnAttr = $(this).attr('aria-describedby', slideID);
-
-				//console.log("콘텐츠의 아이디", titleAttr);
-				//console.log("내가 찍힌", mybtnAttr.attr('aria-describedby'));
-
-				if(titleAttr = mybtnAttr) {
-				    //console.log("111");
-				    $(item).find('.dropContent').addClass('on');
-				    //$(this).hide();
-				}
-			});
-
-			$(item).find('.drop-info .dropInfo_closeBtn').on('click', function(e){
-			    var mybtnAttr = $(this).attr('aria-describedby', slideID);
-	
-			    if(titleAttr = mybtnAttr) {
-			        //console.log("111");
-			        $(item).find('.dropContent').removeClass('on');
-			        //$(item).find('.drop-info .dropInfo_openBtn').show();
-			    }
-			});
-		});
 		/* //BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
 	});
 

@@ -982,6 +982,11 @@
                                 padding: 0px 0px 0px 12px !important;
                                 max-width: 112px;
                                 text-align: left;
+                                &:hover,
+                                &:active,
+                                &:focus {
+                                    outline: none;
+                                }
                                 &.fc-white {
                                     border-color: #fff !important;
                                     color: #fff !important;
