@@ -686,6 +686,7 @@ br.pc {
             }
             .item {
                 width:calc(25% - 24px);
+                max-width:351px;
                 padding:8px 12px;
                 @include mobile {
                     width:calc(50% - 4px);
