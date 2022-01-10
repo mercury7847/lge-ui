@@ -92,6 +92,48 @@ br.pc {
             @include mobile {
                 margin-bottom: 8px;
             }
+            &.border-type {
+                margin-top:0;
+                .tabs {
+                    display: inline-block;
+                    li {
+                        margin-left:8px;
+                        padding:0;
+                        a {
+                            position:relative;
+                            padding:0 24px;
+                            height:38px;
+                            font-size:18px;
+                            font-weight:700;
+                            line-height:36px;
+                            border:1px solid transparent;
+                            @include mobile{
+                                padding:0 10px;
+                                height:32px;
+                                font-size:14px;
+                                line-height:30px;
+                            }
+                        }
+                        &.on {
+                            a{
+                                border:1px solid #000;
+                                border-radius:19px;
+                            }
+                        }
+                        &:first-child{
+                            margin-left:0;
+                        }
+                    }
+                }
+                &:before {
+                    @include mobile{
+                        display:block;
+                    }
+                }
+                .scroll-controls{
+                    display:none;
+                }
+            }
         }
         //BTOCSITE-7335
         .tab-content {
@@ -631,7 +673,7 @@ br.pc {
     .prd-list-wrap {
         margin-top:-8px;
         @include mobile {
-            margin-top:14px;
+            margin-top:8px;
             padding:0;
         }
         .inner {
