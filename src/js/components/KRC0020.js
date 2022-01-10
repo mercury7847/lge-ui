@@ -201,7 +201,7 @@
 						//추가: BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
 						var self = this;
 						var io = new IntersectionObserver(function(entries, observer) {
-							entries.forEach((entry) => {
+							entries.forEach(function(entry){
 								if( entry.isIntersecting ) {
 									self.viewInFlag = true;
 									self.enterEvent();

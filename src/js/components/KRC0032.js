@@ -85,7 +85,7 @@ $(window).ready(function(){
 		
 		//슬라이드가 화면 중앙인지 아닌지를 체크하여 해당 이벤트 실행 -BTOCSITE-8039
 		var io = new IntersectionObserver(function(entries, observer) {
-			entries.forEach((entry) => {
+			entries.forEach(function(entry) {
 				entry.isIntersecting ? sectionEnterEvent(entry.target) : sectionLeaveEvent(entry.target);
 			});                            
 		}, {root: null, threshold: 0.5});
