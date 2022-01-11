@@ -873,6 +873,7 @@
                                 $pdCont.filter('.registerd-pd').find(self.el.listWrap).html(html);   
                                 $pdCont.filter('.registerd-pd').addClass('active').siblings().removeClass('active').find('.btn-moreview').removeClass('close').text('더보기');;
                                 $(self.el.toggleBtn).addClass('active');
+                                $("#myPrdChkfilter").prop("checked", true); //BTOCSITE-9066 추가
                                 supportHome.moreShow.btnShow();
                                 lgkorUI.hideLoading();
                             } else {
