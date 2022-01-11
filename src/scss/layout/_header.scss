@@ -2408,6 +2408,9 @@ html {
             background:rgba(0,0,0,0.7);
             z-index: 99;
         }
+        &.wrap {
+            padding-top: 61px;
+        }
         &.snsHead {
             .utility {
                 display: none;
@@ -2415,7 +2418,7 @@ html {
             .story-page {
                 display: inline-block;
                 position: absolute;
-                top: 15px;
+                top: 12px;
                 right: 15px;
             }
             .sub-renew-nav-wrap {
@@ -2452,6 +2455,17 @@ html {
         }
         > main.container {
             padding-top: 70px;
+        }
+    }
+    html:not(.mobile.mdevice) {
+        .mobile-nav-button {
+            top: 12px;
+        }
+        .story-page {
+            right: 50px;
+        }
+        .sub-renew-nav-wrap {
+            width: calc(100% - 90px);
         }
     }
 }
