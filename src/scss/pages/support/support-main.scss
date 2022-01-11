@@ -1666,7 +1666,8 @@
             display:table-cell;
             position: relative;
             width:100%;
-            padding:0 84px 0 16px;
+            //padding:0 84px 0 16px;
+            padding:0 106px 0 16px;
             font-size:16px;
             line-height: 24px;
             box-sizing:border-box;
@@ -1701,10 +1702,9 @@
             .notice-list {
                 height:71px;
                 line-height:71px;
-                //@include textEllipsis;
+                display: flex;
+                justify-content: flex-start;
                 a{
-                    display: inline-block;
-                    width: 90%;
                     @include textEllipsis;
                 }
             }
@@ -1803,9 +1803,6 @@
                 .notice-list {
                     height:40px;
                     line-height:31px;
-                    a{
-                        width: 88%;
-                    }
                 }
 
                 .slide-contents {
