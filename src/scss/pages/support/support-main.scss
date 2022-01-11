@@ -1508,7 +1508,7 @@
                 width:100%;
                 height:100%;
                 z-index:-1;
-                background: url("/lg5-common/images/CS/img-support-main-hero-pc03.jpg") no-repeat center top; //0625
+                background: url("/lg5-common/images/CS/img-support-home-hero-pc.jpg") no-repeat center top; //220111 변경
                 background-size: cover;
             }
         }
@@ -1528,7 +1528,7 @@
                 // background: none;
 
                 &:before {
-                    background-image: url("/lg5-common/images/CS/img-support-main-hero-mo03.jpg"); //0625
+                    background-image: url("/lg5-common/images/CS/img-support-home-hero-mo.jpg"); //220111 변경
                     background-size:cover;
                     background-position:center center; //0625
                 }
