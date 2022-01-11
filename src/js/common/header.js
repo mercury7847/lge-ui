@@ -736,7 +736,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 itemSelector: "> li",
                 toggleSelector: "> .ui_accord_toggle"
             }).on('accordionbeforeexpand', function(e, data){
-                $(data.oldContent).find('.ui_gnb_accordion').vcAccordion("collapseAll");
+                // 모니터링 351 : 모바일 네비 아코디언 동작 오류 수정
+                $(data.content).closest('.column').siblings().find('.ui_gnb_accordion').vcAccordion("collapseAll");
             }).on('accordioncollapse', function(e, data){
                 $(data.content).find('.ui_gnb_accordion').vcAccordion("collapseAll");
             });
