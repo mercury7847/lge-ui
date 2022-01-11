@@ -153,6 +153,8 @@
 
         $('input[type=number]').on('keydown', function(e){
             return e.keyCode !== 69;
+        }).on('mousewheel', function(e){ // BTOCSITE-5938-478
+            if($(this).attr('name')=='phoneNumber'||$(this).attr('name')=='telephoneNumber') return false;
         });
     }
 
