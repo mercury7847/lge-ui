@@ -2046,7 +2046,7 @@
                 text-align: center;
                 vertical-align: middle;
                 color:#000;
-                margin:72px 0 24px
+                margin:72px 0 41px;
             }
             .list-filter {
                 display: inline-block;
@@ -2232,7 +2232,7 @@
             .headline {
                 //text-align: center;
                 position: relative;
-                height: 126px;
+                height: 111px;
                 .title {
                     display: block;
                 }
@@ -2270,7 +2270,7 @@
         @include mobile {
             .headline {
                 position: relative;
-                height: 126px;
+                //height: 111px;
                 .title {
                     font-size:20px;
                     line-height: 30px;
