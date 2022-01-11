@@ -164,6 +164,13 @@ $(window).ready(function(){
 			var titleAttr = $(item).attr("id");
 			var slideID = titleAttr;
 
+			
+			if($(item).find('.disclaimer-bottom .overlay-image').size() === 1) {
+				$(item).find('.disclaimer-container').removeClass('PSbottom')
+			} else {
+				$(item).find('.disclaimer-container').addClass('PSbottom')
+			}
+
 			$(item).find('.drop-info .dropInfo_openBtn').on('click', function(e){
 				var mybtnAttr = $(this).attr('aria-describedby', slideID);
 
