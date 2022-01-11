@@ -1690,7 +1690,7 @@
             }
             .flag-wrap {
                 display:inline-block;
-                vertical-align: middle;
+                vertical-align: top;
                 margin-left:6px;
                 .flag {
                     font-size:12px;
@@ -1701,7 +1701,12 @@
             .notice-list {
                 height:71px;
                 line-height:71px;
-                @include textEllipsis;
+                //@include textEllipsis;
+                a{
+                    display: inline-block;
+                    width: 90%;
+                    @include textEllipsis;
+                }
             }
             .slide-contents {
                 overflow:hidden;
@@ -1797,9 +1802,9 @@
 
                 .notice-list {
                     height:40px;
-                    line-height:40px;
-                    @include mobile{                        
-                        line-height:31px;
+                    line-height:31px;
+                    a{
+                        width: 88%;
                     }
                 }
 
