@@ -1315,6 +1315,48 @@
                         background-size: 100% 100%;
                     }
                 }
+                /* BTOCSITE-10594 오브제컬렉션 제품 추가 요청 */
+                &.list15 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/tvs.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-tvs-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list16 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/washing.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-washing-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                } 
+                &.list17 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/dryers.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-tvs-dryers.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                &.list18 {
+                    background: #eae9e7 url("/lg5-common/images/OBJ/main/aerotower.png") no-repeat center center;
+                    @include mobile {
+                        background-size: 90%;
+                    }
+                    .bgList {
+                        background: url("/lg5-common/images/OBJ/main/images-co-list-aerotower-hover.jpg") no-repeat;
+                        background-size: cover;
+                    }
+                }
+                /* //BTOCSITE-10594 오브제컬렉션 제품 추가 요청 */
                 >a {
                     position: relative;
                     z-index: 10;
@@ -1322,12 +1364,14 @@
                     height: 560px;
                     padding: 492px 32px 0px;
                     font-size: 16px;
-                    line-height: 1.5;
+                    line-height:26px; //BTOCSITE-10594 오브제컬렉션 제품 추가 요청
                     letter-spacing: -0.1px;
                     color: #787878;
                     @include mobile {
                         height: 58vw;
                         padding: 50vw 15px 0px;
+                        font-size:15px; //BTOCSITE-10594 오브제컬렉션 제품 추가 요청
+                        line-height:23px; //BTOCSITE-10594 오브제컬렉션 제품 추가 요청
                     }
                     &:hover {
                         padding: 440px 32px 0px;
