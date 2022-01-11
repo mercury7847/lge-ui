@@ -7,10 +7,6 @@
             setting();
             bindEvents();
 
-            console.log(
-            
-            )
-            
             // 모니터링 426 :  뒤로 가기시 차이점 오류 수정
             if($('#differentCompare').is(":checked")) {
                 $('#differentCompare').trigger('change');
@@ -21,6 +17,11 @@
 
     function setting(){
         var self = this;
+
+        // 모니터링 357 :  뒤로가기시 스크롤탑 위치 메뉴얼로 변경
+        if (history.scrollRestoration) {
+            window.history.scrollRestoration = 'manual';
+        }
 
         self.tabClones = [];
         $('.tabs-scroll-wrap .tabs li').each(function(idx, item){
