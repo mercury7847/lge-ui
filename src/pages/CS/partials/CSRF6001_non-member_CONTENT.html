@@ -20,7 +20,7 @@
             <div class="home-cont-top">
                 <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_문구 변경 및 slider 영역 삭제- S -->
                 <h1 class="cont-top-tit">무엇을 도와드릴까요?</h1>
-                <h3 class="cont-sub-copy">제품 문제 해결 방법, 상담/서비스 예약 등을 고객센터 전화 연결없이 빠르게<br> 확인/해결할 수 있습니다.</h3>
+                <h3 class="cont-sub-copy">제품 문제 해결 방법, 상담/서비스 예약 등을 고객센터 전화 연결없이 빠르게<br class="mo-only"> 확인/해결할 수 있습니다.</h3>
                 <!-- BTOCSITE-9066 신규 WSG 적용 - 고객지원_문구 변경 및 slider 영역 삭제 - E -->
             </div>
         </div>
@@ -589,20 +589,22 @@
             <div class="slide-cover">
                 <div class="main-service-slider">
                     @@for ( var i=0; i < 9; i++ ) {
+                    <!--BTOCSITE-9066 마크업 변경 220112 - S -->
                     <div class="slide-item">
-                        <a href="">
-                            <div class="slide-thumb-area">
-                                <img src="/lg5-common/images/CS/img_main_service00.jpg" alt="">
-                            </div>
-                            <div class="slide-cont-area">
-                                <strong class="slide-title">
-                                    새로운 소식을
-                                    카드뉴스로
-                                    만나보세요.
-                                </strong>
-                            </div>
-                        </a>
+                        <div class="slide-item-wrap">
+                            <a href="">
+                                <span class="slide-thumb-area">
+                                    <img src="/lg5-common/images/CS/img_main_service00.jpg" alt="">
+                                </span>
+                                <div class="slide-cont-area">
+                                    <strong class="slide-title">
+                                        쉽고 편리한<br>서비스를 위한<br>보유 제품 등록 Tip
+                                    </strong>
+                                </div>
+                            </a>
+                        </div>                
                     </div>
+                    <!--BTOCSITE-9066 마크업 변경 220112 - E -->
                     }
                 </div>
                 <!-- slick-arrow 비노출 처리
@@ -727,7 +729,7 @@
             <div class="award-list" data-auto-type="dot">
                 <div class="slide-item">
                     <a href="">
-                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_kca.png" alt="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_kca.png" alt="">
                         </div>
                         <div class="slide-text">
                             소비자중심경영
@@ -736,7 +738,7 @@
                 </div>
                 <div class="slide-item">
                     <a href="">
-                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_nsa.png" alt=""></div>
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_nsa.png" alt=""></div>
                         <div class="slide-text">
                             한국서비스<br>품질 우수 기업
                         </div>
@@ -744,7 +746,7 @@
                 </div>
                 <div class="slide-item">
                     <a href="">
-                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_kssqi.png" alt=""></div>
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_kssqi.png" alt=""></div>
                         <div class="slide-text">
                             컨택센터 혁신상
                         </div>
@@ -752,7 +754,7 @@
                 </div>
                 <div class="slide-item">
                     <a href="">
-                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_esq.png" alt=""></div>
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_esq.png" alt=""></div>
                         <div class="slide-text">
                             가전부문 최우수 기업
                         </div>
@@ -762,7 +764,7 @@
 
                 <div class="slide-item">
                     <a href="">
-                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_kca.png" alt="">
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_kca.png" alt="">
                         </div>
                         <div class="slide-text">
                             한국서비스<br>품질 우수 기업
@@ -771,7 +773,7 @@
                 </div>
                 <div class="slide-item">
                     <a href="">
-                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_nsa.png" alt=""></div>
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_nsa.png" alt=""></div>
                         <div class="slide-text">
                             가전부문 최우수 기업
                         </div>
@@ -779,7 +781,7 @@
                 </div>
                 <div class="slide-item">
                     <a href="">
-                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_kssqi.png" alt=""></div>
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_kssqi.png" alt=""></div>
                         <div class="slide-text">
                             가전부문 최우수 기업
                         </div>
@@ -787,7 +789,7 @@
                 </div>
                 <div class="slide-item">
                     <a href="">
-                        <div class="slide-thumb"><img src="/lg5-common/images/CS/img_award_esq.png" alt=""></div>
+                        <div class="thumb"><img src="/lg5-common/images/CS/img_award_esq.png" alt=""></div>
                         <div class="slide-text">
                             한국서비스<br>품질 우수 기업
                         </div>
