@@ -207,7 +207,7 @@
 								self.viewInFlag = true;
 								self.enterEvent();
 							}
-							$(window).on('scroll.viewportEvent',function() {
+							$(window).off('scroll.viewportEvent').on('scroll.viewportEvent',function() {
 								$('.KRC0020').each(function(i) {
 									if(KRC0020PKG[i].autoPlay) {
 										if(checkVisible($(this))) {
