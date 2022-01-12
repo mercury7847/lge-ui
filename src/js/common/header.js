@@ -247,10 +247,23 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 var active = self.$hamburger.hasClass('active');
 
                 if(active){
+                    var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
+                    if(!ignoreOverflow){
+                        // BTOCSITE-5938-419 scroll-lock 클래스 추가 : 팝업 뛰울시 바닥페이지 스크롤 밀림 방지 class
+                        $('body').addClass('scroll-lock');
+                    }
+
                     lgkorUI.addHistoryBack(self.cid, function(){                    
                         self._menuToggle(true);
                     });
-                } else{                    
+                } else{                
+                    var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
+                    if(!ignoreOverflow){
+                        // BTOCSITE-5938-419 scroll-lock 클래스 추가 : 팝업 뛰울시 바닥페이지 스크롤 밀림 방지 class
+                        $('body').removeClass('scroll-lock');
+                    }
+
+
                     lgkorUI.removeHistoryBack(self.cid);
                 }
                 
