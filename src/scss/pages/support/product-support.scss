@@ -879,6 +879,11 @@
                     margin-top:8px;
                     @include font-medium;
                 }
+                // BTOCSITE-10626 model 추가
+                .model {
+                    margin:8px 0;
+                    @include font-medium;
+                }
                 .link-wrap {
                     margin-top:32px;
                     .btn-open {
@@ -930,7 +935,7 @@
                     padding:0;
                     order:-1;
                     .flag-wrap ~ .link-wrap .btn-open {
-                        top:22px;
+                        top:60px; //BTOCSITE-10626 위치 변경
                     }
                     .tit {
                         padding-right:40px;
