@@ -39,8 +39,14 @@
                 .btn {
                     display:inline-block;
                     margin-left: 8px;
+                    &.border{
+                        background:#fff;
+                    }
                     &:first-child {
                         margin-left: 0;
+                    }
+                    &.disabled{
+                        border:0;
                     }
                 }
             }

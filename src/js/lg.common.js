@@ -1822,6 +1822,7 @@ var goAppUrl = function(path) {
 
                     if(isToast && lgkorUI.stringToBool(data.success)) {
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
+                        $('.toast-text').append('<br><a href="#" class="btn-link white sm">장바구니 이동하기</a>'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
                     }
                 } else {
                     if(data && data.alert && !vcui.isEmpty(data.alert)) {
