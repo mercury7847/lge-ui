@@ -92,9 +92,9 @@ $(window).ready(function(){
 		
 		$('.KRC0032').find(".ui_carousel_slider").each(function(cdx, slide){
 			var $slide 			= $(this),
-				autoPlay 		= $slide.data('autoPlay') != undefined && $slide.data('autoPlay') != "" ? $slide.data('autoPlay') : true,
-				autoPlaySpeed 	= $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') != "" ? $slide.data('autoSpeed') : 3000,
-				autoCount 		= $slide.data('autoCount') != undefined && $slide.data('autoCount') != "" ? $slide.data('autoCount') : false;
+				autoPlay 		= $slide.data('autoplay') != undefined && $slide.data('autoplay') !== "" ? $slide.data('autoplay') : true,
+				autoPlaySpeed 	= $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') !== "" ? $slide.data('autoSpeed') : 3000,
+				autoCount 		= $slide.data('autoCount') != undefined && $slide.data('autoCount') !== "" ? $slide.data('autoCount') : false;
 
 			if( autoCount != 'loop' && autoCount != undefined) {
 				$slide.data('currentCount', 0);
