@@ -327,7 +327,7 @@
             border-top:0;
             .banner-tit {
                 font-size:20px;
-                line-height: 30px;
+                line-height: 26px;
             }
         }
     }
@@ -482,6 +482,7 @@
             font-size:24px;
             line-height: 32px;
             margin:16px 0 0;
+            font-weight: 500;
         }
         .btn-fast-support {
             display: none;
@@ -1634,7 +1635,7 @@
         height:72px;
         background-color: rgba(0,0,0,0.4);
         margin-top:-72px;
-        border-top:1px solid #fff;
+        border-top:1px solid rgba(255,255,255,.4);
         // BTOCSITE-9066 수정
         @include mobile{
             height: 74px;
@@ -1768,11 +1769,9 @@
             }
         }
         @include mobile {
-            .notice-inner {                
-                //height: 74px;
+            .notice-inner {
                 display:block;
                 padding:12px 16px 18px;
-                max-width:360px;
             }
 
             .notice-title {
@@ -1849,8 +1848,7 @@
             }
         }
         .search-input {
-            width:100%;            
-            height:66px;
+            width:100%;
             input[type=text]  {
                 padding:18px 64px 18px 32px;
                 border-radius:33px;
@@ -1858,6 +1856,7 @@
                     linear-gradient(#fff, #fff) padding-box,
                     linear-gradient(101deg, #8d71ec, #ff537c 99%) border-box;
                 border: 2px solid transparent;
+                box-shadow: none;
             }
             &.clear {
                 input[type=text]  {
@@ -1895,7 +1894,6 @@
                 }
             }
             .search-input {
-                height:62px;
                 input[type=text]  {
                     padding:16px 41px 16px 20px;
                 }
@@ -1996,7 +1994,7 @@
             .login-tit {
                 margin-bottom:24px;
                 font-size:24px;
-                line-height:1.32;
+                line-height:30px;
             }
             .login-useful-list {
                 ul {
@@ -2033,7 +2031,7 @@
 
     //자주 찾는 컨텐츠
     .popular-find {
-        margin-top:70px;
+        margin-top:72px;
         a{
             text-align: center;
         }
@@ -2046,74 +2044,41 @@
                 text-align: center;
                 vertical-align: middle;
                 color:#000;
-                margin:72px 0 41px;
+                margin-bottom:32px;
+                //margin:72px 0 41px;
             }
-            .list-filter {
-                display: inline-block;
-                margin-left:16px;
-                vertical-align: middle;
-
-                span {
+            .btn-area {
+                height: 45px;
+                .btn-solution-link {
                     display: inline-block;
+                    position: absolute;
+                    right:0;
+                    bottom:0;
+                    padding:12px 27px 12px 32px;
                     font-size:16px;
+                    font-weight:500;
+                    text-align: center;
                     color:#000;
-                }
-                .btn-filter-toggle {
-                    display: inline-block;
-                    position:relative;
-                    width:60px;
-                    height:32px;
-                    margin-left:8px;
-                    background: #aaa;
-                    border-radius:20px;
-                    border:2px solid #aaa;
-                    box-sizing:border-box;
-                    transition:background-color .3s ease-in-out, border-color .3s ease-in-out;
-
-                    &:before {
+                    background: #fff;
+                    border-radius:23px;
+                    border: 1px solid #000;
+    
+                    &:after {
                         content:"";
-                        display: block;
-                        width:28px;
-                        height:28px;
-                        background: #fff;
-                        border-radius:50%;
-                        transition:.3s transform ease-in-out;
-                    }
-
-                    &.active {
-                        background-color: #da0f47;
-                        border-color: #da0f47;
-                        &:before {
-                            transform:translateX(100%);
-                        }
+                        display: inline-block;
+                        width:15px;
+                        height:15px;
+                        margin-left:2px;
+                        margin-bottom: 2px;
+                        background: url("/lg5-common/images/icons/btn-arr-16-black.svg") no-repeat 0 0/100% 100%;
+                        vertical-align: middle;
+    
                     }
                 }
-            }
-
-            .btn-solution-link {
-                display: inline-block;
-                position: absolute;
-                right:0;
-                bottom:0;
-                padding:12px 27px 12px 32px;
-                font-size:16px;
-                font-weight:500;
-                text-align: center;
-                color:#000;
-                background: #fff;
-                border-radius:23px;
-                border: 1px solid #000;
-
-                &:after {
-                    content:"";
-                    display: inline-block;
-                    width:15px;
-                    height:15px;
-                    margin-left:2px;
-                    margin-bottom: 2px;
-                    background: url("/lg5-common/images/icons/btn-arr-16-black.svg") no-repeat 0 0/100% 100%;
-                    vertical-align: middle;
-
+                .sort-list{
+                    position: absolute;
+                    left:0;
+                    bottom:0;
                 }
             }
         }
@@ -2123,7 +2088,7 @@
             .btn-moreview {
                 padding: 10px 32px 12px;
                 border-radius: 23px;
-                margin: 20px auto 0;
+                margin: 24px auto 0;
                 span{
                     font-size:16px;
                     line-height: 24px;
@@ -2137,7 +2102,7 @@
 
         .popular-list-wrap {
             position: relative;
-            margin-top:16px;
+            margin-top:24px;
             margin-left:-12px;
             margin-right:-12px;
             @include clearfix;
@@ -2231,27 +2196,25 @@
             margin-top:50px;
             .headline {
                 //text-align: center;
-                position: relative;
-                height: 111px;
+                position: relative;     
                 .title {
                     display: block;
+                    margin-bottom:38px;
                 }
-                .list-filter {
-                    display:block;
-                    margin-top:32px;
-                    margin-left:0;
-                    text-align: right;
-                }
-    
-                .btn-solution-link {
+                .btn-area {
+                    height: 36px;
+                    .btn-solution-link {
                    
-                    position: absolute;
-                    right: 0;
-                    bottom:0;
-                    margin-bottom:0;
-                    padding: 8px 15px 7px 20px;
+                        position: absolute;
+                        right: 0;
+                        bottom:0;
+                        margin-bottom:0;
+                        padding: 8px 15px 7px 20px;
+                    }
                 }
+                        
             }
+            
             .popular-list-wrap {
                 margin-left:0;
                 margin-right:0;
@@ -2268,50 +2231,34 @@
         }
 
         @include mobile {
+            margin-top:36px;
             .headline {
-                position: relative;
-                //height: 111px;
+                height: inherit;
                 .title {
                     font-size:20px;
-                    line-height: 30px;
-                    margin:36px 0 19px;
+                    line-height: 26px;
+                    margin-bottom:19px;
                 }
-                .list-filter {
-                    span {
+                .btn-area {
+                    height: 35px;
+                    .btn-solution-link {
                         font-size:13px;
-                    }
-                    .btn-filter-toggle {
-                        width:54px;
-                        height:28px;
-                        margin-left:8px;
+                        border-radius:20px;
+                        position: absolute;
+                        right: 0;
+                        bottom:0;
+                        margin-bottom:0;
+                        padding: 8px 15px 7px 20px;
     
-                        &:before {
-                            width:24px;
-                            height:24px;
-                        }
                     }
-                }
-    
-                .btn-solution-link {
-                    font-size:13px;
-                    border-radius:20px;
-                    position: absolute;
-                    right: 0;
-                    bottom:0;
-                    margin-bottom:0;
-                    padding: 8px 15px 7px 20px;
-
-                }
-                .sort-list{
-                    position: absolute;
-                    left:0;
-                    bottom:10px;
-                }
+                    .sort-list{
+                        bottom:7px; 
+                    }
+                }                
             }
     
             .popular-list-wrap {
-                margin-top:12px;
-    
+                margin-top:14px;
                 .item-list {
                     a {
                         padding:16px 20px 20px;
@@ -2434,7 +2381,7 @@
 
                     .tit {
                         margin-bottom:0;
-                        padding:8px 0;
+                        padding:0  0 8px;
                     }
 
                     .input-wrap {
@@ -2724,6 +2671,15 @@
                 .form-wrap {
                     .form-head {
                         margin-bottom:24px;
+                        display: flex;
+                        justify-content: space-between;
+                        .chk-wrap {
+                            flex-grow: 2;
+                        }
+                        .btn-link {
+                            text-align: right;
+                            flex-grow: 1;
+                        }
                     }
                     .form-col + .form-col {
                         margin-top:20px;
@@ -2826,6 +2782,7 @@
                     width:calc(100vw - 16px);
                     padding:0 12px;
                     border-radius: 8px;
+                    box-sizing: content-box;
                     > a {
                         display: block;
                     }
@@ -3007,7 +2964,7 @@
             .item {
                 float:none;
                 width:100%;
-                padding:0 16px 8px;
+                padding:0 12px 8px;
                 &-cont {
                     padding:20px 20px;
                     font-size:15px;
@@ -3017,7 +2974,8 @@
                     height: 150px;
     
                     img {
-                        
+                        // max-width: 328px;
+                        // max-height: 150px;
                     }
                 }
             }
@@ -3032,10 +2990,10 @@
             display: flex;
             justify-content: center;
             border-bottom:16px solid #f4f4f4;
-            padding:0 20px 100px;                
+            padding:0 32px 100px 20px;
             @include mobile{
                 display: block;
-                padding: 0 0 30px 22px;
+                padding: 0 16px 30px 22px;
                 border-bottom:12px solid #f4f4f4;
             }
             .items-wrap {
@@ -3118,7 +3076,10 @@
                         border-bottom:0;
                         width:50%;
                         padding-top:12px;
-                        padding-right:22px;
+                        //padding-right:22px;
+                        &:nth-child(2n-1){
+                            padding-right: 22px;
+                        }
                     }                    
                     a{
                         display: block;
@@ -3360,7 +3321,7 @@
                 &-item {
                     width: 143px;
                     height: 180px;
-                    padding:20px 25px 40px 25px;
+                    padding:20px 25px 25px;
                     margin: 1px 4px 16px;
                     > a {
                         width:100%;
@@ -3368,14 +3329,19 @@
                         flex-direction: column;
                         text-align: center;
                     }
+                    
+                }
+                &-thumb{
+                    margin-bottom: 15px;
+                    flex-grow:1;
                 }
                 &-text {
                     font-size:14px;
                     margin-left:0;
-                    max-height: 40px;
                     line-height: 20px;
                     justify-content: flex-start;
                     margin-bottom:10px;
+                    flex-grow:2;
                 }
             }
             .slick-arrow {
