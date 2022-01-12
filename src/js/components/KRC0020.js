@@ -6,12 +6,14 @@
 
 		//vcui.require 위치 이동 - BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
 		vcui.require(['ui/carousel', 'libs/intersection-observer.min'], function () {
+			var KRC0020PKG = new Array(); // BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건(IE)
 			$('.KRC0020').each(function(){
 				var root = this;	
 	
 				var KRC0020 = {
 					init: function() {
-						var self = this;	
+						var self = this;
+						KRC0020PKG.push(self);// BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건(IE)
 						self.setting();
 						self.bindEvents();
 
@@ -200,18 +202,50 @@
 					viewportEvent: function(){
 						//추가: BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
 						var self = this;
-						var io = new IntersectionObserver(function(entries, observer) {
-							entries.forEach(function(entry){
-								if( entry.isIntersecting ) {
-									self.viewInFlag = true;
-									self.enterEvent();
-								} else {
-									self.viewInFlag = false;
-									self.leaveEvent();
-								}
-							});                            
-						}, {root: null, threshold: 0.5})
-						io.observe(root);
+						if(vcui.detect.isIE) { // BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건(IE)
+							if(checkVisible(self.$carousel)) {
+								self.viewInFlag = true;
+								self.enterEvent();
+							}
+							$(window).on('scroll.viewportEvent',function() {
+								$('.KRC0020').each(function(i) {
+									if(KRC0020PKG[i].autoPlay) {
+										if(checkVisible($(this))) {
+											KRC0020PKG[i].viewInFlag = true;
+											KRC0020PKG[i].enterEvent();
+										}else {
+											KRC0020PKG[i].viewInFlag = false;
+											KRC0020PKG[i].leaveEvent();
+										}
+										
+									}
+								})
+							})
+	
+							function checkVisible( elm, eval ) {
+								eval = eval || "object visible";
+								var viewportHeight = $(window).height(),
+									scrolltop = $(window).scrollTop(),
+									y = $(elm).offset().top,
+									elementHeight = $(elm).height();   
+								
+								if (eval == "object visible") return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
+								if (eval == "above") return ((y < (viewportHeight + scrolltop)));
+							}
+						} else {
+							var io = new IntersectionObserver(function(entries, observer) {
+								entries.forEach(function(entry){
+									if( entry.isIntersecting ) {
+										self.viewInFlag = true;
+										self.enterEvent();
+									} else {
+										self.viewInFlag = false;
+										self.leaveEvent();
+									}
+								});                            
+							}, {root: null, threshold: 0.5})
+							io.observe(root);
+						}
 					}
 				};
 		
