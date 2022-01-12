@@ -277,10 +277,9 @@
                           breakpoint: 768,
                           settings: {
                             arrows:false,
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            variableWidth:true,
-                            outerEdgeLimit: true,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            variableWidth:true
                           }
                         }
                     ]
@@ -409,7 +408,7 @@
                         }
     
                         if(slick.$slides.length > slick.options.slidesToScroll) {
-                            $container.find('.btn-play').show();
+                            $container.find('.notice-inner > .btn-play').show(); // BTOCSITE-9066 award auto-play 제거 
                         } else {
                             $container.find('.btn-play').hide();
                         }
@@ -422,7 +421,7 @@
                     var $container = $this.closest('[data-role="slide-container"]');
 
                     if(slick.$slides.length > slick.options.slidesToScroll) {
-                        $container.find('.btn-play').show();
+                        $container.find('.notice-inner > .btn-play').show(); // BTOCSITE-9066 award auto-play 제거 
                     } else {
                         $container.find('.btn-play').hide();
                     }
