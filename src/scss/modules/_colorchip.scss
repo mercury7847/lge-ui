@@ -2784,7 +2784,7 @@
 	/* //BTOCSITE-2758 시블링 컬러칩코드 추가요청 */
 
 	//[S] BTOCSITE-4224 PLP,PDP 시블링
-
+	//[S] BTOCSITE-10889 컬러칩 샘플 추가
 	//objet_botanic: -96px -240px, 보타닉 컬러는 기존 선언된 class 와 중복되어 기존소스로 사용하는것으로 함.
 	$colorChipData: (
 		av_charcoal-black: -48px -216px,
@@ -2822,11 +2822,9 @@
 		air_rose-gold: 0 -336px,
 		silver_manhattan: -24px -336px,
 
-		//[S] BTOCSITE-10889 컬러칩 샘플 추가
 		kvadrat_beige: -48px -336px,
 		kvadrat_redwood: -72px -336px,
 		kvadrat_green: -96px -336px
-		//[E] BTOCSITE-10889 컬러칩 샘플 추가
 	);
 
 	@each $color, $bgPosition in $colorChipData {
@@ -2848,7 +2846,7 @@
 		}
 	}
 	//[E] BTOCSITE-4224 PLP,PDP 시블링
-
+	//[E] BTOCSITE-10889 컬러칩 샘플 추가
 }
 
 
