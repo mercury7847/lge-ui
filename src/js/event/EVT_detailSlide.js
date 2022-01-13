@@ -45,7 +45,7 @@
             setting: function() {
                 var self = this;
 
-                var EVT_detail_slideList = $('.ui_carousel_4_slider').find('.slide-track');
+                var EVT_detail_slideList = $('.event-carousel').find('.slide-track');
                 var ajaxUrl = $('.evt_slide_warp').attr('data-list-url');
                 console.log('ajaxUrl', ajaxUrl)
                 lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
@@ -81,7 +81,7 @@
                     EVT_detail_slideList.append(vcui.template(EVT_ItemTemplate, list));
 
                     //슬라이드 옵션
-                    $('.ui_carousel_4_slider').vcCarousel({
+                    $('.event-carousel').vcCarousel({
                         infinite: false,
                         autoplay: false,
                         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
