@@ -30,7 +30,7 @@ var lls = {
         //self.backgroundSwitch();
         self.bindEvent();
         self.heroSlider();
-        //self.highlightSlider(); //BTOCISTE-9172 
+        self.highlightSlider();
         self.onbroadProductSlider();
         //self.appPushVisibleCheck();  BTOCSITE-5368
         self.requestSubscribeCheck()  //BTOCSITE-5368
