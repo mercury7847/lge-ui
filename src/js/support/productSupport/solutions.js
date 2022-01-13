@@ -111,7 +111,7 @@
                 topicNm: '전체',
                 subTopic: '',
                 subTopicNm: '전체',
-                sort: 'new',
+                sort: 'update',
                 page: 1,
                 research: false,
                 category: '',
