@@ -474,6 +474,7 @@
                         &.btn-link {
                             display: inline-block;
                             margin-top: 12px;
+                            line-height: 20px;
                         }
                         // e : BTOCSITE-9172
                     }
@@ -531,9 +532,11 @@
                     &-item {
                         width:37.5vw !important;
                         padding:0 5px;
+                        // s : BTOCSITE-9172
                         .btn-link {
                             font-size: 12px;
                         }
+                        // e : BTOCSITE-9172
                     }
                     &-thumb-area {
                         img {
