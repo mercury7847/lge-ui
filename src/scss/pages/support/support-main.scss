@@ -2366,9 +2366,12 @@
                         top:4px;
                     }
                 }
-                
+                .form-col + .form-col {
+                    margin-left:8px;
+                }
+
                 .forms {
-                    margin-top:47px;
+                    margin-top:30px;
 
                     &.form-head {
                         margin-top:0;
@@ -2868,7 +2871,12 @@
                     }
                 }
             }
+        
         }
+        .atEnd {
+            transform: 0;
+        }
+
         .slide-button-controls {
             position: absolute;
             top:calc(50% - 10px);
