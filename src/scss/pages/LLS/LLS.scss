@@ -531,6 +531,9 @@
                     &-item {
                         width:37.5vw !important;
                         padding:0 5px;
+                        .btn-link {
+                            font-size: 12px;
+                        }
                     }
                     &-thumb-area {
                         img {
