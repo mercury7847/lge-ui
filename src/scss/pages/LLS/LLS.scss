@@ -95,7 +95,7 @@
             height:640px;
 
             @include mobile {
-                height:370px;
+                height: 102vw;
             }
 
             .slick-dots {
@@ -254,10 +254,10 @@
             }
 
             @include mobile {
-                height:370px;
+                height: 102vw;
 
                 &-bg {
-                    background-size:cover;
+                    background-size:100% 100%;
                 }
 
                 &-flag {
@@ -712,8 +712,7 @@
                 }
 
                 .item-list {
-                    //BTOCSITE-9172 inner로 수정
-                    &-inner {
+                    &-anchor {
                         display: flex;
                         position: relative;
                         height:100%;
@@ -725,45 +724,20 @@
                         width:40.9%;
                         max-width:162px;
                         margin-right:24px;
-
                         img {
                             width:100%;
                         }
                     }
-                    //BTOCSITE-9172 추가
-                    &-anchor {
-                        display: block;
-                        position:relative;
-                        overflow:hidden;
-                    }
-                    //BTOCSITE-9172 추가
-                    &-time {
-                        display: inline-block;
-                        position: absolute;
-                        left:12px;
-                        top:12px;
-                        width:44px;
-                        text-align: center;
-                        font-size:12px;
-                        line-height:24px;
-                        color:#fff;
-                        background: rgba(0,0,0,0.4);
-                        border-radius:4px;
-                    }
-
-                    //BTOCSITE-9172 수정
                     &-content {
-                        display: flex;
-                        flex-direction: column;
                         flex:1;
                         position: relative;
-                        padding:23px 0 8px;
-                        justify-content: space-between;
-                       
-                    }
-                    //BTOCSITE-9172 추가
-                    &-text {
-                        cursor: pointer;
+                        padding:24px 0 30px;
+                        .btn-link {
+                            display: inline-block;
+                            position: absolute;
+                            bottom:0;
+                            left:0;
+                        }
                     }
                     &-flag {
                         display:block;
@@ -773,91 +747,38 @@
                         color:$color-primary
                     }
 
-                    //BTOCSITE-9172 수정
                     &-title {
-                        $lineHeight:28px;
                         display: block;
                         font-size:18px;
                         font-weight:bold;
-                        line-height:$lineHeight;
+                        line-height:1.56;
                         color:#000;
-                        word-break: break-all;
-                        
-                        max-height:$lineHeight * 3;
-                        @include textEllipsisClamp(3);
-                    }
-
-                    &-btn {
-                        display: flex;
-                        flex-direction: column;
-
-                        .btn-column {
-                            & + .btn-column {
-                                margin-top:10px;
-                            }
-                        }
                     }
 
                     @include mobile {
-                        //BTOCSITE-9172 inner로 수정
-                        &-inner {
+                        &-anchor {
                             height:auto;
                             min-height:168px;
                             padding:12px;
                         }
                         &-thumb {
-                            width:81px;
+                            width:26.6447%;
                             max-width:100%;
                             margin-right:12px;
                         }
-
-                        &-time {
-                            left:6px;
-                            top:6px;
-                            width:40.5px;
-                            font-size:11px;
-                            line-height:21px;
-                        }
                         &-content {
-                            padding:12px 0 8px;
+                            padding:12px 0 26px;
+                            .btn-link {
+                                bottom:5px;
+                            }
                         }
                         &-flag {
                             margin-bottom:4px;
                             font-size:11px;
                         }
                         &-title {
-                            $line-height:21px;
                             font-size:13px;
-                            line-height:$line-height;
-                            max-height:$line-height*2;
-                            -webkit-line-clamp: 2;
-
-                            @media screen and (max-width:360px){
-                                -webkit-line-clamp: 3;
-                                max-height:$line-height*3;
-                            }
-                        }
-
-                        &-btn {
-                            flex-direction: row;
-
-                            @media screen and (max-width:360px){
-                                flex-direction: column;
-                                margin-top:10px;
-                            }
-                            .btn-link {
-                                font-size:12px; 
-                            }
-                            .btn-column {
-                                & + .btn-column {
-                                    margin-top:0;
-                                    margin-left:16px;
-                                    @media screen and (max-width:360px){
-                                        margin-top:5px;
-                                        margin-left:0;    
-                                    }
-                                }
-                            }
+                            line-height:1.62;
                         }
                     }
                 }    
