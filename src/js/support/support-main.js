@@ -597,6 +597,22 @@
                     self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').prop('disabled', true).val('');
                     self.el.container.find('.btn-reservation').addClass('disabled');
                 },
+                //BTOCSITE-9066 추가
+                inputCssChk : function(){
+                    //210113 추가 - 수정 필요
+                    var self = this;
+                    var formHead = self.el.container.find('.form-head');
+                    var formHeadErrBlock = formHead.find('.err-block');
+
+                    if(vcui.detect.isMobileDevice){
+                        if(formHeadErrBlock.css('display') === 'none' && formHeadErrBlock.hasClass('active')){
+                            formHead.css('margin-bottom','45px');
+                        } else {
+                            formHead.css('margin-bottom','24px');
+                            formHeadErrBlock.addClass('active');
+                        }
+                    }
+                },
                 init : function(){
                     var self = this;
 
@@ -612,6 +628,10 @@
                     //         self.inputDisable();
                     //     }
                     // });
+                    //BTOCSITE-9066 추가
+                    self.el.agreeChk.on('change',function (e){
+                        self.inputCssChk();
+                    })
 
                     self.el.popup.find('.btn-agree').on('click', function(e){
                         e.preventDefault();
@@ -671,19 +691,6 @@
                             self.el.container.find('#serviceDetailAddress').val('').prop('disabled', false);
                         }); 
                     });
-
-                    //210113 추가 - 수정 필요
-                    var formHead = self.el.container.find('.form-head');
-                    var formHeadErrBlock = formHead.find('.err-block');
-
-                    if(vcui.detect.isMobileDevice){
-                        // if(formHeadErrBlock.css('display') === 'none' || !formHeadErrBlock.css('display')){
-                        //     formHead.css('margin-bottom') === "24px";
-                        // } else {
-                        //     formHead.css('margin-bottom') === "45px";
-                        // }
-                        formHead.css('margin-bottom') === "45px";
-                    }
                 }
             },
             reservInquiry : {
