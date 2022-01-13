@@ -214,7 +214,7 @@
                             })
                         }
                         e.preventDefault();
-                    })
+                    })                
                 }
             },
             supportList : {
@@ -260,18 +260,24 @@
                     slidesToScroll: 4,
                     infinite:false,
                     variableWidth:false,
-                    outerEdgeLimit: false,
+                    outerEdgeLimit: false,                    
                     prevArrow : $context.find('.slick-prev'),
                     nextArrow : $context.find('.slick-next'),
                     responsive: [
                         {
-                          breakpoint: 1200,
-                          settings: {
-                            arrows:true,
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                            variableWidth:false
-                          }
+                            breakpoint: 1460,
+                            settings: {
+                                slidesToScroll: 3,
+                                slidesToShow: 3
+                            }
+                        },
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToScroll: 2,
+                                slidesToShow: 2,
+                                variableWidth : true
+                            }
                         },
                         {
                           breakpoint: 768,
@@ -470,7 +476,6 @@
                         $(element).attr("id","beu_cst_sc_main_service_20211126_"+vcui.number.zeroPad(index+1,2));
                     }
                 });
-
 
                 //수상목록
                 self.award.el.slider.not(self.activeClass).slick(self.award.config);
