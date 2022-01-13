@@ -2382,14 +2382,16 @@ html {
         }
     }
     html:not(.mobile.mdevice) {
-        .mobile-nav-button {
-            top: 12px;
-        }
-        .story-page {
-            right: 50px;
-        }
-        .sub-renew-nav-wrap {
-            width: calc(100% - 90px);
+        .subRenewWrap {
+            .mobile-nav-button {
+                top: 12px;
+            }
+            .story-page {
+                right: 50px;
+            }
+            .sub-renew-nav-wrap {
+                width: calc(100% - 90px);
+            }
         }
     }
 }
