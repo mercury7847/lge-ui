@@ -254,41 +254,78 @@
                 el : {
                     slider : $context.find('.main-service-slider'),
                 },
-                config : {
-                    arrows: false,
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    infinite:false,
-                    variableWidth:false,
-                    outerEdgeLimit: false,                    
-                    prevArrow : $context.find('.slick-prev'),
-                    nextArrow : $context.find('.slick-next'),
-                    responsive: [
-                        {
-                            breakpoint: 1460,
+                // BTOCSITE-9066 slick 라이브러리 변경으로 해당 구조 변경
+                // config : {
+                //     arrows: false,
+                //     slidesToShow: 4,
+                //     slidesToScroll: 4,
+                //     infinite:false,
+                //     variableWidth:false,
+                //     outerEdgeLimit: false,                    
+                //     prevArrow : $context.find('.slick-prev'),
+                //     nextArrow : $context.find('.slick-next'),
+                //     responsive: [
+                //         {
+                //             breakpoint: 1460,
+                //             settings: {
+                //                 slidesToScroll: 3,
+                //                 slidesToShow: 3
+                //             }
+                //         },
+                //         {
+                //             breakpoint: 1024,
+                //             settings: {
+                //                 slidesToScroll: 2,
+                //                 slidesToShow: 2,
+                //                 variableWidth : true
+                //             }
+                //         },
+                //         {
+                //           breakpoint: 768,
+                //           settings: {
+                //             arrows:false,
+                //             slidesToShow: 1,
+                //             slidesToScroll: 1,
+                //             variableWidth:true
+                //           }
+                //         }
+                //     ]
+                // },
+                // 추가 - 220113
+                init : function(){
+                    var self = this;
+
+                    $context.find('.main-service-slider').slick({
+                        arrows: true,
+                        slidesToShow: 5,
+                        slidesToScroll: 5,
+                        infinite:false,
+                        variableWidth:false,
+                        outerEdgeLimit: false,
+                        prevArrow : $context.find('.slick-prev'),
+                        nextArrow : $context.find('.slick-next'),
+                        responsive: [
+                            {
+                            breakpoint: 1200,
                             settings: {
+                                arrows:true,
+                                slidesToShow: 3,
                                 slidesToScroll: 3,
-                                slidesToShow: 3
+                                variableWidth:false
                             }
-                        },
-                        {
-                            breakpoint: 1024,
+                            },
+                            {
+                            breakpoint: 768,
                             settings: {
-                                slidesToScroll: 2,
+                                arrows:false,
                                 slidesToShow: 2,
-                                variableWidth : true
+                                slidesToScroll: 2,
+                                variableWidth:true,
+                                outerEdgeLimit: true,
                             }
-                        },
-                        {
-                          breakpoint: 768,
-                          settings: {
-                            arrows:false,
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                            variableWidth:true
-                          }
-                        }
-                    ]
+                            }
+                        ]
+                    })
                 }
             },
             inquiry : {
@@ -466,7 +503,8 @@
                 }
 
                 // 주요 서비스 
-                self.main_service.el.slider.slick(self.main_service.config);
+                //self.main_service.el.slider.slick(self.main_service.config); // 220113 제거 slick 구조 변경
+                self.main_service.init(); // 220113 변경
                 self.main_service.el.slider.off('DOMNodeInserted').on('DOMNodeInserted', function(e) {
                     var element = e.target;
 
