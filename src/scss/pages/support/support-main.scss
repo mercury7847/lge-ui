@@ -2421,15 +2421,6 @@
                 button:disabled {
                     background: #f4f4f4;
                 }
-
-                .btn-inquiry{
-                    border:1px solid #ddd;
-                    background:#e4e4e4;
-                    span{
-                        color:#aaaaaa;
-                        font-weight: 500;
-                    }
-                }
             }
 
             .reserv-inquiry-slider {
@@ -2671,18 +2662,14 @@
                 .form-wrap {
                     .form-head {
                         margin-bottom:24px;
-                        display: flex;
-                        justify-content: space-between;
-                        .chk-wrap {
-                            flex-grow: 2;
-                        }
                         .btn-link {
-                            text-align: right;
-                            flex-grow: 1;
+                            margin-left:0;
+                            float: right;
                         }
                     }
                     .form-col + .form-col {
                         margin-top:26px;
+                        margin-left:0;
                     }
                     .forms {
                         margin-top:26px;
