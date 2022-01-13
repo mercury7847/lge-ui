@@ -39,7 +39,7 @@
             }
             @include mobile {
                 min-width:100%;
-                padding: 17px 24px;
+                padding:17px 44px 17px 24px; //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선 (모니터링506 반영)
                 .btn-area {
                     right:16px;
                 }
