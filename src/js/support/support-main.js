@@ -321,7 +321,7 @@
                                 slidesToShow: 2,
                                 slidesToScroll: 2,
                                 variableWidth:true,
-                                outerEdgeLimit: true,
+                                outerEdgeLimit: true,                            
                             }
                             }
                         ]
@@ -374,7 +374,7 @@
                 },                
                 config : {
                     infinite: true,
-                    autoplay: true,
+                    autoplay: false,
                     dots : true,
                     autoplaySpeed : 5000,
                     slidesToScroll: 3,
@@ -654,6 +654,19 @@
                             self.el.container.find('#serviceDetailAddress').val('').prop('disabled', false);
                         }); 
                     });
+
+                    //210113 추가 - 수정 필요
+                    var formHead = self.el.container.find('.form-head');
+                    var formHeadErrBlock = formHead.find('.err-block');
+
+                    if(vcui.detect.isMobileDevice){
+                        // if(formHeadErrBlock.css('display') === 'none' || !formHeadErrBlock.css('display')){
+                        //     formHead.css('margin-bottom') === "24px";
+                        // } else {
+                        //     formHead.css('margin-bottom') === "45px";
+                        // }
+                        formHead.css('margin-bottom') === "45px";
+                    }
                 }
             },
             reservInquiry : {
