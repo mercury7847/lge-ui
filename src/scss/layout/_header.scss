@@ -2195,6 +2195,7 @@ html {
                 font-weight: 500;
                 font-size: 16px;
                 line-height: 24px;
+                word-break: break-all;
             }
             .nav-category-container {
                 top: 61px;
@@ -2389,8 +2390,23 @@ html {
             .story-page {
                 right: 50px;
             }
-            .sub-renew-nav-wrap {
-                width: calc(100% - 90px);
+            .utility {
+                .shortcut {
+                    li:not(:first-child) {
+                        margin-left: 0;
+                    }
+                }
+            }
+            &:not(.snsHead) {
+                .sub-renew-nav-wrap {
+                    width: calc(100% - 120px);
+                    padding-left: 50px;
+                }
+            }
+            &.snsHead {
+                .sub-renew-nav-wrap {
+                    width: calc(100% - 90px);
+                }
             }
         }
     }
