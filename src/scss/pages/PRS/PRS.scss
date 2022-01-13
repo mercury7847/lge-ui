@@ -12,13 +12,13 @@
                     .slide-track  {
                         height:640px;
                         @include mobile{
-                            height:460px;
+                            height:370px;
                         }
                         .slide-conts {
                             position:relative;
                             height:640px;
                             @include mobile{
-                                height:460px;
+                                height:370px;
                             }
                             .slide-img {
                                 overflow:hidden;
