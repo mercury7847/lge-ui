@@ -315,8 +315,8 @@
                             {
                             breakpoint: 768,
                             settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 2,
+                                slidesToShow: 2.16,                      
+                                slidesToScroll: 1,
                                 variableWidth:true,
                                 outerEdgeLimit: true
                                 }
