@@ -23,8 +23,20 @@
             '</div>' +
             '<div class="info-wrap">' +
                 '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}>'+
-                    '<p class="name"><span class="blind">모델명</span>{{#raw modelName}}</p>' +
-                    '<p class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</p>' +
+                    '<div class="name"><span class="blind">모델명</span>{{#raw modelName}}</div>' +
+                    '{{#if factoryModel && enModelName !== factoryModel }}' + 
+                        '<div class="e-name"><span class="blind">영문모델명</span>{{enModelName}} [{{factoryModel}}]'+
+                            '<div class="tooltip-wrap">'+
+                            '    <button class="tooltip-icon ui_tooltip-target" >자세히 보기</button>'+
+                            '    <div class="tooltip-box">'+
+                            '        <p>고객지원 서비스 이용 시 <br>두 번째 모델명을 이용해 주세요. </p>'+
+                            '        <button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
+                            '    </div>'+
+                            '</div>'+
+                        '</div>' +
+                    '{{#else}}' + 
+                        '<div class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</div>' +
+                    '{{/if}}' + 
                 '</a>'+
                 '<ul class="info-lists period">' +
                     '{{#if saleDate}}<li><dl><dt>{{#if userType=="USER"}}구매월{{#else}}구매일자{{/if}}</dt><dd>{{saleDate}}</dd></dl></li>{{/if}}' +
@@ -117,7 +129,7 @@
     '                            <img data-pc-src="{{item.largeImageAddr}}" data-m-src="{{item.largeImageAddr}}" alt="">'+
     '                        </span>'+
     '                        <div class="text-wrap">'+
-    '                            <p class="model-name">{{item.modelDisplayName}}</p>'+
+    '                            <p class="model-name">{{#raw item.modelDisplayName}}</p>'+
     '                            <p class="model-code">{{item.prodModelCd}}</p>'+
     '                        </div>'+
     '                    </div>'+
@@ -1177,6 +1189,7 @@
                     }
 
                     $list.append(vcui.template(ownListItemTemplate, item));
+                    $list.find('.ui_tooltip-target').vcTooltipTarget();
                 });
                 self.checkNoData();
 
