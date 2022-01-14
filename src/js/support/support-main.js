@@ -296,7 +296,7 @@
                     var self = this;
 
                     $context.find('.main-service-slider').slick({
-                        arrows: true,
+                        arrows: false,
                         slidesToShow: 4,
                         slidesToScroll: 4,
                         infinite:false,
@@ -308,20 +308,17 @@
                             {
                             breakpoint: 1024,
                             settings: {
-                                arrows:true,
                                 slidesToShow: 3,
-                                slidesToScroll: 3,
-                                variableWidth:false
+                                slidesToScroll:3
                                 }
                             },
                             {
                             breakpoint: 768,
                             settings: {
-                                arrows:false,
                                 slidesToShow: 2,
                                 slidesToScroll: 2,
                                 variableWidth:true,
-                                outerEdgeLimit: true,                            
+                                outerEdgeLimit: true
                                 }
                             }
                         ]
