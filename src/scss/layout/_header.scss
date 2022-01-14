@@ -2160,7 +2160,7 @@ html {
 
 
 /*BTOCSITE-2117 공통 > 모바일 웹/앱 GNB 개선*/
-@media screen and (max-width: 767px) {
+@include mobile {
     .subRenewWrap {
         .header {
             z-index: 100;
@@ -2196,6 +2196,9 @@ html {
                 font-size: 16px;
                 line-height: 24px;
                 word-break: break-all;
+                @media screen and (max-width: 353px) {
+                    font-size: 14px;
+                }
             }
             .nav-category-container {
                 top: 61px;
