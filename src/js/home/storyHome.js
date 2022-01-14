@@ -615,21 +615,66 @@
     }
 
     function setRepositionTagBox(item){
-        // s : BTOCSITE-9974
+        var maxBottom = 0;
         var status = getAlignStatusValues(item);
-        var boxwidth = status.boxwidth;
-        var boxheight = (window.innerWidth < 480) ? boxwidth * 1.25 + 50 : boxwidth * 1.6544;
-        var boxmargin = (window.innerWidth < 768)?8:24;
 
-        item.find('.flexbox').not('.tag-area').each(function(i) {
-            $(this).css({
-                width: boxwidth,
-                height: boxheight,
-                marginLeft: (i%status.rawnum==0)? 0:boxmargin+'px',
-                marginTop: (i<status.rawnum)? 0:boxmargin+'px',
-            })
-        })
-        // e : BTOCSITE-9974
+        var raw = 0;
+        var col = 0;
+        var boxmap = [];
+        for(var i=0;i<status.rawnum;i++) boxmap.push([]);
+
+        /* BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
+        item.find('.flexbox').each(function(idx, box){
+            var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight, titleheight, tagheight, overflow;
+            var boxheight = $('.flexbox').height();
+            var boxwidth = $('.flexbox').width();
+            if(idx >= status.rawnum){
+                boxtop = 1000000000;
+                for(i=0;i<status.rawnum;i++){
+                    leng = boxmap[i].length;
+                    lastbox = boxmap[i][leng-1];
+
+                    contype = lastbox.data('contentsType');
+
+                    if(window.innerWidth < 480){
+                        //boxheight = boxwidth * 1.25 + 50;
+                        //BTOCSITE-9038
+                        boxheight = boxwidth * 1.7969;
+                    }else{
+                        //boxheight = boxwidth * 1.25;
+                         //BTOCSITE-9038
+                         boxheight = boxwidth * 1.6544;
+                    }
+
+                    lasty = lastbox.position().top + boxheight + status.distance;
+                    if(lasty < boxtop - 40){
+                        raw = i;
+                        col = leng-1;
+                        boxtop = lasty;
+                    }
+                }
+            }
+
+            overflow = "auto";
+            contype = $(box).data('contentsType');
+           
+            var boxleft = raw * (status.boxwidth + status.distance);
+            $(box).css({
+                position:'absolute',
+                width: status.boxwidth,
+                // height: boxheight,
+                left: boxleft,
+                top: boxtop
+            });
+            boxmap[raw][col] = $(box);
+
+            var bottom = $(box).position().top + boxheight;
+            maxBottom = Math.max(maxBottom, bottom);
+            $('.new_story .flexbox, .user_story .flexbox').css('height', boxheight);
+        });
+        /* //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
+
+        item.find('.flexbox-wrap').height(maxBottom);
     }
     
     function getAlignStatusValues(item){
