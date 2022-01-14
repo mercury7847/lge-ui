@@ -308,7 +308,6 @@
                             {
                             breakpoint: 1024,
                             settings: {
-                                arrows:false,
                                 slidesToShow: 3,
                                 slidesToScroll:3
                                 }
@@ -316,7 +315,6 @@
                             {
                             breakpoint: 768,
                             settings: {
-                                arrows:false,
                                 slidesToShow: 2,
                                 slidesToScroll: 2,
                                 variableWidth:true,
