@@ -97,6 +97,7 @@
                     var kiosk = lgkorUI.getParameterByName("kiosk");
                     $(dataList.rentalCompareList).each(function(idx,item){
                         item.modelUrlPath = item.modelUrlPath + "?dpType=careTab";
+                        $('.product-detail-info').addClass('rental');
                         if(kiosk) {
                             item.modelUrlPath += (item.modelUrlPath.indexOf("?") === -1) ? "?" : "&";
                             item.modelUrlPath += 'kiosk='+kiosk;
