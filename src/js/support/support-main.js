@@ -297,8 +297,8 @@
 
                     $context.find('.main-service-slider').slick({
                         arrows: true,
-                        slidesToShow: 5,
-                        slidesToScroll: 5,
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
                         infinite:false,
                         variableWidth:false,
                         outerEdgeLimit: false,
@@ -306,13 +306,13 @@
                         nextArrow : $context.find('.slick-next'),
                         responsive: [
                             {
-                            breakpoint: 1200,
+                            breakpoint: 1024,
                             settings: {
                                 arrows:true,
                                 slidesToShow: 3,
                                 slidesToScroll: 3,
                                 variableWidth:false
-                            }
+                                }
                             },
                             {
                             breakpoint: 768,
@@ -322,7 +322,7 @@
                                 slidesToScroll: 2,
                                 variableWidth:true,
                                 outerEdgeLimit: true,                            
-                            }
+                                }
                             }
                         ]
                     })
