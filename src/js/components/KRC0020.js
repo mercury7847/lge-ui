@@ -162,7 +162,7 @@
 						if(self.autoCount == 'loop' || self.autoCount > self.intervalCount) {
 							$playWrap.removeClass('play').addClass('stop');
 		
-							if( $currentVideo.length > 0 ) {
+							if( $currentVideo.length > 0  && $currentVideo.get(0).hasAttribute('autoplay')) {
 								self.autoSpeed = $currentVideo.get(0).duration * 1000	
 								$currentVideo.get(0).play();
 							} else {
