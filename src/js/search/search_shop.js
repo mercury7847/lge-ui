@@ -98,7 +98,13 @@ if ('scrollRestoration' in history) {
                 '</div>' +
             '</div>' +
             '<div class="btn-area">' +
-                '{{#each item in linkItem}}<a href="{{item.url}}" class="btn border size-m" target="_blank" title="새창열림"><span>{{item.title}}</span></a>{{/each}}' +
+                '{{#each item in linkItem}}'+
+                    '{{#if item.url.indexOf("/support/visit-store-reservation") > -1}}'+
+                        '<a href="{{item.url}}" class="btn border size-m reservation" target="{{isApp() ? "" : "_blank" }}" title="새창열림"><span>{{item.title}}</span></a>'+
+                    '{{#else}}'+
+                        '<a href="{{item.url}}" class="btn border size-m" target="_blank" title="새창열림"><span>{{item.title}}</span></a>'+
+                    '{{/if}}'+
+                '{{/each}}' +
             '</div>' +
         '</div>' +
     '</div></li>';

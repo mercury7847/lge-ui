@@ -118,45 +118,45 @@
                 </div>
                 <!-- //알림받기 -->
 
-                <!-- BTOCSITE 9172 : 최신 하이라이트 및 당첨자 발표 -->
-                <div class="lls-sec event-announced">
+                <!-- 최신 하이라이트 -->
+                <div class="lls-sec recently-highlight">
                     <div class="lls-sec__head">
-                        <h3 class="lls-sec__head--title">놓치기 아쉬운 엘라쇼</h3>
+                        <h3 class="lls-sec__head--title">지난 라이브 다시보기</h3><!-- //BTOCSITE-9172 -->
                     </div>
                     <div class="lls-sec__content">
-                        <ul class="event-item-list">
-                            @@for ( var i=0; i < 6; i++ ) {
-                            <li class="list-item">
-                                <div class="item-list-inner">
-                                    <div class="item-list-thumb">
-                                        <a href="#" class="item-list-anchor">
-                                            <span class="item-list-time">02:30</span>
-                                            <img src="/lg5-common/images/LLS/img-lls-highlight-dummy01.jpg" alt="">
+                        <div class="slide-cover">
+                            <div class="recently-highlight-slider">
+                                @@for ( var i=0; i < 7; i++ ) {
+                                    <div class="slide-item">
+                                        <!-- 2021-09-29 BTOCSITE-5449 최신 하이라이트 아이프레임 화면 링크 연결 
+                                            - 하이라이트 아이프래임의 url에 파라미터를 붙여서 독립적으로 ga 트래킹 가능하도록 해야 함 
+                                                Ex) /benefits/highlight + 파라미터
+                                        -->
+                                        <a href="/html/LLS/LLS0101.html">
+                                            <div class="slide-thumb-area">
+                                                <img src="/lg5-common/images/LLS/img-lls-highlight-dummy01.jpg" alt="">
+                                                <span class="slide-item-time">18:00</span>
+                                            </div>
+                                            <div class="slide-cont-area">
+                                                <strong class="slide-title">
+                                                    타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
+                                                    타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
+                                                    타이틀 최대 2줄 출력됩니다. 2줄 이상 시 말줄임 처리
+                                                </strong>
+                                            </div>
                                         </a>
+                                        <a href="/html/BMC/MKT4007.html" class="btn-link btn-event-popup"><span>당첨자 확인</span></a> <!-- //BTOCSITE-9172 -->
                                     </div>
-                                    <div class="item-list-content">
-                                        <div class="item-list-text">
-                                            <span class="item-list-flag">엘라쇼</span>
-                                            <strong class="item-list-title">타이틀 최대 3줄 출력됩니다. 모바일에서는 최대 2줄 출력됩니다. 타이틀 최대 3줄 출력됩니다. 모바일에서는 최대 2줄 출력됩니다. 타이틀 최대 3줄 출력됩니다. 모바일에서는 최대 2줄 출력됩니다. 타이틀 최대 3줄 출력됩니다. 모바일에서는 최대 2줄 출력됩니다. </strong>
-                                        </div>
-                                        <div class="item-list-btn">
-                                            <!-- 방송 혜택 url 연결-->
-                                            <div class="btn-column">
-                                                <a href="/" class="btn-link btn-lls-benefit" target="_blank"><span>방송 혜택 보기</span></a>
-                                            </div>
-                                            <div class="btn-column">
-                                                <a href="/html/BMC/MKT4007.html" class="btn-link btn-event-popup"><span>당첨자 확인</span></a>
-                                            </div>
-                                            <!-- 당첨자 발표 url 연결-->
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            }
-                        </ul>
+                                }
+                            </div>
+                            <div class="slide-button-controls">
+                                <button class="slick-arrow slick-prev"><span class="blind">이전</span></button>
+                                <button class="slick-arrow slick-next"><span class="blind">다음</span></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!-- //BTOCSITE 9172 : 최신 하이라이트 및 당첨자 발표 -->
+                <!-- //최신 하이라이트 -->
 
                 <!-- 방송에 나온 그 제품 -->
                 <div class="lls-sec onbroad-product">
@@ -189,8 +189,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- //방송에 나온 그 제품 -->               
-
+                <!-- //방송에 나온 그 제품 -->
             </div>
             <!-- //엘라쇼 -->
         </div>

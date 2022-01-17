@@ -251,7 +251,7 @@
 
 .support-home {
     overflow:hidden;
-    padding-bottom:100px;
+    //padding-bottom:100px;
     @include mobile{
         padding-bottom:0;
     }
@@ -314,6 +314,9 @@
         .banner {
             .banner-tit {
                 margin-bottom:32px;
+                @include mobile{                
+                    margin-bottom:19px;
+                }
             }
         }
     }
@@ -873,7 +876,7 @@
                 }
             }
 
-            .slick-arrow {
+            .slick-arrow {                
                 &.slick-prev {
                     left:-85px;
                 }
@@ -1831,7 +1834,7 @@
         margin:48px 0;
         padding:0 40px;
         @include mobile{
-            margin:38px 0 24px;
+            margin:36px 0 24px;
         }
         .search-box {
             max-width:850px;
@@ -1880,7 +1883,6 @@
         }
 
         @include mobile {
-            margin-top:38px;
             padding:0 16px;
             .search-box {
                 .btn-search {
@@ -2205,7 +2207,7 @@
                         right: 0;
                         bottom:0;
                         margin-bottom:0;
-                        padding: 8px 15px 7px 20px;
+                        padding: 9px 15px 7px 20px
                     }
                 }
                         
@@ -2244,7 +2246,7 @@
                         right: 0;
                         bottom:0;
                         margin-bottom:0;
-                        padding: 8px 15px 7px 20px;
+                        padding: 9px 15px 7px 20px
     
                     }
                     .sort-list{
@@ -2364,10 +2366,12 @@
                         top:4px;
                     }
                 }
-                
+                .form-col + .form-col {
+                    margin-left:8px;
+                }
 
                 .forms {
-                    margin-top:24px;
+                    margin-top:30px;
 
                     &.form-head {
                         margin-top:0;
@@ -2416,15 +2420,6 @@
 
                 button:disabled {
                     background: #f4f4f4;
-                }
-
-                .btn-inquiry{
-                    border:1px solid #ddd;
-                    background:#e4e4e4;
-                    span{
-                        color:#aaaaaa;
-                        font-weight: 500;
-                    }
                 }
             }
 
@@ -2667,21 +2662,17 @@
                 .form-wrap {
                     .form-head {
                         margin-bottom:24px;
-                        display: flex;
-                        justify-content: space-between;
-                        .chk-wrap {
-                            flex-grow: 2;
-                        }
                         .btn-link {
-                            text-align: right;
-                            flex-grow: 1;
+                            margin-left:0;
+                            float: right;
                         }
                     }
                     .form-col + .form-col {
-                        margin-top:20px;
+                        margin-top:26px;
+                        margin-left:0;
                     }
                     .forms {
-                        margin-top:20px;
+                        margin-top:26px;
                         .rdo-wrap {
                             & ~ .rdo-wrap {
                                 margin-left:24px;
@@ -2703,7 +2694,7 @@
     
                 .btn-wrap {
                     position: static;
-                    margin-top:24px;
+                    margin-top:30px;
                     text-align: center;
                     .btn {
                         padding:10px 30px;
@@ -2772,28 +2763,42 @@
                 padding:5px 0 0;
             }
             .slide {
-                &-item {
-                    float:left;
-                    position: relative;
-                    width:calc(100vw - 16px);
-                    padding:0 12px;
-                    border-radius: 8px;
+                &-item{            
+                    display: inline-block;
+                    width: 327px;
+                    height: 358px;
+                    margin-top: 0;
+                    width: calc(100% / 4);
+                    padding: 0 12px;
                     box-sizing: content-box;
-                    > a {
+                }
+                &-item-wrap {
+                    
+                    position: relative;
+                    border-radius: 8px;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    > a {                    
                         display: block;
                     }
                 }
                 &-thumb-area {
-                    max-width:327px;
-                    max-height: 358px;
-                    margin:0 auto;
-                    img {
-                        width: 100%;
+                    box-sizing: border-box;
+                    img {            
+                        display: inline-block;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        -ms-transform: translate(-50%,-50%);
+                        transform: translate(-50%,-50%);
+                        max-width: none;
+                        width: auto;
+                        background-position: center center;
+                        min-width: 100%;
+                        min-height: 100%;
                         height: 100%;
-                        object-fit: cover;
-                        max-width: 327px;
-                        max-height: 358px;
-                        border-radius: 8px;
+
                     }
                 }
                 &-cont-area {
@@ -2824,20 +2829,19 @@
                 }
                 .slide {
                     &-item {
-                        max-width:143px;
-                        max-height: 179px;
-                        padding:0 4px;
-
+                        width: 143px;
+                        height: 179px;
+                        padding: 0 4px;
+                    }
+                    &-item-wrap {
                         > a {
-                            padding:0;
+                            height: 100%;
                         }
                     }
                     &-thumb-area {
-                        max-width:143px;
-                        max-height: 179px;
                         img {
-                            max-width:143px;
-                            max-height: 179px;
+                            display: inline-block;
+                            object-fit: cover;
                         }
                     }
                     &-cont-area {
@@ -2852,7 +2856,12 @@
                     }
                 }
             }
+        
         }
+        .atEnd {
+            transform: 0;
+        }
+
         .slide-button-controls {
             position: absolute;
             top:calc(50% - 10px);
@@ -3000,9 +3009,13 @@
                      width: 100%;
                      border-bottom:1px solid #dddddd;
                      padding-bottom:20px;
+                     padding-top:15px;
                      margin:0;
                     &:last-child{
                         border-bottom:0;
+                    }
+                    &:first-child{
+                        padding-top:0;
                     }
 
 
@@ -3012,6 +3025,7 @@
                     @include mobile{
                         text-align: left;
                         display: flex;
+                        align-items: center;
                     }
                     .icon{
                         width: 128px;
@@ -3027,7 +3041,7 @@
                             background-color:#fff;
                             border-radius:0;
                             left:16px;
-                            top:10px;
+                            top:0;
                         }
                         img{
                             @include mobile{
@@ -3042,8 +3056,7 @@
                     .icon-txt{
                         font-size:24px;
                         line-height: 32px;
-                        font-weight: bold;
-                        margin-top:16px;
+                        font-weight: bold;                        
                         @include mobile{
                             font-size:16px;
                             line-height: 18px;
@@ -3057,7 +3070,6 @@
                 line-height: 59px;
                 font-weight: bold;
                 padding:0 52px;
-                margin-top:15px;
                 @include tablet {
                     padding:0 10px;
                 }
@@ -3072,9 +3084,11 @@
                         border-bottom:0;
                         width:50%;
                         padding-top:12px;
-                        //padding-right:22px;
+                        &:nth-child(2n){
+                            padding-left: 16px;
+                        }
                         &:nth-child(2n-1){
-                            padding-right: 22px;
+                            padding-right: 8px;
                         }
                     }                    
                     a{
@@ -3206,10 +3220,10 @@
 
     //하단 수상 목록
     .awards {
-        padding-bottom:40px;
+        padding-bottom:132px;
         @include mobile{
-            padding-top:58px;
-            padding-bottom:80px;
+            padding-top:50px;
+            padding-bottom:64px;
         }
         .award-list-wrap {
             position: relative;
@@ -3237,18 +3251,7 @@
                     //text-align: center;
                     justify-content: center;
                 }
-            }
-            &-thumb {
-                width:80px;
-                height:80px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                flex-shrink: 0;
-                img {
-                    width:100%;
-                }
-            }
+            }            
             &-text {
                 display: flex;
                 flex-direction: column;
@@ -3269,6 +3272,17 @@
                 }
             }
         }
+        .thumb {
+            width:80px;
+            height:80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-shrink: 0;
+            img {
+                width:100%;
+            }
+        }
         .slick-dots {
             li {
                 button {
@@ -3284,8 +3298,9 @@
             }
         }
         .slick-arrow {
-            opacity:0;
-            transition:opacity .3s;
+            display: inline-block !important;
+            opacity: 0.7;
+            cursor: pointer;
 
             &.slick-prev {
                 left:-15px;
@@ -3294,11 +3309,8 @@
                 right:-15px;
             }
         }
-        &:hover .slick-arrow {
-            opacity:1;
-        }
         .btn-play {
-            display: inline-block;
+            display: none;
             width:16px;
             height:16px;
             background: url("/lg5-common/images/icons/btn-pause-16-gray.svg") no-repeat 0 0/100% 100%;
@@ -3327,10 +3339,6 @@
                     }
                     
                 }
-                &-thumb{
-                    margin-bottom: 15px;
-                    flex-grow:1;
-                }
                 &-text {
                     font-size:14px;
                     margin-left:0;
@@ -3339,6 +3347,10 @@
                     margin-bottom:10px;
                     flex-grow:2;
                 }
+            }
+            .thumb{
+                margin-bottom: 15px;
+                flex-grow:1;
             }
             .slick-arrow {
                 display: none;
@@ -3362,6 +3374,7 @@
 
 //BTOCSITE-9066 추가
 .awards .slick-controls {
+    bottom:-16px;
     @include mobile{
         display: none;   
     }    

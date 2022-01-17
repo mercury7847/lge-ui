@@ -214,7 +214,7 @@
                             })
                         }
                         e.preventDefault();
-                    })
+                    })                
                 }
             },
             supportList : {
@@ -254,36 +254,75 @@
                 el : {
                     slider : $context.find('.main-service-slider'),
                 },
-                config : {
-                    arrows: false,
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                    infinite:false,
-                    variableWidth:false,
-                    outerEdgeLimit: false,
-                    prevArrow : $context.find('.slick-prev'),
-                    nextArrow : $context.find('.slick-next'),
-                    responsive: [
-                        {
-                          breakpoint: 1200,
-                          settings: {
-                            arrows:true,
-                            slidesToShow: 3,
-                            slidesToScroll: 3,
-                            variableWidth:false
-                          }
-                        },
-                        {
-                          breakpoint: 768,
-                          settings: {
-                            arrows:false,
-                            slidesToShow: 2,
-                            slidesToScroll: 2,
-                            variableWidth:true,
-                            outerEdgeLimit: true,
-                          }
-                        }
-                    ]
+                // BTOCSITE-9066 slick 라이브러리 변경으로 해당 구조 변경
+                // config : {
+                //     arrows: false,
+                //     slidesToShow: 4,
+                //     slidesToScroll: 4,
+                //     infinite:false,
+                //     variableWidth:false,
+                //     outerEdgeLimit: false,                    
+                //     prevArrow : $context.find('.slick-prev'),
+                //     nextArrow : $context.find('.slick-next'),
+                //     responsive: [
+                //         {
+                //             breakpoint: 1460,
+                //             settings: {
+                //                 slidesToScroll: 3,
+                //                 slidesToShow: 3
+                //             }
+                //         },
+                //         {
+                //             breakpoint: 1024,
+                //             settings: {
+                //                 slidesToScroll: 2,
+                //                 slidesToShow: 2,
+                //                 variableWidth : true
+                //             }
+                //         },
+                //         {
+                //           breakpoint: 768,
+                //           settings: {
+                //             arrows:false,
+                //             slidesToShow: 1,
+                //             slidesToScroll: 1,
+                //             variableWidth:true
+                //           }
+                //         }
+                //     ]
+                // },
+                // 추가 - 220113
+                init : function(){
+                    var self = this;
+
+                    $context.find('.main-service-slider').slick({
+                        arrows: false,
+                        slidesToShow: 4,
+                        slidesToScroll: 4,
+                        infinite:false,
+                        variableWidth:false,
+                        outerEdgeLimit: false,
+                        prevArrow : $context.find('.slick-prev'),
+                        nextArrow : $context.find('.slick-next'),
+                        responsive: [
+                            {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 2.16,
+                                slidesToScroll:2
+                                }
+                            },
+                            {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 2.16,                      
+                                slidesToScroll: 1,
+                                variableWidth:true,
+                                outerEdgeLimit: true
+                                }
+                            }
+                        ]
+                    })
                 }
             },
             inquiry : {
@@ -332,7 +371,7 @@
                 },                
                 config : {
                     infinite: true,
-                    autoplay: true,
+                    autoplay: false,
                     dots : true,
                     autoplaySpeed : 5000,
                     slidesToScroll: 3,
@@ -409,7 +448,7 @@
                         }
     
                         if(slick.$slides.length > slick.options.slidesToScroll) {
-                            $container.find('.btn-play').show();
+                            $container.find('.notice-inner > .btn-play').show(); // BTOCSITE-9066 award auto-play 제거 
                         } else {
                             $container.find('.btn-play').hide();
                         }
@@ -422,7 +461,7 @@
                     var $container = $this.closest('[data-role="slide-container"]');
 
                     if(slick.$slides.length > slick.options.slidesToScroll) {
-                        $container.find('.btn-play').show();
+                        $container.find('.notice-inner > .btn-play').show(); // BTOCSITE-9066 award auto-play 제거 
                     } else {
                         $container.find('.btn-play').hide();
                     }
@@ -478,7 +517,8 @@
                 }
 
                 // 주요 서비스 
-                self.main_service.el.slider.slick(self.main_service.config);
+                //self.main_service.el.slider.slick(self.main_service.config); // 220113 제거 slick 구조 변경
+                self.main_service.init(); // 220113 변경
                 self.main_service.el.slider.off('DOMNodeInserted').on('DOMNodeInserted', function(e) {
                     var element = e.target;
 
@@ -488,7 +528,6 @@
                         $(element).attr("id","beu_cst_sc_main_service_20211126_"+vcui.number.zeroPad(index+1,2));
                     }
                 });
-
 
                 //수상목록
                 self.award.el.slider.not(self.activeClass).slick(self.award.config);
@@ -555,6 +594,22 @@
                     self.el.container.find('#serviceUserName, #servicePhoneNo, .btn-reservation').prop('disabled', true).val('');
                     self.el.container.find('.btn-reservation').addClass('disabled');
                 },
+                //BTOCSITE-9066 추가
+                inputCssChk : function(){
+                    //210113 추가 - 수정 필요
+                    var self = this;
+                    var formHead = self.el.container.find('.form-head');
+                    var formHeadErrBlock = formHead.find('.err-block');
+
+                    if(vcui.detect.isMobileDevice){
+                        if(formHeadErrBlock.css('display') === 'none' && formHeadErrBlock.hasClass('active')){
+                            formHead.css('margin-bottom','45px');
+                        } else {
+                            formHead.css('margin-bottom','24px');
+                            formHeadErrBlock.addClass('active');
+                        }
+                    }
+                },
                 init : function(){
                     var self = this;
 
@@ -570,6 +625,10 @@
                     //         self.inputDisable();
                     //     }
                     // });
+                    //BTOCSITE-9066 추가
+                    self.el.agreeChk.on('change',function (e){
+                        self.inputCssChk();
+                    })
 
                     self.el.popup.find('.btn-agree').on('click', function(e){
                         e.preventDefault();

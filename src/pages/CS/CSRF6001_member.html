@@ -606,20 +606,22 @@
                     <div class="slide-cover">
                         <div class="main-service-slider">
                             @@for ( var i=0; i < 9; i++ ) {
+                            <!--BTOCSITE-9066 마크업 변경 220112 - S -->
                             <div class="slide-item">
-                                <a href="">
-                                    <div class="slide-thumb-area">
-                                        <img src="/lg5-common/images/CS/img_main_service01.jpg" alt="">
-                                    </div>
-                                    <div class="slide-cont-area">
-                                        <strong class="slide-title">
-                                            새로운 소식을
-                                            카드뉴스로
-                                            만나보세요.
-                                        </strong>
-                                    </div>
-                                </a>
+                                <div class="slide-item-wrap">
+                                    <a href="">
+                                        <span class="slide-thumb-area">
+                                            <img src="/lg5-common/images/CS/img_main_service00.jpg" alt="">
+                                        </span>
+                                        <div class="slide-cont-area">
+                                            <strong class="slide-title">
+                                                쉽고 편리한<br>서비스를 위한<br>보유 제품 등록 Tip
+                                            </strong>
+                                        </div>
+                                    </a>
+                                </div>                
                             </div>
+                            <!--BTOCSITE-9066 마크업 변경 220112 - E -->
                             }
                         </div>
                         <!-- slick-arrow 비노출 처리
@@ -839,7 +841,7 @@
     <!-- // 개인정보 수집 및 신용정보 제공 동의 popup -->
 
     <!-- support script -->
-    <script src="/lg5-common/js/support/common/slick.min.js"></script>
+    <script src="/lg5-common/js/libs/slick.min.js"></script>
     <script src="/lg5-common/js/support-common.min.js"></script>
     <script src="/lg5-common/js/caresolution/addressManagement.min.js"></script>
     <script src="/lg5-common/js/support/support-main.min.js"></script>
