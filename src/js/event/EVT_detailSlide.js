@@ -33,23 +33,23 @@
 
 
     $(function() {
-        
+
         var evtDetail_SlideList = {
             init: function(){
                 var self = this;
                 self.setting();
                 self.bindEvents();
             },
-            
+
 
             setting: function() {
                 var self = this;
-                
-                var EVT_detail_slideList = $('.ui_carousel_4_slider').find('.slide-track');
+
+                var EVT_detail_slideList = $('.event-carousel').find('.slide-track');
                 var ajaxUrl = $('.evt_slide_warp').attr('data-list-url');
                 console.log('ajaxUrl', ajaxUrl)
                 lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
-                    
+
 
                     var list = result.data[0];
 
@@ -79,42 +79,40 @@
                     }
                     //console.log(list)
                     EVT_detail_slideList.append(vcui.template(EVT_ItemTemplate, list));
-                    
+
                     //슬라이드 옵션
-                    $('.ui_carousel_4_slider').vcCarousel('setOption', 'responsive', [
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                                speed: 150,
-                                touchThreshold: 100,
-                                infinite: false,
-                                slidesToShow: 2,
-                                slidesToScroll: 2,
-                                arrows:false,
-                                dots:false,
-                                variableWidth:true,
-                                outerEdgeLimit: true,
+                    $('.event-carousel').vcCarousel({
+                        infinite: false,
+                        autoplay: false,
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100,
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 2,
+                                    slidesToScroll: 2,
+                                    arrows:false,
+                                    dots:false,
+                                    variableWidth:true,
+                                    outerEdgeLimit: true,
+                                }
+                            },
+                            {
+                                breakpoint: 20000,
+                                settings: {
+                                    slidesToShow: 4,
+                                    slidesToScroll: 4,
+                                    prevArrow:'.btn-arrow.prev',
+                                    nextArrow:'.btn-arrow.next',
+                                    dots: true,
+                                    variableWidth:false,
+                                    outerEdgeLimit: false,
+                                }
                             }
-                        },
-                        {
-                            breakpoint: 20000,
-                            settings: {
-                                infinite: false,
-                                prevArrow:'.btn-arrow.prev',
-                                nextArrow:'.btn-arrow.next',
-                                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                                speed: 150,
-                                touchThreshold: 100,
-                                dots: true,
-                                variableWidth:false,
-                                outerEdgeLimit: false,
-                                slidesToShow: 4,
-                                slidesToScroll: 4,
-                            }
-                        }
-                    ]).vcCarousel('reinit') // //슬라이드 비동기 처리 : dev 반영시 안되는 문제 responsive, vcCarousel('reinit') 추가
-                    
+                        ]
+                    });
                 });
 
             },

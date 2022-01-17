@@ -68,7 +68,9 @@ br.pc {
         }
     }
     &.care-recommended {
+        margin-bottom:-8px;
         @include mobile{
+            margin-bottom:-4px;
             padding:0 12px;
         }
         .tabs-wrap,
@@ -89,6 +91,48 @@ br.pc {
             }
             @include mobile {
                 margin-bottom: 8px;
+            }
+            &.border-type {
+                margin-top:0;
+                .tabs {
+                    display: inline-block;
+                    li {
+                        margin-left:8px;
+                        padding:0;
+                        a {
+                            position:relative;
+                            padding:0 24px;
+                            height:38px;
+                            font-size:18px;
+                            font-weight:700;
+                            line-height:36px;
+                            border:1px solid transparent;
+                            @include mobile{
+                                padding:0 10px;
+                                height:32px;
+                                font-size:14px;
+                                line-height:30px;
+                            }
+                        }
+                        &.on {
+                            a{
+                                border:1px solid #000;
+                                border-radius:19px;
+                            }
+                        }
+                        &:first-child{
+                            margin-left:0;
+                        }
+                    }
+                }
+                &:before {
+                    @include mobile{
+                        display:block;
+                    }
+                }
+                .scroll-controls{
+                    display:none;
+                }
             }
         }
         //BTOCSITE-7335
@@ -123,13 +167,13 @@ br.pc {
                     .slide-track  {
                         height:640px;
                         @include mobile{
-                            height:460px;
+                            height:370px;
                         }
                         .slide-conts {
                             position:relative;
                             height:640px;
                             @include mobile{
-                                height:460px;
+                                height:370px;
                             }
                             .slide-img {
                                 overflow:hidden;
@@ -627,22 +671,31 @@ br.pc {
 .care-recommended {
     max-width:1444px;
     .prd-list-wrap {
+        margin-top:-8px;
         @include mobile {
-            margin-top:14px;
+            margin-top:8px;
             padding:0;
         }
         .inner {
             display:flex;
             justify-content:center;
+            margin:0 auto;
+            @media screen and (max-width: 1200px){
+                width: 100% !important;
+                transform: translate3d(0px, 0px, 0px) !important;
+            }
             .item {
                 width:calc(25% - 24px);
-                margin:0 12px;
+                max-width:351px;
+                padding:8px 12px;
                 @include mobile {
                     width:calc(50% - 4px);
                     margin:0;
-                    padding:0 4px;
+                    padding:6px 4px;
+                }
+                @media screen and (max-width: 1200px){
                     &:nth-child(3), &:nth-child(4){
-                        display:none;
+                        display:none !important;
                     }
                 }
             }

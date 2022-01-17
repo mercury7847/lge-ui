@@ -6,11 +6,22 @@
         vcui.require(['ui/sticky', 'ui/smoothScrollTab'], function () {
             setting();
             bindEvents();
+
+            // 모니터링 426 :  뒤로 가기시 차이점 오류 수정
+            if($('#differentCompare').is(":checked")) {
+                $('#differentCompare').trigger('change');
+            }
+
         });
     }
 
     function setting(){
         var self = this;
+
+        // 모니터링 357 :  뒤로가기시 스크롤탑 위치 메뉴얼로 변경
+        if (history.scrollRestoration) {
+            window.history.scrollRestoration = 'manual';
+        }
 
         self.tabClones = [];
         $('.tabs-scroll-wrap .tabs li').each(function(idx, item){
@@ -21,8 +32,8 @@
         if($('.compare-result-contents .section').length == 0) {
             $('.compare-result').vcSticky('destroy');
             $('.compare-result').removeClass('ui_sticky');
-        }      
-        
+        }
+
         // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 (테스트할때 주석처리 해야함, local 테스트시 오류뜸)
         setDifferentBenefit();
     }
@@ -57,12 +68,14 @@
         });
 
         // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공
-        $('.ui_selectbox').on('click', function(){
+        $('.ui_selectbox').change(function(){
             var selTxt = $(this).siblings('.ui-selectbox-view').find('.ui-select-text').text();
-            if( selTxt ){
+            if( !selTxt ){
+                $(this).parents('.card-selec-box').find('strong').removeClass('mo-sel');
+            }else{
                 $(this).parents('.card-selec-box').find('strong').addClass('mo-sel');
             }
-        })
+       })
     }
 
     function requestCart($dm,cartType) {
@@ -112,16 +125,16 @@
         });
 
         leng = differentIDs.length;
-        console.log(leng);
         for(i=0;i<leng;i++){
             var section = $('.compare-result-contents .section').eq(i);
 
             cleng = differentIDs[i].length;
             for(j=0;j<cleng;j++){
                 var idx = differentIDs[i][j]+1;
+                // BTOCSITE-3276
                 section.find('.compare-result-list tr:nth-child(' + idx + ')').hide();
             }
-
+            // BTOCSITE-3276    
             if(cleng == section.find('.compare-result-list tr').length){
                 section.hide();
 
@@ -169,8 +182,8 @@
         }    
     }
 
-    
 
+    
     $(document).ready(function(){
     //$(window).load(function(){
         init();

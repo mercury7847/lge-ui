@@ -251,7 +251,10 @@
 
 .support-home {
     overflow:hidden;
-    padding-bottom:100px;
+    //padding-bottom:100px;
+    @include mobile{
+        padding-bottom:0;
+    }
     /* BTOCSITE-1433 - App> 고객지원 Main, pinch out 기능 제공 */
     .slick-slider{
         touch-action: auto;
@@ -308,6 +311,14 @@
 
     .common-banner {
         margin-top:100px;
+        .banner {
+            .banner-tit {
+                margin-bottom:32px;
+                @include mobile{                
+                    margin-bottom:19px;
+                }
+            }
+        }
     }
 
 
@@ -315,10 +326,11 @@
     @include mobile {
         .common-banner {
             margin-top:0;
-            padding-top:60px;
+            padding-top:58px;
             border-top:0;
             .banner-tit {
-                margin-bottom:32px;
+                font-size:20px;
+                line-height: 26px;
             }
         }
     }
@@ -338,7 +350,7 @@
             position: relative;
             max-width:1380px;
             margin:0 auto;
-            padding:18px 0;
+            padding:17px 0;
             text-align: center;
             p {
                 display: inline-block;
@@ -456,17 +468,24 @@
         top:48px; 
         left:0;
         width:100%;
+        max-width: 665px;
         padding:0 40px;
-        text-align: right;
+        text-align: left;
         z-index:1;
         box-sizing:border-box;
         .cont-top-tit {
             display:inline-block;
-            font-size:18px;
-            color:#fff;
-            line-height:1.56;
+            font-size:52px;
+            color:#000;
+            line-height:62PX;
             font-weight:bold;
             text-align: left;
+        }
+        .cont-sub-copy {
+            font-size:24px;
+            line-height: 32px;
+            margin:16px 0 0;
+            font-weight: 500;
         }
         .btn-fast-support {
             display: none;
@@ -482,15 +501,21 @@
 
         @include mobile {
             display: flex;
-            display: none;
-            justify-content: space-between;
-            align-items: center;
-            top:24px; 
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            top:32px; 
             left:0;
             padding:0 16px;
 
             .cont-top-tit {
-                font-size:14px;
+                font-size:28px;
+                line-height: 36px;
+            }
+            .cont-sub-copy {
+                font-size:16px;
+                line-height: 24px;
+                max-width: 284px;
             }
             .btn-fast-support { 
                 margin-left:0;    
@@ -851,7 +876,7 @@
                 }
             }
 
-            .slick-arrow {
+            .slick-arrow {                
                 &.slick-prev {
                     left:-85px;
                 }
@@ -1300,7 +1325,7 @@
 
         @include mobile {
             overflow:hidden;
-            padding:33px 16px 24px; //0625
+            padding:24px 16px 24px; //0625
             justify-content: flex-start; //0625
 
             .had-pd-inner {
@@ -1322,6 +1347,10 @@
                     overflow:visible !important;
                 }
                 .item-list {
+                    padding:0 6px;
+                    &:nth-child(1) {
+                        padding-left:16px;
+                    }
                     &.history-type {
                         .item-card {
                             padding:24px 24px 48px;
@@ -1472,7 +1501,7 @@
             margin:0 auto;
             //padding:48px 0 48px 80px;
             box-sizing:border-box;
-            background: rgba(0, 0, 0, 0.5);
+            //background: rgba(0, 0, 0, 0.5); BTOCSITE-9066 dim제거
 
             &:before {
                 content:"";
@@ -1483,7 +1512,7 @@
                 width:100%;
                 height:100%;
                 z-index:-1;
-                background: url("/lg5-common/images/CS/img-support-main-hero-pc03.jpg") no-repeat center top; //0625
+                background: url("/lg5-common/images/CS/img-support-home-hero-pc.jpg") no-repeat center top; //220111 변경
                 background-size: cover;
             }
         }
@@ -1495,7 +1524,7 @@
         }
 
         @include mobile {
-            border-bottom:12px solid #f4f4f4;
+            border-bottom:0;
 
             
             .hero-container {
@@ -1503,7 +1532,7 @@
                 // background: none;
 
                 &:before {
-                    background-image: url("/lg5-common/images/CS/img-support-main-hero-mo03.jpg"); //0625
+                    background-image: url("/lg5-common/images/CS/img-support-home-hero-mo.jpg"); //220111 변경
                     background-size:cover;
                     background-position:center center; //0625
                 }
@@ -1522,22 +1551,106 @@
                 }
             }
         }
-        
+
+
+        //로그인후 - BTOCSITE-9066
+        &.member-type{
+            .hero-container{
+                //히어로 or 제품 지원 영역 상단
+                background: rgba(0,0,0,0.3);
+                .home-cont-top {
+                    position: absolute;
+                    max-width: none;
+                    top:48px; 
+                    left:0;
+                    width:100%;
+                    padding:0 40px;
+                    text-align: right;
+                    z-index:1;
+                    box-sizing:border-box;
+                    margin-top:-24px;
+                    .cont-top-tit {
+                        display:inline-block;
+                        font-size:18px;
+                        color:#fff;
+                        line-height:1.56;
+                        font-weight:bold;
+                        text-align: left;
+                    }
+                    .btn-fast-support {
+                        display: none;
+                        margin-left:24px;
+                    }
+
+                    @include tablet {
+                        .hero-tit {
+                            font-size:14px;
+                        }
+                        
+                    }
+
+                    @include mobile {
+                        display: flex;
+                        display: none;
+                        justify-content: space-between;
+                        align-items: center;
+                        top:24px; 
+                        left:0;
+                        padding:0 16px;
+
+                        .cont-top-tit {
+                            font-size:14px;
+                        }
+                        .btn-fast-support { 
+                            margin-left:0;    
+                        }
+                    }
+                }
+
+                .had-pd-inner {
+                    .slick-dots {
+                        bottom:-23px;
+                        li {
+                            button {
+                                width:10px;
+                                height: 10px;
+                                background: #e4e4e4;
+                            }
+                        }
+                        li.slick-active {
+                            button {
+                                background:#000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+
+    
     
     
     //공지사항
     .home-notice {
+        // BTOCSITE-9066 수정
         overflow:hidden;
-        height:73px;
-
+        height:72px;
+        background-color: rgba(0,0,0,0.4);
+        margin-top:-72px;
+        border-top:1px solid rgba(255,255,255,.4);
+        // BTOCSITE-9066 수정
+        @include mobile{
+            height: 74px;
+            margin-top:-74px;
+        }
         .notice-inner {
             display:table;
             position: relative;
-            max-width:880px;
+            max-width:850px;
             width:100%;
             margin:0 auto;
-            padding:0 40px;
+            //padding:0 40px;
             table-layout: fixed;
         }
 
@@ -1548,8 +1661,8 @@
             vertical-align: middle;
             .title {
                 font-size:16px;
-                line-height:70px;
-                color:#222;
+                line-height:24px; //BTOCSITE-9066 수정
+                color:#fff; //BTOCSITE-9066 수정
                 font-weight:500;
             }
         }
@@ -1557,12 +1670,15 @@
             display:table-cell;
             position: relative;
             width:100%;
-            padding:0 84px 0 16px;
+            //padding:0 84px 0 16px;
+            padding:0 106px 0 16px;
             font-size:16px;
+            line-height: 24px;
             box-sizing:border-box;
             vertical-align: middle;
             opacity:0;
             transition:opacity .3s;
+            color:#fff; //BTOCSITE-9066 추가
             &.slick-initialized {
                 opacity:1;
             }
@@ -1578,8 +1694,7 @@
                 background: #ddd;
             }
             .flag-wrap {
-                display:inline-block;
-                vertical-align: middle;
+                margin-left:6px;
                 .flag {
                     font-size:12px;
                     line-height:1;
@@ -1587,9 +1702,13 @@
                 }
             }
             .notice-list {
-                height:73px;
-                line-height:73px;
-                @include textEllipsis;
+                height:71px;
+                line-height:71px;
+                display: flex;
+                justify-content: flex-start;
+                a{
+                    @include textEllipsis;
+                }
             }
             .slide-contents {
                 overflow:hidden;
@@ -1603,7 +1722,7 @@
             padding:6px;
             top:50%;
             transform:translateY(-50%);
-            background-size: 16px 16px;
+            background-size: 19px 19px;
             background-position: center center;
             background-repeat:no-repeat;
 
@@ -1614,11 +1733,11 @@
             &.slick-prev {
                 left:auto;
                 right:56px;
-                background-image: url('/lg5-common/images/CS/icon-notice-up.svg');
+                background-image: url('/lg5-common/images/CS/icon-notice-up-24.svg');
             }
             &.slick-next {
                 right:28px;
-                background-image: url('/lg5-common/images/CS/icon-notice-down.svg');
+                background-image: url('/lg5-common/images/CS/icon-notice-down-24.svg');
             }
         }
 
@@ -1628,7 +1747,7 @@
             width:28px;
             height:28px;
             top:50%;
-            right:40px;
+            right:0;
             transform:translateY(-50%);
             background-size: 16px 16px;
             background-position: center center;
@@ -1639,12 +1758,23 @@
                 background-image: url('/lg5-common/images/icons/btn-play-16-gray.svg');
             }
         }
+        @include tablet {
+            .notice-inner { 
+               max-width: 100%;
+               padding:0 10px;
+            }
+            .slick-arrow {
+                
+            }
 
+            .btn-play {
+                right: 10px;
+            }
+        }
         @include mobile {
-            height:122px;
             .notice-inner {
                 display:block;
-                padding:30px 16px;
+                padding:12px 16px 18px;
             }
 
             .notice-title {
@@ -1658,7 +1788,7 @@
                 display: block;
                 margin-left:0;
                 padding:0;
-                font-size:14px;
+                font-size:13px;
                 &:before {
                     display: none;
                 }
@@ -1671,7 +1801,7 @@
 
                 .notice-list {
                     height:40px;
-                    line-height:40px;
+                    line-height:31px;
                 }
 
                 .slide-contents {
@@ -1680,39 +1810,55 @@
             }
 
             .slick-arrow {
-                top:-22px;
+                top:-25px;
                 transform:none;
+                &.slick-prev {
+                    background-size:24px 24px;
+                }
+                &.slick-next {
+                    background-size:24px 24px;
+                }
             }
             .btn-play {
-                top:30px;
+                top:10px;
                 right:15px;
                 transform:none;
+                background-size:20px 20px;
+                padding:6px;
             }
         }
     }
 
     //검색영역
     .keyword-search {
-        margin-top:-33px;
+        margin:48px 0;
         padding:0 40px;
+        @include mobile{
+            margin:36px 0 24px;
+        }
         .search-box {
-            max-width:930px;
+            max-width:850px;
             width:100%;
 
             .btn-search {
                 right:10px;
                 height:66px;
+                background: center/24px 24px url(/lg5-common/images/icons/icon-search-20.svg) no-repeat;
             }
             .btn-delete {
                 right:70px;
             }
         }
         .search-input {
-            width:100%;            
-            height:68px;
+            width:100%;
             input[type=text]  {
-                padding:21px 64px 21px 32px;
-                border-radius:30px;
+                padding:18px 64px 18px 32px;
+                border-radius:33px;
+                background: 
+                    linear-gradient(#fff, #fff) padding-box,
+                    linear-gradient(101deg, #8d71ec, #ff537c 99%) border-box;
+                border: 2px solid transparent;
+                box-shadow: none;
             }
             &.clear {
                 input[type=text]  {
@@ -1737,7 +1883,6 @@
         }
 
         @include mobile {
-            margin-top:-31px;
             padding:0 16px;
             .search-box {
                 .btn-search {
@@ -1750,9 +1895,8 @@
                 }
             }
             .search-input {
-                height:62px;
                 input[type=text]  {
-                    padding:18px 41px 20px 20px;
+                    padding:16px 41px 16px 20px;
                 }
                 &.clear {
                     input[type=text]  {
@@ -1776,7 +1920,7 @@
     //컨텐츠 영역 로그인 박스
     .home-login {
         position:relative;
-        padding:48px 0;
+        padding:48px 0 54px;
         color:#000;
         &:before {
             content:"";
@@ -1797,13 +1941,13 @@
         .login-tit {
             margin-bottom:18px;
             font-size:32px;
-            line-height:1.63;
+            line-height:40px;
         }
         .login-useful-list {
             ul {
                 font-size:18px;
                 color:#000;
-                line-height:1.56;
+                line-height:26px;
 
                 > li {
                     & + li {
@@ -1823,17 +1967,17 @@
             }
         }
         .btn-wrap {
-            margin-top:32px;
+            margin-top:24px;
 
             .btn-login {
                 display: inline-block;
-                width:275px;
+                width:126px;
                 color:#000;
                 font-size:16px;
                 text-align: center;
                 line-height:46px;
-                border-radius:30px;
-                border:2px solid #000;
+                border-radius:25px;
+                border:1px solid #000;
                 box-sizing: border-box;
                 transition:.3s color ease-in-out, .3s background-color ease-in-out, .3s border-color ease-in-out;
 
@@ -1851,13 +1995,17 @@
             .login-tit {
                 margin-bottom:24px;
                 font-size:24px;
-                line-height:1.32;
+                line-height:30px;
             }
             .login-useful-list {
                 ul {
                     font-size:14px;
+                    line-height: 22px;
     
                     > li {
+                        & + li {
+                            margin-top:0;
+                        }
                         &:before {
                             content:"";
                             width:16px;
@@ -1871,10 +2019,10 @@
                 margin-top:24px;
     
                 .btn-login {
-                    width:76px;
-                    font-size:13px;
-                    line-height:43px;
-                    border-radius:50px;
+                    width:110px;
+                    font-size:14px;
+                    line-height:40px;
+                    border-radius:21px;
                     border-width:1px;
                 }
             }
@@ -1884,87 +2032,66 @@
 
     //자주 찾는 컨텐츠
     .popular-find {
-        margin-top:70px;
+        margin-top:72px;        
         .headline {
             position: relative;
             .title {
-                display: inline-block;
+                display: block;
                 font-size:32px;
-                line-height:1.63;
-                vertical-align: middle;
-                color:#000;
-            }
-            .list-filter {
-                display: inline-block;
-                margin-left:16px;
-                vertical-align: middle;
-
-                span {
-                    display: inline-block;
-                    font-size:16px;
-                    color:#000;
-                }
-                .btn-filter-toggle {
-                    display: inline-block;
-                    position:relative;
-                    width:60px;
-                    height:32px;
-                    margin-left:8px;
-                    background: #aaa;
-                    border-radius:20px;
-                    border:2px solid #aaa;
-                    box-sizing:border-box;
-                    transition:background-color .3s ease-in-out, border-color .3s ease-in-out;
-
-                    &:before {
-                        content:"";
-                        display: block;
-                        width:28px;
-                        height:28px;
-                        background: #fff;
-                        border-radius:50%;
-                        transition:.3s transform ease-in-out;
-                    }
-
-                    &.active {
-                        background-color: #da0f47;
-                        border-color: #da0f47;
-                        &:before {
-                            transform:translateX(100%);
-                        }
-                    }
-                }
-            }
-
-            .btn-solution-link {
-                display: inline-block;
-                position: absolute;
-                right:0;
-                bottom:0;
-                padding:19px 24px 18px;
-                font-size:18px;
-                font-weight:500;
+                line-height:40px;
                 text-align: center;
+                vertical-align: middle;
                 color:#000;
-                background: #fff;
-                border-radius:30px;
-                box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-
-                &:before {
-                    content:"";
+                margin-bottom:32px;
+                //margin:72px 0 41px;
+            }
+            .btn-area {
+                height: 45px;
+                .btn-solution-link {
                     display: inline-block;
-                    width:24px;
-                    height:24px;
-                    margin-right:4px;
-                    background: url("/lg5-common/images/CS/icon-install-action-support-check.svg") no-repeat 0 0/100% 100%;
-                    vertical-align: middle;
-
+                    position: absolute;
+                    right:0;
+                    bottom:0;
+                    padding:12px 27px 12px 32px;
+                    font-size:16px;
+                    font-weight:500;
+                    text-align: center;
+                    color:#000;
+                    background: #fff;
+                    border-radius:23px;
+                    border: 1px solid #000;
+    
+                    &:after {
+                        content:"";
+                        display: inline-block;
+                        width:15px;
+                        height:15px;
+                        margin-left:2px;
+                        margin-bottom: 2px;
+                        background: url("/lg5-common/images/icons/btn-arr-16-black.svg") no-repeat 0 0/100% 100%;
+                        vertical-align: middle;
+    
+                    }
+                }
+                .sort-list{
+                    position: absolute;
+                    left:0;
+                    bottom:0;
                 }
             }
         }
 
         .solution-pd-content {
             display: none;
+            .btn-moreview {
+                padding: 10px 32px 12px;
+                border-radius: 23px;
+                margin: 24px auto 0;
+                span{
+                    font-size:16px;
+                    line-height: 24px;
+                }
+            }
 
             &.active {
                 display: block;
@@ -1973,7 +2100,7 @@
 
         .popular-list-wrap {
             position: relative;
-            margin-top:36px;
+            margin-top:24px;
             margin-left:-12px;
             margin-right:-12px;
             @include clearfix;
@@ -2017,14 +2144,15 @@
                 }
 
                 a {
+                    text-align: left;
                     display: block;
-                    padding:32px;
+                    padding:24px 32px 32px;
                     border-radius:8px;
                     box-shadow:  2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                 }
 
                 .item-category {
-                    margin-bottom:32px;
+                    margin-bottom:20px;
                     font-size:16px;
                     .category-thumb {
                         position: relative;
@@ -2065,24 +2193,26 @@
         @include tablet {
             margin-top:50px;
             .headline {
-                text-align: center;
+                //text-align: center;
+                position: relative;     
                 .title {
                     display: block;
+                    margin-bottom:38px;
                 }
-                .list-filter {
-                    display:block;
-                    margin-top:32px;
-                    margin-left:0;
-                    text-align: right;
+                .btn-area {
+                    height: 36px;
+                    .btn-solution-link {
+                   
+                        position: absolute;
+                        right: 0;
+                        bottom:0;
+                        margin-bottom:0;
+                        padding: 9px 15px 7px 20px
+                    }
                 }
-    
-                .btn-solution-link {
-                    display: inline-block;
-                    position: static;
-                    margin-bottom:40px;
-                    padding:11px 20px 10px;
-                }
+                        
             }
+            
             .popular-list-wrap {
                 margin-left:0;
                 margin-right:0;
@@ -2099,44 +2229,42 @@
         }
 
         @include mobile {
+            margin-top:36px;
             .headline {
-                
+                height: inherit;
                 .title {
-                    font-size:24px;
+                    font-size:20px;
+                    line-height: 26px;
+                    margin-bottom:19px;
                 }
-                .list-filter {
-                    span {
+                .btn-area {
+                    height: 35px;
+                    .btn-solution-link {
                         font-size:13px;
-                    }
-                    .btn-filter-toggle {
-                        width:54px;
-                        height:28px;
-                        margin-left:8px;
+                        border-radius:20px;
+                        position: absolute;
+                        right: 0;
+                        bottom:0;
+                        margin-bottom:0;
+                        padding: 9px 15px 7px 20px
     
-                        &:before {
-                            width:24px;
-                            height:24px;
-                        }
                     }
-                }
-    
-                .btn-solution-link {
-                    font-size:13px;
-                    border-radius:30px;
-                }
+                    .sort-list{
+                        bottom:7px; 
+                    }
+                }                
             }
     
             .popular-list-wrap {
-                margin-top:12px;
-    
+                margin-top:14px;
                 .item-list {
                     a {
-                        padding:24px 20px;
+                        padding:16px 20px 20px;
                         box-shadow: 3px 6px 24px 0 rgba(0, 0, 0, 0.14);
                     }
     
                     .item-category {
-                        margin-bottom:24px;
+                        margin-bottom:14px;
                         font-size:13px;
                         .category-thumb {
                             width:24px;
@@ -2146,7 +2274,23 @@
                     }
     
                     .item-tit {
-                        font-size:20px;
+                        font-size:18px;
+                        line-height: 24px;
+                    }
+
+                    .bullet-list{
+                        margin-top:12px;
+                    }
+                }
+            }
+
+            .solution-pd-content {
+                .btn-moreview {
+                    padding: 7px 24px;
+                    border-radius: 21px;
+                    span{
+                        font-size:14px;
+                        line-height: 20px;
                     }
                 }
             }
@@ -2159,7 +2303,7 @@
         .rersv-wrap {
             position: relative;
             height:100%;
-            padding:55px 55px 140px;
+            padding:42px 48px 120px;
             background: #f4f4f4;
             border-radius:8px;
             box-sizing:border-box;
@@ -2168,12 +2312,12 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-end;
-                margin-bottom:50px;
-                padding-bottom:15px;
-                border-bottom:1px solid #000;
+                margin-bottom:24px;
+                padding-bottom:7px;
+                border-bottom:2px solid #000;
                 .title {
-                    font-size:24px;
-                    line-height:32px;
+                    font-size:28px;
+                    line-height:36px;
                     color:#000;
                     font-weight:bold;
                     
@@ -2219,13 +2363,15 @@
 
                     .err-msg {
                         position: absolute;
-                        top:8px;
+                        top:4px;
                     }
                 }
-                
+                .form-col + .form-col {
+                    margin-left:8px;
+                }
 
                 .forms {
-                    margin-top:50px;
+                    margin-top:30px;
 
                     &.form-head {
                         margin-top:0;
@@ -2235,6 +2381,7 @@
 
                     .tit {
                         margin-bottom:0;
+                        padding:0  0 8px;
                     }
 
                     .input-wrap {
@@ -2382,11 +2529,48 @@
             }
         }
 
-        @include pc-size-l {
-            .rersv-wrap { 
-                padding:45px 35px 120px;
+        .rersv-wrap.member-type {
+            padding: 42px 48px 105px;
+            @include mobile{
+                padding: 30px 20px 36px;
             }
         }
+        .rersv-wrap.view-type {
+            padding:42px 48px 48px;
+            height: inherit;
+            @include mobile{
+                padding: 30px 20px 36px;
+            }
+            .reserv-inquiry-slider {
+                padding-bottom:31px;
+                .item-list {
+                    > a {
+                        height: 223px;
+                    }
+                }
+                .slick-dots {
+                    li {
+                        padding:0 8px;
+                        button {
+                            width:10px;
+                            height: 10px;
+                            background: #e4e4e4;
+                        }
+                    }
+                    li.slick-active {
+                        button {
+                            background:#000;
+                        }
+                    }
+                }
+            }
+        }
+
+        // @include pc-size-l {
+        //     .rersv-wrap { 
+        //         padding:45px 35px 120px;
+        //     }
+        // }
 
         @media screen and (max-width:1280px) {
             .rersv-wrap { 
@@ -2454,11 +2638,14 @@
         @include mobile {
             .rersv-wrap {
                 height:auto;
-                padding:40px 20px;
-    
+                padding:30px 20px 36px;
+
+                &.view-type {
+                    padding-bottom:36px;
+                }
                 .headline {
-                    margin-bottom:33px;
-                    padding-bottom:12px;
+                    margin-bottom:20px;
+                    padding-bottom:5px;
                     .title {
                         font-size:20px;
                         line-height:34px;
@@ -2473,14 +2660,28 @@
                 }
     
                 .form-wrap {
+                    .form-head {
+                        margin-bottom:24px;
+                        .btn-link {
+                            margin-left:0;
+                            float: right;
+                        }
+                    }
                     .form-col + .form-col {
-                        margin-top:50px;
+                        margin-top:26px;
+                        margin-left:0;
                     }
                     .forms {
-                        margin-top:50px;
+                        margin-top:26px;
                         .rdo-wrap {
                             & ~ .rdo-wrap {
                                 margin-left:24px;
+                            }
+                        }
+                        .conts {
+                            margin-top:0;
+                            .err-msg {
+                                
                             }
                         }
                     }
@@ -2493,8 +2694,13 @@
     
                 .btn-wrap {
                     position: static;
-                    margin-top:55px;
+                    margin-top:30px;
                     text-align: center;
+                    .btn {
+                        padding:10px 30px;
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
                 }
                 .reserv-inquiry-slider {
                     height:158px;
@@ -2545,138 +2751,140 @@
         }
     }
 
-    //주요 서비스
+    // 주요서비스 추가 태그 - 9066 220104 - s
     .main-service {
-        .slide-item {
-            float:left;
+        .bann_content {
             position: relative;
-            
-            width:25%;
-            padding:0 12px;
-            
-
-            img {
-                width:100%;
+        }
+        &-slider {
+            white-space: nowrap;
+            .slick-list {
+                margin:-5px -10px 0;
+                padding:5px 0 0;
             }
+            .slide {
+                &-item{            
+                    display: inline-block;
+                    width: 327px;
+                    height: 358px;
+                    margin-top: 0;
+                    width: calc(100% / 4);
+                    padding: 0 12px;
+                    box-sizing: content-box;
+                }
+                &-item-wrap {
+                    
+                    position: relative;
+                    border-radius: 8px;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    > a {                    
+                        display: block;
+                    }
+                }
+                &-thumb-area {
+                    box-sizing: border-box;
+                    img {            
+                        display: inline-block;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        -ms-transform: translate(-50%,-50%);
+                        transform: translate(-50%,-50%);
+                        max-width: none;
+                        width: auto;
+                        background-position: center center;
+                        min-width: 100%;
+                        min-height: 100%;
+                        height: 100%;
 
-            .item-thumb {
-                overflow:hidden;
-                border-radius:10px;
+                    }
+                }
+                &-cont-area {
+                    position:absolute;
+                    bottom:0;
+                    left:12px;
+                    right:12px;
+                    padding:40px 24px;
+                    box-sizing: border-box;
+
+                }
+                &-title {
+                    display: block;
+                    font-size:28px;
+                    font-weight:bold;
+                    line-height:36px;
+                    color:#fff;
+                    white-space: pre-line;
+                }
             }
-
-            .item-cont {
-                position:absolute;
-                bottom:0;
-                left:12px;
-                right:12px;
-                padding:28px 32px;
-                box-sizing: border-box;
-            }
-
-            .item-tit {
-                display: block;
-                font-size:32px;
-                font-weight:bold;
-                line-height:1.63;
-                color:#fff;
-                white-space: pre-line;
-            }
-
-            .item-link {
-                display:inline-block;
-                margin-top:24px;
-                padding:0 16px;
-                color:#fff;
-                font-size:14px;
-                border-radius:30px;
-                line-height:40px;
-                border:1px solid #fff;
-                transition:.3s color ease-in-out, .3s background-color ease-in-out;
+            @include tablet {
                 
-                &:hover, &:focus {
-                    color:#000;
-                    background-color: #fff;
-                }
             }
-        }
-        .slick-list {
-            margin:0 -12px;
             @include mobile {
-                margin:0 -16px;
-                padding:0 8px;
+                .slick-list {
+                    overflow:visible;
+                    margin:-5px -5px 0;
+                }
+                .slide {
+                    &-item {
+                        width: 143px;
+                        height: 179px;
+                        padding: 0 4px;
+                    }
+                    &-item-wrap {
+                        > a {
+                            height: 100%;
+                        }
+                    }
+                    &-thumb-area {
+                        img {
+                            display: inline-block;
+                            object-fit: cover;
+                        }
+                    }
+                    &-cont-area {
+                        padding:15px 16px;
+                        left:4px;
+                        right:4px;
+
+                    }
+                    &-title {
+                        font-size:15px;
+                        line-height:21px;
+                    }
+                }
             }
+        
+        }
+        .atEnd {
+            transform: 0;
         }
 
-        .slick-arrow {
-            opacity: 0;
-            transition:.3s opacity;
-        }
+        .slide-button-controls {
+            position: absolute;
+            top:calc(50% - 10px);
+            left:50%;
+            width:100%;
+            max-width:1380px;
+            height:0;
+            transform:translateX(-50%);
+            text-align: right;
+            font-size:0;
+            z-index:1;
 
-        &:hover {
-            .slick-arrow {
-                opacity:1;
-            }
-        }
-
-        @include pc-size-m {
-            .banner {
-                padding-bottom:32px;
-            }
-            .slide-item {
-                .item-cont {
-                    padding:28px 15px;
-                }
-                .item-tit {
-                    font-size:24px;
-                }
-                .item-link {
-                    padding:0 10px;
-                    font-size:12px;
-                }
-            }
-        }
-
-        @include mobile {
-            .main-list-wrap {
-                position: relative;
-                overflow:visible !important;
-            }
-
-            .slide-item {
-                width:calc(100vw - 16px);
-                padding:0 8px;
-
-                .item-cont {
-                    padding:20px 24px;
-                }
-
-                .item-tit {
-                    font-size:27px;
-                }
-                .item-link {
-                    padding:5px 20px;
-                    font-size:13px;
-                    border-radius:50px;
-                }
-            }
             .slick-arrow {
                 &.slick-prev {
-                    left:-12px;
+                    left:-24px;
                 }
                 &.slick-next {
-                    right:-12px;
-                }
-            }
-            .slick-dots {
-                bottom:-32px;
-            }
-            @at-root {
-                .mobile & .slick-arrow {
-                    opacity:1;
+                    right:-24px;
                 }
             }
         }
     }
+    // 주요서비스 추가 태그 - 9066 220104 - e
 
     //관련된 정보
     .related-pages {
@@ -2684,7 +2892,7 @@
             float:left;
             position: relative;
             width:33.33%;
-            padding:12px;
+            padding:0 12px;
 
             &.hidden {
                 display:none;
@@ -2713,7 +2921,7 @@
                 font-size:24px;
                 font-weight:bold;
                 color:#000;
-                line-height:1.42;
+                line-height:32px;
             }
 
             > a {
@@ -2721,10 +2929,17 @@
                 position: relative;
                 overflow:hidden;
                 border-radius:8px;
-                // width:444px;
+                //width:444px;
+                height: 203px;
 
                 img {
-                    width:100%;
+                    position: absolute;
+                    top:50%;
+                    left:50%;
+                    transform: translate(-50%,-50%);
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
             }
         }
@@ -2740,7 +2955,12 @@
             .item {
                 &-cont {
                     padding:12px 12px;
-                    font-size:14px;
+                    font-size:15px;
+                }
+                > a {
+                    img {
+                        
+                    }
                 }
             }
         }
@@ -2749,15 +2969,151 @@
             .item {
                 float:none;
                 width:100%;
-
+                padding:0 12px 8px;
                 &-cont {
-                    padding:28px 20px;
-                    font-size:16px;
-                    line-height:1.5;
+                    padding:20px 20px;
+                    font-size:15px;
+                    line-height:21px;
+                }
+                > a {
+                    height: 150px;
+    
+                    img {
+                        // max-width: 328px;
+                        // max-height: 150px;
+                    }
                 }
             }
         }
         
+    }
+    //고객지원 리스트
+    .support-list {
+        overflow: hidden;
+        
+        .list-wrap{
+            display: flex;
+            justify-content: center;
+            border-bottom:16px solid #f4f4f4;
+            padding:0 32px 100px 20px;
+            @include mobile{
+                display: block;
+                padding: 0 16px 30px 22px;
+                border-bottom:12px solid #f4f4f4;
+            }
+            .items-wrap {
+                width: 444px;
+                margin:0 12px;
+                // border:1px solid #fac;
+                @include mobile{
+                     width: 100%;
+                     border-bottom:1px solid #dddddd;
+                     padding-bottom:20px;
+                     padding-top:15px;
+                     margin:0;
+                    &:last-child{
+                        border-bottom:0;
+                    }
+                    &:first-child{
+                        padding-top:0;
+                    }
+
+
+                }
+                .icon-wrap{
+                    text-align: center;
+                    @include mobile{
+                        text-align: left;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .icon{
+                        width: 128px;
+                        height: 128px;
+                        background-color:#f4f4f4;
+                        border-radius: 50%;
+                        position: relative;
+                        left:50%;
+                        transform: translateX(-50%);
+                        @include mobile{
+                            width: 32px;
+                            height: 32px;
+                            background-color:#fff;
+                            border-radius:0;
+                            left:16px;
+                            top:0;
+                        }
+                        img{
+                            @include mobile{
+                                width: 100%;
+                                height: auto;
+                                display: block;
+                                padding:0;
+                            }                            
+                            padding:24px;
+                        }
+                    }
+                    .icon-txt{
+                        font-size:24px;
+                        line-height: 32px;
+                        font-weight: bold;                        
+                        @include mobile{
+                            font-size:16px;
+                            line-height: 18px;
+                            margin-left:10px;
+                        }
+                    }
+                }
+            }
+            ul {
+                font-size:20px;
+                line-height: 59px;
+                font-weight: bold;
+                padding:0 52px;
+                @include tablet {
+                    padding:0 10px;
+                }
+                @include mobile{
+                    overflow: hidden;
+                    padding:0;
+                }
+                li{
+                    border-bottom:1px solid #ddd;
+                    @include mobile{
+                        float: left;
+                        border-bottom:0;
+                        width:50%;
+                        padding-top:12px;
+                        &:nth-child(2n){
+                            padding-left: 16px;
+                        }
+                        &:nth-child(2n-1){
+                            padding-right: 8px;
+                        }
+                    }                    
+                    a{
+                        display: block;
+                        position: relative;
+                        @include mobile{
+                            font-size:14px;
+                            line-height: 18px;
+                            font-weight: 500;
+                        }
+                        &:after{
+                            content:'';
+                            width:16px;
+                            height: 16px;
+                            position:absolute;
+                            right: 0px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            background: url(/lg5-common/images/icons/btn-arr-16-black.svg) center no-repeat;
+                            background-size:16px;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //제품지원
@@ -2765,7 +3121,7 @@
         position: relative;
         height:432px;
         box-sizing: border-box;
-
+        display: none; // 추가 220106
         &:before {
             content:"";
             display: block;
@@ -2864,40 +3220,38 @@
 
     //하단 수상 목록
     .awards {
-        padding-bottom:40px;
-
+        padding-bottom:132px;
+        @include mobile{
+            padding-top:50px;
+            padding-bottom:64px;
+        }
         .award-list-wrap {
             position: relative;
             margin:0 auto;
         }
         .award-list {
             position:relative;
-            margin:0 56px;
+            //margin:0 56px;
             box-sizing:border-box;
         }
         .slide {
             &-item {
-                float:left;
-                padding:0 10px;
+                margin: 1px 12px 9px;
+                padding: 20px 0;
+                box-shadow: 3px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                background: #fff;
+                border-radius: 8px;
 
                 > a {
                     display:flex;
                     flex-direction: row;
                     align-items: center;
-                    width:276px;
+                    line-height: 24px;
+                    //margin-top:20px;
+                    //text-align: center;
+                    justify-content: center;
                 }
-            }
-            &-thumb {
-                width:80px;
-                height:80px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                flex-shrink: 0;
-                img {
-                    width:100%;
-                }
-            }
+            }            
             &-text {
                 display: flex;
                 flex-direction: column;
@@ -2918,23 +3272,45 @@
                 }
             }
         }
-
+        .thumb {
+            width:80px;
+            height:80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-shrink: 0;
+            img {
+                width:100%;
+            }
+        }
+        .slick-dots {
+            li {
+                button {
+                    width:10px;
+                    height: 10px;
+                    background: #e4e4e4;
+                }
+            }
+            li.slick-active {
+                button {
+                    background:#000;
+                }
+            }
+        }
         .slick-arrow {
-            opacity:0;
-            transition:opacity .3s;
+            display: inline-block !important;
+            opacity: 0.7;
+            cursor: pointer;
 
             &.slick-prev {
-                left:-60px;
+                left:-15px;
             }
             &.slick-next {
-                right:-60px;
+                right:-15px;
             }
         }
-        &:hover .slick-arrow {
-            opacity:1;
-        }
         .btn-play {
-            display: inline-block;
+            display: none;
             width:16px;
             height:16px;
             background: url("/lg5-common/images/icons/btn-pause-16-gray.svg") no-repeat 0 0/100% 100%;
@@ -2951,17 +3327,36 @@
             }
             .slide {
                 &-item {
+                    width: 143px;
+                    height: 180px;
+                    padding:20px 25px 25px;
+                    margin: 1px 4px 16px;
                     > a {
                         width:100%;
                         justify-content: center;
+                        flex-direction: column;
+                        text-align: center;
                     }
+                    
                 }
                 &-text {
                     font-size:14px;
+                    margin-left:0;
+                    line-height: 20px;
+                    justify-content: flex-start;
+                    margin-bottom:10px;
+                    flex-grow:2;
                 }
+            }
+            .thumb{
+                margin-bottom: 15px;
+                flex-grow:1;
             }
             .slick-arrow {
                 display: none;
+            }
+            .banner {
+                padding: 0 0 0 16px;
             }
         }
     }
@@ -2975,4 +3370,15 @@
     &::-webkit-scrollbar-thumb {
         background: #a9a9a9;
     }
+}
+
+//BTOCSITE-9066 추가
+.awards .slick-controls {
+    bottom:-16px;
+    @include mobile{
+        display: none;   
+    }    
+}
+.slick-controls .slick-dots, .slick-controls .slick-dot-container {
+    margin-right:0;
 }

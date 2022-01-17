@@ -892,8 +892,8 @@
                     if(index == 0) {
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
-                        /* BTOCSITE-5783 : 롯데카드 5% 결제일 할인  */
-                        var isShow = lgkorUI.isShowDate('20210601','20220101') // 홋데 카드 변경일 : 2021.10.1 00:00 ~ 2021.12.31 24:00
+                        /* BTOCSITE-10166 : 롯데카드 혜택 배지 수정요청의 건  */
+                        var isShow = lgkorUI.isShowDate('20210601','20220201') // 2022.01.01 00:00 ~ 2021.01.31 24:00  ( 신한/롯데 프로모션 적용 기간)
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
@@ -961,13 +961,23 @@
 
                     var ajaxUrl = self.$pdpInfo.attr('data-wish-url');
 
+                    /* s : BTOCSITE-5938-408 : 찜하기 복수인 경우 */
+                    var $wishItem = self.$pdpInfo.find('.chk-wish-wrap input[type=checkbox]');
                     var success = function(data) {
-                        $this.data("wishItemId",data.wishItemId);
-                        $this.prop("checked",wish);
+                        // $this.data("wishItemId",data.wishItemId);
+                        // $this.prop("checked",wish);
+                        $wishItem.each(function(i){
+                            $(this).data("wishItemId",data.wishItemId);
+                            $(this).prop("checked",wish);
+                        });
                     };
                     var fail = function(data) {
-                        $this.prop("checked",!wish);
+                        // $this.prop("checked",!wish);
+                        $wishItem.each(function(){
+                            $(this).prop("checked",!wish);
+                        });
                     };
+                    /* e : BTOCSITE-5938-408 */
                     
                     lgkorUI.requestWish(
                         param,
@@ -2791,7 +2801,7 @@
 
                 if(storageCompare && storageCompare['data'].length > 0){ 
                     var data = storageCompare['data'][0];
-                    self.$pdpInfo.find('.product-compare').hide();
+                    if(data.b2bcatemapping != lgePdpSendData.b2bCateMapping) self.$pdpInfo.find('.product-compare').hide();
                 }
             },
             setSiblingOptionCheck: function(target, currentIndex, modelsData){

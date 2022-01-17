@@ -73,13 +73,14 @@
                                 <h1 class="tit"><span>아카데미 기획전 대상 확인</span></h1>
                             </header>
                             <section class="pop-conts">
+                                <!-- BTOCSITE-8287 문구 변경 -->
                                 <section class="section">
                                     <P class="p-title">죄송합니다.</P>
-                                    <p>회원님은 LG전자 아카데미 스토어 대상자에<br>
-                                        포함되지 않습니다.<br>
-                                        만 18세~29세 학생만 입장 가능합니다.
+                                    <p>구매 가능 대상이 아닙니다. <br>
+                                        만 18~29세 대학(원)생만 입장 가능합니다. 
                                     </p>
                                 </section>
+                                <!-- BTOCSITE-8287 문구 변경 -->
                             </section>
                             <footer class="pop-footer center">
                                 <div class="btn-group">
@@ -100,7 +101,7 @@
                                 </header>
                                 <section class="pop-conts">
                                         <P class="p-title">@ac.kr 계정의 이메일로 인증해 주세요.</P>
-                                        <div class="form-wrap" id="emailCertifiedForm" data-ajax="../../../lg5-common/data-ajax/support/save.json" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
+                                        <div class="form-wrap" id="emailCertifiedForm" data-ajax="https://wwwdev50.lge.co.kr/evt/api/exhibitions/sendTheEmail.lgajax?planEventId=PE00030001" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
                                             <dl class="forms inner-type">
                                                 <dt class="tit"><label for="email" class="req">이메일<span class="blind">필수입력</span></label></dt>
                                                 <dd class="conts">
@@ -113,8 +114,14 @@
                                                 <dd class="conts">
                                                     <div class="agree-cont-wrap">
                                                         <div class="agree-cont-box">
-                                                            <p>LG전자 온라인(몰) 서비스 개인정보 수집•이용 동의</p>
-                                                            LG전자 주식회사(이하 “당사”)는 LG전자 서비스를 이용하는 귀하의 개인정보를 아래와 같이 수집·이용합니다. 상세한 내용은 LG전자 서비스 개인정보 처리
+                                                            <!-- 2021.12.29 개인정보 수집 및 이용동의 추가 s -->
+                                                            <p class="s-title">수집항목</p>
+                                                            <p class="p-text">이름/생년월일/대학이메일/본인인증정보/휴대폰번호/주소/웹사이트 이용정보</p>
+                                                            <p class="s-title">목적</p>
+                                                            <p class="p-text">아카데미 회원 가입 자격 확인</p>
+                                                            <p class="s-title">보유기간</p>
+                                                            <p class="p-text">수집일부터 서비스 종료일(해지일)까지</p>
+                                                            <!-- 2021.12.29 개인정보 수집 및 이용동의 추가 s -->
                                                         </div>
                                                         <div class="agree-input">
                                                             <span class="chk-wrap">
@@ -149,6 +156,7 @@
                         <!-- 로그인 후 e -->
                         <!-- 2021.12.27 추가부분 -->
                         <input type="hidden" value="ac.kr,cnspartner.com,lgepartner.com" id="checkEmail">
+                        <input type="hidden" value="PE00030001" id="planEventId">
                     </div>
                 </div>
             </div>

@@ -29,19 +29,43 @@ $(document).ready(function(){
 
 
 	/* BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
-	var infoDisclaimer = $('.KRC0035').find('.text-wrap');
+	var infoDisclaimer = $('.KRC0035');
+	var visualWrapBtn = $('.visual-wrap').find('.dropInfo_openBtn'); //모바일
+	var textWrapBtn = $('.text-wrap').find('.dropInfo_openBtn'); //피씨
+	var hdlineTop = $('.m-hdline-top');
+
+	
+
     infoDisclaimer.each(function(cdx, item){
+		//console.log("v", visualWrapBtn);
+		//console.log("t", textWrapBtn);
+	
+		if ($('.KRC0035.m-hdline-top').length) {
+			//console.log("모바일11")
+			$(item).find(visualWrapBtn).on('click', function(e){
+				//console.log("모바일에만 작동");
+				$(item).find('.visual-wrap .dropContent').addClass('on');
+				//$(this).hide(); //버튼이 사라지면서 컨텐츠 높낮이의 변화가 생겨 삭제
+			});
 
-        $(item).find('.drop-info .dropInfo_openBtn').on('click', function(e){
-			$(item).find('.dropContent').addClass('on');
-			$(this).hide();
-        });
-
+			$(item).find(textWrapBtn).on('click', function(e){
+				//console.log("피씨에만 작동");
+				$(item).find('.text-wrap .dropContent').addClass('on');
+				//$(this).hide(); //버튼이 사라지면서 컨텐츠 높낮이의 변화가 생겨 삭제
+			});
+		} else {
+			$(item).find('.drop-info .dropInfo_openBtn').on('click', function(e){
+				//console.log("공통");
+				$(item).find('.dropContent').addClass('on');
+				//$(this).hide(); //버튼이 사라지면서 컨텐츠 높낮이의 변화가 생겨 삭제
+			});
+		}
+	
+		//close
         $(item).find('.drop-info .dropInfo_closeBtn').on('click', function(e){
 			$(item).find('.dropContent').removeClass('on');
 			$(item).find('.drop-info .dropInfo_openBtn').show();
         });
-        
     });
 	/* //BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
 })

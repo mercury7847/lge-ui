@@ -7,27 +7,160 @@
 <body>
 	<div class="wrap">
 		<div class="container">
-
+			<!--
+				"disclaimerBtn": "fc-white" //흰색 버튼
+			-->
 			<!-- component-wrap -->
+			<!-- 기본 도트 타입 && 모바일 엣지 타입 -->
 			@@include('./common/partials/KRC0032.html', {
-				stageSize : "stage-full",
-                "slideBox-bg": "bg-lightgray"
+				stageSize: "stage-full",
+				slideShowType : true,
+				autoplay: true,
+				autoCount: "1",
+				dotType: "default",
+				autoSpeed: "1000",
+                "slideBox-bg": "bg-lightgray",
+				"disclaimerBtn": ""
+
 			})
+			<!-- //기본 도트 타입 && 모바일 엣지 타입 -->
 			<!-- //component-wrap -->
 
 			<!-- component-wrap -->
+			<!-- 기본 도트 타입 && 모바일 엣지 타입 -->
+			@@include('./common/partials/KRC0032.html', {
+				stageSize: "stage-full",
+				autoplay: true,
+				autoCount: "3",
+				dotType: "default",
+				autoSpeed: "1000",
+                "slideBox-bg": "bg-lightgray",
+				"disclaimerBtn": ""
+
+			})
+			<!-- //기본 도트 타입 && 모바일 엣지 타입 -->
+			<!-- //component-wrap -->
+
+			<!-- component-wrap -->
+			<!-- 기본 도트 타입 -->
 			@@include('./common/partials/KRC0032.html', {
 				stageSize : "stage-wide",
-                "slideBox-bg": ""
+				autoplay: false,
+				autoCount: "loop",
+				dotType: "default",
+				autoSpeed: "3000",
+                "slideBox-bg": "",
+				"disclaimerBtn": ""
+
 			})
+			<!-- //기본 도트 타입 -->
 			<!-- //component-wrap -->
 
 			<!-- component-wrap -->
+			<!-- 기본 도트 타입 -->
 			@@include('./common/partials/KRC0032.html', {
 				stageSize : "stage-medium",
-                "slideBox-bg": ""
+				autoplay: true,
+				autoCount: "1",
+				dotType: "default",
+				autoSpeed: "5000",
+                "slideBox-bg": "",
+				"disclaimerBtn": ""
+
 			})
+			<!-- //기본 도트 타입 -->
 			<!-- //component-wrap -->
+
+
+			<!-- component-wrap -->
+			<!-- 바 타입 -->
+			@@include('./common/partials/KRC0032.html', {
+				stageSize : "stage-full",
+				autoplay: true,
+				autoCount: "3",
+				dotType: "bar",
+				autoSpeed: "1000",
+                "slideBox-bg": "bg-lightgray",
+				"disclaimerBtn": ""
+
+			})
+			<!-- //바 타입 -->
+			<!-- //component-wrap -->
+
+			<!-- component-wrap -->
+			<!-- 바 타입 -->
+			@@include('./common/partials/KRC0032.html', {
+				stageSize : "stage-wide",
+				autoplay: false,
+				autoCount: "loop",
+				dotType: "bar",
+				autoSpeed: "3000",
+                "slideBox-bg": "",
+				"disclaimerBtn": ""
+			})
+			<!-- //바 타입 -->
+			<!-- //component-wrap -->
+
+			<!-- component-wrap -->
+			<!-- 바 타입 -->
+			@@include('./common/partials/KRC0032.html', {
+				stageSize : "stage-medium",
+				autoplay: false,
+				autoCount: "1",
+				dotType: "bar",
+				autoSpeed: "5000",
+                "slideBox-bg": ""
+
+			})
+			<!-- //바 타입 -->
+			<!-- //component-wrap -->
+
+
+			<!-- component-wrap -->
+			<!-- 바 + 텍스트 타입 -->
+			@@include('./common/partials/KRC0032.html', {
+				stageSize : "stage-full",
+				autoplay: true,
+				autoCount: "3",
+				dotType: "bar-text",
+				autoSpeed: "1000",
+                "slideBox-bg": "bg-lightgray",
+				"disclaimerBtn": ""
+
+			})
+			<!-- //바 + 텍스트 타입 -->
+			<!-- //component-wrap -->
+
+			<!-- component-wrap -->
+			<!-- 바 + 텍스트 타입 -->
+			@@include('./common/partials/KRC0032.html', {
+				stageSize : "stage-wide",
+				autoplay: false,
+				autoCount: "loop",
+				dotType: "bar-text",
+				autoSpeed: "3000",
+                "slideBox-bg": "",
+				"disclaimerBtn": ""
+
+			})
+			<!-- //바 + 텍스트 타입 -->
+			<!-- //component-wrap -->
+
+			<!-- component-wrap -->
+			<!-- 바 + 텍스트 타입 -->
+			@@include('./common/partials/KRC0032.html', {
+				stageSize : "stage-medium",
+				autoplay: false,
+				autoCount: "1",
+				dotType: "bar-text",
+				autoSpeed: "5000",
+                "slideBox-bg": "",
+				"disclaimerBtn": ""
+
+			})
+			<!-- //바 + 텍스트 타입 -->
+			<!-- //component-wrap -->
+
 
 		</div>
 	</div>

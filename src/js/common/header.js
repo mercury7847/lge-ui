@@ -143,8 +143,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             // self.$mobileNaviWrapper.find('img').remove();
             // self.$mobileNaviWrapper.find('.nav-category-wrap').removeClass('super-category-content on')
 
+            //BTOCSITE-10034 야간무인매장 추가
+            self.$marketingLink = $('.marketing-link');
+
             //BTOCSITE-7335
             self.$mobileMktSlider = $('.marketing-link .ui_carousel_slider');
+
+            //BTOCSITE-10034 야간무인매장 추가
+            self.$marketingLinkSlide = $('.marketing-link .ui_carousel_slide');
             
             self.$hamburger = self.$el.find('.mobile-nav-button');
             self.$headerBottom = self.$el.find('.header-bottom');            
@@ -241,10 +247,23 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 var active = self.$hamburger.hasClass('active');
 
                 if(active){
+                    var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
+                    if(!ignoreOverflow){
+                        // BTOCSITE-5938-419 scroll-lock 클래스 추가 : 팝업 뛰울시 바닥페이지 스크롤 밀림 방지 class
+                        $('body').addClass('scroll-lock');
+                    }
+
                     lgkorUI.addHistoryBack(self.cid, function(){                    
                         self._menuToggle(true);
                     });
-                } else{                    
+                } else{                
+                    var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
+                    if(!ignoreOverflow){
+                        // BTOCSITE-5938-419 scroll-lock 클래스 추가 : 팝업 뛰울시 바닥페이지 스크롤 밀림 방지 class
+                        $('body').removeClass('scroll-lock');
+                    }
+
+
                     lgkorUI.removeHistoryBack(self.cid);
                 }
                 
@@ -758,7 +777,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 itemSelector: "> li",
                 toggleSelector: "> .ui_accord_toggle"
             }).on('accordionbeforeexpand', function(e, data){
-                $(data.oldContent).find('.ui_gnb_accordion').vcAccordion("collapseAll");
+                // 모니터링 351 : 모바일 네비 아코디언 동작 오류 수정
+                $(data.content).closest('.column').siblings().find('.ui_gnb_accordion').vcAccordion("collapseAll");
             }).on('accordioncollapse', function(e, data){
                 $(data.content).find('.ui_gnb_accordion').vcAccordion("collapseAll");
             });
@@ -876,6 +896,12 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 if(!$('html').hasClass('scroll-fixed')) $('html').addClass('scroll-fixed');
                 replaceText.text("메뉴 닫기");
                 self.$dimmed.show();
+
+                /* BTOCSITE-10034 야간무인매장 추가 */
+                if(self.$marketingLinkSlide.length <= 0) {
+                    self.$marketingLink.hide()
+                }
+                /* //BTOCSITE-10034 야간무인매장 추가 */
             }
 
         },
