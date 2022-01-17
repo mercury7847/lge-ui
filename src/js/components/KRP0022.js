@@ -42,8 +42,9 @@
 
 
                     if(self.historyData.eventStatus == 'win') { // 당첨자 발표 필터 선택된 경우
-                        self.$KRP0022.find("#eventStatus").val('end');
                         self.$KRP0022.find("#eventSort").prop('checked', true);
+                        self.$KRP0022.find("#eventStatus").val('end');
+                        self.$KRP0022.find("#eventGubun").val(self.historyData.eventGubun);
                     } else {
                         self.$KRP0022.find("#eventStatus").val(self.historyData.eventStatus);
                         self.$KRP0022.find("#eventGubun").val(self.historyData.eventGubun);
