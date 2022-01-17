@@ -1800,6 +1800,7 @@ var goAppUrl = function(path) {
         },
 
         requestCart: function(ajaxUrl, param, isToast) {
+            if(typeof fbq !== 'undefined') fbq('track', 'AddToCart'); //BTOCSITE-10872 페이스북 픽셀
             lgkorUI.showLoading();
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
