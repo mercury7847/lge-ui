@@ -22,10 +22,17 @@
                 '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}><img src="{{imageUrl}}" alt="{{imageAlt}}"></a>' +
             '</div>' +
             '<div class="info-wrap">' +
-                '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}>'+
-                    '<div class="name"><span class="blind">모델명</span>{{#raw modelName}}</div>' +
+                '<div>'+
+                    '<div class="name">'+
+                    '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}>'+
+                        '<span class="blind">모델명</span>{{#raw modelName}}' +
+                    '</a>'+
+                    '</div>' +
                     '{{#if factoryModel && enModelName !== factoryModel }}' + 
-                        '<div class="e-name"><span class="blind">영문모델명</span>{{enModelName}} [{{factoryModel}}]'+
+                        '<div class="e-name">' +
+                            '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}>'+
+                                '<span class="blind">영문모델명</span>{{enModelName}} [{{factoryModel}}]'+
+                            '</a>'+
                             '<div class="tooltip-wrap">'+
                             '    <button class="tooltip-icon ui_tooltip-target" >자세히 보기</button>'+
                             '    <div class="tooltip-box">'+
@@ -35,9 +42,13 @@
                             '</div>'+
                         '</div>' +
                     '{{#else}}' + 
-                        '<div class="e-name"><span class="blind">영문모델명</span>{{enModelName}}</div>' +
+                        '<div class="e-name">'+
+                            '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}>'+
+                                '<span class="blind">영문모델명</span>{{enModelName}}'+
+                            '</a>'+
+                        '</div>' +
                     '{{/if}}' + 
-                '</a>'+
+                '</div>'+
                 '<ul class="info-lists period">' +
                     '{{#if saleDate}}<li><dl><dt>{{#if userType=="USER"}}구매월{{#else}}구매일자{{/if}}</dt><dd>{{saleDate}}</dd></dl></li>{{/if}}' +
                     '{{#if useDate}}<li><dl><dt>사용기간</dt><dd>{{useDate}}개월</dd></dl></li>{{/if}}' +
