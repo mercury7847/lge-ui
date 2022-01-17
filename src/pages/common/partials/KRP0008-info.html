@@ -1009,7 +1009,7 @@
                                                 </div>
                                             </dd>
                                         </dl>
-                                        <!-- BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 START -->
+                                        <!-- BTOCSITE-11099 START -->
                                         <dl class="select-info select-box">
                                             <dt class="select-text"><span class="card-title">서비스타입</span></dt>
                                             <dd>
@@ -1022,7 +1022,7 @@
                                                 </div>
                                             </dd>
                                         </dl>
-                                        <!-- BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 END -->
+                                        <!-- BTOCSITE-11099 END -->
                                         <!--[S] BTOCSITE-3523 케어솔루션 PDP 상세조건 개선 -->
                                         <div class="select-info select-box dropdown-box careship-card-list">
                                             <div class="select-wrap dropdown-box-wrap">
@@ -1318,6 +1318,20 @@
                                             </div>
                                         </dd>
                                     </dl>
+                                    <!-- BTOCSITE-11099 START -->
+                                    <dl class="select-info select-box">
+                                        <dt class="select-text">서비스타입</dt>
+                                        <dd class="content">
+                                            <div class="select-wrap">
+                                                <input type="hidden" name="" value=""/>
+                                                <select class="ui_selectbox" id="select5" title="서비스타입 선택">
+                                                    <option value="1">스탠더드</option>
+                                                    <option value="2">플래티넘</option>
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <!-- BTOCSITE-11099 END -->
                                 </div>
                                 <div class="article-box">
                                     <ul>
@@ -1325,6 +1339,7 @@
                                         <li>가입비(선납할인) <span class="value">0원</span></li>
                                         <li>의무사용기간 <span class="value">3년</span></li>
                                         <li>방문주기 <span class="value">1회/6개월</span></li>
+                                        <li>서비스타입 <span class="value">스탠더드</span></li><!-- BTOCSITE-11099 [UI] [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 -->
                                     </ul>
                                 </div>
                             </li>
