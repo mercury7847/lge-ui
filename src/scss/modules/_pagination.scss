@@ -9,6 +9,7 @@
     margin-top:32px;
     text-align: center;
 
+    //BTOCSITE-9921 first, last 클래스 추가
     .prev,
     .next,
     .first,
@@ -27,12 +28,17 @@
         border:1px solid #ddd;
         border-radius: 4px;
     }
+    //BTOCSITE-9921 disabled CASE_포인터값 default 처리 - S
+    &.disabled {
+        cursor: default;
+    }
+    //BTOCSITE-9921 disabled CASE_포인터값 default 처리 - E
 
     .prev,
     .next {
         margin:0 6px;
     }
-
+    //BTOCSITE-9921 각 arrow 버튼 이미지 변경 - S
     .prev.disabled {
         background-image: url("/lg5-common/images/icons/ic-left-disable-16.svg");
     }
@@ -60,10 +66,10 @@
             background-image: url("/lg5-common/images/icons/ic-lright-disabled-16.svg");
         }
     }
-
+    //BTOCSITE-9921 각 arrow 버튼 이미지 변경 - E
     .page_num {
         display: inline-block;
-        margin: 0 0;
+        margin: 0 0; // BTOCSITE-9921 마진값 제거
         font-size: 0;
         vertical-align: middle;
         a,
@@ -73,13 +79,13 @@
             display: inline-block;
             // width: 20px;
             // margin:0 2px;
-            padding:0 15px;
+            padding:4px 15px;
             @include font-small;
             color: #000;
             vertical-align: middle;
             cursor: pointer;
             @include mobile {
-                padding:0 10px;
+                padding:6px 10px;
             }
         }
         strong {
@@ -91,6 +97,9 @@
             height: 32px;
             line-height: 32px;
             padding:0;
+            span {
+                padding:0;
+            }
         }
         span.dot {
             cursor:auto;
