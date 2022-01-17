@@ -25,10 +25,16 @@
 
                 self.saved_eventStatus = '';
 
+                var _self = this;
+
+                _self.bindEvents();
+                _self.checkNoData();
+
+
                 // BTOCSITE-5938-514 : IE에서 history back 시 이전에 선택된 필터 적용안되는 이슈 처리
                 self.KRPOO22_history_data = 'KRPOO22_history_data';
                 self.historyData = lgkorUI.getStorage(self.KRPOO22_history_data);
-                
+
                 if(Object.keys(self.historyData).length){
                     // 상단 tab 카테고리 영역 설정
                     self.$tab.find('ul.tabs li').removeClass('on');
@@ -44,11 +50,8 @@
                     }
                 }
 
-                var _self = this;
+                _self.requestData(true);
 
-                _self.bindEvents();
-                _self.checkNoData();
-                _self.requestData();
             },
 
             bindEvents: function() {
@@ -124,7 +127,7 @@
                 _self.noData(self.$list.find('li').length > 0 ? false : true);
             },
 
-            requestData: function() {
+            requestData: function(isOnLoad) {
                 var _self = this;
                 var ajaxUrl = self.$KRP0022.attr('data-list-url');
                 var selectIdx = self.$tab.vcTab('getSelectIdx');
@@ -160,8 +163,9 @@
                 /* //BTOCSITE-6859 - 이벤트페이지 UI 변경 요청 - 추가 필터링 분기 작업 */
 
                 // BTOCSITE-5938-514 : postData session storage에 저장
-                lgkorUI.setStorage(self.KRPOO22_history_data, postData, false);
-
+                if(!isOnLoad) { // 첫 load 시 미실행
+                    lgkorUI.setStorage(self.KRPOO22_history_data, postData, false);
+                }
                 lgkorUI.requestAjaxDataPost(ajaxUrl, postData, function(result){
                     _self.updateList(result.data);
                 });
