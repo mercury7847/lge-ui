@@ -33,7 +33,7 @@ $(window).ready(function(){
 			carouselPlay(target)
 			var $currentVideo = $(target).find('.ui_carousel_current .animation-area video');
 
-			if(  $currentVideo.length > 0) {
+			if(  $currentVideo.length > 0 && $currentVideo.get(0).hasAttribute('autoplay')) {
 				$currentVideo.get(0).play()
 			}
 		}
@@ -143,11 +143,11 @@ $(window).ready(function(){
 				var $currentSlide = $(slide.$slides.get(currentSlide));
 				var $indiBar = $slider.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar');
 				var autoSpeed = $slider.data('autoSpeed') ? $slider.data('autoSpeed') : 5000;
-				if($currentSlide.attr("ui-modules") == "VideoBox"){
+				if($currentSlide.attr("ui-modules") == "VideoBox" && $currentSlide.find("video").get(0).hasAttribute('autoplay')){
 					autoSpeed =	$currentSlide.find("video").get(0).duration * 1000;
 					$currentSlide.find("video").get(0).play();
-				} 
-				$indiBar.css({'animation-duration' : autoSpeed/1000 + 's'})
+					$indiBar.css({'animation-duration' : autoSpeed/1000 + 's'})
+				}
 				$slider.vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
 			});	
 
