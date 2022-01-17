@@ -29,7 +29,7 @@
                             '<div class="tooltip-wrap">'+
                             '    <button class="tooltip-icon ui_tooltip-target" >자세히 보기</button>'+
                             '    <div class="tooltip-box">'+
-                            '        <p>고객지원 서비스 이용 시 <br>두 번째 모델명을 이용해 주세요. </p>'+
+                            '        <p>{{#raw myProductModelGuide}}</p>'+
                             '        <button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
                             '    </div>'+
                             '</div>'+
@@ -1126,6 +1126,7 @@
                     item.reviewBtn = lgkorUI.stringToBool(item.reviewBtn);
                     item.isMobile = self.isMobileNow;
                     item.isPackgaeModel = !!item.packageModelCode;
+                    item.myProductModelGuide = data.myProductModelGuide;
 
                     // BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차)
                     if(!item.isPackgaeModel) item.packageModelCode = "";
