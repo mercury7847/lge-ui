@@ -15,12 +15,14 @@
     .last {
         position: relative;
         display: inline-block;
-        width: 24px;
-        height: 24px;
-        vertical-align: -12px;
+        width: 32px;
+        height: 32px;
+        vertical-align: middle;
         background-image: url("/lg5-common/images/icons/ic-left-16.svg");
         background-repeat:no-repeat;
-        background-size:100%;
+        background-size: 16px 16px;
+        padding: 8px;
+        background-position: center;
         cursor: pointer;
         border:1px solid #ddd;
         border-radius: 4px;
@@ -61,7 +63,7 @@
 
     .page_num {
         display: inline-block;
-        margin: 0 16px;
+        margin: 0 0;
         font-size: 0;
         vertical-align: middle;
         a,
