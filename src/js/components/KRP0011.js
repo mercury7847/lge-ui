@@ -97,7 +97,7 @@
                     var kiosk = lgkorUI.getParameterByName("kiosk");
                     $(dataList.rentalCompareList).each(function(idx,item){
                         item.modelUrlPath = item.modelUrlPath + "?dpType=careTab";
-                        $('.product-detail-info').addClass('rental');
+                        $('.product-detail-info').addClass('rental'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
                         if(kiosk) {
                             item.modelUrlPath += (item.modelUrlPath.indexOf("?") === -1) ? "?" : "&";
                             item.modelUrlPath += 'kiosk='+kiosk;
