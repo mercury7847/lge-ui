@@ -60,4 +60,73 @@
 			-webkit-line-clamp:1;
 		}
 	}
+	.accordion-button {
+		display: none;
+	}
+}
+
+.subRenewWrap {
+	@include mobile {
+		.KRP0022 {
+			padding-top: 80px;
+			.fixed-area {
+				position: fixed;
+				top: 61px;
+				width: 100% !important;
+				&:before {
+					content: "";
+					position: absolute;
+					display: block;
+					top: 0;
+					right: 0;
+					width: 40px;
+					height: 100%;
+					background: #fff;
+					z-index: 101;
+				}
+				&:after {
+					content: "";
+					position: absolute;
+					display: block;
+					top: 0;
+					right: 40px;
+					width: 30px;
+					height: 100%;
+					background-image: linear-gradient(to left, #fff, rgba(255, 255, 255, 0));
+					z-index: 101;
+				}
+			}
+			.tabs-wrap {
+				margin: 0;
+				padding-top: 0;
+				//width: calc(100% - 40px);
+				width: 100%;
+				background: #fff;
+				z-index: 100;
+				&:before {
+					content: none;
+				}
+				&.border-type .tabs > li > a {
+					padding-top: 7px;
+				}
+				.tabs {
+					margin: 0;
+					padding-right: 70px;
+				}
+			}
+			.accordion-button {
+				position: absolute;
+				top: 11px;
+				right: 16px;
+				width: 24px;
+				height: 24px;
+				border: solid 1px #ddd;
+				border-radius: 4px;
+				box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.16);
+				background: url("/lg5-common/images/icons/btn-down-16-black.svg") no-repeat center center #fff;
+				z-index: 101;
+				text-indent: -9999px;
+			}
+		}
+	}
 }

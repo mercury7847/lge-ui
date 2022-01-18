@@ -2477,9 +2477,11 @@ html {
                 }
             }
             &:not(.snsHead) {
-                .sub-renew-nav-wrap {
-                    width: calc(100% - 120px);
-                    padding-left: 50px;
+                &:not(.cartHead) {
+                    .sub-renew-nav-wrap {
+                        width: calc(100% - 120px);
+                        padding-left: 50px;
+                    }
                 }
             }
             &.snsHead {
@@ -2487,6 +2489,11 @@ html {
                     width: calc(100% - 90px);
                 }
             }
+        }
+    }
+    .eventList {
+        .container {
+            padding-top: 46px;
         }
     }
 }
