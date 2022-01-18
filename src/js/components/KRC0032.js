@@ -33,8 +33,10 @@ $(window).ready(function(){
 			carouselPlay(target)
 			var $currentVideo = $(target).find('.ui_carousel_current .animation-area video');
 
-			if(  $currentVideo.length > 0 && $currentVideo.get(0).hasAttribute('autoplay')) {
-				$currentVideo.get(0).play()
+			if(  $currentVideo.length > 0) {
+				if($currentVideo.get(0).hasAttribute('autoplay') || $(target).find('.controller-wrap button').hasClass('pause')) {
+					$currentVideo.get(0).play()
+				}
 			}
 		}
 
@@ -143,17 +145,35 @@ $(window).ready(function(){
 				var $currentSlide = $(slide.$slides.get(currentSlide));
 				var $indiBar = $slider.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar');
 				var autoSpeed = $slider.data('autoSpeed') ? $slider.data('autoSpeed') : 5000;
-				if($currentSlide.attr("ui-modules") == "VideoBox" && $currentSlide.find("video").get(0).hasAttribute('autoplay')){
-					autoSpeed =	$currentSlide.find("video").get(0).duration * 1000;
-					$currentSlide.find("video").get(0).play();
-					$indiBar.css({'animation-duration' : autoSpeed/1000 + 's'})
+				var $currentVideo = $currentSlide.find('video').get(0);
+				if($currentSlide.attr("ui-modules") == "VideoBox"){
+					if($currentVideo.hasAttribute('autoplay') || $currentSlide.find('.controller-wrap button').hasClass('pause')) {
+						autoSpeed =	$currentSlide.find("video").get(0).duration * 1000;
+						$currentSlide.find("video").get(0).play();
+					}
 				}
+				slide.$dots.find('button').blur();
+				$indiBar.css({'animation-duration' : autoSpeed/1000 + 's'})
 				$slider.vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
 			});	
 
 			if( $slide.data('autoplay') == true) {
 				io.observe(slide);
 			}
+			//비디오 플레이 버튼
+			$(slide).on('click', '.controller-wrap button', function() {
+				var $slider = $($slide.vcCarousel('instance').$slider);
+				var currentSlide = $slide.vcCarousel('instance').currentSlide;
+				var $indiBar = $slider.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar');
+				var video = $(this).parents('.animation-area').find("video").get(0);
+				var autoSpeed = (video.duration - video.currentTime) * 1000;
+
+				$(this).blur();
+				if($(this).hasClass('play') && $slide.data('autoplay') == true) {
+					$indiBar.css({'animation-duration' : autoSpeed/1000 + 's'});
+					$slider.vcCarousel('setOption', 'autoplaySpeed', autoSpeed);
+				}
+			});
 		});
 
 		/* BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
