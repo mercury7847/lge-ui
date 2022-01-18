@@ -262,10 +262,16 @@ br.pc {
                                         font-size:52px;
                                         font-weight:700;
                                         line-height:62px;
+                                        .mo-only{
+                                            display:none;
+                                        }
                                         @include mobile{
                                             position:relative;
                                             font-size:27px;
                                             line-height:34px;
+                                            .mo-only{
+                                                display:block;
+                                            }
                                         }
                                     }
                                     .small {
