@@ -54,15 +54,18 @@
                         title:'해당 제품은 케어십이 필요한 제품입니다.<br>렌탈 장바구니에서 케어십 청약신청 후<br>구매하실 수 있습니다.',
                         ok: function (){
                             requestCart($li,"C");
+                            $li.parents('ul').addClass('rental').removeClass('product');
                         }
                     };
                     lgkorUI.alert(null, obj);
                 } else {
                     requestCart($li,"P");
+                    $li.parents('ul').addClass('product').removeClass('rental');
                 }
             } else {
                 //렌탈
                 requestCart($li,"C");
+                $li.parents('ul').addClass('rental').removeClass('product');
             }
         });
 
