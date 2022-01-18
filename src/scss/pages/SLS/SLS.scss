@@ -279,6 +279,9 @@ br.pc {
                                             margin-top:7px;
                                             font-size:16px;
                                             line-height:22px;
+                                            .only-desktop{
+                                                display:none;
+                                            }
                                         }
                                     }
                                 }
