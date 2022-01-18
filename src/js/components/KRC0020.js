@@ -174,15 +174,16 @@
 		
 							if( $currentVideo.length > 0 ) {
 								if($currentVideo.get(0).hasAttribute('autoplay') || $currentGroup.find('.controller-wrap button').hasClass('pause')) {
-									self.autoSpeed = $currentVideo.get(0).duration * 1000	
 									$currentVideo.get(0).currentTime = 0;
 									$currentVideo.get(0).play();
+									self.autoSpeed = $currentVideo.get(0).duration * 1000	
 								}else {
 									self.autoSpeed = $(root).data('autoSpeed') != undefined && $(root).data('autoSpeed') != "" ? $(root).data('autoSpeed') : 5000
 								}
 							} else {
 								self.autoSpeed = $(root).data('autoSpeed') != undefined && $(root).data('autoSpeed') != "" ? $(root).data('autoSpeed') : 5000
 							}
+							console.log(self.autoSpeed)
 							self.timer = setInterval(function(){
 								var $next = $(root).find('.slider-nav .ui_carousel_slide.active').next();
 								var currentIndex = $next.length > 0 ? $next.index() : 0;
