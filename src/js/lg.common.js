@@ -1800,7 +1800,6 @@ var goAppUrl = function(path) {
         },
 
         requestCart: function(ajaxUrl, param, isToast) {
-            if(typeof fbq !== 'undefined') fbq('track', 'AddToCart'); //BTOCSITE-10872 페이스북 픽셀
             lgkorUI.showLoading();
             isToast = !(isToast) ? true : isToast;
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
@@ -1824,7 +1823,8 @@ var goAppUrl = function(path) {
                     }
                     
                     $('.header-wrap .header-top .utility .cart a').attr('href', data.cartUrl);
-
+                    
+                    if(typeof fbq !== 'undefined') fbq('track', 'AddToCart'); //BTOCSITE-10872 페이스북 픽셀
                     if(isToast && lgkorUI.stringToBool(data.success)) {
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                         /* BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선 */
