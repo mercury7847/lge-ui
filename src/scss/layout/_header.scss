@@ -630,6 +630,7 @@ html {
     }
     @include mobile { 
         margin-left:0; /* BTOCSITE-1937 스프레드 메뉴 수정 */
+        border-bottom: 13px solid #f4f4f4 !important;
     }
 
     .brand-link {
@@ -708,10 +709,11 @@ html {
     @include pc {
         display: none;
     }
-    padding: 24px 0;
-    border-bottom: 12px solid $color-bg;
+    // padding: 24px 0; //BTOCSITE-10816 GNB 수정 컨텐츠 수정
+    border-bottom: 13px solid $color-bg;
     .ui_carousel_list {
         padding: 0 16px;
+        background-color: #f4f4f4; //BTOCSITE-10816 GNB 수정 컨텐츠 수정
     }
     .ui_carousel_slide {
         padding-right: 12px;
@@ -720,10 +722,30 @@ html {
         position: relative;
         display: inline-block;
         width: 60vw;
-        border-radius: 4px;
+
+        //BTOCSITE-10816 GNB 수정 컨텐츠 수정
+        border-radius: 8px; 
+        overflow: hidden;
+        // height: 112px;
         img {
             width: 100%;
-            border-radius: 4px;
+            //BTOCSITE-10816 GNB 수정 컨텐츠 수정
+            border-radius: 8px;
+            // position: absolute;
+            // top: 0;
+            // left: 0;
+        }
+        .mob-navSlideBan {
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: center center;
+            height: 21.903520208604952vw;
+            min-height: 114px;
+            // width: 100%;
+            @media screen and (max-width: 500px) {
+                background-size: cover;
+                background-position: 100% center;
+            }
         }
         .banner-text {
             position: absolute;
@@ -733,6 +755,14 @@ html {
             line-height: 23px;
             color: $color-white;
             text-shadow: 0 1px 20px rgba(0, 0, 0, 0.4);
+            width: 60%;
+            white-space: normal;
+            p {
+                &.text {
+                    position: relative;
+                    word-break: keep-all;
+                }
+            }
         }
     }
 }
@@ -1460,9 +1490,9 @@ html {
     }
 }
 
-.shortcut-service-link {
+.shortcut-service-link { //BTOCSITE-10816 GNB 수정 컨텐츠 수정
     padding: 32px 16px;
-    border-top: 12px solid #f5f5f5;
+    // border-top: 12px solid #f5f5f5; 
     .title {
         @include blind;
         //display: block;
@@ -2143,12 +2173,51 @@ html {
 }
 /* BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) */
 .header-bottom{
+    
+    .marketing-link {
+        /* BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
+        &.mob-navSlide_check {
+            @include mobile {
+                color: #f00;
+                .ui_carousel_track {
+                    transform: translate3d(0px, 0px, 0px) !important;
+                    width: 100% !important;
+                    .ui_carousel_slide {
+                        width: 100%;
+                        padding-right: 0;
+                        .banner-box {
+                            width: 100%;
+                            .mob-navSlideBan {
+                                background-size: 100%;
+                                background-position: center center;
+                                height: 34.02868318122555vw;
+                                min-height: 114px;
+                                // width: 100%;
+                                @media screen and (max-width: 450px) {
+                                    height: 32.028683vw;
+                                }
+                                @media screen and (max-width: 365px) {
+                                    height: 31.3283vw;
+                                }
+                                @media screen and (max-width: 350px) {
+                                    background-size: cover;
+                                    background-position: 100% 0px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        /* //BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
+    }
+
     .store-counsel-banner{
         @include pc {
             display: none !important;
         }
         @include mobile{
-            margin-top:-12px;
+            margin-top: 0; //BTOCSITE-10816 
             >a{
                 display:block;
                 img{

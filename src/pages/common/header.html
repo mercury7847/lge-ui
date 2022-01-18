@@ -1339,31 +1339,27 @@
                     <!-- //BTOCSITE-1937 스프레드메뉴 수정 : 브랜드관 메뉴 nav 다음으로 변경 -->
                 </div>
                 <!-- 20201230 마케팅 퀵링크 추가 -->
+
+                
                 <!-- Mobile 마케팅 퀵링크 -->
                 <div class="marketing-link">
                     <div class="ui_carousel_slider">
                         <div class="items ui_carousel_track">
-
-                            <!-- 주영 갯수 -->
+                            
+                            <!-- BTOCSITE-10816 GNB 수정 컨텐츠 수정 -->
                             <div class="ui_carousel_slide">
                                 <a href="#n" class="banner-box">
-                                    <!-- 210407 이미지속성변경(src)및lazyload 삭제 -->
-                                    <!-- BTOCSITE-7335 : src > data-active-src로 속성 변경 -->
-                                    <img data-active-src="/lg5-common/images/header/@slide-banner01-m.jpg" alt="">
-                                    <!-- <img data-src="/lg5-common/images/header/@slide-banner01-m.jpg" alt="" class="lazyload"> -->
-                                    <!-- //210407 이미지속성변경(src)및lazyload 삭제 -->
+                                    <div class="mob-navSlideBan" style="background-image: url('/lg5-common/images/header/@slide-banner04-m.png');"></div>  
                                     <div class="banner-text">
-                                        <p class="text">냉온정수기</p>
+                                        <p class="text">
+                                            쓸수록 새롭고 좋아지는 LG UP가전
+                                        </p>
                                     </div>
                                 </a>
                             </div>
                             <div class="ui_carousel_slide">
                                 <a href="#n" class="banner-box">
-                                    <!-- 210407 이미지속성변경및lazyload 삭제 -->
-                                    <!-- BTOCSITE-7335 : src > data-active-src로 속성 변경 -->
-                                    <img data-active-src="/lg5-common/images/header/@slide-banner01-m.jpg" alt="">
-                                    <!-- <img data-src="/lg5-common/images/header/@slide-banner01-m.jpg" alt="" class="lazyload"> -->
-                                    <!-- //210407 이미지속성변경및lazyload 삭제 -->
+                                    <div class="mob-navSlideBan" style="background-image: url('/lg5-common/images/header/@slide-banner04-m.png');"></div>  
                                     <div class="banner-text">
                                         <p class="text">맥주제조기</p>
                                     </div>
@@ -1371,20 +1367,20 @@
                             </div>
                             <div class="ui_carousel_slide">
                                 <a href="#n" class="banner-box">
-                                    <!-- 210407 이미지속성변경및lazyload 삭제 -->
-                                    <!-- BTOCSITE-7335 : src > data-active-src로 속성 변경 -->
-                                    <img data-active-src="/lg5-common/images/header/@slide-banner01-m.jpg" alt="">
-                                    <!-- <img data-src="/lg5-common/images/header/@slide-banner01-m.jpg" alt="" class="lazyload"> -->
-                                    <!-- //210407 이미지속성변경및lazyload 삭제 -->
+                                    <img data-active-src="/lg5-common/images/header/@slide-banner04-m.png" alt="">
+                                    <div class="mob-navSlideBan" style="background-image: url('/lg5-common/images/header/@slide-banner04-m.png');"></div>  
                                     <div class="banner-text">
-                                        <p class="text">LG WATCH W7</p>
+                                        <p class="text">맥주제조기</p>
                                     </div>
                                 </a>
                             </div>
+                            <!-- //BTOCSITE-10816 GNB 수정 컨텐츠 수정 -->
                             
                         </div>
                     </div>
                 </div>
+
+
                 <!-- [768px ~ 1920px] 메뉴 슬라이드 버튼 -->
                 <div class="nav-arrow-wrap">
                     <button type="button" class="btn-nav-arrow prev"><span class="blind">이전</span></button>
@@ -1396,35 +1392,7 @@
 
                 
                 
-                <!-- BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) -->
-                <div class="store-counsel-banner">
-
-                    <!-- BTOCSITE-10034 야간무인매장 추가 7335보다 src로선 반영 이미지 태그 개선된 작업은 data-active-src -->
-                        <!-- BTOCSITE-7335 : src > data-active-src로 속성 변경 -->
-                        <!-- <a href="#"><img data-active-src="/lg5-common/images/header/img-banner-counsel.svg" alt="매장 상담 예약"></a>  -->
-
-                    <div class="mob_navBanner-content">
-                        <ul class="mob_navBanner-type1">
-                            <li class="store_reservation">
-                                <a href="https://www.lge.co.kr/support/visit-store-reservation">
-                                    매장 상담 예약
-                                </a>
-                            </li>
-                            <li class="store_unmanned">
-                                <a href="https://www.lge.co.kr/untact-store">
-                                    야간 무인 매장
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="mob_navBanner-type2">
-                            <a href="https://www.lge.co.kr/ebook">
-                                제품 카탈로그
-                            </a>
-                        </div>
-                    </div>
-                    <!-- //BTOCSITE-10034 야간무인매장 추가 7335보다 src로선 반영 이미지 태그 개선된 작업은 data-active-src -->
-                </div>
-                <!-- //BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) -->
+                
 
 
 
@@ -2395,20 +2363,74 @@
                 </ul>
                 <!-- //BTOCSITE-7335 : mobile nav 추가-->
             </div>
+
+
+
+
+
+
+
+
+
+            <!-- 주영 -->
+            <!-- BTOCSITE-10816  주영 테스트 작업 -->
+            <!-- BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) -->
+            <div class="store-counsel-banner">
+
+                <!-- BTOCSITE-10034 야간무인매장 추가 7335보다 src로선 반영 이미지 태그 개선된 작업은 data-active-src -->
+                    <!-- BTOCSITE-7335 : src > data-active-src로 속성 변경 -->
+                    <!-- <a href="#"><img data-active-src="/lg5-common/images/header/img-banner-counsel.svg" alt="매장 상담 예약"></a>  -->
+
+                <div class="mob_navBanner-content">
+                    <ul class="mob_navBanner-type1">
+                        <li class="store_reservation">
+                            <a href="https://www.lge.co.kr/support/visit-store-reservation">
+                                매장 상담 예약
+                            </a>
+                        </li>
+                        <li class="store_unmanned">
+                            <a href="https://www.lge.co.kr/untact-store">
+                                야간 무인 매장
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mob_navBanner-type2">
+                        <a href="https://www.lge.co.kr/ebook">
+                            제품 카탈로그
+                        </a>
+                    </div>
+                </div>
+                <!-- //BTOCSITE-10034 야간무인매장 추가 7335보다 src로선 반영 이미지 태그 개선된 작업은 data-active-src -->
+            </div>
+            <!-- //BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) -->
+            <!-- //BTOCSITE-10816  주영 테스트 작업 -->
+
+
+
+
+
+
+
             <!-- 20201230 수정 / 20210120 바로가기 버튼 텍스트 수정 -->
             <div class="shortcut-service-link">
                 <span class="title">바로가기</span>
+
+                <!-- BTOCSITE-10816  주영 테스트 작업 -->
                 <ul class="links">
-                    <li><a href="#">내게 맞는 제품 찾기</a></li>
-                    <li><a href="#">케어플래너</a></li>
-                    <li><a href="#">보유제품 등록</a></li>
-                    <li><a href="#">영수증 등록</a></li>
-                    <li><a href="#">매장찾기</a></li>
-                    <li><a href="#">매장 상담신청</a></li>
                     <li><a href="#">회원가입</a></li>
                     <li><a href="#">주문/배송 조회</a></li>
+
+                    <li><a href="#">내게 맞는 제품 찾기</a></li>
+                    <li><a href="#">케어플래너</a></li>
+
+                    <li><a href="#">보유제품 등록</a></li>
+                    <li><a href="#">영수증 등록</a></li>
+                    
+                    <li><a href="#">베스트샵 매장찾기</a></li>
                     <li><a href="#">공지사항</a></li>
                 </ul>
+                <!-- //BTOCSITE-10816  주영 테스트 작업 -->
+
             </div>
             <div class="nav-outer-link">
                 <ul class="links">
