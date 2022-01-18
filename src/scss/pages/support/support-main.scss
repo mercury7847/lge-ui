@@ -1975,7 +1975,7 @@
                 color:#000;
                 font-size:16px;
                 text-align: center;
-                line-height:46px;
+                line-height:44px;
                 border-radius:25px;
                 border:1px solid #000;
                 box-sizing: border-box;
@@ -2021,7 +2021,7 @@
                 .btn-login {
                     width:110px;
                     font-size:14px;
-                    line-height:40px;
+                    line-height:38px;
                     border-radius:21px;
                     border-width:1px;
                 }
@@ -2084,9 +2084,10 @@
         .solution-pd-content {
             display: none;
             .btn-moreview {
-                padding: 9px 32px 10px;
+                padding: 9px 29px 10px;
                 border-radius: 23px;
                 margin: 12px auto 0;
+                width: 130px;
                 span{
                     font-size:16px;
                     line-height: 24px;
@@ -2287,7 +2288,7 @@
 
             .solution-pd-content {
                 .btn-moreview {
-                    padding: 7px 24px;
+                    padding: 7px 22px;
                     border-radius: 21px;
                     margin: 24px auto 0;
                     span{
@@ -2438,10 +2439,16 @@
                 }
                 .btn {
                     font-weight: 300;
+                    min-width: 126px;
+                    line-height: 22px;
+                    @include mobile{
+                        min-width: 110px;
+                        padding: 9px 28px;
+                    }
                 }
                 .btn.size-m {
-                    min-width: 112px;
-                    line-height: 26px;
+                    min-width: 126px;
+                    line-height: 22px;
                     font-size: 16px;
                     border-radius: 26px;
 
@@ -3410,4 +3417,9 @@
 }
 .slick-controls .slick-dots, .slick-controls .slick-dot-container {
     margin-right:0;
+}
+.support-home .home-reservation .reserv-inquiry .btn-wrap {
+    @include mobile {
+        margin-top: 48px;
+    }
 }
