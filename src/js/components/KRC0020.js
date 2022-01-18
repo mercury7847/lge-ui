@@ -70,6 +70,7 @@
 							});
 						}
 						self.$carousel.vcCarousel({
+							autoplay: false,
 							infinite: false,
 							cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
 							speed: 150,
@@ -129,6 +130,13 @@
 								self.enterEvent();
 							}
 						});
+						//비디오 플레이 버튼
+						self.$carousel.on('click', '.controller-wrap button', function() {
+							if($(this).hasClass('play')) {
+								self.viewInFlag = true;
+								self.enterEvent();
+							}
+						});
 						//화면에 들어왔을때 컴포넌트안에 마우스, 포커스에 따라 반복 재생/정지
 						$(root).on('mouseenter touchstart mouseleave focusin focusout touchend', function(e){
 							var autoPlayFlag = $(root).data('autoplay') != undefined && $(root).data('autoplay') != "" && $(root).data('autoplay') == true;
@@ -150,21 +158,28 @@
 						var self = this;
 						var $playWrap = self.$carousel.find('.ui_carousel_play');
 						$playWrap.removeClass('stop').addClass('play');
+						self.$carousel.vcCarousel('stop');
 						clearInterval(self.timer);
 					},
 					enterEvent: function(){
 						//화면 중앙에 컴포넌트가 들어왔을때 이벤트 - BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
 						var self = this;
-						var $currentVideo = $(root).find('.slider-for .group.active').find('.animation-box video');
+						var $currentGroup = $(root).find('.slider-for .group.active');
+						var $currentVideo = $currentGroup.find('.animation-box video');
 						var $playWrap = self.$carousel.find('.ui_carousel_play');
 
 						self.intervalClear();
 						if(self.autoCount == 'loop' || self.autoCount > self.intervalCount) {
 							$playWrap.removeClass('play').addClass('stop');
 		
-							if( $currentVideo.length > 0  && $currentVideo.get(0).hasAttribute('autoplay')) {
-								self.autoSpeed = $currentVideo.get(0).duration * 1000	
-								$currentVideo.get(0).play();
+							if( $currentVideo.length > 0 ) {
+								if($currentVideo.get(0).hasAttribute('autoplay') || $currentGroup.find('.controller-wrap button').hasClass('pause')) {
+									self.autoSpeed = $currentVideo.get(0).duration * 1000	
+									$currentVideo.get(0).currentTime = 0;
+									$currentVideo.get(0).play();
+								}else {
+									self.autoSpeed = $(root).data('autoSpeed') != undefined && $(root).data('autoSpeed') != "" ? $(root).data('autoSpeed') : 5000
+								}
 							} else {
 								self.autoSpeed = $(root).data('autoSpeed') != undefined && $(root).data('autoSpeed') != "" ? $(root).data('autoSpeed') : 5000
 							}
@@ -192,6 +207,7 @@
 	
 						self.intervalClear();
 						self.intervalCount = 0;
+						self.$carousel.vcCarousel('stop');
 						$(root).data('loopComplete', false);
 	
 						if( $currentVideo.length > 0) {
