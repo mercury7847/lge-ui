@@ -183,7 +183,7 @@
 							} else {
 								self.autoSpeed = $(root).data('autoSpeed') != undefined && $(root).data('autoSpeed') != "" ? $(root).data('autoSpeed') : 5000
 							}
-							console.log(self.autoSpeed)
+							//console.log(self.autoSpeed)
 							self.timer = setInterval(function(){
 								var $next = $(root).find('.slider-nav .ui_carousel_slide.active').next();
 								var currentIndex = $next.length > 0 ? $next.index() : 0;
@@ -191,6 +191,9 @@
 								$(root).find('.slider-nav .ui_carousel_slide').eq(currentIndex).find('a').trigger('click');
 								if( !$(root).find('.slider-nav .ui_carousel_slide').eq(currentIndex).hasClass('on')) {
 									self.$carousel.vcCarousel('goTo', currentIndex)
+								}
+								if( $currentVideo.length > 0 ) {
+									$currentVideo.get(0).pause();
 								}
 								self.enterEvent();
 							}, self.autoSpeed);
