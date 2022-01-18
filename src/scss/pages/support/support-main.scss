@@ -2353,6 +2353,16 @@
             .form-wrap {
                 .btn {
                     background: none;
+                    font-weight : 300;
+
+                }
+                .btn.size-m {
+                    min-width: 112px;                    
+                    padding:7px 15px;
+                    line-height: 26px;
+                    font-size: 16px;
+                    border-radius: 26px;
+
                 }
                 .btn-link {
                     margin-left:26px;
