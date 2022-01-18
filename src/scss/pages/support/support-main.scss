@@ -1722,7 +1722,7 @@
             padding:6px;
             top:50%;
             transform:translateY(-50%);
-            background-size: 19px 19px;
+            background-size: 24px 24px;
             background-position: center center;
             background-repeat:no-repeat;
 
@@ -1749,7 +1749,7 @@
             top:50%;
             right:0;
             transform:translateY(-50%);
-            background-size: 16px 16px;
+            background-size: 20px 20px;
             background-position: center center;
             background-repeat:no-repeat;
             background-image: url('/lg5-common/images/icons/btn-pause-16-gray.svg');
@@ -2046,13 +2046,13 @@
                 //margin:72px 0 41px;
             }
             .btn-area {
-                height: 45px;
+                height: 46px;
                 .btn-solution-link {
                     display: inline-block;
                     position: absolute;
                     right:0;
                     bottom:0;
-                    padding:11px 27px 12px 32px;
+                    padding:12px 27px 13px 32px;
                     font-size:16px;
                     font-weight:500;
                     text-align: center;
@@ -2084,7 +2084,7 @@
         .solution-pd-content {
             display: none;
             .btn-moreview {
-                padding: 10px 32px 12px;
+                padding: 9px 32px 10px;
                 border-radius: 23px;
                 margin: 12px auto 0;
                 span{
@@ -2100,7 +2100,7 @@
 
         .popular-list-wrap {
             position: relative;
-            margin-top:24px;
+            margin-top:16px;
             margin-left:-12px;
             margin-right:-12px;
             @include clearfix;
@@ -2109,6 +2109,7 @@
                 float:left;
                 width:33.33%;
                 padding:12px;
+                padding-top:0;
                 box-sizing:border-box;
 
                 &[data-more="hidden"] {
@@ -2207,7 +2208,7 @@
                         right: 0;
                         bottom:0;
                         margin-bottom:0;
-                        padding: 9px 15px 7px 20px
+                        padding: 9px 15px 7px 20px;
                     }
                 }
                         
@@ -2382,9 +2383,25 @@
                         padding:0  0 8px;
                     }
 
+                    .btn {
+                        height: 46px;
+                        padding:12px;
+                        line-height: 20px;
+                        @include mobile{
+                            height: 40px;
+                            padding: 0 12px;
+                        }
+                    }
+
                     .input-wrap {
                         input:disabled {
                             background: #e4e4e4;
+                        }
+                        input {
+                            height: 46px;
+                            @include mobile{
+                                height: 40px;
+                            }
                         }
                     }
                     
