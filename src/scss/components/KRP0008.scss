@@ -1500,6 +1500,42 @@
                 }
             }
         }
+        // BTOCSITE-11099 - 케어십 가격 안내 문구 추가
+        .caresolution-careship {
+            .info-box {
+                margin-top: 16px;
+                .text {
+                    @include font-small;
+                    margin-top: 12px;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                    & + .bullet-list {
+                        margin-top: 0;
+                        margin-bottom: 0;
+                        .b-txt {
+                            &:before {
+                                margin-right: 6px;
+                            }
+                        }
+                    }
+                }
+                .bullet-list {
+                    margin-top: 4px;
+                    margin-bottom: 8px;
+                    .b-txt {
+                        padding-left: 11px;
+                        &:before {
+                            display: inline-block !important;
+                            width: 2px;
+                            height: 2px;
+                            background-color: $color-default;
+                        }
+                    }
+                }
+            }
+        }
+
         .select-info {
             @include clearfix;
             position: relative;
@@ -1988,6 +2024,20 @@
                 padding-bottom: 8px;
                 .text {
                     @include font-small;
+                    /* BTOCSITE-11099 */
+                    margin-top: 12px;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                    & + .bullet-list {
+                        margin-top: 0;
+                        margin-bottom: 0;
+                        .b-txt {
+                            &:before {
+                                margin-right: 6px;
+                            }
+                        }
+                    }
                 }
                 .bullet-list {
                     margin-top: 4px;
