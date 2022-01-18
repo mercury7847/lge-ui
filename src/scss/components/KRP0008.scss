@@ -427,9 +427,11 @@
         }
     }
 
+    /* BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
+
     .pdp-ar-area {
         position: absolute;
-        top: 20px;
+        top: 10px;
         right: 20px;
         z-index: 1;
         .btn-ar {
@@ -456,6 +458,25 @@
             right: 24px;
         }
     }
+
+    .up-mark {
+        position: absolute;
+        top: -7px;
+        right: 18px;
+        &.only-onMark {
+            top: 60px;
+            @include mobile {
+                top: 0;
+            }
+        }
+        img {
+            @include mobile {
+                width: 50px;
+            }
+        }
+    }
+
+    /* //BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
 
     .pdp-more-info {
         width: 100%;

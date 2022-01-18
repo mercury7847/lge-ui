@@ -280,6 +280,18 @@
                  // 20210923 BTOCSITE-3534 [퍼블] [사용자행태분석 개선사항] PDP 제품명/리뷰 링크 개선 
                 self.$copy =  self.$component.find('.copy');
 
+                /* BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
+                self.$pdp_visualWrap = $('.pdp-visual-wrap');
+                self.$ar_mark = self.$pdp_visualWrap.find('.pdp-ar-area');
+                self.$up_mark = self.$pdp_visualWrap.find('.up-mark');
+                
+                if(self.$ar_mark.length) {
+                    self.$up_mark.addClass('only-onMark');
+                } else {
+                    self.$up_mark.removeClass('only-onMark');
+                }
+                /* BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
+
                 //가격정보
                 self.$pdpInfoPaymentAmount = self.$pdpInfo.find('.payment-amount');
                 self.$pdpInfoPaymentAmount.data('quantity',1); //기본수량 1 세팅
