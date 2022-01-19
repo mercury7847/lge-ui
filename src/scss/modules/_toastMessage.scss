@@ -14,11 +14,18 @@
             min-height: 58px;
             background: rgba(34, 34, 34, .6);
             border-radius:58px; //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
-            padding: 16px 48px;
+            padding: 16px 60px 16px 48px; //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
             color: #fff;
             @include font-medium;
             font-weight:700;
             text-align:center;
+            @include mobile {
+                min-width:100%;
+                padding:17px 50px 17px 24px; //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선 (모니터링506 반영)
+                .btn-area {
+                    right:16px;
+                }
+            }
             .toast-text {
                 display: inline-block;
             }
@@ -35,13 +42,6 @@
                     width:24px;
                     height:24px;
                     background:url('/lg5-common/images/icons/btn-close-24-white.svg') no-repeat;
-                }
-            }
-            @include mobile {
-                min-width:100%;
-                padding:17px 44px 17px 24px; //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선 (모니터링506 반영)
-                .btn-area {
-                    right:16px;
                 }
             }
         }

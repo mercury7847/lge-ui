@@ -317,7 +317,7 @@
                 self.$pdpInfoCareshipService = self.$pdpInfo.find('div.careship-service');
 
                 self.$pdpInfoCareSiblingOption = self.$pdpInfo.find('div.care-sibling-option');
-                
+                                
                 //렌탈 가격 정보 정리
                 self.rentalInfoData = null;
                 var selectContractTerm = null;
@@ -910,6 +910,7 @@
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
                         bannerStore.show(); //BTOCSITE-5727 //BTOCSITE-6416
+                        self.$pdpInfo.attr('data-type-cart', 'P'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
                     } else {
                         //렌탈 dpType=careTab추가
                         url += (n==0) ? "?dpType=careTab" : "&dpType=careTab";
@@ -918,6 +919,7 @@
                         /* 20210528 추가 */
                         $('.care-solution-info').show();
                         bannerStore.hide(); //BTOCSITE-5727 //BTOCSITE-6416
+                        self.$pdpInfo.attr('data-type-cart', 'C'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
                     }
 
                     //BTOCSITE-841 탭 클릭시 브레드크럼 & sku 변경
@@ -1041,6 +1043,7 @@
                     //} else {
                         //제품타입
                         param.typeFlag = "P";
+                        
                         //케어십 선택
                         var $careshipService = $paymentAmount.siblings('.careship-service');
                         var checkinput = $careshipService.find('input[type=radio]:checked');
@@ -1049,6 +1052,7 @@
                             if(checkCareSelect) {
                                 //케어쉽 선택
                                 param.typeFlag = "C";
+                                self.$pdpInfo.attr('data-type-cart', 'C'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
                             }
                         } else {
                             var $careSiblingOption = $paymentAmount.siblings('.care-sibling-option');
@@ -1080,6 +1084,7 @@
                                 param.easyRequestCard = cardData.cardNameCode + "|" + cardData.cardSubName;
                             }
                         }
+                        self.$pdpInfo.attr('data-type-cart', 'C'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
                     }
 
                     var ajaxUrl = self.$pdpInfo.attr('data-cart-url');
@@ -1093,6 +1098,7 @@
                                 lgkorUI.requestCart(ajaxUrl, param, true);
                             }
                         });
+                        self.$pdpInfo.attr('data-type-cart', 'C'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
                     } else {
                         lgkorUI.requestCart(ajaxUrl, param, true);
                     }
