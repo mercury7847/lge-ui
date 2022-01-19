@@ -35,7 +35,7 @@
             if($chat.length > 0) {
                 var ajaxUrl = self.$morePlus.data('pincodeUrl');
                 if(ajaxUrl) {
-                    lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ajaxUrl, null, function(result) {
+                    lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
                         var pinCode = null;
                         var data = result.data;
                         if(data) {
@@ -53,7 +53,7 @@
                         }
 
                         $chat.attr('href',chatUrl);
-                    });
+                    },"GET", "json", true, null, true);
                 }
             }
         },
@@ -174,7 +174,7 @@
 			var self = this;
 			var ajaxUrl = self.$popup.attr('data-list-url');
 
-            lgkorUI.requestAjaxDataPost(ajaxUrl, null/*{"id":cookieValue}*/, function(result) {
+            lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result) {
 				var data = result.data;
 				var arr = data instanceof Array ? data : [];
                 self.listData = arr;
@@ -197,7 +197,7 @@
                 if(openPopup) {
                     self.openPopup();
                 }
-			});
+			}, null, true);
         },
         
         //최근본 제품 noData 체크

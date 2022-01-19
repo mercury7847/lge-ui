@@ -1579,8 +1579,8 @@
             sendPhoneNumber: memInfos.sendPhoneNumber,
             purPathCode: vcui.detect.isMobile ? 3 : 2
         }
-
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_INQUIRY_LIST_URL, sendata, function(result){
+        lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
+            lgkorUI.hideLoading();
             if(result.status == "fail"){
                 if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL || PAGE_TYPE == PAGE_TYPE_DETAIL){
                     lgkorUI.alert("", {
@@ -1797,7 +1797,7 @@
     
                 renderPage();
             }
-        });
+        },"GET", "json", true, null, true);
     }
 
 
@@ -2119,7 +2119,7 @@
                 transMemName: MONTHLY_PAYMENT_DATA.transMemName
             }
             for(var key in paymentInfo) sendata[key] = paymentInfo[key];
-            
+
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(PAYMENT_SAVE_URL, sendata, function(result){
                 if(lgkorUI.stringToBool(result.data.success)){
@@ -2318,7 +2318,7 @@
 
             productList: JSON.stringify(productList)
         }
-        
+
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_REQUEST_URL, sendata, function(result){
             if(result.status == "fail"){
@@ -2407,7 +2407,7 @@
             sendUserEmail: memInfos.sendUserEmail,
             sendPhoneNumber: memInfos.sendPhoneNumber
         }
-        
+
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_CANCEL_POP_URL, sendata, function(result){
             lgkorUI.hideLoading();
@@ -2778,7 +2778,7 @@
                 orderList: JSON.stringify(orderList)
             }
         }
-        
+
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
             lgkorUI.hideLoading();

@@ -98,7 +98,7 @@ $(document).ready(function(){
 			var ajaxUrl = self.$popup.attr('data-list-url');
             //var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
             
-            lgkorUI.requestAjaxDataPost(ajaxUrl, null/*{"id":cookieValue}*/, function(result) {
+            lgkorUI.requestAjaxDataPost(ajaxUrl, null, function(result) {
 				var data = result.data;
 				var arr = data instanceof Array ? data : [];
                 self.listData = arr;
@@ -116,7 +116,7 @@ $(document).ready(function(){
                 if(openPopup) {
                     self.openPopup();
                 }
-			});
+			}, null, true);
         },
         
         checkNoData: function() {
