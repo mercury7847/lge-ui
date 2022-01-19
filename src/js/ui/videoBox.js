@@ -101,7 +101,7 @@ vcui.define('ui/videoBox', ['jquery', 'vcui'], function ($, core) {
             });
 
             self.$video = self._getCurrentVideo();
-            $(self.$videos).on("play playing pause ended", function(e){
+            $(self.$videos).on("pause ended play playing", function(e){
                 switch(e.type){
                     case "ended":
                     case "pause":
