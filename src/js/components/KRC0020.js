@@ -173,7 +173,7 @@
 							$playWrap.removeClass('play').addClass('stop');
 		
 							if( $currentVideo.length > 0 ) {
-								if($currentVideo.get(0).hasAttribute('autoplay') || $currentGroup.find('.controller-wrap button').hasClass('pause')) {
+								if($currentVideo.get(0).hasAttribute('autoplay')) {
 									$currentVideo.get(0).currentTime = 0;
 									$currentVideo.get(0).play();
 									self.autoSpeed = $currentVideo.get(0).duration * 1000	
