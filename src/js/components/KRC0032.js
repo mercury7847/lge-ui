@@ -34,7 +34,7 @@ $(window).ready(function(){
 			var $currentVideo = $(target).find('.ui_carousel_current .animation-area video');
 
 			if(  $currentVideo.length > 0) {
-				if($currentVideo.get(0).hasAttribute('autoplay') || $(target).find('.controller-wrap button').hasClass('pause')) {
+				if($currentVideo.get(0).hasAttribute('autoplay')) {
 					$currentVideo.get(0).play()
 				}
 			}
@@ -147,9 +147,10 @@ $(window).ready(function(){
 				var autoSpeed = $slider.data('autoSpeed') ? $slider.data('autoSpeed') : 5000;
 				var $currentVideo = $currentSlide.find('video').get(0);
 				if($currentSlide.attr("ui-modules") == "VideoBox"){
-					if($currentVideo.hasAttribute('autoplay') || $currentSlide.find('.controller-wrap button').hasClass('pause')) {
-						autoSpeed =	$currentSlide.find("video").get(0).duration * 1000;
-						$currentSlide.find("video").get(0).play();
+					if($currentVideo.hasAttribute('autoplay')) {
+						autoSpeed =	$currentVideo.duration * 1000;
+						$currentVideo.currentTime = 0;
+						$currentVideo.play();
 					}
 				}
 				slide.$dots.find('button').blur();
