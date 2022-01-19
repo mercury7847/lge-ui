@@ -1013,13 +1013,13 @@
                                 width: 100%;
                                 height: 32px;
                                 line-height: 0;
-                                padding: 0px 0px 0px 12px !important;
+                                padding: 0px 12px 0px; //220119 요청사항 - BTOCSITE-9207
                                 max-width: 112px;
-                                text-align: left;
+                                text-align: center; //220119 요청사항 - BTOCSITE-9207
                                 &:hover,
                                 &:active,
                                 &:focus {
-                                    outline: 0;
+                                    outline: none;
                                 }
                                 &.fc-white {
                                     border-color: #fff !important;
@@ -1038,6 +1038,7 @@
                                     font-size: 13px;
                                 }
                                 &::after {
+                                    display: none; //220119 요청사항 - BTOCSITE-9207
                                     content: '+';
                                     width: 10px;
                                     height: 10px;
