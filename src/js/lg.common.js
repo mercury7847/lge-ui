@@ -1805,9 +1805,9 @@ var goAppUrl = function(path) {
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 var data = result.data;
                 var typeFlag = self.$('.btn-cart').attr('data-type-flag'); //(PLP) BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
-                var pdpInfo = self.$('.product-detail-info'); //(PDP) BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
-                var wishTypeFlag = self.$('.info-tbl-wrap ul'); //(찜/최근) BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
-                var compareFlag = self.$('.product-items'); //(비교하기) BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
+                var pdpInfoFlag = self.$('.pdp-info-area').attr('data-type-cart'); //(PDP) BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
+                var wishTypeFlag = self.$('.info-tbl-wrap ul').attr('data-type-cart'); //(찜/최근) BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
+                var compareFlag = self.$('.product-items').attr('data-type-cart'); //(비교하기) BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
 
                 if(data && lgkorUI.stringToBool(data.success)) {
                     var cartCnt = data.cartCnt ? ((typeof data.cartCnt  === 'number') ? data.cartCnt : parseInt(data.cartCnt)) : 0;
@@ -1828,7 +1828,7 @@ var goAppUrl = function(path) {
                     if(isToast && lgkorUI.stringToBool(data.success)) {
                         $(window).trigger("toastshow", "선택하신 제품을 장바구니에 담았습니다.");
                         /* BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선 */
-                        if( typeFlag == "CARESOLUTION" || pdpInfo.hasClass('rental') || wishTypeFlag.hasClass('rental') || compareFlag.hasClass('rental') ){
+                        if( typeFlag == "CARESOLUTION" || pdpInfoFlag == "C" || wishTypeFlag == "C" || compareFlag == "C" ){
                             console.log('CARESOLUTION')
                             $('.toast-text').append('<br><a href="/add-to-cart/rental-care-solution" class="btn-link white sm">장바구니 이동하기</a>'); 
                         }else{

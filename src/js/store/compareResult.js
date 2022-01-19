@@ -54,18 +54,18 @@
                         title:'해당 제품은 케어십이 필요한 제품입니다.<br>렌탈 장바구니에서 케어십 청약신청 후<br>구매하실 수 있습니다.',
                         ok: function (){
                             requestCart($li,"C");
-                            $li.parents('ul').addClass('rental').removeClass('product'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
+                            $li.parents('ul').attr('data-type-cart', 'C'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
                         }
                     };
                     lgkorUI.alert(null, obj);
                 } else {
                     requestCart($li,"P");
-                    $li.parents('ul').addClass('product').removeClass('rental'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
+                    $li.parents('ul').attr('data-type-cart', 'P'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
                 }
             } else {
                 //렌탈
                 requestCart($li,"C");
-                $li.parents('ul').addClass('rental').removeClass('product'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
+                $li.parents('ul').attr('data-type-cart', 'C'); //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선
             }
         });
 
