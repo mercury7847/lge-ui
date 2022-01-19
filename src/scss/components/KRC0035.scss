@@ -296,11 +296,12 @@
                         padding: 0px 12px 0px; //220119 요청사항 - BTOCSITE-9207
                         max-width: 112px;
                         text-align: center; //220119 요청사항 - BTOCSITE-9207
-						outline:none; //220119 요청사항 - BTOCSITE-9207
 						&:hover,
 						&:active,
 						&:focus {
-							outline: none; //220119 요청사항 - BTOCSITE-9207
+							border: 0;
+							outline: 0; //220119 요청사항 - BTOCSITE-9207
+							outline-color: #fff;
 						}
                         &.fc-white {
                             border-color: #fff !important;
