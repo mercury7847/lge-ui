@@ -287,6 +287,11 @@
             position: relative;
             margin-top: 12px;
             .btn{
+				&:hover,
+				&:active,
+				&:focus {
+					outline: none; //220119 요청사항 - BTOCSITE-9207
+				}
                 &.btn.border {
                     &.dropInfo_openBtn {
                         position: relative;
@@ -295,12 +300,7 @@
                         line-height: 0;
                         padding: 0px 12px 0px; //220119 요청사항 - BTOCSITE-9207
                         max-width: 112px;
-                        text-align: center; //220119 요청사항 - BTOCSITE-9207
-						&:hover,
-						&:active,
-						&:focus {
-							outline: 0 !important; //220119 요청사항 - BTOCSITE-9207
-						}
+                        text-align: center; //220119 요청사항 - BTOCSITE-9207						
                         &.fc-white {
                             border-color: #fff !important;
                             color: #fff !important;
