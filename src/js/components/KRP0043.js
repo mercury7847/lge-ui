@@ -92,6 +92,7 @@
             
             var self = this;
             var isUrl = document.location.search;
+            var componentChk = document.getElementById("pdp_qna"); //BTOCSITE-11299 추가
             
             vcui.require(['ui/pagination', 'ui/validation'], function (){
                 self.settings();
@@ -100,16 +101,21 @@
                 
                 });
 
-                if(loginFlag == "Y"){
-                    if(isUrl){
-                        self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"Y","page": "1"});
-                        $('#myWriteView').prop("checked", true);
-                        history.replaceState({}, null, location.pathname); //파라미터 url 삭제
+                //BTOCSITE-11299 componentChk 분기처리 추가 - Q&A component 존재할 경우에만 API 실행
+                if(!componentChk) {
+                    console.log("not found QnA component!")
+                } else {
+                    if(loginFlag == "Y"){
+                        if(isUrl){
+                            self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"Y","page": "1"});
+                            $('#myWriteView').prop("checked", true);
+                            history.replaceState({}, null, location.pathname); //파라미터 url 삭제
+                        } else {
+                            self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"N","page": "1"});
+                        }
                     } else {
                         self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"N","page": "1"});
                     }
-                } else {
-                    self.requestQnaListData({"questionTypeCode":"ALL","excludePrivate":"N","myQna":"N","page": "1"});
                 }
             });
         },
