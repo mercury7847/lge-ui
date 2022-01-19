@@ -1830,10 +1830,10 @@ var goAppUrl = function(path) {
                         /* BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선 */
                         if( typeFlag == "CARESOLUTION" || pdpInfoFlag == "C" || wishTypeFlag == "C" || compareFlag == "C" ){
                             console.log('CARESOLUTION')
-                            $('.toast-text').append('<br><a href="/add-to-cart/rental-care-solution" class="btn-link white sm">장바구니 이동하기</a>'); 
+                            $('.toast-text').append('<br><a href="/add-to-cart/rental-care-solution" class="btn-link white">장바구니 이동하기</a>'); 
                         }else{
                             console.log('product')
-                            $('.toast-text').append('<br><a href="/shop/checkout/cart/index/" class="btn-link white sm">장바구니 이동하기</a>');
+                            $('.toast-text').append('<br><a href="/shop/checkout/cart/index/" class="btn-link white">장바구니 이동하기</a>');
                         }
                         /* //BTOCSITE-10576 [사용자행태분석 개선사항] 장바구니 이동 경로 제공 / 품절 관련 무효클릭 및 안내 개선 */
                     }
