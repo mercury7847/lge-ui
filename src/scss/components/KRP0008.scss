@@ -3443,6 +3443,13 @@
                             video {
                                 height: auto;
                             }
+                            .controller-wrap { // BTOCSITE-11059
+                                bottom: auto;
+                                top: 16px;
+                            }
+                        }
+                        .play-animaion-btn { // BTOCSITE-11059
+                            right: 48px;
                         }
                     }
                     .youtube-box {
