@@ -750,11 +750,12 @@ html {
         .banner-text {
             position: absolute;
             top: 14px;
-            left: 14px;
+            left: 0; //220119 BTOCSITE-10816 수정
+            margin-left:12px; //220119 BTOCSITE-10816 추가
             font-size: $font-medium - 1;
             line-height: 23px;
             color: $color-white;
-            text-shadow: 0 1px 20px rgba(0, 0, 0, 0.4);
+            //text-shadow: 0 1px 20px rgba(0, 0, 0, 0.4); //220119 BTOCSITE-10816 제거
             width: 60%;
             white-space: normal;
             p {
