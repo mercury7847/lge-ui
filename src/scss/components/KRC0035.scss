@@ -300,7 +300,7 @@
 						&:active,
 						&:focus {
 							outline: none; //220119 요청사항 - BTOCSITE-9207
-							box-shadow : none //220119 요청사항 - BTOCSITE-9207
+							box-shadow : none; //220119 요청사항 - BTOCSITE-9207
 						}
                         &.fc-white {
                             border-color: #fff !important;
