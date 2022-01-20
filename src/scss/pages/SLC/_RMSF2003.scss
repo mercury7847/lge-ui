@@ -597,6 +597,16 @@ br.pc-only {
             margin-top:16px;
         }
     }
+    
+    // 케어솔루션_제품모튤(.module-type1)에 옵션 셀렉트 박스 추가 (총5개)
+    &.module-type5 {
+        height:704px;
+        max-height:704px;
+        @include mobile {
+            height:auto;
+            max-height:inherit;
+        }
+    }
 }
 
 .care-plan {
