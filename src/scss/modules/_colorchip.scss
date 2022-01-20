@@ -3,10 +3,32 @@
 	// 	background-image:url('/lg5-common/images/colorchip.jpg');
 	// 	background-size:400px;
 	// }
+	/* BTOCSITE-10823 시블링 컬러칩 형태 변경 요청 */
+	input{
+		cursor:pointer;
+		&:before{
+			content:'';
+			position:absolute;
+			z-index:1;
+			top:0;
+			left:0;
+			width:40px;
+			height:40px;
+			background:url('/lg5-common/images/colorchip/colorchip_cover.png');
+			background-size:100% 100%;
+			@include mobile{
+				padding-left:0;
+				width:38px;
+				height:38px;
+			}
+		}
+	}
+	/* //BTOCSITE-10823 시블링 컬러칩 형태 변경 요청 */
 	& input + label:before {
 		background-image:url('/lg5-common/images/colorchip/colorchip_210708.png');
 		// background-image:url('/kr/images/color/colorchip_210521.png');
 		background-size:144px auto;
+		border-radius:0; //BTOCSITE-10823 시블링 컬러칩 형태 변경 요청
 	}
 	&.large{
 		& input + label:before {
@@ -2481,14 +2503,21 @@
 			background:#333438;
 		}
 	}
-	/* 20210607 스펙선택 추가 */ 
+	/* BTOCSITE-10823 시블링 컬러칩 형태 변경 요청 */
 	&.snow_white {
 		& input + label:before {
-			background:#fff;
-			border: 1px solid #ddd !important;
+			width:40px !important;
+			height:40px !important;
+			background:url('/lg5-common/images/colorchip/colorchip_snowWhite.png');
+			background-size:100% 100% !important;
+			transform:none !important;
+			@include mobile{
+				width:37px !important;
+				height:37px !important;
+			}
 		}
 	}
-	/* //20210607 스펙선택 추가 */
+	/* //BTOCSITE-10823 시블링 컬러칩 형태 변경 요청 */
 	&.dark_silver {
 		& input + label:before {
 			background:#555557;
@@ -2848,5 +2877,3 @@
 	//[E] BTOCSITE-4224 PLP,PDP 시블링
 	//[E] BTOCSITE-10889 컬러칩 샘플 추가
 }
-
-
