@@ -7,6 +7,8 @@
             .module-type2 : 케어십_유상제품 모듈
             .module-type3 : 케어십_보유제품 모듈
             .module-type4 : 케어십_용역제품 모듈
+            .module-type5 : 케어솔루션_제품모튤(.module-type1)에 옵션 셀렉트 박스 추가 (총5개)
+                            BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성건
         -->
         <div class="img-wrap">
             <a href="#n">
@@ -33,7 +35,83 @@
             <p class="code-txt">@@codeTxt</p>
             }
             @@if (!context.optionNon) {
-                @@if(context.moduleType != "module-type3") {
+                <!-- BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성건 START -->
+                @@if(context.moduleType === "module-type5") {
+                    <div class="opt-info">
+                        @@if(context.usePeriod) {
+                        <dl>
+                            <dt>계약기간</dt>
+                            <dd>
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" id="@@usePeriodId" title="계약기간 선택">
+                                        @@for (var i = 0; i < context.usePeriod.length; i++) {
+                                        <option value="">`+usePeriod[i].title+`</option>
+                                        }
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+                        }
+                        @@if(context.useDay) {
+                        <dl class="@@disabled">
+                            <dt>의무사용</dt>
+                            <dd>
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" id="@@useDayId" title="의무사용 선택" @@disabled>
+                                        @@for (var i = 0; i < context.useDay.length; i++) {
+                                        <option value="">`+useDay[i].title+`</option>
+                                        }
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+                        }
+                        @@if(context.visitDay) {
+                        <dl>
+                            <dt>방문주기</dt>
+                            <dd>
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" id="@@visitDayId" title="방문주기 선택">
+                                        @@for (var i = 0; i < context.visitDay.length; i++) {
+                                        <option value="">`+visitDay[i].title+`</option>
+                                        }
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+                        }
+                        @@if(context.appFee) {
+                        <dl>
+                            <dt>가입비</dt>
+                            <dd>
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" id="@@appFeeId" title="가입비 선택">
+                                        @@for (var i = 0; i < context.appFee.length; i++) {
+                                        <option value="">`+appFee[i].title+`</option>
+                                        }
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+                        }
+                        @@if(context.serviceType) {
+                        <dl>
+                            <dt>서비스타입</dt>
+                            <dd>
+                                <div class="sort-select-wrap">
+                                    <select class="ui_selectbox" id="@@serviceTypeId" title="서비스타입 선택">
+                                        @@for (var i = 0; i < context.serviceType.length; i++) {
+                                        <option value="">`+serviceType[i].title+`</option>
+                                        }
+                                    </select>
+                                </div>
+                            </dd>
+                        </dl>
+                        }
+                    </div>
+                }
+                <!-- BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성건 END -->
+                @@if(context.moduleType != "module-type3" && context.moduleType != "module-type5") {<!-- BTOCSITE-9177 module-type5은 제외 -->
                 <div class="opt-info">
                     @@if(context.colorSet) {
                     <dl class="@@colorDisabled"><!-- 단일 항목 인 경우 disabled 클래스 추가 -->
