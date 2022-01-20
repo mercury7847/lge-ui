@@ -178,10 +178,12 @@
                 /* //BTOCSITE-6859 - 이벤트페이지 UI 변경 요청 - 추가 필터링 분기 작업 */
 
                 // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 탭 그려진 후에 아코디언버튼 세팅
-                _self.setAccordionButton();
-                $(window).on('resize', function() {
+                if($('.subRenewWrap').length > 0) {
                     _self.setAccordionButton();
-                });
+                    $(window).on('resize', function() {
+                        _self.setAccordionButton();
+                    });
+                }
 
                 // BTOCSITE-5938-514 : postData session storage에 저장
                 if(!isOnLoad) { // 첫 load 시 미실행
