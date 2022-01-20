@@ -2308,7 +2308,7 @@ html {
 
 
 /*BTOCSITE-2117 공통 > 모바일 웹/앱 GNB 개선*/
-@media screen and (max-width: 767px) {
+@include mobile {
     .subRenewWrap {
         .header {
             z-index: 100;
@@ -2344,6 +2344,9 @@ html {
                 font-size: 16px;
                 line-height: 24px;
                 word-break: break-all;
+                @media screen and (max-width: 353px) {
+                    font-size: 14px;
+                }
             }
             .nav-category-container {
                 top: 61px;
@@ -2546,9 +2549,11 @@ html {
                 }
             }
             &:not(.snsHead) {
-                .sub-renew-nav-wrap {
-                    width: calc(100% - 120px);
-                    padding-left: 50px;
+                &:not(.cartHead) {
+                    .sub-renew-nav-wrap {
+                        width: calc(100% - 120px);
+                        padding-left: 50px;
+                    }
                 }
             }
             &.snsHead {
@@ -2556,6 +2561,11 @@ html {
                     width: calc(100% - 90px);
                 }
             }
+        }
+    }
+    .eventList {
+        .container {
+            padding-top: 46px;
         }
     }
 }
