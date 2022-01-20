@@ -16,12 +16,14 @@ $(window).ready(function(){
 
 		//슬라이드 이동 시 - 이전 슬라이드의 재생중인 비디오 정지 & 재생시간 초기화 -BTOCSITE-8039
 		function prevVideoPause(slide, prev){
-			if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
-				if(!$(slide.$slides.get(prev)).find("video").get(0).paused) {
-					$(slide.$slides.get(prev)).find("video").get(0).currentTime = 0;
-					$(slide.$slides.get(prev)).find("video").get(0).pause();
+			$(slide.$slider).find('.ui_carousel_slide').each(function(i) {
+				if(i > slide.slideCount || i == prev) {
+					if($(this).find('video').size() > 0) {
+						$(this).find('video').get(0).currentTime = 0;
+						$(this).find('video').get(0).pause();
+					}
 				}
-			}
+			});
 		}
 		//슬라이드 이동 시 - 이전 슬라이드의 활성화된 유튜브레이어 닫기 -BTOCSITE-8039
 		function prevYoutubeBoxClose(slide, prev){
@@ -138,7 +140,6 @@ $(window).ready(function(){
 			.on('carouselbeforechange', function(e, slide, prev, next){
 
 				prevVideoPause(slide, prev);
-				prevVideoPause(slide, next);
 				prevYoutubeBoxClose(slide, prev);
 				autoStateChange(slide, prev, next)
 			
