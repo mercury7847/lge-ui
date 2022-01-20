@@ -113,6 +113,19 @@
                     e.preventDefault();
                     _self.requestModal(this);
                 });
+
+                // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 이벤트 추가
+                self.$KRP0022.find('.accordion-button').on('click', function(e) {
+                    self.$KRP0022.find('.tabs-wrap').toggleClass('expanded');
+                    if (self.$KRP0022.find('.tabs-wrap').hasClass('expanded')) {
+                        self.$KRP0022.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', false);
+                    } else {
+                        self.$KRP0022.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', true);
+                    }
+                });
+                self.$KRP0022.find('.fixed-area .dimmed').on('click', function(e) {
+                    self.$KRP0022.find('.tabs-wrap').removeClass('expanded');
+                });
             },
 
             noData: function(visible) {
@@ -162,6 +175,12 @@
                 // }
 
                 /* //BTOCSITE-6859 - 이벤트페이지 UI 변경 요청 - 추가 필터링 분기 작업 */
+
+                // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 탭 그려진 후에 아코디언버튼 세팅
+                _self.setAccordionButton();
+                $(window).on('resize', function() {
+                    _self.setAccordionButton();
+                });
 
                 // BTOCSITE-5938-514 : postData session storage에 저장
                 if(!isOnLoad) { // 첫 load 시 미실행
@@ -221,6 +240,16 @@
                 $('#event-modal').html(html).vcModal();
             },
             */
+
+            // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 탭 길이에 따라 아코디언버튼 노출 유무 세팅
+            setAccordionButton: function() {
+                if(self.$KRP0022.find('.tabs').width() + 32 > window.innerWidth) {
+                    self.$KRP0022.find('.tabs-wrap').addClass('hasButton');
+                } else {
+                    self.$KRP0022.find('.tabs-wrap').removeClass('expanded');
+                    self.$KRP0022.find('.tabs-wrap').removeClass('hasButton');
+                }
+            }
         };
 
         KRP0022.init();
