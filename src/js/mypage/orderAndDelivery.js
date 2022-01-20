@@ -1797,7 +1797,13 @@
     
                 renderPage();
             }
-        },"GET", "json", true, null, true);
+        },"GET", "json", true, null, true, function(err) {
+                console.log("ERR :  %o",err);
+                lgkorUI.hideLoading();
+                lgkorUI.alert("", {
+                    title: "점검중입니다."
+                })
+        });
     }
 
 
