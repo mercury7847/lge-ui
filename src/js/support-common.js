@@ -1091,6 +1091,15 @@ CS.MD.pagination = function() {
                 pageTotal = self.pageTotal,
                 html = '';
 
+            // BTOCSITE-9921 추가 - pageView 값 분리 - S
+            // mobile 일 경우, pagination 5개, pc 10개 노출 
+            if(vcui.detect.isMobileDevice){
+                pageView = 5;
+            } else {
+                pageView = 10;
+            }
+            // BTOCSITE-9921 추가 - pageView 값 분리 - E
+
             var startPage = parseInt((page - 1) / pageView) * pageView + 1; 
             var endPage = startPage + pageView - 1;
             if (endPage > pageTotal) {
