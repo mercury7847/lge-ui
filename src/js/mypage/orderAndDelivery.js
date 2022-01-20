@@ -990,9 +990,9 @@
         var isAgreeChk = $('#popup-takeback').data('isAgreeChk');
         if(isAgreeChk){
             if(!$('#popup-takeback').find('input[name=takebackPopAgree]').prop('checked')){
-                // BTOCSITE-8310 스토어 명칭 제품으로 변경
+                // BTOCSITE-10664 GNB "제품" 명칭 > "제품/소모품"으로 변경 및  GNB 메뉴 순서 변경 건 
                 lgkorUI.alert("", {
-                    title: "제품 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요." 
+                    title: "제품/소모품 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요." 
                 });
     
                 return;
@@ -1069,9 +1069,9 @@
         var isAgreeChk = $('#popup-cancel').data('isAgreeChk');
         if(isAgreeChk){
             if(!$('#popup-cancel').find('input[name=cancelPopAgree]').prop('checked')){
-                // BTOCSITE-8310 스토어 명칭 제품으로 변경
+                // BTOCSITE-10664 GNB "제품" 명칭 > "제품/소모품"으로 변경 및  GNB 메뉴 순서 변경 건 
                 lgkorUI.alert("", {
-                    title: "제품 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요." 
+                    title: "제품/소모품 주문 반품/취소 신청 환불 정보 수집에 동의해 주세요." 
                 });
     
                 return;
@@ -1579,8 +1579,8 @@
             sendPhoneNumber: memInfos.sendPhoneNumber,
             purPathCode: vcui.detect.isMobile ? 3 : 2
         }
-
-        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_INQUIRY_LIST_URL, sendata, function(result){
+        lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
+            lgkorUI.hideLoading();
             if(result.status == "fail"){
                 if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL || PAGE_TYPE == PAGE_TYPE_DETAIL){
                     lgkorUI.alert("", {
@@ -1797,7 +1797,7 @@
     
                 renderPage();
             }
-        });
+        },"GET", "json", true, null, true);
     }
 
 
@@ -2119,7 +2119,7 @@
                 transMemName: MONTHLY_PAYMENT_DATA.transMemName
             }
             for(var key in paymentInfo) sendata[key] = paymentInfo[key];
-            
+
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(PAYMENT_SAVE_URL, sendata, function(result){
                 if(lgkorUI.stringToBool(result.data.success)){
@@ -2318,7 +2318,7 @@
 
             productList: JSON.stringify(productList)
         }
-        
+
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_REQUEST_URL, sendata, function(result){
             if(result.status == "fail"){
@@ -2407,7 +2407,7 @@
             sendUserEmail: memInfos.sendUserEmail,
             sendPhoneNumber: memInfos.sendPhoneNumber
         }
-        
+
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_CANCEL_POP_URL, sendata, function(result){
             lgkorUI.hideLoading();
@@ -2778,7 +2778,7 @@
                 orderList: JSON.stringify(orderList)
             }
         }
-        
+
         lgkorUI.showLoading();
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(ORDER_SAILS_URL, sendRealData, function(result){
             lgkorUI.hideLoading();

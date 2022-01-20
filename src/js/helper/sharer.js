@@ -4,7 +4,12 @@
  * @description Sharer 컴포넌트
  * @copyright VinylC UID Group
  */
-vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
+
+/**
+ * 모니터링 262 : 공유 url 에서 오작동 방지 하기 위해 share=Y 파라메터 추가
+ * share=Y 파라메타가 있을시 해당 url 에서 링크 이동  처리시 window.opener.location 이 있을경우 location 으로 처리 해주시면 됩니다.
+ */
+ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
     "use strict";
 
     var detect = {
@@ -27,7 +32,10 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
             if (data.service == 'copy_url') {
                 // url 복사하기 인 경우
                 var url = $(el).attr('data-url');
-                vcui.dom.copyToClipboard((!url?location.href:url), {
+                    url = url || location.href;
+                    url = vcui.uri.addParam(url, { 'share' : 'Y' });
+
+                vcui.dom.copyToClipboard(url, {
                     onSuccess: function () {
                         alert('URL을 복사했습니다.');
                     }
@@ -52,7 +60,8 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
                 url: 'https://www.facebook.com/sharer.php?',
                 makeParam: function makeParam(data) {
                     data.url = core.uri.addParam(data.url, {
-                        '_t': +new Date()
+                        '_t': +new Date(),
+                        'share' : 'Y'
                     });
                     return {u: data.url, t: data.title || ''};
                 }
@@ -70,6 +79,9 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
                         txt = data.title + ' - ' + data.desc;
 
                     txt = txt.length > length ? txt.substr(0, length) + '...' : txt;
+                    data.url = core.uri.addParam(data.url, {
+                        'share' : 'Y'
+                    });
                     return {text: txt + ' ' + data.url};
                 }
             },            
@@ -79,6 +91,10 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
                 size: [740, 740],
                 url: 'https://www.pinterest.com/pin/create/button/?',
                 makeParam: function makeParam(data) {
+                    data.url = core.uri.addParam(data.url, {
+                        'share' : 'Y'
+                    });
+
                     return {
                         url: data.url,
                         media: data.image,
@@ -90,6 +106,10 @@ vcui.define('helper/sharer', ['jquery', 'vcui'], function ($, core) {
                 name: 'kakaotalk',
                 support: detect.PC | detect.MOBILE,
                 makeParam: function makeParam(data) {
+                    data.url = core.uri.addParam(data.url, {
+                        'share' : 'Y'
+                    });
+
                     return {     
                         installTalk:true,
                         objectType : 'feed',

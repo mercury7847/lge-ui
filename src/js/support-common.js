@@ -1049,9 +1049,11 @@ CS.MD.pagination = function() {
             page: 1,
             totalCount: 1,
             pageCount:10,
-            pageView: 5,
+            pageView: 10, //BTOCSITE-9921 변경
             prevClass: 'prev',
             nextClass: 'next',
+            firstClass: 'first', //BTOCSITE-9921 추가
+            lastClass: 'last', //BTOCSITE-9921 추가
             disabledClass: 'disabled',
             lastView: false
         };
@@ -1061,10 +1063,16 @@ CS.MD.pagination = function() {
         function _initialize() {
             $el.attr("role","navigation");
             $el.attr("aria-label","Pagination");
+            //BTOCSITE-9921 공통 페이지네이션 마크업 생성
+            $el.append('<a href="#" class="first"><span class="blind">맨처음 페이지 보기</span></a><a href="#" class="prev"><span class="blind">이전 페이지 보기</span></a><span class="page_num"></span><a href="#" class="next"><span class="blind">다음 페이지 보기</span></a><a href="#" class="last"><span class="blind">맨마지막 페이지 보기</span></a>');
 
             self.$pageList = $el.find('.page_num');
             self.$prev = $el.find('.' + self.options.prevClass);
             self.$next = $el.find('.' + self.options.nextClass);
+            //BTOCSITE-9921 first, last 클래스 추가 - S
+            self.$first = $el.find('.' + self.options.firstClass);
+            self.$last = $el.find('.' + self.options.lastClass);
+            //BTOCSITE-9921 first, last 클래스 추가 - E
 
             self.pageTotal = Math.floor((self.options.totalCount - 1)  / self.options.pageCount + 1);
 
@@ -1125,6 +1133,31 @@ CS.MD.pagination = function() {
                     .addClass(self.options.disabledClass)
                     .data('page', '');
             }
+            //BTOCSITE-9921 first,last 버튼 추가 - s
+            if (page > 1) {
+                self.$first
+                    .attr('aria-disabled', false)
+                    .removeClass(self.options.disabledClass)
+                    .data('page', '1');
+            } else {
+                self.$first
+                    .attr('aria-disabled', true)
+                    .addClass(self.options.disabledClass)
+                    .data('page', '');
+            }
+
+            if (page < pageTotal) {
+                self.$last
+                    .attr('aria-disabled', false)
+                    .removeClass(self.options.disabledClass)
+                    .data('page', pageTotal);
+            } else {
+                self.$last
+                    .attr('aria-disabled', true)
+                    .addClass(self.options.disabledClass)
+                    .data('page', '');
+            }
+            //BTOCSITE-9921 first,last 버튼 추가 - e
             
             self.$el.data('pageTotal', pageTotal);
             self.$el.data('totalCount', self.options.totalCount);

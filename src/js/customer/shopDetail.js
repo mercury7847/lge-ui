@@ -99,14 +99,12 @@
                 var jsonString = JSON.stringify({'command':'closeInAppBrowser'});
                 webkit.messageHandlers.callbackHandler.postMessage(jsonString);
             } else {
-                // 카카오톡 공유하기 url 인경우 분기
-                if(lgkorUI.getParameterByName("kakaoShare") === 'Y') {
+                // 모니터링 262 : 공유하기 통한경우 닫기 버튼 공통 처리 
+                if(lgkorUI.getParameterByName("share") === 'Y') {
                     location.href = '/';
-
                 } else {
                     window.close();
                 }
-                
             }
            
         });
@@ -141,7 +139,13 @@
                         cancelBtnName: "아니오",
                         okBtnName: "네",
                         ok: function(){
-                            window.opener.location.href = result.data.loginUrl;
+                            // 모니터링 262 : 베스트샵 매장찾기 공유하기시 오류 대응
+                            if(lgkorUI.getParameterByName("share") === 'Y') {
+                                location.href = vcui.uri.updateQueryParam(result.data.loginUrl, 'state',location.href);
+                            } else {
+                                window.opener.location.href = result.data.loginUrl;
+                            }
+                            
                             window.close();
                         }
                     });
@@ -169,7 +173,13 @@
                     var jsonString = JSON.stringify({'command':'closeAllInAppBrowser', 'url': url});
                     webkit.messageHandlers.callbackHandler.postMessage(jsonString);
                 } else{
-                    window.opener.location.href = url;
+                    // 모니터링 262 : 베스트샵 매장찾기 공유하기시 오류 대응
+                    if(lgkorUI.getParameterByName("share") === 'Y') {
+                        location.href = url
+                    } else {
+                        window.opener.location.href = url
+                    }
+
                     window.close();
                 }
             }
@@ -189,15 +199,6 @@
                     lgkorUI.goUrl({ href :  url.origin + url.pathname + params , target:$el.attr('target'), openMode : 'inAppBrowser' });   
             });
         }
-
-        // 카카오톡 공유하기 url 생성
-        var kakaoShareUrl = $('.ico-btn.kk').attr("data-url") || location.href;
-        var kakaoShareLoc = lgkorUI.parseUrl(kakaoShareUrl);
-        var kakaoShareParam = $.extend(kakaoShareLoc.searchParams.getAll(), {
-            kakaoShare : 'Y'
-        });
-
-        $('.ico-btn.kk').attr("data-url",kakaoShareLoc.origin + kakaoShareLoc.pathname +'?'+ $.param(kakaoShareParam)); 
 
         /* BTOCSITE-5938-281 베스트샵 매장 찾기 상세 팝업 서비스 센터명 영역 오류 */
         $(function () {

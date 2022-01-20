@@ -902,6 +902,13 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     self.$marketingLink.hide()
                 }
                 /* //BTOCSITE-10034 야간무인매장 추가 */
+                
+
+                /* BTOCSITE-10816 GNB 수정 컨텐츠가 1개만 등록했을때 이미지 사이즈 수정 */
+                if(self.$marketingLinkSlide.length == 1) {
+                    self.$marketingLink.addClass("mob-navSlide_check")
+                }
+                /* BTOCSITE-10816 GNB 수정 컨텐츠가 1개만 등록했을때 이미지 사이즈 수정 */
             }
 
         },

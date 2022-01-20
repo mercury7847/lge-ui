@@ -266,6 +266,9 @@ br.pc {
                                             position:relative;
                                             font-size:27px;
                                             line-height:34px;
+                                            .only-desktop{
+                                                display:none;
+                                            }
                                         }
                                     }
                                     .small {
@@ -276,6 +279,9 @@ br.pc {
                                             margin-top:7px;
                                             font-size:16px;
                                             line-height:22px;
+                                            .only-desktop{
+                                                display:none;
+                                            }
                                         }
                                     }
                                 }

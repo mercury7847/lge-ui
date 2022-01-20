@@ -90,15 +90,15 @@
 
             //
             var sendUrl = $('.contents.mypage.mypage-main').data("memberInfo");
-            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
+            lgkorUI.requestAjaxData(sendUrl, {}, function(result){
                 for(var key in result){
                     var addCommaNum = vcui.number.addComma(result[key]);
                     $('.my-info').find('.' + key).text(addCommaNum);
                 }  
-            });   
+            },"GET", "json", true, null, true);
 
             sendUrl = $('.contents.mypage.mypage-main').data("mypageInfo");
-            lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(sendUrl, {}, function(result){
+            lgkorUI.requestAjaxData(sendUrl, {}, function(result){
                 if(result.status == "fail"){
                     lgkorUI.alert("", {
                         title: result.message
@@ -165,7 +165,7 @@
                         $likeInfo.find('.list-wrap').append(vcui.template(self.noDataTemplate, {msg:wishList.data.message}));
                     }
                 }          
-            });   
+            },"GET", "json", true, null, true);
         }
     }
 
