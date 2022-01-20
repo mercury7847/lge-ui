@@ -125,6 +125,7 @@
                 });
                 self.$KRP0022.find('.fixed-area .dimmed').on('click', function(e) {
                     self.$KRP0022.find('.tabs-wrap').removeClass('expanded');
+                    self.$KRP0022.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', true);
                 });
             },
 
