@@ -2701,11 +2701,14 @@
                         self.$popPdpZoomArea.hide();
                         /* s : BTOCSITE-11059 */
                         var caption = self.$popPdpVisualAnimation.find('div.visual-box div.visual-area .caption');
-                        if(caption.outerWidth() > 0 && caption.outerWidth() + 20 < caption.get(0).scrollWidth) {
+                        if(item.alt == '') {
+                            caption.hide();
+                        }else {
+                            caption.html(item.alt).show();
+                        }
+                        if(caption.outerWidth() > 0 && caption.outerWidth() + 10 < caption.get(0).scrollWidth) {
                             var marqueeSpeed = (vcui.detect.isIE || vcui.detect.isMobile) ? 4 : 5;
                             if(caption.find('marquee').size() == 0) caption.wrapInner('<marquee scrollamount="'+marqueeSpeed+'" />')
-                        } else {
-                            if (caption.find('marquee').size() > 0) caption.find('marquee').get(0).start();
                         }
                         /* e : BTOCSITE-11059 */
                         break;
