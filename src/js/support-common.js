@@ -1049,7 +1049,7 @@ CS.MD.pagination = function() {
             page: 1,
             totalCount: 1,
             pageCount:10,
-            pageView: 10,
+            pageView: 10, //BTOCSITE-9921 변경
             prevClass: 'prev',
             nextClass: 'next',
             firstClass: 'first', //BTOCSITE-9921 추가
