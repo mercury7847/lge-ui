@@ -17,8 +17,10 @@ $(window).ready(function(){
 		//슬라이드 이동 시 - 이전 슬라이드의 재생중인 비디오 정지 & 재생시간 초기화 -BTOCSITE-8039
 		function prevVideoPause(slide, prev){
 			if($(slide.$slides.get(prev)).attr("ui-modules") == "VideoBox"){
-				$(slide.$slides.get(prev)).find("video").get(0).currentTime = 0;
-				$(slide.$slides.get(prev)).find("video").get(0).pause();
+				if(!$(slide.$slides.get(prev)).find("video").get(0).paused) {
+					$(slide.$slides.get(prev)).find("video").get(0).currentTime = 0;
+					$(slide.$slides.get(prev)).find("video").get(0).pause();
+				}
 			}
 		}
 		//슬라이드 이동 시 - 이전 슬라이드의 활성화된 유튜브레이어 닫기 -BTOCSITE-8039
@@ -170,7 +172,7 @@ $(window).ready(function(){
 				var autoSpeed = (video.duration - video.currentTime) * 1000;
 
 				$(this).blur();
-				if($(this).hasClass('play') && $slide.data('autoplay') == true) {
+				if($(this).hasClass('play')) {
 					$indiBar.css({'animation-duration' : autoSpeed/1000 + 's'});
 					$slider.vcCarousel('setOption', 'autoplaySpeed', autoSpeed);
 				}
