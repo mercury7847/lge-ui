@@ -138,6 +138,7 @@ $(window).ready(function(){
 			.on('carouselbeforechange', function(e, slide, prev, next){
 
 				prevVideoPause(slide, prev);
+				prevVideoPause(slide, next);
 				prevYoutubeBoxClose(slide, prev);
 				autoStateChange(slide, prev, next)
 			
@@ -160,7 +161,7 @@ $(window).ready(function(){
 				$slider.vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
 			});	
 
-			if( $slide.data('autoplay') == true) {
+			if( autoPlay ) {
 				io.observe(slide);
 			}
 			//비디오 플레이 버튼
