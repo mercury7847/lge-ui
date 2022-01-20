@@ -4,7 +4,7 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
         bindjQuery: 'pagination',
         defaults: {
             page: 1,
-            visibleCount: 5,
+            visibleCount: 10, //BTOCSITE-9921 - visibleCount 5 -> 10 변경
             totalCount: 1,
             scrollTop : 0,
             scrollTarget : null
@@ -20,7 +20,9 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
             self.$el.attr("role","navigation");
             self.$el.attr("aria-label","Pagination");
             self.$el.attr("data-aria-pattern","Page #");
-            self.$el.append('<a href="#L" class="prev"><span class="blind">이전 페이지 보기</span></a><span class="page_num"></span><a href="#R" class="next"><span class="blind">다음 페이지 보기</span></a>');
+            //BTOCSITE-9921 - 맨처음/맨끝 버튼 추가 - S
+            self.$el.append('<a href="#PF" class="first"><span class="blind">맨처음 페이지 보기</span></a><a href="#L" class="prev"><span class="blind">이전 페이지 보기</span></a><span class="page_num"></span><a href="#R" class="next"><span class="blind">다음 페이지 보기</span></a><a href="#PL" class="last"><span class="blind">맨마지막 페이지 보기</span></a>');
+            //BTOCSITE-9921 - 맨처음/맨끝 버튼 추가 - E
 
             self._bindEvents();
 
@@ -46,8 +48,16 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 if(!!data.page) {
                     self.options.page = data.page;
                 }
-                //2021-03-05 visibleCount 5 고정
-                self.options.visibleCount = 5;
+
+                //BTOCSITE-9921 - visibleCount 값 분리 - S
+                //Mobile = 5 , PC = 10개
+                if(vcui.detect.isMobile){
+                    self.options.visibleCount = 5;
+                } else {
+                    self.options.visibleCount = 10;
+                }
+                //BTOCSITE-9921 - visibleCount 값 분리 - E
+                
                 /*
                 if(!!data.visibleCount) {
                     self.options.visibleCount = data.visibleCount;
@@ -81,6 +91,10 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
     
             const leftPage = (startPage > visibleCount);
             const rightPage = ((startPage + visibleCount - 1) < totalCount);
+            //BTOCSITE-9921 - 맨처음/맨끝 변수 추가 - S
+            const firstPage = (page <= 1);
+            const lastPage = (page >= totalCount);
+            //BTOCSITE-9921 - 맨처음/맨끝 변수 추가 - E
 
             if(leftPage) {
                 self.$el.find("a.prev").attr("href","#"+(startPage-1));
@@ -98,6 +112,21 @@ vcui.define('ui/pagination', ['jquery', 'vcui'], function ($, core) {
                 //self.$el.find("a.next").hide();
                 self.$el.find("a.next").addClass('disabled');
             }
+            //BTOCSITE-9921 - 맨처음/맨끝 버튼 추가 - S
+            if(firstPage) {
+                self.$el.find("a.first").addClass('disabled');
+            } else {
+                self.$el.find("a.first").attr("href","#1");
+                self.$el.find("a.first").removeClass('disabled');
+            }
+
+            if(lastPage) {
+                self.$el.find("a.last").addClass('disabled');                
+            } else {
+                self.$el.find("a.last").attr("href","#"+totalCount);
+                self.$el.find("a.last").removeClass('disabled');
+            }
+            //BTOCSITE-9921 - 맨처음/맨끝 버튼 추가 - E
 
             var pageHtml = "";
             for (var n = startPage; n <= endPage; n++) {
