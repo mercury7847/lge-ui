@@ -470,6 +470,7 @@
             }
         }
         img {
+            width: 68px;
             @include mobile {
                 width: 50px;
             }
