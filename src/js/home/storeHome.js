@@ -4,14 +4,14 @@ $(function(){
 
     // 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
     /* BTOCSITE-6882 신규 WSG 적용 - 스토어 */
-    $context.find('.ui_wide_slider').vcCarousel({
+    $context.find('.contents.store .ui_wide_slider').vcCarousel({
         autoplay: true
     }).on('carouselafterchange', function(e, slide, prev, next){
-        heroBanner();
+        storeHeroBanner();
     })
 
     // 히어로 배너
-    function heroBanner() {
+    function storeHeroBanner() {
         var heroList = $('.contents.store .hero-banner .slide-track > li');
         var heroListAct = heroList.siblings('.ui_carousel_current').index();
         var heroListLens = heroList.length;
@@ -25,7 +25,7 @@ $(function(){
             slideCount.text(heroListLens - 2);
         }
     }   
-    heroBanner();
+    storeHeroBanner();
 
     // 추천제품 (LG와 함께하는 # 라이프)
     $(window).on('breakpointchange.product_lifestyle', function(e){
