@@ -289,7 +289,7 @@
                 //     self.$up_mark.addClass('only-onMark');
                 // } else {
                 //     self.$up_mark.removeClass('only-onMark');
-                // }
+                // } 
 
                 self.up_mark = $('.up-mark');
                 self.upMarkClone = self.up_mark.contents().clone();
