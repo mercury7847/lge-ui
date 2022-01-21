@@ -73,7 +73,7 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             stepActiveClass: 'active',
             page: 1,
             total: 0,
-            useCookie: true,
+            useCookie: false,
             onlyMyModel: false,
             reset: false,
             model: {
