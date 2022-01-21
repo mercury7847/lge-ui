@@ -139,6 +139,7 @@ $(function(){
         /* 케어솔루션 추천 제품 스와이프 및 히스토리 탭토글 기능 추가 : 2021-05-10 */
 
         var care_cecommended = $context.find('.care-recommended');
+        var care_cecommended_content = $context.find('.care-recommended .tab-content');
         var care_slider = care_cecommended.find('.ui_product_carousel_slider');
         var care_tabs = care_cecommended.find('.ui_smooth_tab .tabs');
         var tab = {
@@ -183,7 +184,7 @@ $(function(){
             var touchFlag = true;
             var touchFlagTid = 0;
 
-            care_cecommended.on('touchstart', function(e){
+            care_cecommended_content.on('touchstart', function(e){
                 var $this = $(this);
                 var startX = e.changedTouches[0].clientX;
                 var startY = e.changedTouches[0].clientY;
@@ -337,17 +338,17 @@ $(function(){
 
         /* BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어 */
         // 히어로배너
-        $context.find('.ui_wide_slider').vcCarousel({
+        $context.find('.contents.caresolution .ui_wide_slider').vcCarousel({
             autoplay: true
         }).on('carouselafterchange', function(e, slide, prev, next){
-            heroBanner();
+            careHeroBanner();
         })
 
-        function heroBanner() {
+        function careHeroBanner() {
             var heroList = $('.contents.caresolution .hero-banner .slide-track > li');
             var heroListAct = heroList.siblings('.ui_carousel_current').index();
             var heroListLens = heroList.length;
-            var custom = $('.custom-indi-wrap');
+            var custom = $('.contents.caresolution .custom-indi-wrap');
             var slideCurrent = custom.find('.slide-page .current');
             var slideCount = custom.find('.slide-page .count');        
 
@@ -358,7 +359,7 @@ $(function(){
             }
         }
 
-        heroBanner();
+        careHeroBanner();
         /* //BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어 */
     }); 
 });
