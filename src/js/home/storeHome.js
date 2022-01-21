@@ -395,6 +395,7 @@ $(function(){
     }});
 
     var store_product = $context.find('.module-buy-product');
+    var store_product_tabcontent = $context.find('.module-buy-product .buy-product-tabcontent');
     var care_slider = store_product.find('.ui_product_carousel_slider');
     var store_tabs = store_product.find('.ui_smooth_tab .tabs');
 
@@ -439,7 +440,7 @@ $(function(){
         var touchFlag = true;
         var touchFlagTid = 0;
 
-        store_product.on('touchstart', function(e){
+        store_product_tabcontent.on('touchstart', function(e){
             var $this = $(this);
             var startX = e.changedTouches[0].clientX;
             var startY = e.changedTouches[0].clientY;
@@ -478,5 +479,5 @@ $(function(){
             });
         });
     }
-    /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가 */
+    /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가) */
 });
