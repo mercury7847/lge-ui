@@ -177,7 +177,6 @@ $(function(){
         /* 케어솔루션 추천 제품 스와이프 및 히스토리 탭토글 기능 추가 : 2021-05-10 */
 
         var care_cecommended = $context.find('.care-recommended');
-        var care_cecommended_content = $context.find('.care-recommended .tab-content');
         var care_slider = care_cecommended.find('.ui_product_carousel_slider');
         var care_tabs = care_cecommended.find('.ui_smooth_tab .tabs');
         var tab = {
@@ -222,7 +221,7 @@ $(function(){
             var touchFlag = true;
             var touchFlagTid = 0;
 
-            care_cecommended_content.on('touchstart', function(e){
+            care_cecommended.on('touchstart', function(e){
                 var $this = $(this);
                 var startX = e.changedTouches[0].clientX;
                 var startY = e.changedTouches[0].clientY;
