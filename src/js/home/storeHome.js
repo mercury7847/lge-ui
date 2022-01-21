@@ -397,6 +397,7 @@ $(function(){
     var store_product = $context.find('.module-buy-product');
     var store_product_tabcontent = $context.find('.module-buy-product .buy-product-tabcontent');
     var care_slider = store_product.find('.ui_product_carousel_slider');
+    var store_tab_wrap = store_product.find('.ui_smooth_tab');
     var store_tabs = store_product.find('.ui_smooth_tab .tabs');
 
     var tab = {
@@ -439,6 +440,14 @@ $(function(){
     } else {
         var touchFlag = true;
         var touchFlagTid = 0;
+
+        store_tab_wrap.on('touchstart', function(e){
+            var $this = $(this);
+            var startX = e.changedTouches[0].clientX;
+            var startY = e.changedTouches[0].clientY;
+            var endX = 0;
+            var endY = 0;
+        });
 
         store_product_tabcontent.on('touchstart', function(e){
             var $this = $(this);
