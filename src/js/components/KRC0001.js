@@ -190,7 +190,7 @@
 				}
 			} else if(item.bizType == "DISPOSABLE") {
 				//소모품 DISPOSABLE
-				if(item.obsTotalDiscountPrice && !item.obsTotalDiscountPrice != "") {
+				if(item.obsTotalDiscountPrice) {
 					return true;
 				} else {
 					return false;
