@@ -431,7 +431,7 @@
 
     .pdp-ar-area {
         position: absolute;
-        top: 10px;
+        top: 0px; //BTOCSITE-10816 GNB 수정 컨텐츠 수정
         right: 20px;
         z-index: 1;
         .btn-ar {
@@ -440,6 +440,8 @@
             border-radius: 20px;
             font-size: 14px;
             line-height: 22px;
+            margin-bottom: 10px; // BTOCSITE-10816 GNB 수정 컨텐츠 수정
+            margin-top: 10px; // BTOCSITE-10816 GNB 수정 컨텐츠 수정
             &:before {
                 display: inline-block;
                 width: 24px;
@@ -456,22 +458,43 @@
             top: auto;
             bottom: 21px;
             right: 24px;
+            .btn-ar {
+                margin-bottom: 0px; // BTOCSITE-10816 GNB 수정 컨텐츠 수정
+                margin-top: 0px; // BTOCSITE-10816 GNB 수정 컨텐츠 수정
+            }
         }
     }
 
     .up-mark {
-        position: absolute;
-        top: -7px;
-        right: 18px;
-        &.only-onMark {
-            top: 60px;
-            @include mobile {
-                top: 0;
-            }
-        }
+        // position: absolute;
+        // top: -7px;
+        // right: 18px;
+        text-align: right;
+        // &.only-onMark {
+        //     top: 60px;
+        //     @include mobile {
+        //         top: 0;
+        //     }
+        // }
         img {
             width: 68px;
             @include mobile {
+                width: 50px;
+            }
+        }
+        @include mobile {
+            display: none;
+        }
+    }
+
+    .mob-upMark {
+        display: none;
+        @include mobile {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 28px;
+            img {
                 width: 50px;
             }
         }

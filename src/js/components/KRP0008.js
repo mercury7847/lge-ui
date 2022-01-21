@@ -281,15 +281,22 @@
                 self.$copy =  self.$component.find('.copy');
 
                 /* BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
-                self.$pdp_visualWrap = $('.pdp-visual-wrap');
-                self.$ar_mark = self.$pdp_visualWrap.find('.pdp-ar-area');
-                self.$up_mark = self.$pdp_visualWrap.find('.up-mark');
+                // self.$pdp_visualWrap = $('.pdp-visual-wrap');
+                // self.$ar_mark = self.$pdp_visualWrap.find('.pdp-ar-area');
+                // self.$up_mark = self.$pdp_visualWrap.find('.up-mark');
                 
-                if(self.$ar_mark.length) {
-                    self.$up_mark.addClass('only-onMark');
-                } else {
-                    self.$up_mark.removeClass('only-onMark');
-                }
+                // if(self.$ar_mark.length) {
+                //     self.$up_mark.addClass('only-onMark');
+                // } else {
+                //     self.$up_mark.removeClass('only-onMark');
+                // }
+
+                self.up_mark = $('.up-mark');
+                self.upMarkClone = self.up_mark.contents().clone();
+                self.testCloneBody = $('.mob-upMark');
+
+                self.testCloneBody.append(self.upMarkClone);
+                //testCloneBody.appendTo('body');
                 /* BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
 
                 //가격정보
