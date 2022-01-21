@@ -4,21 +4,9 @@ $(function(){
 
     // 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
     /* BTOCSITE-6882 신규 WSG 적용 - 스토어 */
-    $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
-        autoplay: true,
-        autoplaySpped: 5000,
-        infinite: true,
-        pauseOnHover: false,
-        pauseOnFocus: false,
-        swipeToSlide: true,
-        dotsSelector: '.ui_wideslider_dots',
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        variableWidth: false,
-        touchThreshold: 100,
-        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-        speed: 150
-    }).on('carouselafterchange', function(e, slide){
+    $context.find('.ui_wide_slider').vcCarousel({
+        autoplay: true
+    }).on('carouselafterchange', function(e, slide, prev, next){
         heroBanner();
     })
 
