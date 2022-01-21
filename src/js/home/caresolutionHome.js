@@ -6,7 +6,7 @@ $(function(){
 
     /* BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어 */
     // 히어로배너
-    $context.find('.contents.caresolution .ui_wide_slider').vcCarousel({
+    $context.find('.contents.caresolution .ui_wide_slider').vcCarousel('destroy').vcCarousel({
         autoplay: true,
         autoplaySpped: 5000,
         infinite: true,
