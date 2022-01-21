@@ -361,39 +361,33 @@ $(function(){
 
         $(window).trigger('breakpointchange.category');
 
-        buyProductInit();
+        // buyProductInit();
     }
     buildCategoryTab();
     //-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 
 
     //-S- BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
-    function buyProductInit() {
-        var $buyProduct = $context.find('.module-box.module-buy-product .tabs-wrap')
+    // function buyProductInit() {
+    //     var $buyProduct = $context.find('.module-box.module-buy-product .tabs-wrap')
         
-        $buyProduct.on('tabbeforechange tabinit', function(e, data){
-            //탭 이벤트 분기
-            switch(e.type) {
-                case "tabinit" :
-                    // 탭초기화시 탭선택
-                        var listLen = $buyProduct.find('.tabs > li').length;
-                        var idx = Math.floor(Math.random() * listLen || 0);
-                        $buyProduct.vcTab('select',idx).vcSmoothScroll('scrollToActive');
-                break;
-                default :
-                break;
-            }
-        }).vcTab();
-        $buyProduct.vcSmoothScroll('refresh');
-    }
+    //     $buyProduct.on('tabbeforechange tabinit', function(e, data){
+    //         //탭 이벤트 분기
+    //         switch(e.type) {
+    //             case "tabinit" :
+    //                 // 탭초기화시 탭선택
+    //                     var listLen = $buyProduct.find('.tabs > li').length;
+    //                     var idx = Math.floor(Math.random() * listLen || 0);
+    //                     $buyProduct.vcTab('select',idx).vcSmoothScroll('scrollToActive');
+    //             break;
+    //             default :
+    //             break;
+    //         }
+    //     }).vcTab();
+    //     $buyProduct.vcSmoothScroll('refresh');
+    // }
 
-    /* BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가 */
-    $context.find('.ui_product_tab').vcTab({selectors:{
-        prevButton:".ui_smooth_prev",
-        nextButton:".ui_smooth_next",
-        smoothScroll:'.ui_smooth_tab'
-    }});
-
+    /* BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가) */
     var store_product = $context.find('.module-buy-product');
     var store_product_tabcontent = $context.find('.module-buy-product .buy-product-tabcontent');
     var care_slider = store_product.find('.ui_product_carousel_slider');
@@ -425,7 +419,7 @@ $(function(){
     };
     
     if( !vcui.detect.isMobileDevice) {
-        store_product.vcGesture({
+        store_product_tabcontent.vcGesture({
             direction: 'horizontal'
         }, { passive: false }).on('gestureend', function (e, data) {
             // gesturestart gesturemove gestureend gesturecancel
@@ -440,7 +434,7 @@ $(function(){
         var touchFlag = true;
         var touchFlagTid = 0;
 
-        store_product_tabcontent.on('touchstart', function(e){
+        store_product_tabcontent.on('touchstart tabinit', function(e){
             var $this = $(this);
             var startX = e.changedTouches[0].clientX;
             var startY = e.changedTouches[0].clientY;
@@ -479,5 +473,34 @@ $(function(){
             });
         });
     }
-    /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가 */    
+
+
+    $context.find('.ui_product_tab').on('tabbeforechange tabchange tabinit', function(e, data){
+        //탭 이벤트 분기z
+        switch(e.type) {
+            case "tabinit" :
+                // 탭초기화시 탭선택
+                    var listLen = $context.find('.ui_product_tab .tabs > li').length;
+                    var idx = Math.floor(Math.random() * listLen || 0);
+                    $context.find('.ui_product_tab').vcTab('select',idx).vcSmoothScroll('scrollToActive');
+            break;
+            default :
+            break;
+        }
+
+
+        console.log("tab %o %o",e.type,data);
+
+        $context.find('.ui_product_tab').vcSmoothScroll('scrollToActive');
+
+    
+   
+    }).vcTab({selectors:{
+        prevButton:".ui_smooth_prev",
+        nextButton:".ui_smooth_next",
+        smoothScroll:'.ui_smooth_tab'
+    }});
+
+    $context.find('.ui_product_tab').vcSmoothScroll('refresh');
+    /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가) */    
 });
