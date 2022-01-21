@@ -4,7 +4,7 @@ $(function(){
 
     // 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
     /* BTOCSITE-6882 신규 WSG 적용 - 스토어 */
-    $context.find('.contents.store .ui_wide_slider').vcCarousel({
+    $context.find('.ui_wide_slider').vcCarousel('destroy').vcCarousel({
         autoplay: true,
         autoplaySpped: 5000,
         infinite: true,
@@ -18,16 +18,16 @@ $(function(){
         touchThreshold: 100,
         cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
         speed: 150
-    }).on('carouselafterchange', function(e, slide, prev, next){
-        storeHeroBanner();
+    }).on('carouselafterchange', function(e, slide){
+        heroBanner();
     })
 
     // 히어로 배너
-    function storeHeroBanner() {
+    function heroBanner() {
         var heroList = $('.contents.store .hero-banner .slide-track > li');
         var heroListAct = heroList.siblings('.ui_carousel_current').index();
         var heroListLens = heroList.length;
-        var custom = $('.contents.store .custom-indi-wrap');
+        var custom = $('.custom-indi-wrap');
         var slideCurrent = custom.find('.slide-page .current');
         var slideCount = custom.find('.slide-page .count');        
 
@@ -37,7 +37,7 @@ $(function(){
             slideCount.text(heroListLens - 2);
         }
     }   
-    storeHeroBanner();
+    heroBanner();
 
     // 추천제품 (LG와 함께하는 # 라이프)
     $(window).on('breakpointchange.product_lifestyle', function(e){
@@ -369,10 +369,10 @@ $(function(){
 
     //-S- BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
     function buyProductInit() {
-        var $buyProduct = $context.find('.module-box.module-buy-product .scroll-wrap')
+        var $buyProduct = $context.find('.module-box.module-buy-product .tabs-wrap')
         
         $buyProduct.on('tabbeforechange tabinit', function(e, data){
-            //탭 이벤트 분기z
+            //탭 이벤트 분기
             switch(e.type) {
                 case "tabinit" :
                     // 탭초기화시 탭선택
@@ -387,7 +387,7 @@ $(function(){
         $buyProduct.vcSmoothScroll('refresh');
     }
 
-    /* BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가) */
+    /* BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가 */
     $context.find('.ui_product_tab').vcTab({selectors:{
         prevButton:".ui_smooth_prev",
         nextButton:".ui_smooth_next",
@@ -397,7 +397,6 @@ $(function(){
     var store_product = $context.find('.module-buy-product');
     var store_product_tabcontent = $context.find('.module-buy-product .buy-product-tabcontent');
     var care_slider = store_product.find('.ui_product_carousel_slider');
-    var store_tab_wrap = store_product.find('.ui_smooth_tab');
     var store_tabs = store_product.find('.ui_smooth_tab .tabs');
 
     var tab = {
@@ -441,14 +440,6 @@ $(function(){
         var touchFlag = true;
         var touchFlagTid = 0;
 
-        store_tab_wrap.on('touchstart', function(e){
-            var $this = $(this);
-            var startX = e.changedTouches[0].clientX;
-            var startY = e.changedTouches[0].clientY;
-            var endX = 0;
-            var endY = 0;
-        });
-
         store_product_tabcontent.on('touchstart', function(e){
             var $this = $(this);
             var startX = e.changedTouches[0].clientX;
@@ -488,5 +479,5 @@ $(function(){
             });
         });
     }
-    /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가) */
+    /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가 */    
 });
