@@ -212,7 +212,7 @@ var res = {
 		// 	"KRP0041_Social_Review" : ["/html/components/KRP0041.html","","진행중"],
 		// 	"KRP0043_Substitutes&related General Products" : ["/html/components/KRP0043.html","","진행중"],
 		// 	"KRP0044_PDP Shipping Information" : ["/html/components/KRP0044.html","","진행중"],
-		// 	"KRP0045_PDP Return Replacement" : ["/html/components/KRP0045.html","","진행중"],
+		// 	"KRP0045_PDP Return	 Replacement" : ["/html/components/KRP0045.html","","진행중"],
 		// },
 		"Page" : {
 			"공통(UTS)" : {
@@ -256,6 +256,15 @@ var res = {
 			"B2C메인(MA)" : {
 				"B2C메인" : ["/html/MA/MKTF1000.html","",""],
 				"모바일 사업 종료 팝업" : ["/html/MA/MKTF1000_popup.html","",""]
+			},
+			"서브페이지 모바일 헤더" : {
+				"뎁스가 있는 경우" : ["/html/components/KRP0001_sub_gnb_hasDepth.html","",""],
+				"타이틀만 있는 경우" : ["/html/components/KRP0001_sub_gnb_onlyTitle.html","",""],
+				"타이틀이 없는 경우" : ["/html/components/KRP0001_sub_gnb_NoTitle.html","",""],
+				"공유하기 버튼이 있는 경우(스토리)" : ["/html/components/KRP0001_sub_gnb_story.html","",""],
+				"검색하기 페이지" : ["/html/components/KRP0001_sub_gnb_search.html","",""],
+				"장바구니 페이지" : ["/html/components/KRP0001_sub_gnb_cart.html","",""],
+				"탭이 있는 경우" : ["/html/components/KRP0001_sub_gnb_hasDepth_hasTab.html","",""]
 			},
 			"스토어(PRS)" : {
 				"홈(서브메인)" : ["/html/PRS/MKTF1001.html","",""]
