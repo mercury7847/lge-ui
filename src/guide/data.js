@@ -212,7 +212,7 @@ var res = {
 		// 	"KRP0041_Social_Review" : ["/html/components/KRP0041.html","","진행중"],
 		// 	"KRP0043_Substitutes&related General Products" : ["/html/components/KRP0043.html","","진행중"],
 		// 	"KRP0044_PDP Shipping Information" : ["/html/components/KRP0044.html","","진행중"],
-		// 	"KRP0045_PDP Return	 Replacement" : ["/html/components/KRP0045.html","","진행중"],
+		// 	"KRP0045_PDP Return Replacement" : ["/html/components/KRP0045.html","","진행중"],
 		// },
 		"Page" : {
 			"공통(UTS)" : {
