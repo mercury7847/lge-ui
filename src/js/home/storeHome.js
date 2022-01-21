@@ -369,10 +369,10 @@ $(function(){
 
     //-S- BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
     function buyProductInit() {
-        var $buyProduct = $context.find('.module-box.module-buy-product .tabs-wrap')
+        var $buyProduct = $context.find('.module-box.module-buy-product .scroll-wrap')
         
         $buyProduct.on('tabbeforechange tabinit', function(e, data){
-            //탭 이벤트 분기
+            //탭 이벤트 분기z
             switch(e.type) {
                 case "tabinit" :
                     // 탭초기화시 탭선택
@@ -387,7 +387,7 @@ $(function(){
         $buyProduct.vcSmoothScroll('refresh');
     }
 
-    /* BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가 */
+    /* BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가) */
     $context.find('.ui_product_tab').vcTab({selectors:{
         prevButton:".ui_smooth_prev",
         nextButton:".ui_smooth_next",

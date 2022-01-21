@@ -747,7 +747,7 @@
 				padding:40px 0 50px;
 			}
 
-			.scroll-wrap.tabs-wrap {
+			.scroll-wrap {
 				margin-bottom:14px; 
 				text-align: center;
 				@include mobile {
@@ -772,14 +772,7 @@
 				}
 				&.border-type {
 					margin-top:0;
-					&:before{
-						content:none;
-					}
-					.ui_smooth_tab{
-						margin:0 auto;
-					}
 					.tabs {
-						display: inline-block;
 						li {
 							margin-left:8px;
 							padding:0;
@@ -802,9 +795,6 @@
 								a{
 									border:1px solid #000;
 									border-radius:19px;
-									&:after{
-										content:none;
-									}
 								}
 							}
 							&:first-child{
@@ -817,6 +807,9 @@
 							display:block;
 						}
 					}
+				}
+				.ui_smooth_tab{
+					display:inline-block;
 				}
 			}
 
