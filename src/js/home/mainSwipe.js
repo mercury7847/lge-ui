@@ -219,7 +219,7 @@ MainSwiper.prototype = {
 
             var isCareSmoothTab = !!$(e.target).closest('.care-home-section .ui_smooth_tab').length; //BTOCSITE-2196 
 
-            var isSmoothTab = !!$(e.target).closest('.module-buy-product .ui_smooth_tab').length; //BTOCSITE-6882
+            var isSmoothTab = !!$(e.target).closest('.module-buy-product .ui_product_tab').length; //BTOCSITE-6882
 
             if (isCategoryTab || isCarouselList || isTagScrollTab || isSlick || isCareSmoothTab || isSmoothTab){ //BTOCSITE-2196  //BTOCSITE-6882
                 e.stopPropagation();
