@@ -360,147 +360,116 @@ $(function(){
         })
 
         $(window).trigger('breakpointchange.category');
-
-        // buyProductInit();
     }
     buildCategoryTab();
     //-E- BTOCSITE-1488 스토어 홈 > 카테고리 추가요청 : gbnId값 추가
 
-
-    //-S- BTOCSITE-4349 [UI] 스토어 홈 > 많이 구매하는 제품 (이달의 추천제품) 영역 수정
-    // function buyProductInit() {
-    //     var $buyProduct = $context.find('.module-box.module-buy-product .tabs-wrap')
-        
-    //     $buyProduct.on('tabbeforechange tabinit', function(e, data){
-    //         //탭 이벤트 분기
-    //         switch(e.type) {
-    //             case "tabinit" :
-    //                 // 탭초기화시 탭선택
-    //                     var listLen = $buyProduct.find('.tabs > li').length;
-    //                     var idx = Math.floor(Math.random() * listLen || 0);
-    //                     $buyProduct.vcTab('select',idx).vcSmoothScroll('scrollToActive');
-    //             break;
-    //             default :
-    //             break;
-    //         }
-    //     }).vcTab();
-    //     $buyProduct.vcSmoothScroll('refresh');
-    // }
-
     /* BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가) */
-    var store_product = $context.find('.module-buy-product');
-    var store_product_tabcontent = $context.find('.module-buy-product .buy-product-tabcontent');
-    var care_slider = store_product.find('.ui_product_carousel_slider');
-    var store_tabs = store_product.find('.ui_smooth_tab .tabs');
+    var ui_product_tab = {
+        $el : $context.find('.ui_product_tab'),
+        $tabs : $context.find('.ui_product_tab > .tabs'),
+        $tabContent : $context.find('.ui_product_tab > .buy-product-tabcontent'),
+        startX : 0,
+        startY : 0,
+        endX : 0,
+        endY : 0,
 
-    var tab = {
         totalSize: function () {
-            return store_tabs.find('li').size();
+            return this.$tabs.find('li').size();
         },
         currentTab: function () {
-            return store_tabs.find('li.on').index() + 1;
+            return this.$tabs.find('li.on').index() + 1;
         },
         triggerTab: function (idx) {
 
-            store_tabs.find('li').eq(idx).find('a').trigger('click');
+            this.$tabs.find('li').eq(idx).find('a').trigger('click');
         },
-        nav: {
-            prev: function () {
+        prev: function () {
+            var idx = (1 === this.currentTab()) ? this.totalSize() - 1 : this.currentTab() - 2;
+            this.triggerTab(idx);
+        },
+        next: function () {
+            var idx = (this.totalSize() === this.currentTab()) ? 0 : this.currentTab();
+            this.triggerTab(idx);
+        },
+        init: function() {
 
-                var idx = (1 === tab.currentTab()) ? tab.totalSize() - 1 : tab.currentTab() - 2;
-                tab.triggerTab(idx);
-            },
-            next: function () {
+            var self = this;
+                self.$el =  $context.find('.module-buy-product .ui_product_tab');
+                self.$tabs =  this.$el.find('>.tabs');
+                self.$tabContent =   $context.find('.module-buy-product .buy-product-tabcontent');
 
-                var idx = (tab.totalSize() === tab.currentTab()) ? 0 : tab.currentTab();
-                tab.triggerTab(idx);
-            }
+                self.$el.on('tabbeforechange tabchange tabinit', function(e, data){
+                    //탭 이벤트 분기z
+                    switch(e.type) {
+                        case "tabinit" :
+                            // 탭초기화시 탭선택
+                                var idx = Math.floor(Math.random() * self.totalSize() || 0);
+                                self.$el.vcTab('select',idx).vcSmoothScroll('scrollToActive');
+                        break;
+                        default :
+                        break;
+                    }
+            
+                    self.$el.vcSmoothScroll('scrollToActive');
+                }).vcTab().vcSmoothScroll('refresh');
+            
+                if( !vcui.detect.isMobileDevice) {
+                    self.$tabContent.vcGesture({
+                        direction: 'horizontal'
+                    }, { passive: false }).on('gestureend', function (e, data) {
+                        // gesturestart gesturemove gestureend gesturecancel
+                        /* 탭 방향 전환 */
+                        if (data.direction === 'left') {
+                            ui_product_tab.next();
+                        } else {
+                            ui_product_tab.prev();
+                        }
+                    });
+                } else {
+                    var touchFlag = true;
+                    var touchFlagTid = 0;
+            
+                    self.$tabContent.on('touchstart', function(e){
+                        self.startX = e.changedTouches[0].clientX;
+                        self.startY = e.changedTouches[0].clientY;
+                        self.endX = 0;
+                        self.endY = 0;
+                    });
+
+
+                    self.$tabContent.on('touchend', function(e){
+                        self.endX = e.changedTouches[0].clientX;
+                        self.endY = e.changedTouches[0].clientY;
+        
+                        var dirLeft = self.startX - self.endX < 0;
+                        var rangeX = Math.abs(self.startX - self.endX);
+                        var rangeY = Math.abs(self.startY - self.endY);
+        
+                        if( rangeY > 30) return;
+                        
+                        if( touchFlag == true && rangeX > 100 ) {
+                            touchFlag = false;
+                            if(dirLeft) {
+                                self.prev();
+                                // console.log('left')
+                            } else {
+                                self.next();
+                                // console.log('right')
+                            }
+        
+                            clearTimeout(touchFlagTid);
+                            touchFlagTid = setTimeout(function(){
+                                touchFlag = true;
+        
+                                // console.log("rangeX", rangeX)
+                                // console.log("rangeY", rangeY)
+                            }, 50);
+                        }
+                    });
+                }
         }
     };
-    
-    if( !vcui.detect.isMobileDevice) {
-        store_product_tabcontent.vcGesture({
-            direction: 'horizontal'
-        }, { passive: false }).on('gestureend', function (e, data) {
-            // gesturestart gesturemove gestureend gesturecancel
-            /* 탭 방향 전환 */
-            if (data.direction === 'left') {
-                tab.nav.next();
-            } else {
-                tab.nav.prev();
-            }
-        });
-    } else {
-        var touchFlag = true;
-        var touchFlagTid = 0;
-
-        store_product_tabcontent.on('touchstart tabinit', function(e){
-            var $this = $(this);
-            var startX = e.changedTouches[0].clientX;
-            var startY = e.changedTouches[0].clientY;
-            var endX = 0;
-            var endY = 0;
-
-            $this.on('touchend', function(ev){
-                endX = ev.changedTouches[0].clientX;
-                endY = ev.changedTouches[0].clientY;
-
-                var dirLeft = startX - endX < 0;
-                var rangeX = Math.abs(startX - endX);
-                var rangeY = Math.abs(startY - endY);
-
-                if( rangeY > 30) return;
-                
-                if( touchFlag == true && rangeX > 100 ) {
-                    touchFlag = false;
-                    if(dirLeft) {
-                        tab.nav.prev();
-                        console.log('left')
-                    } else {
-                        tab.nav.next();
-                        console.log('right')
-                    }
-
-                    clearTimeout(touchFlagTid);
-                    touchFlagTid = setTimeout(function(){
-                        touchFlag = true;
-
-                        console.log("rangeX", rangeX)
-                        console.log("rangeY", rangeY)
-                    }, 50);
-                }
-                
-            });
-        });
-    }
-
-
-    $context.find('.ui_product_tab').on('tabbeforechange tabchange tabinit', function(e, data){
-        //탭 이벤트 분기z
-        switch(e.type) {
-            case "tabinit" :
-                // 탭초기화시 탭선택
-                    var listLen = $context.find('.ui_product_tab .tabs > li').length;
-                    var idx = Math.floor(Math.random() * listLen || 0);
-                    $context.find('.ui_product_tab').vcTab('select',idx).vcSmoothScroll('scrollToActive');
-            break;
-            default :
-            break;
-        }
-
-
-        console.log("tab %o %o",e.type,data);
-
-        $context.find('.ui_product_tab').vcSmoothScroll('scrollToActive');
-
-    
-   
-    }).vcTab({selectors:{
-        prevButton:".ui_smooth_prev",
-        nextButton:".ui_smooth_next",
-        smoothScroll:'.ui_smooth_tab'
-    }});
-
-    $context.find('.ui_product_tab').vcSmoothScroll('refresh');
+    ui_product_tab.init();
     /* //BTOCSITE-6882 신규 WSG 적용 - 스토어 (이달의 추천 제품 스와이프 기능 추가) */    
 });
