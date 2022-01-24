@@ -179,10 +179,12 @@
 
                 // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 탭 그려진 후에 아코디언버튼 세팅
                 if($('.subRenewWrap').length > 0) {
+                    self.$KRP0022.find('.tabs-wrap').removeClass('expanded');
                     _self.setAccordionButton();
                     $(window).on('resize', function() {
                         _self.setAccordionButton();
                     });
+                    self.$KRP0022.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', true);
                 }
 
                 // BTOCSITE-5938-514 : postData session storage에 저장
