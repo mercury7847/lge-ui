@@ -785,6 +785,22 @@
                             margin-top:3px;
                         }
                     }
+
+                    &.sul { 
+                        padding-left:0; 
+                        >li {
+                            list-style: none;
+
+                            .delivery-info {
+                                display:block;
+                                margin-top : 12px;
+                                @include mobile{
+                                    margin-top:6px; 
+                                }
+                            }
+                        }
+                    
+                    }
                 }
                 .desc {
                     padding-left: 12px;
