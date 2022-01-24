@@ -18,23 +18,23 @@ function MainSwiper( ID ){
     this.hashToUrl = {
         '#home' : 'home',
         '#store' : 'store',
-        '#story' : 'story',
         '#support' : 'support',
         '#care-solutions' : 'care-solutions',
-        '#benefits' : 'benefits' // BTOCSITE-1814
+        '#benefits' : 'benefits', 
+        '#story' : 'story' // BTOCSITE-10664 
     };
 
     this.urlToHash = {
         'home' : '#home',
         'store' : '#store',
-        'story' : '#story',
         'support' : '#support',
         'care-solutions' : '#care-solutions',
-        'benefits' : '#benefits' // BTOCSITE-1814
+        'benefits' : '#benefits', 
+        'story' : '#story' // BTOCSITE-10664 
     };
 
     this.hashArray = [
-        'home', 'store', 'story', 'support', 'care-solutions','benefits'  // BTOCSITE-1814 
+        'home', 'store', 'support', 'care-solutions','benefits', 'story'  // BTOCSITE-10664 
     ];
 
     if(vcui.detect.isMobileDevice){
@@ -219,7 +219,9 @@ MainSwiper.prototype = {
 
             var isCareSmoothTab = !!$(e.target).closest('.care-home-section .ui_smooth_tab').length; //BTOCSITE-2196 
 
-            if (isCategoryTab || isCarouselList || isTagScrollTab || isSlick || isCareSmoothTab){ //BTOCSITE-2196 
+            var isSmoothTab = !!$(e.target).closest('.module-buy-product .ui_product_tab').length; //BTOCSITE-6882
+
+            if (isCategoryTab || isCarouselList || isTagScrollTab || isSlick || isCareSmoothTab || isSmoothTab){ //BTOCSITE-2196  //BTOCSITE-6882
                 e.stopPropagation();
             }
         });        
