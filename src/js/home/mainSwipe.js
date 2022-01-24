@@ -18,23 +18,23 @@ function MainSwiper( ID ){
     this.hashToUrl = {
         '#home' : 'home',
         '#store' : 'store',
-        '#story' : 'story',
         '#support' : 'support',
         '#care-solutions' : 'care-solutions',
-        '#benefits' : 'benefits' // BTOCSITE-1814
+        '#benefits' : 'benefits', 
+        '#story' : 'story' // BTOCSITE-10664 
     };
 
     this.urlToHash = {
         'home' : '#home',
         'store' : '#store',
-        'story' : '#story',
         'support' : '#support',
         'care-solutions' : '#care-solutions',
-        'benefits' : '#benefits' // BTOCSITE-1814
+        'benefits' : '#benefits', 
+        'story' : '#story' // BTOCSITE-10664 
     };
 
     this.hashArray = [
-        'home', 'store', 'story', 'support', 'care-solutions','benefits'  // BTOCSITE-1814 
+        'home', 'store', 'support', 'care-solutions','benefits', 'story'  // BTOCSITE-10664 
     ];
 
     if(vcui.detect.isMobileDevice){
