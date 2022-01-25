@@ -111,7 +111,7 @@
 							item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
 							item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
 							item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
-							item.salesModelName = (item.salesModelName && item.salesModelName.length > 0) ? item.salesModelName : item.salesModelCode + '.' + item.salesSuffixCode;
+							item.salesModelName = (item.salesModelName && item.salesModelName.length > 0) ? item.salesModelName :  item.salesSuffixCode ? item.salesModelCode + '.' + item.salesSuffixCode : item.salesModelCode;
 
 
 
