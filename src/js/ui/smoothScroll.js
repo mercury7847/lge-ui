@@ -990,7 +990,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 화면에 탭 그려진 후 호출
             setTimeout(function() {
                 self.update();
-            }, 100);
+            }, 500);
 
             // if(opts.startX || opts.startY){
             //     self.scrollTo(opts.startX? opts.startX : 0, opts.startY? opts.startY : 0);
