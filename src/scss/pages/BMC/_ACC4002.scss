@@ -44,6 +44,14 @@
                     color:#000;
                     @include font-medium;
                     word-break:keep-all;
+                    // s : BTOCSITE-11403
+                    &.info-text {
+                        @include pc {
+                            margin-top: 10px;
+                            @include font-small;
+                        }
+                    }
+                    // e : BTOCSITE-11403
                 }
             }
             p {
