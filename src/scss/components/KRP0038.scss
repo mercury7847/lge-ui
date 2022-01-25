@@ -183,3 +183,13 @@
 		}
 	}
 }
+
+.component-wrap {
+	//BTOCSITE-2117
+	@include mobile {
+		&.hidden-mo {
+			display: none;
+		}
+	}
+}
+

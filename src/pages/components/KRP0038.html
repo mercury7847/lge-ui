@@ -9,6 +9,11 @@
         <div class="container">
 
 			<!-- component KRP0038 -->
+            <!--BTOCSITE-2117 공통 > 모바일 웹/앱 GNB 개선 : mo에서 hidden -->
+            @@include('./common/partials/KRP0038.html', {
+                "visibility": "hidden-mo",
+            })
+
             @@include('./common/partials/KRP0038.html', {
 				"align-class": "align-left",
 			})
