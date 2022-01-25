@@ -2326,6 +2326,13 @@ html {
         .header-wrap {
             border-bottom:1px solid #ddd;
         }
+        //컨텐츠 내 상단 타이틀 히든처리
+        .page-header {
+            .title,
+            .desc {
+                display: none;
+            }
+        }
         .sub-renew-nav-wrap {
             z-index: 101;
             position: fixed;
