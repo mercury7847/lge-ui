@@ -1426,7 +1426,7 @@
         height: calc(100vh - 91px);
         .textExp {
             position: absolute;
-            top: 100px;
+            top: 40px; //BTOCSITE-11332 100px -> 40px 변경
             left: 150px;
             opacity: 0.8;
             font-family: Inter;
@@ -1436,7 +1436,7 @@
             letter-spacing: -0.69px;
             color: #ffffff;
             @include mobile {
-                top: -80px;
+                top: -100px; //BTOCSITE-11332 -80px -> -100px 변경
                 left: 50%;
                 font-size: 80px;
                 transform: translateX(-50%);
@@ -1471,7 +1471,7 @@
             -moz-box-shadow: 0 24px 40px 0 #00000028;
             -webkit-box-shadow: 0 24px 40px 0 #00000028;
             @include mobile {
-                width: 100%; //BTOCSITE-11332 100% -> 328PX
+                width: 328px; //BTOCSITE-11332 100% -> 328PX
                 height: 410px; //BTOCSITE-11332 60vw -> 410px 
             }
             .mtbi-bx-image {
@@ -1485,7 +1485,7 @@
                 background-size: cover;
                 transition: all 1s;
                 @include mobile {
-                    width: 100%; //BTOCSITE-11332 100% -> 328PX 
+                    width: 328px; //BTOCSITE-11332 100% -> 328PX 
                     height: 410px; //BTOCSITE-11332 100% -> 410px
                     background: url("/lg5-common/images/OBJ/main/intro-mo-01_new.jpg") no-repeat; //BTOCSITE-11332 - Mobile 이미지 수정
                     background-size: cover;
@@ -1581,7 +1581,7 @@
                 }
                 @include mobile {
                     padding: 33px 20px 0px;
-                    top:217px;
+                    top:217px; //BTOCSITE-11332 추가
                 }
             }
         }
