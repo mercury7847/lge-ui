@@ -89,8 +89,6 @@ MainSwiper.prototype = {
                         self.isSwiped = false;    // BTOCSITE-2947 add
                         swiper.slideTo( idx );
                         swiper.animating = true;
-                        console.log("init");
-
                         /*
                         mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
                         if(swiper.activeIndex !== swiper.slides.length -1) {
