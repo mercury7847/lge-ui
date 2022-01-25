@@ -2570,7 +2570,10 @@ html {
             }
         }
     }
-    .eventList {
+
+    // BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB 개선
+    .eventList,
+    .storyList {
         .container {
             padding-top: 46px;
         }
