@@ -70,6 +70,7 @@
                                             <dl>
                                                 <dt class="tit">현금처럼 사용하는 포인트</dt>
                                                 <dd class="desc">LGE.COM, 베스트샵, LG전자 서비스센터 수리, 렌탈 구매 (1포인트=1원)</dd>
+                                                <dd class="info-text">※ 포인트는 이전설치, 세척서비스<br>  이용시 사용 불가</dd> <!-- //BTOCSITE-11403  -->
                                             </dl>
                                         </li>
                                         <li class="lists">
@@ -285,6 +286,16 @@
                                         </table>
                                     </div>
                                 </div>
+                                
+                                <!-- s : BTOCSITE-11403  -->
+                                @@include('./common/modules/bullet-list.html', {
+                                    "topBorder" : false,
+                                    "bulletTit" : "멤버십 운영 매장",
+                                    "bulletTxt" : [
+                                    "포인트는 이전설치, 세척서비스 이용시 사용 불가"
+                                    ]
+                                }) 
+                                <!-- e : BTOCSITE-11403  -->
                             </div>
                             <!-- 가입 안내 -->
                             <div class="tit-wrap type2 align-center">
