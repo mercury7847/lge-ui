@@ -60,7 +60,8 @@
                             "tagId": "TD00007001",
                             "tagName": "Care Solution Tag"
                         }
-                    ]
+                    ],
+                    "lastUpdateDate": "2022.01.18"
                 },
                 {
                     "storyId": "ST00003001",
@@ -101,7 +102,8 @@
                             "tagId": "TD00001001",
                             "tagName": "태그 테스트_TEST2"
                         }
-                    ]
+                    ],
+                    "lastUpdateDate": "2022.01.18"
                 },
                 {
                     "storyId": "ST00003002",
@@ -134,7 +136,8 @@
                             "tagId": "TD00000002",
                             "tagName": "태그 테스트22"
                         }
-                    ]
+                    ],
+                    "lastUpdateDate": "2022.01.18"
                 },
                 {
                     "storyId": "ST00004001",
@@ -175,7 +178,8 @@
                             "tagId": "TD00000004",
                             "tagName": "태그 테스트4"
                         }
-                    ]
+                    ],
+                    "lastUpdateDate": "2022.01.18"
                 }
             ],
             "pagination": {
