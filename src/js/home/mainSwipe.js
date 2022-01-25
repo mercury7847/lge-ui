@@ -89,6 +89,8 @@ MainSwiper.prototype = {
                         self.isSwiped = false;    // BTOCSITE-2947 add
                         swiper.slideTo( idx );
                         swiper.animating = true;
+                        console.log("init");
+
                         /*
                         mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
                         if(swiper.activeIndex !== swiper.slides.length -1) {
@@ -119,7 +121,6 @@ MainSwiper.prototype = {
                     self.removeStatusBar();//BTOCSITE-1967
 
                     //console.log('customEventActionString' , mainSwiper.customEventActionString);
-
                     mainSwiper.loadContent( currentSlide,true );
 
                     if(swiper.activeIndex > 0){
@@ -139,12 +140,12 @@ MainSwiper.prototype = {
                     mainSwiper.$tabs.parent().removeClass('on').eq(swiper.activeIndex).addClass('on');
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
                     $('#mobileNav').vcSmoothScroll("scrollToActive");
-                    if(swiper.activeIndex === 0 ) {
-                         $('#mobileNav').vcSmoothScroll("scrollTo",0,0);
-                    }
-                    if(swiper.activeIndex === swiper.slides.length -1) {
-                       $('#mobileNav').vcSmoothScroll("scrollTo",window.innerWidth - self.$el.find('ul').width() ,0);
-                    }
+                    // if(swiper.activeIndex === 0 ) {
+                    //     //  $('#mobileNav').vcSmoothScroll("scrollTo",0,0);
+                    // }
+                    // if(swiper.activeIndex === swiper.slides.length -1) {
+                    // //    $('#mobileNav').vcSmoothScroll("scrollTo",window.innerWidth - self.$el.find('ul').width() ,0);
+                    // }
                     //20100811 BTOCSITE-1814 
 
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
