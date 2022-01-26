@@ -846,6 +846,13 @@
             selectCardValue: val
         }
         lgkorUI.requestAjaxData(REQUSET_CARD_URL, sendata, function(result){
+        	
+            if(result.data.success == "Y"){ // BTOCSITE-20220126 제휴카드 발급신청 성공시 팝업닫힘오류
+                lgkorUI.alert("", {
+                    title: result.data.alert.title
+                });
+            }
+        	
             $('#popup-cardIssue').vcModal('close');
 
             lgkorUI.hideLoading();
