@@ -3431,9 +3431,9 @@
 /*고객지원 메인 popup용 (이미지 컨텐츠 인 경우 )임시 소스*/
 .ui_modal_wrap.init-type {
     .popup-wrap {
-        height: 786px;
+        height: 660px;
         @include mobile {
-            height: 660px;
+            height: 556px;
             .pop-header {
                 .tit {
                     span {
