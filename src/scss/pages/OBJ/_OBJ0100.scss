@@ -421,6 +421,11 @@
                 }
                 .btn.border {
                     margin-top: 25px;
+                    //BTOCSITE-11332 - hover 컬러 변경 - s
+                    &:hover {
+                        color: #fff;
+                    }
+                    //BTOCSITE-11332 - hover 컬러 변경 - e
                 }
             }
             .fenix {
@@ -620,6 +625,11 @@
                 }
                 .btn.border {
                     margin-top: 25px;
+                    //BTOCSITE-11332 - hover 컬러 변경 - s
+                    &:hover {
+                        color: #fff;
+                    }
+                    //BTOCSITE-11332 - hover 컬러 변경 - e
                 }
             }
             .txStyle05 {
@@ -736,6 +746,11 @@
                 }
                 .btn.border {
                     margin-top: 25px;
+                    //BTOCSITE-11332 - hover 컬러 변경 - s
+                    &:hover {
+                        color: #fff;
+                    }
+                    //BTOCSITE-11332 - hover 컬러 변경 - e
                 }
             }
             .txStyle03 {
