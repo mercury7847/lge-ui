@@ -1435,6 +1435,13 @@
             line-height: 1;
             letter-spacing: -0.69px;
             color: #ffffff;
+            // BTOCSITE-11332 tablet 사이즈 추가 - S
+            @media screen and (max-width:900px)  {
+                top:68px;
+                left: 40px; 
+                font-size:136px;
+            }
+            // BTOCSITE-11332 tablet 사이즈 추가 - E
             @include mobile {
                 top: -100px; //BTOCSITE-11332 -80px -> -100px 변경
                 left: 50%;
@@ -1470,6 +1477,9 @@
             box-shadow: 0 24px 40px 0 #00000028;
             -moz-box-shadow: 0 24px 40px 0 #00000028;
             -webkit-box-shadow: 0 24px 40px 0 #00000028;
+            @media screen and (max-width:900px)  {
+                width: 730px; // BTOCSITE-11332 추가
+            }
             @include mobile {
                 width: 328px; //BTOCSITE-11332 100% -> 328PX
                 height: 410px; //BTOCSITE-11332 60vw -> 410px 
@@ -1484,6 +1494,9 @@
                 background: url("/lg5-common/images/OBJ/main/intro-pc-01_new.jpg") no-repeat; //BTOCSITE-11332 - PC 이미지 수정
                 background-size: cover;
                 transition: all 1s;
+                @media screen and (max-width:900px)  {
+                    width: 730px; // BTOCSITE-11332 추가
+                }
                 @include mobile {
                     width: 328px; //BTOCSITE-11332 100% -> 328PX 
                     height: 410px; //BTOCSITE-11332 100% -> 410px
