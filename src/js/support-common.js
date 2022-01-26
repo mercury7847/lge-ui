@@ -1114,10 +1114,12 @@ CS.MD.pagination = function() {
                 }
             }
 
-            if (self.options.lastView && (startPage + pageView <= pageTotal)) {
-                html += '<span class="dot">...</span>';
-                html += '<a href="#" data-page="' + pageTotal + '" title="' + pageTotal + '페이지 보기">' + pageTotal + '</a>';
-            }
+            // BTOCSITE-9921 공통 페이지네이션 수정 '...' 케이스 제거 - S
+            // if (self.options.lastView && (startPage + pageView <= pageTotal)) {
+            //     html += '<span class="dot">...</span>';
+            //     html += '<a href="#" data-page="' + pageTotal + '" title="' + pageTotal + '페이지 보기">' + pageTotal + '</a>';
+            // }
+            // BTOCSITE-9921 공통 페이지네이션 수정 '...' 케이스 제거 - E
 
             if (page > pageView) {
                 self.$prev
