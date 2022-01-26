@@ -1594,6 +1594,11 @@
                     margin-top: 24px;
                     border-color: #ffffff !important;
                     color: #ffffff;
+                    //BTOCSITE-11332 추가 - S
+                    &:hover {
+                        border-color:#da0f47 !important;
+                    }
+                    //BTOCSITE-11332 추가 - E
                 }
                 @include mobile {
                     padding: 33px 20px 0px;
