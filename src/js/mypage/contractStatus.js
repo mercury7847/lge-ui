@@ -378,6 +378,7 @@
     var MODE_PAYMENT = "PAYMENT";
     var METHOD_CARD = "CARD";
     var METHOD_BANK = "BANK";
+    var PAYMENT_METHOD_CODE = "C"; // BTOCSITE-20220126 납부방법 표기 오류 수정
 
     var CONTRACT_INFO;
 
@@ -471,7 +472,7 @@
 
         paymentInfoBlock = mypage.find(".section-wrap .sects.payment.viewer");
         paymentModifyBlock = mypage.find(".section-wrap .sects.payment.modify");
-
+        
         var register = {
             userTelephone: {
                 required: true,
@@ -1339,13 +1340,14 @@
                 monthlyPrice: "<span>" + data.paymentInfo.monthlyPrice + "</span><a href='" + data.paymentInfo.paymentListUrl  + "' class='btn-link paymenyList-btn'>납부내역 조회</a>",
                 withdrawDate: data.paymentInfo.withdrawDate
             }
-            if(data.paymentInfo.paymentMethod == METHOD_CARD){
+            // if(data.paymentInfo.paymentMethod == METHOD_CARD){
+            if (data.paymentInfo.paymentMethodCode == PAYMENT_METHOD_CODE) { // BTOCSITE-20220126 납부방법 표기 오류 수정
                 paymentMode = "card";
     
                 info.paymentMethod = "신용카드"
                 info.methodName =  "<span>" + data.paymentInfo.cardInfo.cardComName + "</span><a href='" + data.paymentInfo.requestCardUrl  + "' class='btn-link requestCard-btn'>제휴카드 신청</a>";
                 info.methodNumber = txtMasking.card(data.paymentInfo.cardInfo.cardNumber);
-            } else{
+            } else {
                 paymentMode = "bank";
     
                 info.paymentMethod = "계좌이체";
