@@ -1576,6 +1576,9 @@
             p {
                 position: relative;
                 z-index: 999;
+                @include mobile {
+                    top:217px; //BTOCSITE-11332 추가
+                }
             }
             >a {
                 position: absolute;
@@ -1594,7 +1597,6 @@
                 }
                 @include mobile {
                     padding: 33px 20px 0px;
-                    top:217px; //BTOCSITE-11332 추가
                 }
             }
         }
