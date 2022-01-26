@@ -3434,6 +3434,13 @@
         height: 786px;
         @include mobile {
             height: 556px;
+            .pop-header {
+                .tit {
+                    span {
+                        font-size: 15px;
+                    }
+                }
+            }
         }
         .pop-conts.support {
             > .mCustomScrollBox {
@@ -3443,13 +3450,6 @@
             }
             @include mobile {
                 padding: 0 16px;
-                .pop-header {
-                    .tit {
-                        span {
-                            font-size: 15px;
-                        }
-                    }
-                }
             }
         }
     }
