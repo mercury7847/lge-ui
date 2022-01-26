@@ -3426,3 +3426,31 @@
         margin-top: 48px;
     }
 }
+
+
+/*고객지원 메인 popup용 (이미지 컨텐츠 인 경우 )임시 소스*/
+.ui_modal_wrap.init-type {
+    .popup-wrap {
+        height: 786px;
+        @include mobile {
+            height: 556px;
+        }
+        .pop-conts.support {
+            > .mCustomScrollBox {
+                > .mCSB_container {
+                    padding: 0 40px;
+                }
+            }
+            @include mobile {
+                padding: 0 16px;
+                .pop-header {
+                    .tit {
+                        span {
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
