@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["CS/CS"],
+        pageJS: ["customer/catalog"],
+        pageTitle: "카탈로그 | LG전자 고객지원",
+        pageDesc: "LG전자 제품의 카탈로그를 확인할 수 있습니다."
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html', {
+            hiddenTitle: "제품 카탈로그" 
+        })
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "제품 카탈로그"
+            })
+            <div class="contents catal-wrap">
+                <div class="catal-list-wrap">
+                    <div class="catal-tab">
+                        <div class="tabs-wrap border-type ui_tab ui_smooth_scroll left">
+                            <ul class="tabs">
+                                <li class="on"><a href="#catalog01">가전 베스트샵<em class="blind">선택됨</em></a></li>
+                                <li><a href="#catalog02">가전 전자랜드</a></li>
+                                <li><a href="#catalog03">가전 하이마트</a></li>
+                                <li><a href="#catalog04">가전 대형마트</a></li>
+                                <li><a href="#catalog05">PC</a></li>
+                                <li><a href="#catalog06">소형가전</a></li>
+                                <li><a href="#catalog07">B2B</a></li>
+                                <li><a href="#catalog08">조달</a></li>
+                                <li><a href="#catalog09">LX 지인인테리어 &amp; LG 오브제컬렉션</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="anchor-wrap">
+                        <div id="catalog01" class="anchor-contents">
+                            @@include('./CS/catalog-card-list.html', { 
+                                title : "가전 베스트샵"                   
+                            })
+                        </div>
+                        <div id="catalog02" class="anchor-contents">
+                            @@include('./CS/catalog-card-list.html', { 
+                                title : "가전 전자랜드"                   
+                            })
+                        </div>
+                        <div id="catalog03" class="anchor-contents">
+                            @@include('./CS/catalog-card-list.html', { 
+                                title : "가전 하이마트"                   
+                            })
+                        </div>
+                        <div id="catalog04" class="anchor-contents">
+                            @@include('./CS/catalog-card-list.html', { 
+                                title : "가전 대형마트"                   
+                            })
+                        </div>
+                        <div id="catalog05" class="anchor-contents">
+                            @@include('./CS/catalog-card-list.html', { 
+                                title : "PC"                   
+                            })
+                        </div>
+                        <div id="catalog06" class="anchor-contents">
+                            @@include('./CS/catalog-card-list.html', { 
+                                title : "소형가전"                   
+                            })
+                        </div>
+                        <div id="catalog07" class="anchor-contents">
+                            @@include('./CS/catalog-card-list.html', { 
+                                title : "B2B"                   
+                            })
+                        </div>
+                        <div id="catalog08" class="anchor-contents">
+                            @@include('./CS/catalog-card-list.html', { 
+                                title : "조달"                   
+                            })
+                        </div>
+                        <div id="catalog09" class="anchor-contents">
+                            @@include('./CS/catalog-card-list.html', { 
+                                title : "LX 지인인테리어 &amp; LG 오브제컬렉션"                   
+                            })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		@@include('./common/footer.html')
+    </div>
+</body>
+</html>
