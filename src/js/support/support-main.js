@@ -2,7 +2,8 @@
     var detect = vcui.detect;
     var isMobileDevice = detect.isMobileDevice;    
     var $context = !!$('[data-hash="support"]').length ? $('[data-hash="support"]') : $(document);
-    var contextLeft = !!$('[data-hash="support"]').length ? $context.width() * (Number($context.attr('aria-label').split('/')[0].trim()) - 1) : null;
+    var $contextLabel = String($context.attr('aria-label'));
+    var contextLeft = !!$('[data-hash="support"]').length ? $context.width() * (Number($contextLabel.split('/')[0].trim()) - 1) : null;
     
     var supportHome = {
         loginTooltip : function(){
@@ -1044,9 +1045,9 @@
                     if( $popup.filter('.active').length ) {
                         //$('html').css('overflow', 'hidden');
                         $popup.filter('.active').wrapAll(self.el.modal);
-                        if( $popup.filter('.active').length == 1) {
-                            $context.find('.ui_modal_wrap.init-type').addClass('center-only');
-                        }
+                        // if( $popup.filter('.active').length == 1) {
+                        //     $context.find('.ui_modal_wrap.init-type').addClass('center-only');
+                        // }
                         $popup.filter('.active').stop().fadeIn();
 
                         $popup.filter('.active').first().focus();
@@ -1082,9 +1083,9 @@
                         $curModal.stop().fadeOut(function(){
                             $(this).removeClass('active');
 
-                            if( $modalWrap.find('.popup-init.active').length == 1) {
-                                $modalWrap.addClass('center-only');
-                            }
+                            // if( $modalWrap.find('.popup-init.active').length == 1) {
+                            //     $modalWrap.addClass('center-only');
+                            // }
                         })
                     }
                     e.preventDefault();
