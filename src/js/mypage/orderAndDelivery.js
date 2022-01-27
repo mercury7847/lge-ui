@@ -1185,7 +1185,7 @@
                                             'model_sku': CARE_list[idx].productList[CARE_cdx].productNameEN,
                                             'category': null,
                                             'brand': 'LG',
-                                            'price': datalayerResult.payment.years1TotAmt,
+                                            'price': CARE_list[idx].productList[CARE_cdx].years1TotAmt,
                                             'quantity': CARE_list[idx].productList[CARE_cdx].orderedQuantity,
                                             'model_gubun': CARE_list[idx].productList[CARE_cdx].productFlag,
                                             'ct_id': null
