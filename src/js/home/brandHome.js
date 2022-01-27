@@ -33,6 +33,7 @@
             self.$appContainer = self.$thinqMain.find('.app-wrap');
             self.$appTabArea = self.$appContainer.find('.app-tab-area')
             self.$appTabCont = self.$appTabArea.find('.app-tab-content');
+            self.$appTabContDetail = self.$appTabArea.find('.app-smart-detail'); // BTOCSITE-11029
             self.$appTabMenuSticky = self.$appTabArea.find('.menu-slide-block');
             self.$appTabMenu = self.$appTabArea.find('.menu-slide-nav');
             self.$appTablist = self.$appTabMenu.find('.menu-item');
@@ -112,33 +113,18 @@
             self.$appTabBtnAll.on('click', function(e){
                 var $parent = $(this).parents('.menu-slide-block');
 
-                if( window.innerWidth > 1024) { // BTOCSITE-8564 
-                    if(!$parent.hasClass('is-active')){
-                        $parent.addClass('is-active');
-                        $(this).children('.txt').text('닫기');
-                        self.appSmartTab.destroy();
-                    }else{
-                        $parent.removeClass('is-active');
-                        $(this).children('.txt').text('전체보기');
-                        var currentIndex = self.$appTablist.filter('.is-active').index();
-                        self.appSmartTab.init(currentIndex);
-                    }
+                // s : BTOCSITE-11029
+                if(!$parent.hasClass('is-active')){
+                    $parent.addClass('is-active');
+                    $(this).children('.txt').text('닫기');
+                    self.appSmartTab.destroy();
                 }else{
-                    var currentIndex = self.$appTablist.filter('.slick-current').index();
-                    if(!$parent.hasClass('is-active')){
-                        $parent.addClass('is-active');
-                        $(this).children('.txt').text('닫기');
-                        self.appSmartTabMobile.destroy();
-                        self.$appTabCont.slick('slickSetOption', 'swipe', false);
-                        self.$appTablist.eq(currentIndex).addClass('is-active')
-                    }else{
-                        $parent.removeClass('is-active');
-                        $(this).children('.txt').text('전체보기');
-                        self.appSmartTabMobile.init(currentIndex); 
-                        self.$appTabCont.slick('slickSetOption', 'swipe', true);
-                        
-                    }
+                    $parent.removeClass('is-active');
+                    $(this).children('.txt').text('전체보기');
+                    var currentIndex = self.$appTablist.filter('.is-active').index();
+                    self.appSmartTab.init(currentIndex);
                 }
+                // e : BTOCSITE-11029
                 
             })
 
@@ -276,10 +262,8 @@
         contentTab: function(){
             //전체 탭
             var self = this;
-            var appCateSticky = false;
 
             self.$stickyTab.on('tabchange', function(e, data){
-                appCateSticky = false;
 
                 /* BTOCSITE-9983 - ThinQ 브랜드관 APP 메뉴 내 섹션별 URL 생성 */
                 //window.hasHash는 최초 false. false 가 아니라면 스크롤 이벤트가 걸린다
@@ -293,19 +277,15 @@
 
                 //$('html, body').animate({scrollTop:self.stickyTabOffsetTop});
 
+                // s : BTOCSITE-11029
                 if( data.content[0] == $('.thinq-app')[0]) {
-                    if( window.innerWidth > 1024) {
-                        //console.log('pc');
-                        self.appSmartTab.load();
-                    }else{
-                        //console.log('mobile !');
-                        self.appSmartTabMobile.load();
-                        self.appCateMenuScroll(true);
-                    }
+                    self.appSmartTab.isAppTab = (window.breakpoint.isMobile) ? true:false;
+                    self.appSmartTab.load();
                     self.appDownloadGuideSlider.load();
-                } else {
-
+                }else {
+                    self.appSmartTab.isAppTab = false;
                 }
+                // e : BTOCSITE-11029
             })
 
             
@@ -316,32 +296,24 @@
             var self = this;
             self.$appTablist.find('a').on('click', function(e) {
                 e.preventDefault();
-                if( window.innerWidth > 1024) {
-                    self.$appTabCont.find('.tab-cont').removeClass('is-active');
-                    self.$appTabCont.find('.tab-cont').filter(this.hash).addClass('is-active');
-                    $(this).parent().addClass('is-active').siblings().removeClass('is-active');
-    
-                    if( !self.$appTabMenu.hasClass('slick-initialized')) {
-                        self.$appTabBtnAll.trigger('click')
-                    }
-                }else{
-                    var menuIdx = $(this).parent().index();
-                    var contentT = $('.tab-mobile-content').offset().top;
+                // s : BTOCSITE-11029
+                self.$appTabCont.find('.tab-cont').removeClass('is-active');
+                self.$appTabCont.find('.tab-cont').filter(this.hash).addClass('is-active');
+                $(this).parent().addClass('is-active').siblings().removeClass('is-active');
 
-                    $(this).parent().addClass('slick-current').siblings().removeClass('slick-current');
-                    
-                    thinQMain.$appTabMenu.slick('slickGoTo', menuIdx);
-                    $(window).scrollTop(contentT);
-
-                    if( !self.$appTabMenu.hasClass('slick-initialized')) {
-                        self.$appTabBtnAll.trigger('click');
-                    }
+                if( !self.$appTabMenu.hasClass('slick-initialized')) {
+                    self.$appTabBtnAll.trigger('click')
+                }else {
+                    self.appSmartTab.setHeights();
+                    self.appSmartTab.setSlickDetail();
                 }
+                if(window.breakpoint.isMobile) $(window).scrollTop($('.tab-mobile-content').offset().top);
+                // s : BTOCSITE-11029
             })
         },
         appSmartTab: {
             //App 탭 > 우리집 스마트한 생활 메뉴 슬라이드 (pc)
-            prevSlidesToShow: 0,
+            isAppTab: false,
             slideConfig : {
                 infinite: false,
                 slidesToShow: 7,
@@ -365,100 +337,72 @@
                     }
                 ]
             },
+            slideContentDetailConfig: { // BTOCSITE-11029
+                infinite: false,
+                arrows: false,
+                adaptiveHeight:true,
+                variableWidth: true,
+            },
             init: function(index){
                 var tabs = this;
+                thinQMain.appSmartTab.setHeights(); // BTOCSITE-11029
                 if( !thinQMain.$appTabArea.find('.menu-slide-block').hasClass('is-active') ) {
                     thinQMain.$appTabMenu.not('.slick-initialized').slick(tabs.slideConfig)
                     if( index != undefined ) {
                         thinQMain.$appTabMenu.slick('slickGoTo', index)
                     }
+                    thinQMain.appSmartTab.setSlickDetail(); // BTOCSITE-11029
                 }
             },
             reinit: function(){
                 thinQMain.$appTabMenu.filter('.slick-initialized').slick('setPosition')
             },
             load: function(){
-                if( this.prevSlidesToShow > 0 &&  this.prevSlidesToShow != thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')) {
+                if( thinQMain.$appTabMenu.hasClass('slick-initialized')) {
                     this.reinit();
-                    this.prevSlidesToShow = thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')
                 } else {
                     this.init();
-                    this.prevSlidesToShow = thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')
                 }
             },
             destroy: function(){
                 thinQMain.$appTabMenu.filter('.slick-initialized').slick('unslick');
                 thinQMain.$appTabMenu.find('.menu-item').removeClass('active-first active-last');
                 thinQMain.$appTabMenu.find('.menu-item a').removeAttr('tabindex');
-            }
-        },
-        appSmartTabMobile: {
-            //App 탭 > 우리집 스마트한 생활 메뉴 슬라이드 (mobile)
-            prevSlidesToShow: 0,
-            slideNavConfig : {
-                infinite: false,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                arrows:false,
-                // fade: true,
-                asNavFor: '.tab-mobile-content',
-                responsive: [
-                    {
-                        breakpoint:768,
-                        settings:{
-                            arrows:false,
-                            slidesToShow: 4,
-                            swipeToSlide: true,
-                        }
-                    }
-                ]
             },
-            slideContentConfig: {
-                infinite: false,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                arrows: false,
-                asNavFor: '.menu-slide-nav',
-                adaptiveHeight:true,
-            },
-            init: function(index){
-                var tabs = this;
-                var contentT = $('.tab-mobile-content').offset().top;
-
-                thinQMain.$appTabMenu.not('.slick-initialized').slick(tabs.slideNavConfig);
-                thinQMain.$appTabCont.not('.slick-initialized').slick(tabs.slideContentConfig);
-                
-                if( !thinQMain.$appTabArea.find('.menu-slide-block').hasClass('is-active') ) {
-                    if( index != undefined ) {
-                        thinQMain.$appTabMenu.slick('slickGoTo', index);
-                    }
-
-                    thinQMain.$appTabMenu.on('afterChange', function(){
-                        thinQMain.$appTablist.removeClass('is-active');
-                        $('html, body').stop().animate({scrollTop:contentT});
-                    })
-                }
-                
-            },
-            reinit: function(){
-                thinQMain.$appTabMenu.filter('.slick-initialized').slick('setPosition');
-                thinQMain.$appTabCont.filter('.slick-initialized').slick('setPosition');
-            },
-            load: function(){
-                if( this.prevSlidesToShow > 0 &&  this.prevSlidesToShow != thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow')) {
-                    this.reinit();
-                    this.prevSlidesToShow = thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow');
-                } else {
-                    this.reinit();
-                    this.init();
-                    this.prevSlidesToShow = thinQMain.$appTabMenu.slick('slickGetOption', 'slidesToShow');
+            setHeights: function() {
+                if(window.breakpoint.isMobile) {
+                    var tabheight = thinQMain.$appTablist.map(function() {
+                        return $(this).height();
+                    });
+                    if(Math.max.apply(null, tabheight) !== 0) thinQMain.$appTablist.css('height', Math.max.apply(null, tabheight));
+                    thinQMain.$appTabCont.find('.is-active').find('.app-smart-detail').each(function() {
+                        var $desc = $(this).find('.desc');
+                        var arr = $desc.map(function() {
+                            return $(this).height();
+                        });
+                        $desc.each(function() {
+                            if(Math.max.apply(null, arr) !== 0) $(this).css('height', Math.max.apply(null, arr))
+                        });
+                    });
+                }else {
+                    thinQMain.$appTablist.css('height', 'auto');
+                    thinQMain.$appTabCont.find('.app-smart-detail .desc').css('height','auto');
                 }
             },
-            destroy: function(){
-                thinQMain.$appTabMenu.filter('.slick-initialized').slick('unslick');
-                thinQMain.$appTabMenu.find('.menu-item').removeClass('active-first active-last')
-                thinQMain.$appTabMenu.find('.menu-item a').removeAttr('tabindex');
-            }
+            setSlickDetail: function() { // BTOCSITE-11029
+                var idx = thinQMain.$appTablist.filter('.is-active').index();
+                if(window.breakpoint.isMobile) {
+                    if(!thinQMain.$appTabContDetail.eq(idx).hasClass('slick-initialized')) {
+                        if(thinQMain.$appTabContDetail.eq(idx).width() > 0) thinQMain.$appTabContDetail.eq(idx).slick(thinQMain.appSmartTab.slideContentDetailConfig); 
+                    }else {
+                        thinQMain.$appTabContDetail.eq(idx).slick('setPosition'); 
+                    }
+                }else {
+                    if(thinQMain.$appTabContDetail.eq(idx).hasClass('slick-initialized')) {
+                        thinQMain.$appTabContDetail.eq(idx).slick('unslick');
+                    }
+                }
+            },
         },
         appDownloadGuideSlider:{
              //App 탭 > 앱 다운안내 슬라이드
@@ -590,39 +534,32 @@
         scroll: function(scrollTop){
             //전체탭 스티키
             var self = this;
-
-            if( self.$stickyTabWrap && self.$stickyTabWrap.length > 0 ) {
+            if(self.appSmartTab.isAppTab) {
+                var scrollTop = $(window).scrollTop();
+                var tabOffsetT = self.$appTabCont.offset().top;
+                var tabOffsetB = $('.app-tab-desc').offset().top;
                 if(scrollTop >= self.stickyTabOffsetTop) {
-                    self.$thinqWrap.addClass('active on');
+                    if( scrollTop >= tabOffsetT && scrollTop <= tabOffsetB){
+                        if(self.$appTabCont.is(':visible') && !self.$appTabMenuSticky.hasClass('fixed')) self.$appTabMenuSticky.addClass('fixed');
+                    }else if(scrollTop >= tabOffsetT - 76 && scrollTop <= tabOffsetB){
+                        self.$thinqWrap.removeClass('active on');
+                    }else{
+                        self.$appTabMenuSticky.removeClass('fixed');
+                        self.$thinqWrap.addClass('active on');
+                    }
                 } else {
                     self.$thinqWrap.removeClass('active on');
                 }
-            }
-        },
-        appCateMenuScroll: function(sticky){
-            //App 탭 > 카테고리 메뉴 스티키
-            var self = this;
-            appCateSticky = sticky;
-            $(window).on('scroll', function(){
-                if(appCateSticky){
-                    var scrollTop = $(window).scrollTop();
-                    var tabOffsetT = self.$appTabCont.offset().top;
-                    var tabOffsetB = $('.app-tab-desc').offset().top;
-                    
+            }else {
+                if(self.$appTabMenuSticky.hasClass('fixed')) self.$appTabMenuSticky.removeClass('fixed');
+                if( self.$stickyTabWrap && self.$stickyTabWrap.length > 0 ) {
                     if(scrollTop >= self.stickyTabOffsetTop) {
-                        if( scrollTop >= tabOffsetT && scrollTop <= tabOffsetB){
-                            self.$appTabMenuSticky.addClass('fixed');
-                        }else if(scrollTop >= tabOffsetT - 76 && scrollTop <= tabOffsetB){
-                            self.$thinqWrap.removeClass('active on');
-                        }else{
-                            self.$appTabMenuSticky.removeClass('fixed');
-                            self.$thinqWrap.addClass('active on');
-                        }
+                        self.$thinqWrap.addClass('active on');
                     } else {
                         self.$thinqWrap.removeClass('active on');
                     }
                 }
-            })
+            }
         },
         resize: function(){
             var self = this;
@@ -633,6 +570,8 @@
                 $('.app-tab-content').addClass('tab-mobile-content');
 
             }
+            self.appSmartTab.setHeights(); // BTOCSITE-11029
+            self.appSmartTab.setSlickDetail(); // BTOCSITE-11029
         }
     };
     thinQMain.init();
