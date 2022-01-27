@@ -378,7 +378,7 @@
     var MODE_PAYMENT = "PAYMENT";
     var METHOD_CARD = "CARD";
     var METHOD_BANK = "BANK";
-    var PAYMENT_METHOD_CODE = "C"; // BTOCSITE-20220126 납부방법 표기 오류 수정
+    var PAYMENT_METHOD_CODE = "C"; // BTOCSITE-11586 납부방법이 모두 동일하게 '계좌이체'로 출력되는 현상
 
     var CONTRACT_INFO;
 
@@ -1348,8 +1348,8 @@
                 monthlyPrice: "<span>" + data.paymentInfo.monthlyPrice + "</span><a href='" + data.paymentInfo.paymentListUrl  + "' class='btn-link paymenyList-btn'>납부내역 조회</a>",
                 withdrawDate: data.paymentInfo.withdrawDate
             }
-            // if(data.paymentInfo.paymentMethod == METHOD_CARD){
-            if (data.paymentInfo.paymentMethodCode == PAYMENT_METHOD_CODE) { // BTOCSITE-20220126 납부방법 표기 오류 수정
+
+            if (data.paymentInfo.paymentMethodCode == PAYMENT_METHOD_CODE) { // BTOCSITE-11586 납부방법이 모두 동일하게 '계좌이체'로 출력되는 현상
                 paymentMode = "card";
     
                 info.paymentMethod = "신용카드"
