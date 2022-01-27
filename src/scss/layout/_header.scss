@@ -2516,6 +2516,9 @@ html {
                 width: calc(100% - 76px);
             }
         }
+        &.searchHead {
+
+        }
         &.isActive {
             .header {
                 z-index: 8000;
