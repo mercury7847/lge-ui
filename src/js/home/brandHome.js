@@ -317,7 +317,7 @@
             slideConfig : {
                 infinite: false,
                 slidesToShow: 7,
-                slidesToScroll: 7,
+                slidesToScroll: (window.breakpoint.isMobile)?4:7,
                 responsive: [
                     {
                         breakpoint:1280,
@@ -332,7 +332,7 @@
                         settings:{
                             arrows:false,
                             slidesToShow: 4,
-                            swipeToSlide: 1,
+                            swipeToSlide: 4,
                         }
                     }
                 ]
