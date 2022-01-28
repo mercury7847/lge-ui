@@ -925,15 +925,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
         },
         _setStoryUpdateCheck: function(){
             var $mobileNav = $('.mobile-nav-wrap');
-            var $list = $mobileNav.find('li');
-            var $storyList = $list.eq(2);
+            var $storyList = $mobileNav.find('li a.nav-item[href="#story"]');
 
             var ajaxUrl = $mobileNav.data('storyUrl');
 
             if(ajaxUrl) {
                 lgkorUI.requestAjaxData(ajaxUrl,{},function(resultData){
                     var data = resultData.data;
-                    if( data > 0 && resultData.status=== "success") $storyList.addClass('icon-update')
+                    if( data > 0 && resultData.status=== "success") $storyList.parent().addClass('icon-update')
                 })
             }
         },
