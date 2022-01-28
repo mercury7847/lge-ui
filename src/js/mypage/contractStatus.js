@@ -378,7 +378,8 @@
     var MODE_PAYMENT = "PAYMENT";
     var METHOD_CARD = "CARD";
     var METHOD_BANK = "BANK";
-
+    var PAYMENT_METHOD_CODE = 'C'; // 납부방법코드 BTOCSITE-20220125 add
+    
     var CONTRACT_INFO;
 
     var CONTRACT_CARE; //BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성
@@ -1339,7 +1340,7 @@
                 monthlyPrice: "<span>" + data.paymentInfo.monthlyPrice + "</span><a href='" + data.paymentInfo.paymentListUrl  + "' class='btn-link paymenyList-btn'>납부내역 조회</a>",
                 withdrawDate: data.paymentInfo.withdrawDate
             }
-            if(data.paymentInfo.paymentMethod == METHOD_CARD){
+            if(data.paymentInfo.paymentMethodCode == PAYMENT_METHOD_CODE){ // 납부방법코드 BTOCSITE-20220125 (납부방법 표기오류로 수정)
                 paymentMode = "card";
     
                 info.paymentMethod = "신용카드"

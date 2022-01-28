@@ -121,7 +121,7 @@
         '                   <dt>서비스타입</dt>'+
         '                   <dd>'+
         '                       <div class="sort-select-wrap">'+
-        '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="서비스타입선택" data-sibling-type="siblingSvcType" {{#if siblingSvcType.length == 1}}disabled{{/if}}>'+
+        '                           <select class="ui_selectbox" data-combo-id="5" id="svcTypeSet-{{modelId}}" title="서비스타입선택" data-sibling-type="siblingSvcType" {{#if siblingSvcType.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingSvcType}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectSvcTypeCd==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
