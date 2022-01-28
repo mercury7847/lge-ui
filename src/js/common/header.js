@@ -941,9 +941,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var self = this;
 
             if(self.$subRenewNavWrap){
-                if(!self.$subRenewNavWrap.hasClass('is-depth')){
-
-                }
                 self.$subRenewNavWrap.find('.superCategory > li').each(function(){
                     if($(this).find(self.$subCategory).length) {
                         $(this).closest(self.$subNavContainer).addClass('hasDepth');

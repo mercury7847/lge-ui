@@ -2527,14 +2527,14 @@
                             @include tablet {
                                 margin-top: -120px;
                             }
-                            @include mobile {
-                               margin-top: 0; // BTOCSITE-11029
-                               padding-left: 8px;
+                            @include mobile {// BTOCSITE-11029
+                               margin-top: 0; 
+                               margin-left: 8px;
                             }
                         }
                         .detail-inner {
-                            @include mobile {
-                                width: 272px; // BTOCSITE-11029
+                            @include mobile {// BTOCSITE-11029
+                                width: 272px; 
                              }
                             .image {
                                 $width: 342px;
@@ -2548,7 +2548,12 @@
                             }
                         }
                         @include mobile { // BTOCSITE-11029
-                            padding-left: 16px;
+                            &:first-child {
+                                .detail-inner {padding-left: 16px;}
+                            }
+                            &:last-child {
+                                .detail-inner {padding-right: 16px;}
+                            }
                         }
                     }
                 }

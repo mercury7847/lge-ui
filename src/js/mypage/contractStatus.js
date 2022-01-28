@@ -215,7 +215,7 @@
                 '{{#else}}' + 
 
                     '<div class="lb-btn">' +
-                        '<button type="button" class="btn"><span>LG전자 멤버십 바로가기</span></button>' +
+                        '<a href="https://lgemma.page.link/main" target="_blank" class="btn"><span>LG전자 멤버십 바로가기</span></a>' +
                     '</div>' +
                 '{{/if}}'+
 
