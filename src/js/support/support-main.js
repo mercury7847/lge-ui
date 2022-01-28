@@ -1064,7 +1064,7 @@
                         // }
                         $popup.filter('.active').stop().fadeIn();
 
-                        // $popup.filter('.active').first().focus();
+                        $popup.filter('.active').first().focus();
 
                         if( !vcui.detect.isMobileDevice) {
                             $popup.filter('.active').not('.mCustomScrollbar').find('.pop-conts').mCustomScrollbar();
