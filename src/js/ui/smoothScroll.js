@@ -646,8 +646,8 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
                 return;
             }
 
-            pos.left += Math.abs(xy.x);
-            pos.top += Math.abs(xy.y);
+            // pos.left += Math.abs(xy.x);
+            // pos.top += Math.abs(xy.y);
 
             pos.left -= parseInt($el.parent().css('paddingLeft'), 10);
             pos.top -= parseInt($el.parent().css('paddingTop'), 10);
