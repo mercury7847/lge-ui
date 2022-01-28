@@ -2517,7 +2517,28 @@ html {
             }
         }
         &.searchHead {
-
+            .header-wrap {
+                border-bottom: none;
+            }
+            .sub-renew-nav-wrap {
+                width: 50px;
+                padding: 0;
+                .btn-back {
+                    background-position: left 10px top 9px;
+                }
+            }
+            .contents {
+                &.search {
+                    .input-keyword-wrap {
+                        left: 50px;
+                        width: calc(100% - 50px);
+                        padding: 7px 16px;
+                        .input-keyword {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
         }
         &.isActive {
             .header {
@@ -2559,10 +2580,12 @@ html {
                 }
             }
             &:not(.snsHead) {
-                &:not(.cartHead) {
-                    .sub-renew-nav-wrap {
-                        width: calc(100% - 120px);
-                        padding-left: 50px;
+                &:not(.searchHead) {
+                    &:not(.cartHead) {
+                        .sub-renew-nav-wrap {
+                            width: calc(100% - 120px);
+                            padding-left: 50px;
+                        }
                     }
                 }
             }
