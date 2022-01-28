@@ -1,15 +1,16 @@
 @charset "UTF-8";
 
 /* list summary */
-.pagination {
-    .page_num {
-        margin:0 10px;
+// BTOCSITE-9921 공통 페이지네이션 수정으로 인한 해당 속성 제거
+// .pagination {
+//     .page_num {
+//         margin:0 10px;
 
-        a, button  {
-            color:#666;
-        }
-    }
-}
+//         a, button  {
+//             color:#666;
+//         }
+//     }
+// }
 
 .sorting-wrap {
     padding-bottom:12px;

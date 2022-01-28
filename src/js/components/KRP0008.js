@@ -281,15 +281,22 @@
                 self.$copy =  self.$component.find('.copy');
 
                 /* BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
-                self.$pdp_visualWrap = $('.pdp-visual-wrap');
-                self.$ar_mark = self.$pdp_visualWrap.find('.pdp-ar-area');
-                self.$up_mark = self.$pdp_visualWrap.find('.up-mark');
+                // self.$pdp_visualWrap = $('.pdp-visual-wrap');
+                // self.$ar_mark = self.$pdp_visualWrap.find('.pdp-ar-area');
+                // self.$up_mark = self.$pdp_visualWrap.find('.up-mark');
                 
-                if(self.$ar_mark.length) {
-                    self.$up_mark.addClass('only-onMark');
-                } else {
-                    self.$up_mark.removeClass('only-onMark');
-                }
+                // if(self.$ar_mark.length) {
+                //     self.$up_mark.addClass('only-onMark');
+                // } else {
+                //     self.$up_mark.removeClass('only-onMark');
+                // } 
+
+                self.up_mark = $('.up-mark');
+                self.upMarkClone = self.up_mark.contents().clone();
+                self.upMarkCloneBody = $('.mob-upMark');
+
+                self.upMarkCloneBody.append(self.upMarkClone);
+                //testCloneBody.appendTo('body');
                 /* BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
 
                 //가격정보
@@ -905,7 +912,7 @@
                         //구매
                         //$('.cardDiscount').removeClass('retalCareOn');
                         /* BTOCSITE-10166 : 롯데카드 혜택 배지 수정요청의 건  */
-                        var isShow = lgkorUI.isShowDate('20210601','20220201') // 2022.01.01 00:00 ~ 2021.01.31 24:00  ( 신한/롯데 프로모션 적용 기간)
+                        var isShow = lgkorUI.isShowDate('20210601','20220301') // 2022.01.01 00:00 ~ 2022.02.28 24:00  ( 신한/롯데 프로모션 적용 기간)
                         if(isShow) $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/membership"]
+    })
+<body>
+<!-- [S] BTOCSITE-9954 : data 속성명 변경, 신규 페이지 ( 무상서비스 제품 조회를 멤버십관리 하위 메뉴로 분리)   -->
+    <div class="wrap">
+        @@include('./common/header.html')
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "무상서비스 제품 조회"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap"
+                    data-url="/lg5-common/data-ajax/mypage/membership/my_free_history.json"
+                >
+                    <div class="lnb-wrap">
+                        <!-- BTOCSITE-7449 렌탈/케어>방문알리미 메뉴명에 대한 용어변경 요청 // 방문 알리미 -> 방문일정 / 예약 -->
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect2" : [
+                                { "on": "on", "page": "계약현황" },
+                                { "on": "", "page": "납부내역" },
+                                { "on": "", "page": "방문일정 / 예약" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <!-- 상세 -->
+                            <div class="section-wrap">
+                                <div class="sects">
+                                    <div class="tit-wrap type2">
+                                        <p class="tit">조회 내역</p>
+                                    </div>
+                                    <div class="section-inner">
+                                        <div class="inner-box type2">
+                                            <div class="member-lists">
+                                                <!-- 210326 a링크 추가 -->
+                                                <ul>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ 두줄케이스 추가</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ 두줄케이스 추가</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ 두줄케이스 추가</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ 두줄케이스 추가</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ 두줄케이스 추가</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ 두줄케이스 추가</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li class="item">
+                                                        <a href="#">
+                                                            <div class="inner">
+                                                                <div class="product-image">
+                                                                    <span class="img"><img src="/lg5-common/images/dummy/@img-product.jpg" alt=""></span>
+                                                                </div>
+                                                                <div class="product-info">
+                                                                    <div class="product-name">
+                                                                        <strong>LG TROMM ThinQ</strong>
+                                                                        <span class="model-num">WU900AS</span>
+                                                                    </div>
+                                                                    <div class="info-area">
+                                                                        <ul>
+                                                                            <li>구매수량 : 1</li>
+                                                                            <li>2019.07.29 구매</li>
+                                                                            <li>서비스 기간 :<br>2019.12.29~2022.12.29</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <!-- //210326 a링크 추가 -->
+                                            </div>
+                                            <!-- @@include('./common/modules/pagination.html', {
+                                                count: 5
+                                            }) -->
+                                            <div class="pagination" data-page="3" data-visible-count="7" data-total-count="13"></div>
+                                            <div class="no-data">
+                                                <p>조회 결과가 없습니다.</p>
+                                            </div>
+                                        </div>
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "size2" : true,
+                                            "topBorder" : true,
+                                            "bulletTxt" : [
+                                                "VIP등급 이상 고객의 경우 3년 무상 서비스혜택을 받으실 수 있습니다."
+                                            ]
+                                        })
+                                    </div>
+                                </div>
+                                <!-- // 무상서비스 제품 조회 -->
+                                <!-- //210325 내용추가 -->
+                            </div>
+                            <!-- // 상세 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+            <!-- [E] BTOCSITE-9954 : data 속성명 변경, 신규 페이지 ( 무상서비스 제품 조회를 멤버십관리 하위 메뉴로 분리)  -->
+        </div>
+
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

@@ -10,6 +10,7 @@
     // .module-type3 : 케어십_보유제품 모듈
     // .module-type4 : 케어십_용역제품 모듈
     // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+    // 20220125 BTOCSITE-9177 RAC 관련 서비스 타입 추가
     var _listItemTemplate =
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
@@ -109,6 +110,20 @@
         '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="가입비 선택" data-sibling-type="siblingFee" {{#if siblingFee.length == 1}}disabled{{/if}}>'+
         '                           {{#each item in siblingFee}}'+
         '                               <option value="{{item.siblingCode}}"{{#if selectFeeID==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
+        '                           {{/each}}'+
+        '                           </select>'+
+        '                       </div>'+
+        '                   </dd>'+
+        '               </dl>'+
+        '           {{/if}}'+      
+        '           {{#if typeof siblingSvcType !== "undefined" && siblingSvcType.length > 0}}'+        
+        '               <dl {{#if siblingSvcType.length == 1}}class="disabled"{{/if}}>'+
+        '                   <dt>서비스타입</dt>'+
+        '                   <dd>'+
+        '                       <div class="sort-select-wrap">'+
+        '                           <select class="ui_selectbox" data-combo-id="4" id="feeSet-{{modelId}}" title="서비스타입선택" data-sibling-type="siblingSvcType" {{#if siblingSvcType.length == 1}}disabled{{/if}}>'+
+        '                           {{#each item in siblingSvcType}}'+
+        '                               <option value="{{item.siblingCode}}"{{#if selectSvcTypeCd==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
         '                           {{/each}}'+
         '                           </select>'+
         '                       </div>'+
@@ -670,7 +685,16 @@
         var key;
         for(key in item.siblingFee) item.siblingFee[key].siblingCode = item.siblingFee[key].siblingCode.toString();
         for(key in item.siblingUsePeriod) item.siblingUsePeriod[key].siblingCode = item.siblingUsePeriod[key].siblingCode.toString();
-        for(key in item.siblingVisitCycle) item.siblingVisitCycle[key].siblingCode = item.siblingVisitCycle[key].siblingCode.toString();
+        for(key in item.siblingVisitCycle) item.siblingVisitCycle[key].siblingCode = item.siblingVisitCycle[key].siblingCode.toString();   
+        //BTOCSITE-9177   start 
+        if(typeof item.siblingSvcType !== "undefined" && item.siblingSvcType.length > 0){
+            if(item.siblingSvcType!= null){
+                for(key in item.siblingSvcType) item.siblingSvcType[key].siblingCode = item.siblingSvcType[key].siblingCode.toString();//BTOCSITE-9177  
+            }
+            
+        } 
+        //BTOCSITE-9177   end
+        
     }
 
     //서비스 변경...
@@ -727,7 +751,9 @@
         if(optdata['siblingContractPeriod']) sendata.contractPeriodCd = optdata['siblingContractPeriod'].value;
         if(optdata['siblingUsePeriod']) sendata.usePeriodCd = optdata['siblingUsePeriod'].value;
         if(optdata['siblingVisitCycle']) sendata.visitCycleCd = optdata['siblingVisitCycle'].value;
-        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;
+        if(optdata['siblingFee']) sendata.feeCd = optdata['siblingFee'].value;        
+        if(optdata['siblingSvcType']) sendata.svcTypeCd = optdata['siblingSvcType'].value; // BTOCSITE-9177
+       
 
         lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(_priceStatusUrl, sendata, function(result){
             lgkorUI.hideLoading();
@@ -774,11 +800,27 @@
                     return o[previous].siblingCode > o[current].siblingCode ? previous:current;
                 });
                 selectFeeID = o[selectFeeID].siblingCode;
-
+                
+                // BTOCSITE-9177 START
+                if(typeof result.data.siblingSvcType !== "undefined" && result.data.siblingSvcType.length > 0){
+                    if(result.data.siblingSvcType!= null){
+                        var o = result.data.siblingSvcType;
+                        var selectSvcType = Object.keys(o).reduce(function (previous, current) {
+                            return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                        });
+                        selectSvcType = o[selectSvcType].siblingCode;
+                    }
+                }
+                // BTOCSITE-9177 END
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingUsePeriod]'), result.data.siblingUsePeriod, result.data.selectUserPeriodID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
+                if(typeof result.data.siblingSvcType !== "undefined" && result.data.siblingSvcType.length > 0){
+                    if(result.data.siblingSvcType!= null){
+                        setCliblingData(listBlock.find('select[data-sibling-type=siblingSvcType]'), result.data.siblingSvcType, result.data.selectSvcTypeCd);// BTOCSITE-9177
+                    }
+                }
             }
         });
     }
