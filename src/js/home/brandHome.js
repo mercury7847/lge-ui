@@ -342,6 +342,7 @@
                 arrows: false,
                 adaptiveHeight:true,
                 variableWidth: true,
+                outerEdgeLimit: true,
             },
             init: function(index){
                 var tabs = this;
