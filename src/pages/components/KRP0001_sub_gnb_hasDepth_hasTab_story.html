@@ -7,8 +7,7 @@
     <title>lge</title>
     <link rel="stylesheet" href="/lg5-common/css/reset.min.css" />
     <link rel="stylesheet" href="/lg5-common/css/app.min.css" />
-    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0022.min.css" />
-    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRC0003.min.css" />
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0026.min.css" />
     <script src="/lg5-common/js/libs/jquery-2.2.4.min.js"></script>
     <script src="/lg5-common/js/libs/jquery.transit.min.js"></script>
     <script src="/lg5-common/js/libs/jquery.event.move.min.js"></script>
@@ -18,12 +17,12 @@
     <script src="/lg5-common/js/lg.common.min.js"></script>
     <script src="/lg5-common/js/components/KRC0015.min.js"></script>
     <script src="/lg5-common/js/components/KRP0005.min.js"></script>
-    <script src="/lg5-common/js/components/KRP0022.min.js"></script>
+    <script src="/lg5-common/js/components/KRP0026.min.js"></script>
 </head>
 <!-- // 템플릿으로 진행되는 화면. 제대로 display되도록 임시 삽입 -->
 <body>
     <!--BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB 개선 - 서브페이지만 subRenewWrap 클래스 추가-->
-    <div class="wrap subRenewWrap eventList">
+    <div class="wrap subRenewWrap storyList">
 
 
         <script src="/lg5-common/js/search/integratedSearch.min.js" async></script>
@@ -1126,7 +1125,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </li>
                                 <li>
                                     <a href="#" class="nav-item" target="_self">렌탈/케어</a>
@@ -2665,43 +2663,13 @@
         }
 
         <div class="container" id="content">
-            @@include('./common/partials/KRC0003.html', {
-                "common" : {
-                    "zero" : "zero-top zero-btm"
-                },
-                "slides" : [
-                    {
-                        "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
-                        "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
-                        "boxAlign" : "box-align-left type-wide",
-                        "eyebrow" : "LG전자 멤버십 앱",
-                        "title" : "신규 설치 고객<br>경품 추천 이벤트",
-                        "btn" : "자세히 보기"
-                    },
-                    {
-                        "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
-                        "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
-                        "boxAlign" : "box-align-center type-narrow",
-                        "eyebrow" : "LG전자 멤버십 앱",
-                        "title" : "신규 설치 고객<br>경품 추천 이벤트",
-                        "btn" : "자세히 보기"
-                    },
-                    {
-                        "pcImg" : "/lg5-common/images/dummy/@img-slide01.jpg",
-                        "mImg" : "/lg5-common/images/dummy/@img-slide01-m.jpg",
-                        "boxAlign" : "box-align-right type-narrow",
-                        "eyebrow" : "LG전자 멤버십 앱",
-                        "title" : "신규 설치 고객<br>경품 추천 이벤트",
-                        "btn" : "자세히 보기"
-                    }
-                ]
+            <!-- component KRP0026 -->
+            @@include('./common/partials/KRP0026.html', {
+                "zero" : "zero-top",
+                "tabBarType" : false,
+                "lgVisual" : false
             })
-            <!-- // component -->
-            <!-- component -->
-            @@include('./common/partials/KRP0022.html', {
-                "zero" : "zero-top zero-btm",
-                "eventPage" : true
-            })
+            <!-- // component KRP0026 -->
         </div>
 
         <!-- @@include('./common/footer.html') -->

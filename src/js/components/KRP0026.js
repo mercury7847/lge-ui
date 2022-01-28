@@ -24,6 +24,7 @@
     var KRP0026 = {
         init: function() {
             var self = this;
+            self.$KRP0026 = $('.KRP0026').first(); // BTOCSITE-2117 모바일 웹/앱 GNB 개선
             vcui.require(['ui/pagination'], function () {
                 self.setting();
                 self.bindEvents();
@@ -100,6 +101,20 @@
                 /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
             });
 
+            // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 이벤트 추가
+            self.$KRP0026.find('.accordion-button').on('click', function(e) {
+                self.$KRP0026.find('.tabs-wrap').toggleClass('expanded');
+                if (self.$KRP0026.find('.tabs-wrap').hasClass('expanded')) {
+                    self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', false);
+                } else {
+                    self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', true);
+                }
+            });
+            self.$KRP0026.find('.fixed-area .dimmed').on('click', function(e) {
+                self.$KRP0026.find('.tabs-wrap').removeClass('expanded');
+                self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', true);
+            });
+
             /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
             var hash = window.location.hash;
             var hashArr = hash.split('&');
@@ -167,6 +182,20 @@
                     } else {
                         self.$subTab.parents('.tabs-bg').hide();
                     }
+
+                    // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 탭 그려진 후에 아코디언버튼 세팅
+                    if($('.subRenewWrap').length > 0) {
+                        self.$KRP0026.find('.tabs-wrap').removeClass('expanded');
+                        self.setAccordionButton();
+                        $(window).on('resize', function() {
+                            self.setAccordionButton();
+                        });
+                        self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', true);
+                        setTimeout(function() {
+                            self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('scrollToActive');
+                        }, 500);
+                    }
+
                     /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
                     var currentUrl = $(location).attr('href');
                     var superCategoryId = param.superCategoryId;
@@ -189,6 +218,17 @@
                 });
             });
         },
+
+        // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 탭 길이에 따라 아코디언버튼 노출 유무 세팅
+        setAccordionButton: function() {
+            var self = this;
+            if(self.$KRP0026.find('.tabs').width() + 32 > window.innerWidth) {
+                self.$KRP0026.find('.tabs-wrap').addClass('hasButton');
+            } else {
+                self.$KRP0026.find('.tabs-wrap').removeClass('expanded');
+                self.$KRP0026.find('.tabs-wrap').removeClass('hasButton');
+            }
+        }
     };
 
     $(window).ready(function(){

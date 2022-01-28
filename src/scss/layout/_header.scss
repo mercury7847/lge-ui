@@ -755,7 +755,7 @@ html {
             font-weight: bold; //220119 BTOCSITE-10816 추가
             font-size: $font-medium - 1;            
             line-height: 23px;
-            color: $color-white;
+            //color: $color-white; //삭제됨
             //text-shadow: 0 1px 20px rgba(0, 0, 0, 0.4); //220119 BTOCSITE-10816 제거
             width: 60%;
             white-space: normal;
@@ -2180,7 +2180,7 @@ html {
         /* BTOCSITE-10816 GNB 수정 컨텐츠 수정 */
         &.mob-navSlide_check {
             @include mobile {
-                color: #f00;
+                //color: #f00; //삭제됨
                 .ui_carousel_track {
                     transform: translate3d(0px, 0px, 0px) !important;
                     width: 100% !important;
@@ -2325,6 +2325,13 @@ html {
         }
         .header-wrap {
             border-bottom:1px solid #ddd;
+        }
+        //컨텐츠 내 상단 타이틀 히든처리
+        .page-header {
+            .title,
+            .desc {
+                display: none;
+            }
         }
         .sub-renew-nav-wrap {
             z-index: 101;
@@ -2563,7 +2570,10 @@ html {
             }
         }
     }
-    .eventList {
+
+    // BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB 개선
+    .eventList,
+    .storyList {
         .container {
             padding-top: 46px;
         }
