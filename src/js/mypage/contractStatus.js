@@ -378,6 +378,7 @@
     var MODE_PAYMENT = "PAYMENT";
     var METHOD_CARD = "CARD";
     var METHOD_BANK = "BANK";
+    var PAYMENT_METHOD_CODE = "C"; // BTOCSITE-11586 납부방법이 모두 동일하게 '계좌이체'로 출력되는 현상
 
     var CONTRACT_INFO;
 
@@ -471,7 +472,7 @@
 
         paymentInfoBlock = mypage.find(".section-wrap .sects.payment.viewer");
         paymentModifyBlock = mypage.find(".section-wrap .sects.payment.modify");
-
+        
         var register = {
             userTelephone: {
                 required: true,
@@ -666,6 +667,9 @@
         $('select[name="contractInfo"]').on('change', function(e){
             changeContractInfo();
         });
+
+
+     
     }
 
     
@@ -842,6 +846,14 @@
             selectCardValue: val
         }
         lgkorUI.requestAjaxData(REQUSET_CARD_URL, sendata, function(result){
+        	
+            if(result.data.success == "Y"){ // BTOCSITE-20220126 제휴카드 발급신청 성공시 팝업닫힘오류
+
+                lgkorUI.alert("", {
+                    title: result.data.alert.title
+                });
+            }
+        	
             $('#popup-cardIssue').vcModal('close');
 
             lgkorUI.hideLoading();
@@ -1336,13 +1348,14 @@
                 monthlyPrice: "<span>" + data.paymentInfo.monthlyPrice + "</span><a href='" + data.paymentInfo.paymentListUrl  + "' class='btn-link paymenyList-btn'>납부내역 조회</a>",
                 withdrawDate: data.paymentInfo.withdrawDate
             }
-            if(data.paymentInfo.paymentMethod == METHOD_CARD){
+
+            if (data.paymentInfo.paymentMethodCode == PAYMENT_METHOD_CODE) { // BTOCSITE-11586 납부방법이 모두 동일하게 '계좌이체'로 출력되는 현상
                 paymentMode = "card";
     
                 info.paymentMethod = "신용카드"
                 info.methodName =  "<span>" + data.paymentInfo.cardInfo.cardComName + "</span><a href='" + data.paymentInfo.requestCardUrl  + "' class='btn-link requestCard-btn'>제휴카드 신청</a>";
                 info.methodNumber = txtMasking.card(data.paymentInfo.cardInfo.cardNumber);
-            } else{
+            } else {
                 paymentMode = "bank";
     
                 info.paymentMethod = "계좌이체";
@@ -1557,7 +1570,7 @@
                 if(Date.now() >= (+YearLater3) && Date.now() <= (+YearLater4)) {
                     console.log("------3년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater3)) {
-                        console.log("---3년차 - 3개월 까지만 노출---");
+                        console.log("---3년차 - 3개월 까지만 노출---")
                         return $lc_cont.html(vcui.template(lb_careSolution_3, data));
                     }
                 } else {
