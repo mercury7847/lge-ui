@@ -666,10 +666,6 @@
         $('select[name="contractInfo"]').on('change', function(e){
             changeContractInfo();
         });
-
-
-        //var careSolution3_mobile_btn = $('.lb-careSolution_3').find('.btn');
-        //console.log("zzzzz", careSolution3_mobile_btn);
     }
 
     
