@@ -215,7 +215,7 @@
                 '{{#else}}' + 
 
                     '<div class="lb-btn">' +
-                        '<button type="button" class="btn"><span>LG전자 멤버십 바로가기</span></button>' +
+                        '<a href="https://lgemma.page.link/main" target="_blank" class="btn"><span>LG전자 멤버십 바로가기</span></a>' +
                     '</div>' +
                 '{{/if}}'+
 
@@ -668,7 +668,8 @@
         });
 
 
-     
+        //var careSolution3_mobile_btn = $('.lb-careSolution_3').find('.btn');
+        //console.log("zzzzz", careSolution3_mobile_btn);
     }
 
     
@@ -1560,7 +1561,7 @@
                 if(Date.now() >= (+YearLater3) && Date.now() <= (+YearLater4)) {
                     console.log("------3년차!!!------")
                     if (Date.now() >= (+$lc_join) && Date.now() <= (+MonthLater3)) {
-                        console.log("---3년차 - 3개월 까지만 노출---")
+                        console.log("---3년차 - 3개월 까지만 노출---");
                         return $lc_cont.html(vcui.template(lb_careSolution_3, data));
                     }
                 } else {
