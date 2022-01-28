@@ -5,13 +5,14 @@
 	margin: 0 auto;
 	padding: 0 40px 120px;
 	@include mobile{
-		padding: 0 16px 120px;
+		padding: 0 0 120px;
 	}
 	h2{
 		margin-bottom:16px;
 		font-size:28px;
 		line-height:26px;
 		@include mobile{
+			padding:0 16px;
 			font-size:18px;
 			line-height:21px;
 		}
@@ -20,14 +21,22 @@
 /* card list */
 .catal-list-wrap {
 	margin-top:-40px;
+	@include mobile{
+		margin-top:-36px;
+	}
 	.catal-tab{
 		margin-bottom:42px;
 		background-color: $color-bg-wt;
+		@include mobile{
+			margin-bottom:0;
+		}
         .tabs-wrap {
-            max-width: 1380px + 80px;
+			left:0 !important;
+            max-width: 1380px;
             margin: 0 auto;
 			padding-top:40px;
             text-align: left;
+			background:#fff;
             @include mobile {
                 padding-top: 32px;
             }
@@ -40,12 +49,12 @@
                 background: $color-border;
                 content: '';
             }
-            @media screen and (min-width:(1380px + 80px)) {
-                &:before {
-                    right: 40px;
-                    left: 40px;
-                }
-            }
+			&.fixed{
+				@media screen and (min-width:768px) and (max-width:1460px) {
+					padding-left:40px;
+					padding-right:40px;
+				}
+			}
             .tabs {
                 @include mobile {
                     padding: 0 16px;
@@ -79,6 +88,7 @@
                             content: '';
 							@include mobile{
 								height:1.5px;
+								border-radius:0;
 							}
                         }
                     }
@@ -86,38 +96,46 @@
             }
         }
 	}
-	&.on {
-        &.active {
-            .catal-tab{
-                position: fixed;
-                top: 0;
-                right: 0;
-                left: 0;
-                z-index: 15;
-                //@at-root .mac & {
-                //    right: 0;
-                //}
-				.tabs-wrap{
-					@include pc {
-						padding-right: 40px;
-						padding-left: 40px;
-					}
-				}
-                & ~ .anchor-wrap {
-                    padding-top: 91px;
-                    @include mobile {
-                        padding-top: 74px;
-                    }
-                }
-            }
-        }
-    }
+	// &.on {
+    //     &.active {
+    //         .catal-tab{
+    //             position: fixed;
+    //             top: 0;
+    //             right: 0;
+    //             left: 0;
+    //             z-index: 15;
+    //             //@at-root .mac & {
+    //             //    right: 0;
+    //             //}
+	// 			.tabs-wrap{
+	// 				@include pc {
+	// 					padding-right: 40px;
+	// 					padding-left: 40px;
+	// 				}
+	// 			}
+    //             & ~ .anchor-wrap {
+    //                 padding-top: 91px;
+    //                 @include mobile {
+    //                     padding-top: 74px;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 	.anchor-wrap{
+		@include mobile{
+			background:#f4f4f4;
+		}
 		.anchor-contents{
 			display:block !important;
 			margin-top:80px;
 			&:first-child{
 				margin-top:0;
+			}
+			@include mobile{
+				margin-top:12px;
+				padding:40px 0;
+				background:#fff;
 			}
 		}
 	}
@@ -130,7 +148,10 @@
 		}
 		.catal-card{
 			display:inline-block;
-			box-shadow:1px 2px 16px 0 rgba(0, 0, 0, 0.08);;
+			box-shadow:1px 2px 16px 0 rgba(0, 0, 0, 0.08);
+			@include mobile{
+				box-shadow:1px 2px 8px 0 rgba(0, 0, 0, 0.08);
+			}
 			img{
 				width:100%;
 			}
@@ -139,8 +160,11 @@
 			padding:90px 0 44px;
 			width:50%;
 			text-align:center;
+			@media screen and (max-width:1380px) {
+				padding:90px 5% 44px;
+			}
 			@include mobile{
-				padding:16px 0 28px;
+				padding:16px 0 23px;
 				width:100%;
 			}
 			.catal-card{
@@ -155,9 +179,11 @@
 				display:block;
 				margin-top:24px;
 				font-size:24px;
-			}
-			@media screen and (max-width:1380px) {
-				padding:90px 5% 44px;
+				@include mobile{
+					margin-top:12px;
+					font-size:16px;
+					line-height:22px;
+				}
 			}
 		}
 		.old-catal{
@@ -171,54 +197,67 @@
 				padding:27px 19px;
 				max-width:100%;
 			}
-			.catalog-slider{
-				.slide-track{
-					display:flex;
-					flex-wrap:wrap;
-					.slide-conts{
-						padding:57px 0;
-						width:50%;
-						.slide-item-wrap{
-							position:relative;
-							text-align:center;
-							strong{
-								position:absolute;
-								top:64px;
-								right:-25px;
-								transform:rotate(90deg);
-								font-size:16px;
-								@include mobile{
-									position:relative;
-									margin-top:8px;
-									top:auto;
-									right:auto;
-									transform:rotate(0);
-								}
-							}
-						}
-						&:nth-of-type(even){
-							border-left:1px solid #ddd;
-						}
-						&:nth-of-type(3),&:nth-of-type(4){
-							border-top:1px solid #ddd;
-						}
-						@media screen and (max-width:1380px) {
-							padding:41px 5% 41px;
-							.slide-item-wrap{
-								strong{
-									display:block;
-									position:relative;
-									top:auto;
-									right:auto;
-									margin-top:12px;
-									transform:none;
-								}
-							}
-						}
+			.slide-wrap.catalog-slider{
+				height:100%;
+				.slide-content{
+					height:100%;
+					@include mobile{
+						padding:0 12px;
+					}
+					.slide-track{
+						display:flex;
+						flex-wrap:wrap;
+						height:100%;
 						@include mobile{
-							padding:0;
-							width:143px;
-							border:0 !important;
+							padding:5px 0 0;
+						}
+						.slide-conts{
+							padding:57px 0;
+							width:50%;
+							height:50%;
+							@media screen and (max-width:1380px) {
+								padding:41px 5% 41px;
+							}
+							@include mobile{
+								padding:0 4px;
+								width:143px;
+								border:0 !important;
+							}
+							.slide-item-wrap{
+								position:relative;
+								text-align:center;
+								strong{
+									position:absolute;
+									top:64px;
+									right:-25px;
+									transform:rotate(90deg);
+									font-size:16px;
+									@media screen and (max-width:1380px) {
+										display:block;
+										position:relative;
+										top:auto;
+										right:auto;
+										margin-top:12px;
+										transform:none;
+									}
+									@include mobile{
+										position:relative;
+										margin-top:8px;
+										top:auto;
+										right:auto;
+										transform:rotate(0);
+										font-size:13px;
+										line-height:19px;
+										text-align:left;
+									}
+								}
+							}
+							&:nth-of-type(even){
+								border-left:1px solid #ddd;
+							}
+							&:nth-of-type(3),&:nth-of-type(4){
+								border-top:1px solid #ddd;
+							}
 						}
 					}
 				}
