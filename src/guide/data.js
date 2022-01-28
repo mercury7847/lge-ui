@@ -417,6 +417,7 @@ var res = {
 					"멤버십 가입 정보" : ["/html/MYC/ACCF7039.html","","검수완료"],
 					"멤버십 가입 정보(미가입자)" : ["/html/MYC/ACCF7057.html","","검수완료"],
 					"멤버십 포인트 조회" : ["/html/MYC/ACCF7052.html","","검수완료"],
+					"무상서비스 제품 조회" : ["/html/MYC/ACCF7039_myFreeHistory.html","",""],
 					"영수증 등록" : ["/html/MYC/ACCF7037.html","","검수완료"]
 				}
 				// "알림" : ["/html/MYC/ACCF7062.html","","검수완료"]
