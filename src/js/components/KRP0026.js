@@ -191,6 +191,9 @@
                             self.setAccordionButton();
                         });
                         self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', true);
+                        setTimeout(function() {
+                            self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('scrollToActive');
+                        }, 500);
                     }
 
                     /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
