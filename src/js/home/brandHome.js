@@ -392,6 +392,9 @@
             },
             setSlickDetail: function() { // BTOCSITE-11029
                 var idx = thinQMain.$appTablist.filter('.is-active').index();
+                if(idx != thinQMain.$appTabCont.find('.tab-cont').filter('.is-active').index()) {
+                    thinQMain.$appTabCont.find('.tab-cont').removeClass('is-active').eq(idx).addClass('is-active');
+                }
                 if(window.breakpoint.isMobile) {
                     if(!thinQMain.$appTabContDetail.eq(idx).hasClass('slick-initialized')) {
                         if(thinQMain.$appTabContDetail.eq(idx).width() > 0) thinQMain.$appTabContDetail.eq(idx).slick(thinQMain.appSmartTab.slideContentDetailConfig); 
