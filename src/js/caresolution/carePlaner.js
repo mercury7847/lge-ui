@@ -10,7 +10,7 @@
     // .module-type3 : 케어십_보유제품 모듈
     // .module-type4 : 케어십_용역제품 모듈
     // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
-    // 20220125 BTOCSITE-9177 RAC 관련 서비스 타입 추가
+    // 20220125 BTOCSITE-9177 RAC 관련 서비스 타입 추가 요청
     var _listItemTemplate =
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
