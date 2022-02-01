@@ -1090,14 +1090,18 @@ CS.MD.pagination = function() {
                 pageView = self.options.pageView,
                 pageTotal = self.pageTotal,
                 html = '';
+                pageChkType = document.getElementsByClassName("video-guide"); //BTOCSITE-9921 추가 - 페이지 예외처리 타입(고객지원 > 동영상 가이드)
+
 
             // BTOCSITE-9921 추가 - pageView 값 분리 - S
             // mobile 일 경우, pagination 5개, pc 10개 노출 
             if(vcui.detect.isMobileDevice){
                 pageView = 5;
+            } else if ((!!pageChkType && pageChkType.length != 0) && !vcui.detect.isMobileDevice) {
+                pageView = 5;
             } else {
                 pageView = 10;
-            }
+            }            
             // BTOCSITE-9921 추가 - pageView 값 분리 - E
 
             var startPage = parseInt((page - 1) / pageView) * pageView + 1; 
@@ -1114,10 +1118,12 @@ CS.MD.pagination = function() {
                 }
             }
 
-            if (self.options.lastView && (startPage + pageView <= pageTotal)) {
-                html += '<span class="dot">...</span>';
-                html += '<a href="#" data-page="' + pageTotal + '" title="' + pageTotal + '페이지 보기">' + pageTotal + '</a>';
-            }
+            // BTOCSITE-9921 공통 페이지네이션 수정 '...' 케이스 제거 - S
+            // if (self.options.lastView && (startPage + pageView <= pageTotal)) {
+            //     html += '<span class="dot">...</span>';
+            //     html += '<a href="#" data-page="' + pageTotal + '" title="' + pageTotal + '페이지 보기">' + pageTotal + '</a>';
+            // }
+            // BTOCSITE-9921 공통 페이지네이션 수정 '...' 케이스 제거 - E
 
             if (page > pageView) {
                 self.$prev
@@ -1194,14 +1200,22 @@ CS.MD.pagination = function() {
 
                 if ($this.hasClass(self.options.disabledClass) || $this.attr('aria-disabled') == true) return;
 
-                if (self.options.lastView && ($this.hasClass(self.options.prevClass) || $this.hasClass(self.options.nextClass))) {
-                    self._update(page);
-                } else {    
-                    self.$el.trigger({
-                        type: 'pageClick',
-                        page: page
-                    });
-                }
+                //BTOCSITE-9921 구조 변경 - S   
+                // 분기 구문 제거 (공통 페이지네이션 변경으로 불필요해짐 )
+                // if (self.options.lastView && ($this.hasClass(self.options.prevClass) || $this.hasClass(self.options.nextClass))) {
+                //     self._update(page);
+                // } else {    
+                //     self.$el.trigger({
+                //         type: 'pageClick',
+                //         page: page
+                //     });
+                // }
+
+                self.$el.trigger({
+                    type: 'pageClick',
+                    page: page
+                });
+                //BTOCSITE-9921 구조 변경 - E
             });
         }
     }

@@ -1,9 +1,18 @@
 (function(){
     var detect = vcui.detect;
     var isMobileDevice = detect.isMobileDevice;    
-    var $context = !!$('[data-hash="support"]').length ? $('[data-hash="support"]') : $(document);
-    var contextLeft = !!$('[data-hash="support"]').length ? $context.width() * (Number($context.attr('aria-label').split('/')[0].trim()) - 1) : null;
-    
+
+    if(isMobileDevice) {
+        var $context = $('.swiper-slide-active[data-hash="support"]');
+    } else {
+        var $context = $(document);
+    }
+
+    var $contextLabel = String($context.attr('aria-label'));
+    var contextLeft = !!$('.swiper-slide-active[data-hash="support"]').length ? $context.width() * (Number($contextLabel.split('/')[0].trim()) - 1) : null;
+
+
+
     var supportHome = {
         loginTooltip : function(){
             var $tooltip = $context.find('.tooltip-login');
@@ -1017,7 +1026,18 @@
                 check : '[data-role="today-cookie-check"]',
                 close : '.btn-close'
             },
-            init : function(){
+            init : function(el){
+
+
+                // BTOCSITE-11602 고객지원 팝업 오류 대응
+                if(el) {
+                    $context = $(el);
+                    $contextLabel = String($context.attr('aria-label'));
+                    contextLeft = $context.width() * (Number($contextLabel.split('/')[0].trim()) - 1);
+                }
+
+
+                console.log("popup ");
 
                 if (contextLeft != null){
                     this.el.modal = '<div class="ui_modal_wrap init-type" style="position:fixed; z-index:9000; top:0; left:'+ contextLeft +'px; width:100%; height:100%;"/>'
@@ -1026,8 +1046,6 @@
 
                 var self = this;
                 var $popup = $context.find(self.el.popup);
-                
-
 
                 
                 if($popup.length ) {
@@ -1041,12 +1059,13 @@
                     })
                     $popup.not('.hidden').addClass('active').attr('tabindex', '0');
 
-                    if( $popup.filter('.active').length ) {
+                    if( $(".ui_modal_wrap.init-type").length == 0 && $popup.filter('.active').length ) {
                         //$('html').css('overflow', 'hidden');
+                        console.log("popup wrap");
                         $popup.filter('.active').wrapAll(self.el.modal);
-                        if( $popup.filter('.active').length == 1) {
-                            $context.find('.ui_modal_wrap.init-type').addClass('center-only');
-                        }
+                        // if( $popup.filter('.active').length == 1) {
+                        //     $context.find('.ui_modal_wrap.init-type').addClass('center-only');
+                        // }
                         $popup.filter('.active').stop().fadeIn();
 
                         $popup.filter('.active').first().focus();
@@ -1082,9 +1101,9 @@
                         $curModal.stop().fadeOut(function(){
                             $(this).removeClass('active');
 
-                            if( $modalWrap.find('.popup-init.active').length == 1) {
-                                $modalWrap.addClass('center-only');
-                            }
+                            // if( $modalWrap.find('.popup-init.active').length == 1) {
+                            //     $modalWrap.addClass('center-only');
+                            // }
                         })
                     }
                     e.preventDefault();
@@ -1192,14 +1211,29 @@
             }
         },
         initialize: function(){
-            this.loginTooltip();
-            this.moreShow.init();
-            this.slide.init();
-            this.toggleList.init();
-            this.reservation.init();
-            this.getRegisterdProduct.init();
-            this.modal.init();
-            this.keyword.init();
+            var _this = this;
+            _this.loginTooltip();
+            _this.moreShow.init();
+            _this.slide.init();
+            _this.toggleList.init();
+            _this.reservation.init();
+            _this.getRegisterdProduct.init();
+            _this.modal.init();
+            _this.keyword.init();
+
+            // BTOCSITE-11602 고객지원 팝업 오류 대응
+            if(isMobileDevice) {
+                var isSwipe = !!$('#sw_con').length;
+                if(isSwipe) {
+                    $(window).off('swConChange').on('swConChange',function(e,swiper) {
+                        var currentSlide = swiper.slides[swiper.activeIndex];
+                        
+                        if($(currentSlide).attr('data-hash') === 'support') {
+                            _this.modal.init(currentSlide);
+                        }
+                    })
+                }
+            }
 
             if (lgkorUI.searchParamsToObject('smq') == 'Y') {
                 lgkorUI.setAcecounter('www.lge.co.kr/acecount/mainThinqView.do', '/acecount/mainThinqViewm.do');

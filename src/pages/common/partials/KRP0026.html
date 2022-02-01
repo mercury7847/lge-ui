@@ -12,7 +12,7 @@
 			.align-right : right
 			.align-center : center
 		-->
-		<section class="component KRP0026"
+		<section class="component KRP0026 @@if (context.tabBarType){tabBarType}"
 			data-list-url="/lg5-common/data-ajax/KRP0026/KRP0026.json"
 			data-story-type="storytypetest"
 		>
@@ -21,40 +21,46 @@
 				<!-- tab -->
 				<!-- 210224 클래스명 수정 -->
 				<div class="page-header wide">
-					<div class="tabs-wrap border-type ui_tab ui_smooth_scroll">
-				<!-- //210224 클래스명 수정 -->
-						<ul class="tabs">
-							<li class="on"><a href="#">전체<em class="blind">선택됨</em></a></li>
-							<li><a href="#av">TV/AV</a></li>
-							<li><a href="#it">IT</a></li>
-							<li><a href="#kitchen">주방가전</a></li>
-							<li><a href="#life">생활가전</a></li>
-							<li><a href="#air">에어컨/에어케어</a></li>
-							<li><a href="#mobile">모바일</a></li>
-							<li><a href="#care">케어솔루션</a></li>
-						</ul>
-					</div>
-					@@if (context.tabBarType) {
-					<div class="tabs-bg @@type">
-						<div class="tabs-wrap bar-type ui_tab ui_smooth_scroll">
+					<!-- BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 마크업 수정 -->
+					<div class="fixed-area">
+						<div class="tabs-wrap border-type ui_tab ui_smooth_scroll">
+						<!-- //210224 클래스명 수정 -->
 							<ul class="tabs">
-								<li class="on"><a href="#tab1">전체<em class="blind">선택됨</em></a></li>
-								<li><a href="#tab2">스마트폰</a></li>
-								<li><a href="#tab2">피처폰</a></li>
-								<li><a href="#tab2">스마트 디바이스</a></li>
-								<li><a href="#tab2">스마트</a></li>
+								<li class="on"><a href="#">전체<em class="blind">선택됨</em></a></li>
+								<li><a href="#av">TV/AV</a></li>
+								<li><a href="#it">IT</a></li>
+								<li><a href="#kitchen">주방가전</a></li>
+								<li><a href="#life">생활가전</a></li>
+								<li><a href="#air">에어컨/에어케어</a></li>
+								<li><a href="#mobile">모바일</a></li>
+								<li><a href="#care">케어솔루션</a></li>
 							</ul>
-							<!-- 210224 삭제 -->
-							<!-- @@if (context.tabInBtn) {
-							<div class="btn-area">
-								<a href="#" class="btn border size-m arrow"><span>새로운 기능안내</span></a>
-							</div>
-							} -->
-							<!-- //210224 삭제 -->
+							<button class="accordion-button"><i class="icon"></i></button>
 						</div>
+						<div class="dimmed"></div>
+						@@if (context.tabBarType) {
+							<div class="tabs-bg @@type">
+								<div class="tabs-wrap bar-type ui_tab ui_smooth_scroll">
+									<ul class="tabs">
+										<li class="on"><a href="#tab1">전체<em class="blind">선택됨</em></a></li>
+										<li><a href="#tab2">스마트폰</a></li>
+										<li><a href="#tab2">피처폰</a></li>
+										<li><a href="#tab2">스마트 디바이스</a></li>
+										<li><a href="#tab2">스마트</a></li>
+									</ul>
+									<!-- 210224 삭제 -->
+									<!-- @@if (context.tabInBtn) {
+									<div class="btn-area">
+										<a href="#" class="btn border size-m arrow"><span>새로운 기능안내</span></a>
+									</div>
+									} -->
+									<!-- //210224 삭제 -->
+								</div>
+							</div>
+						}
 					</div>
-				}
-				</div> 
+					<!-- //BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 마크업 수정 -->
+				</div>
 				
 				<!-- // tab -->
 

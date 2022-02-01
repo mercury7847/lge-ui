@@ -864,15 +864,22 @@ vcui.define('ui/calendar', ['jquery', 'vcui'], function ($, core) {
          */
         _compareMonth: function _compareMonth(date) {
             var self = this;
+            var minTime = self.minDate.getTime();
+            var maxTime = self.maxDate.getTime();
+
             date = core.clone(date);
-            date.setDate(self.minDate.getDate());
             date.setHours(0, 0, 0, 0);
 
-            if (date.getTime() < self.minDate.getTime()) {
+            // 최소 기준 날짜 와 이전달/다음달 같은 달이고, 이전달/다음달 날짜 보다 최소 기준 날짜 날짜가 큰경우 오류 수정
+            if(date.getMonth() == self.minDate.getMonth() && date.getDate() < self.minDate.getDate()) {
+                minTime = date.getTime();
+            } 
+
+            if (date.getTime() < minTime) {
                 return -1;
             }
-            date.setDate(self.maxDate.getDate());
-            if (date.getTime() > self.maxDate.getTime()) {
+
+            if (date.getTime() > maxTime) {
                 return 1;
             }
             return 0;

@@ -29,21 +29,21 @@
         '{{#if (pdpUrl && pdpUrl.length > 0)}}</a>{{/if}}' +
     '</li>'
 
-    var dataTypeBuy = 0;
-    var dataTypeFree = 1;
+    // var dataTypeBuy = 0;
+    // var dataTypeFree = 1;
 
     var myMembership = {
         init: function() {
             var self = this;
-            
+
             self.setting();
             vcui.require(['ui/pagination', 'ui/datePeriodFilter'], function () {
-                self.$pagination.eq(dataTypeBuy).vcPagination({scrollTarget:self.titWrap.eq(dataTypeBuy)});
-                self.$pagination.eq(dataTypeFree).vcPagination({scrollTarget:self.titWrap.eq(dataTypeFree)});
-                self.$dateFilter.vcDatePeriodFilter({"dateBetweenCheckValue":"3m","dateBetweenCheckEnable":false});
+                self.$pagination.vcPagination({scrollTarget:self.titWrap[0]});
+                self.$dateFilter.vcDatePeriodFilter({"dateBetweenCheckValue":"3m","dateBetweenCheckEnable":false})
                 self.bindEvents();
 
-                self.$inquiryButton.trigger('click');
+                // self.$inquiryButton.trigger('click');
+                self.requestData();
             });
 
             //self.checkNoData();
@@ -71,8 +71,7 @@
 
             //조회 버튼
             self.$inquiryButton.on('click',function (e) {
-                self.requestData(dataTypeBuy, 1, false);
-                self.requestData(dataTypeFree, 1, true);
+                self.requestData( 1, false);
             });
 
             //멤버십 포인트 종류 라디오버튼
@@ -81,60 +80,61 @@
             });
 
             //페이지
-            self.$pagination.eq(dataTypeBuy).on('page_click', function(e, data) {
-                self.requestData(dataTypeBuy, data, true);
-            });
-
-            self.$pagination.eq(dataTypeFree).on('page_click', function(e, data) {
-                self.requestData(dataTypeFree, data, true);
+            self.$pagination.on('page_click', function(e, data) {
+                self.requestData( data, true);
             });
         },
 
-        requestData: function(dataType, page, showLoading) {
+        requestData: function( page, showLoading) {
             var self = this;
-            var isBuy = (dataType == dataTypeBuy);
-            
+            // var isBuy = (dataType == dataTypeBuy);
+
             var param = self.$dateFilter.vcDatePeriodFilter('getSelectOption');
             param.page = page;
 
             if(showLoading) lgkorUI.showLoading();
-            var ajaxUrl = isBuy ? self.$contWrap.attr('data-buy-url') : self.$contWrap.attr('data-free-url');
+            var ajaxUrl = self.$contWrap.attr('data-url');
+
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                 var data = result.data;
+
+
                 //페이지
-                self.$pagination.eq(dataType).vcPagination('setPageInfo',result.param.pagination);
+                self.$pagination.vcPagination('setPageInfo',result.param.pagination);
 
                 var arr = data instanceof Array ? data : [];
-                var $list = self.$memberlist.eq(dataType).find('ul');
+
+                var $list = self.$memberlist.find('ul');
                 $list.empty();
                 if(arr.length > 0) {
                     arr.forEach(function(item, index) {
                         item.date = vcui.date.format(item.date,'yyyy.MM.dd');
-                        item.store = item.store ? item.store : null; 
+                        item.store = item.store ? item.store : null;
                         item.serviceDt = item.serviceDt ? item.serviceDt : null;
                         $list.append(vcui.template(listItemTemplate, item));
                     });
                 }
-                self.checkNoData(dataType);
+                self.checkNoData();
             });
         },
 
-        checkNoData: function(dataType) {
+
+        checkNoData: function() {
             var self = this;
-            var $list = self.$memberlist.eq(dataType).find('li.item');
+            var $list = self.$memberlist.find('li.item');
             if($list.length > 0) {
-                self.$memberlist.eq(dataType).show();
-                self.$pagination.eq(dataType).show();
-                self.$noData.eq(dataType).hide();
+                self.$memberlist.show();
+                self.$pagination.show();
+                self.$noData.hide();
             } else {
-                self.$memberlist.eq(dataType).hide();
-                self.$pagination.eq(dataType).hide();
-                self.$noData.eq(dataType).show();
+                self.$memberlist.hide();
+                self.$pagination.hide();
+                self.$noData.show();
             }
         },
     };
 
     $(document).ready(function() {
-        myMembership.init();                
+        myMembership.init();
     });
 })();
