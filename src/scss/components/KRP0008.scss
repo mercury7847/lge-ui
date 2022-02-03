@@ -339,6 +339,37 @@
                 a {
                     padding: 0 28px;
                 }
+                // s : BTOCSITE-11452
+                &.on {
+                    &.video, &.youtube {
+                        position:relative;
+                        a:before {
+                            content: '';
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            width: 48px;
+                            height: 48px;
+                            margin: -24px 0 0 -24px;
+                            background: url('/lg5-common/images/btn-video-play.svg') no-repeat 0 0;
+                            background-size: 100% 100%;
+                            border-radius: 50% 50%;
+                            z-index:10;
+                        }
+                    }
+                    &.youtube {
+                        a:before {
+                            width: 68px;
+                            height: 48px;
+                            margin: -24px 0 0 -34px;
+                            background: url('/lg5-common/images/btn-youtube-play.svg') no-repeat 0 0;
+                            background-size: auto 100%;
+                            border-radius: 0;
+                            opacity: 0.9;
+                        }
+                    }
+                }
+                // e : BTOCSITE-11452
             }
         }
         .indi-wrap {
