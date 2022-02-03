@@ -973,28 +973,49 @@
 									line-height:20px;
 								}
 							}
+							/* BTOCSITE-11585 제품 - 이달의 추천 제품 모델명 노출 요청의 건 */
 							.code{
-								display:none;
+								margin-top:2px;
+								font-size:20px;
+								line-height:28px;
+								color:#666;
 							}
-							.price-area{
-								margin-top:25px;
-								@include mobile{
-									position:absolute;
-									bottom:0;
+							.price-area {
+								display: flex;
+								flex-wrap: wrap;
+								flex-direction: row-reverse;
+								justify-content:center;
+								align-items: baseline;			
+								margin-top:20px;
+								.original {
+									position: relative;
+									display: inline-block;
+									margin-left:12px;
+									.price {
+										font-size:20px;
+										line-height:28px;
+										color: #666;
+										text-decoration:line-through;
+										font-weight:500;
+										@include mobile{
+											font-size:16px;
+											line-height:24px;
+										}
+									}
 								}
-								.original{
-									display:none;
-								}
-								.price {
-									font-weight:700;
-									font-size:28px;
-									line-height:36px;
-									@include mobile{
-										font-size:16px;
-										line-height:24px;
+								.total{
+									.price {
+										font-weight:700;
+										font-size:28px;
+										line-height:34px;
+										@include mobile{
+											font-size:16px;
+											line-height:24px;
+										}
 									}
 								}
 							}
+							/* //BTOCSITE-11585 제품 - 이달의 추천 제품 모델명 노출 요청의 건 */
 						}
 					}
 				}
@@ -1144,9 +1165,9 @@
 										color: #666;
 										font-size:16px;
 										line-height:24px;
+										font-weight:500; //BTOCSITE-11585 제품 - 이달의 추천 제품 모델명 노출 요청의 건
 										text-decoration:line-through;
 										@include mobile{
-											display:none;
 											line-height:20px;
 											font-size:14px;
 										}
@@ -1919,6 +1940,7 @@
 								line-height:24px;
 								color:#666;
 								@include mobile{
+									margin-top:5px; //BTOCSITE-11585 제품 - 이달의 추천 제품 모델명 노출 요청의 건
 									font-size:13px;
 									line-height:19px;
 								}
