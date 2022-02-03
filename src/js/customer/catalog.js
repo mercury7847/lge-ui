@@ -83,82 +83,122 @@
             
             self.scrollTab();
 
+
+            
+
             setTimeout(function(){	
                 $('.catal-tab .tabs-wrap').vcSmoothScroll('scrollToActive');	
             }, 200)
         },
         scrollTab: function(){
             var scrollTop = $(window).scrollTop();
-            var catalCont = $('.anchor-contents');
-            var catalLens = catalCont.length;
-            var winHeight = $(window).height();
-            var catalContH = catalCont.height();
-            var hdH = $('.header').height();
-            var breadcrumb = $('.breadcrumb').height();
-            var pageH = $('.page-header').height();
-            var footH = $('.foot-cont').height();
-            var totalH = hdH + breadcrumb + pageH;
+            var scrollTabList = $('.catal-tab .tabs-wrap').find('li');
+            var catalog01 = $("#catalog01").offset().top - 80;
+            var catalog02 = $("#catalog02").offset().top - 80;
+            var catalog03 = $("#catalog03").offset().top - 80;
+            var catalog04 = $("#catalog04").offset().top - 80;
+            var catalog05 = $("#catalog05").offset().top - 80;
+            var catalog06 = $("#catalog06").offset().top - 80;
+            var catalog07 = $("#catalog07").offset().top - 80;
+            var catalog08 = $("#catalog08").offset().top - 80;
+            var catalog09 = $("#catalog09").offset().top - 80;
 
-
-
-            var catalTabH = $('.catal-tab').height();
-            var catalTabScr = $('.catal-tab').offset().top;
-
-
-            var conNumHH = (scrollTop / catalContH);
-            console.log('===conNumHH : ' + conNumHH);
-            var conNumH = conNumHH - 0.6;
-            //var conNum = Math.ceil(conNumH) - 1; //올림
-            //var conNum = Math.round(conNumH); //반올림
-
+            scrollTabList.removeClass('on');
             
-            var conNum = parseInt(conNumH); //버림
-            //console.log('catalCont : ' + catalCont);
-    
-            console.log('hdH : ' + hdH);
-            console.log('breadcrumb : ' + breadcrumb);
-            console.log('pageH : ' + pageH);
-            console.log('totalH : ' + totalH);
-            console.log('catalTabScr : ' + catalTabScr);
-
-            
-            
-    
-            if( scrollTop > totalH) {
-                
-                for( var i = 0; catalLens > i; i++){        
-                    var articleTop = catalCont.eq(i).offset().top;
-                    var articleBottom = articleTop + catalCont.eq(i).outerHeight();
-        
-                }
-                console.log('articleBottom : ' + articleBottom);
-                console.log('winHeight : ' + winHeight);
-                console.log('scrollTop : ' + scrollTop);
-                console.log('catalContH : ' + catalContH);
-                console.log('===높이 : ' + conNumH);
-                console.log('===몇번째 요소인지 : ' + conNum);
-        
-                $('.catal-tab .tabs li').removeClass('on');
-                $('.catal-tab .tabs li').eq(conNum).addClass('on');
-
-                console.log('conNum : ' + conNum);
-                console.log('catalCont.length : ' + catalCont.length);
-
-                if( conNum > 0 ){
-                    conNum -1;
-                }
-                if( conNum >= catalLens) {
-                    console.log('===========')
-                    $('.catal-tab .tabs li').eq(catalLens-1).addClass('on')
-                }
-
-                //var anchorScrollLeft = $('.catal-tab .tabs .on').offset().left;
-                //console.log('★anchorScrollLeft :' +anchorScrollLeft);
-                // $('.catal-tab .tabs-wrap').animate({scrollLeft: anchorScrollLeft + 100}, 200);
-
-                //$('.catal-tab .tabs-wrap.ui_smooth_scroll').vcSmoothScroll('refresh');	
-                
+            if( catalog01 <= scrollTop && catalog02 > scrollTop ) {
+                scrollTabList.eq(0).addClass('on');
+            } else if( catalog02 <= scrollTop && catalog03 > scrollTop ) {
+                scrollTabList.eq(1).addClass('on');
+            } else if( catalog03 <= scrollTop && catalog04 > scrollTop ) {
+                scrollTabList.eq(2).addClass('on');
+            } else if( catalog04 <= scrollTop && catalog05 > scrollTop ) {
+                scrollTabList.eq(3).addClass('on');
+            } else if( catalog05 <= scrollTop && catalog06 > scrollTop ) {
+                scrollTabList.eq(4).addClass('on');
+            } else if( catalog06 <= scrollTop && catalog07 > scrollTop ) {
+                scrollTabList.eq(5).addClass('on');
+            } else if( catalog07 <= scrollTop && catalog08 > scrollTop ) {
+                scrollTabList.eq(6).addClass('on');
+            } else if( catalog08 <= scrollTop && catalog09 > scrollTop ) {
+                scrollTabList.eq(7).addClass('on');
+            } else if( catalog09 <= scrollTop ) {
+                scrollTabList.eq(8).addClass('on');
             }
+            
+
+            
+
+            // var scrollTop = $(window).scrollTop();
+            // var catalCont = $('.anchor-contents');
+            // var catalLens = catalCont.length;
+            // var winHeight = $(window).height();
+            // var catalContH = catalCont.height();
+            // var hdH = $('.header').height();
+            // var breadcrumb = $('.breadcrumb').height();
+            // var pageH = $('.page-header').height();
+            // var footH = $('.foot-cont').height();
+            // var totalH = hdH + breadcrumb + pageH;
+
+
+
+            // var catalTabH = $('.catal-tab').height();
+            // var catalTabScr = $('.catal-tab').offset().top;
+
+
+            // var conNumHH = (scrollTop / catalContH);
+            // console.log('===conNumHH : ' + conNumHH);
+            // var conNumH = conNumHH - 0.6;
+            // //var conNum = Math.ceil(conNumH) - 1; //올림
+            // //var conNum = Math.round(conNumH); //반올림
+
+            
+            // var conNum = parseInt(conNumH); //버림
+            // //console.log('catalCont : ' + catalCont);
+    
+            // console.log('hdH : ' + hdH);
+            // console.log('breadcrumb : ' + breadcrumb);
+            // console.log('pageH : ' + pageH);
+            // console.log('totalH : ' + totalH);
+            // console.log('catalTabScr : ' + catalTabScr);
+
+            
+            
+    
+            // if( scrollTop > totalH) {
+                
+            //     for( var i = 0; catalLens > i; i++){        
+            //         var articleTop = catalCont.eq(i).offset().top;
+            //         var articleBottom = articleTop + catalCont.eq(i).outerHeight();
+        
+            //     }
+            //     console.log('articleBottom : ' + articleBottom);
+            //     console.log('winHeight : ' + winHeight);
+            //     console.log('scrollTop : ' + scrollTop);
+            //     console.log('catalContH : ' + catalContH);
+            //     console.log('===높이 : ' + conNumH);
+            //     console.log('===몇번째 요소인지 : ' + conNum);
+        
+            //     $('.catal-tab .tabs li').removeClass('on');
+            //     $('.catal-tab .tabs li').eq(conNum).addClass('on');
+
+            //     console.log('conNum : ' + conNum);
+            //     console.log('catalCont.length : ' + catalCont.length);
+
+            //     if( conNum > 0 ){
+            //         conNum -1;
+            //     }
+            //     if( conNum >= catalLens) {
+            //         console.log('===========')
+            //         $('.catal-tab .tabs li').eq(catalLens-1).addClass('on')
+            //     }
+
+            //     //var anchorScrollLeft = $('.catal-tab .tabs .on').offset().left;
+            //     //console.log('★anchorScrollLeft :' +anchorScrollLeft);
+            //     // $('.catal-tab .tabs-wrap').animate({scrollLeft: anchorScrollLeft + 100}, 200);
+
+            //     //$('.catal-tab .tabs-wrap.ui_smooth_scroll').vcSmoothScroll('refresh');	
+                
+            // }
         },
         catalSlider: function(){
             $(window).on('breakpointchange.catalSlider', function(e){
