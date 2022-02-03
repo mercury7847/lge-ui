@@ -18,10 +18,10 @@ $(document).ready(function(){
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				adaptiveHeight: true,
-				lazyLoad: 'anticipated', //수정 jsw,
+				lazyLoad: 'anticipated', //수정 jsw
 				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-				touchThreshold: 100,
-				speed: 150
+				speed: 150,
+				touchThreshold: 100
 			});
 		});
 		//$('body').vcLazyLoaderSwitch('reload',$KRC0035);
