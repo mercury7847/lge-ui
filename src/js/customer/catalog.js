@@ -76,15 +76,16 @@
         scrollTab: function(){
             var scrollTop = $(window).scrollTop();
             var scrollTabList = $('.catal-tab .tabs-wrap li');
-            var catalog01 = $("#catalog01").offset().top - 80;
-            var catalog02 = $("#catalog02").offset().top - 80;
-            var catalog03 = $("#catalog03").offset().top - 80;
-            var catalog04 = $("#catalog04").offset().top - 80;
-            var catalog05 = $("#catalog05").offset().top - 80;
-            var catalog06 = $("#catalog06").offset().top - 80;
-            var catalog07 = $("#catalog07").offset().top - 80;
-            var catalog08 = $("#catalog08").offset().top - 80;
-            var catalog09 = $("#catalog09").offset().top - 80;
+            var catalTab = $(".catal-tab").offset().top;
+            var catalog01 = $("#catalog01").offset().top - catalTab;
+            var catalog02 = $("#catalog02").offset().top - catalTab;
+            var catalog03 = $("#catalog03").offset().top - catalTab;
+            var catalog04 = $("#catalog04").offset().top - catalTab;
+            var catalog05 = $("#catalog05").offset().top - catalTab;
+            var catalog06 = $("#catalog06").offset().top - catalTab;
+            var catalog07 = $("#catalog07").offset().top - catalTab;
+            var catalog08 = $("#catalog08").offset().top - catalTab;
+            var catalog09 = $("#catalog09").offset().top - catalTab;
 
             scrollTabList.removeClass('on');
             
