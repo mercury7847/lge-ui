@@ -495,7 +495,7 @@ var goAppUrl = function(path) {
             });
             
             $(function() {
-                if (vcui.detect.isMobileDevice && !isApp()) {
+                if (vcui.detect.isMobileDevice && !isApp() && navigator.userAgent.toLocaleLowerCase().indexOf("kakaotalk") < 0) {
                     var cookie_name = '__LGAPP_DLOG__';
                     if (vcui.Cookie.get(cookie_name) === '' && (isPopUp || $('.pdp-wrap').length >0) ) {
                         if($('#mobile-close-popup').size() === 0 && !!vcui.modal) {
