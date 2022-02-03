@@ -976,11 +976,13 @@
 							}
 							/* BTOCSITE-11585 제품 - 이달의 추천 제품 모델명 노출 요청의 건 */
 							.code{
-								margin-top:2px;
+								display:block;
+								margin-top:8px;
 								font-size:20px;
 								line-height:28px;
 								color:#666;
 								@include mobile{
+									margin-top:4px;
 									font-size:13px;
 									line-height:19px;
 								}
@@ -993,6 +995,9 @@
 								align-items: baseline;			
 								margin-top:20px;
 								@include mobile{
+									position:absolute;
+									bottom:0;
+									font-size: 0;
 									justify-content:flex-end;
 								}
 								.original {
@@ -1147,7 +1152,7 @@
 									line-height:24px;
 									color:#666666;
 									@include mobile{
-										//display:none;
+										margin-top:4px; //BTOCSITE-11585 제품 - 이달의 추천 제품 모델명 노출 요청의 건
 										font-size:13px;
 										line-height:19px;
 									}
