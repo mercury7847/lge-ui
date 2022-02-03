@@ -1734,6 +1734,11 @@
                 $('#pop-pdp-visual').on('modalshown',function(e){
                     var index = $(this).data('selectIndex');
                     self.clickModalThumbnail(index);
+                }).on('modalhidden',function(e){ // BTOCSITE-11452
+                    $(this).find('video').each(function() {
+                        this.pause();
+                        this.currentTime = 0;
+                    })
                 });
 
                 self.$popPdpVisualImage.find('div.zoom-area img').on('load',function(e) {
