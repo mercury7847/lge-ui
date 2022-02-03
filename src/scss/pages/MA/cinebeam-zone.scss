@@ -61,10 +61,8 @@
             }
             .model-list {
                 margin: 13px 0 0;
-                max-height: 46px;
                 color:$color-gray-1;
                 @include font-small;  
-                @include textEllipsisClamp(2);
             }
         }
     }
