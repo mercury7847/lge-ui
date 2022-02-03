@@ -872,6 +872,7 @@
 					padding-right:12px;
 					@include mobile{
 						width:100%;
+						height:135px; //BTOCSITE-11585 제품 - 이달의 추천 제품 모델명 노출 요청의 건
 						padding:0;
 					}
 					a {
@@ -979,6 +980,10 @@
 								font-size:20px;
 								line-height:28px;
 								color:#666;
+								@include mobile{
+									font-size:13px;
+									line-height:19px;
+								}
 							}
 							.price-area {
 								display: flex;
@@ -987,10 +992,16 @@
 								justify-content:center;
 								align-items: baseline;			
 								margin-top:20px;
+								@include mobile{
+									justify-content:flex-end;
+								}
 								.original {
 									position: relative;
 									display: inline-block;
 									margin-left:12px;
+									@include mobile{
+										display:none;
+									}
 									.price {
 										font-size:20px;
 										line-height:28px;
@@ -1039,7 +1050,7 @@
 						}
 						@include mobile{
 							margin-top:8px;
-							height:104px;
+							height:135px;
 							&:first-child{
 								margin-top:8px;
 							}
@@ -1136,7 +1147,9 @@
 									line-height:24px;
 									color:#666666;
 									@include mobile{
-										display:none;
+										//display:none;
+										font-size:13px;
+										line-height:19px;
 									}
 								}
 								.price-area {
@@ -1168,6 +1181,7 @@
 										font-weight:500; //BTOCSITE-11585 제품 - 이달의 추천 제품 모델명 노출 요청의 건
 										text-decoration:line-through;
 										@include mobile{
+											display:none;
 											line-height:20px;
 											font-size:14px;
 										}
