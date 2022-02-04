@@ -216,7 +216,7 @@
             '{{/if}}' +
             '{{#if bizType != "DISPOSABLE"}}'+
             '<div class="product-compare">' +
-                '<a href="#" data-id="{{modelId}}" data-contents="{{#raw modelDisplayName}}" data-b2bcatemapping="{{b2bCateMapping}}"><span>비교하기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                '<a href="#" data-id="{{modelId}}" data-contents="{{#raw modelDisplayName}}" data-b2bcatemapping="{{b2bCateMapping}}" data-care-type="{{careType}}"><span>비교하기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
             '</div>' +
             '{{/if}}'+
         '</div>' +
@@ -1094,14 +1094,23 @@
                     }
                     return curValue;
                 }
+
+                // BTOCSITE-5938-545 care_type 추가
+                var careType = '';
+                if(item.careshipOnlyFlag == "Y" && item.cTypeCount > 0){
+                    careType = 'C'
+                } else {
+                    careType = 'R'
+                }
+
                 /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
                 var ecProduct = {
                     "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
                     "model_id": item.modelId,
-                    "model_sku": item.modelName, 
+                    "model_sku": item.modelName,
                     "model_gubun": getGubunValue(item.bizType),
-                    "price": vcui.number.addComma(item.obsOriginalPrice), 
-                    "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
+                    "price": vcui.number.addComma(item.obsOriginalPrice),
+                    "discounted_price": vcui.number.addComma(item.obsSellingPrice),
                     "brand": "LG",
                     "category": getEcCategoryName(item),
                     "ct_id": item.subCategoryId
@@ -1116,6 +1125,7 @@
 
                 //BTOCSITE-8312 프로젝터>시네빔과 프로빔 스펙비교 예외처리 요청
                 item.b2bCateMapping = item.b2bCateMapping || "N";
+                item.careType = careType; // BTOCSITE-5938-545 care_type 추가
 
                 if( typeof item.obsSellingPriceNumber == "string") {
                     item.isShowPrice = item.obsSellingPriceNumber.replace(/,/g, "");
@@ -1218,6 +1228,7 @@
                     var image = compare.siblings('.product-image');
                     var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
                     var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
+                    var careType = $this.data('careType') // BTOCSITE-5938-545 care type 추가
 
                     var compareObj = {
                         "id": _id,
@@ -1225,7 +1236,8 @@
                         "productName": productName,
                         "productID": productID,
                         "productImg": productImg,
-                        "productAlt": productAlt
+                        "productAlt": productAlt,
+                        "careType": careType // BTOCSITE-5938-545 care type 추가
                     }
                     
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
