@@ -862,7 +862,9 @@
         lgkorUI.requestAjaxData(REQUSET_CARD_URL, sendata, function(result){
         	
         	if(result.data.success == "Y"){ // BTOCSITE-20220126 제휴카드 발급신청 성공시 팝업닫힘오류
-                lgkorUI.alert("", {
+        		careApplyCardCnt++; // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
+        		
+        		lgkorUI.alert("", {
                     title: result.data.alert.title
                 });
             }
