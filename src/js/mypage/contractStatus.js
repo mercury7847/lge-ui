@@ -793,7 +793,9 @@
     //제휴카드 신청
     function setRequestCard(){
         if(associCardType){
-            $(window).trigger("toastshow", "고객님은 이미 제휴카드를 이용중이십니다");
+        	if (associCardStatus == "Y") { // 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생  [ D:고객정보 다름 / Y : 발급성공 / E : 발급실패 / R : 카드사신청완료 / N : 카드사신청이전 ]
+        		$(window).trigger("toastshow", "고객님은 이미 제휴카드를 이용중이십니다");
+        	}
         } else{
             var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
             $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
@@ -847,8 +849,7 @@
         }
         lgkorUI.requestAjaxData(REQUSET_CARD_URL, sendata, function(result){
         	
-            if(result.data.success == "Y"){ // BTOCSITE-20220126 제휴카드 발급신청 성공시 팝업닫힘오류
-
+        	if(result.data.success == "Y"){ // BTOCSITE-20220126 제휴카드 발급신청 성공시 팝업닫힘오류
                 lgkorUI.alert("", {
                     title: result.data.alert.title
                 });
@@ -1369,6 +1370,7 @@
                 $('.payment-info .requestCard-btn, .changePayment-btn').show();
             }
             associCardType = data.paymentInfo.associCardType;
+            associCardStatus = data.paymentInfo.associCardStatus; // 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생
 
             var isAgreeText = "";
             var isAgree = data.memberPointInfo.isAgree;
