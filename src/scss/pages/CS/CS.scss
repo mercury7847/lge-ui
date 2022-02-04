@@ -13,11 +13,11 @@
 
 //FAQ
 @import "CSRF6043";
-
+ 
 //카탈로그
-@import "_BTOCSITE-212";
-
-
+//@import "_BTOCSITE-212";
+@import "_Catalog"; //BTOCSITE-9501 
+ 
 // 210406 임시 텍스트
 .cs-temp-text {
   max-width: 1380px;

@@ -181,26 +181,12 @@ MainSwiper.prototype = {
                     */
 
                     //console.log('slideChange arguments', arguments);
-                }
-                /*
+                },
+                // BTOCSITE-11602 고객지원 팝업 오류 대응
                 'transitionEnd' : function(swiper){
-                    console.log("transitionEnd swiper", swiper );
-                    
-                    var currentSlide = swiper.slides[swiper.activeIndex];
-                    var hash = '/' + $(currentSlide).data().hash;
-                    if (hash == '/home'){
-                        hash = '/';
-                    }
-
-                    if(self.ablePushState) {
-                        history.pushState({}, '', hash);      
-                        self.switchQuickMenu( hash );  
-                        self.ablePushState = false;
-                    }
-                    
-                    
+                    $(window).trigger("swConChange", swiper);
                 }
-                */
+                
                 
             }
         });
