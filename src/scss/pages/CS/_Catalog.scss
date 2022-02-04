@@ -85,6 +85,7 @@
                             width: 100%;
                             height: 2px;
                             background-color: $color-default;
+							border-radius:0;
                             content: '';
 							@include mobile{
 								height:1.5px;
