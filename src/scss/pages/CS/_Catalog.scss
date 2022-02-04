@@ -10,7 +10,7 @@
 	h2{
 		margin-bottom:16px;
 		font-size:28px;
-		line-height:26px;
+		line-height:41px;
 		@include mobile{
 			padding:0 16px;
 			font-size:18px;
@@ -97,41 +97,17 @@
             }
         }
 	}
-	// &.on {
-    //     &.active {
-    //         .catal-tab{
-    //             position: fixed;
-    //             top: 0;
-    //             right: 0;
-    //             left: 0;
-    //             z-index: 15;
-    //             //@at-root .mac & {
-    //             //    right: 0;
-    //             //}
-	// 			.tabs-wrap{
-	// 				@include pc {
-	// 					padding-right: 40px;
-	// 					padding-left: 40px;
-	// 				}
-	// 			}
-    //             & ~ .anchor-wrap {
-    //                 padding-top: 91px;
-    //                 @include mobile {
-    //                     padding-top: 74px;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 	.anchor-wrap{
 		@include mobile{
 			background:#f4f4f4;
 		}
 		.anchor-contents{
 			display:block !important;
-			margin-top:80px;
+			margin-top:48px;
+			padding-top:32px;
 			&:first-child{
 				margin-top:0;
+				padding-top:0;
 			}
 			@include mobile{
 				margin-top:12px;
@@ -170,7 +146,7 @@
 				min-height:auto;
 			}
 			@include mobile{
-				padding:16px 0 23px;
+				padding:0 0 23px;
 				width:100%;
 			}
 			.catal-card{
@@ -284,17 +260,8 @@
 										line-height:19px;
 										text-align:left;
 									}
-									span{
-										display:inline-block;
-									}
 								}
 							}
-							// &:nth-of-type(even){
-							// 	border-left:1px solid #ddd;
-							// }
-							// &:nth-of-type(3),&:nth-of-type(4){
-							// 	border-top:1px solid #ddd;
-							// }
 						}
 					}
 				}

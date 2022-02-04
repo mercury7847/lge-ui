@@ -77,7 +77,6 @@
             var scrollTop = $(window).scrollTop();
             var scrollTabList = $('.catal-tab .tabs-wrap li');
             var catalTab = $(".catal-tab").offset().top;
-            var catalog01 = $("#catalog01").offset().top - catalTab;
             var catalog02 = $("#catalog02").offset().top - catalTab;
             var catalog03 = $("#catalog03").offset().top - catalTab;
             var catalog04 = $("#catalog04").offset().top - catalTab;
