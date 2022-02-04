@@ -423,7 +423,8 @@
     var arsAgreeConfirm = 'N';
     var isClickedarsAgreeConfirmBtn = false;
     var isClickedarsAgreeConfirmCheckBtn = false;
-
+    
+    var careApplyCardCnt; // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
 
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
@@ -792,11 +793,12 @@
 
     //제휴카드 신청
     function setRequestCard(){
-        if(associCardType){
+        if(associCardType) {
         	if (associCardStatus == "Y") { // 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생  [ D:고객정보 다름 / Y : 발급성공 / E : 발급실패 / R : 카드사신청완료 / N : 카드사신청이전 ]
         		$(window).trigger("toastshow", "고객님은 이미 제휴카드를 이용중이십니다");
         	}
-        } else{
+        } else {
+        	console.log(careApplyCardCnt) // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
             var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
             $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
             $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
@@ -1271,7 +1273,7 @@
         mypage.find(".no-data").remove();
         if(data != undefined && data != "" && data != null){
             var info;
-    
+            
             mypage.find(".section-wrap").show();
             
             info = getMaskingData(data.userInfo.user);
@@ -1280,6 +1282,7 @@
             info = getMaskingData(data.userInfo.actualUser);
             changeFieldValue('actual-info', info);
 
+            careApplyCardCnt = data.paymentInfo.careApplyCardCnt; // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
 
             ///BTOCSITE-3407 케어솔루션 레터 및 연차별 혜택 메뉴(페이지)생성 : 파라미터 값 보내는 버튼
             var clParm = data.contractInfo.contractID;
