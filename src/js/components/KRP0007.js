@@ -1095,9 +1095,10 @@
                     return curValue;
                 }
 
-                // BTOCSITE-5938-545 care_type 추가
+                // BTOCSITE-5938-545 care type 추가
                 var careType = '';
-                if(item.careshipOnlyFlag == "Y" && item.cTypeCount > 0){
+
+                if(item.careshipOnlyFlag == "Y" && Number(item.cTypeCount) > 0){
                     careType = 'C'
                 } else {
                     careType = 'R'
