@@ -142,8 +142,12 @@
 	.card-list{
 		display:flex;
 		border:1px solid #ddd;
+		@include pc{
+			min-height:740px;
+		}
 		@include mobile{
 			display:block;
+			min-height:auto;
 			border:0;
 		}
 		.catal-card{
@@ -162,6 +166,7 @@
 			text-align:center;
 			@media screen and (max-width:1380px) {
 				padding:90px 5% 44px;
+				min-height:auto;
 			}
 			@include mobile{
 				padding:16px 0 23px;
@@ -173,6 +178,10 @@
 				max-width:100%;
 				@include mobile{
 					width:228px;
+				}
+				img{
+					max-width:362px;
+					max-height:486px;
 				}
 			}
 			strong{
@@ -187,15 +196,38 @@
 			}
 		}
 		.old-catal{
+			position:relative;
 			width:50%;
 			border-left:1px solid #ddd;
+			@include pc{
+				&:before{
+					content:'';
+					position:absolute;
+					top:0;
+					bottom:0;
+					left:50%;
+					border-left:1px solid #ddd;
+				}
+				&:after{
+					content:'';
+					position:absolute;
+					top:50%;
+					left:0;
+					right:0;
+					border-top:1px solid #ddd;
+				}
+			}
 			@include mobile{
 				width:100%;
 				border-left:0;
 			}
 			.catal-card{
-				padding:27px 19px;
+				padding:22px 19px;
 				max-width:100%;
+				img{
+					max-width:158px;
+					max-height:212px;
+				}
 			}
 			.slide-wrap.catalog-slider{
 				height:100%;
@@ -211,7 +243,7 @@
 						@include mobile{
 							padding:5px 0 0;
 						}
-						.slide-conts{
+						li{
 							padding:57px 0;
 							width:50%;
 							height:50%;
@@ -232,6 +264,7 @@
 									right:-25px;
 									transform:rotate(90deg);
 									font-size:16px;
+									line-height:22px;
 									@media screen and (max-width:1380px) {
 										display:block;
 										position:relative;
@@ -250,14 +283,17 @@
 										line-height:19px;
 										text-align:left;
 									}
+									span{
+										display:inline-block;
+									}
 								}
 							}
-							&:nth-of-type(even){
-								border-left:1px solid #ddd;
-							}
-							&:nth-of-type(3),&:nth-of-type(4){
-								border-top:1px solid #ddd;
-							}
+							// &:nth-of-type(even){
+							// 	border-left:1px solid #ddd;
+							// }
+							// &:nth-of-type(3),&:nth-of-type(4){
+							// 	border-top:1px solid #ddd;
+							// }
 						}
 					}
 				}
