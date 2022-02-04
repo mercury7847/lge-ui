@@ -798,7 +798,17 @@
         		$(window).trigger("toastshow", "고객님은 이미 제휴카드를 이용중이십니다");
         	}
         } else {
-        	console.log(careApplyCardCnt) // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
+        	
+        	// 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert START
+        	if (careApplyCardCnt > 0) {  
+        		lgkorUI.alert("", {
+                    title: "이미 신청정보가 있습니다."
+                });
+        		
+        		return;
+        	} 
+        	// 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert END
+        	
             var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
             $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
             $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
