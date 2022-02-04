@@ -25,7 +25,7 @@
 		margin-top:-36px;
 	}
 	.catal-tab{
-		margin-bottom:42px;
+		margin-bottom:10px;
 		background-color: $color-bg-wt;
 		@include mobile{
 			margin-bottom:0;
@@ -107,7 +107,6 @@
 			padding-top:32px;
 			&:first-child{
 				margin-top:0;
-				padding-top:0;
 			}
 			@include mobile{
 				margin-top:12px;
