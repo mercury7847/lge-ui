@@ -344,12 +344,13 @@ var appInit = function() {
 
         LGEAPPsetArBarcode();
         LGEAPPsetQrCode();
-        $(window).on({
-            resize : function() {
-                LGEAPPsetArBarcode();
-                LGEAPPsetQrCode();
-            }
-        });
+        // 성능개선
+        // $(window).on({
+        //     resize : function() {
+        //         LGEAPPsetArBarcode();
+        //         LGEAPPsetQrCode();
+        //     }
+        // });
     }
 };
 
