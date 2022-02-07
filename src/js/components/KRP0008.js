@@ -483,7 +483,7 @@
                     //         "rtModelSeq": "161383",
                     //     }
                     // ];
-                    var rentalPriceData = {};
+                	var rentalPriceData = {};
                     rentalInfo.forEach(function(item, index) {
 
                         item.freeMonth = item.freeMonth || 0;
