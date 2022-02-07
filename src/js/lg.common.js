@@ -1296,8 +1296,8 @@ var goAppUrl = function(path) {
             var self = this;
             var compareIDs = [];
             var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
-                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id + '?careType=' + item.careType); }); // BTOCSITE-5938-545 care type 추가
-            var compareCookie = compareIDs.join("|");
+                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id + '|' + item.careType); }); // BTOCSITE-5938-545 care type 추가
+            var compareCookie = compareIDs.join(",");
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
         },
