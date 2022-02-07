@@ -2801,7 +2801,8 @@
                         "productName": compareData.productName,
                         "productID": compareId,
                         "productImg": compareData.productImg,
-                        "productAlt": compareData.productAlt
+                        "productAlt": compareData.productAlt,
+                        "careType": lgePdpSendData.careType
                     }
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
                     if(!isAdd) {
