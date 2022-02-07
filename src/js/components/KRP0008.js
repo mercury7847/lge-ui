@@ -500,7 +500,7 @@
                         dataByFee[svcTypeCode] = dataBySvcType; // 네번째 값  BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
                         dataByVisit[visitPerKey] = dataByFee; // 세번째 값
                         dataByDuty[dutyTerm] = dataByVisit; // 두번째 값
-                        rentalPriceData[contractTerm] = dataByDuty; // 첫번째 값
+                        rentalPriceData[contractTerm] = dataByDuty; // 첫번째 값 
 
                         if(item.representChargeFlag == "Y") {
                             selectRtModelSeq = item.rtModelSeq;
