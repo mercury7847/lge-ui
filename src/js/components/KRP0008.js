@@ -553,20 +553,29 @@
                     }
 
                     // 가입비선납 할인 찾기
+//                    var dataByFee = dataByVisit[selectVisitTerm];
+//                    var array = Object.keys(dataByFee);
+//                    for (var i = 0, len = array.length; i < len; i++) {
+//                        if(array[i].representChargeFlag == "Y") {
+//                            rentalSelectBoxIndex4 = i;
+//                            break;
+//                        }
+//                    }
+
                     var dataByFee = dataByVisit[selectVisitTerm];
                     var array = Object.keys(dataByFee);
-                    for (var i = 0, len = array.length; i < len; i++) {
-                        if(array[i].representChargeFlag == "Y") {
-                            rentalSelectBoxIndex4 = i;
-                            break;
+	                for (var i = 0, len = array.length; i < len; i++) {
+	                	if(array[i] == selectRtRgstFeePre) {
+	                		rentalSelectBoxIndex4 = i;
+	                			break;
                         }
                     }
                     
                     // 서비스타입찾기
-                    var array = dataByFee[selectVisitTerm];
+                    var dataBySvcTypeDesc = dataByFee[selectRtRgstFeePre];
                     for (var i = 0, len = array.length; i < len; i++) {
                         if(array[i].representChargeFlag == "Y") {
-                            rentalSelectBoxIndex4 = i;
+                            rentalSelectBoxIndex5 = i;
                             break;
                         }
                     }
