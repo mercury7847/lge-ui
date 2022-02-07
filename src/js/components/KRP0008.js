@@ -1126,8 +1126,16 @@
                         if(typeof outletStockFlag !== 'undefined' && lgkorUI.stringToBool(outletStockFlag)){
                             location.href = url;
                         } else {
+
+                            let msg = '';
+
+                            if(lgePdpSendData.onlineOnlyFlag == "Y" || lgePdpSendData.mixProductFlag == "Y") {
+                                msg = '해당 제품을 전시하는 베스트샵 매장은 없습니다. 하지만 가까운 매장을 찾아 최적의 제품을 상담받으시겠어요?';
+                            } else {
+                                msg = '해당 제품을 전시하는 매장은 없습니다. 하지만 매장에서 제품 상담을 받으실 수는 있습니다. 가까운 매장을 찾아 상담을 진행하시겠어요?';
+                            }
                             lgkorUI.confirm('', {
-                                title:'해당 제품을 전시하는 매장은 없습니다.<br>하지만 매장에서 제품 상담을 받으실 수는 있습니다.<span>가까운 매장을 찾아 상담을 진행하시겠어요?</span>',
+                                title: msg, <!--BTOCSITE-10945 모델 채널/상태별 문구 수정 건 -->
                                 okBtnName: '네',
                                 cancelBtnName: '아니오',
                                 ok: function() {
@@ -2801,7 +2809,8 @@
                         "productName": compareData.productName,
                         "productID": compareId,
                         "productImg": compareData.productImg,
-                        "productAlt": compareData.productAlt
+                        "productAlt": compareData.productAlt,
+                        "careType": lgePdpSendData.careType
                     }
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
                     if(!isAdd) {
