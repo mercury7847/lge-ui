@@ -826,6 +826,22 @@
                 padding: 0;
             }
         }
+        //BTOCSITE-11326
+        .result-tit {
+            .search-content {
+                display: block;
+                > .desc {
+                    margin-bottom: 6px;
+                    @include textEllipsisClamp(2);
+                    @include font($font-medium,24px);
+                    color: $color-default;
+                    font-weight: $font-weight-regular;
+                    @include mobile {
+                        @include font(13px,21px);
+                    }
+                }
+            }
+        }
         .btn-area {
             align-self: center;
             @include mobile {
@@ -839,6 +855,7 @@
             display: inline-block;
             width: 48px;
             height: 48px;
+            margin-left: 30px;
             background: url("/lg5-common/images/icons/btn-play-80.svg") no-repeat 50% 50%;
             background-size: 100% 100%;
 
@@ -848,6 +865,7 @@
                 right: 12px;
                 width: 17px;
                 height: 17px;
+                margin-left: 0;
             }
            span {
                 display: inline-block;
