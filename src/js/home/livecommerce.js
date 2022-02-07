@@ -368,9 +368,9 @@ var lls = {
             arrows: true,
             slidesToShow: 5,
             slidesToScroll: 5,
-            outerEdgeLimit: false,
             infinite:false,
             variableWidth:false,
+            outerEdgeLimit: false,
             prevArrow: self.$highSection.find('.slick-prev'),
             nextArrow: self.$highSection.find('.slick-next'),
             responsive: [
@@ -388,9 +388,8 @@ var lls = {
                   breakpoint: 768,
                   settings: {
                     arrows:false,
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    variableWidth:true,
+                    slidesToShow: 2.2,
+                    slidesToScroll: 1,
                     outerEdgeLimit: true,
                   }
                 }
@@ -440,9 +439,8 @@ var lls = {
                   breakpoint: 768,
                   settings: {
                     arrows:false,
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    variableWidth:true,
+                    slidesToShow: 2.2,
+                    slidesToScroll: 1,
                     outerEdgeLimit: true,
                   }
                 }
