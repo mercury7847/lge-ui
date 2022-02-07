@@ -99,7 +99,6 @@ if ('scrollRestoration' in history) {
                 '<div class="result-tit">' +
                     '<a href="{{url}}">{{#raw title}}</a>' +
                     '{{#if type=="trouble" && content}}<a href="{{url}}" class="search-content"><p class="desc">{{#raw content}}</p></a>{{/if}}' +
-                    '{{#if type=="trouble" && content}}<a href="{{url}}" class="search-content"><p class="desc">{{content}}</p></a>{{/if}}' +
                     '<a href="{{url}}" class="cs">' +
                         '<span class="cs-inner">' +
                             '{{#each (item, index) in category}}{{#if index != 0}}>{{/if}}<span>{{item}}</span>{{/each}}' +
