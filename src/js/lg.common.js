@@ -12,14 +12,10 @@ var goAppUrl = function(path) {
     
 }
 
-// 메인 성능 개선
+// 메인 성능 개선 - jquery passive event 적용
 ;(function($){
-
-
     $.event.special.touchstart = {
         setup: function( _, ns, handle ) {
-
-            console.log("touchstart")
             this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
         }
     };
@@ -41,12 +37,9 @@ var goAppUrl = function(path) {
 
     $.event.special.scroll = {
         setup: function( _, ns, handle ){
-                console.log("scroll %o",handle);
             this.addEventListener("scroll", handle, { passive: true });
         }
     };
-
-
 })(jQuery);
 
 ;(function(global){
