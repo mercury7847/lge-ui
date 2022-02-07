@@ -6,6 +6,7 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
         bindjQuery: true,
         defaults: {
         },
+        prevWinWidth:null,
 
         initialize: function initialize(el, options) {
 
@@ -70,8 +71,8 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
                     });
                 });
 
-                console.log('footer itemList', itemList);
-                console.log('footer toggleList', toggleList);
+                // console.log('footer itemList', itemList);
+                // console.log('footer toggleList', toggleList);
 
 
                 var elements = "";
@@ -150,11 +151,13 @@ vcui.define('common/footer', ['jquery', 'vcui', 'ui/dropdown' ], function ($, co
 
                 self.$pcLinkes.show();
             } else{
-                self.$pcLinkes.hide();
-
-                self._addMobileLinks();
-                self.$mobileLinks.show();
+                if(self.prevWinWidth != winwidth) {
+                    self.$pcLinkes.hide();
+                    self._addMobileLinks();
+                    self.$mobileLinks.show();
+                }
             }
+            self.prevWinWidth = winwidth;
         }
     });
 

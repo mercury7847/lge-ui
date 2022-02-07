@@ -59,11 +59,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 });
 
                 $(window).on('scroll', function(){
-                    var _scrollTop = $(this).scrollTop();
-                    self._scroll(_scrollTop)
+                    self._rafRun(self._mobileGnbSticky(window.scrollY));
                 });
-                // $(window).on('load', function(){
-                // });
             });
 
             var gotourl = self.$el.data('gotoUrl');
@@ -374,17 +371,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 }
             }
 
-            self._mobileGnbSticky(); //BTOCSITE-1967 2차 추가수정
-        },
-
-        _scroll: function(scrollTop){
-            var self = this;
-            var direction = scrollTop > self.prevScrollTop ? 1:-1;
-
-            if( Math.abs(scrollTop - self.prevScrollTop) < 15) {
-                return;
-            }
-            self._mobileGnbSticky(scrollTop, direction)
+            self._rafRun(self._mobileGnbSticky()); //BTOCSITE-1967 2차 추가수정
         },
 
         _arrowState: function(){
@@ -810,10 +797,14 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 			})
         },
 
-        _mobileGnbSticky: function(scrollTop, direction){
+        _mobileGnbSticky: function(scrollTop){
             //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
             var self = this;
             var $scrollContainer = $('body');
+            var direction = scrollTop > self.prevScrollTop ? 1:-1;
+            if( Math.abs(scrollTop - self.prevScrollTop) < 15) {
+                return;
+            }
             
             //BTOCSITE-1967 2차 추가수정 start
             if( window.innerWidth < 768) {
@@ -840,6 +831,22 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             }
             //BTOCSITE-1967 2차 추가수정 end
         },
+
+        _rafRun : function (cb) {
+            var tick = false
+          
+            return function trigger() {
+              if (tick) {
+                return
+              }
+          
+              tick = true
+              return requestAnimationFrame(function task() {
+                tick = false
+                return cb()
+              })
+            }
+          },
 
         _mypageOver: function(){
             var self = this;
