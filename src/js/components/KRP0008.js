@@ -476,7 +476,7 @@
                     //         "rtModelSeq": "161383",
                     //     }
                     // ];
-                    var rentalPriceData = {};
+                	var rentalPriceData = {};
                     rentalInfo.forEach(function(item, index) {
 
                         item.freeMonth = item.freeMonth || 0;
@@ -487,17 +487,17 @@
                         var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음/자가관리' : '1회 / '+item.visitPer+'개월'; //BTOCSITE-7447
                         var visitPerKey  = visitPerTxt;
                         var rtRgstFeePre = ("" + item.rtRgstFeePre);
-                        var svcTypeCode = ("" + item.svcTypeCode); // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
+                        var svcTypeDesc = ("" + item.svcTypeDesc); // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
 
                         // 데이터 재정렬
                         var dataByDuty = rentalPriceData[contractTerm] || {};
                         var dataByVisit = dataByDuty[dutyTerm] || {};
-                        var dataByFee = dataByVisit[visitPerKey] || [];
-                        var dataBySvcType = dataByFee[svcTypeCode] || []; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
+                        var dataByFee = dataByVisit[visitPerKey] || {};
+                        var dataBySvcTypeDesc = dataByFee[rtRgstFeePre] || []; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
                             //dataByFee.push(item);
-                        dataBySvcType.push(item);
+                        dataBySvcTypeDesc.push(item);
 
-                        dataByFee[svcTypeCode] = dataBySvcType; // 네번째 값  BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
+                        dataByFee[rtRgstFeePre] = dataBySvcTypeDesc; // 네번째 값  BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
                         dataByVisit[visitPerKey] = dataByFee; // 세번째 값
                         dataByDuty[dutyTerm] = dataByVisit; // 두번째 값
                         rentalPriceData[contractTerm] = dataByDuty; // 첫번째 값 
@@ -508,6 +508,7 @@
                             selectDutyTerm = dutyTerm;
                             selectVisitTerm =  visitPerTxt;
                             selectRtRgstFeePre = rtRgstFeePre;
+                            selectSvcTypeDesc = svcTypeDesc; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
                         }
                     });
                     self.rentalInfoData = rentalPriceData;
