@@ -918,8 +918,11 @@
 						.img {
 							text-align:center;
 							@include mobile{
+								position:relative;
+								top:50%;
 								width:80px;
 								height:80px;
+								transform:translateY(-50%);
 							}
 							img {
 								width:100%;
@@ -1101,8 +1104,11 @@
 								height:120px;
 								text-align:center;
 								@include mobile{
+									position:relative;
+									top:50%;
 									width:80px;
 									height:80px;
+									transform:translateY(-50%);
 								}
 								img {
 									width:100%;
