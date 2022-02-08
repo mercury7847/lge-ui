@@ -438,15 +438,15 @@ $(function(){
                 self.$tabs.find('a').eq(store.getItem(session_name)).trigger('click');
             }
 
-            if( !vcui.detect.isMobileDevice) {
+            if( !vcui.detect.isMobileDevice ) {
                 self.$tabContent.vcGesture({
                     direction: 'horizontal'
                 }, { passive: false }).on('gestureend', function (e, data) {
                     // gesturestart gesturemove gestureend gesturecancel
                     if (data.direction === 'left') {
-                        ui_product_tab.next();
+                        careRecomTab.next();
                     } else {
-                        ui_product_tab.prev();
+                        careRecomTab.prev();
                     }
                 });
             } else {
