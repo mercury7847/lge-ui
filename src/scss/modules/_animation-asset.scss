@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-@import "../utilities/mixins";
-
 .animation-box {
 	position:relative;
 	& .visual-area + .animation-area {
