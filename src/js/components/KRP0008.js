@@ -2033,30 +2033,59 @@
 
             //렌탈 케어솔루션 계약기간 셀렉트박스 갱신 펑션
             // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+            // 20220208 BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 수정
             rentalInfoSelectBoxUpdate: function(selectBoxIndex, selectData, selectIndex, changeEvent) {
                 var self = this;
                 var optionTemplate = '<option value="{{value}}" {{#if json}}data-item="{{json}}"{{/if}}>{{title}}</option>';
                 var $selectBox = self.$caresolutionRentalInfoSelectBox.eq(selectBoxIndex);
+                
                 if($selectBox.length > 0) {
                     $selectBox.empty();
-                    if(selectData instanceof Array) {
-                        selectData.forEach(function(item, index){
-                            $selectBox.append(vcui.template(optionTemplate,{"value":item.rtRgstFeePre,"title":vcui.number.addComma(item.rtRgstFeePre)+"원","json":JSON.stringify(item)})); // 가입비
-                        });
-                    } else {
-                        for(key in selectData) {
-                            if(selectBoxIndex == 2) {
-                                $selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key,"json":JSON.stringify(selectData[key])}));
-                            } else {
-                                $selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key+"년","json":JSON.stringify(selectData[key])}));
-                            }
-                        }
-                    }
+                    
+                    if(selectData instanceof Array) { // 서비스타입
+                		selectData.forEach(function(item, index){
+                			$selectBox.append(vcui.template(optionTemplate,{"value":item.svcTypeCd,"title":item.svcTypyDesc,"json":JSON.stringify(item)}));
+                		});
+                	} else {
+                		for(key in selectData) {
+                			if(selectBoxIndex == 2) { // 방문주기
+                				$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key,"json":JSON.stringify(selectData[key])}));
+                			} else if (selectBoxIndex == 0 || selectBoxIndex == 1) { // 계약기간, 의무사용기간
+                				$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key+"년","json":JSON.stringify(selectData[key])}));
+                			} else { // 가입비
+                				$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key+"원","json":JSON.stringify(selectData[key])}));
+                			}
+                		}
+                	}
+                    
                     $selectBox.vcSelectbox('update');
                     $selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
 
                     self.rentalInfoBoxUpdate(selectBoxIndex, $selectBox);
                 }
+//                var self = this;
+//                var optionTemplate = '<option value="{{value}}" {{#if json}}data-item="{{json}}"{{/if}}>{{title}}</option>';
+//                var $selectBox = self.$caresolutionRentalInfoSelectBox.eq(selectBoxIndex);
+//                if($selectBox.length > 0) {
+//                	$selectBox.empty();
+//                	if(selectData instanceof Array) {
+//                		selectData.forEach(function(item, index){
+//                			$selectBox.append(vcui.template(optionTemplate,{"value":item.rtRgstFeePre,"title":vcui.number.addComma(item.rtRgstFeePre)+"원","json":JSON.stringify(item)})); // 가입비
+//                		});
+//                	} else {
+//                		for(key in selectData) {
+//                			if(selectBoxIndex == 2) {
+//                				$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key,"json":JSON.stringify(selectData[key])}));
+//                			} else {
+//                				$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key+"년","json":JSON.stringify(selectData[key])}));
+//                			}
+//                		}
+//                	}
+//                	$selectBox.vcSelectbox('update');
+//                	$selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
+//                	
+//                	self.rentalInfoBoxUpdate(selectBoxIndex, $selectBox);
+//                }
             },
 
             //렌탈 케어솔루션 셀렉트 박스 선택에 따른 메세지 수정
