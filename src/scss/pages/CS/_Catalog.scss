@@ -250,11 +250,8 @@
 										transform:none;
 									}
 									@include mobile{
-										position:relative;
-										margin-top:8px;
-										top:auto;
-										right:auto;
-										transform:rotate(0);
+										margin:8px auto 0;
+										max-width:196px;
 										font-size:13px;
 										line-height:19px;
 										text-align:left;
