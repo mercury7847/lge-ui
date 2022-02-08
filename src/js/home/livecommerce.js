@@ -365,6 +365,7 @@ var lls = {
         var self = this;
 
         self.$highSlider.slick({
+            dots: true, // BTOCSITE-9172 (BTOCSITE-6882 신규 WSG 적용 디자인 반영)
             arrows: true,
             slidesToShow: 5,
             slidesToScroll: 5,
@@ -387,6 +388,7 @@ var lls = {
                 {
                   breakpoint: 768,
                   settings: {
+                    dots: false, // BTOCSITE-9172 (BTOCSITE-6882 신규 WSG 적용 디자인 반영)
                     arrows:false,
                     slidesToShow: 2.2,
                     slidesToScroll: 1,
@@ -417,6 +419,7 @@ var lls = {
 
         //방송에 나온 그 제품 슬라이드
         self.$onbroadSlider.slick({
+            dots: true, // BTOCSITE-9172 (BTOCSITE-6882 신규 WSG 적용 디자인 반영)
             arrows: true,
             slidesToShow: 5,
             slidesToScroll: 5,
@@ -438,6 +441,7 @@ var lls = {
                 {
                   breakpoint: 768,
                   settings: {
+                    dots: false, // BTOCSITE-9172 (BTOCSITE-6882 신규 WSG 적용 디자인 반영)
                     arrows:false,
                     slidesToShow: 2.2,
                     slidesToScroll: 1,

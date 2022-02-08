@@ -434,65 +434,40 @@
 
         @include mobile {
             margin:45px auto 0;
-            padding: 0 12px; // BTOCSITE-9172 (BTOCSITE-6882)
+            padding:0 16px;
         }
 
         &__head {
-            margin-bottom:32px; // BTOCSITE-9172 (BTOCSITE-6882)
+            margin-bottom:30px;
             &--title {
                 font-size:32px;
                 text-align: center;
             }
 
             @include mobile {
-                margin-bottom:19px; // BTOCSITE-9172 (BTOCSITE-6882)
+                margin-bottom:12px;
                 &--title {
                     font-size:20px;
-                    line-height: 26px;
                 }
             }
         }
         &__content {
             position: relative;
         }
-
-        .slick-list {
-            @include mobile {
-                padding: 0 12px;
-                margin: 0 -12px;
-            }
-            .slick-track {
-                .slide-item {
-                    width: 20%;
-                    padding: 0 10px;
-                }
-                @include mobile {
-                    display: flex;
-                    padding: 4px;
-                }
-            }
-        }
-        .slide-button-controls {
-            @include mobile {
-                display: none;
-            }
-            .slick-prev.slick-disabled {
-                display: inline-block !important;
-                &::before {
-                    background-image:url('/lg5-common/images/icons/btn-arr-40x40-lt.svg');
-                }
-            }
-        }
-
     }
 
     .recently-highlight {
         &-slider {
             white-space: nowrap;
+            margin-left:-10px;
+            margin-right:-10px;
             
             .slide {
                 &-item {
                     display: inline-block;
+                    width:20%;
+                    padding:0 10px;
+
                     > a {
                         display: block;
                         // s : BTOCSITE-9172
@@ -543,8 +518,20 @@
             }
 
             @include mobile {
+                overflow: visible;
+                margin-left:0;
+                margin-right:0;
+
+                .slick-list {
+                    overflow:visible;
+                    margin:0 -5px;
+                    padding-right:16px;
+                }
+                
                 .slide {
                     &-item {
+                        width:37.5vw !important;
+                        padding:0 5px;
                         // s : BTOCSITE-9172
                         .btn-link {
                             font-size: 12px;
@@ -609,14 +596,22 @@
         }
         &-slider {
             white-space: nowrap;
+            .slick-list {
+                margin:-5px -10px 0;
+                padding:5px 0 15px;
+            }
             .slide {
                 &-item {
+                    display: inline-block;
+                    width:20%;
+                    padding:0 10px;
+                    
                     > a {
                         display: block;
                         max-height:274px;
-                        padding: 20px 16px;
+                        padding:24px 24px 23px;
                         border-radius: 8px;
-                        box-shadow: 1px 2px 6px 0 rgba(0, 0, 0, 0.14);
+                        box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                     }
                 }
                 &-thumb-area {
@@ -643,8 +638,15 @@
             }
 
             @include mobile {
+                .slick-list {
+                    overflow:visible;
+                    margin:-5px -5px 0;
+                }
                 .slide {
                     &-item {
+                        width:37.5vw !important;
+                        padding:0 5px;
+
                         > a {
                             padding:10px 17px 16px;
                         }
