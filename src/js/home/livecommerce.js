@@ -365,12 +365,13 @@ var lls = {
         var self = this;
 
         self.$highSlider.slick({
+            dots: true, // BTOCSITE-9172 2022-02-08
             arrows: true,
             slidesToShow: 5,
             slidesToScroll: 5,
-            outerEdgeLimit: false,
             infinite:false,
             variableWidth:false,
+            outerEdgeLimit: false,
             prevArrow: self.$highSection.find('.slick-prev'),
             nextArrow: self.$highSection.find('.slick-next'),
             responsive: [
@@ -387,10 +388,10 @@ var lls = {
                 {
                   breakpoint: 768,
                   settings: {
+                    dots: false, // BTOCSITE-9172 2022-02-08
                     arrows:false,
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    variableWidth:true,
+                    slidesToShow: 2.2,
+                    slidesToScroll: 1,
                     outerEdgeLimit: true,
                   }
                 }
@@ -418,6 +419,7 @@ var lls = {
 
         //방송에 나온 그 제품 슬라이드
         self.$onbroadSlider.slick({
+            dots: true, // BTOCSITE-9172 2022-02-08
             arrows: true,
             slidesToShow: 5,
             slidesToScroll: 5,
@@ -439,10 +441,10 @@ var lls = {
                 {
                   breakpoint: 768,
                   settings: {
+                    dots: false, // BTOCSITE-9172 2022-02-08
                     arrows:false,
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    variableWidth:true,
+                    slidesToShow: 2.2,
+                    slidesToScroll: 1,
                     outerEdgeLimit: true,
                   }
                 }
