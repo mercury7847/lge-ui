@@ -117,6 +117,7 @@
 	}
 	.card-list{
 		display:flex;
+		width:100%;
 		@include pc{
 			min-height:740px;
 		}
