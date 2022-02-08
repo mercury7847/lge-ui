@@ -390,8 +390,8 @@ var lls = {
                   settings: {
                     dots: false, // BTOCSITE-9172 2022-02-08
                     arrows:false,
-                    slidesToShow: 2.2,
-                    slidesToScroll: 1,
+                    slidesToShow: 2.2, // BTOCSITE-9172 2022-02-08
+                    slidesToScroll: 2, // BTOCSITE-9172 2022-02-08
                     outerEdgeLimit: true,
                   }
                 }
@@ -443,8 +443,8 @@ var lls = {
                   settings: {
                     dots: false, // BTOCSITE-9172 2022-02-08
                     arrows:false,
-                    slidesToShow: 2.2,
-                    slidesToScroll: 1,
+                    slidesToShow: 2.2, // BTOCSITE-9172 2022-02-08
+                    slidesToScroll: 2, // BTOCSITE-9172 2022-02-08
                     outerEdgeLimit: true,
                   }
                 }

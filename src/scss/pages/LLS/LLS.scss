@@ -649,8 +649,8 @@
                     padding-bottom: 16px;
                     > a {
                         display: block;
-                        max-height:274px;
-                        padding: 20px 16px; // BTOCSITE-9172 2022-02-08
+                        max-height:303px; // BTOCSITE-9172 2022-02-08
+                        padding: 32px 16px; // BTOCSITE-9172 2022-02-08
                         border-radius: 8px;
                         box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
                     }
@@ -664,7 +664,7 @@
                     }
                 }
                 &-cont-area {
-                    margin-top:12px;
+                    margin-top:24px; // BTOCSITE-9172 2022-02-08
                 }
                 &-title {
                     $lineHeight:1.56;
@@ -682,14 +682,14 @@
                 .slide {
                     &-item {
                         > a {
-                            padding:10px 17px 16px;
+                            padding: 20px 16px; // BTOCSITE-9172 2022-02-08
                         }
                     }
                     &-thumb-area {
-                        max-width:100px;
+                        max-width:103px; // BTOCSITE-9172 2022-02-08
                     }
                     &-cont-area {
-                        margin-top:12px;
+                        margin-top:15px; // BTOCSITE-9172 2022-02-08
                     }
                     &-title {
                         font-size:13px;
