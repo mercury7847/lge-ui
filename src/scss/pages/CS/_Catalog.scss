@@ -236,11 +236,11 @@
 								text-align:center;
 								strong{
 									position:absolute;
-									top:64px;
-									right:-25px;
 									transform:rotate(90deg);
+									transform-origin:16px 19px; 
 									font-size:16px;
 									line-height:22px;
+									white-space:nowrap;
 									@media screen and (max-width:1380px) {
 										display:block;
 										position:relative;
