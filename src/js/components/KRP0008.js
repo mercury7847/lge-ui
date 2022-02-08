@@ -1618,8 +1618,8 @@
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
 
-                        var array = itemData.map(function(item){
-                            return item.rtRgstFeePre;
+                        var array = Object.keys(itemData).map(function(item){
+                            return item;
                         });
                         var max =array.reduce( function (previous, current) { 
                             return previous > current ? previous:current;
