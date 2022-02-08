@@ -464,28 +464,6 @@ $wide-screen: "(min-width: 1600px)";
     }
 }
 
-
-@mixin loadComponent() {
-    @if ($font == $font-weight-regular) or ($font == $font-weight-bold) {
-        @if $sytle == italic {
-            font-style: italic;
-        } @else if $sytle == normal {
-            font-style: normal;
-        }
-    }
-
-    //font-weight:normal;
-    @if ($font == $font-weight-regular) {
-        font-weight: 400;
-    } @else if ($font == $font-weight-medium) {
-        font-weight: 500;
-    } @else if ($font == $font-weight-bold) {
-        font-weight: 700;
-    } @else {
-        font-weight: 400;
-    }
-}
-
 @mixin boxs ($size) {
     @if $size == w { // wide
         max-width:((1146px * 100%) / 1380px);
