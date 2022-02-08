@@ -1632,12 +1632,39 @@
                     });
 
                     //가입비 선택
+//                    self.$caresolutionRentalInfoSelectBox.eq(3).on('change', function(e,data){
+//                        var selectOption = $(this).vcSelectbox('selectedOption');
+//                        var itemData = $(selectOption).data('item');
+//                        self.updateRentalInfoPrice(itemData);
+//                        self.rentalInfoBoxUpdate(3, $(this));
+//                    });
+                    
+                    // 가입비 선택 BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 수정
                     self.$caresolutionRentalInfoSelectBox.eq(3).on('change', function(e,data){
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
-                        self.updateRentalInfoPrice(itemData);
+
+                        var array = itemData.map(function(item){
+                            return item.visitPer;
+                        });
+                        var max =array.reduce( function (previous, current) { 
+                            return previous > current ? previous:current;
+                        });
+
+                        var selectIndex = array.indexOf(max);
+
                         self.rentalInfoBoxUpdate(3, $(this));
+                        self.rentalInfoSelectBoxUpdate(4,itemData,selectIndex, true);
                     });
+                    
+                    // 서비스타입 선택 BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 수정
+                    self.$caresolutionRentalInfoSelectBox.eq(4).on('change', function(e,data){
+                      var selectOption = $(this).vcSelectbox('selectedOption');
+                      var itemData = $(selectOption).data('item');
+                      self.updateRentalInfoPrice(itemData);
+                      self.rentalInfoBoxUpdate(4, $(this));
+                    });
+
                 };
 
                 //케어십 계약기간
