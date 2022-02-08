@@ -597,8 +597,17 @@
                             var FreePrePerData = visitPerData[key]
                             
                             if(FreePrePerData) {
-	                            self.updateRentalInfoPrice(FreePrePerData[rentalSelectBoxIndex4]);
+	                            // self.updateRentalInfoPrice(FreePrePerData[rentalSelectBoxIndex4]);
 	                            self.rentalInfoSelectBoxUpdate(3,FreePrePerData,rentalSelectBoxIndex4,true);
+	                            
+	                            // 서비스타입 BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
+	                            key = Object.keys(FreePrePerData)[rentalSelectBoxIndex4];
+	                            
+	                            var svcTypeDescData = FreePrePerData[key];
+	                            if(svcTypeDescData) {
+	                            	self.updateRentalInfoPrice(svcTypeDescData[rentalSelectBoxIndex5]);
+	                            	self.rentalInfoSelectBoxUpdate(4,svcTypeDescData,rentalSelectBoxIndex5,true);
+	                            }
                             }
                         }
                     }
