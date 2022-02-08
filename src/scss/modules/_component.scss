@@ -1262,11 +1262,12 @@
 
 }
 
-.component-wrap {
-    .component[class*=KRC] * {
-        word-break:keep-all;
-    }
-}
+/* 메인 성능 개선 체트 */
+// .component-wrap {
+//     .component[class*=KRC] * {
+//         word-break:keep-all;
+//     }
+// }
 
 html.modal-open {
     overflow: hidden;
