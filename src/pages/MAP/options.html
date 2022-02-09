@@ -241,14 +241,15 @@
                 click : function(){
                     var checked = $(this).prop("checked");
                     if(checked){
+                        $("#mktPushAlarmChk").prop("checked", false).trigger("change"); 
                         optModal.open("modalShopInfo", "alertdialog", "<em>마케팅 푸시 알림 변경 안내</em><p>마케팅 푸시 알림을 받으려면 LG전자 서비스 마케팅 정보 수신 동의가 필요합니다.</p>", "확인");
                         $('.btn-modal-confirm').attr('data-href', '#mktPushAlarm');
                         $('.btn-modal-confirm').attr('data-control', 'modal');
                     }
 
-                    $('#mktPushAlarm .ui_push_cancel').off('click').on({
+                    $('#mktPushAlarm .btn-confirm').off('click').on({
                         click : function(){
-                            $("#mktPushAlarmChk").prop("checked", false).trigger("change");     
+                            $("#mktPushAlarmChk").prop("checked", true).trigger("change");     
                         }
                     })
                 }
