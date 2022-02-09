@@ -332,11 +332,13 @@
                 var selectRtRgstFeePre = null
                 var selectDutyTerm = null;
                 var selectVisitTerm = null;
+                var selectSvcTypeDesc = null;
 
                 var rentalSelectBoxIndex1 = 0;
                 var rentalSelectBoxIndex2 = 0;
                 var rentalSelectBoxIndex3 = 0;
                 var rentalSelectBoxIndex4 = 0;
+                var rentalSelectBoxIndex5 = 0;
 
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
                     //test data
@@ -494,7 +496,7 @@
                         var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음/자가관리' : '1회 / '+item.visitPer+'개월'; //BTOCSITE-7447
                         var visitPerKey  = visitPerTxt;
                         var rtRgstFeePre = ("" + item.rtRgstFeePre);
-                        var svcTypeDesc = ("" + item.svcTypeDesc); // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
+                        var svcTypeDesc = (item.svcTypeUseYn === "Y") ? ("" + item.svcTypeDesc) : ""; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
 
                         // 데이터 재정렬
                         var dataByDuty = rentalPriceData[contractTerm] || {};
@@ -542,7 +544,7 @@
                         }
                     }
 
-                    // 방문주기 착기
+                    // 방문주기 찾기
                     var dataByVisit = dataByDuty[selectDutyTerm];
                     var array = Object.keys(dataByVisit);
                     for (var i = 0, len = array.length; i < len; i++) {
@@ -1647,12 +1649,14 @@
                         var array = itemData.map(function(item){
                             return item.visitPer;
                         });
+                        
                         var max =array.reduce( function (previous, current) { 
                             return previous > current ? previous:current;
                         });
 
                         var selectIndex = array.indexOf(max);
-
+                        
+                        
                         self.rentalInfoBoxUpdate(3, $(this));
                         self.rentalInfoSelectBoxUpdate(4,itemData,selectIndex, true);
                     });
@@ -2091,7 +2095,7 @@
                     
                     if(selectData instanceof Array) { // 서비스타입
                 		selectData.forEach(function(item, index){
-                			$selectBox.append(vcui.template(optionTemplate,{"value":item.svcTypeCd,"title":item.svcTypyDesc,"json":JSON.stringify(item)}));
+                			$selectBox.append(vcui.template(optionTemplate,{"value":item.svcTypeCd,"title":item.svcTypeDesc,"json":JSON.stringify(item)}));
                 		});
                 	} else {
                 		for(key in selectData) {
