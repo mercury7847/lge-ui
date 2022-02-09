@@ -833,9 +833,11 @@
                 > .desc {
                     margin-bottom: 6px;
                     @include textEllipsisClamp(2);
+                    max-height: 46px;
                     @include font($font-medium,24px);
                     color: $color-default;
                     font-weight: $font-weight-regular;
+                    white-space: normal;
                     @include mobile {
                         @include font(13px,21px);
                     }

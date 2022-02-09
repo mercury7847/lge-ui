@@ -417,14 +417,14 @@
 
     var requestPartnerCardYn = "";
 
-    var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
+    var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY;
 
     var arsAgree = 'N';
     var arsAgreeConfirm = 'N';
     var isClickedarsAgreeConfirmBtn = false;
     var isClickedarsAgreeConfirmCheckBtn = false;
     
-    var careApplyCardCnt; // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
+    var careApplyCardCnt, associCardType, associCardStatus; // 제휴카드 신청 현황(DB), 제휴카드명, 제휴카드 신청 현황(API) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
 
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
@@ -795,38 +795,52 @@
     function setRequestCard(){
     	// BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert START
     	var bPopupOpenFlag = false;
+    	var bIssuanceCompletedPopupOpenFlag = false; // 발급 프로세스가 모두 완료된 계약에서 사용(Y : 발급성공, // E : 발급실패)
+    	var alertitle = "제휴카드 발급신청";
+    	var alertmsg = "";
+    	
+    	if (careApplyCardCnt > 0) {
+			
+    		$(window).trigger("toastshow", "고객님은 이미 제휴카드 신청내역이 있습니다.");
+    		return;
+    	}
     	
     	if(associCardType) {
         	if (associCardStatus == "Y") { // 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 [D:고객정보 다름 / Y : 발급성공 / E : 발급실패 / R : 카드사신청완료 / N : 카드사신청이전]
-        		
         		// Y : 발급성공
-        		$(window).trigger("toastshow", "고객님은 이미 제휴카드를 이용중이십니다");
-        	} else if (associCardStatus == "N") {
+        		//$(window).trigger("toastshow", "고객님은 이미 제휴카드를 이용중이십니다");
         		
-        		// N : 카드사신청이전
-        		bPopupOpenFlag = true;
-        	} else if (associCardStatus == "R") {
+        		alertmsg = "고객님은 이미 제휴카드를 이용중이십니다.\n신청하시겠습니까?";
+        		bIssuanceCompletedPopupOpenFlag = true;
+        	} else if (associCardStatus == "N" || associCardStatus == "R") {
         		
-        		// R : 카드사신청완료
-        		bPopupOpenFlag = true;
+        		// N : 카드사신청이전 / R : 카드사신청완료
+        		$(window).trigger("toastshow", "고객님은 이미 제휴카드 신청내역이 있습니다.");
         	} else if (associCardStatus == "E") {
         		
         		// E : 발급실패
+        		alertmsg = "고객님이 신청하신 제휴카드가\n정상적으로 발급되지 않았습니다.\n신청하시겠습니까?";
+        		bIssuanceCompletedPopupOpenFlag = true;
         	}
         } else {
-        	
+        	// 신청내역 없음
         	bPopupOpenFlag = true;
         }
     	
+    	if (bIssuanceCompletedPopupOpenFlag) {
+    		lgkorUI.confirm(alertmsg, {
+                title: alertitle,
+                cancelBtnName: "취소",
+                okBtnName: "확인",
+                ok: function(){
+                	var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
+                    $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
+                    $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
+                }
+            });
+    	}
+    	
     	if (bPopupOpenFlag) {
-    		if (careApplyCardCnt > 0) {
-    			
-        		lgkorUI.alert("", {
-                    title: "이미 신청정보가 있습니다."
-                });
-        		
-        		return;
-        	}
     		
     		var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
             $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);

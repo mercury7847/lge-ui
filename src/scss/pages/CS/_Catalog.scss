@@ -5,7 +5,7 @@
 	margin: 0 auto;
 	padding: 0 40px 120px;
 	@include mobile{
-		padding: 0 0 120px;
+		padding: 0 0 60px;
 	}
 	h2{
 		margin-bottom:16px;
@@ -117,14 +117,13 @@
 	}
 	.card-list{
 		display:flex;
-		border:1px solid #ddd;
+		width:100%;
 		@include pc{
 			min-height:740px;
 		}
 		@include mobile{
 			display:block;
 			min-height:auto;
-			border:0;
 		}
 		.catal-card{
 			display:inline-block;
@@ -139,6 +138,7 @@
 		.new-catal{
 			padding:90px 0 44px;
 			width:50%;
+			border:1px solid #ddd;
 			text-align:center;
 			@media screen and (max-width:1380px) {
 				padding:90px 5% 44px;
@@ -147,6 +147,7 @@
 			@include mobile{
 				padding:0 0 23px;
 				width:100%;
+				border:0;
 			}
 			.catal-card{
 				padding:26px 24px;
@@ -174,7 +175,8 @@
 		.old-catal{
 			position:relative;
 			width:50%;
-			border-left:1px solid #ddd;
+			border:1px solid #ddd;
+			border-left:0;
 			@include pc{
 				&:before{
 					content:'';
@@ -195,7 +197,7 @@
 			}
 			@include mobile{
 				width:100%;
-				border-left:0;
+				border:0;
 			}
 			.catal-card{
 				padding:22px 19px;
@@ -236,11 +238,11 @@
 								text-align:center;
 								strong{
 									position:absolute;
-									top:64px;
-									right:-25px;
 									transform:rotate(90deg);
+									transform-origin:18px 16px; 
 									font-size:16px;
 									line-height:22px;
+									white-space:nowrap;
 									@media screen and (max-width:1380px) {
 										display:block;
 										position:relative;
@@ -250,11 +252,8 @@
 										transform:none;
 									}
 									@include mobile{
-										position:relative;
-										margin-top:8px;
-										top:auto;
-										right:auto;
-										transform:rotate(0);
+										margin:8px auto 0;
+										max-width:196px;
 										font-size:13px;
 										line-height:19px;
 										text-align:left;
