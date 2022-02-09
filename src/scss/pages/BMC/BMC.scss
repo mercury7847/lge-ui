@@ -376,6 +376,90 @@
                 padding: 0 16px;
             }
         }
+        .ev-filter {
+            padding: 20px 0;
+            border-top: 2px solid #000;
+
+            &-wrap {
+
+                @include pc {
+                    max-width: 1380px + 80px;
+                    margin: 16px auto -10px;
+                    padding: 0 40px;
+                }
+                @include mobile {
+                    max-width: 100%;
+                    padding: 0 16px;
+                    margin: 10px auto -14px;
+                }
+            }
+
+            .chk-wrap {
+                span + span {
+                    margin-left: 30px;
+                }
+            }
+
+            &-store-search {
+                display: none;
+                background-color: #f4f4f4;
+
+                @include pc {
+                    padding: 24px;
+                    margin-top: 20px;
+
+                    &.is-active {
+                        display: flex;
+                    }
+                }
+                @include mobile {
+                    margin-top: 18px;
+                    padding: 17px 16px;
+
+                    &.is-active {
+                        display: block;
+                    }
+                }
+
+                .select-wrap {
+                    @include pc {
+                        max-width: 255px;
+                        &:not(:first-child) {
+                            margin-left: 8px;
+                        }
+                    }
+
+                    @include mobile {
+                        &:not(:first-child) {
+                            margin-top: 8px;
+                        }
+                    }
+                }
+
+                .btn {
+                    display: none;
+                    &.is-active {
+                        display: inline-block;
+                    }
+
+                    @include tablet {
+                        padding-left: 15px;
+                        padding-right: 15px;
+                    }
+                    &-wrap {
+                        @include pc {
+                           flex: none;
+                           margin-left: 8px;
+                        }
+
+                        @include mobile {
+                           margin-top: 8px;
+                           text-align: center;
+                        }
+                    }
+                }
+            }
+        }
         .tab-contents {
             padding-bottom: 12px;
             &:last-child {
