@@ -795,6 +795,7 @@
     function setRequestCard(){
     	// BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert START
     	var bPopupOpenFlag = false;
+    	var bIssuanceCompletedPopupOpenFlag = false; // 발급 프로세스가 모두 완료된 계약에서 사용(Y : 발급성공, // E : 발급실패)
     	var alertitle = "제휴카드 발급신청";
     	var alertmsg = "";
     	
@@ -810,18 +811,7 @@
         		//$(window).trigger("toastshow", "고객님은 이미 제휴카드를 이용중이십니다");
         		
         		alertmsg = "고객님은 이미 제휴카드를 이용중이십니다.\n신청하시겠습니까?";
-        		
-        		lgkorUI.confirm(alertmsg, {
-                    title: alertitle,
-                    cancelBtnName: "취소",
-                    okBtnName: "확인",
-                    ok: function(){
-                    	var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
-                        $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
-                        $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
-                    }
-                });
-        		
+        		bIssuanceCompletedPopupOpenFlag = true;
         	} else if (associCardStatus == "N" || associCardStatus == "R") {
         		
         		// N : 카드사신청이전 / R : 카드사신청완료
@@ -829,13 +819,26 @@
         	} else if (associCardStatus == "E") {
         		
         		// E : 발급실패
-        		$(window).trigger("toastshow", "고객님이 신청하신 제휴카드가 정상적으로 발급되지 않았습니다.");
-        		bPopupOpenFlag = true;
+        		alertmsg = "고객님이 신청하신 제휴카드가\n정상적으로 발급되지 않았습니다.\n신청하시겠습니까?";
+        		bIssuanceCompletedPopupOpenFlag = true;
         	}
         } else {
         	// 신청내역 없음
         	bPopupOpenFlag = true;
         }
+    	
+    	if (bIssuanceCompletedPopupOpenFlag) {
+    		lgkorUI.confirm(alertmsg, {
+                title: alertitle,
+                cancelBtnName: "취소",
+                okBtnName: "확인",
+                ok: function(){
+                	var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
+                    $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
+                    $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
+                }
+            });
+    	}
     	
     	if (bPopupOpenFlag) {
     		
