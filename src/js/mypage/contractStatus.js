@@ -417,14 +417,14 @@
 
     var requestPartnerCardYn = "";
 
-    var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
+    var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY;
 
     var arsAgree = 'N';
     var arsAgreeConfirm = 'N';
     var isClickedarsAgreeConfirmBtn = false;
     var isClickedarsAgreeConfirmCheckBtn = false;
     
-    var careApplyCardCnt; // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
+    var careApplyCardCnt, associCardType, associCardStatus; // 제휴카드 신청 현황(DB), 제휴카드명, 제휴카드 신청 현황(API) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
 
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
