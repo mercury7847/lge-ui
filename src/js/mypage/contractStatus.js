@@ -816,7 +816,9 @@
                     cancelBtnName: "취소",
                     okBtnName: "확인",
                     ok: function(){
-                    	bPopupOpenFlag = true;
+                    	var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
+                        $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
+                        $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
                     }
                 });
         		
@@ -825,21 +827,13 @@
         		// N : 카드사신청이전 / R : 카드사신청완료
         		$(window).trigger("toastshow", "고객님은 이미 제휴카드 신청내역이 있습니다.");
         	} else if (associCardStatus == "E") {
+        		
         		// E : 발급실패
-        		
-        		alertmsg = "고객님이 신청하신 제휴카드가 정상적으로 발급되지 않았습니다.\n신청하시겠습니까?";
-        		
-        		lgkorUI.confirm(alertmsg, {
-                    title: alertitle,
-                    cancelBtnName: "취소",
-                    okBtnName: "확인",
-                    ok: function(){
-                    	bPopupOpenFlag = true;
-                    }
-                });        		
+        		$(window).trigger("toastshow", "고객님이 신청하신 제휴카드가 정상적으로 발급되지 않았습니다.");
+        		bPopupOpenFlag = true;
         	}
         } else {
-        	
+        	// 신청내역 없음
         	bPopupOpenFlag = true;
         }
     	
