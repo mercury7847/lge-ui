@@ -670,7 +670,7 @@
                     // 서비스타입 찾기
                     var dataBySvcTypeDesc = self.careshipInfoData[selectCareVisitTerm];
                     for (var i = 0, len = dataBySvcTypeDesc.length; i < len; i++) {
-                    	if(array[i].representChargeFlag == "Y") {
+                    	if(dataBySvcTypeDesc[i].representChargeFlag == "Y") {
                     		careSelectBoxIndex2 = i;
                             break;
                         }
@@ -693,6 +693,9 @@
                     if(svcTypeDescData) {
                     	self.updateCareshipInfoPrice(svcTypeDescData[careSelectBoxIndex2]);
                     	self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox2,svcTypeDescData,careSelectBoxIndex2,true);
+                    } else { // 서비스타입 데이터가 없을때
+                    	self.updateCareshipInfoPrice(svcTypeDescData[0]);
+                    	self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox2,svcTypeDescData,0,true);
                     }
                 }
                 
@@ -1723,7 +1726,7 @@
                       var itemData = $(selectOption).data('item');
                       self.updateRentalInfoPrice(itemData);
                       self.rentalInfoBoxUpdate(4, $(this));
-                    });
+                    }); 
 
                 };
 
