@@ -41,7 +41,7 @@
                     //이메일
                     userEmail: {
                         required: true,
-                        pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        pattern: /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/,
                         minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
@@ -164,7 +164,7 @@
             self.$emailInput.on('input', function(e) {
                 var $this = $(this),
                     value = $this.val(),
-                    regex = /[^a-zA-Z0-9.\@]/g;
+                    regex = /[^a-zA-Z0-9._\-\@]/g; 
                 if (regex.test(value)) {
                     $this.val(value.replace(regex, ""));
                     return;
