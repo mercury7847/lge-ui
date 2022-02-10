@@ -827,7 +827,7 @@
             $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
         }
     	
-    	if (bIssuanceCompletedPopupOpenFlag) {
+    	if (bPopupOpenFlag) {
     		lgkorUI.confirm(alertmsg, {
                 title: alertitle,
                 cancelBtnName: "취소",
