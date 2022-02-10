@@ -417,14 +417,14 @@
 
     var requestPartnerCardYn = "";
 
-    var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY, associCardType;
+    var CERTI_ID, BATCH_KEY, CTI_REQUEST_KEY;
 
     var arsAgree = 'N';
     var arsAgreeConfirm = 'N';
     var isClickedarsAgreeConfirmBtn = false;
     var isClickedarsAgreeConfirmCheckBtn = false;
     
-    var careApplyCardCnt; // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
+    var careApplyCardCnt, associCardType, associCardStatus; // 제휴카드 신청 현황(DB), 제휴카드명, 제휴카드 신청 현황(API) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
 
     function init(){
         CONTRACT_INFO = $('.contents.mypage').data('contractInfoUrl');
@@ -793,26 +793,53 @@
 
     //제휴카드 신청
     function setRequestCard(){
+    	// BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert START
+    	var bPopupOpenFlag	= false; // 발급 프로세스가 모두 완료된 계약에서 사용(Y : 발급성공, // E : 발급실패)
+    	var alertitle		= "제휴카드 발급 신청";
+    	var alertmsg		= "";
+    	
     	if(associCardType) {
-        	if (associCardStatus == "Y") { // 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생  [ D:고객정보 다름 / Y : 발급성공 / E : 발급실패 / R : 카드사신청완료 / N : 카드사신청이전 ]
-        		$(window).trigger("toastshow", "고객님은 이미 제휴카드를 이용중이십니다");
+        	if (associCardStatus == "Y") { // 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 [D:고객정보 다름 / Y : 발급성공 / E : 발급실패 / R : 카드사신청완료 / N : 카드사신청이전]
+        		
+        		// Y : 발급성공
+        		alertmsg = "이미 제휴카드를 이용 중입니다.\n다른 카드를 신청하시겠습니까?";
+        		bPopupOpenFlag = true;
+        	} else if (associCardStatus == "N" || associCardStatus == "R") {
+        		
+        		// N : 카드사신청이전 / R : 카드사신청완료
+        		$(window).trigger("toastshow", "이미 신청된 상태입니다.");
+        	} else if (associCardStatus == "E") {
+        		
+        		// E : 발급실패
+        		alertmsg = "신청했던 제휴카드가 정상적으로 발급되지 않았습니다.\n다시 신청하시겠습니까?";
+        		bPopupOpenFlag = true;
         	}
         } else {
-        	
-        	// 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert START
-        	if (careApplyCardCnt > 0) {  
-        		lgkorUI.alert("", {
-                    title: "이미 신청정보가 있습니다."
-                });
-        		
+        	// 신청내역 없음
+        	if (careApplyCardCnt > 0) {
+    			
+        		$(window).trigger("toastshow", "이미 신청된 상태입니다.");
         		return;
-        	} 
-        	// 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert END
-        	
-            var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
+        	}
+    		
+    		var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
             $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
             $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
         }
+    	
+    	if (bIssuanceCompletedPopupOpenFlag) {
+    		lgkorUI.confirm(alertmsg, {
+                title: alertitle,
+                cancelBtnName: "취소",
+                okBtnName: "확인",
+                ok: function(){
+                	var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
+                    $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
+                    $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
+                }
+            });
+    	}
+    	// BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert END
     }
 
     //제휴카드 
@@ -859,19 +886,20 @@
             contractID: $('select[name=contractInfo]').find('option:selected').val(),
             selectCardValue: val
         }
+        
         lgkorUI.requestAjaxData(REQUSET_CARD_URL, sendata, function(result){
-        	
-        	if(result.data.success == "Y"){ // BTOCSITE-20220126 제휴카드 발급신청 성공시 팝업닫힘오류
-        		careApplyCardCnt++; // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
-        		
-        		lgkorUI.alert("", {
-                    title: result.data.alert.title
-                });
-            }
         	
             $('#popup-cardIssue').vcModal('close');
 
             lgkorUI.hideLoading();
+        	
+            if(result.data.status == "success"){ 
+        		careApplyCardCnt++; // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
+        		$(window).trigger("toastshow", "신청이 완료되었습니다.");
+            } else { // fail
+            	$(window).trigger("toastshow", "신청이 실패하였습니다. 다시 시도해주세요.");
+            }
+        	
         }, ajaxMethod);
     }
 

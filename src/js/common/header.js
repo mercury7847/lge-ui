@@ -59,11 +59,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 });
 
                 $(window).on('scroll', function(){
-                    var _scrollTop = $(this).scrollTop();
-                    self._scroll(_scrollTop)
+                    self._rafRun(self._mobileGnbSticky(window.scrollY));
                 });
-                // $(window).on('load', function(){
-                // });
             });
 
             var gotourl = self.$el.data('gotoUrl');
@@ -124,9 +121,8 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
         _setting: function(){
             var self = this;
-
+            self.$scrollContainer = $('body'); // 메인 성늧 개선
             self.outTimer = null;
-
             self.$mypage = self.$el.find('.header-top .shortcut .mypage');
             self.$aboutCompany = self.$el.find(".about-company"); 		//210820 add about-company;
 
@@ -167,7 +163,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$superCategoryAnchor = $('.superCategory > li > a');
             self.$subCategory = $('.subCategory');
 
-   
             // BTOCSITE-1814
             // pc 상태 on class 붙히는곳
             vcui.require(['ui/smoothScroll'], function (){
@@ -374,17 +369,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 }
             }
 
-            self._mobileGnbSticky(); //BTOCSITE-1967 2차 추가수정
-        },
-
-        _scroll: function(scrollTop){
-            var self = this;
-            var direction = scrollTop > self.prevScrollTop ? 1:-1;
-
-            if( Math.abs(scrollTop - self.prevScrollTop) < 15) {
-                return;
-            }
-            self._mobileGnbSticky(scrollTop, direction)
+            self._rafRun(self._mobileGnbSticky()); //BTOCSITE-1967 2차 추가수정
         },
 
         _arrowState: function(){
@@ -810,28 +795,31 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 			})
         },
 
-        _mobileGnbSticky: function(scrollTop, direction){
+        _mobileGnbSticky: function(scrollTop){
             //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
             var self = this;
-            var $scrollContainer = $('body');
+            var direction = scrollTop > self.prevScrollTop ? 1:-1;
+            if( Math.abs(scrollTop - self.prevScrollTop) < 15) {
+                return;
+            }
             
             //BTOCSITE-1967 2차 추가수정 start
             if( window.innerWidth < 768) {
-                if( $scrollContainer.hasClass('is-main-sticky-header')) {
+                if( self.$scrollContainer.hasClass('is-main-sticky-header')) {
                     if( scrollTop > 0) {
-                        $scrollContainer.addClass('header-fixed')
+                        if(!self.$scrollContainer.hasClass('header-fixed')) self.$scrollContainer.addClass('header-fixed')
                     } else {
-                        $scrollContainer.removeClass('header-fixed')
+                        if(self.$scrollContainer.hasClass('header-fixed')) self.$scrollContainer.removeClass('header-fixed')
                     }
     
                     if( scrollTop > 84) {
                         if( direction === 1 ) {
-                            $scrollContainer.addClass('scroll-down')
+                            if(!self.$scrollContainer.hasClass('scroll-down')) self.$scrollContainer.addClass('scroll-down')
                         } else if (direction === -1) {
-                            $scrollContainer.removeClass('scroll-down')
+                            if(self.$scrollContainer.hasClass('scroll-down')) self.$scrollContainer.removeClass('scroll-down')
                         }
                     } else {
-                        $scrollContainer.removeClass('scroll-down')
+                        if(self.$scrollContainer.hasClass('scroll-down')) self.$scrollContainer.removeClass('scroll-down')
                     }
                     self.prevScrollTop = scrollTop;
                 }
@@ -840,6 +828,22 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             }
             //BTOCSITE-1967 2차 추가수정 end
         },
+
+        _rafRun : function (cb) {
+            var tick = false
+          
+            return function trigger() {
+              if (tick) {
+                return
+              }
+          
+              tick = true
+              return requestAnimationFrame(function task() {
+                tick = false
+                return cb()
+              })
+            }
+          },
 
         _mypageOver: function(){
             var self = this;
