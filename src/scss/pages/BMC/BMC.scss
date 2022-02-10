@@ -400,11 +400,12 @@
                 }
             }
 
-            &-store-search {
+            &-shop {
                 display: none;
                 background-color: #f4f4f4;
 
                 @include pc {
+                    height: 100px;
                     padding: 24px;
                     margin-top: 20px;
 
@@ -437,16 +438,16 @@
                 }
 
                 .btn {
-                    display: none;
-                    &.is-active {
-                        display: inline-block;
-                    }
-
                     @include tablet {
                         padding-left: 15px;
                         padding-right: 15px;
                     }
                     &-wrap {
+                        display: none;
+                        &.is-active {
+                            display: inline-block;
+                        }
+
                         @include pc {
                            flex: none;
                            margin-left: 8px;

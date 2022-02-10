@@ -15,9 +15,14 @@
         <main class="container">
             <!-- event -->
             <!-- 2021.2.10 data-cart-url, data-sibling-url 추가-->
+            <!-- BTOCSITE-11191 data-product-url, data-local-url, data-shop-url 추가 -->
             <div class="contents event exhibition"
                 data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
                 data-sibling-url="/lg5-common/data-ajax/KRP0007/retrieveSiblingProductInfo.json"
+                data-product-url="/lg5-common/data-ajax/exhibitions/productList.json"
+                data-local-url="/lg5-common/data-ajax/exhibitions/localList.json"
+                data-shop-url="/lg5-common/data-ajax/exhibitions/shopList.json"
+
             ><!-- 210126 수정 - .exhibition 추가 -->
                 <div class="cont-wrap">
                     <div class="ev-detail-wrap">
@@ -161,39 +166,55 @@
                                 <div class="ev-filter">
                                     <div class="ev-filter-sort chk-wrap">
                                         <span>
-                                            <input type="radio" id="evFilterSortAll" name="evFilterSort" checked>
+                                            <input type="radio" id="evFilterSortAll" value="all" name="evFilterSort" checked>
                                             <label for="evFilterSortAll">전체보기</label>
                                         </span>
 
                                         <span>
-                                            <input type="radio" id="evFilterSortStore" name="evFilterSort">
+                                            <input type="radio" id="evFilterSortStore" value="store" name="evFilterSort">
                                             <label for="evFilterSortStore">재고 보유 지점 확인하기</label>
                                         </span>
                                     </div>
 
-                                    <div class="ev-filter-store-search">
+                                    <div class="ev-filter-shop">
 
                                         <div class="select-wrap">
-                                            <select class="ui_selectbox">
+                                            <select id="evFilterCity" class="ui_selectbox">
                                                 <option value="">시/도 선택</option>
+                                                <option value="서울">서울특별시</option>
+                                                <option value="부산">부산광역시</option>
+                                                <option value="인천">인천광역시</option>
+                                                <option value="대구">대구광역시</option>
+                                                <option value="대전">대전광역시</option>
+                                                <option value="광주">광주광역시</option>
+                                                <option value="울산">울산광역시</option>
+                                                <option value="제주">제주특별자치도</option>
+                                                <option value="경기">경기도</option>
+                                                <option value="경남">경상남도</option>
+                                                <option value="경북">경상북도</option>
+                                                <option value="충남">충청남도</option>
+                                                <option value="충북">충청북도</option>
+                                                <option value="전남">전라남도</option>
+                                                <option value="전북">전라북도</option>
+                                                <option value="강원">강원도</option>
+                                                <option value="세종">세종특별자치시</option>
                                             </select>
                                         </div>
 
                                         <div class="select-wrap">
-                                            <select class="ui_selectbox" disabled>
+                                            <select id="evFilterCounty" class="ui_selectbox" disabled>
                                                 <option value="">구/군 선택</option>
                                             </select>
                                         </div>
 
                                         <div class="select-wrap">
-                                            <select class="ui_selectbox" disabled>
+                                            <select id="evFilterShop" class="ui_selectbox" disabled>
                                                 <option value="">매장 선택</option>
-                                                <option value="0909">베스트샵 용산전자상가점</option>
                                             </select>
                                         </div>
 
                                         <div class="btn-wrap">
-                                            <a href="/lgekor/bestshop/counsel/counselMain.do?device=w&type=PRO_electronics&code=0125&inflow=lgekor&orgcode=0909" class="btn">매장 상담 예약</a>
+                                            <a data-base-url="/lgekor/bestshop/counsel/counselMain.do?device=w&type=PRO_electronics&code=0125&inflow=lgekor" href="#" class="btn">매장 상담 예약</a>
                                         </div>
 
                                     </div>
