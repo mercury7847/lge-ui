@@ -861,27 +861,20 @@ body {
         }
     }
     .mkt-option{
-        .tit-mktpush{
-            margin-bottom:10px;
-            font-size:16px;
-            font-weight:600;
-            line-height:24px;
-            color:#000;
-        }
-        .txt-mktpush{
+        >p{
             margin-bottom:20px;
-            font-size:14px;
-            line-height:22px;
-            &.t-indent{
-                padding-left:17px;
-                text-indent:-17px;;
+            font-size:16px;
+            line-height:24px;
+            >a{
+                font-weight:700;
+                color:#da0f47;
+            }
+            &:first-of-type{
+                margin:0;
+                color:#000;
             }
             &:last-of-type{
                 margin-bottom:0;
-            }
-            em{
-                font-weight:700;
-                color:#da0f47;
             }
         }
     }

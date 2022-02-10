@@ -9,6 +9,8 @@
 //     }
 // }
 
+$carousel_play_btn : 24px; // BTOCSITE-8039 2022-02-09
+
 .component-wrap {
     .component.KRC0032 {
         .component-box {
@@ -74,14 +76,24 @@
                     }
                 }
                 //BTOCSITE-8039-WCMS 컴포넌트 개선 요청 건
-                &.indi-type-bar,
-                &.indi-type-bar-text {
+                &.indi-type-bar {
                     @include pc {
                         .indi-wrap {
                             padding:0 117px;
         
                             .ui_carousel_play {
                                 right:117px;
+                            }
+                        }
+                    }
+                }
+                &.indi-type-bar-text {
+                    @include pc {
+                        .indi-wrap {
+                            padding: 0 117px 0 (117px - $carousel_play_btn);
+        
+                            .ui_carousel_play {
+                                right:117px - $carousel_play_btn;
                             }
                         }
                     }
@@ -138,6 +150,7 @@
                                 width:100%;
                                 animation-name:bars;
                                 animation-duration:5s;
+                                animation-play-state: paused;
     
                                 @keyframes bars {
                                     from { width:0; }
@@ -148,15 +161,11 @@
                     }
                     .ui_carousel_play {
                         .btn-play {
-                            width:26px;
-                            height:26px;
+                            width: $carousel_play_btn;
+                            height: $carousel_play_btn;
                             background-repeat: no-repeat;
                             background-position: 0 0;
-        
-                            @include mobile {
-                                width:24px;
-                                height:24px;
-                            }
+                            outline: 0;
                         }
         
                         &.play {
@@ -219,7 +228,7 @@
                     .ui_carousel_play {
                         position: absolute;
                         right:80px;
-                        bottom:16px;
+                        bottom:15px;
     
                         @include mobile {
                             right:16px;
@@ -235,17 +244,18 @@
                     }
                 }
                 .indi-wrap {
-                    position: static;
+                    position: relative;
                     transform:none !important;
                     left:0;
                     margin:0 auto 24px;
                     max-width:1540px;
                     width:100%;
-                    padding:0 80px;
+                    padding: 0 80px 0 (80px - $carousel_play_btn);
         
                     @include mobile {
+                        $carousel_play_btn: 24px;
                         margin:0 auto 20px;
-                        padding:0 16px;
+                        padding: 0 (16px + $carousel_play_btn) 0 16px;
                     }
         
                     li {
@@ -292,25 +302,25 @@
                     .ui_carousel_play {
                         display: block;
                         position: absolute;
-                        width:100%;
-                        max-width:1540px;
-                        padding:0 80px;
                         margin:0;
-                        left:50%;
-                        right:auto;
-                        transform:translateX(-50%);
-                        bottom:24px;
+                        right: 80px - $carousel_play_btn;
+                        bottom: ($carousel_play_btn / 2 - 2px)*(-1);
                         text-align: right;
                         z-index: 1;
         
                         @include mobile {
-                            width:auto;
-                            left:auto;
-                            transform: none;
-                            padding:0;
-                            top:367px;
-                            right:16px;
-                            bottom:auto;
+                            right: 16px;
+                            bottom: -9.5px;
+                        }
+                        &.play {
+                            .btn-play {
+                                background-image: url('/lg5-common/images/icons/btn-carousel-hero-play-gray.svg') ;
+                            }
+                        }
+                        &.stop {
+                            .btn-play {
+                                background-image: url('/lg5-common/images/icons/btn-carousel-hero-pause-gray.svg');
+                            }
                         }
                     }
                 }
