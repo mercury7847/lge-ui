@@ -671,7 +671,7 @@
                     var dataBySvcTypeDesc = self.careshipInfoData[selectCareVisitTerm];
                     for (var i = 0, len = dataBySvcTypeDesc.length; i < len; i++) {
                     	if(array[i].representChargeFlag == "Y") {
-                    		rentalSelectBoxIndex2 = i;
+                    		careSelectBoxIndex2 = i;
                             break;
                         }
                     }
@@ -680,11 +680,21 @@
                 
 
                 //케어십 계약기간
-//                self.$careshipInfoSelectBox = self.$pdpInfoCareshipService.find('.ui_selectbox:eq(0)');
-//                if(self.careshipInfoData && self.$careshipInfoSelectBox.length > 0) {
-//                    self.updateCareshipInfoPrice(self.careshipInfoData[careSelectIndex]);
-//                    self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,careSelectIndex,true);
-//                }
+                self.$careshipInfoSelectBox = self.$pdpInfoCareshipService.find('.ui_selectbox:eq(0)');
+                self.$careshipInfoSelectBox2 = self.$pdpInfoCareshipService.find('.ui_selectbox:eq(1)');
+                if(self.careshipInfoData && self.$careshipInfoSelectBox.length > 0) {
+                    // self.updateCareshipInfoPrice(self.careshipInfoData[careSelectIndex]);
+                    self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,careSelectBoxIndex1,true);
+                    
+                    //서비스타입 
+                    var key = Object.keys(self.careshipInfoData)[careSelectBoxIndex1];
+                    var svcTypeDescData = self.careshipInfoData[key];
+                    
+                    if(svcTypeDescData) {
+                    	self.updateCareshipInfoPrice(svcTypeDescData[careSelectBoxIndex2]);
+                    	self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox2,svcTypeDescData,careSelectBoxIndex2,true);
+                    }
+                }
                 
                 // 케어십 서비스타입
                 
@@ -2108,15 +2118,21 @@
                 var optionTemplate = '<option value="{{value}}" {{#if json}}data-item="{{json}}"{{/if}}>{{title}}</option>';
                 if($selectBox.length > 0) {
                     $selectBox.empty();
-                    if(selectData instanceof Array) {
+                    if(selectData instanceof Array) { // 서비스타입
                         selectData.forEach(function(item, index){
                             //BTOCSITE-7447
-                            if(item.visitPer == 0){
-                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"방문없음(자가관리)", "json":JSON.stringify(item)}));
-                            }else{
-                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"1회 / "+ item.visitPer + "개월", "json":JSON.stringify(item)}));
-                            }
+//                            if(item.visitPer == 0){
+//                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"방문없음(자가관리)", "json":JSON.stringify(item)}));
+//                            }else{
+//                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"1회 / "+ item.visitPer + "개월", "json":JSON.stringify(item)}));
+//                            }
+                        	// BTOCSITE-9177 수정 (기존 방문주기에서 서비스타입으로 변경)
+                        	$selectBox.append(vcui.template(optionTemplate,{"value":item.svcTypeCd,"title":item.svcTypeDesc,"json":JSON.stringify(item)}));
                         });
+                    } else { // 방문주기
+                    	for(key in selectData) {
+                    		$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key,"json":JSON.stringify(selectData[key])}));
+                    	}
                     }
                     $selectBox.vcSelectbox('update');
                     $selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
