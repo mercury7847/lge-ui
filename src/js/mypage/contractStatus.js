@@ -899,9 +899,11 @@
 
             lgkorUI.hideLoading();
         	
-        	if(result.data.success == "Y"){
+            if(result.data.status == "success"){ 
         		careApplyCardCnt++; // 제휴카드 신청 현황(DB) BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 add
         		$(window).trigger("toastshow", "신청이 완료되었습니다.");
+            } else { // fail
+            	$(window).trigger("toastshow", "신청이 실패하였습니다. 다시 시도해주세요.");
             }
         	
         }, ajaxMethod);
