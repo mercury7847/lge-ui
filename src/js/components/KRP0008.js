@@ -616,18 +616,52 @@
                 }
 
                 //케어십 가격 정보 정리
-                var careSelectIndex = 0;
+//                var careSelectIndex = 0;
+//
+//                self.careshipInfoData = null;
+//                if(typeof careShipInfo !== 'undefined' && careShipInfo.length > 0) {
+//                    self.careshipInfoData = careShipInfo;
+//                    for (var i = 0, len = careShipInfo.length; i < len; i++) {
+//                        if(careShipInfo[i].representChargeFlag == "Y") {
+//                            careSelectIndex = i;
+//                            break;
+//                        }
+//                    }
+//                }
+                
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 START
+                var careSelectBoxIndex1 = 0;
+                var careSelectBoxIndex2 = 0;
+                
+                var selectCareVisitTerm = null;
+                var selectCareSvcTypeDesc = null;
+                
+                var oCareShipInfoData = {};
+                
+                careShipInfo.forEach(function(item, index) {
 
-                self.careshipInfoData = null;
-                if(typeof careShipInfo !== 'undefined' && careShipInfo.length > 0) {
-                    self.careshipInfoData = careShipInfo;
-                    for (var i = 0, len = careShipInfo.length; i < len; i++) {
-                        if(careShipInfo[i].representChargeFlag == "Y") {
-                            careSelectIndex = i;
-                            break;
-                        }
+                    // 1. 방문주기
+                    var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음/자가관리' : '1회 / '+item.visitPer+'개월'; //BTOCSITE-7447
+                    var visitPerKey  = visitPerTxt;
+                    
+                    // 2. 서비스타입
+                    var svcTypeDesc = (item.svcTypeUseYn === "Y") ? ("" + item.svcTypeDesc) : ""; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
+
+                    // 데이터 재정렬
+                    var dataBySvcTypeDesc = oCareShipInfoData[visitPerKey] || [];
+                       
+                    dataBySvcTypeDesc.push(item);
+                      
+                    oCareShipInfoData[visitPerKey] = dataBySvcTypeDesc; // 첫번째값
+
+                    if(item.representChargeFlag == "Y") {
+                        selectCareVisitTerm =  visitPerTxt;
+                        selectCareSvcTypeDesc = svcTypeDesc; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
                     }
-                }
+                });
+                self.careshipInfoData = oCareShipInfoData;
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 END
+                
 
                 //케어십 계약기간
                 self.$careshipInfoSelectBox = self.$pdpInfoCareshipService.find('.ui_selectbox:eq(0)');
@@ -635,6 +669,10 @@
                     self.updateCareshipInfoPrice(self.careshipInfoData[careSelectIndex]);
                     self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,careSelectIndex,true);
                 }
+                
+                // 케어십 서비스타입
+                
+                
 
                 //렌탈 케어솔루션 제휴카드 리스트 정리
                 var isTab = false;
