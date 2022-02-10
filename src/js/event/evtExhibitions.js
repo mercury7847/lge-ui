@@ -424,10 +424,7 @@ var evFilter = {
         // shop code
         if(orgCode) {
             formData.orgCode = orgCode;
-            console.log(orgCode, formData);
         }
-
-
 
         lgkorUI.requestAjaxDataPost(self.productUrl, formData, function(result) {
             var data = result.data;
@@ -438,6 +435,8 @@ var evFilter = {
                 var listItem = self.makeListItem(item);
                 self.$productList.append(listItem);
             });
+
+            goPdpUrl();
         });
     },
 
