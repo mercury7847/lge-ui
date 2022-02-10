@@ -25,7 +25,7 @@
 	}
 	/* //BTOCSITE-10823 시블링 컬러칩 형태 변경 요청 */
 	& input + label:before {
-		background-image:url('/lg5-common/images/colorchip/colorchip_210708.png');
+		background-image:url('/lg5-common/images/colorchip/colorchip_220203.png');
 		// background-image:url('/kr/images/color/colorchip_210521.png');
 		background-size:144px auto;
 		border-radius:0; //BTOCSITE-10823 시블링 컬러칩 형태 변경 요청
@@ -2853,7 +2853,8 @@
 
 		kvadrat_beige: -48px -336px,
 		kvadrat_redwood: -72px -336px,
-		kvadrat_green: -96px -336px
+		kvadrat_green: -96px -336px,
+		stone_claypink_silver: -120px -336px
 	);
 
 	@each $color, $bgPosition in $colorChipData {
