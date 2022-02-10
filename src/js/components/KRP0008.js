@@ -669,8 +669,7 @@
 
                     // 서비스타입 찾기
                     var dataBySvcTypeDesc = self.careshipInfoData[selectCareVisitTerm];
-                    var array = Object.keys(dataBySvcTypeDesc);
-                    for (var i = 0, len = array.length; i < len; i++) {
+                    for (var i = 0, len = dataBySvcTypeDesc.length; i < len; i++) {
                     	if(array[i].representChargeFlag == "Y") {
                     		rentalSelectBoxIndex2 = i;
                             break;
