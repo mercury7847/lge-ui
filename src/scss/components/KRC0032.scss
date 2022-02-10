@@ -165,6 +165,7 @@ $carousel_play_btn : 24px; // BTOCSITE-8039 2022-02-09
                             height: $carousel_play_btn;
                             background-repeat: no-repeat;
                             background-position: 0 0;
+                            outline: 0;
                         }
         
                         &.play {
