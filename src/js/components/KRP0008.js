@@ -629,10 +629,11 @@
 //                    }
 //                }
                 
-                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 START
+             // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 START
                 var careSelectBoxIndex1 = 0;
                 var careSelectBoxIndex2 = 0;
                 
+                var selectCareRtModelSeq = null;
                 var selectCareVisitTerm = null;
                 var selectCareSvcTypeDesc = null;
                 
@@ -655,20 +656,43 @@
                     oCareShipInfoData[visitPerKey] = dataBySvcTypeDesc; // 첫번째값
 
                     if(item.representChargeFlag == "Y") {
+                    	selectCareRtModelSeq = item.rtModelSeq;
                         selectCareVisitTerm =  visitPerTxt;
                         selectCareSvcTypeDesc = svcTypeDesc; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
                     }
                 });
                 self.careshipInfoData = oCareShipInfoData;
+                
+                //최초 기본값 찾기
+                if(selectCareRtModelSeq) {
+                    // 방문주기 찾기
+                    var array = Object.keys(self.careshipInfoData);
+                    for (var i = 0, len = array.length; i < len; i++) {
+                        if(array[i] == selectCareVisitTerm) {
+                        	careSelectBoxIndex1 = i;
+                            break;
+                        }
+                    }
+
+                    // 서비스타입 찾기
+                    var dataBySvcTypeDesc = self.careshipInfoData[selectCareVisitTerm];
+                    var array = Object.keys(dataBySvcTypeDesc);
+                    for (var i = 0, len = array.length; i < len; i++) {
+                    	if(array[i].representChargeFlag == "Y") {
+                    		rentalSelectBoxIndex2 = i;
+                            break;
+                        }
+                    }
+                }
                 // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 END
                 
 
                 //케어십 계약기간
-                self.$careshipInfoSelectBox = self.$pdpInfoCareshipService.find('.ui_selectbox:eq(0)');
-                if(self.careshipInfoData && self.$careshipInfoSelectBox.length > 0) {
-                    self.updateCareshipInfoPrice(self.careshipInfoData[careSelectIndex]);
-                    self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,careSelectIndex,true);
-                }
+//                self.$careshipInfoSelectBox = self.$pdpInfoCareshipService.find('.ui_selectbox:eq(0)');
+//                if(self.careshipInfoData && self.$careshipInfoSelectBox.length > 0) {
+//                    self.updateCareshipInfoPrice(self.careshipInfoData[careSelectIndex]);
+//                    self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,careSelectIndex,true);
+//                }
                 
                 // 케어십 서비스타입
                 
