@@ -25,7 +25,7 @@
 	}
 	/* //BTOCSITE-10823 시블링 컬러칩 형태 변경 요청 */
 	& input + label:before {
-		background-image:url('/lg5-common/images/colorchip/colorchip_220203.png');
+		background-image:url('/lg5-common/images/colorchip/colorchip_220203.png'); //BTOCSITE-11771 오브제컬렉션 체험 신규 컬러 추가 요청
 		// background-image:url('/kr/images/color/colorchip_210521.png');
 		background-size:144px auto;
 		border-radius:0; //BTOCSITE-10823 시블링 컬러칩 형태 변경 요청
@@ -2815,6 +2815,7 @@
 	//[S] BTOCSITE-4224 PLP,PDP 시블링
 	//[S] BTOCSITE-10889 컬러칩 샘플 추가
 	//objet_botanic: -96px -240px, 보타닉 컬러는 기존 선언된 class 와 중복되어 기존소스로 사용하는것으로 함.
+	//BTOCSITE-11771 오브제컬렉션 체험 신규 컬러 추가 요청
 	$colorChipData: (
 		av_charcoal-black: -48px -216px,
 		av_pearl-white: -72px -216px,
