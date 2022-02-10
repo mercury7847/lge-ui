@@ -12,15 +12,14 @@ $(window).ready(function(){
 		//해당 슬라이드 자동재생(autoplay) 멈춤 -BTOCSITE-8039
 		function carouselStop(target){
 			$(target).vcCarousel('pause');
+			setVideoProgressbar(target, false);
 		}
 
 		//슬라이드 이동 시 - 이전 슬라이드의 재생중인 비디오 정지 & 재생시간 초기화 -BTOCSITE-8039
 		function prevVideoPause(slide){
-			$(slide.$slider).find('.ui_carousel_slide').each(function(i) {
-				if($(this).find('video').size() > 0) {
-					$(this).find('video').get(0).currentTime = 0;
-					$(this).find('video').get(0).pause();
-				}
+			$(slide.$slider).find('video').each(function(i) {
+				$(this).get(0).pause();
+				$(this).currentTime = 0;
 			});
 		}
 		//슬라이드 이동 시 - 이전 슬라이드의 활성화된 유튜브레이어 닫기 -BTOCSITE-8039
@@ -30,27 +29,55 @@ $(window).ready(function(){
 			}
 		}
 
+		//비디오 플레이시 바 프로그레스 셋팅 -BTOCSITE-8039
+		function setVideoProgressbar(target, isVisible) {
+			var autoPlay 		= $(target).data('autoplay') != undefined && $(target).data('autoplay') !== "" ? $(target).data('autoplay') : true;
+			var $currentVideo = $(target).find('.ui_carousel_current .animation-area video').filter(':visible');
+			var autoSpeed =  $currentVideo.data('autoSpeed') ? $currentVideo.data('autoSpeed') : 3000;
+			var currentSlide = $(target).vcCarousel('instance').currentSlide;
+			var $indiBar = $(target).find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar');
+			if(isVisible) {
+				// $(target).find('.indi-wrap li').eq(currentSlide).addClass('on');
+				if($currentVideo.length>0) {
+					if($currentVideo.attr('autoplay')!=undefined && $currentVideo.get(0).readyState > 0) {
+						autoSpeed =	($currentVideo.get(0).duration - $currentVideo.get(0).currentTime) * 1000;
+						$(target).vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
+						$indiBar.css({'animation-duration' : $currentVideo.get(0).duration + 's'})
+						$indiBar.css({'animation-play-state' : 'running'})
+						if(autoPlay) carouselPlay(target)
+					}
+				}else {
+					$indiBar.css({'animation-play-state' : 'running'})
+					if(autoPlay) carouselPlay(target)
+				}
+			}else {
+				$indiBar.css({'animation-play-state' : 'paused'})
+			}
+
+		}
+
 		//슬라이드가 화면 중앙에 올 때 이벤트 -BTOCSITE-8039
 		function sectionEnterEvent(target){
-			carouselPlay(target)
-			var $currentVideo = $(target).find('.ui_carousel_current .animation-area video');
-
+			var $currentVideo = $(target).find('.ui_carousel_current .animation-area video').filter(':visible');
+			
 			if(  $currentVideo.length > 0) {
-				if($currentVideo.get(0).hasAttribute('autoplay')) {
+				if($currentVideo.attr('autoplay')!=undefined && $currentVideo.get(0).readyState > 0) {
 					$currentVideo.get(0).play()
 				}
 			}
+			setVideoProgressbar(target, true)
+			
 		}
 
 		//슬라이드가 화면 중앙에서 벗어날 때 이벤트 -BTOCSITE-8039
 		function sectionLeaveEvent(target){
-			carouselStop(target)
 			var $currentVideo = $(target).find('.ui_carousel_current .animation-area video');
-
-			if(  $currentVideo.length > 0) {
-				$currentVideo.get(0).pause()
-				$currentVideo.get(0).currentTime = 0;
-			}
+			$currentVideo.each(function(i) {
+				if($(this).get(0).readyState > 0) {
+					$(this).get(0).pause();
+				}
+			});
+			carouselStop(target)
 		}
 
 		//자동재생 반복 횟수 체크 후 정지  -BTOCSITE-8039
@@ -115,12 +142,28 @@ $(window).ready(function(){
 					var $currentSlide = $(data.$slides[data.currentSlide]);
 					if($currentSlide.attr("ui-modules") == "VideoBox"){
 						//$currentSlide.find("video").get(0).play()
- 					}					
+						$currentSlide.find("video").each(function() {
+							$(this).on('play playing pause ended', function(e) {
+								switch(e.type){
+									case "play":
+										setVideoProgressbar(slide, true)
+										break;
+								}
+							});
+						})
+					}					
 				});
+				$(data.$slides[data.currentSlide+1]).find('video').each(function() {
+					if($(this).get(0).readyState > 0) {
+						$(this).get(0).pause();
+						$(this).get(0).currentTime = 0;
+					}
+				})
 			})
 			.vcCarousel({
 				infinite: true,
-				autoplay: autoPlay,
+				pauseOnHover: false,
+				autoplay: false,
 				autoplaySpeed: autoPlaySpeed,
 				prevArrow:'.btn-arrow.prev',
 				nextArrow:'.btn-arrow.next',
@@ -147,36 +190,27 @@ $(window).ready(function(){
 				var $currentSlide = $(slide.$slides.get(currentSlide));
 				var $indiBar = $slider.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar');
 				var autoSpeed = $slider.data('autoSpeed') ? $slider.data('autoSpeed') : 3000;
-				var $currentVideo = $currentSlide.find('video').get(0);
+				var $currentVideo = $currentSlide.find('video').filter(':visible');
 				if($currentSlide.attr("ui-modules") == "VideoBox"){
-					if($currentVideo.hasAttribute('autoplay')) {
-						autoSpeed =	$currentVideo.duration * 1000;
-						$currentVideo.currentTime = 0;
-						$currentVideo.play();
+					if($currentVideo.attr('autoplay')!==undefined && $currentVideo.get(0).readyState > 0) {
+						$currentVideo.get(0).currentTime = 0;
+						autoSpeed =	$currentVideo.get(0).duration * 1000;
+						$currentVideo.get(0).play();
 					}
 				}
 				slide.$dots.find('button').blur();
-				$indiBar.css({'animation-duration' : autoSpeed/1000 + 's'})
+				$indiBar.css({'animation-duration' : autoSpeed/1000 + 's', 'animation-play-state' : 'running'})
 				$slider.vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
 			});	
 
 			if( autoPlay ) {
 				io.observe(slide);
 			}
-			//비디오 플레이 버튼
-			$(slide).on('click', '.controller-wrap button', function() {
-				var $slider = $($slide.vcCarousel('instance').$slider);
-				var currentSlide = $slide.vcCarousel('instance').currentSlide;
-				var $indiBar = $slider.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar');
-				var video = $(this).parents('.animation-area').find("video").get(0);
-				var autoSpeed = (video.duration - video.currentTime) * 1000;
-
+			$(slide).on('click', '.indi-wrap .ui_carousel_play', function() {
 				$(this).blur();
-				if($(this).hasClass('play')) {
-					$indiBar.css({'animation-duration' : autoSpeed/1000 + 's'});
-					$slider.vcCarousel('setOption', 'autoplaySpeed', autoSpeed);
-				}
+				setVideoProgressbar($(this).parents('.ui_carousel_slider'), $(this).hasClass('stop'))
 			});
+
 		});
 
 		/* BTOCSITE-9207 : 디스클라이머 컴포넌트 추가 */
