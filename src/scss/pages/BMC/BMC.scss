@@ -328,8 +328,6 @@
         .top-inner {
             position: relative;
             .component-wrap {
-                width: auto;
-                padding: 0;
                 top:24px;
                 right:24px;
                 @include mobile {
@@ -556,6 +554,10 @@
 
         @include pc {
             margin-top: -38px;
+        }
+
+        @include mobile {
+            margin-top: -16px;
         }
     }
 
