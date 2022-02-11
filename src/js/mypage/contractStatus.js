@@ -794,7 +794,7 @@
     //제휴카드 신청
     function setRequestCard(){
     	
-    	// BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert START
+    	// BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 START
     	var alertitle		= "제휴카드 발급 신청";
     	var alertmsg		= "";
     	
@@ -851,7 +851,7 @@
             $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
             $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
         }
-    	// BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert END
+    	// BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 END
     }
 
     //제휴카드 
