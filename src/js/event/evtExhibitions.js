@@ -51,6 +51,7 @@ function goPdpUrl() {
 // BTOCSITE-4785 e
 
 // BTOCSITE-11191 지점별 필터 기능 추가
+// evFilter.makeListItem() 에서 사용하는 template
 var evFilterItemTemplate =
 '<li>' +
     '<div class="item evt-item">' +
@@ -170,6 +171,9 @@ var evFilterItemTemplate =
 '</li>';
 
 var evFilter = {
+    /**
+     * 최초 실행 시 필요한 변수 정의 및 이벤트 함수 실행
+     */
     init: function(){
         var self = this;
 
@@ -195,24 +199,29 @@ var evFilter = {
         }
     },
 
+    /**
+     * 이벤트 관련
+     */
     bindEvent: function(){
         var self = this;
 
-        // 재고 보유 지점 확인하기 선택 시 지점선택 영역 노출
+        // 전체보기 또는 재고 보유 매장 확인하기 선택 시
         self.$sort.on('change', function(){
             var currentVal = self.$sort.filter(":checked").val();
+            // 전체보기 선택 시
             if(currentVal == 'all'){
                 self.$shop.removeClass('is-active');
 
-                // 매장 기준으로 상품목록 그려진 상태에서 전체보기 선택 시 전체보기 목록 재호출
+                // 매장 기준으로 상품 목록 그려진 상태에서 전체보기 재선택 했을때는 전체보기 목록을 재호출 처리
                 if(self.$filter.data('orgCode')) {
                     self.$filter.data('orgCode', false);
                     self.requestProductList();
                 }
                 
                 // 전체보기 선택 시 선택했던 지점 셀렉트박스 및 상담예약 버튼 노출 초기화
-                self.selectReset();
+                self.selectAllReset();
             } else {
+                // 재고 보유 매장 확인하기 선택 시
                 self.$shop.addClass('is-active');
             }
         });
@@ -220,47 +229,33 @@ var evFilter = {
         // 시/도 선택 시 구/군 목록 호출
         self.$citySelect.on('change', function(e) {
             if(e.target.value == "") {
-                self.$countySelect.find("option:gt(0)").remove();
-                self.$countySelect.prop('disabled', true);
-                self.$countySelect.vcSelectbox('update');
-
-                self.$shopSelect.find("option:gt(0)").remove();
-                self.$shopSelect.prop('disabled', true);
-                self.$shopSelect.vcSelectbox('update');
+                self.selectSingleReset(null, self.$countySelect, true);
+                self.selectSingleReset(null, self.$shopSelect, true);
 
                 self.$reservationButton.removeClass('is-active');
             } else {
-                self.$countySelect.prop('disabled', false);
-                self.$countySelect.find("option:gt(0)").remove();
-                self.$countySelect.vcSelectbox('update');
-
-                self.$shopSelect.prop('disabled', true);
-                self.$shopSelect.find("option:gt(0)").remove();
-                self.$shopSelect.vcSelectbox('update');
-
-                self.$reservationButton.removeClass('is-active');
+                self.selectSingleReset(null, self.$countySelect, false);
+                self.selectSingleReset(null, self.$shopSelect, true);
 
                 self.requestCountyList(e.target.value);
+
+                self.$reservationButton.removeClass('is-active');
             }
         });
 
         // 구/군 선택 시 매장 목록 호출
         self.$countySelect.on('change', function(e) {
             if(e.target.value == "") {
-                self.$shopSelect.find("option:gt(0)").remove();
-                self.$shopSelect.prop('disabled', true);
-                self.$shopSelect.vcSelectbox('update');
+                self.selectSingleReset(null, self.$shopSelect, true);
 
                 self.$reservationButton.removeClass('is-active');
             } else {
-                self.$shopSelect.prop('disabled', false);
-                self.$shopSelect.vcSelectbox('update');
-                self.$shopSelect.find("option:gt(0)").remove();
+                self.selectSingleReset(null, self.$shopSelect, false);
                 self.requestShopList(self.$citySelect.val(), e.target.value);
             }
         });
 
-        // 매장 선택 시 매장 예약 버튼 노출 및 매장 코드 붙여 (orgCode) href 삽입 및 orgCode 기준 상품목록 재호출
+        // 매장 선택 시 매장 예약 버튼 노출 & 매장 코드 붙여 (orgCode) href 삽입 & orgCode 기준 상품목록 재호출
         self.$shopSelect.on('change', function(e) {
             if(e.target.value == "") {
                 self.$reservationButton.removeClass('is-active');
@@ -277,25 +272,42 @@ var evFilter = {
         });
     },
 
-    selectReset: function(){
+    /**
+     * 개별 셀렉트박스 초기화
+     * @param {string} type 시/군 일 경우에 실행되는 코드가 달라 분기하기 위해 추가
+     * @param {string} element 리셋처리할 셀렉트박스 id
+     * @param {boolean} disabled disabled 처리 여부
+     */
+    selectSingleReset: function(type, element, disabled){
+        if(type == 'city'){
+            $(element).val('');
+            $(element).vcSelectbox('update');
+        } else {
+            $(element).find("option:gt(0)").remove();
+            $(element).prop('disabled', disabled);
+            $(element).vcSelectbox('update');
+        }
+    },
+
+    /**
+     * 전체 셀렉트 박스 초기화
+     */
+    selectAllReset: function(){
         var self = this;
 
         self.$filter.data('orgCode', false);
 
-        self.$citySelect.val('');
-        self.$citySelect.vcSelectbox('update');
-
-        self.$countySelect.find("option:gt(0)").remove();
-        self.$countySelect.prop('disabled', true);
-        self.$countySelect.vcSelectbox('update');
-
-        self.$shopSelect.find("option:gt(0)").remove();
-        self.$shopSelect.prop('disabled', true);
-        self.$shopSelect.vcSelectbox('update');
+        self.selectSingleReset('city', self.$citySelect);
+        self.selectSingleReset(null, self.$countySelect, true);
+        self.selectSingleReset(null, self.$shopSelect, true);
 
         self.$reservationButton.removeClass('is-active');
     },
 
+    /**
+     * 상품 목록 버튼 플래그 관련
+     * @param {string} item 상품 목록 data
+     */
     checkBtnFlag: function(item) {
         if(item.bizType == "PRODUCT") {
             var btnFlag = item.obsCartFlag ?  item.obsCartFlag : (item.buyBtnFlag ? item.buyBtnFlag: "N");
@@ -320,6 +332,10 @@ var evFilter = {
         }
     },
 
+    /**
+     * 상품 목록 가격 플래그 관련
+     * @param {string} item 상품 목록 data
+     */
     checkPriceFlag: function(item) {
         if(item.bizType == "PRODUCT") {
             if(lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule=="enable") {
@@ -346,8 +362,10 @@ var evFilter = {
     },
 
     /**
-     * KRP0007의 상품 목록 생성 코드 기준으로 사용하는 부분만 조합하여 추가함.
+     * 상품 목록 template 처리
+     * KRP0007의 상품 목록 생성 코드를 기초하여 사용하는 부분만 조합하여 추가함.
      * 관련 함수 checkBtnFlag, checkPriceFlag 포함하여 작성됨
+     * @param {string} item 상품 목록 data
      */
     makeListItem: function(item) {
         var self = this;
@@ -418,11 +436,14 @@ var evFilter = {
         return vcui.template(evFilterItemTemplate, item);
     },
 
+    /**
+     * 상품 목록 데이터 호출
+     * @param {string} orgCode 매장 코드
+     */
     requestProductList: function(orgCode) {
         var self = this;
         var formData = {};
 
-        // shop code
         if(orgCode) {
             formData.orgCode = orgCode;
         }
@@ -446,10 +467,13 @@ var evFilter = {
                 self.$productList.hide();
                 self.$noData.show();
             }
-
         });
     },
 
+    /**
+     * 구/군 목록 데이터 호출
+     * @param {string} city 시/도 value
+     */
     requestCountyList: function(city) {
         var self = this;
         var optionTemplate = '<option value="{{value}}">{{title}}</option>';
@@ -469,6 +493,11 @@ var evFilter = {
         });
     },
 
+    /**
+     * 매장 목록 데이터 호출
+     * @param {string} city 시/도 value
+     * @param {string} county 구/군 value
+     */
     requestShopList: function(city, county) {
         var self = this;
         var optionTemplate = '<option value="{{orgCode}}">{{shopName}}</option>';
