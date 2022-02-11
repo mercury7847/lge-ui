@@ -793,8 +793,8 @@
 
     //제휴카드 신청
     function setRequestCard(){
+    	
     	// BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert START
-    	var bPopupOpenFlag	= false; // 발급 프로세스가 모두 완료된 계약에서 사용(Y : 발급성공, // E : 발급실패)
     	var alertitle		= "제휴카드 발급 신청";
     	var alertmsg		= "";
     	
@@ -802,8 +802,25 @@
         	if (associCardStatus == "Y") { // 제휴카드신청현황 BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생 [D:고객정보 다름 / Y : 발급성공 / E : 발급실패 / R : 카드사신청완료 / N : 카드사신청이전]
         		
         		// Y : 발급성공
-        		alertmsg = "이미 제휴카드를 이용 중입니다.\n다른 카드를 신청하시겠습니까?";
-        		bPopupOpenFlag = true;
+        		if (careApplyCardCnt > 0) { // 신청내역 있음
+        			lgkorUI.alert("", {
+                        title: "이미 제휴카드를 이용 중이므로 \n온라인으로 신청할 수 없습니다.\n고객센터로 문의 바랍니다."
+                    });
+                    return;
+        		} else {
+                    alertmsg = "이미 제휴카드를 이용 중입니다.\n다른 카드를 신청하시겠습니까?";
+                    
+                    lgkorUI.confirm(alertmsg, {
+                        title: alertitle,
+                        cancelBtnName: "취소",
+                        okBtnName: "확인",
+                        ok: function(){
+                        	var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
+                            $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
+                            $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
+                        }
+                    });
+        		}
         	} else if (associCardStatus == "N" || associCardStatus == "R") {
         		
         		// N : 카드사신청이전 / R : 카드사신청완료
@@ -811,8 +828,16 @@
         	} else if (associCardStatus == "E") {
         		
         		// E : 발급실패
-        		alertmsg = "신청했던 제휴카드가 정상적으로 발급되지 않았습니다.\n다시 신청하시겠습니까?";
-        		bPopupOpenFlag = true;
+        		if (careApplyCardCnt > 0) { // 신청내역 있음
+        			lgkorUI.alert("", {
+                        title: "신청했던 제휴카드가 정상적으로 발급되지 않았습니다.\n고객센터로 문의 바랍니다."
+                    });
+                    return;
+        		} else {
+        			var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
+                    $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
+                    $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
+        		}
         	}
         } else {
         	// 신청내역 없음
@@ -826,19 +851,6 @@
             $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
             $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
         }
-    	
-    	if (bPopupOpenFlag) {
-    		lgkorUI.confirm(alertmsg, {
-                title: alertitle,
-                cancelBtnName: "취소",
-                okBtnName: "확인",
-                ok: function(){
-                	var contractInfoText = $('select[name=contractInfo]').find('option:selected').text();
-                    $('#popup-cardIssue').find('input[name=reqcard-contractInfo]').val(contractInfoText);
-                    $('#popup-cardIssue').vcModal({opener:$('.mypage .requestCard-btn')});
-                }
-            });
-    	}
     	// BTOCSITE-11663 마이페이지에서 제휴카드 신청 시 오류 발생, DB에서 제휴카드 신청현황의 내역이 있을경우 alert END
     }
 
