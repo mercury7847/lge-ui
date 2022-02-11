@@ -185,6 +185,7 @@ var evFilter = {
         self.$reservationButton = self.$shop.find(".btn-wrap");
 
         self.$productList = self.$container.find(".product-items");
+        self.$noData = self.$container.find(".no-data");
         self.productUrl = self.$container.data('productUrl');
         self.localUrl = self.$container.data('localUrl');
         self.shopUrl = self.$container.data('shopUrl');
@@ -430,13 +431,22 @@ var evFilter = {
             var data = result.data;
             var arr = (data && data instanceof Array) ? data : [];
 
-            self.$productList.empty();
-            arr.forEach(function(item, index) {
-                var listItem = self.makeListItem(item);
-                self.$productList.append(listItem);
-            });
+            if(arr.length) {
+                self.$productList.empty();
+                arr.forEach(function (item, index) {
+                    var listItem = self.makeListItem(item);
+                    self.$productList.append(listItem);
+                });
 
-            goPdpUrl();
+                self.$productList.show();
+                self.$noData.hide();
+
+                goPdpUrl();
+            } else {
+                self.$productList.hide();
+                self.$noData.show();
+            }
+
         });
     },
 
