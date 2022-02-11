@@ -3,13 +3,14 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
-// BTOCSITE-12128 홈 영역 UI 성능 개선 작업
+// s : BTOCSITE-12128 홈 영역 UI 성능 개선 작업 0211
 .component-wrap {
-    width: auto; 
-    clear:unset; 
-    margin: 0; 
-    padding: 0; 
-}
+    width: auto;  
+    clear:unset;  
+    margin: 0;  
+    padding: 0;  
+} 
+// e: BTOCSITE-12128 홈 영역 UI 성능 개선 작업 0211
 
 .contents.membership {
     @at-root .page-header + & {
