@@ -115,12 +115,13 @@
                 self.closePopup();
             });
 
+            // BTOCSITE-12128 메인 성능개선
             $(window).on('floatingTopHide', function(e){
-                self.$floatingWrap.removeClass('scroll');
+                if(self.$floatingWrap.hasClass('scroll')) self.$floatingWrap.removeClass('scroll');
             }); 
 
             $(window).on('floatingTopShow', function(e){
-                self.$floatingWrap.addClass('scroll');
+                if(!self.$floatingWrap.hasClass('scroll')) self.$floatingWrap.addClass('scroll');
             }); 
         },
 
