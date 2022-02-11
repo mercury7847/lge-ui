@@ -1511,13 +1511,16 @@
         //console.log("sssss", mypage.find(".section-wrap"))
 
         // 로컬 테스트용 BTOCSITE-3407 2022-02-11
-        if(window.LGEAPPHostName == 'localhost'|| window.LGEAPPHostName == 'wwwdev50.lge.co.kr') {
+        if(window.LGEAPPHostName == 'localhost') {
             switch($lc_select.split('|')[1]) {
                 case '20229019' :
                     data = {"contStartDate":"2020.02.07","modelName":"정수기(WQD74WJ5)","contractType":"R","contractID":"20229019","contDtlType":"R00","contEndDate":"2025.02.06"}
                     break;
                 case '20228792' :
                     data = {"contStartDate":"2020.02.07","modelName":"공청기(AS117DWE)","contractType":"C","contractID":"20228792","contDtlType":"C09","contEndDate":"2025.03.12"}
+                    break;
+                case '20228793' :
+                    data = {"contStartDate":"2021.02.07","modelName":"공청기(AS117DWE)","contractType":"C","contractID":"20228793","contDtlType":"C09","contEndDate":"2025.03.12"}
                     break;
                 case '20229018' :
                     data = {"contStartDate":"2019.02.07","modelName":"정수기(WQD74WJ5)","contractType":"R","contractID":"20229018","contDtlType":"R00","contEndDate":"2024.02.06"}
