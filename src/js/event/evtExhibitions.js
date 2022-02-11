@@ -170,6 +170,7 @@ var evFilterItemTemplate =
     '</div>' +
 '</li>';
 
+
 var evFilter = {
     /**
      * 최초 실행 시 필요한 변수 정의 및 이벤트 함수 실행
@@ -195,6 +196,14 @@ var evFilter = {
         self.shopUrl = self.$container.data('shopUrl');
 
         if(self.$filter) {
+            /**
+             * 크롬에서 history back 시 선택했던 내용 캐싱되는 이슈 처리
+             * 페이지 로드 시 전체보기 선택 및 전체 보기 목록 호출하는 것으로 변경함.
+             */
+            self.$sort.filter('#evFilterSortAll').prop('checked', true);
+            self.selectAllReset();
+            self.requestProductList();
+
             self.bindEvent();
         }
     },
@@ -231,15 +240,11 @@ var evFilter = {
             if(e.target.value == "") {
                 self.selectSingleReset(null, self.$countySelect, true);
                 self.selectSingleReset(null, self.$shopSelect, true);
-
-                self.$reservationButton.removeClass('is-active');
             } else {
                 self.selectSingleReset(null, self.$countySelect, false);
                 self.selectSingleReset(null, self.$shopSelect, true);
 
                 self.requestCountyList(e.target.value);
-
-                self.$reservationButton.removeClass('is-active');
             }
         });
 
@@ -247,8 +252,6 @@ var evFilter = {
         self.$countySelect.on('change', function(e) {
             if(e.target.value == "") {
                 self.selectSingleReset(null, self.$shopSelect, true);
-
-                self.$reservationButton.removeClass('is-active');
             } else {
                 self.selectSingleReset(null, self.$shopSelect, false);
                 self.requestShopList(self.$citySelect.val(), e.target.value);
@@ -279,6 +282,8 @@ var evFilter = {
      * @param {boolean} disabled disabled 처리 여부
      */
     selectSingleReset: function(type, element, disabled){
+        var self = this;
+
         if(type == 'city'){
             $(element).val('');
             $(element).vcSelectbox('update');
@@ -287,6 +292,8 @@ var evFilter = {
             $(element).prop('disabled', disabled);
             $(element).vcSelectbox('update');
         }
+
+        self.$reservationButton.removeClass('is-active');
     },
 
     /**
