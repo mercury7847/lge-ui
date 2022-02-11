@@ -64,41 +64,24 @@ MainSwiper.prototype = {
             observer : true,
             slidesPerView : 1,
             slidesPerColumn : 1,
-            //initialSlide : idx,
-            /*
-            hashNavigation : {
-                watchState: true
-            },
-            */
             on : {
                 'beforeInit' : function(){
                     $('#sw_con .swiper-slide').data('isLoaded', false);
-                  //  $('#sw_con .swiper-slide').attr('data-isLoaded', false);
                 },
                 'init' : function(swiper){   
                     self.isSwiped = false;    // BTOCSITE-2947 add
 
                     if ( idx == 0){
                         var currentSlide = swiper.slides[swiper.activeIndex];
-                        //var nextSlide = swiper.slides[swiper.activeIndex + 1];
                         document.addEventListener('readystatechange', function(e) {
                             document.readyState == 'complete' && mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false );
                         })
                         mainSwiper.loadContent( currentSlide,true );
-                    }
-                    
-                    else {
+                    } else {
                         swiper.animating = false;
                         self.isSwiped = false;    // BTOCSITE-2947 add
                         swiper.slideTo( idx );
                         swiper.animating = true;
-                        /*
-                        mainSwiper.loadContent( swiper.slides[swiper.activeIndex -1 ], false );
-                        if(swiper.activeIndex !== swiper.slides.length -1) {
-                            mainSwiper.loadContent( swiper.slides[swiper.activeIndex +1], false  );
-                        }
-                        */
-                      
                     }
                     
 
@@ -121,7 +104,6 @@ MainSwiper.prototype = {
 
                     self.removeStatusBar();//BTOCSITE-1967
 
-                    //console.log('customEventActionString' , mainSwiper.customEventActionString);
                     mainSwiper.loadContent( currentSlide,true );
 
                     if(swiper.activeIndex > 0){
@@ -141,49 +123,10 @@ MainSwiper.prototype = {
                     mainSwiper.$tabs.parent().removeClass('on').eq(swiper.activeIndex).addClass('on');
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
                     $('#mobileNav').vcSmoothScroll("scrollToActive");
-                    // if(swiper.activeIndex === 0 ) {
-                    //     //  $('#mobileNav').vcSmoothScroll("scrollTo",0,0);
-                    // }
-                    // if(swiper.activeIndex === swiper.slides.length -1) {
-                    // //    $('#mobileNav').vcSmoothScroll("scrollTo",window.innerWidth - self.$el.find('ul').width() ,0);
-                    // }
-                    //20100811 BTOCSITE-1814 
-
                     mainSwiper.$tabs.removeClass('on').eq(swiper.activeIndex).addClass('on');
-
-                    //BTOCSITE_1967
-                    //self.setStatusBar(swiper);
-
-                    // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
-                        //$('html,body').stop().animate({scrollTop:0}, 300);
                         $(window).scrollTop(0);
                     }, 500);
-                    
-
-                    // GA 커스텀 이벤트 실행
-                    /*
-                    dataLayer.push({
-                        'event': 'customEvent',				
-                        'customEventCategory': '스와이프',				
-                        'customEventAction': '스와이프 - 좌측'
-                    });
-                    */
-
-                    /*
-                    var nextSlide = swiper.slides[swiper.activeIndex + 1];
-                    var prevSlide = swiper.slides[swiper.activeIndex - 1];
-
-                    if (nextSlide !== undefined){
-                        mainSwiper.loadContent( nextSlide, false);
-                    }
-
-                    if (prevSlide !== undefined){
-                        mainSwiper.loadContent( prevSlide, false);
-                    }
-                    */
-
-                    //console.log('slideChange arguments', arguments);
                 },
                 // BTOCSITE-11602 고객지원 팝업 오류 대응
                 'transitionEnd' : function(swiper){
@@ -195,13 +138,9 @@ MainSwiper.prototype = {
         });
 
         $('#sw_con .swiper-slide').on('touchstart touchmove', function( e ){
-            //console.log('touchstart event', e);
-            //console.log('is carouselList',!!$(e.target).parents('.ui_carousel_list').length);
-
             var isCategoryTab = !!$(e.target).closest('.ui_category_tab').length;
             
             var isCarouselList = !!$(e.target).closest('.ui_carousel_list').length;
-            //var isCategoryTabContent = !!$(e.target).closest('.ui_category_tab_contents').length;
             var isTagScrollTab = !!$(e.target).closest('.ui_tag_smooth_scrolltab').length;
             var isSlick = !!$(e.target).closest('.slick-track').length;
 
@@ -221,7 +160,6 @@ MainSwiper.prototype = {
             'pushFlag' : pushFlag
         });
         this.getContent();
-        //console.log('this.loadQUE', this.loadQUE);
     },
     getContent: function(){        
         var self = this;
@@ -247,14 +185,11 @@ MainSwiper.prototype = {
 
         if (pushFlag){
             self.setDigitalData(currentPageData);
-            //console.log('PAGE_DATA', _PAGE_DATA[$(currentSlide).data().hash]);
         }
 
         if (hash == '/home'){
             hash = '/';
         }
-
-        //console.log('currentSlide hash', self.hashToUrl[hash]);
 
         if (!href) return;
 
@@ -286,7 +221,11 @@ MainSwiper.prototype = {
             url : href,
             dataType : 'html',
             success : function( res ){
-                self._rafRun(self._contentLoad(currentSlide,pushFlag,hash,res));
+                self._rafRun(self.contentLoad(res,{
+                    'currentSlide':currentSlide,
+                    'pushFlag':pushFlag,
+                    'hash':hash
+                }));
             },
             error : function(error){
                 console.log('mainSwiper cant get HTML', error);
@@ -328,8 +267,6 @@ MainSwiper.prototype = {
                 'customEventCategory': '스와이프',				
                 'customEventAction': self.customEventActionString
             });
-
-            //console.log('dataLayer push!@!@!@', dataLayer);
         } else {
             self.isSwiped = true;    // BTOCSITE-2947 add
         }
@@ -347,7 +284,6 @@ MainSwiper.prototype = {
     setUrlEvent : function(){
         var self = this;
         $(window).on('popstate', function(){
-            //console.log('popstate', location.href);
             var hash = self.getLastSegmentByUrl();
             var idx = self.getIndexByHash( hash !== '' ? hash : 'home' );
             mainSwiper.isSwiped = false;    // BTOCSITE-2947 add
@@ -364,7 +300,6 @@ MainSwiper.prototype = {
     },
 
     getHash: function(){
-        //console.log('urltohash value', this.urlToHash[ this.getLastSegmentByUrl() ] );
         var hash = '';
         var lastSeq = this.getLastSegmentByUrl();
         if (!!this.urlToHash[ lastSeq ] == false ){
@@ -492,26 +427,26 @@ MainSwiper.prototype = {
         }
     },
     // E BTOCSITE-12128 메인성능개선
-    _contentLoad : function(currentSlide,pushFlag,hash, html) {
+    contentLoad : function(html,opt) {
         var self = this;
     
-            $(currentSlide)[0].innerHTML = html;
-            lgkorUI.init( $(currentSlide) ).done(function( msg ){
+            $(opt.currentSlide)[0].innerHTML = html;
+            lgkorUI.init( $(opt.currentSlide) ).done(function( msg ){
                 // console.log('컨텐츠 로드 성공', msg);
-                $(currentSlide).data().isLoaded = true;                
-                $(currentSlide).attr('data-isLoaded', true);
+                $(opt.currentSlide).data().isLoaded = true;                
+                $(opt.currentSlide).attr('data-isLoaded', true);
                 isLoaded = true;
 
-                if (isLoaded && pushFlag){
+                if (isLoaded && opt.pushFlag){
                     self.ablePushState = true;                        
                 }
 
                 if(self.ablePushState) {
                     if (!self.isFirstLoad){
-                        history.pushState({}, '', hash);
+                        history.pushState({}, '', opt.hash);
                     }
                     
-                    self.switchQuickMenu( hash );  
+                    self.switchQuickMenu( opt.hash );  
                     self.ablePushState = false;
                 }
 
@@ -521,11 +456,10 @@ MainSwiper.prototype = {
 
                 self.getContent();
 
-
                 vcui.require(['ui/lazyLoaderSwitch'], function (){
                     setTimeout(function(){
                         mainSwiper.swiper.updateAutoHeight();
-                        $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
+                        $('body').vcLazyLoaderSwitch('reload', $(opt.currentSlide));
                     }, 500);
                 });
             });
