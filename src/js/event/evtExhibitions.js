@@ -450,11 +450,11 @@ var evFilter = {
 
         lgkorUI.requestAjaxDataPost(self.productUrl, formData, function(result) {
             var data = result.data;
-            var arr = (data && data instanceof Array) ? data : [];
+            var dataArray = (data && data instanceof Array) ? data : [];
 
-            if(arr.length) {
+            if(dataArray.length) {
                 self.$productList.empty();
-                arr.forEach(function (item, index) {
+                dataArray.forEach(function (item, index) {
                     var listItem = self.makeListItem(item);
                     self.$productList.append(listItem);
                 });
@@ -480,11 +480,11 @@ var evFilter = {
 
         lgkorUI.requestAjaxDataFailCheck(self.localUrl, {city:encodeURI(city)}, function(result) {
             var data = result.data;
-            var arr = (data && data instanceof Array) ? data : [];
+            var dataArray = (data && data instanceof Array) ? data : [];
 
             self.$countySelect.find("option:gt(0)").remove();
 
-            arr.forEach(function(item, index) {
+            dataArray.forEach(function(item, index) {
                 var option = vcui.template(optionTemplate, item);
                 self.$countySelect.append($(option).get(0));
             });
@@ -504,11 +504,11 @@ var evFilter = {
 
         lgkorUI.requestAjaxDataFailCheck(self.shopUrl, {city:encodeURI(city), county:encodeURI(county)}, function(result) {
             var data = result.data;
-            var arr = (data && data instanceof Array) ? data : [];
+            var dataArray = (data && data instanceof Array) ? data : [];
 
             self.$shopSelect.find("option:gt(0)").remove();
 
-            arr.forEach(function(item, index) {
+            dataArray.forEach(function(item, index) {
                 var option = vcui.template(optionTemplate, item);
                 self.$shopSelect.append($(option).get(0));
             });
