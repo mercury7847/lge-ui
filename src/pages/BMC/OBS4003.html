@@ -15,9 +15,14 @@
         <main class="container">
             <!-- event -->
             <!-- 2021.2.10 data-cart-url, data-sibling-url 추가-->
+            <!-- BTOCSITE-11191 data-product-url, data-local-url, data-shop-url 추가 -->
             <div class="contents event exhibition"
                 data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
                 data-sibling-url="/lg5-common/data-ajax/KRP0007/retrieveSiblingProductInfo.json"
+                data-product-url="/lg5-common/data-ajax/exhibitions/productList.json"
+                data-local-url="/lg5-common/data-ajax/exhibitions/localList.json"
+                data-shop-url="/lg5-common/data-ajax/exhibitions/shopList.json"
+
             ><!-- 210126 수정 - .exhibition 추가 -->
                 <div class="cont-wrap">
                     <div class="ev-detail-wrap">
@@ -153,37 +158,80 @@
                         </div>
 
                         <div class="ev-detail-category">
-                            <div class="ev-counter"><span>상품 100개</span></div>
-                            <!-- 2021-10-19 BTOCSITE-4785 : 카테고리 선택영역 삭제 s -->
-                            <!-- <div class="ui_sticky" data-used-anchor="true" data-anchor-class=".tabs-scroll-wrap .tabs a" data-act-class="on">
-                                <div class="tabs-wrap border-type tabs-scroll-wrap ui_smooth_scroll" data-used-tab-link="false">
-                                    <ul class="tabs">
-                                        <li class="on"><a href="#ev-category1">상냉장 냉장고<em class="blind">선택됨</em></a></li>
-                                        <li><a href="#ev-category2">컨버터블 패키지</a></li>
-                                        <li><a href="#ev-category3">김치냉장고</a></li>
-                                        <li><a href="#ev-category4">워시타워</a></li>
-                                        <li><a href="#ev-category5">스타일러</a></li>
-                                        <li><a href="#ev-category6">에어컨</a></li>
-                                        <li><a href="#ev-category7">청소기</a></li>
-                                        <li><a href="#ev-category8">광파오븐</a></li>
-                                        <li><a href="#ev-category9">식기세척기</a></li>
-                                        <li class="on"><a href="#ev-category10">TV</a></li>
-                                    </ul>
+                            <div class="ev-counter"><span>상품 23개</span></div>
+
+                            <!-- BTOCSITE-11191 지점별 필터 영역 추가 -->
+                            <div class="ev-filter-wrap">
+
+                                <div class="ev-filter">
+                                    <div class="ev-filter-sort chk-wrap">
+                                        <span>
+                                            <input type="radio" id="evFilterSortAll" value="all" name="evFilterSort" checked>
+                                            <label for="evFilterSortAll">전체보기</label>
+                                        </span>
+
+                                        <span>
+                                            <input type="radio" id="evFilterSortStore" value="store" name="evFilterSort">
+                                            <label for="evFilterSortStore">재고 보유 매장 확인하기</label>
+                                        </span>
+                                    </div>
+
+                                    <div class="ev-filter-shop">
+
+                                        <div class="select-wrap">
+                                            <select id="evFilterCity" class="ui_selectbox">
+                                                <option value="">시/도 선택</option>
+                                                <option value="서울">서울특별시</option>
+                                                <option value="부산">부산광역시</option>
+                                                <option value="인천">인천광역시</option>
+                                                <option value="대구">대구광역시</option>
+                                                <option value="대전">대전광역시</option>
+                                                <option value="광주">광주광역시</option>
+                                                <option value="울산">울산광역시</option>
+                                                <option value="제주">제주특별자치도</option>
+                                                <option value="경기">경기도</option>
+                                                <option value="경남">경상남도</option>
+                                                <option value="경북">경상북도</option>
+                                                <option value="충남">충청남도</option>
+                                                <option value="충북">충청북도</option>
+                                                <option value="전남">전라남도</option>
+                                                <option value="전북">전라북도</option>
+                                                <option value="강원">강원도</option>
+                                                <option value="세종">세종특별자치시</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="select-wrap">
+                                            <select id="evFilterCounty" class="ui_selectbox" disabled>
+                                                <option value="">구/군 선택</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="select-wrap">
+                                            <select id="evFilterShop" class="ui_selectbox" disabled>
+                                                <option value="">매장 선택</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="btn-wrap">
+                                            <a data-base-url="/lgekor/bestshop/counsel/counselMain.do?device=w&type=PRO_electronics&code=0125&inflow=lgekor" href="#" class="btn">매장 상담 예약</a>
+                                        </div>
+
+                                    </div>
                                 </div>
-                            </div> -->
-                            <!-- 2021-10-19 BTOCSITE-4785 : 카테고리 선택영역 삭제 e -->
-                            <!-- 2021-10-19 BTOCSITE-4785 : .tab-contents div 삭제 -->
+
+                            </div>
+                            <!-- // BTOCSITE-11191 지점별 필터 영역 추가 -->
+
                             <div class="cont-inner">
-                                <!-- 2021-10-19 BTOCSITE-4785 : 카테고리명삭제 -->
-                                <!-- <h3 class="ev-category-title"><span>상냉장 냉장고</span></h3> -->
                                 <div class="ev-prd-wrap">
                                     <!-- BTOCSITE-4785 : display-product-items class 추가  -->
                                     <ul class="product-items display-product-type col4">
                                         @@loop('./common/modules/display-product-list-item-loop.html', [
                                             {
                                                 "itemClass" : "evt-item",
-                                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "optionColor" : true,
+                                                "image" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                //"optionColor" : true,
                                                 "colorSet" : [
                                                     {
                                                         "title": "샤이니 유니버스",
@@ -213,14 +261,14 @@
                                                     "price" : true,
                                                     "originalPrice" : true,
                                                     "storeUrl" : "/html/CS/CSRF6040.html?dpPdp=Y&cartPrdList=MD08978827%5Etvs&salesCode=OLED55C1QS.AKRG",
-                                                    "button" : "자세히 보기",
+                                                    "button" : "제품 정보 확인하기",
                                                     "buttonUrl" : "https://www.lge.co.kr/tvs/oled55c1qnb-stand",
                                                     "discount" : false
                                                 },
                                             }, {
                                                 "itemClass" : "evt-item",
-                                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "optionColor" : true,
+                                                "image" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                //"optionColor" : true,
                                                 "colorSet" : [
                                                     {
                                                         "title": "샤이니 유니버스",
@@ -249,14 +297,14 @@
                                                     "price" : true,
                                                     "originalPrice" : true,
                                                     "storeUrl" : "/html/CS/CSRF6040.html?dpPdp=Y&cartPrdList=MD08978827%5Etvs&salesCode=OLED55C1QS.AKRG",
-                                                    "button" : "자세히 보기",
+                                                    "button" : "제품 정보 확인하기",
                                                     "buttonUrl" : "https://www.lge.co.kr/tvs/oled55c1qnb-stand",
                                                     "discount" : false
                                                 }
                                             }, {
                                                 "itemClass" : "evt-item",
-                                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "optionColor" : true,
+                                                "image" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                //"optionColor" : true,
                                                 "colorSet" : [
                                                     {
                                                         "title": "샤이니 유니버스",
@@ -285,14 +333,14 @@
                                                     "price" : true,
                                                     "originalPrice" : true,
                                                     "storeUrl" : "/html/CS/CSRF6040.html?dpPdp=Y&cartPrdList=MD08978827%5Etvs&salesCode=OLED55C1QS.AKRG",
-                                                    "button" : "자세히 보기",
+                                                    "button" : "제품 정보 확인하기",
                                                     "buttonUrl" : "https://www.lge.co.kr/tvs/oled55c1qnb-stand",
                                                     "discount" : false
                                                 }
                                             }, {
                                                 "itemClass" : "evt-item",
-                                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "optionColor" : true,
+                                                "image" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                //"optionColor" : true,
                                                 "colorSet" : [
                                                     {
                                                         "title": "샤이니 유니버스",
@@ -322,7 +370,7 @@
                                                     "price" : true,
                                                     "originalPrice" : true,
                                                     "storeUrl" : "/html/CS/CSRF6040.html?dpPdp=Y&cartPrdList=MD08978827%5Etvs&salesCode=OLED55C1QS.AKRG",
-                                                    "button" : "자세히 보기",
+                                                    "button" : "제품 정보 확인하기",
                                                     "buttonUrl" : "https://www.lge.co.kr/tvs/oled55c1qnb-stand",
                                                     "discount" : false,
                                                 },
@@ -330,8 +378,8 @@
                                             },
                                             {
                                                 "itemClass" : "evt-item",
-                                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "optionColor" : true,
+                                                "image" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                //"optionColor" : true,
                                                 "colorSet" : [
                                                     {
                                                         "title": "샤이니 유니버스",
@@ -361,14 +409,14 @@
                                                     "price" : true,
                                                     "originalPrice" : true,
                                                     "storeUrl" : "/html/CS/CSRF6040.html?dpPdp=Y&cartPrdList=MD08978827%5Etvs&salesCode=OLED55C1QS.AKRG",
-                                                    "button" : "자세히 보기",
+                                                    "button" : "제품 정보 확인하기",
                                                     "buttonUrl" : "https://www.lge.co.kr/tvs/oled55c1qnb-stand",
                                                     "discount" : false
                                                 },
                                             }, {
                                                 "itemClass" : "evt-item",
-                                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "optionColor" : true,
+                                                "image" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                //"optionColor" : true,
                                                 "colorSet" : [
                                                     {
                                                         "title": "샤이니 유니버스",
@@ -397,14 +445,14 @@
                                                     "price" : true,
                                                     "originalPrice" : true,
                                                     "storeUrl" : "/html/CS/CSRF6040.html?dpPdp=Y&cartPrdList=MD08978827%5Etvs&salesCode=OLED55C1QS.AKRG",
-                                                    "button" : "자세히 보기",
+                                                    "button" : "제품 정보 확인하기",
                                                     "buttonUrl" : "https://www.lge.co.kr/tvs/oled55c1qnb-stand",
                                                     "discount" : false
                                                 }
                                             }, {
                                                 "itemClass" : "evt-item",
-                                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "optionColor" : true,
+                                                "image" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                //"optionColor" : true,
                                                 "colorSet" : [
                                                     {
                                                         "title": "샤이니 유니버스",
@@ -433,14 +481,14 @@
                                                     "price" : true,
                                                     "originalPrice" : true,
                                                     "storeUrl" : "/html/CS/CSRF6040.html?dpPdp=Y&cartPrdList=MD08978827%5Etvs&salesCode=OLED55C1QS.AKRG",
-                                                    "button" : "자세히 보기",
+                                                    "button" : "제품 정보 확인하기",
                                                     "buttonUrl" : "https://www.lge.co.kr/tvs/oled55c1qnb-stand",
                                                     "discount" : false
                                                 }
                                             }, {
                                                 "itemClass" : "evt-item",
-                                                "singleImage" : "/lg5-common/images/dummy/@img-product.jpg",
-                                                "optionColor" : true,
+                                                "image" : "/lg5-common/images/dummy/@img-product.jpg",
+                                                //"optionColor" : true,
                                                 "colorSet" : [
                                                     {
                                                         "title": "샤이니 유니버스",
@@ -470,7 +518,7 @@
                                                     "price" : true,
                                                     "originalPrice" : true,
                                                     "storeUrl" : "/html/CS/CSRF6040.html?dpPdp=Y&cartPrdList=MD08978827%5Etvs&salesCode=OLED55C1QS.AKRG",
-                                                    "button" : "자세히 보기",
+                                                    "button" : "제품 정보 확인하기",
                                                     "buttonUrl" : "https://www.lge.co.kr/tvs/oled55c1qnb-stand",
                                                     "discount" : false,
                                                 },
@@ -478,6 +526,15 @@
                                             }
                                         ])
                                     </ul>
+
+                                    <!-- BTOCSITE-11191 지점 재고 없을 시 노출되는 영역 추가 -->
+                                    <div class="no-data">
+                                        <p>
+                                            매장에 숨어있는 재고가 있을지도 몰라요.<br>
+                                            ‘매장 상담 예약’ 을 통해 문의해 주세요.
+                                        </p>
+                                    </div>
+                                    <!-- // BTOCSITE-11191 지점 재고 없을 시 노출되는 영역 추가 -->
                                 </div>
                             </div>
                         </div>
