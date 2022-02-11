@@ -1691,7 +1691,7 @@
                         self.rentalInfoBoxUpdate(2, $(this));
                         self.rentalInfoSelectBoxUpdate(3,itemData,selectIndex, true);
                     });
-
+                    
                     //가입비 선택
 //                    self.$caresolutionRentalInfoSelectBox.eq(3).on('change', function(e,data){
 //                        var selectOption = $(this).vcSelectbox('selectedOption');
@@ -1729,16 +1729,49 @@
                     }); 
 
                 };
-
-                //케어십 계약기간
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 START
+                 //케어십 계약기간
+//                if(self.$careshipInfoSelectBox.length > 0) {
+//                    self.$careshipInfoSelectBox.on('change', function(e,data){
+//                        var selectOption = $(this).vcSelectbox('selectedOption');
+//                        var itemData = $(selectOption).data('item');
+//                        self.updateCareshipInfoPrice(itemData);
+//                    });
+//                };
+                
+                //케어십 방문주기
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성으로 변경
                 if(self.$careshipInfoSelectBox.length > 0) {
                     self.$careshipInfoSelectBox.on('change', function(e,data){
                         var selectOption = $(this).vcSelectbox('selectedOption');
-                        var itemData = $(selectOption).data('item');
-                        self.updateCareshipInfoPrice(itemData);
+                        var svcTypeDescData = $(selectOption).data('item');
+                        var itemData = null;
+                        var selectIndex = 0;
+                        for (var i = 0, len = svcTypeDescData.length; i < len; i++) {
+                        	
+                        	if(svcTypeDescData[i].representChargeFlag == "Y") { // 방문주기 선택시 서비스타입안의 데이터들 중에 대표요금제노출여부가 Y일 경우에 먼저노출
+                        		selectIndex = i;
+                        	}
+                        }
+                        
+                        itemData = svcTypeDescData[selectIndex];
+                        
+                        self.updateCareshipInfoPrice(itemData); // 선택된 가격정보로 업데이트
+                        self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox2, svcTypeDescData, selectIndex, true); 
                     });
                 };
-
+                
+                // 케어십 서비스타입
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성으로 추가
+                if(self.$careshipInfoSelectBox2.length > 0) {
+                	self.$careshipInfoSelectBox2.on('change', function(e,data){
+                		var selectOption = $(this).vcSelectbox('selectedOption');
+                		var priceData = $(selectOption).data('item');
+                		
+                		self.updateCareshipInfoPrice(priceData); // 선택된 가격정보로 업데이트
+                	});
+                };
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 END
                 //BTOCSITE-3523 - 제휴카드 할인 드롭다운 열림/닫힘 액션
                 var cardDropExpanded = "false";
                 self.$pdpInfo.on('click','.careship-card-list .ui_dropdown_toggle, .rental-card-list .ui_dropdown_toggle',function(e){
