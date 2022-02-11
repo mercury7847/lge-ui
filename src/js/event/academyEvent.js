@@ -14,7 +14,7 @@
 
             if (lgkorUI.stringToBool(loginFlag)) {
                 // 테스트를 위한 나이제한 변경 부분
-                // if(birthDt > 19750101 && birthDt < 20040102){
+                // if(birthDt > 19750101 && birthDt < 20040102){ 
                 if(birthDt > 19920101 && birthDt < 20040102){
                     $('.login-ok').show();
                     $('.login-no').hide();
@@ -41,7 +41,7 @@
                     //이메일
                     userEmail: {
                         required: true,
-                        pattern: /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/,
+                        pattern: /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+)+$/,
                         minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
@@ -177,20 +177,24 @@
 
         memberCheck : function() {
             var planEventId = $('#planEventId').val();
+            var url = $('#planEventId').data("memberCheckUrl");
+                url = url || "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId=" + planEventId;
             var memberStatus = '';
-            $.ajax({
-                type: "POST",
-                async: false,
-                url: "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId=" + planEventId,
-                dataType: "json",
-                success: function(json) {
-                    memberStatus = json.data;
-                },
-                error: function(request, status, error) {
-                    alert("오류가 발생하였습니다.");
-                    return;
-                }
-            });
+            if(url) {
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    url: url,
+                    dataType: "json",
+                    success: function(json) {
+                        memberStatus = json.data;
+                    },
+                    error: function(request, status, error) {
+                        if(location.hostname !== "localhost") alert("오류가 발생하였습니다.");
+                        return;
+                    }
+                });
+            }
             return memberStatus;
         }
     }
