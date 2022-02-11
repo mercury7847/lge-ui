@@ -286,45 +286,10 @@ MainSwiper.prototype = {
             url : href,
             dataType : 'html',
             success : function( res ){
-                $(currentSlide).html( res );
+                self._rafRun(self._contentLoad(currentSlide,pushFlag,hash,res));
             },
             error : function(error){
                 console.log('mainSwiper cant get HTML', error);
-            },
-            complete: function(){
-                lgkorUI.init( $(currentSlide) ).done(function( msg ){
-                    // console.log('컨텐츠 로드 성공', msg);
-                    $(currentSlide).data().isLoaded = true;                
-                    $(currentSlide).attr('data-isLoaded', true);
-                    isLoaded = true;
-
-                    if (isLoaded && pushFlag){
-                        self.ablePushState = true;                        
-                    }
-
-                    if(self.ablePushState) {
-                        if (!self.isFirstLoad){
-                            history.pushState({}, '', hash);
-                        }
-                        
-                        self.switchQuickMenu( hash );  
-                        self.ablePushState = false;
-                    }
-
-                    self.isLoading = false;
-
-                    if (self.isFirstLoad) self.isFirstLoad = false;
-
-                    self.getContent();
-
-
-                    vcui.require(['ui/lazyLoaderSwitch'], function (){
-                        setTimeout(function(){
-                            mainSwiper.swiper.updateAutoHeight();
-                            $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
-                        }, 500);
-                    });
-                });
             }
         });
 
@@ -525,8 +490,61 @@ MainSwiper.prototype = {
                 }
             });
         }
-    }
+    },
     // E BTOCSITE-12128 메인성능개선
+    _contentLoad : function(currentSlide,pushFlag,hash, html) {
+        var self = this;
+    
+            $(currentSlide)[0].innerHTML = html;
+            lgkorUI.init( $(currentSlide) ).done(function( msg ){
+                // console.log('컨텐츠 로드 성공', msg);
+                $(currentSlide).data().isLoaded = true;                
+                $(currentSlide).attr('data-isLoaded', true);
+                isLoaded = true;
+
+                if (isLoaded && pushFlag){
+                    self.ablePushState = true;                        
+                }
+
+                if(self.ablePushState) {
+                    if (!self.isFirstLoad){
+                        history.pushState({}, '', hash);
+                    }
+                    
+                    self.switchQuickMenu( hash );  
+                    self.ablePushState = false;
+                }
+
+                self.isLoading = false;
+
+                if (self.isFirstLoad) self.isFirstLoad = false;
+
+                self.getContent();
+
+
+                vcui.require(['ui/lazyLoaderSwitch'], function (){
+                    setTimeout(function(){
+                        mainSwiper.swiper.updateAutoHeight();
+                        $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
+                    }, 500);
+                });
+            });
+    },
+    _rafRun : function (cb) {
+        var tick = false
+      
+        return function trigger() {
+          if (tick) {
+            return
+          }
+      
+          tick = true
+          return requestAnimationFrame(function task() {
+            tick = false
+            return cb()
+          })
+        }
+    }
 }
 
 $(function(){
