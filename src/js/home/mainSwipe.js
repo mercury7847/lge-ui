@@ -429,8 +429,9 @@ MainSwiper.prototype = {
     // E BTOCSITE-12128 메인성능개선
     contentLoad : function(html,opt) {
         var self = this;
-    
-            $(opt.currentSlide)[0].innerHTML = html;
+
+            self.setInnerHTML($(opt.currentSlide)[0], html); // JQUERY APPEND 비동기 로딩시 너무 렌더링이 느려서 innerHtml 을 이용한 스크립트 로딩
+            
             lgkorUI.init( $(opt.currentSlide) ).done(function( msg ){
                 // console.log('컨텐츠 로드 성공', msg);
                 $(opt.currentSlide).data().isLoaded = true;                
@@ -463,6 +464,16 @@ MainSwiper.prototype = {
                     }, 500);
                 });
             });
+    },
+    setInnerHTML : function(elm, html) {
+        elm.innerHTML = html;
+        Array.from(elm.querySelectorAll("script")).forEach( oldScript => {
+          const newScript = document.createElement("script");
+          Array.from(oldScript.attributes)
+            .forEach( attr => newScript.setAttribute(attr.name, attr.value) );
+          newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+          oldScript.parentNode.replaceChild(newScript, oldScript);
+        });
     },
     _rafRun : function (cb) {
         var tick = false
