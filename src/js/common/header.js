@@ -824,7 +824,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     self.prevScrollTop = scrollTop;
                 }
             } else {
-                $scrollContainer.removeClass('scroll-down header-fixed')
+                self.$scrollContainer.removeClass('scroll-down header-fixed')
             }
             //BTOCSITE-1967 2차 추가수정 end
         },
