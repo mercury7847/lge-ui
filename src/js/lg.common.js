@@ -12,36 +12,6 @@ var goAppUrl = function(path) {
     
 }
 
-// 메인 성능 개선 - jquery passive event 적용
-;(function($){
-    $.event.special.touchstart = {
-        setup: function( _, ns, handle ) {
-            this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
-        }
-    };
-    $.event.special.touchmove = {
-        setup: function( _, ns, handle ) {
-            this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
-        }
-    };
-    $.event.special.wheel = {
-        setup: function( _, ns, handle ){
-            this.addEventListener("wheel", handle, { passive: true });
-        }
-    };
-    $.event.special.mousewheel = {
-        setup: function( _, ns, handle ){
-            this.addEventListener("mousewheel", handle, { passive: true });
-        }
-    };
-
-    $.event.special.scroll = {
-        setup: function( _, ns, handle ){
-            this.addEventListener("scroll", handle, { passive: true });
-        }
-    };
-})(jQuery);
-
 ;(function(global){
 
     if(global['lgkorUI']) return;
@@ -1323,8 +1293,8 @@ var goAppUrl = function(path) {
             var self = this;
             var compareIDs = [];
             var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
-                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id); });
-            var compareCookie = compareIDs.join("|");
+                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id + '|' + item.careType); }); // BTOCSITE-5938-545 care type 추가
+            var compareCookie = compareIDs.join(",");
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
         },
