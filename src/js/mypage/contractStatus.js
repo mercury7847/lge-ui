@@ -58,7 +58,7 @@
             '<div class="lb-cont">' +
                 '<div class="lb-cont_top">' +
                     '<div class="lb-head_cont">' +
-                        '<h3>케어솔루션 1년 사용 기념 특별 혜택</h3>' +
+                        '<h3>케어솔루션 1년 사용 기념 <br class="mob-only">특별 혜택</h3>' +
                         '<p class="lb-term">혜택 유효 기간 : <span>{{ validStrDate }}</span> ~ <span>{{ validEndDate }}</span></p>' +
                     '</div>' +
 
@@ -109,7 +109,7 @@
             '<div class="lb-cont">' +
                 '<div class="lb-cont_top">' +
                     '<div class="lb-head_cont">' +
-                        '<h3>케어솔루션 / 케어십  2년 사용 기념 특별 혜택</h3>' +
+                        '<h3>케어솔루션 / 케어십  2년 사용 기념 <br class="mob-only">특별 혜택</h3>' +
                         '<p class="lb-term">혜택 유효 기간 : <span>{{ validStrDate }}</span> ~ <span>{{ validEndDate }}</span></p>' +
                     '</div>' +
 
@@ -162,7 +162,7 @@
             '<div class="lb-cont">' +
                 '<div class="lb-cont_top">' +
                     '<div class="lb-head_cont">' +
-                        '<h3>케어솔루션 / 케어십  3년 사용 기념 특별 혜택</h3>' +
+                        '<h3>케어솔루션 / 케어십  3년 사용 기념 <br class="mob-only">특별 혜택</h3>' +
                         '<p class="lb-term">혜택 유효 기간 : <span>{{ validStrDate }}</span> ~ <span>{{ validEndDate }}</span></p>' +
                     '</div>' +
 
@@ -248,7 +248,7 @@
             '<div class="lb-cont">' +
                 '<div class="lb-cont_top">' +
                     '<div class="lb-head_cont">' +
-                        '<h3>케어솔루션 / 케어십  4년 사용<br class="mob-only"> 기념 특별 혜택</h3>' +
+                        '<h3>케어솔루션 / 케어십  4년 사용 기념 <br class="mob-only">특별 혜택</h3>' +
                         '<p class="lb-term">혜택 유효 기간 : <span>{{ validStrDate }}</span> ~ <span>{{ validEndDate }}</span></p>' +
                     '</div>' +
 
@@ -301,7 +301,7 @@
             '<div class="lb-cont">' +
                 '<div class="lb-cont_top cont_top-custom">' +
                     '<div class="lb-head_cont">' +
-                        '<h3>케어솔루션/케어십 5년 사용 <br class="mob-only">기념 특별 혜택</h3>' +
+                        '<h3>케어솔루션/케어십 5년 사용 기념 <br class="mob-only">특별 혜택</h3>' +
                         '<p class="lb-term">혜택 유효 기간 : <span>{{ validStrDate }}</span> ~ <span>{{ validEndDate }}</span></p>' +
                     '</div>' +
 
