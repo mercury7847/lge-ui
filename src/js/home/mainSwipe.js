@@ -13,8 +13,6 @@ function MainSwiper( ID ){
     this.firstPathName = location.pathname;
     this.firstSearch = location.search;
     this.isSwiped = true;   // BTOCSITE-2947 add :: 직접 터치하여 스와이프가 되었는지 여부
-    this.floatBox = {}
-    
 
     this.hashToUrl = {
         '#home' : 'home',
@@ -468,10 +466,9 @@ MainSwiper.prototype = {
     },
     setInnerHTML : function(elm, html) {
         elm.innerHTML = html;
-        Array.from(elm.querySelectorAll("script")).forEach( oldScript => {
-          const newScript = document.createElement("script");
-          Array.from(oldScript.attributes)
-            .forEach( attr => newScript.setAttribute(attr.name, attr.value) );
+        Array.prototype.slice.call(elm.querySelectorAll("script")).forEach(function(oldScript) {
+          var newScript = document.createElement("script");
+          Array.prototype.slice.call(oldScript.attributes).forEach( function(attr) { return newScript.setAttribute(attr.name, attr.value) });
           newScript.appendChild(document.createTextNode(oldScript.innerHTML));
           oldScript.parentNode.replaceChild(newScript, oldScript);
         });
