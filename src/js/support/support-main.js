@@ -3,7 +3,7 @@
     var isMobileDevice = detect.isMobileDevice;    
 
     if(isMobileDevice) {
-        var $context = $('.swiper-slide-active[data-hash="support"]');
+        var $context = $('#sw_con .swiper-slide[data-hash="support"]');
     } else {
         var $context = $(document);
     }
