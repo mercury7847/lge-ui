@@ -1468,7 +1468,8 @@ function validatePhone(value){
             if ($('#floatBox').find('#quickMenu').length < 1){
           
                 // preload 대응 현재 슬라이드가 고객지원이 아닐때는 숨김처리
-                if ($('.swiper-slide-active').data().hash !== 'support'){
+                var slideActiveData = $('#sw_con .swiper-slide-active').data();
+                if (slideActiveData && slideActiveData.hash !== 'support'){
                     $(quickMenu).hide();
                 }
                 $('#floatBox').append(quickMenu);
@@ -1639,7 +1640,17 @@ function validatePhone(value){
         }
     }
 
-    document.addEventListener('DOMContentLoaded', commonInit);
+
+    var isSwipe = !!$('#sw_con').length;
+    if(isSwipe) {
+        
+        console.log("support-common isswipe");
+        setTimeout(function(){
+            commonInit();
+        }, 100);
+    } else {
+        document.addEventListener('DOMContentLoaded', commonInit);
+    }
 
     $('[data-control="modal"]').each(function() {
         var target = $(this).data('href') || $(this).attr('href');
