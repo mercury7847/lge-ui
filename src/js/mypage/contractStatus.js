@@ -1566,7 +1566,7 @@
                     });
                 },
                 call : function(str, end) {
-                    var da1 = new Date(str.split('.'));
+                    var da1 = new Date(Number(str.split('.')[0]), Number(str.split('.')[1]) - 1, Number(str.split('.')[2]));
                     var da2 = new Date();
                     var dif = da2 - da1;
                     var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
@@ -1593,7 +1593,6 @@
             data.validStrDate = validOpt.format(validOpt.strDate, 'yyyy.mm.dd');
             data.validEndDate = validOpt.format(validOpt.endDate, 'yyyy.mm.dd');
 
-            console.log(validOpt, validOpt.call(data.contStartDate), data)
             if((data.contractType === 'C')) {
                 if(validOpt.call(data.contStartDate).month<=14) {
                     return $lc_cont.html(vcui.template(lb_careShip, data));
