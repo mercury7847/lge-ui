@@ -548,18 +548,6 @@
         }
     }
 
-    .no-data {
-        display: none;
-
-        @include pc {
-            margin-top: -38px;
-        }
-
-        @include mobile {
-            margin-top: -16px;
-        }
-    }
-
 }
 
 
