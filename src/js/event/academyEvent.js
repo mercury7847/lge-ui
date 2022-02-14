@@ -31,9 +31,6 @@
             self.$emailInput = $('#userEmail');
             self.$completeBtn = $('#btnCertified');
             self.$loginBtn = $('#btnLogin');
-            var checkEmail = $('#checkEmail').val();
-            var checklength = checkEmail.split(',').length;
-
             self.$emailInput.attr('maxlength', 50);
 
             vcui.require(['ui/validation'], function() {
@@ -41,7 +38,7 @@
                     //이메일
                     userEmail: {
                         required: true,
-                        pattern: /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+)+$/,
+                        pattern: /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+)?(\.ac\.kr|\.edu)$/,
                         minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
@@ -50,14 +47,8 @@
                         validate: function(value) {
                             var _pattern = new RegExp(this.pattern);
                             if (_pattern.test(value) == true) {
-                                if (value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
-                                    for (var i = 0; i < checklength; i++) {
-                                        if (value.split('@')[1] === checkEmail.split(',')[i]) {
-                                            return true;
-                                            break;
-                                        }
-                                    }
-                                    return false;
+                                if (value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) { 
+                                    return true;
                                 } else {
                                     return false;
                                 }
