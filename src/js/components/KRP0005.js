@@ -237,32 +237,35 @@
             var btnFloatingWrap = $('#sw_con .btn-floating-wrap').remove();
 
             if($('#floatBox').find('.floating-wrap').length < 1) {
-                setTimeout(function(){
-                    $('#floatBox').append(btnFloatingWrap);
-                    $('#floatBox').append(floatingWrap);
-    
-                    // preload 대응 현재 슬라이드가 고객지원일때는 숨김처리
-                    if ($('.swiper-slide-active').data().hash == 'support'){
-                        $(floatingWrap).hide();
-                        $(btnFloatingWrap).hide();
-                    }
-                    $('.back-to-top button').off('click').on('click', function (e) {
-                        e.preventDefault();
-                        $(window).trigger('floatingTop');
-                        $('html, body').stop().animate({
-                            scrollTop: 0
-                        }, 400);
-                    });
+                var domInsertCheck = false;
+                $('#sw_con .swiper-slide').one('DOMNodeInserted', function(e) {
+                    if(!domInsertCheck) {
+                        $('#floatBox').append(btnFloatingWrap);
+                        $('#floatBox').append(floatingWrap);
         
-                    KRP0005.init();
-                    $(document).trigger('appInit');
-                },100);
+                        // preload 대응 현재 슬라이드가 고객지원일때는 숨김처리
+                        if ($('.swiper-slide-active').data().hash == 'support'){
+                            $(floatingWrap).hide();
+                            $(btnFloatingWrap).hide();
+                        }
+                        $('.back-to-top button').off('click').on('click', function (e) {
+                            e.preventDefault();
+                            $(window).trigger('floatingTop');
+                            $('html, body').stop().animate({
+                                scrollTop: 0
+                            }, 400);
+                        });
+            
+                        KRP0005.init();
+                        $(document).trigger('appInit');
+                        domInsertCheck = true;
+                    }
+                });
             }
         } else {
             // 스와이프 아닌 페이지
             KRP0005.init();
         }
-        
         
         // BTOCSITE-27 :: 플로팅 바 swipe 대응
     });
