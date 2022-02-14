@@ -198,12 +198,14 @@ var evFilter = {
         if(self.$filter) {
             /**
              * 크롬에서 history back 시 선택했던 내용 캐싱되는 이슈 처리
-             * 페이지 로드 시 전체보기 선택 및 전체 보기 목록 호출하는 것으로 변경함.
+             * 페이지 로드 시 전체보기 checked 처리 및 전체 보기 목록 호출
              */
+            self.$filter.data('orgCode', false);
             self.$sort.filter('#evFilterSortAll').prop('checked', true);
             self.selectAllReset();
             self.requestProductList();
 
+            // load 시 이벤트 관련 함수 실행
             self.bindEvent();
         }
     },
