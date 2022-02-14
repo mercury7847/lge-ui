@@ -104,17 +104,17 @@
                                 doorMaterial: {
                                     name: "스톤",
                                     enName: "Ston",
-                                    code: "ST",
+                                    code: "T",
                                     desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                     descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                     doorColor: [{
                                         name: "클레이 핑크",
-                                        code: "CP",
-                                        mixingCode: "STCP"
+                                        code: "PKC",
+                                        mixingCode: "TPKC"
                                     }, {
                                         name: "실버",
                                         code: "SV",
-                                        mixingCode: "STSV"
+                                        mixingCode: "TSV"
                                     }]
                                 }
                             }, {
@@ -264,17 +264,17 @@
                                 doorMaterial: {
                                     name: "스톤",
                                     enName: "Ston",
-                                    code: "ST",
+                                    code: "T",
                                     desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                     descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                     doorColor: [{
                                         name: "클레이 핑크",
-                                        code: "CP",
-                                        mixingCode: "STCP"
+                                        code: "PKC",
+                                        mixingCode: "TPKC"
                                     }, {
                                         name: "실버",
                                         code: "SV",
-                                        mixingCode: "STSV"
+                                        mixingCode: "TSV"
                                     }]
                                 }
                             }, {
@@ -567,17 +567,17 @@
                                     doorMaterial: {
                                         name: "스톤",
                                         enName: "Ston",
-                                        code: "ST",
+                                        code: "T",
                                         desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                         doorColor: [{
                                             name: "클레이 핑크",
-                                            code: "CP",
-                                            mixingCode: "STCP"
+                                            code: "PKC",
+                                            mixingCode: "TPKC"
                                         }, {
                                             name: "실버",
                                             code: "SV",
-                                            mixingCode: "STSV"
+                                            mixingCode: "TSV"
                                         }]
                                     }
                                 }, {
@@ -736,17 +736,17 @@
                                     doorMaterial: {
                                         name: "스톤",
                                         enName: "Ston",
-                                        code: "ST",
+                                        code: "T",
                                         desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                         doorColor: [{
                                             name: "클레이 핑크",
-                                            code: "CP",
-                                            mixingCode: "STCP"
+                                            code: "PKC",
+                                            mixingCode: "TPKC"
                                         }, {
                                             name: "실버",
                                             code: "SV",
-                                            mixingCode: "STSV"
+                                            mixingCode: "TSV"
                                         }]
                                     }
                                 }, {
@@ -902,17 +902,17 @@
                                     doorMaterial: {
                                         name: "스톤",
                                         enName: "Ston",
-                                        code: "ST",
+                                        code: "T",
                                         desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                         doorColor: [{
                                             name: "클레이 핑크",
-                                            code: "CP",
-                                            mixingCode: "STCP"
+                                            code: "PKC",
+                                            mixingCode: "TPKC"
                                         }, {
                                             name: "실버",
                                             code: "SV",
-                                            mixingCode: "STSV"
+                                            mixingCode: "TSV"
                                         }]
                                     }
                                 }, {
@@ -1053,17 +1053,17 @@
                                     doorMaterial: {
                                         name: "스톤",
                                         enName: "Ston",
-                                        code: "ST",
+                                        code: "T",
                                         desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
                                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                         doorColor: [{
                                             name: "클레이 핑크",
-                                            code: "CP",
-                                            mixingCode: "STCP"
+                                            code: "PKC",
+                                            mixingCode: "TPKC"
                                         }, {
                                             name: "실버",
                                             code: "SV",
-                                            mixingCode: "STSV"
+                                            mixingCode: "TSV"
                                         }]
                                     }
                                 }, {
