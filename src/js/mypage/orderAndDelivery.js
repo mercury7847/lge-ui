@@ -1140,7 +1140,7 @@
                                             'model_sku': list[idx].productList[cdx].productNameEN,
                                             'category': null,
                                             'brand': 'LG',
-                                            'price': datalayerResult.payment.grandTotal,
+                                            'price': list[idx].productList[cdx].productTotalPrice,
                                             'quantity': list[idx].productList[cdx].orderedQuantity,
                                             'model_gubun': list[idx].productList[cdx].modelType,
                                             'ct_id': null
