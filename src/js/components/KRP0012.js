@@ -3,7 +3,9 @@
         init: function() {
             var self = this;
             //크레마
-            lgkorUI.cremaLogin();
+            lgkorUI.cremaLogin(function(cream) {
+                console.log('here', cream)
+            });
 
             var $section = $('.KRP0012');
             var $contWrap = $section.find('.cont-wrap');
@@ -36,6 +38,19 @@
                 } else {
                     $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + "39" + '"></div>');
                 }
+                
+                var cremaReviewTemplate = '<a href="#" class="crema-new-review-link btn" data-product-code="{{enModelName}}">리뷰 작성하기</a>';
+                $section.find('.review-write-wrap').append(vcui.template(cremaReviewTemplate, {"enModelName":productcode}));
+
+                //크레마# 이동 막음
+                $section.on('click','a.crema-new-review-link', function(e) {
+                    if($(this).attr('href') == "#") {
+                        e.preventDefault();
+                    }
+                });
+
+                //크레마 리로드
+                lgkorUI.cremaReload();
             }
 
             /*

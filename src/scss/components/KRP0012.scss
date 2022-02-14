@@ -64,4 +64,21 @@
 		}
 	}
 	// BTOCSITE-3800 제품 리뷰 하단 문구 추가 요청 end
+	// S : BTOCSITE-8083
+	.review-write-wrap {
+		margin-bottom: 48px;
+		text-align: center;
+		.txt-area {
+			font-size: 24px;
+		}
+		.btn {
+			font-size: 16px;
+			line-height: 22px;
+			cursor: pointer;
+		}
+		.txt-area + .btn {
+			margin-top: 24px;
+		}
+	}
+	// E : BTOCSITE-8083
 }
