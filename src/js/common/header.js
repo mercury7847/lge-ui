@@ -59,7 +59,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 });
 
                 $(window).on('scroll', function(){
-                    self._rafRun(self._mobileGnbSticky(window.scrollY));
+                    self._rafRun(self._mobileGnbSticky(window.pageYOffset));
                 });
             });
 

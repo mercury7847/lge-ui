@@ -16,12 +16,12 @@ var goAppUrl = function(path) {
 ;(function($){
     $.event.special.touchstart = {
         setup: function( _, ns, handle ) {
-            this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+            this.addEventListener("touchstart", handle, { passive: !(ns.indexOf('noPreventDefault') > -1) });  
         }
     };
     $.event.special.touchmove = {
         setup: function( _, ns, handle ) {
-            this.addEventListener("touchmove", handle, { passive: !ns.includes("noPreventDefault") });
+            this.addEventListener("touchmove", handle, { passive: !(ns.indexOf('noPreventDefault') > -1) });
         }
     };
     $.event.special.wheel = {
@@ -974,7 +974,7 @@ var goAppUrl = function(path) {
                 }
                 self.scrollTimer = setTimeout(
                     _rafRun(function() {
-                        if (window.scrollY > 100) {
+                        if (window.pageYOffset > 100) {
                             $(window).trigger('floatingTopShow');
                         } else {
                             $(window).trigger('floatingTopHide');          
