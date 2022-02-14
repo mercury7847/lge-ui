@@ -224,45 +224,45 @@
 
 
     $(document).ready(function(){
-        // if(!document.querySelector('.KRP0005')) return false;
-        //$('.KRP0005').buildCommonUI();
+        if(!document.querySelector('.KRP0005')) return false;
 
         // BTOCSITE-27 :: 플로팅 바 swipe 대응        
         var isSwipe = !!$('#sw_con').length;
 
-        if (isSwipe && $('#floatBox').length == 0){
+        if (isSwipe){
             // 20210810 BTOCSITE-1814
-            $('#sw_con').after('<div id="floatBox"></div>');
-        }
-        
-        if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
-            var domInsertCheck = false;
-            var floatingWrap = $('.floating-wrap').remove();
-            var btnFloatingWrap = $('.btn-floating-wrap').remove();
-            $('#sw_con .swiper-slide').one('DOMNodeInserted', function(e) {
-                if(!domInsertCheck) {
+            if($('#floatBox').length == 0) $('#sw_con').after('<div id="floatBox"></div>');
+
+            var floatingWrap = $('#sw_con .floating-wrap').remove();
+            var btnFloatingWrap = $('#sw_con .btn-floating-wrap').remove();
+
+            if($('#floatBox').find('.floating-wrap').length < 1) {
+                setTimeout(function(){
                     $('#floatBox').append(btnFloatingWrap);
                     $('#floatBox').append(floatingWrap);
-
+    
                     // preload 대응 현재 슬라이드가 고객지원일때는 숨김처리
-                    var slideActiveData = $('#sw_con .swiper-slide-active').data();
-                    if (slideActiveData && slideActiveData.hash !== 'support'){
+                    if ($('.swiper-slide-active').data().hash == 'support'){
                         $(floatingWrap).hide();
                         $(btnFloatingWrap).hide();
                     }
-                    
+                    $('.back-to-top button').off('click').on('click', function (e) {
+                        e.preventDefault();
+                        $(window).trigger('floatingTop');
+                        $('html, body').stop().animate({
+                            scrollTop: 0
+                        }, 400);
+                    });
+        
                     KRP0005.init();
                     $(document).trigger('appInit');
-                    domInsertCheck = true;
-                }
-
-            });
-        }
-        
-        // 스와이프 아닌 페이지
-        if (isSwipe == false){
+                },100);
+            }
+        } else {
+            // 스와이프 아닌 페이지
             KRP0005.init();
         }
+        
         
         // BTOCSITE-27 :: 플로팅 바 swipe 대응
     });
