@@ -1552,8 +1552,8 @@
             // S : BTOCSITE-3407 2022-02-11
             var validOpt = {
                 num : (data.contractType === 'C')?3:3,
-                str : new Date(data.contStartDate.split('.')),
-                end : new Date(data.contEndDate.split('.')),
+                str : new Date(Number(data.contStartDate.split('.')[0]), Number(data.contStartDate.split('.')[1]) - 1, Number(data.contStartDate.split('.')[2])),
+                end : new Date(Number(data.contEndDate.split('.')[0]), Number(data.contEndDate.split('.')[1]) - 1, Number(data.contEndDate.split('.')[2])),
                 format : function(d, f) {
                     return f.replace(/(yyyy|yy|mm|dd)/gi, function($1) {
                         switch ($1) {
@@ -1566,7 +1566,7 @@
                     });
                 },
                 call : function(str, end) {
-                    var da1 = new Date(str.split('.'));
+                    var da1 = new Date(Number(str.split('.')[0]), Number(str.split('.')[1]) - 1, Number(str.split('.')[2]));
                     var da2 = new Date();
                     var dif = da2 - da1;
                     var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
@@ -1583,17 +1583,16 @@
                 validOpt.str.setFullYear(validOpt.str.getFullYear() + 1)
                 validOpt.str.setMonth(validOpt.str.getMonth() + validOpt.num)
                 validOpt.endDate = new Date(validOpt.str.getFullYear(), validOpt.str.getMonth(), 0);
-                validOpt.strDate = new Date(data.contStartDate.split('.'));
+                validOpt.strDate = new Date(Number(data.contStartDate.split('.')[0]), Number(data.contStartDate.split('.')[1]) - 1, Number(data.contStartDate.split('.')[2]));
             }else {
                 validOpt.str.setMonth(validOpt.str.getMonth() + validOpt.num)
                 validOpt.endDate = new Date(new Date().getFullYear(), validOpt.str.getMonth(), 0);
-                validOpt.strDate = new Date(new Date().getFullYear(), new Date(data.contStartDate.split('.')).getMonth(), 1);
+                validOpt.strDate = new Date(new Date().getFullYear(), new Date(Number(data.contStartDate.split('.')[0]), Number(data.contStartDate.split('.')[1]) - 1, Number(data.contStartDate.split('.')[2])).getMonth(), 1);
                 // validOpt.call(data.contStartDate)
             }
             data.validStrDate = validOpt.format(validOpt.strDate, 'yyyy.mm.dd');
             data.validEndDate = validOpt.format(validOpt.endDate, 'yyyy.mm.dd');
 
-            console.log(validOpt, validOpt.call(data.contStartDate), data)
             if((data.contractType === 'C')) {
                 if(validOpt.call(data.contStartDate).month<=14) {
                     return $lc_cont.html(vcui.template(lb_careShip, data));
