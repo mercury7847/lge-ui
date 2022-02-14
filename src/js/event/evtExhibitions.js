@@ -190,7 +190,6 @@ var evFilter = {
         self.$reservationButton = self.$shop.find(".btn-wrap");
 
         self.$productList = self.$container.find(".product-items");
-        self.$noData = self.$container.find(".no-data");
         self.productUrl = self.$container.data('productUrl');
         self.localUrl = self.$container.data('localUrl');
         self.shopUrl = self.$container.data('shopUrl');
@@ -468,13 +467,7 @@ var evFilter = {
                     self.$productList.append(listItem);
                 });
 
-                self.$productList.show();
-                self.$noData.hide();
-
                 goPdpUrl();
-            } else {
-                self.$productList.hide();
-                self.$noData.show();
             }
         });
     },
@@ -491,14 +484,16 @@ var evFilter = {
             var data = result.data;
             var dataArray = (data && data instanceof Array) ? data : [];
 
-            self.$countySelect.find("option:gt(0)").remove();
+            if(dataArray.length) {
+                self.$countySelect.find("option:gt(0)").remove();
 
-            dataArray.forEach(function(item, index) {
-                var option = vcui.template(optionTemplate, item);
-                self.$countySelect.append($(option).get(0));
-            });
+                dataArray.forEach(function (item, index) {
+                    var option = vcui.template(optionTemplate, item);
+                    self.$countySelect.append($(option).get(0));
+                });
 
-            self.$countySelect.vcSelectbox('update');
+                self.$countySelect.vcSelectbox('update');
+            }
         });
     },
 
@@ -515,14 +510,16 @@ var evFilter = {
             var data = result.data;
             var dataArray = (data && data instanceof Array) ? data : [];
 
-            self.$shopSelect.find("option:gt(0)").remove();
+            if(dataArray.length) {
+                self.$shopSelect.find("option:gt(0)").remove();
 
-            dataArray.forEach(function(item, index) {
-                var option = vcui.template(optionTemplate, item);
-                self.$shopSelect.append($(option).get(0));
-            });
+                dataArray.forEach(function (item, index) {
+                    var option = vcui.template(optionTemplate, item);
+                    self.$shopSelect.append($(option).get(0));
+                });
 
-            self.$shopSelect.vcSelectbox('update');
+                self.$shopSelect.vcSelectbox('update');
+            }
         });
     }
 }
