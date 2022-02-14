@@ -189,20 +189,25 @@ var evFilter = {
         self.$shopSelect = $("#evFilterShop");
         self.$reservationButton = self.$shop.find(".btn-wrap");
 
-        self.$productList = self.$container.find(".product-items");
-        self.productUrl = self.$container.data('productUrl');
-        self.localUrl = self.$container.data('localUrl');
+        self.$allProductList = self.$container.find("#allProductList");
+        self.$shopProductList = self.$container.find("#shopProductList");
+        self.shopProductListUrl = self.$container.data('shopProductListUrl');
+        self.cityUrl = self.$container.data('cityUrl');
+        self.countyUrl = self.$container.data('countyUrl');
         self.shopUrl = self.$container.data('shopUrl');
 
         if(self.$filter) {
             /**
              * 크롬에서 history back 시 선택했던 내용 캐싱되는 이슈 처리
-             * 페이지 로드 시 전체보기 checked 처리 및 전체 보기 목록 호출
+             * 페이지 로드 시 전체보기 checked 처리 및 전체 보기 목록 영역 노출
              */
-            self.$filter.data('orgCode', false);
             self.$sort.filter('#evFilterSortAll').prop('checked', true);
             self.selectAllReset();
-            self.requestProductList();
+            self.$allProductList.show();
+            self.$shopProductList.hide();
+            
+            // load 시 시/도 selectbox 목록 요청
+            self.requestCityList();
 
             // load 시 이벤트 관련 함수 실행
             self.bindEvent();
@@ -221,12 +226,8 @@ var evFilter = {
             // 전체보기 선택 시
             if(currentVal == 'all'){
                 self.$shop.removeClass('is-active');
-
-                // 매장 기준으로 상품 목록 그려진 상태에서 전체보기 재선택 했을때는 전체보기 목록을 재호출 처리
-                if(self.$filter.data('orgCode')) {
-                    self.$filter.data('orgCode', false);
-                    self.requestProductList();
-                }
+                self.$allProductList.show();
+                self.$shopProductList.hide();
                 
                 // 전체보기 선택 시 선택했던 지점 셀렉트박스 및 상담예약 버튼 노출 초기화
                 self.selectAllReset();
@@ -266,12 +267,10 @@ var evFilter = {
             } else {
                 var baseUrl = self.$reservationButton.find(".btn").data('baseUrl');
 
-                self.$filter.data('orgCode', true);
-
                 self.$reservationButton.find(".btn").attr('href', baseUrl + '?orgCord=' + e.target.value)
                 self.$reservationButton.addClass('is-active');
 
-                self.requestProductList(e.target.value)
+                self.requestShopProductList(e.target.value)
             }
         });
     },
@@ -302,8 +301,6 @@ var evFilter = {
      */
     selectAllReset: function(){
         var self = this;
-
-        self.$filter.data('orgCode', false);
 
         self.selectSingleReset('city', self.$citySelect);
         self.selectSingleReset(null, self.$countySelect, true);
@@ -448,7 +445,7 @@ var evFilter = {
      * 상품 목록 데이터 호출
      * @param {string} orgCode 매장 코드
      */
-    requestProductList: function(orgCode) {
+    requestShopProductList: function(orgCode) {
         var self = this;
         var formData = {};
 
@@ -456,22 +453,49 @@ var evFilter = {
             formData.orgCode = orgCode;
         }
 
-        lgkorUI.requestAjaxDataPost(self.productUrl, formData, function(result) {
+        lgkorUI.requestAjaxDataPost(self.shopProductListUrl, formData, function(result) {
             var data = result.data;
             var dataArray = (data && data instanceof Array) ? data : [];
 
             if(dataArray.length) {
-                self.$productList.empty();
+                self.$shopProductList.empty();
                 dataArray.forEach(function (item, index) {
                     var listItem = self.makeListItem(item);
-                    self.$productList.append(listItem);
+                    self.$shopProductList.append(listItem);
                 });
+
+                self.$allProductList.hide();
+                self.$shopProductList.show();
 
                 goPdpUrl();
             }
         });
     },
 
+    /**
+     * 시/도 목록 데이터 호출
+     */
+    requestCityList: function() {
+        var self = this;
+        var optionTemplate = '<option value="{{value}}">{{title}}</option>';
+
+        lgkorUI.requestAjaxDataFailCheck(self.cityUrl, null,function(result) {
+            var data = result.data;
+            var dataArray = (data && data instanceof Array) ? data : [];
+
+            if(dataArray.length) {
+                self.$citySelect.find("option:gt(0)").remove();
+
+                dataArray.forEach(function (item, index) {
+                    var option = vcui.template(optionTemplate, item);
+                    self.$citySelect.append($(option).get(0));
+                });
+
+                self.$citySelect.vcSelectbox('update');
+            }
+        });
+    },
+    
     /**
      * 구/군 목록 데이터 호출
      * @param {string} city 시/도 value
@@ -480,7 +504,7 @@ var evFilter = {
         var self = this;
         var optionTemplate = '<option value="{{value}}">{{title}}</option>';
 
-        lgkorUI.requestAjaxDataFailCheck(self.localUrl, {city:encodeURI(city)}, function(result) {
+        lgkorUI.requestAjaxDataFailCheck(self.countyUrl, {city:encodeURI(city)}, function(result) {
             var data = result.data;
             var dataArray = (data && data instanceof Array) ? data : [];
 
