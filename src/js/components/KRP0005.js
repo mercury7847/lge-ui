@@ -237,18 +237,16 @@
         
         if (isSwipe && $('#floatBox').find('.floating-wrap').length < 1){
             var domInsertCheck = false;
+            var floatingWrap = $('.floating-wrap').remove();
+            var btnFloatingWrap = $('.btn-floating-wrap').remove();
             $('#sw_con .swiper-slide').one('DOMNodeInserted', function(e) {
-                // console.log("dom insert %o",e.target);
-
                 if(!domInsertCheck) {
-                    // console.log('krp0005 init');
-                    var floatingWrap = $('.floating-wrap').remove();
-                    var btnFloatingWrap = $('.btn-floating-wrap').remove();
                     $('#floatBox').append(btnFloatingWrap);
                     $('#floatBox').append(floatingWrap);
 
                     // preload 대응 현재 슬라이드가 고객지원일때는 숨김처리
-                    if ($('.swiper-slide-active').data().hash == 'support'){
+                    var slideActiveData = $('#sw_con .swiper-slide-active').data();
+                    if (slideActiveData && slideActiveData.hash !== 'support'){
                         $(floatingWrap).hide();
                         $(btnFloatingWrap).hide();
                     }
