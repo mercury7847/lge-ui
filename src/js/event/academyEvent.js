@@ -38,7 +38,7 @@
                     //이메일
                     userEmail: {
                         required: true,
-                        pattern: /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+)?(\.ac\.kr|\.edu)$/,
+                        pattern: /^([0-9a-zA-Z_\.-]+)@[0-9a-zA-Z_-]*\.?(ac\.kr|edu)$/,
                         minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
@@ -48,7 +48,10 @@
                             var _pattern = new RegExp(this.pattern);
                             if (_pattern.test(value) == true) {
                                 if (value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) { 
-                                    return true;
+                                    if(value.indexOf(".ac.kr") > -1 || value.indexOf(".edu") > -1) {
+                                        return true;
+                                    } 
+                                    return false;
                                 } else {
                                     return false;
                                 }
