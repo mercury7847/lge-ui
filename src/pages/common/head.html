@@ -40,6 +40,28 @@
     <script src="/lg5-common/js/vcui.common-ui.min.js"></script>
     <script src="/lg5-common/js/lg.common.min.js"></script>
     <script src="/lg5-common/js/app.common.min.js"></script>
+    <script>
+        var digitalData = digitalData || {};
+
+        @@if ( context.digitalData && context.digitalData.userInfo) {
+
+
+            @@if ( context.digitalData.userInfo.unifyId ) {
+                // 로그인 데이터 세팅
+                digitalData.userInfo = {};
+                digitalData.userInfo.unifyId = "@@digitalData.userInfo.unifyId"; // 퍼블 digitalData userInfo 로그인 id 있는경우
+                @@if ( context.digitalData.userInfo.birthDt ) {
+                    digitalData.userInfo.birthDt = "@@digitalData.userInfo.birthDt"; // 퍼블 digitalData userInfo 나이 데이터 있는경우
+                }
+            }
+
+            @@if ( !context.digitalData.userInfo.unifyId ) {
+                // 비로그인 데이터 세팅
+
+            }
+
+        }
+    </script>
     @@if (context.isJScompile && context.componentID) {
         <script src="/lg5-common/js/components/@@componentID.min.js"></script>
     }
@@ -49,14 +71,5 @@
         }
     }
     <!-- <script src="/lg5-common/js/search/integratedSearch.min.js" async></script> -->
-    <script>
-        var digitalData = digitalData || {};
 
-        @@if ( context.digitalData && context.digitalData.userInfo && context.digitalData.userInfo.unifyId ) {
-            // 퍼블 digitalData userInfo 기본 데이터 세팅
-            digitalData.userInfo = {
-                "unifyId" : "@@digitalData.userInfo.unifyId"
-            }    
-        }
-    </script>
 </head>
