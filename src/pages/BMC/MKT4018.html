@@ -8,7 +8,7 @@
         "digitalData": {
             userInfo: {
                 "unifyId": "eae799fd07c188c80983e1939833fb0d", // 로그인 상태 : 로그인중 unifyId 값이 존재 ( eae799fd07c188c80983e1939833fb0d ), 비로그인 :  unifyId 값이 null
-                "birthDt": "19760930" // 유저 나이데이터 있는경우 unifyId가 설정 되어 있어야 나온다 
+                "birthDt": "19920102" // 유저 나이데이터 있는경우 unifyId가 설정 되어 있어야 나온다 
             }
         }
     })
@@ -109,17 +109,14 @@
                                 </header>
                                 <section class="pop-conts">
                                         <!-- S: BTOCSITE-12243 아카데미 학생할인 기획전 문구 추가/수정 요청 -->
-                                        <P class="p-title">
-                                            <div>본인의 대학교 이메일로 인증해 주세요.</div>
-                                            <div> ac.kr / edu 계정의 이메일 주소를 입력해 주세요.</div>
-                                        </P>
+                                        <P class="p-title">본인의 대학교 이메일로 인증해 주세요.</P>
                                         <!-- E: BTOCSITE-12243 아카데미 학생할인 기획전 문구 추가/수정 요청 -->
                                         <div class="form-wrap" id="emailCertifiedForm" data-ajax="https://wwwdev50.lge.co.kr/evt/api/exhibitions/sendTheEmail.lgajax?planEventId=PE00030001" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
                                             <dl class="forms inner-type">
                                                 <dt class="tit"><label for="email" class="req">이메일<span class="blind">필수입력</span></label></dt>
                                                 <dd class="conts">
                                                     <span class="input-wrap block">
-                                                        <input type="text" id="userEmail" name="userEmail" placeholder="ac.kr 계정의 이메일 주소를 입력해 주세요." data-required="true">
+                                                        <input type="text" id="userEmail" name="userEmail" placeholder="ac.kr / edu 계정의 이메일 주소를 입력해 주세요." data-required="true">
                                                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                     </span>
                                                 </dd>
