@@ -1511,7 +1511,7 @@
         //console.log("sssss", mypage.find(".section-wrap"))
 
         // 로컬 테스트용 BTOCSITE-3407 2022-02-11
-        if(window.LGEAPPHostName == 'localhost'|| window.LGEAPPHostName == 'wwwdev50.lge.co.kr') {
+        if(window.location.pathname == '/html/MYC/ACCF7025_care_benefits.html') {
             switch($lc_select.split('|')[1]) {
                 case '20229019' :
                     data = {"contStartDate":"2020.02.07","modelName":"정수기(WQD74WJ5)","contractType":"R","contractID":"20229019","contDtlType":"R00","contEndDate":"2025.02.06"}
