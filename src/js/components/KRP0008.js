@@ -1462,7 +1462,6 @@
                             }
                         }
                     } else {
-                        $(window).trigger("toastshow", "구매시 케어십이 신청됩니다.");
                         if($careshipService.length > 0) {
                             var $paymentAmount = $careshipService.siblings('div.payment-amount');
                             var $careshipPriceInfo = $paymentAmount.find('li.careship-price-info');
