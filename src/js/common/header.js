@@ -778,11 +778,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
             self.prevScrollTop = $(window).scrollTop() || 0;
 
-            $('.is-main-sticky-header #skipToContent').on('focusin', function(){
-                $('.is-main-sticky-header').addClass('show-skip')
-            }).on('blur', function(){
-                $('.is-main-sticky-header').removeClass('show-skip')
-            });
 
             //BTOCSITE-1967 웹하단바 - 전체메뉴 클릭시 햄버거메뉴 열림
             self.$statusBar = $('.mobile-status-bar');
