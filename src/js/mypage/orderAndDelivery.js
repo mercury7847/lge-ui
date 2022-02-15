@@ -1,5 +1,5 @@
 (function() {
-    
+
    
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
@@ -1098,11 +1098,11 @@
                     //console.log("datalayerResult", datalayerResult);
                     if(typeof dataLayer !== 'undefined' && dataLayer) {
 
-                        
+
                         /* BTOCSITE-11351 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 : 여러 제품 이였을때 수정*/
                         if(TAB_FLAG == TAB_FLAG_ORDER) {
                             console.log("구매 탭");
-                            //var orderProdutID = datalayerResult.listData[0].orderNumber; 
+                            //var orderProdutID = datalayerResult.listData[0].orderNumber;
 
                             // function getOrderID(datalayerResult){
                             //     if( orderProdutID == "" || orderProdutID == undefined) {
@@ -1148,9 +1148,8 @@
                                     }
                                 }
                             }
-                            
+                            console.log("dataLayer : ", JSON.stringify(pushDataEvent));
                             dataLayer.push(pushDataEvent);
-                            console.log("dataLayer : ", pushDataEvent);
 
                         } else {
 
@@ -1194,31 +1193,9 @@
                                 }
             
                             }
-                            
-                            /*
-                            var pushDataEvent = {				
-                                'event': 'refund',				
-                                'actionField': {
-                                    //'order_id' : getOrderID(datalayerResult)
-                                    //'order_id' : CARE_list[idx].requestNo
-                                    'order_id' : "ORD-" + CARE_list[idx].orderNumber
-                                },				
-                                'products': [{
-                                    'model_name': CARE_list[idx].productList[CARE_cdx].productNameKR,					
-                                    'model_id': CARE_list[idx].productList[CARE_cdx].modelID,					
-                                    'model_sku': CARE_list[idx].productList[CARE_cdx].productNameEN,					
-                                    'category': null,					
-                                    'brand': 'LG',					
-                                    'price': CARE_list[idx].productList[CARE_cdx].years1TotAmt,
-                                    'quantity': CARE_list[idx].productList[CARE_cdx].orderedQuantity,					
-                                    'model_gubun': CARE_list[idx].productList[CARE_cdx].productFlag,
-                                    'ct_id': null
-                                }]				
-                            };
-                            */
     
+                            console.log("dataLayer : ", JSON.stringify(pushDataEvent));
                             dataLayer.push(pushDataEvent);
-                            console.log("dataLayer : ", pushDataEvent);
                         }
                         /* BTOCSITE-11351 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 : 여러 제품 이였을때 수정*/
                     }
