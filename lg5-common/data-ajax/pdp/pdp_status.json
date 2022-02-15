@@ -1,0 +1,9 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "productId": "75NANO99KNB",
+        "orderStatus": "Y",
+        "ownStatus": "Y"
+    }
+}

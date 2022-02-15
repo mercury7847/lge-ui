@@ -48,14 +48,30 @@
         // S : BTOCSITE-8083
         reviewWrite: function() {
             var $section = $('.KRP0012');
+            var ajaxUrl = $section.attr('data-product-status');
             var productcode = $section.data('productCode');
             var cremaReviewTemplate = '<div class="review-write-wrap">'+
                 '<div class="txt-area">'+
                     '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
                 '</div>'+
-                '<button type="button" class="crema-new-review-link btn" data-product-code="{{enModelName}}">리뷰 작성하기</button>'+
+                '<button type="button" class="crema-new-review-link btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}">리뷰 작성하기</button>'+
             '</div>';
-            $section.find('.review-info-text').before(vcui.template(cremaReviewTemplate, {"enModelName":productcode}));
+
+            lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+                var data = result.data;
+                if(data.orderStatus == "Y") {
+                    $section.find('.review-info-text').before(vcui.template(cremaReviewTemplate, {"enModelName":productcode, "ownStatus":data.ownStatus}));
+                }
+            });
+            $section.on('click','.review-write-wrap .btn', function(e) {
+                console.log($(this).attr('data-own-status'))
+                if($(this).attr('data-own-status') == 'N') {
+                    if (confirm('보유제품 등록 후 리뷰 등록 가능합니다')) {
+                        location.href = '/my-page/manage-products';
+                    }
+                    return false;
+                }
+            });
         }
         // E : BTOCSITE-8083
     }
