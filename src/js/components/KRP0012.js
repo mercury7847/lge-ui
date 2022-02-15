@@ -53,7 +53,7 @@
                 '<div class="txt-area">'+
                     '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
                 '</div>'+
-                '<a href="#" class="crema-new-review-link btn" data-product-code="{{enModelName}}">리뷰 작성하기</a>'+
+                '<button type="button" class="crema-new-review-link btn" data-product-code="{{enModelName}}">리뷰 작성하기</button>'+
             '</div>';
             $section.find('.review-info-text').before(vcui.template(cremaReviewTemplate, {"enModelName":productcode}));
         }
