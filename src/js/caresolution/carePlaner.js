@@ -15,9 +15,9 @@
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
         '       <div class="img-wrap">'+
-        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}<a href="{{modelUrlPath}}">{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"|| moduleType == "module-type5"}}<a href="{{modelUrlPath}}">{{/if}}'+
         '               <img src="{{modelImg}}" alt="{{#raw userFriendlyName}}">'+
-        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"|| moduleType == "module-type5"}}</a>{{/if}}'+
         '       </div>'+
         '       <div class="txt-wrap">'+
         '       {{#if moduleType == "module-type3"}}'+
@@ -688,6 +688,7 @@
         for(key in item.siblingVisitCycle) item.siblingVisitCycle[key].siblingCode = item.siblingVisitCycle[key].siblingCode.toString();   
         //BTOCSITE-9177   start 
         if(typeof item.siblingSvcType !== "undefined" && item.siblingSvcType.length > 0){
+            
             for(key in item.siblingSvcType) item.siblingSvcType[key].siblingCode = item.siblingSvcType[key].siblingCode.toString();//BTOCSITE-9177  
         } 
         //BTOCSITE-9177   end
