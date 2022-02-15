@@ -8,6 +8,8 @@
 
             var planEventId = $('#planEventId').val();
             var memberStatus = self.memberCheck();
+            var checkEmail = $("#checkEmail").val().split(',');
+
             if (memberStatus == 'Y') {
                 location.href = "/benefits/exhibitions/detail-"+planEventId;
             }
@@ -38,26 +40,25 @@
                     //이메일
                     userEmail: {
                         required: true,
-                        pattern: /^([0-9a-zA-Z_\.-]+)@[0-9a-zA-Z_-]*\.?(ac\.kr|edu)$/,
+                        pattern: /^([0-9a-zA-Z]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+)*(\.ac\.kr|\.edu)$/,
                         minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
                         errorMsg: '이메일 주소를 입력해주세요.',
                         patternMsg: '@ac.kr 계정의 이메일을 입력해 주세요.',
                         validate: function(value) {
-                            var _pattern = new RegExp(this.pattern);
-                            if (_pattern.test(value) == true) {
-                                if (value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) { 
-                                    if(value.indexOf(".ac.kr") > -1 || value.indexOf(".edu") > -1) {
-                                        return true;
-                                    } 
-                                    return false;
+                            var email = value.split('@'),emailId = email[0], emailDomain = email[1];
+                            if (emailId.length <= 30 && emailDomain.length <= 20) { 
+                                var _pattern = new RegExp(this.pattern);
+                                if (_pattern.test(value) == true) {
+                                    return value.indexOf(".ac.kr") > -1 || value.indexOf(".edu") > -1 ? true : false;
                                 } else {
-                                    return false;
+                                    // 예외사항 처리
+                                    return checkEmail.indexOf(emailDomain) > -1 && !!emailId.match(/^([0-9a-zA-Z_\.-]+)$/) ? true : false;
                                 }
                             } else {
                                 return false;
-                            }
+                            }              
                         }
                     },
                     //약관동의
