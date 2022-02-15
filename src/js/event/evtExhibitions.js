@@ -243,7 +243,7 @@ var evFilter = {
                 self.selectSingleReset(null, self.$countySelect, true);
                 self.selectSingleReset(null, self.$shopSelect, true);
             } else {
-                self.selectSingleReset(null, self.$countySelect, false);
+                self.selectSingleReset(null, self.$countySelect, true);
                 self.selectSingleReset(null, self.$shopSelect, true);
 
                 self.requestCountyList(e.target.value);
@@ -255,7 +255,7 @@ var evFilter = {
             if(e.target.value == "") {
                 self.selectSingleReset(null, self.$shopSelect, true);
             } else {
-                self.selectSingleReset(null, self.$shopSelect, false);
+                self.selectSingleReset(null, self.$shopSelect, true);
                 self.requestShopList(self.$citySelect.val(), e.target.value);
             }
         });
@@ -516,6 +516,7 @@ var evFilter = {
                     self.$countySelect.append($(option).get(0));
                 });
 
+                self.$countySelect.prop('disabled', false);
                 self.$countySelect.vcSelectbox('update');
             }
         });
@@ -542,6 +543,7 @@ var evFilter = {
                     self.$shopSelect.append($(option).get(0));
                 });
 
+                self.$shopSelect.prop('disabled', false);
                 self.$shopSelect.vcSelectbox('update');
             }
         });
