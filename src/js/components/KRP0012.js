@@ -64,13 +64,12 @@
                 }
             });
             $section.on('click','.review-write-wrap .btn', function(e) {
-                console.log($(this).attr('data-own-status'))
                 if($(this).attr('data-own-status') == 'N') {
                     if (confirm('보유제품 등록 후 리뷰 등록 가능합니다')) {
                         location.href = '/my-page/manage-products';
                     }
-                    return false;
                 }
+                return false;
             });
         }
         // E : BTOCSITE-8083
