@@ -15,9 +15,9 @@
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
         '       <div class="img-wrap">'+
-        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}<a href="{{modelUrlPath}}">{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"|| moduleType == "module-type5"}}<a href="{{modelUrlPath}}">{{/if}}'+
         '               <img src="{{modelImg}}" alt="{{#raw userFriendlyName}}">'+
-        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"|| moduleType == "module-type5"}}</a>{{/if}}'+
         '       </div>'+
         '       <div class="txt-wrap">'+
         '       {{#if moduleType == "module-type3"}}'+
@@ -688,10 +688,8 @@
         for(key in item.siblingVisitCycle) item.siblingVisitCycle[key].siblingCode = item.siblingVisitCycle[key].siblingCode.toString();   
         //BTOCSITE-9177   start 
         if(typeof item.siblingSvcType !== "undefined" && item.siblingSvcType.length > 0){
-            if(item.siblingSvcType!= null){
-                for(key in item.siblingSvcType) item.siblingSvcType[key].siblingCode = item.siblingSvcType[key].siblingCode.toString();//BTOCSITE-9177  
-            }
             
+            for(key in item.siblingSvcType) item.siblingSvcType[key].siblingCode = item.siblingSvcType[key].siblingCode.toString();//BTOCSITE-9177  
         } 
         //BTOCSITE-9177   end
         
@@ -803,13 +801,11 @@
                 
                 // BTOCSITE-9177 START
                 if(typeof result.data.siblingSvcType !== "undefined" && result.data.siblingSvcType.length > 0){
-                    if(result.data.siblingSvcType!= null){
-                        var o = result.data.siblingSvcType;
-                        var selectSvcType = Object.keys(o).reduce(function (previous, current) {
-                            return o[previous].siblingCode > o[current].siblingCode ? previous:current;
-                        });
-                        selectSvcType = o[selectSvcType].siblingCode;
-                    }
+                    var o = result.data.siblingSvcType;
+                    var selectSvcType = Object.keys(o).reduce(function (previous, current) {
+                        return o[previous].siblingCode > o[current].siblingCode ? previous:current;
+                    });
+                    selectSvcType = o[selectSvcType].siblingCode;
                 }
                 // BTOCSITE-9177 END
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingContractPeriod]'), result.data.siblingContractPeriod, result.data.selectContractPeriodID);
@@ -817,9 +813,7 @@
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingVisitCycle]'), result.data.siblingVisitCycle, result.data.selectVisitCycleID);
                 setCliblingData(listBlock.find('select[data-sibling-type=siblingFee]'), result.data.siblingFee, result.data.selectFeeID);
                 if(typeof result.data.siblingSvcType !== "undefined" && result.data.siblingSvcType.length > 0){
-                    if(result.data.siblingSvcType!= null){
-                        setCliblingData(listBlock.find('select[data-sibling-type=siblingSvcType]'), result.data.siblingSvcType, result.data.selectSvcTypeCd);// BTOCSITE-9177
-                    }
+                    setCliblingData(listBlock.find('select[data-sibling-type=siblingSvcType]'), result.data.siblingSvcType, result.data.selectSvcTypeCd);// BTOCSITE-9177
                 }
             }
         });

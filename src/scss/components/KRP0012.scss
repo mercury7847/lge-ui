@@ -79,6 +79,19 @@
 		.txt-area + .btn {
 			margin-top: 24px;
 		}
+		@include mobile {
+			margin-bottom: 32px;
+			.txt-area {
+				font-size: 16px;
+				line-height: 22px;
+			}
+			.btn {
+				padding: 8px 25px;
+				font-size: 14px;
+				line-height: 22px;
+				cursor: pointer;
+			}
+		}
 	}
 	// E : BTOCSITE-8083
 }

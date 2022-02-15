@@ -2563,6 +2563,14 @@ html {
         > main.container {
             padding-top: 70px;
         }
+        &.hasFocusSkipContent {
+            .skip-content a:focus {
+                position: absolute;
+            }
+            .sub-renew-nav-wrap {
+                z-index: 99;
+            }
+        }
     }
     html:not(.mobile.mdevice) {
         .subRenewWrap {
