@@ -1640,9 +1640,17 @@ function validatePhone(value){
         }
     }
 
-    $(window).ready(function(){
-        commonInit();
-    })
+
+    var isSwipe = !!$('#sw_con').length;
+    if(isSwipe) {
+        
+        console.log("support-common isswipe");
+        setTimeout(function(){
+            commonInit();
+        }, 100);
+    } else {
+        document.addEventListener('DOMContentLoaded', commonInit);
+    }
 
     $('[data-control="modal"]').each(function() {
         var target = $(this).data('href') || $(this).attr('href');
