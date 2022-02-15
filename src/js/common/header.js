@@ -309,6 +309,15 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self._pcSetting();
             self._mobileSetting();
             self._subSpreadMenuAction(); //BTOCSITE-2117
+
+            //BTOCSITE-2117
+            self.$subRenewPage.find('#skipToContent').on('focus', function(e){
+                e.preventDefault();
+                self.$subRenewPage.addClass('hasFocusSkipContent');
+            }).on('blur', function(e){
+                e.preventDefault();
+                self.$subRenewPage.removeClass('hasFocusSkipContent');
+            });
         },
 
         _focusFn:function(e){
