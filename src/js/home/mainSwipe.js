@@ -13,7 +13,6 @@ function MainSwiper( ID ){
     this.firstPathName = location.pathname;
     this.firstSearch = location.search;
     this.isSwiped = true;   // BTOCSITE-2947 add :: 직접 터치하여 스와이프가 되었는지 여부
-    this.floatBox = {}
     
 
     this.hashToUrl = {
@@ -222,7 +221,7 @@ MainSwiper.prototype = {
             url : href,
             dataType : 'html',
             success : function( res ){
-                self._rafRun(self.asyncContent(res,{
+                self._rafRun(self.contentLoad(res,{
                     'currentSlide':currentSlide,
                     'pushFlag':pushFlag,
                     'hash':hash
@@ -428,7 +427,7 @@ MainSwiper.prototype = {
         }
     },
     // E BTOCSITE-12128 메인성능개선
-    asyncContent : function(html,opt) {
+    contentLoad : function(html,opt) {
         var self = this;
 
             self.setInnerHTML($(opt.currentSlide)[0], html); // JQUERY APPEND 비동기 로딩시 너무 렌더링이 느려서 innerHtml 을 이용한 스크립트 로딩
