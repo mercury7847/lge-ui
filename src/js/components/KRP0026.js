@@ -96,7 +96,7 @@
                 var currentUrl = $(location).attr('href');
                 var hashArr = currentUrl.split('&');
                 var urlSet = hashArr[0] + '&' + data;
-                
+
                 history.replaceState(null, null, urlSet);
                 /* //BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */
             });
@@ -127,6 +127,19 @@
                 self.$mainTab.vcTab('select', storyTab.parents('li').index());
                 self.requestData({"superCategoryId":tabNum,"categoryId":"","page": pageNum}, true);
             } else {
+                // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 탭 그려진 후에 아코디언버튼 세팅
+                if($('.subRenewWrap').length > 0) {
+                    self.$KRP0026.find('.tabs-wrap').removeClass('expanded');
+                    self.setAccordionButton();
+                    $(window).on('resize', function() {
+                        self.setAccordionButton();
+                    });
+                    self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', true);
+                    setTimeout(function() {
+                        self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('scrollToActive');
+                    }, 500);
+                }
+
                 var currentUrl = $(location).attr('href');
                 var urlSet = currentUrl + '#&1';
                 
@@ -191,6 +204,9 @@
                             self.setAccordionButton();
                         });
                         self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', true);
+                        setTimeout(function() {
+                            self.$KRP0026.find('.tabs-wrap').vcSmoothScroll('scrollToActive');
+                        }, 500);
                     }
 
                     /* BTOCSITE-5938-292 [모니터링] 임의의 페이시 진입 후 뒤로가기 선택시 리스트 페이징 오류 */

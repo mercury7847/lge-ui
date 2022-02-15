@@ -2516,6 +2516,30 @@ html {
                 width: calc(100% - 76px);
             }
         }
+        &.searchHead {
+            .header-wrap {
+                border-bottom: none;
+            }
+            .sub-renew-nav-wrap {
+                width: 50px;
+                padding: 0;
+                .btn-back {
+                    background-position: left 10px top 9px;
+                }
+            }
+            .contents {
+                &.search {
+                    .input-keyword-wrap {
+                        left: 50px;
+                        width: calc(100% - 50px);
+                        padding: 7px 16px;
+                        .input-keyword {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
         &.isActive {
             .header {
                 z-index: 8000;
@@ -2539,6 +2563,14 @@ html {
         > main.container {
             padding-top: 70px;
         }
+        &.hasFocusSkipContent {
+            .skip-content a:focus {
+                position: absolute;
+            }
+            .sub-renew-nav-wrap {
+                z-index: 99;
+            }
+        }
     }
     html:not(.mobile.mdevice) {
         .subRenewWrap {
@@ -2556,10 +2588,12 @@ html {
                 }
             }
             &:not(.snsHead) {
-                &:not(.cartHead) {
-                    .sub-renew-nav-wrap {
-                        width: calc(100% - 120px);
-                        padding-left: 50px;
+                &:not(.searchHead) {
+                    &:not(.cartHead) {
+                        .sub-renew-nav-wrap {
+                            width: calc(100% - 120px);
+                            padding-left: 50px;
+                        }
                     }
                 }
             }

@@ -852,3 +852,32 @@ body {
         }
     }
 }
+
+/* BTOCSITE-9633 [All]통합약관>마/수/동 & 앱 푸시 마/수/동 연동 처리 */
+.popup-wrap.small{
+    .pop-header{
+        @include mobile{
+            padding:24px 30px 14px 0;
+        }
+    }
+    .mkt-option{
+        >p{
+            margin-bottom:20px;
+            font-size:16px;
+            line-height:24px;
+            >a{
+                font-weight:700;
+                color:#da0f47;
+            }
+            &:first-of-type{
+                margin:0;
+                color:#000;
+            }
+            &:last-of-type{
+                margin-bottom:0;
+            }
+        }
+    }
+}
+
+/* //BTOCSITE-9633 [All]통합약관>마/수/동 & 앱 푸시 마/수/동 연동 처리 */

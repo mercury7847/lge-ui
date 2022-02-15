@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path style="fill:none" d="M0 0h24v24H0z"/>
+    <g data-name="Group 594">
+        <g data-name="Group 592" transform="translate(1 4.5)">
+            <rect data-name="Rectangle 22" width="16" height="12" rx="1.5" style="stroke:#030504;fill:none"/>
+            <g data-name="Ellipse 115" transform="translate(3 9)" style="stroke:#000;fill:#fff">
+                <circle cx=".5" cy=".5" r=".5" style="stroke:none"/>
+                <circle cx=".5" cy=".5" style="fill:none"/>
+            </g>
+            <g data-name="Ellipse 116" transform="translate(12 9)" style="stroke:#000;fill:#fff">
+                <circle cx=".5" cy=".5" r=".5" style="stroke:none"/>
+                <circle cx=".5" cy=".5" style="fill:none"/>
+            </g>
+            <path data-name="Path 359" d="M7.726 13.752h4.013" transform="translate(-1.693 -4.252)" style="stroke-linecap:round;stroke:#000;fill:none"/>
+            <rect data-name="Rectangle 29" width="9.5" height="4" rx=".5" transform="translate(3.5 3)" style="stroke:#030504;fill:none"/>
+        </g>
+        <path data-name="Path 357" d="M22.457 8.654v5.9a1 1 0 0 1-1 1H7.678a1 1 0 0 1-1-1v-3.282" transform="translate(-.744 5.247)" style="stroke-miterlimit:10;stroke-linecap:round;stroke:#000;fill:none"/>
+        <g data-name="Rectangle 27" transform="translate(19.5 10.5)" style="stroke:#000;fill:#fff">
+            <rect width="4.5" height="3.5" rx=".5" style="stroke:none"/>
+            <path style="fill:none" d="M.5.5H4V3H.5z"/>
+        </g>
+        <path data-name="Path 360" d="M18.034 18.386v4.106" transform="translate(-5.861 -1.886)" style="stroke-linecap:round;stroke:#000;fill:none"/>
+    </g>
+</svg>

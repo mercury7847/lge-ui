@@ -185,6 +185,9 @@
                         _self.setAccordionButton();
                     });
                     self.$KRP0022.find('.tabs-wrap').vcSmoothScroll('toggleEnabled', true);
+                    setTimeout(function() {
+                        self.$KRP0022.find('.tabs-wrap').vcSmoothScroll('scrollToActive');
+                    }, 500);
                 }
 
                 // BTOCSITE-5938-514 : postData session storage에 저장

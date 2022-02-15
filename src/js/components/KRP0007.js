@@ -44,7 +44,6 @@
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
                 '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한/롯데카드 5% 결제일 할인</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShowLotteCard)}}<span class="flag cardDiscount">롯데카드 5% 결제일 할인 (무이자 12개월)</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -217,7 +216,7 @@
             '{{/if}}' +
             '{{#if bizType != "DISPOSABLE"}}'+
             '<div class="product-compare">' +
-                '<a href="#" data-id="{{modelId}}" data-contents="{{#raw modelDisplayName}}" data-b2bcatemapping="{{b2bCateMapping}}"><span>비교하기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
+                '<a href="#" data-id="{{modelId}}" data-contents="{{#raw modelDisplayName}}" data-b2bcatemapping="{{b2bCateMapping}}" data-care-type="{{careType}}"><span>비교하기</span></a>' + //BTOCSITE-1057 : data-contents 추가 2021-08-09
             '</div>' +
             '{{/if}}'+
         '</div>' +
@@ -1095,14 +1094,24 @@
                     }
                     return curValue;
                 }
+
+                // BTOCSITE-5938-545 care type 추가
+                var careType = '';
+
+                if(item.careshipOnlyFlag == "Y" && Number(item.cTypeCount) > 0){
+                    careType = 'C'
+                } else {
+                    careType = 'R'
+                }
+
                 /* BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
                 var ecProduct = {
                     "model_name": item.modelDisplayName.replace(/(<([^>]+)>)/ig,""),
                     "model_id": item.modelId,
-                    "model_sku": item.modelName, 
+                    "model_sku": item.modelName,
                     "model_gubun": getGubunValue(item.bizType),
-                    "price": vcui.number.addComma(item.obsOriginalPrice), 
-                    "discounted_price": vcui.number.addComma(item.obsSellingPrice), 
+                    "price": vcui.number.addComma(item.obsOriginalPrice),
+                    "discounted_price": vcui.number.addComma(item.obsSellingPrice),
                     "brand": "LG",
                     "category": getEcCategoryName(item),
                     "ct_id": item.subCategoryId
@@ -1117,6 +1126,7 @@
 
                 //BTOCSITE-8312 프로젝터>시네빔과 프로빔 스펙비교 예외처리 요청
                 item.b2bCateMapping = item.b2bCateMapping || "N";
+                item.careType = careType; // BTOCSITE-5938-545 care_type 추가
 
                 if( typeof item.obsSellingPriceNumber == "string") {
                     item.isShowPrice = item.obsSellingPriceNumber.replace(/,/g, "");
@@ -1124,10 +1134,7 @@
                     item.isShowPrice = item.obsSellingPriceNumber;
                 }
                 /* BTOCSITE-10166: 롯데카드 혜택 배지 수정요청의 건  */
-                item.isShow = kiosk ? false : lgkorUI.isShowDate('20220101','20220201'); //  2022.01.01 00:00 ~ 2021.01.31 24:00  ( 신한/롯데 프로모션 적용 기간)
-
-                /* BTOCSITE-9006 : 롯데카드 5% 결제일 할인 */
-                item.isShowLotteCard = kiosk ? false : lgkorUI.isShowDate('20211001','20220101') // 2021.10.1 00:00 ~ 2021.12.31 24:00 ( 롯데카드 12개월 무이자 할인 프로모션 적용기간)
+                item.isShow = kiosk ? false : lgkorUI.isShowDate('20220101','20220301'); //  2022.01.01 00:00 ~ 2021.02.28 24:00  ( 신한/롯데 프로모션 적용 기간)
                 
                 return vcui.template(productItemTemplate, item);
             },
@@ -1222,6 +1229,7 @@
                     var image = compare.siblings('.product-image');
                     var productImg = image.find('.slide-content .slide-conts.on a img').attr("src");
                     var productAlt = image.find('.slide-content .slide-conts.on a img').attr("alt");
+                    var careType = $this.data('careType') // BTOCSITE-5938-545 care type 추가
 
                     var compareObj = {
                         "id": _id,
@@ -1229,7 +1237,8 @@
                         "productName": productName,
                         "productID": productID,
                         "productImg": productImg,
-                        "productAlt": productAlt
+                        "productAlt": productAlt,
+                        "careType": careType // BTOCSITE-5938-545 care type 추가
                     }
                     
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);

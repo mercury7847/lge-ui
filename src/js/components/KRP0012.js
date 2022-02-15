@@ -43,7 +43,44 @@
                 $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
             */
+           self.reviewWrite(); // BTOCSITE-8083 (ajax 차후 진행예정)
+        },
+        // S : BTOCSITE-8083
+        reviewWrite: function() {
+            var $section = $('.KRP0012');
+            var ajaxUrl = $section.attr('data-product-status');
+            var options = {
+                loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N",
+                productcode : $section.data('productCode'),
+                cremaReviewTemplate = '<div class="review-write-wrap">'+
+                    '<div class="txt-area">'+
+                        '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
+                    '</div>'+
+                    '<button type="button" class="{{#if ownStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}">리뷰 작성하기</button>'+
+                '</div>',
+            }
+            var msg = options.loginFlag == 'N' ? '리뷰 작성을 위해 로그인을 해주세요.':'보유제품 등록 후 리뷰 등록 가능합니다';
+            lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+                var data = result.data;
+                if(data.orderStatus == "Y") {
+                    $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":data.ownStatus == 'Y' ? true:false}));
+                }
+            });
+            $section.on('click','.review-write-wrap .btn', function(e) {
+                if(!$(this).attr('data-own-status')) {
+                    lgkorUI.confirm(msg, {
+                        cancelBtnName: "아니오",
+                        okBtnName: "네",
+                        ok: function(){
+                            var link =  (options.loginFlag == 'N') ? "/sso/api/Login" : '/my-page/manage-products';
+                            location.href = link;
+                        }
+                    });   
+                }
+                return false;
+            });
         }
+        // E : BTOCSITE-8083
     }
 
     $(document).ready(function(){
