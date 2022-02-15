@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="/lg5-common/css/app.min.css?ver=2.0" />
     <link rel="stylesheet" href="/lg5-common/css/pages/MAP/MAP.min.css?ver=2.0" />
     <script src="/lg5-common/js/libs/jquery-2.2.4.min.js?ver=2.0"></script>
+    <!-- BTOCSITE-9633 [All]통합약관>마/수/동 & 앱 푸시 마/수/동 연동 처리 -->
+    <script src="/lg5-common/js/vcui.min.js"></script>
+    <script src="/lg5-common/js/lg.common.min.js"></script>
+    <!-- //BTOCSITE-9633 [All]통합약관>마/수/동 & 앱 푸시 마/수/동 연동 처리 -->
+
     <!-- <script src="/lg5-common/js/app.common.min.js"></script> -->
     <script>
         //var AppUserAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -231,19 +236,25 @@
                 }
             });
             //마케팅 푸시 알림 받기
+            /* BTOCSITE-9633 [All]통합약관>마/수/동 & 앱 푸시 마/수/동 연동 처리 */
             $("#mktPushAlarmChk").off("click").on({
                 click : function(){
                     var checked = $(this).prop("checked");
-                    beforeFocusEleToast = "#mktPushAlarmChk";
-                    var hours = appDate.getHours();
-                    var txtDate = appFullYear + "년" + appMonth + "월" + appDay + "일 " + hours + "시 ";
                     if(checked){
-                        toastMessage.init(txtDate + "<br>알림 허용 처리가 완료되었습니다.", "type2");
-                    }else{
-                        toastMessage.init(txtDate + "<br>알림 거부 처리가 완료되었습니다.", "type2");
+                        $("#mktPushAlarmChk").prop("checked", false).trigger("change"); 
+                        optModal.open("modalShopInfo", "alertdialog", "<em>마케팅 푸시 알림 변경 안내</em><p>마케팅 푸시 알림을 받으려면 LG전자 서비스 마케팅 정보 수신 동의가 필요합니다.</p>", "확인");
+                        $('.btn-modal-confirm').attr('data-href', '#mktPushAlarm');
+                        $('.btn-modal-confirm').attr('data-control', 'modal');
                     }
+
+                    $('#mktPushAlarm .btn-confirm').off('click').on({
+                        click : function(){
+                            $("#mktPushAlarmChk").prop("checked", true).trigger("change");     
+                        }
+                    })
                 }
             });
+            /* //BTOCSITE-9633 [All]통합약관>마/수/동 & 앱 푸시 마/수/동 연동 처리 */
             //옵션창 열기
             $("#btn-opt-open").off("click").on({
                 click : function(){
@@ -509,6 +520,29 @@
         </div>
         <!-- //오픈소스 라이선스 -->
     </div>
+
+    <!-- BTOCSITE-9633 [All]통합약관>마/수/동 & 앱 푸시 마/수/동 연동 처리 (mkp-option 안의 컨텐츠는 불러오는 요소) -->
+    <article id="mktPushAlarm" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>(선택) LG전자 서비스 마케팅 정보 수신 동의</span></h1>
+        </header>
+        <section class="pop-conts">
+            <div class="mkt-option">
+                <p style=\"text-align: center\">
+					<span style=\"font-size:22px\"><strong>LG</strong><strong>전자 서비스 마케팅 정보 수신 동의</strong></span><br />&nbsp;</p>
+					<p>당사에서 보내는 마케팅 정보 및 당사와 파트너사의 마케팅 정보를 전화, 문자메시지, 이메일 및 앱 푸쉬 알림 등을 통해 받게 됩니다.</p>
+					<p>※ 당사의 마케팅 활동은 <a href=\"https://qt-kr.m.lgaccount.com/membership-spx-webapp/terms/terms_attachment4_211203\"><strong><u>수탁업체</u></strong></a>&nbsp;에서 담당합니다.</p><p>※ LG전자 서비스에 가입하고 광고성 정보 수신 동의를 한 이용자는 LG전자 서비스에 포함된 <a href=\"https://qt-kr.m.lgaccount.com/membership-spx-webapp/customer/terms_itg_mktagree\"><strong><u>모든 서비스</u></strong></a>&nbsp;의 광고성 정보 수신에도 동의한 것으로 간주됩니다.</p>
+            </div>
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn gray ui_modal_close ui_push_cancel"><span>취소</span></button>
+                <button type="button" class="btn ui_modal_close btn-confirm"><span>수신동의</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close ui_push_cancel"><span class="blind">닫기</span></button>
+    </article>
+    <!-- //BTOCSITE-9633 [All]통합약관>마/수/동 & 앱 푸시 마/수/동 연동 처리 -->
 
     <!-- Google Tag Manager (noscript) -->
     <!--

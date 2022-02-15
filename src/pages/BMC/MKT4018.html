@@ -4,7 +4,13 @@
         pageCSS: ["BMC/BMC"],
         pageJS: ["event/academyEvent"],
         pageTitle: "LG전자 아카데미 스토어 | LG전자",
-        pageDesc: "LG전자 아카데미 스토어에서 대학/대학원생들에게 제공되는 특별한 혜택을 만나보세요."
+        pageDesc: "LG전자 아카데미 스토어에서 대학/대학원생들에게 제공되는 특별한 혜택을 만나보세요.",
+        "digitalData": {
+            userInfo: {
+                "unifyId": "eae799fd07c188c80983e1939833fb0d", // 로그인 상태 : 로그인중 unifyId 값이 존재 ( eae799fd07c188c80983e1939833fb0d ), 비로그인 :  unifyId 값이 null
+                "birthDt": "19920102" // 유저 나이데이터 있는경우 unifyId가 설정 되어 있어야 나온다 
+            }
+        }
     })
 <body>
     <div class="wrap">
@@ -46,10 +52,12 @@
                                 </li>
                                 <li>
                                     <div class="inbox step03">
+                                        <!-- S: BTOCSITE-12243 아카데미 학생할인 기획전 문구 추가/수정 요청 -->
                                         <p>
                                             <span>STEP 03</span>
-                                            이메일 인증<br>(**@ac.kr)
+                                            대학교<br>이메일 인증
                                         </p>
+                                        <!-- E: BTOCSITE-12243 아카데미 학생할인 기획전 문구 추가/수정 요청 -->
                                     </div>
                                 </li>
                                 <li>
@@ -100,13 +108,15 @@
                                     <h1 class="tit"><span>이메일 인증</span></h1>
                                 </header>
                                 <section class="pop-conts">
-                                        <P class="p-title">@ac.kr 계정의 이메일로 인증해 주세요.</P>
+                                        <!-- S: BTOCSITE-12243 아카데미 학생할인 기획전 문구 추가/수정 요청 -->
+                                        <P class="p-title">본인의 대학교 이메일로 인증해 주세요.</P>
+                                        <!-- E: BTOCSITE-12243 아카데미 학생할인 기획전 문구 추가/수정 요청 -->
                                         <div class="form-wrap" id="emailCertifiedForm" data-ajax="https://wwwdev50.lge.co.kr/evt/api/exhibitions/sendTheEmail.lgajax?planEventId=PE00030001" ui-modules="CsValidation"> <!--data-ajax 임시 url-->
                                             <dl class="forms inner-type">
                                                 <dt class="tit"><label for="email" class="req">이메일<span class="blind">필수입력</span></label></dt>
                                                 <dd class="conts">
                                                     <span class="input-wrap block">
-                                                        <input type="text" id="userEmail" name="userEmail" placeholder="ac.kr 계정의 이메일 주소를 입력해 주세요." data-required="true">
+                                                        <input type="text" id="userEmail" name="userEmail" placeholder="ac.kr / edu 계정의 이메일 주소를 입력해 주세요." data-required="true">
                                                         <div class="btm-more err-block"><p class="err-msg"></p></div>
                                                     </span>
                                                 </dd>
@@ -156,8 +166,16 @@
                         <!-- 로그인 후 e -->
                         <!-- 2021.12.27 추가부분 -->
                         <input type="hidden" value="ac.kr,cnspartner.com,lgepartner.com" id="checkEmail">
-                        <input type="hidden" value="PE00030001" id="planEventId">
+                        <!-- 
+                            이벤트 대상자 확인 로컬 테스트 환경 추가  
+                            data-member-check-url : 운영 환경에는 이값이 빈값이거나 없다
+                        -->
+                        <input type="hidden" value="PE00030001" id="planEventId" data-member-check-url="/lg5-common/data-ajax/event/retrieveAuthEmail.json">
+                        <!-- S: BTOCSITE-12243 아카데미 학생할인 기획전 문구 추가/수정 요청 -->
+                        <div class="info-text">* 만30세 이상 대학(원)생, 해외 대학(원)생, 입학 예정자, 교원 및 교직원은 22년 5월 이후 이용 가능합니다.</div>
+                        <!-- E: BTOCSITE-12243 아카데미 학생할인 기획전 문구 추가/수정 요청 -->
                     </div>
+                  
                 </div>
             </div>
         </main>

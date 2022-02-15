@@ -401,9 +401,10 @@
                     }
                     // BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건
                     .care-n {
-                        font-size:13px;
-                        line-height:13px;
-                        position: absolute;
+                        font-size: 13px;
+                        line-height: 13px;
+                        position: relative;
+                        top: -1px;
                     }
                     .redcare-option {
                         margin-left: 10px;

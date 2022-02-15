@@ -35,6 +35,13 @@
 				img {
 					height:80px;
 				}
+				// s : BTOCSITE-12035
+				@include pc {
+					& + .bullet-list {
+						margin-top: 8px;
+					}
+				}
+				// e : BTOCSITE-12035
 			}
 			@include mobile {
 				p {
@@ -47,6 +54,17 @@
 						height:57px;
 					}
 				}
+				// s : BTOCSITE-12035
+				& + .btn-close {
+					top: 12px;
+					right: 12px;
+				}
+				// e : BTOCSITE-12035
+			}
+		}
+		@include mobile {
+			.tooltip-box {
+				padding-right: 24px; // BTOCSITE-12035
 			}
 		}
 	}

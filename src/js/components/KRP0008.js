@@ -332,11 +332,13 @@
                 var selectRtRgstFeePre = null
                 var selectDutyTerm = null;
                 var selectVisitTerm = null;
+                var selectSvcTypeDesc = null;
 
                 var rentalSelectBoxIndex1 = 0;
                 var rentalSelectBoxIndex2 = 0;
                 var rentalSelectBoxIndex3 = 0;
                 var rentalSelectBoxIndex4 = 0;
+                var rentalSelectBoxIndex5 = 0;
 
                 if(typeof rentalInfo !== 'undefined' && rentalInfo.length > 0) {
                     //test data
@@ -483,7 +485,7 @@
                     //         "rtModelSeq": "161383",
                     //     }
                     // ];
-                    var rentalPriceData = {};
+                	var rentalPriceData = {};
                     rentalInfo.forEach(function(item, index) {
 
                         item.freeMonth = item.freeMonth || 0;
@@ -494,17 +496,20 @@
                         var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음/자가관리' : '1회 / '+item.visitPer+'개월'; //BTOCSITE-7447
                         var visitPerKey  = visitPerTxt;
                         var rtRgstFeePre = ("" + item.rtRgstFeePre);
+                        var svcTypeDesc = (item.svcTypeUseYn === "Y") ? ("" + item.svcTypeDesc) : ""; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
 
                         // 데이터 재정렬
                         var dataByDuty = rentalPriceData[contractTerm] || {};
                         var dataByVisit = dataByDuty[dutyTerm] || {};
-                        var dataByFee = dataByVisit[visitPerKey] || [];
-                            dataByFee.push(item);
+                        var dataByFee = dataByVisit[visitPerKey] || {};
+                        var dataBySvcTypeDesc = dataByFee[rtRgstFeePre] || []; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
+                            //dataByFee.push(item);
+                        dataBySvcTypeDesc.push(item);
 
-
+                        dataByFee[rtRgstFeePre] = dataBySvcTypeDesc; // 네번째 값  BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
                         dataByVisit[visitPerKey] = dataByFee; // 세번째 값
                         dataByDuty[dutyTerm] = dataByVisit; // 두번째 값
-                        rentalPriceData[contractTerm] = dataByDuty; // 첫번째 값
+                        rentalPriceData[contractTerm] = dataByDuty; // 첫번째 값 
 
                         if(item.representChargeFlag == "Y") {
                             selectRtModelSeq = item.rtModelSeq;
@@ -512,9 +517,8 @@
                             selectDutyTerm = dutyTerm;
                             selectVisitTerm =  visitPerTxt;
                             selectRtRgstFeePre = rtRgstFeePre;
-                            
+                            selectSvcTypeDesc = svcTypeDesc; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
                         }
-
                     });
                     self.rentalInfoData = rentalPriceData;
                 }
@@ -540,7 +544,7 @@
                         }
                     }
 
-                    // 방문주기 착기
+                    // 방문주기 찾기
                     var dataByVisit = dataByDuty[selectDutyTerm];
                     var array = Object.keys(dataByVisit);
                     for (var i = 0, len = array.length; i < len; i++) {
@@ -551,10 +555,20 @@
                     }
 
                     // 가입비선납 할인 찾기
-                    var array = dataByVisit[selectVisitTerm];
+                    var dataByFee = dataByVisit[selectVisitTerm];
+                    var array = Object.keys(dataByFee);
+	                for (var i = 0, len = array.length; i < len; i++) {
+	                	if(array[i] == selectRtRgstFeePre) {
+	                		rentalSelectBoxIndex4 = i;
+	                			break;
+                        }
+                    }
+                    
+                    // 서비스타입찾기
+                    var array = dataByFee[selectRtRgstFeePre];
                     for (var i = 0, len = array.length; i < len; i++) {
                         if(array[i].representChargeFlag == "Y") {
-                            rentalSelectBoxIndex4 = i;
+                            rentalSelectBoxIndex5 = i;
                             break;
                         }
                     }
@@ -585,33 +599,116 @@
                             var FreePrePerData = visitPerData[key]
                             
                             if(FreePrePerData) {
-                            self.updateRentalInfoPrice(FreePrePerData[rentalSelectBoxIndex4]);
-                            self.rentalInfoSelectBoxUpdate(3,FreePrePerData,rentalSelectBoxIndex4,true);
+	                            // self.updateRentalInfoPrice(FreePrePerData[rentalSelectBoxIndex4]);
+	                            self.rentalInfoSelectBoxUpdate(3,FreePrePerData,rentalSelectBoxIndex4,true);
+	                            
+	                            // 서비스타입 BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
+	                            key = Object.keys(FreePrePerData)[rentalSelectBoxIndex4];
+	                            
+	                            var svcTypeDescData = FreePrePerData[key];
+	                            if(svcTypeDescData) {
+	                            	self.updateRentalInfoPrice(svcTypeDescData[rentalSelectBoxIndex5]);
+	                            	self.rentalInfoSelectBoxUpdate(4,svcTypeDescData,rentalSelectBoxIndex5,true);
+	                            }
                             }
                         }
                     }
                 }
 
                 //케어십 가격 정보 정리
-                var careSelectIndex = 0;
+//                var careSelectIndex = 0;
+//
+//                self.careshipInfoData = null;
+//                if(typeof careShipInfo !== 'undefined' && careShipInfo.length > 0) {
+//                    self.careshipInfoData = careShipInfo;
+//                    for (var i = 0, len = careShipInfo.length; i < len; i++) {
+//                        if(careShipInfo[i].representChargeFlag == "Y") {
+//                            careSelectIndex = i;
+//                            break;
+//                        }
+//                    }
+//                }
+                
+             // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 START
+                var careSelectBoxIndex1 = 0;
+                var careSelectBoxIndex2 = 0;
+                
+                var selectCareRtModelSeq = null;
+                var selectCareVisitTerm = null;
+                var selectCareSvcTypeDesc = null;
+                
+                var oCareShipInfoData = {};
+                
+                careShipInfo.forEach(function(item, index) {
 
-                self.careshipInfoData = null;
-                if(typeof careShipInfo !== 'undefined' && careShipInfo.length > 0) {
-                    self.careshipInfoData = careShipInfo;
-                    for (var i = 0, len = careShipInfo.length; i < len; i++) {
-                        if(careShipInfo[i].representChargeFlag == "Y") {
-                            careSelectIndex = i;
+                    // 1. 방문주기
+                    var visitPerTxt = (!item.visitPer || parseInt(item.visitPer) === 0) ? '방문없음/자가관리' : '1회 / '+item.visitPer+'개월'; //BTOCSITE-7447
+                    var visitPerKey  = visitPerTxt;
+                    
+                    // 2. 서비스타입
+                    var svcTypeDesc = (item.svcTypeUseYn === "Y") ? ("" + item.svcTypeDesc) : ""; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
+
+                    // 데이터 재정렬
+                    var dataBySvcTypeDesc = oCareShipInfoData[visitPerKey] || [];
+                       
+                    dataBySvcTypeDesc.push(item);
+                      
+                    oCareShipInfoData[visitPerKey] = dataBySvcTypeDesc; // 첫번째값
+
+                    if(item.representChargeFlag == "Y") {
+                    	selectCareRtModelSeq = item.rtModelSeq;
+                        selectCareVisitTerm =  visitPerTxt;
+                        selectCareSvcTypeDesc = svcTypeDesc; // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성
+                    }
+                });
+                self.careshipInfoData = oCareShipInfoData;
+                
+                //최초 기본값 찾기
+                if(selectCareRtModelSeq) {
+                    // 방문주기 찾기
+                    var array = Object.keys(self.careshipInfoData);
+                    for (var i = 0, len = array.length; i < len; i++) {
+                        if(array[i] == selectCareVisitTerm) {
+                        	careSelectBoxIndex1 = i;
+                            break;
+                        }
+                    }
+
+                    // 서비스타입 찾기
+                    var dataBySvcTypeDesc = self.careshipInfoData[selectCareVisitTerm];
+                    for (var i = 0, len = dataBySvcTypeDesc.length; i < len; i++) {
+                    	if(dataBySvcTypeDesc[i].representChargeFlag == "Y") {
+                    		careSelectBoxIndex2 = i;
                             break;
                         }
                     }
                 }
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 END
+                
 
                 //케어십 계약기간
                 self.$careshipInfoSelectBox = self.$pdpInfoCareshipService.find('.ui_selectbox:eq(0)');
+                self.$careshipInfoSelectBox2 = self.$pdpInfoCareshipService.find('.ui_selectbox:eq(1)');
                 if(self.careshipInfoData && self.$careshipInfoSelectBox.length > 0) {
-                    self.updateCareshipInfoPrice(self.careshipInfoData[careSelectIndex]);
-                    self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,careSelectIndex,true);
+                    // self.updateCareshipInfoPrice(self.careshipInfoData[careSelectIndex]);
+                    self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox,self.careshipInfoData,careSelectBoxIndex1,true);
+                    
+                    //서비스타입 
+                    var key = Object.keys(self.careshipInfoData)[careSelectBoxIndex1];
+                    var svcTypeDescData = self.careshipInfoData[key];
+                    
+                    if(svcTypeDescData) {
+                    	self.updateCareshipInfoPrice(svcTypeDescData[careSelectBoxIndex2]);
+                    	self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox2,svcTypeDescData,careSelectBoxIndex2,true);
+                    } else { // 서비스타입 데이터가 없을때
+                    	self.updateCareshipInfoPrice(svcTypeDescData[0]);
+                    	self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox2,svcTypeDescData,0,true);
+                    }
                 }
+                
+                // 케어십 서비스타입
+                
+                
 
                 //렌탈 케어솔루션 제휴카드 리스트 정리
                 var isTab = false;
@@ -1126,8 +1223,16 @@
                         if(typeof outletStockFlag !== 'undefined' && lgkorUI.stringToBool(outletStockFlag)){
                             location.href = url;
                         } else {
+
+                            let msg = '';
+
+                            if(lgePdpSendData.onlineOnlyFlag == "Y" || lgePdpSendData.mixProductFlag == "Y") {
+                                msg = '해당 제품을 전시하는 베스트샵 매장은 없습니다. 하지만 가까운 매장을 찾아 최적의 제품을 상담받으시겠어요?';
+                            } else {
+                                msg = '해당 제품을 전시하는 매장은 없습니다. 하지만 매장에서 제품 상담을 받으실 수는 있습니다. 가까운 매장을 찾아 상담을 진행하시겠어요?';
+                            }
                             lgkorUI.confirm('', {
-                                title:'해당 제품을 전시하는 매장은 없습니다.<br>하지만 매장에서 제품 상담을 받으실 수는 있습니다.<span>가까운 매장을 찾아 상담을 진행하시겠어요?</span>',
+                                title: msg, <!--BTOCSITE-10945 모델 채널/상태별 문구 수정 건 -->
                                 okBtnName: '네',
                                 cancelBtnName: '아니오',
                                 ok: function() {
@@ -1589,8 +1694,8 @@
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
 
-                        var array = itemData.map(function(item){
-                            return item.rtRgstFeePre;
+                        var array = Object.keys(itemData).map(function(item){
+                            return item;
                         });
                         var max =array.reduce( function (previous, current) { 
                             return previous > current ? previous:current;
@@ -1601,25 +1706,87 @@
                         self.rentalInfoBoxUpdate(2, $(this));
                         self.rentalInfoSelectBoxUpdate(3,itemData,selectIndex, true);
                     });
-
+                    
                     //가입비 선택
+//                    self.$caresolutionRentalInfoSelectBox.eq(3).on('change', function(e,data){
+//                        var selectOption = $(this).vcSelectbox('selectedOption');
+//                        var itemData = $(selectOption).data('item');
+//                        self.updateRentalInfoPrice(itemData);
+//                        self.rentalInfoBoxUpdate(3, $(this));
+//                    });
+                    
+                    // 가입비 선택 BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 수정
                     self.$caresolutionRentalInfoSelectBox.eq(3).on('change', function(e,data){
                         var selectOption = $(this).vcSelectbox('selectedOption');
                         var itemData = $(selectOption).data('item');
-                        self.updateRentalInfoPrice(itemData);
-                        self.rentalInfoBoxUpdate(3, $(this));
-                    });
-                };
 
-                //케어십 계약기간
+                        var array = itemData.map(function(item){
+                            return item.visitPer;
+                        });
+                        
+                        var max =array.reduce( function (previous, current) { 
+                            return previous > current ? previous:current;
+                        });
+
+                        var selectIndex = array.indexOf(max);
+                        
+                        
+                        self.rentalInfoBoxUpdate(3, $(this));
+                        self.rentalInfoSelectBoxUpdate(4,itemData,selectIndex, true);
+                    });
+                    
+                    // 서비스타입 선택 BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 수정
+                    self.$caresolutionRentalInfoSelectBox.eq(4).on('change', function(e,data){
+                      var selectOption = $(this).vcSelectbox('selectedOption');
+                      var itemData = $(selectOption).data('item');
+                      self.updateRentalInfoPrice(itemData);
+                      self.rentalInfoBoxUpdate(4, $(this));
+                    }); 
+
+                };
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 START
+                 //케어십 계약기간
+//                if(self.$careshipInfoSelectBox.length > 0) {
+//                    self.$careshipInfoSelectBox.on('change', function(e,data){
+//                        var selectOption = $(this).vcSelectbox('selectedOption');
+//                        var itemData = $(selectOption).data('item');
+//                        self.updateCareshipInfoPrice(itemData);
+//                    });
+//                };
+                
+                //케어십 방문주기
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성으로 변경
                 if(self.$careshipInfoSelectBox.length > 0) {
                     self.$careshipInfoSelectBox.on('change', function(e,data){
                         var selectOption = $(this).vcSelectbox('selectedOption');
-                        var itemData = $(selectOption).data('item');
-                        self.updateCareshipInfoPrice(itemData);
+                        var svcTypeDescData = $(selectOption).data('item');
+                        var itemData = null;
+                        var selectIndex = 0;
+                        for (var i = 0, len = svcTypeDescData.length; i < len; i++) {
+                        	
+                        	if(svcTypeDescData[i].representChargeFlag == "Y") { // 방문주기 선택시 서비스타입안의 데이터들 중에 대표요금제노출여부가 Y일 경우에 먼저노출
+                        		selectIndex = i;
+                        	}
+                        }
+                        
+                        itemData = svcTypeDescData[selectIndex];
+                        
+                        self.updateCareshipInfoPrice(itemData); // 선택된 가격정보로 업데이트
+                        self.careshipInfoSelectBoxUpdate(self.$careshipInfoSelectBox2, svcTypeDescData, selectIndex, true); 
                     });
                 };
-
+                
+                // 케어십 서비스타입
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성으로 추가
+                if(self.$careshipInfoSelectBox2.length > 0) {
+                	self.$careshipInfoSelectBox2.on('change', function(e,data){
+                		var selectOption = $(this).vcSelectbox('selectedOption');
+                		var priceData = $(selectOption).data('item');
+                		
+                		self.updateCareshipInfoPrice(priceData); // 선택된 가격정보로 업데이트
+                	});
+                };
+                // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 END
                 //BTOCSITE-3523 - 제휴카드 할인 드롭다운 열림/닫힘 액션
                 var cardDropExpanded = "false";
                 self.$pdpInfo.on('click','.careship-card-list .ui_dropdown_toggle, .rental-card-list .ui_dropdown_toggle',function(e){
@@ -1734,6 +1901,11 @@
                 $('#pop-pdp-visual').on('modalshown',function(e){
                     var index = $(this).data('selectIndex');
                     self.clickModalThumbnail(index);
+                }).on('modalhidden',function(e){ // BTOCSITE-11452
+                    $(this).find('video').each(function() {
+                        this.pause();
+                        this.currentTime = 0;
+                    })
                 });
 
                 self.$popPdpVisualImage.find('div.zoom-area img').on('load',function(e) {
@@ -2002,15 +2174,21 @@
                 var optionTemplate = '<option value="{{value}}" {{#if json}}data-item="{{json}}"{{/if}}>{{title}}</option>';
                 if($selectBox.length > 0) {
                     $selectBox.empty();
-                    if(selectData instanceof Array) {
+                    if(selectData instanceof Array) { // 서비스타입
                         selectData.forEach(function(item, index){
                             //BTOCSITE-7447
-                            if(item.visitPer == 0){
-                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"방문없음(자가관리)", "json":JSON.stringify(item)}));
-                            }else{
-                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"1회 / "+ item.visitPer + "개월", "json":JSON.stringify(item)}));
-                            }
+//                            if(item.visitPer == 0){
+//                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"방문없음(자가관리)", "json":JSON.stringify(item)}));
+//                            }else{
+//                                $selectBox.append(vcui.template(optionTemplate,{"value":item.rtModelSeq,"title":"1회 / "+ item.visitPer + "개월", "json":JSON.stringify(item)}));
+//                            }
+                        	// BTOCSITE-9177 수정 (기존 방문주기에서 서비스타입으로 변경)
+                        	$selectBox.append(vcui.template(optionTemplate,{"value":item.svcTypeCd,"title":item.svcTypeDesc,"json":JSON.stringify(item)}));
                         });
+                    } else { // 방문주기
+                    	for(key in selectData) {
+                    		$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key,"json":JSON.stringify(selectData[key])}));
+                    	}
                     }
                     $selectBox.vcSelectbox('update');
                     $selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
@@ -2019,30 +2197,59 @@
 
             //렌탈 케어솔루션 계약기간 셀렉트박스 갱신 펑션
             // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+            // 20220208 BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 수정
             rentalInfoSelectBoxUpdate: function(selectBoxIndex, selectData, selectIndex, changeEvent) {
                 var self = this;
                 var optionTemplate = '<option value="{{value}}" {{#if json}}data-item="{{json}}"{{/if}}>{{title}}</option>';
                 var $selectBox = self.$caresolutionRentalInfoSelectBox.eq(selectBoxIndex);
+                
                 if($selectBox.length > 0) {
                     $selectBox.empty();
-                    if(selectData instanceof Array) {
-                        selectData.forEach(function(item, index){
-                            $selectBox.append(vcui.template(optionTemplate,{"value":item.rtRgstFeePre,"title":vcui.number.addComma(item.rtRgstFeePre)+"원","json":JSON.stringify(item)})); // 가입비
-                        });
-                    } else {
-                        for(key in selectData) {
-                            if(selectBoxIndex == 2) {
-                                $selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key,"json":JSON.stringify(selectData[key])}));
-                            } else {
-                                $selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key+"년","json":JSON.stringify(selectData[key])}));
-                            }
-                        }
-                    }
+                    
+                    if(selectData instanceof Array) { // 서비스타입
+                		selectData.forEach(function(item, index){
+                			$selectBox.append(vcui.template(optionTemplate,{"value":item.svcTypeCd,"title":item.svcTypeDesc,"json":JSON.stringify(item)}));
+                		});
+                	} else {
+                		for(key in selectData) {
+                			if(selectBoxIndex == 2) { // 방문주기
+                				$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key,"json":JSON.stringify(selectData[key])}));
+                			} else if (selectBoxIndex == 0 || selectBoxIndex == 1) { // 계약기간, 의무사용기간
+                				$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key+"년","json":JSON.stringify(selectData[key])}));
+                			} else { // 가입비
+                				$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key+"원","json":JSON.stringify(selectData[key])}));
+                			}
+                		}
+                	}
+                    
                     $selectBox.vcSelectbox('update');
                     $selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
 
                     self.rentalInfoBoxUpdate(selectBoxIndex, $selectBox);
                 }
+//                var self = this;
+//                var optionTemplate = '<option value="{{value}}" {{#if json}}data-item="{{json}}"{{/if}}>{{title}}</option>';
+//                var $selectBox = self.$caresolutionRentalInfoSelectBox.eq(selectBoxIndex);
+//                if($selectBox.length > 0) {
+//                	$selectBox.empty();
+//                	if(selectData instanceof Array) {
+//                		selectData.forEach(function(item, index){
+//                			$selectBox.append(vcui.template(optionTemplate,{"value":item.rtRgstFeePre,"title":vcui.number.addComma(item.rtRgstFeePre)+"원","json":JSON.stringify(item)})); // 가입비
+//                		});
+//                	} else {
+//                		for(key in selectData) {
+//                			if(selectBoxIndex == 2) {
+//                				$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key,"json":JSON.stringify(selectData[key])}));
+//                			} else {
+//                				$selectBox.append(vcui.template(optionTemplate,{"value":key,"title":key+"년","json":JSON.stringify(selectData[key])}));
+//                			}
+//                		}
+//                	}
+//                	$selectBox.vcSelectbox('update');
+//                	$selectBox.vcSelectbox('selectedIndex', selectIndex, changeEvent);
+//                	
+//                	self.rentalInfoBoxUpdate(selectBoxIndex, $selectBox);
+//                }
             },
 
             //렌탈 케어솔루션 셀렉트 박스 선택에 따른 메세지 수정
@@ -2796,7 +3003,8 @@
                         "productName": compareData.productName,
                         "productID": compareId,
                         "productImg": compareData.productImg,
-                        "productAlt": compareData.productAlt
+                        "productAlt": compareData.productAlt,
+                        "careType": lgePdpSendData.careType
                     }
                     var isAdd = lgkorUI.addCompareProd(categoryId, compareObj);
                     if(!isAdd) {

@@ -131,142 +131,6 @@ $(function(){
             ]
         });
 
-        $context.find('.ui_product_tab').vcTab({selectors:{
-            prevButton:".ui_smooth_prev",
-            nextButton:".ui_smooth_next",
-            smoothScroll:'.ui_smooth_tab'
-        }});
-        /* 케어솔루션 추천 제품 스와이프 및 히스토리 탭토글 기능 추가 : 2021-05-10 */
-
-        var care_cecommended = $context.find('.care-recommended');
-        var care_slider = care_cecommended.find('.ui_product_carousel_slider');
-        var care_tabs = care_cecommended.find('.ui_smooth_tab .tabs');
-        var tab = {
-            totalSize: function () {
-                return care_tabs.find('li').size();
-            },
-            currentTab: function () {
-                return care_tabs.find('li.on').index() + 1;
-            },
-            triggerTab: function (idx) {
-
-                care_tabs.find('li').eq(idx).find('a').trigger('click');
-            },
-            nav: {
-                prev: function () {
-
-                    var idx = (1 === tab.currentTab()) ? tab.totalSize() - 1 : tab.currentTab() - 2;
-                    tab.triggerTab(idx);
-                },
-                next: function () {
-
-                    var idx = (tab.totalSize() === tab.currentTab()) ? 0 : tab.currentTab();
-                    tab.triggerTab(idx);
-                }
-            }
-        };
-        
-        //BTOCSITE-2196 -start
-        if( !vcui.detect.isMobileDevice) {
-            care_cecommended.vcGesture({
-                direction: 'horizontal'
-            }, { passive: false }).on('gestureend', function (e, data) {
-                // gesturestart gesturemove gestureend gesturecancel
-                /* 탭 방향 전환 */
-                if (data.direction === 'left') {
-                    tab.nav.next();
-                } else {
-                    tab.nav.prev();
-                }
-            });
-        } else {
-            var touchFlag = true;
-            var touchFlagTid = 0;
-
-            care_cecommended.on('touchstart', function(e){
-                var $this = $(this);
-                var startX = e.changedTouches[0].clientX;
-                var startY = e.changedTouches[0].clientY;
-                var endX = 0;
-                var endY = 0;
-
-                $this.on('touchend', function(ev){
-                    endX = ev.changedTouches[0].clientX;
-                    endY = ev.changedTouches[0].clientY;
-
-                    var dirLeft = startX - endX < 0;
-                    var rangeX = Math.abs(startX - endX);
-                    var rangeY = Math.abs(startY - endY);
-
-                    if( rangeY > 30) return;
-                    
-                    if( touchFlag == true && rangeX > 100 ) {
-                        touchFlag = false;
-                        if(dirLeft) {
-                            tab.nav.prev();
-                            console.log('left')
-                        } else {
-                            tab.nav.next();
-                            console.log('right')
-                        }
-
-                        clearTimeout(touchFlagTid);
-                        touchFlagTid = setTimeout(function(){
-                            touchFlag = true;
-
-                            console.log("rangeX", rangeX)
-                            console.log("rangeY", rangeY)
-                        }, 50);
-                    }
-                    
-                });
-            });
-        }
-        //BTOCSITE-2196 -end
-
-
-        /* 탭 클릭시 인덱스를 세션스토리지에 기록 */
-        var store = window.sessionStorage;
-        var session_name = 'care_cecommended_tabindex';
-        care_tabs.find('a').on('click', function () {
-            var idx = $(this).parent().index();
-            store.setItem(session_name, idx);
-        });
-
-        /* 리로드시 탭 인덱스 세션이 있을 경우 트리거 */
-        if (store.getItem(session_name)) {
-            care_tabs.find('a').eq(store.getItem(session_name)).trigger('click');
-        }
-
-        /* //케어솔루션 추천 제품 스와이프 및 히스토리 탭토글 기능 추가 : 2021-05-10 */
-        $context.find('.care-recommended').find('.ui_product_carousel_slider').vcCarousel({
-            infinite: false,
-            slidesToShow: 4,
-            slidesToScroll: 4,
-            variableWidth : false,
-            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-            speed: 150,
-            touchThreshold: 100,
-            responsive: [
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,   
-                    }
-                },
-                {
-                    breakpoint: 900,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        
-                    }
-                }
-                /* , { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2 } } */
-            ]
-        });
-
         // 케어솔루션 혜택
         // 다른 케어솔루션 
         $(window).on('breakpointchange.caresolution', function(e){
@@ -373,4 +237,121 @@ $(function(){
         careHeroBanner();
         /* //BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어 */
     }); 
+
+    /* 케어솔루션 추천 제품 */ 
+    // BTOCSITE-11900 QA535 오류수정 start
+    var careRecomTab = {
+        $el :         $context.find('.care-recommended .ui_product_tab'),
+        $tabs :       $context.find('.care-recommended .ui_product_tab > .tabs'),
+        $tabContent : $context.find('.care-recommended .ui_product_carousel_slider'),
+        startX : 0,
+        startY : 0,
+        endX : 0,
+        endY : 0,
+
+        totalSize: function () {
+            return this.$tabs.find('li').size();
+        },
+        currentTab: function () {
+            return this.$tabs.find('li.on').index() + 1;
+        },
+        triggerTab: function (idx) {
+            this.$tabs.find('li').eq(idx).find('a').trigger('click');
+        },
+        prev: function () {
+            var idx = (1 === this.currentTab()) ? this.totalSize() - 1 : this.currentTab() - 2;
+            this.triggerTab(idx);
+        },
+        next: function () {
+            var idx = (this.totalSize() === this.currentTab()) ? 0 : this.currentTab();
+            this.triggerTab(idx);
+        },
+        init: function() {
+            var self = this;
+            self.$el =           $context.find('.care-recommended .ui_product_tab');
+            self.$tabs =         this.$el.find('>.tabs');
+            self.$tabContent =   $context.find('.care-recommended .ui_product_carousel_slider');
+
+            self.$el.on('tabbeforechange tabchange tabinit', function(e, data){
+                //탭 이벤트 분기
+                switch(e.type) {
+                    case "tabinit" :
+                        // 탭초기화시 탭선택
+                        // var idx = Math.floor(Math.random() * self.totalSize() || 0);
+                        self.$el.vcTab('select',0).vcSmoothScroll('scrollToActive');
+                    break;
+                    default :
+                    break;
+                }
+                self.$el.vcSmoothScroll('scrollToActive');
+            }).vcTab().vcSmoothScroll('refresh');
+
+            // 탭 클릭시 인덱스를 세션스토리지에 기록
+            var store = window.sessionStorage;
+            var session_name = 'care_cecommended_tabindex';
+            self.$tabs.find('a').on('click', function () {
+                var idx = $(this).parent().index();
+                store.setItem(session_name, idx);
+            });
+            // 리로드시 탭 인덱스 세션이 있을 경우 트리거
+            if (store.getItem(session_name)) {
+                self.$tabs.find('a').eq(store.getItem(session_name)).trigger('click');
+            }
+
+            if( !vcui.detect.isMobileDevice ) {
+                self.$tabContent.vcGesture({
+                    direction: 'horizontal'
+                }, { passive: false }).on('gestureend', function (e, data) {
+                    // gesturestart gesturemove gestureend gesturecancel
+                    if (data.direction === 'left') {
+                        careRecomTab.next();
+                    } else {
+                        careRecomTab.prev();
+                    }
+                });
+            } else {
+                var touchFlag = true;
+                var touchFlagTid = 0;
+        
+                self.$tabContent.on('touchstart', function(e){
+                    self.startX = e.changedTouches[0].clientX;
+                    self.startY = e.changedTouches[0].clientY;
+                    self.endX = 0;
+                    self.endY = 0;
+                });
+
+
+                self.$tabContent.on('touchend', function(e){
+                    self.endX = e.changedTouches[0].clientX;
+                    self.endY = e.changedTouches[0].clientY;
+    
+                    var dirLeft = self.startX - self.endX < 0;
+                    var rangeX = Math.abs(self.startX - self.endX);
+                    var rangeY = Math.abs(self.startY - self.endY);
+    
+                    if( rangeY > 30) return;
+                    
+                    if( touchFlag == true && rangeX > 100 ) {
+                        touchFlag = false;
+                        if(dirLeft) {
+                            self.prev();
+                            // console.log('left')
+                        } else {
+                            self.next();
+                            // console.log('right')
+                        }
+    
+                        clearTimeout(touchFlagTid);
+                        touchFlagTid = setTimeout(function(){
+                            touchFlag = true;
+                            // console.log("rangeX", rangeX)
+                            // console.log("rangeY", rangeY)
+                        }, 50);
+                    }
+                });
+            }
+        }
+    };
+    careRecomTab.init();
+    // BTOCSITE-11900 QA535 오류수정 end
 });

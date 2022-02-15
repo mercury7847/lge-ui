@@ -70,6 +70,7 @@
 							});
 						}
 						self.$carousel.vcCarousel({
+							pauseOnHover: false,
 							autoplay: false,
 							infinite: false,
 							cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
@@ -165,7 +166,7 @@
 						//화면 중앙에 컴포넌트가 들어왔을때 이벤트 - BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
 						var self = this;
 						var $currentGroup = $(root).find('.slider-for .group.active');
-						var $currentVideo = $currentGroup.find('.animation-box video');
+						var $currentVideo = $currentGroup.find('.animation-box video').filter(':visible');
 						var $playWrap = self.$carousel.find('.ui_carousel_play');
 
 						self.intervalClear();
@@ -173,7 +174,7 @@
 							$playWrap.removeClass('play').addClass('stop');
 		
 							if( $currentVideo.length > 0 ) {
-								if($currentVideo.get(0).hasAttribute('autoplay')) {
+								if($currentVideo.attr('autoplay') != undefined && $currentVideo.get(0).readyState > 0) {
 									$currentVideo.get(0).currentTime = 0;
 									$currentVideo.get(0).play();
 									self.autoSpeed = $currentVideo.get(0).duration * 1000	
