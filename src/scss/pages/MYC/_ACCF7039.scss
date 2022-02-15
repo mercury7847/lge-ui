@@ -126,6 +126,13 @@
                         font-size:20px;
                         line-height:28px;
                     }
+                    //BTOCSITE-12067 멤버십 구매 제품 금액 확인 요청 및 내용 삭제
+                    em{
+                        @include mobile{
+                            font-size:16px;
+                            line-height:28px;
+                        }
+                    }
                 }
             }
         }
