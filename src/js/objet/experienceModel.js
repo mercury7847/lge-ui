@@ -109,8 +109,8 @@
                                     descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                     doorColor: [{
                                         name: "클레이 핑크",
-                                        code: "PKC",
-                                        mixingCode: "TPKC"
+                                        code: "PK",
+                                        mixingCode: "TPK"
                                     }, {
                                         name: "실버",
                                         code: "SV",
@@ -269,8 +269,8 @@
                                     descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                     doorColor: [{
                                         name: "클레이 핑크",
-                                        code: "PKC",
-                                        mixingCode: "TPKC"
+                                        code: "PK",
+                                        mixingCode: "TPK"
                                     }, {
                                         name: "실버",
                                         code: "SV",
@@ -572,8 +572,8 @@
                                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                         doorColor: [{
                                             name: "클레이 핑크",
-                                            code: "PKC",
-                                            mixingCode: "TPKC"
+                                            code: "PK",
+                                            mixingCode: "TPK"
                                         }, {
                                             name: "실버",
                                             code: "SV",
@@ -741,8 +741,8 @@
                                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                         doorColor: [{
                                             name: "클레이 핑크",
-                                            code: "PKC",
-                                            mixingCode: "TPKC"
+                                            code: "PK",
+                                            mixingCode: "TPK"
                                         }, {
                                             name: "실버",
                                             code: "SV",
@@ -907,8 +907,8 @@
                                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                         doorColor: [{
                                             name: "클레이 핑크",
-                                            code: "PKC",
-                                            mixingCode: "TPKC"
+                                            code: "PK",
+                                            mixingCode: "TPK"
                                         }, {
                                             name: "실버",
                                             code: "SV",
@@ -1058,8 +1058,8 @@
                                         descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
                                         doorColor: [{
                                             name: "클레이 핑크",
-                                            code: "PKC",
-                                            mixingCode: "TPKC"
+                                            code: "PK",
+                                            mixingCode: "TPK"
                                         }, {
                                             name: "실버",
                                             code: "SV",
