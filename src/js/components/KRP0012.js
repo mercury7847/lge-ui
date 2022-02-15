@@ -82,7 +82,6 @@
                         }
                     });   
                 }
-                return false;
             });
         }
         // E : BTOCSITE-8083
