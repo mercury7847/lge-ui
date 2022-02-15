@@ -43,7 +43,7 @@
                 $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
             */
-           self.reviewWrite(); // BTOCSITE-8083 (ajax 차후 진행예정)
+           self.reviewWrite(); // BTOCSITE-8083
         },
         // S : BTOCSITE-8083
         reviewWrite: function() {
@@ -67,12 +67,12 @@
                 options.orderStatus = lgkorUI.stringToBool(data.orderStatus);
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
             },null, null, null, null, null, function(err){
-                console.log(err)
+                // console.log(err)
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
             });
             $section.on('click','.review-write-wrap .btn', function(e) {
-                var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
-                if(!$(this).attr('data-own-status')) {
+                var msg = '보유제품 등록 후 리뷰 등록 가능합니다' //options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
+                if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
                     lgkorUI.confirm(msg, {
                         cancelBtnName: "아니오",
                         okBtnName: "네",
