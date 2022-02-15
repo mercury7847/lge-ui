@@ -43,7 +43,21 @@
                 $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
             */
+           self.reviewWrite(); // BTOCSITE-8083 (ajax 차후 진행예정)
+        },
+        // S : BTOCSITE-8083
+        reviewWrite: function() {
+            var $section = $('.KRP0012');
+            var productcode = $section.data('productCode');
+            var cremaReviewTemplate = '<div class="review-write-wrap">'+
+                '<div class="txt-area">'+
+                    '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
+                '</div>'+
+                '<a href="#" class="crema-new-review-link btn" data-product-code="{{enModelName}}">리뷰 작성하기</a>'+
+            '</div>';
+            $section.find('.review-info-text').before(vcui.template(cremaReviewTemplate, {"enModelName":productcode}));
         }
+        // E : BTOCSITE-8083
     }
 
     $(document).ready(function(){

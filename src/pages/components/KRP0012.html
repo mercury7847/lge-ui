@@ -2,8 +2,17 @@
 <html lang="ko">
     @@include('./common/head.html', {
         componentID: "KRP0012",
-        isJScompile: true
+        isJScompile: true,
+        "digitalData": {
+            userInfo: {
+                "unifyId": "eae799fd07c188c80983e1939833fb0d", // 로그인 상태 : 로그인중 unifyId 값이 존재, 비로그인 :  unifyId 값이 null
+            }
+        }
     })
+    <script type="text/javascript">
+        var cremaid = "V2c34c8c084ab80a7b5f5e7ef4e3e99b0a0c3bd7552792ac71a726065cf547b181fac7745df486dfb200fd6703c40fde17";
+        var cremaname = "V2e540d632974ec7dce9f9f73f0404ed50";
+    </script>
 <body>
     <div class="wrap">
         <div class="container">
@@ -13,13 +22,17 @@
                 <section class="component KRP0012" data-product-code="75NANO99KNB" data-widget-id="43">
                     <!-- 210224 추가 -->
                     <div class="component-inner">
-                        <h2 class="title">체험리뷰</h2>
+                        <h2 class="title">리뷰</h2>
                         <!-- BTOCSITE-4345 모바일 리뷰 문구 변경 요청 start -->
                         <!-- BTOCSITE-3800 제품 리뷰 하단 문구 추가 요청 start -->
                         <div class="review-info-text">
                             @@include('./common/modules/bullet-list.html', {
                               "bulletTxt" : [
-                                  "제품 리뷰와 관계 없는 내용은 임의로 삭제될 수 있으며, 제품 문의는 이메일 문의 혹은 상담 챗을 이용해 주시기 바랍니다."
+                                '리뷰 리워즈 적립은 LG전자 통합회원 한정 LG전자 멤버십포인트로 지급됩니다.',
+                                '텍스트 리뷰는 500포인트, 포토/동영상 리뷰는 1,000포인트가 일주일 이내 지급됩니다.',
+                                '리뷰 적립 혜택은 고객당 월 최대 5회까지 지급되며, 소모품의 경우 리뷰 등록은 가능하나 포인트는 지급되지 않습니다.',
+                                '텍스트 리뷰와 포토/동영상 리뷰 적립 헤택은 중복 지급되지 않으며 동일 제품 리뷰는 최초 등록에 한해 1회만 지급됩니다.',
+                                '제품 리뷰가 아닌 부적절한 내용은 예고 없이 삭제될 수 있으며 포인트 회수가 진행됩니다.',
                               ]
                           })
                         </div>
