@@ -119,8 +119,7 @@ html {
 
         // BTOCSITE-1814 이벤트탭 추가
         &.mainNav {
-            border-bottom: 1px solid $color-border;
-            overflow: visible !important;
+            background:url('/lg5-common/images/icons/main-nav-bg.gif') repeat-x 0 bottom;
             &:before,
             &:after {
                 position: absolute;
@@ -192,7 +191,7 @@ html {
                         display: block;
                         position: absolute;
                         top: auto;
-                        bottom: -1px;
+                        bottom: 0;
                         right: 0;
                         left: 0;
                         width: 100%;
