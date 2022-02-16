@@ -670,6 +670,9 @@
         padding-bottom: 187px;
         @include mobile{
             padding-bottom: 32px;
+            a {
+                height: auto
+            }
         }
         .product-bottom{
             bottom:40px;
