@@ -911,6 +911,7 @@
 							}
 							@include mobile{
 								width:53px;
+                                z-index:1;
 								img {
 									width:100%;
 								}

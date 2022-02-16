@@ -953,9 +953,9 @@
                                 margin-left: 20px;
                                 margin-bottom: -1px;
                                 > a {
-                                    padding-bottom: 8px;
+                                    padding-bottom: 10px;
                                     @include mobile {
-                                        padding-bottom: 6.5px;
+                                        padding-bottom: 7px;
                                     }
                                 }
                                 &:first-child {
