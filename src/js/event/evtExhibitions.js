@@ -133,7 +133,7 @@ var evFilter = {
                 formData.areaName = $("#evFilterCity option:checked").text();
                 formData.areaDetailName = e.target.value+' ';
 
-                self.selectSingleReset(null, self.$countySelect, false);
+                self.selectSingleReset(null, self.$countySelect, true);
                 self.selectSingleReset(null, self.$shopSelect, true);
                 self.requestCountyList(formData);
             }
@@ -268,11 +268,16 @@ var evFilter = {
         var self = this;
         var optionTemplate = '<option value="{{areaName}}">{{areaName}}</option>';
 
+        console.log(self.$countySelect.parent('.select-wrap').find('.ui-select-button'));
+
+        self.$countySelect.parent('.select-wrap').addClass('loading');
+
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
             var dataArray = (data && data instanceof Array) ? data : [];
 
             if(dataArray.length) {
+
                 self.$countySelect.find("option:gt(0)").remove();
 
                 dataArray.forEach(function (item, index) {
@@ -280,7 +285,9 @@ var evFilter = {
                     self.$countySelect.append($(option).get(0));
                 });
 
+                self.$countySelect.prop('disabled', false);
                 self.$countySelect.vcSelectbox('update');
+                self.$countySelect.parent('.select-wrap').removeClass('loading');
             }
         });
     },
@@ -291,6 +298,8 @@ var evFilter = {
     requestShopList: function(formData) {
         var self = this;
         var optionTemplate = '<option value="{{hrOrgCode}}">{{hrOrgName}}</option>';
+
+        self.$shopSelect.parent('.select-wrap').addClass('loading');
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
@@ -304,7 +313,9 @@ var evFilter = {
                     self.$shopSelect.append($(option).get(0));
                 });
 
+                self.$shopSelect.prop('disabled', false);
                 self.$shopSelect.vcSelectbox('update');
+                self.$shopSelect.parent('.select-wrap').removeClass('loading');
             }
         });
     }

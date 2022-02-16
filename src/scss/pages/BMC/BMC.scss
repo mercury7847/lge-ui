@@ -422,6 +422,7 @@
                         display: flex;
                     }
                 }
+
                 @include mobile {
                     margin-top: 18px;
                     padding: 17px 16px;
@@ -442,6 +443,22 @@
                     @include mobile {
                         &:not(:first-child) {
                             margin-top: 8px;
+                        }
+                    }
+
+                    @keyframes shine {
+                        to {
+                            background-position-x: -200%;
+                        }
+                    }
+
+                    &.loading {
+                        .ui-selectbox-wrap {
+                            .ui-select-button {
+                                background: linear-gradient(110deg, #eee 0%, #f5f5f5 18%, #ececec 33%);
+                                background-size: 200% 100%;
+                                animation: 1s shine linear infinite;
+                            }
                         }
                     }
                 }
@@ -480,10 +497,6 @@
                         }
                     }
                 }
-            }
-
-            #evProductListShop {
-                display: none;
             }
         }
 
