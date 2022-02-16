@@ -62,13 +62,14 @@
                 '</div>'
             };
             var sendata = (options.loginFlag) ? {
-                "modelId": options.productcode,
-                "unifyId": digitalData.userInfo.unifyId,
+                modelId: options.productcode,
+                unifyId: digitalData.userInfo.unifyId,
             }:null;
             lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
                 var data = result.data;
                 options.ownStatus = (!options.loginFlag) ? true:lgkorUI.stringToBool(data.ownStatus);
                 options.orderStatus = lgkorUI.stringToBool(data.orderStatus);
+                console.log('>>', data, options)
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
             },null, null, null, null, null, function(request){
                 if(!options.loginFlag) options.ownStatus = true;
