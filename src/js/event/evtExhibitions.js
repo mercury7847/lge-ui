@@ -172,9 +172,37 @@ var evFilter = {
                 formData.areaName = $("#evFilterCity option:checked").text();
                 formData.areaDetailName = self.$citySelect.val()+' '+self.$countySelect.val();
                 formData.hrOrgCode = e.target.value;
+
+                self.requestShopProductList(formData)
             }
         });
     },
+
+
+    /**
+     * 상품 목록 데이터 호출
+     */
+    requestShopProductList: function(formData) {
+        var self = this;
+
+        lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
+            var data = result.data;
+            var dataArray = (data && data instanceof Array) ? data : [];
+
+            if(dataArray.length) {
+                self.$shopProductList.empty();
+                dataArray.forEach(function (item, index) {
+                    self.$shopProductList.append($("#"+item.modelId).clone());
+                });
+
+                self.$allProductList.hide();
+                self.$shopProductList.show();
+
+                goPdpUrl();
+            }
+        });
+    },
+
 
     /**
      * 개별 셀렉트박스 초기화
