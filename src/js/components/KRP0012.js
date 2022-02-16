@@ -78,20 +78,16 @@
                 console.log(err, options.loginFlag);
             });
             $section.on('click','.review-write-wrap .btn', function(e) {
-                var msg = '보유제품 등록 후 리뷰 등록 가능합니다' //options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
-                if(options.loginFlag) {
-                    if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
-                        lgkorUI.confirm(msg, {
-                            cancelBtnName: "아니오",
-                            okBtnName: "네",
-                            ok: function(){
-                                var link =  '/my-page/manage-products'; //options.loginFlag ? '/my-page/manage-products' : "/sso/api/Login";
-                                location.href = link;
-                            }
-                        });
-                    }
-                }else {
-                    alert('비회원은 리뷰를 작성할 수 없습니다.');
+                var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
+                if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
+                    lgkorUI.confirm(msg, {
+                        cancelBtnName: "아니오",
+                        okBtnName: "네",
+                        ok: function(){
+                            var link =  options.loginFlag ? '/my-page/manage-products' : "/sso/api/Login";
+                            location.href = link;
+                        }
+                    });
                 }
             });
         }
