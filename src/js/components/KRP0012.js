@@ -48,20 +48,24 @@
         // S : BTOCSITE-8083
         reviewWrite: function() {
             var $section = $('.KRP0012');
-            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/lg5-common/data-ajax/pdp/pdp_status.json';
+            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/mkt/api/product/retrieveProductRegisterInfo';
             var options = {
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
                 productcode : $section.data('productCode'),
                 ownStatus: false,
                 orderStatus: false,
                 cremaReviewTemplate = '<div class="review-write-wrap">'+
-                    '<div class="txt-area">'+
-                        '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
-                    '</div>'+
-                    '<button type="button" class="{{#if ownStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}">리뷰 작성하기</button>'+
+                '<div class="txt-area">'+
+                '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
+                '</div>'+
+                '<button type="button" class="{{#if ownStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}">리뷰 작성하기</button>'+
                 '</div>'
             };
-            lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
+            var sendata = (options.loginFlag) ? {
+                "modelId": options.productcode,
+                "unifyId": digitalData.userInfo.unifyId,
+            }:null;
+            lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
                 var data = result.data;
                 options.ownStatus = (!options.loginFlag) ? true:lgkorUI.stringToBool(data.ownStatus);
                 options.orderStatus = lgkorUI.stringToBool(data.orderStatus);
