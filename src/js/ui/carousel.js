@@ -821,6 +821,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if (self.slideCount > opt.slidesToShow) {
                         self.slideHandler(self.currentSlide - slideOffset, false, dontAnimate);
                     }
+                    $(event.target).blur(); // BTOCSITE-5938-222
                     break;
 
                 case 'next':
@@ -828,6 +829,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if (self.slideCount > opt.slidesToShow) {
                         self.slideHandler(self.currentSlide + slideOffset, false, dontAnimate);
                     }
+                    $(event.target).blur(); // BTOCSITE-5938-222
                     break;
 
                 case 'index':

@@ -48,28 +48,33 @@
         // S : BTOCSITE-8083
         reviewWrite: function() {
             var $section = $('.KRP0012');
-            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/lg5-common/data-ajax/pdp/pdp_status.json';
+            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/mkt/api/product/retrieveProductRegisterInfo';
             var options = {
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
                 productcode : $section.data('productCode'),
                 ownStatus: false,
                 orderStatus: false,
                 cremaReviewTemplate = '<div class="review-write-wrap">'+
-                    '<div class="txt-area">'+
-                        '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
-                    '</div>'+
-                    '<button type="button" class="{{#if ownStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}">리뷰 작성하기</button>'+
+                '<div class="txt-area">'+
+                '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
+                '</div>'+
+                '<button type="button" class="{{#if orderStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}">리뷰 작성하기</button>'+
                 '</div>'
             };
-            lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
-                var data = result.data;
-                options.ownStatus = lgkorUI.stringToBool(data.ownStatus);
-                options.orderStatus = lgkorUI.stringToBool(data.orderStatus);
-                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
-            },null, null, null, null, null, function(request){
-                var err = "ERROR : " + request.status;
-	            console.log(err);
-                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
+            var sendata = (options.loginFlag) ? {
+                modelId: digitalData.productInfo.model_id,
+                unifyId: digitalData.userInfo.unifyId,
+            }:null;
+            lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
+                var data = result.data[0];
+                options.orderStatus = (!options.loginFlag || lgkorUI.stringToBool(data.isregistered)) ? true:false;
+                options.ownStatus = lgkorUI.stringToBool(data.isregistered);
+                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus}));
+            },"POST", null, null, null, null, function(request){
+                if(!options.loginFlag) options.ownStatus = true;
+                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus}));
+                var err = "ERROR : " + (request == undefined) ? 'undefined' : request.status;
+                console.log(err, options.loginFlag);
             });
             $section.on('click','.review-write-wrap .btn', function(e) {
                 var msg = '보유제품 등록 후 리뷰 등록 가능합니다' //options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
