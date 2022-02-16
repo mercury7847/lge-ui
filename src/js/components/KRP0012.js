@@ -63,13 +63,14 @@
             };
             lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
                 var data = result.data;
-                options.ownStatus = lgkorUI.stringToBool(data.ownStatus);
+                options.ownStatus = (!options.loginFlag) ? true:lgkorUI.stringToBool(data.ownStatus);
                 options.orderStatus = lgkorUI.stringToBool(data.orderStatus);
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
             },null, null, null, null, null, function(request){
-                var err = "ERROR : " + request.status;
-	            console.log(err);
+                if(!options.loginFlag) options.ownStatus = true;
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
+                var err = "ERROR : " + (request == undefined) ? 'undefined' : request.status;
+                console.log(err, options.loginFlag);
             });
             $section.on('click','.review-write-wrap .btn', function(e) {
                 var msg = '보유제품 등록 후 리뷰 등록 가능합니다' //options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
