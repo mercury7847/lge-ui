@@ -83,9 +83,16 @@
                 maxLength: 30,
                 errorMsg: "이름을 입력해주세요.",
                 msgTarget: '.err-block',
+                pattern: /^[가-힣a-zA-Z0-9\s]+$/,
                 // BTOCSITE-5938-396 s
                 validate : function(value){
+                    var valTest = new RegExp(this.pattern);
                     if( value.replace(/\s|　/gi, '') == 0) {
+                        this.errorMsg = "이름을 입력해주세요";
+                        return false;
+                    } else if(!valTest.test(value)){
+                        //BTOCSITE-5938-79 - 특수문자 validation 추가
+                        this.errorMsg = "이름은 한글 또는 영문으로만 입력해주세요.";
                         return false;
                     } else {
                         return true;
@@ -107,9 +114,17 @@
                 required: true,
                 errorMsg: "상세주소를 입력해주세요.",
                 // msgTarget: '.err-block'
+                pattern: /^[가-힣a-zA-Z0-9@\s]+$/,
                 // BTOCSITE-5938-396 s
                 validate : function(value){
+                    var valTest = new RegExp(this.pattern);
                     if( value.replace(/\s|　/gi, '') == 0) {
+                        this.msgTarget = '';
+                        return false;
+                    } else if(!valTest.test(value)){
+                        //BTOCSITE-5938-79 - 특수문자 validation 추가
+                        this.msgTarget = '.err-block';
+                        this.errorMsg = "'@'를 제외한 특수문자는 입력이 불가합니다.";
                         return false;
                     } else {
                         return true;
