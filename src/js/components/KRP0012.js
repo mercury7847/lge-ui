@@ -43,7 +43,7 @@
                 $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
             */
-           self.reviewWrite(); // BTOCSITE-8083
+           setTimeout(self.reviewWrite, 500); // BTOCSITE-8083
         },
         // S : BTOCSITE-8083
         reviewWrite: function() {
@@ -55,11 +55,11 @@
                 productcode : $section.data('productCode'),
                 ownStatus: false,
                 orderStatus: false,
-                cremaReviewTemplate = '<div class="review-write-wrap">'+
+                cremaReviewTemplate: '<div class="review-write-wrap">'+
                 '<div class="txt-area">'+
                 '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
                 '</div>'+
-                '<button type="button" class="{{#if orderStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}" {{#if isMobile}}review-source="mobile_my_orders"{{/if}}>리뷰 작성하기</button>'+
+                '<button type="button" class="{{#if orderStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{productcode}}" data-own-status="{{ownStatus}}" {{#if isMobile}}review-source="mobile_my_orders"{{/if}}>리뷰 작성하기</button>'+
                 '</div>'
             };
             var sendata = (options.loginFlag) ? {
@@ -71,9 +71,9 @@
                 options.orderStatus = (options.loginFlag && lgkorUI.stringToBool(data.isregistered)) ? true:false;
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
                 console.log(options)
-                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus, "isMobile":options.isMobile}));
+                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
             },"POST", null, null, null, null, function(request){
-                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus, "isMobile":options.isMobile}));
+                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
                 var err = "ERROR : " + (request == undefined) ? 'undefined' : request.status;
                 console.log(err, options.loginFlag);
             });
