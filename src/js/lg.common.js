@@ -12,6 +12,36 @@ var goAppUrl = function(path) {
     
 }
 
+// 메인 성능 개선 - jquery passive event 적용
+;(function($){
+    $.event.special.touchstart = {
+        setup: function( _, ns, handle ) {
+            this.addEventListener("touchstart", handle, { passive: !(ns.indexOf('noPreventDefault') > -1) });  
+        }
+    };
+    $.event.special.touchmove = {
+        setup: function( _, ns, handle ) {
+            this.addEventListener("touchmove", handle, { passive: !(ns.indexOf('noPreventDefault') > -1) });
+        }
+    };
+    $.event.special.wheel = {
+        setup: function( _, ns, handle ){
+            this.addEventListener("wheel", handle, { passive: true });
+        }
+    };
+    $.event.special.mousewheel = {
+        setup: function( _, ns, handle ){
+            this.addEventListener("mousewheel", handle, { passive: true });
+        }
+    };
+
+    $.event.special.scroll = {
+        setup: function( _, ns, handle ){
+            this.addEventListener("scroll", handle, { passive: true });
+        }
+    };
+})(jQuery);
+
 ;(function(global){
 
     if(global['lgkorUI']) return;
@@ -495,7 +525,7 @@ var goAppUrl = function(path) {
             });
             
             $(function() {
-                if (vcui.detect.isMobileDevice && !isApp()) {
+                if (vcui.detect.isMobileDevice && !isApp() && navigator.userAgent.toLocaleLowerCase().indexOf("kakaotalk") < 0) {
                     var cookie_name = '__LGAPP_DLOG__';
                     if (vcui.Cookie.get(cookie_name) === '' && (isPopUp || $('.pdp-wrap').length >0) ) {
                         if($('#mobile-close-popup').size() === 0 && !!vcui.modal) {
@@ -920,22 +950,49 @@ var goAppUrl = function(path) {
         //top 버튼 컨틀롤...
         _addTopButtonCtrl: function(){
             var self = this;
+            var $floatingTop = $('.floating-menu.top');
+
+            var _rafRun = function (cb) {
+                var tick = false
+              
+                return function trigger() {
+                  if (tick) {
+                    return
+                  }
+              
+                  tick = true
+                  return requestAnimationFrame(function task() {
+                    tick = false
+                    return cb()
+                  })
+                }
+            }
+           
             $(window).scroll(function(){
                 if(self.scrollTimer) {
                     clearTimeout(self.scrollTimer);
                 }
-                self.scrollTimer = setTimeout(function(){
-                    if ($(this).scrollTop() > 100) {
-                        $(window).trigger('floatingTopShow');
-                        $('.floating-menu.top').removeClass('call-yet');
-                    } else {
-                        $(window).trigger('floatingTopHide');
-                        $('.floating-menu.top').addClass('call-yet');
+                self.scrollTimer = setTimeout(
+                    _rafRun(function() {
+                        if (window.pageYOffset > 100) {
+                            $(window).trigger('floatingTopShow');
+                        } else {
+                            $(window).trigger('floatingTopHide');          
+                        }
                     }
-                }, 200);
+                ), 200);
             });
+
+            // BTOCSITE-12128 메인성능개선
+            $(window).on('floatingTopHide', function(e){
+               if(!$floatingTop.hasClass('call-yet')) $floatingTop.addClass('call-yet');
+            }); 
+
+            $(window).on('floatingTopShow', function(e){
+                if($floatingTop.hasClass('call-yet')) $floatingTop.removeClass('call-yet');
+            }); 
             
-            $('.back-to-top button').on('click', function (e) {
+            $floatingTop.on('click','button', function (e) {
                 e.preventDefault();
                 $(window).trigger('floatingTop');
                 $('html, body').stop().animate({

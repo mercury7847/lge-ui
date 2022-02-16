@@ -102,6 +102,23 @@
                                 }
                             }, {
                                 doorMaterial: {
+                                    name: "스톤",
+                                    enName: "Ston",
+                                    code: "T",
+                                    desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                    doorColor: [{
+                                        name: "클레이 핑크",
+                                        code: "PK",
+                                        mixingCode: "TPK"
+                                    }, {
+                                        name: "실버",
+                                        code: "SV",
+                                        mixingCode: "TSV"
+                                    }]
+                                }
+                            }, {
+                                doorMaterial: {
                                     name: "미스트",
                                     enName: "Mist Glass",
                                     code: "G",
@@ -241,6 +258,23 @@
                                         name: "그린",
                                         code: "GR",
                                         mixingCode: "SGR"
+                                    }]
+                                }
+                            }, {
+                                doorMaterial: {
+                                    name: "스톤",
+                                    enName: "Ston",
+                                    code: "T",
+                                    desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                    descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                    doorColor: [{
+                                        name: "클레이 핑크",
+                                        code: "PK",
+                                        mixingCode: "TPK"
+                                    }, {
+                                        name: "실버",
+                                        code: "SV",
+                                        mixingCode: "TSV"
                                     }]
                                 }
                             }, {
@@ -531,6 +565,23 @@
                                     }
                                 }, {
                                     doorMaterial: {
+                                        name: "스톤",
+                                        enName: "Ston",
+                                        code: "T",
+                                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                        doorColor: [{
+                                            name: "클레이 핑크",
+                                            code: "PK",
+                                            mixingCode: "TPK"
+                                        }, {
+                                            name: "실버",
+                                            code: "SV",
+                                            mixingCode: "TSV"
+                                        }]
+                                    }
+                                }, {
+                                    doorMaterial: {
                                         name: "미스트",
                                         enName: "Mist Glass",
                                         code: "G",
@@ -683,6 +734,23 @@
                                     }
                                 }, {
                                     doorMaterial: {
+                                        name: "스톤",
+                                        enName: "Ston",
+                                        code: "T",
+                                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                        doorColor: [{
+                                            name: "클레이 핑크",
+                                            code: "PK",
+                                            mixingCode: "TPK"
+                                        }, {
+                                            name: "실버",
+                                            code: "SV",
+                                            mixingCode: "TSV"
+                                        }]
+                                    }
+                                }, {
+                                    doorMaterial: {
                                         name: "미스트",
                                         enName: "Mist Glass",
                                         code: "G",
@@ -808,8 +876,7 @@
                                         }]
                                     }
 
-                                },
-                                {
+                                }, {
                                     doorMaterial: {
                                         name: "솔리드",
                                         enName: "Solid Metal",
@@ -828,6 +895,23 @@
                                             name: "그린",
                                             code: "GR",
                                             mixingCode: "SGR"
+                                        }]
+                                    }
+                                }, {
+                                    doorMaterial: {
+                                        name: "스톤",
+                                        enName: "Ston",
+                                        code: "T",
+                                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                        doorColor: [{
+                                            name: "클레이 핑크",
+                                            code: "PK",
+                                            mixingCode: "TPK"
+                                        }, {
+                                            name: "실버",
+                                            code: "SV",
+                                            mixingCode: "TSV"
                                         }]
                                     }
                                 }, {
@@ -962,6 +1046,23 @@
                                             name: "그린",
                                             code: "GR",
                                             mixingCode: "SGR"
+                                        }]
+                                    }
+                                }, {
+                                    doorMaterial: {
+                                        name: "스톤",
+                                        enName: "Ston",
+                                        code: "T",
+                                        desc: "메탈 본연의 세련됨과 트렌드를 담은 무광의 완벽한 조화. 매트한 스테인리스가 모던하고 아름다운 공간으로 연출합니다.",
+                                        descImg: "/lg5-common/images/OBJ/simulator/img/img-Solid.jpg",
+                                        doorColor: [{
+                                            name: "클레이 핑크",
+                                            code: "PK",
+                                            mixingCode: "TPK"
+                                        }, {
+                                            name: "실버",
+                                            code: "SV",
+                                            mixingCode: "TSV"
                                         }]
                                     }
                                 }, {
@@ -6029,7 +6130,7 @@
         },        
 
 
-        //추천제품 출력
+        //추천제품 출력 //BTOCSITE-11771 오브제컬렉션 체험 신규 컬러 추가 요청
         openProposeModel: function(modelCode, modelcate) {
             let _thisModel = [];
             for (let i = 0; i < proposeSet.proposeConfig.length; i++) {
@@ -6048,11 +6149,13 @@
             let contMHtml = '';
             let contGHtml = '';
             let contHtml = '';
+            let contTHtml = '';
             let contFHtml2 = '';
             let contSHtml2 = '';
             let contMHtml2 = '';
             let contGHtml2 = '';
             let contHtml2 = '';
+            let contTHtml2 = '';
             if (_thisModel.length > 0 || _bestModel.length > 0) {
                 if (_thisModel.length > 0) {
                     let imgCate;
@@ -6081,6 +6184,12 @@
                     contSHtml += '       <dt>솔리드</dt>';
                     contSHtml += '       <dd>';
                     contSHtml += '           <ul>';
+                    contMHtml = '';
+                    contTHtml += '<div class="swiper-slide">';
+                    contTHtml += '   <dl>';
+                    contTHtml += '       <dt>스톤</dt>';
+                    contTHtml += '       <dd>';
+                    contTHtml += '           <ul>';
                     contMHtml = '';
                     contMHtml += '<div class="swiper-slide">';
                     contMHtml += '   <dl>';
@@ -6142,7 +6251,9 @@
                                 _doorInfoKMaterial[j] = "네이쳐"
                             } else if (_doorInfoMaterial[j] == "G") {
                                 _doorInfoKMaterial[j] = "미스트"
-                            }
+                            }  else if (_doorInfoMaterial[j] == "T") {
+                                _doorInfoKMaterial[j] = "스톤"
+                            } 
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {
                             if (_doorInfoColor[j] == "BT") {
@@ -6231,6 +6342,19 @@
                             contGHtml2 += '      <span>' + _modelCode + '</span>';
                             contGHtml2 += '  </button>';
                             contGHtml2 += '</li>';
+                        } else if (_doorInfoMaterial[0] == "T") {
+                            contTHtml2 += '<li>';
+                            contTHtml2 += '  <button type="button" data-cate="' + imgCate2 + '" data-model-default-code="' + _modelDefaultCode + '" data-model-code="' + _modelCode + '"  class="btn_propose_model_sel">';
+                            contTHtml2 += '      <div class="mini_model_wrap">';
+                            for (let j = 0; j < _doorInfoMaterial.length; j++) {
+                                if (_doorInfoMaterial[j] != "") {
+                                    contTHtml2 += '      <span data-front-code="' + _doorFrontInfo[j] + '" data-material="' + _doorInfoMaterial[j] + '" data-k-materlal="' + _doorInfoKMaterial[j] + '" data-color-code="' + _doorInfoColor[j] + '" data-k-color="' + _doorInfoKColor[j] + '" data-location="' + _doorInfoLocation[j] + '" class="mini_model"><img src="' + imgDefaultUrl + imgCate + '_door_' + _doorInfoLocation[j] + '_' + _doorInfoMaterial[j] + '_' + _doorInfoColor[j] + '.png" alt="" /></span>';
+                                }
+                            }
+                            contTHtml2 += '      </div>';
+                            contTHtml2 += '      <span>' + _modelCode + '</span>';
+                            contTHtml2 += '  </button>';
+                            contTHtml2 += '</li>';
                         }
 
 
@@ -6270,6 +6394,15 @@
                         contGHtml += '       </dd>';
                         contGHtml += '   </dl>';
                         contGHtml += '</div>';
+                    }
+                    if (contTHtml2 == "") {
+                        contTHtml = '';
+                    } else {
+                        contTHtml += contTHtml2;
+                        contTHtml += '           </ul>';
+                        contTHtml += '       </dd>';
+                        contTHtml += '   </dl>';
+                        contTHtml += '</div>';
                     }
 
                 }
@@ -6342,6 +6475,8 @@
                                 _doorInfoKMaterial[j] = "네이쳐"
                             } else if (_doorInfoMaterial[j] == "G") {
                                 _doorInfoKMaterial[j] = "미스트"
+                            } else if (_doorInfoMaterial[j] == "T") {
+                                _doorInfoKMaterial[j] = "스톤"
                             }
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {
@@ -6498,6 +6633,8 @@
                                 _doorInfoKMaterial[j] = "네이쳐"
                             } else if (_doorInfoMaterial[j] == "G") {
                                 _doorInfoKMaterial[j] = "미스트"
+                            } else if (_doorInfoMaterial[j] == "T") {
+                                _doorInfoKMaterial[j] = "스톤"
                             }
                         }
                         for (let j = 0; j < _doorInfoColor.length; j++) {
@@ -6639,6 +6776,8 @@
                         _doorKMaterial[j] = "미스트"
                     } else if (_doorMaterial[j] == "G") {
                         _doorKMaterial[j] = "네이쳐"
+                    } else if (_doorMaterial[j] == "T") {
+                        _doorKMaterial[j] = "스톤"
                     }
                 }
                 for (let j = 0; j < _doorColor.length; j++) {

@@ -357,3 +357,204 @@ $wide-screen: "(min-width: 1600px)";
         color: #000;
     }
 }
+
+/* component mixin */
+@mixin font-family($font, $sytle:normal) {
+    @if ($font == $font-weight-regular) or ($font == $font-weight-bold) {
+        @if $sytle == italic {
+            font-style: italic;
+        } @else if $sytle == normal {
+            font-style: normal;
+        }
+    }
+
+    //font-weight:normal;
+    @if ($font == $font-weight-regular) {
+        font-weight: 400;
+    } @else if ($font == $font-weight-medium) {
+        font-weight: 500;
+    } @else if ($font == $font-weight-bold) {
+        font-weight: 700;
+    } @else {
+        font-weight: 400;
+    }
+}
+
+// Title Font Mixin
+@mixin eyebrow {
+    margin-bottom:8px;
+    font-weight:700;
+    font-size:24px;
+    line-height:34px;
+    @include mobile {
+        margin-bottom:6px;
+        font-size:16px;
+        line-height:24px;
+    }
+    &:only-child {
+        margin-bottom:0;
+    }
+}
+@mixin eyebrow-h3 {
+    margin-bottom:8px;
+    font-size:16px;
+    line-height:26px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        margin-bottom:6px;
+        font-size:14px;
+        line-height:22px;
+    }
+    &:only-child {
+        margin-bottom:0;
+    }
+}
+@mixin title-h1 {
+    font-size:52px;
+    line-height:70px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:32px;
+        line-height:42px;
+    }
+}
+@mixin title-h2 {
+    font-size:48px;
+    line-height:66px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:32px;
+        line-height:42px;
+    }
+}
+@mixin title-h3 {
+    font-size:40px;
+    line-height:56px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:27px;
+        line-height:38px;
+    }
+}
+@mixin title-h4 {
+    font-size:32px;
+    line-height:52px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:24px;
+        line-height:33px;
+    }
+}
+@mixin title-h5 {
+    font-size:24px;
+    line-height:34px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:20px;
+        line-height:28px;
+    }
+}
+@mixin title-h6 {
+    font-size:24px;
+    line-height:34px;
+    font-weight:700;
+    @media screen and (max-width: #{$tablet-s-width}) {
+        font-size:20px;
+        line-height:28px;
+    }
+}
+
+@mixin boxs ($size) {
+    @if $size == w { // wide
+        max-width:((1146px * 100%) / 1380px);
+    } @else if $size == n { // narrow
+        max-width:((678px * 100%) / 1440px);
+    }
+    @include mobile {
+        max-width:100%;
+    }
+}
+
+@mixin bodycopy ($own, $prev) {
+    @if $own == h1 or $own == h2 {
+        @include font-large;
+    } @else if $own == h3 {
+        font-size:16px;
+        line-height:26px;
+        @include mobile {
+            font-size:14px;
+            line-height:22px;
+        }
+    }
+    
+    @if $prev == h1 {
+        margin-top:32px;
+        @include mobile {
+            margin-top:16px;
+        }
+    } @else if $prev == h2 {
+        margin-top:20px;
+        @include mobile {
+            margin-top:12px;
+        }
+    } @else if $prev == h3 {
+        margin-top:16px;
+        @include mobile {
+            margin-top:14px;
+        }
+    }
+
+    &:first-child {
+        margin-top:0;
+    }
+}
+
+@mixin cta-btn {
+    margin-top:32px;
+    font-size:0;
+    &:first-child {
+        margin-top:0;
+    }
+    .btn.border,
+    .text-link {
+        margin-right:16px;
+        &:last-child {
+            margin-right:0;
+        }
+    }
+    @include mobile {
+        margin-top: 24px;
+    }
+}
+
+
+@mixin grid-row () {
+    margin: 0 -12px;
+
+    &:after {
+        clear: both;
+        display: table;
+        content: '';
+    }
+
+    @media screen and (max-width: #{$tablet-s-width}) {
+        margin: 0 -6px;
+	}
+}
+
+@mixin grid-col ($align,$columns1,$columns2) {
+    float: $align;
+    width: (100% / 12) * $columns1;
+    padding: 0 12px;
+
+    @media screen and (max-width: #{$tablet-s-width}) {
+        width: (100% / 12) * $columns2;
+        padding: 0 6px;
+
+        @if($columns2 == "12") {
+            float: none;
+            width: 100%;
+        }
+
+    }
+}

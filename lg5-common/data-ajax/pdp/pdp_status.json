@@ -1,0 +1,8 @@
+{
+    "status":"success",
+    "message":null,
+    "data": {
+        "orderStatus": "Y",
+        "ownStatus": "Y"
+    }
+}

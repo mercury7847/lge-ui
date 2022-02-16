@@ -48,6 +48,9 @@ MainSwiper.prototype = {
         this.setMobileNav();
         this.setSwipe();
         this.setUrlEvent();
+        this.setArBtn(); // BTOCSITE-12128 메인성능개선
+
+
         
     },
     setSwipe : function(){
@@ -153,8 +156,7 @@ MainSwiper.prototype = {
 
                     // $('html,body').stop().animate({scrollTop:0}, 300);
                     setTimeout(function(){
-                        //$('html,body').stop().animate({scrollTop:0}, 300);
-                        $(window).scrollTop(0);
+                            $(window).scrollTop($(".header").height());
                     }, 500);
                     
 
@@ -181,26 +183,12 @@ MainSwiper.prototype = {
                     */
 
                     //console.log('slideChange arguments', arguments);
-                }
-                /*
+                },
+                // BTOCSITE-11602 고객지원 팝업 오류 대응
                 'transitionEnd' : function(swiper){
-                    console.log("transitionEnd swiper", swiper );
-                    
-                    var currentSlide = swiper.slides[swiper.activeIndex];
-                    var hash = '/' + $(currentSlide).data().hash;
-                    if (hash == '/home'){
-                        hash = '/';
-                    }
-
-                    if(self.ablePushState) {
-                        history.pushState({}, '', hash);      
-                        self.switchQuickMenu( hash );  
-                        self.ablePushState = false;
-                    }
-                    
-                    
+                    $(window).trigger("swConChange", swiper);
                 }
-                */
+                
                 
             }
         });
@@ -304,7 +292,7 @@ MainSwiper.prototype = {
             },
             complete: function(){
                 lgkorUI.init( $(currentSlide) ).done(function( msg ){
-                    //console.log('컨텐츠 로드 성공', msg);
+                    // console.log('컨텐츠 로드 성공', msg);
                     $(currentSlide).data().isLoaded = true;                
                     $(currentSlide).attr('data-isLoaded', true);
                     isLoaded = true;
@@ -476,13 +464,72 @@ MainSwiper.prototype = {
             }    
         }, 100);
         
+    },
+
+    // S BTOCSITE-12128 메인성능개선
+    setArBtn : function(){
+        // 플로팅 버튼 AR 관련
+        if (vcui.detect.isMobileDevice){
+            var isApplication = isApp();
+
+            setTimeout(function(){
+                if (isApplication){
+                    $('.floating-menu.btn-app-ar').css('display', 'block');                    
+                    $('.floating-menu.top').hide();
+                    $('.floating-menu.top').addClass('call-yet');
+                    $(window).trigger('floatingTopHide');
+                    $(window).scrollTop(0);
+                }
+            }, 100);
+
+            $(window).on('scroll.floating', function(){                
+                var scrollTop = $(window).scrollTop();
+                var hasTop = $('.floating-menu.top').hasClass('call-yet');
+
+                if(scrollTop == 0){
+                    if(hasTop){
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        
+                        $(window).trigger('floatingTopHide');
+                        if(!(isApplication && location.pathname == "/")) {
+                            $(window).trigger('floatingTopHide');
+                        }
+                    } else {
+                        //앱인데 메인이 아닐경우에만 실행
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        $(window).trigger('floatingTopHide');
+                        if(!(isApplication && location.pathname == "/")) {
+                            $(window).trigger('floatingTopHide');
+                        }
+                        //임시 추가 끝
+                    }
+                }else{
+                    if(hasTop){
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        
+                        $(window).trigger('floatingTopShow');
+
+                    } else {
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        $(window).trigger('floatingTopShow');
+                    }                       
+                }
+            });
+        }
     }
+    // E BTOCSITE-12128 메인성능개선
 }
 
 $(function(){
     var mainSwiperID = 'mobileNav';
     window.mainSwiper = new MainSwiper( mainSwiperID );
-
-    //$('#floatBox').hide();
 
 });
