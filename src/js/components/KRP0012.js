@@ -66,7 +66,7 @@
                 unifyId: digitalData.userInfo.unifyId,
             }:null;
             lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
-                var data = result.data;
+                var data = result.data[0];
                 options.orderStatus = (!options.loginFlag || lgkorUI.stringToBool(data.isregistered)) ? true:false;
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus}));
