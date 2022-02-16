@@ -120,7 +120,7 @@ html {
         // BTOCSITE-1814 이벤트탭 추가
         &.mainNav {
             border-bottom: 1px solid $color-border;
-            // overflow: visible !important;
+            overflow: visible !important;
             &:before,
             &:after {
                 position: absolute;
@@ -2080,6 +2080,10 @@ html {
 .is-main-sticky-header {
     //BTOCSITE-1967 2차 추가수정 모바일 사이즈만 적용
     @include mobile {
+        .mobile-nav-wrap {
+            border-top:1px solid #fff;
+            box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+        }
 
         #content.container {
             margin-top:-86px;
