@@ -51,7 +51,7 @@ function goPdpUrl() {
 }
 // BTOCSITE-4785 e
 
-//BTOCSITE-11191 지점별 필터 기능 추가
+// BTOCSITE-11191 매장 필터 기능 추가
 var evFilter = {
     /**
      * 최초 실행 시 필요한 변수 정의 및 이벤트 함수 실행
@@ -113,7 +113,7 @@ var evFilter = {
                 self.$allProductList.show();
                 self.$shopProductList.hide();
 
-                // 전체보기 선택 시 선택했던 지점 셀렉트박스 및 상담예약 버튼 노출 초기화
+                // 전체보기 선택 시 선택했던 매장 셀렉트박스 및 상담예약 버튼 노출 초기화
                 self.selectAllReset();
             } else {
                 // 재고 보유 매장 확인하기 선택 시
@@ -267,8 +267,6 @@ var evFilter = {
     requestCountyList: function(formData) {
         var self = this;
         var optionTemplate = '<option value="{{areaName}}">{{areaName}}</option>';
-
-        console.log(self.$countySelect.parent('.select-wrap').find('.ui-select-button'));
 
         self.$countySelect.parent('.select-wrap').addClass('loading');
 

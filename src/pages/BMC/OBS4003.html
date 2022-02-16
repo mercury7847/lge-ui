@@ -16,8 +16,8 @@
 			<!-- event -->
 			<!-- 2021.2.10 data-cart-url, data-sibling-url 추가-->
 			<!-- BTOCSITE-11191 data-store-filter-url, data-plan-event-id 추가
-			data-store-filter-url, data-plan-event-id 실제 개발 api 경로 및 기획전 아이디로 셋팅해야 로컬에서 테스트 가능함.
-			전체 목록도 실제 기획전 전체 목록으로 셋팅해야함, 데이터 관련 기능은 개발서버 배포하여 확인해야함.. -->
+			data-store-filter-url, data-plan-event-id 실제 개발 api 경로 및 기획전 아이디로 셋팅해야 하고
+			전체 목록도 실제 기획전 전체 목록으로 셋팅해야함. 모든 기능 테스트는 개발서버 배포하여 확인해야함..(https://wwwdev50.lge.co.kr/html/BMC/OBS4003.html) -->
 			<div class="contents event exhibition"
 				data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
 				data-sibling-url="/lg5-common/data-ajax/KRP0007/retrieveSiblingProductInfo.json"
@@ -161,7 +161,7 @@
 						<div class="ev-detail-category">
 							<div class="ev-counter"><span>상품 23개</span></div>
 
-							<!-- BTOCSITE-11191 매장별 필터 영역 추가 -->
+							<!-- BTOCSITE-11191 매장 필터 영역 추가 -->
 							<div class="ev-filter-wrap">
 
 								<div class="ev-filter">
@@ -205,13 +205,13 @@
 								</div>
 
 							</div>
-							<!-- // BTOCSITE-11191 지점별 필터 영역 추가 -->
+							<!-- // BTOCSITE-11191 매장 필터 영역 추가 -->
 
 							<div class="cont-inner">
 								<div class="ev-prd-wrap">
 									<!-- BTOCSITE-4785 : display-product-items class 추가  -->
 
-									<!-- BTOCSITE-11191 id 추가 -->
+									<!-- BTOCSITE-11191 id 추가, 전체 목록 -->
 									<ul id="allProductList" class="product-items display-product-type col4">
 										@@loop('./common/modules/display-product-list-item-loop.html', [
 										{
@@ -348,7 +348,7 @@
 										}])
 									</ul>
 
-									<!-- BTOCSITE-11191 ul 추가 -->
+									<!-- BTOCSITE-11191 ul 추가, 매장별 목록 -->
 									<ul id="shopProductList" class="product-items display-product-type col4" style="display: none"></ul>
 								</div>
 							</div>
