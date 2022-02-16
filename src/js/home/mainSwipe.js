@@ -154,10 +154,15 @@ MainSwiper.prototype = {
                     //BTOCSITE_1967
                     //self.setStatusBar(swiper);
 
+
                     // $('html,body').stop().animate({scrollTop:0}, 300);
-                    setTimeout(function(){
-                            $(window).scrollTop($(".header").height());
-                    }, 500);
+
+                    self._rafRun(
+                        window.scrollTo({
+                            left : 0,
+                            top : (window.pageYOffset === 0) ? 0 : $(".header").height()
+                        })
+                    );
                     
 
                     // GA 커스텀 이벤트 실행
@@ -456,23 +461,25 @@ MainSwiper.prototype = {
         }
     },
     storyHomeToastChk: function(target){
+        var self = this;
         //BTOCSITE-188
-        setTimeout(function(){
+        self._rafRun(function(){
             if( $('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" && $('.swiper-slide-active').find('.story-main .user_story').is(':visible') == true) {
                 $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
                 lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
-            }    
-        }, 100);
+            }   
+        });
         
     },
 
     // S BTOCSITE-12128 메인성능개선
     setArBtn : function(){
+        var self = this;
         // 플로팅 버튼 AR 관련
         if (vcui.detect.isMobileDevice){
             var isApplication = isApp();
 
-            setTimeout(function(){
+            self._rafRun(function(){
                 if (isApplication){
                     $('.floating-menu.btn-app-ar').css('display', 'block');                    
                     $('.floating-menu.top').hide();
@@ -480,7 +487,7 @@ MainSwiper.prototype = {
                     $(window).trigger('floatingTopHide');
                     $(window).scrollTop(0);
                 }
-            }, 100);
+            });
 
             $(window).on('scroll.floating', function(){                
                 var scrollTop = $(window).scrollTop();
@@ -524,7 +531,22 @@ MainSwiper.prototype = {
                 }
             });
         }
-    }
+    },
+    _rafRun : function (cb) {
+        var tick = false
+      
+        return function trigger() {
+          if (tick) {
+            return
+          }
+      
+          tick = true
+          return requestAnimationFrame(function task() {
+            tick = false
+            return cb()
+          })
+        }
+      }
     // E BTOCSITE-12128 메인성능개선
 }
 
