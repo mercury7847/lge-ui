@@ -58,7 +58,7 @@
                 '<div class="txt-area">'+
                 '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
                 '</div>'+
-                '<button type="button" class="{{#if ownStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}">리뷰 작성하기</button>'+
+                '<button type="button" class="{{#if orderStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}">리뷰 작성하기</button>'+
                 '</div>'
             };
             var sendata = (options.loginFlag) ? {
@@ -67,12 +67,12 @@
             }:null;
             lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
                 var data = result.data;
-                options.ownStatus = (!options.loginFlag || lgkorUI.stringToBool(data.isregistered)) ? true:false;
-                options.orderStatus = lgkorUI.stringToBool(data.isregistered);
-                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
+                options.orderStatus = (!options.loginFlag || lgkorUI.stringToBool(data.isregistered)) ? true:false;
+                options.ownStatus = lgkorUI.stringToBool(data.isregistered);
+                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus}));
             },"POST", null, null, null, null, function(request){
                 if(!options.loginFlag) options.ownStatus = true;
-                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
+                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus}));
                 var err = "ERROR : " + (request == undefined) ? 'undefined' : request.status;
                 console.log(err, options.loginFlag);
             });
