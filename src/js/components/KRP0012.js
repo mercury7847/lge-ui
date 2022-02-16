@@ -71,7 +71,7 @@
                 options.orderStatus = lgkorUI.stringToBool(data.orderStatus);
                 console.log('>>', data, options)
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
-            },null, null, null, null, null, function(request){
+            },"POST", null, null, null, null, function(request){
                 if(!options.loginFlag) options.ownStatus = true;
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
                 var err = "ERROR : " + (request == undefined) ? 'undefined' : request.status;
