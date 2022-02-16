@@ -48,7 +48,7 @@
         // S : BTOCSITE-8083
         reviewWrite: function() {
             var $section = $('.KRP0012');
-            var ajaxUrl = $section.attr('data-product-status');
+            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/lg5-common/data-ajax/pdp/pdp_status.json';
             var options = {
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
                 productcode : $section.data('productCode'),
@@ -66,8 +66,9 @@
                 options.ownStatus = lgkorUI.stringToBool(data.ownStatus);
                 options.orderStatus = lgkorUI.stringToBool(data.orderStatus);
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
-            },null, null, null, null, null, function(err){
-                // console.log(err)
+            },null, null, null, null, null, function(request){
+                var err = "ERROR : " + request.status;
+	            console.log(err);
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
             });
             $section.on('click','.review-write-wrap .btn', function(e) {
@@ -77,7 +78,7 @@
                         cancelBtnName: "아니오",
                         okBtnName: "네",
                         ok: function(){
-                            var link =  (options.loginFlag) ? '/my-page/manage-products' : "/sso/api/Login";
+                            var link =  '/my-page/manage-products'; //options.loginFlag ? '/my-page/manage-products' : "/sso/api/Login";
                             location.href = link;
                         }
                     });   
