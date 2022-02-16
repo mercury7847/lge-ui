@@ -30,9 +30,6 @@
         setting: function() {
             var self = this;
 
-            // 메인 스티키 헤더 체크 변수
-            self.isMainStickyHeader = false;
-
             //타이머
             self.searchTimer = null;
 
@@ -95,16 +92,6 @@
 
                 self.$searchLayer.attr("aria-hidden",false).addClass('open');
                 self.$inputSearch.focus();
-
-
-                // 메인 페이지에서 하단 앱바 열릴시 오류 수정
-                if($('body').hasClass('is-main-sticky-header')) {
-                    self.isMainStickyHeader = true;
-                    $('body').removeClass('is-main-sticky-header')
-                }
-
-                
-                //
                 var ignoreOverflow = $('body').hasClass('ignore-overflow-hidden');
                 if(!ignoreOverflow){
                     // BTOCSITE-5938-285 scroll-lock 클래스 추가 : 팝업 뛰울시 바닥페이지 스크롤 밀림 방지 class
@@ -115,12 +102,6 @@
             //통합검색 닫음
             self.$searchLayer.find('button.btn-close').off('.intergrated').on("click.intergrated", function(e) {
                 e.preventDefault();
-
-                // 메인 페이지에서 하단 앱바 열릴시 오류 수정
-                if(self.isMainStickyHeader) {
-                    self.isMainStickyHeader = false;
-                    $('body').addClass('is-main-sticky-header')
-                }
 
                 self.closeSearchPopup();
             });
