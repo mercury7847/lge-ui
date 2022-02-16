@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     // BTOCSITE-4785 s
     if ($('.btn-pdp-alert').length) {
@@ -7,7 +8,7 @@ $(document).ready(function() {
     var $wrap = $('.ev-detail-wrap');
     vcui.require(['ui/tab', 'ui/carousel'], function () {
 
-        $wrap.find('.ui_objet_carousel').vcCarousel({         
+        $wrap.find('.ui_objet_carousel').vcCarousel({
             slidesToShow: 3,
             // slidesToScroll: 1,
             // centerPadding:'60px',
@@ -50,127 +51,7 @@ function goPdpUrl() {
 }
 // BTOCSITE-4785 e
 
-// BTOCSITE-11191 지점별 필터 기능 추가
-// evFilter.makeListItem() 에서 사용하는 template
-var evFilterItemTemplate =
-'<li>' +
-    '<div class="item evt-item">' +
-        '{{#if promotionBadges}}'+
-        '<div class="badge">' +
-            '<div class="flag-wrap image-type left">'+
-                '{{#each badge in promotionBadges}}'+
-                    '{{#if badge.badgeImgUrl}}'+
-                    '<span class="big-flag">'+
-                        '<img src="{{badge.badgeImgUrl}}" alt="{{badge.badgeName}}">'+
-                    '</span>'+
-                    '{{/if}}'+
-                '{{/each}}'+
-            '</div>'+
-        '</div>'+
-        '{{/if}}' +
-        '<div class="product-image" aria-hidden="true">' +
-            '<a href="{{modelUrlPath}}" class="btn-pdp-alert"><img src="{{mediumImageAddr}}" alt="{{categoryName}} {{modelDisplayAltName}} {{sku}} 썸네일"></a>' +
-        '</div>' +
-        '<div class="product-contents">' +
-            '<div class="product-info">' +
-                '<div class="product-name">' +
-                    '<a href="{{modelUrlPath}}" class="btn-pdp-alert">{{#raw modelDisplayName}}</a>' +
-                '</div>' +
-                '<div class="sku">{{#if modelName}}{{modelName}}{{/if}}</div>' +
-                '<div class="review-info">' +
-                    '<a href="#">' +
-                        '{{#if (reviewsCount != "0")}}' +
-                        '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
-                        '<div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>' +
-                        '<div class="review-count"><span class="blind">리뷰 수</span>({{reviewsCount}})</div>' +
-                        '{{/if}}' +
-                    '</a>' +
-                '</div>' +
-                '<ul class="spec-info">' +
-                    '{{#if firstBulletName}}<li>{{firstBulletName}}</li>{{/if}}'+
-                    '{{#if showBulletFeatures}}' +
-                    '{{#each item in showBulletFeatures}}' +
-                    '<li>{{#raw item.specText}}</li>' +
-                    '{{/each}}' +
-                    '{{/if}}' +
-                    '{{#if lastBulletName}}<li>{{lastBulletName}}' +
-                    '{{#if (subCategoryId == "CT50000070")}}<span class="care-n">,</span><span class="redcare-option">1년 무상케어</span>{{/if}}' +
-                    '</li>{{/if}}'+
-                '</ul>' +
-            '</div>' +
-        '</div>'+
-        '<div class="product-bottom">' +
-           '{{#if checkPriceFlag}}'+
-
-                //케어솔루션 경우
-                '{{#if bizType == "CARESOLUTION"}}' +
-                '<div class="price-area care">' +
-                    '<div class="total-price">' +
-                        '<em class="text">기본 월 요금</em>' +
-                        '<span class="price"><em>월</em> {{years1TotAmt}}<em>원</em></span>' +
-                    '</div>' +
-
-                    '{{#if visitPer != "0"}}' +
-                     '<span class="small-text">({{visitPer}}개월/1회 방문)</span>' +
-                    '{{/if}}' +
-                    '{{#if visitPer == "0"}}' +
-                     '<span class="small-text">(방문없음/자가관리)</span>' +
-                    '{{/if}}' +
-                '</div>' +
-                '{{#else}}' +
-                '<div class="price-area">' +
-                '{{#if obsTotalDiscountPrice}}' +
-                    '{{#if obsBtnRule == "enable"}}'+
-                        '{{#if obsTotalDiscountPrice == 0 || obsSellingPrice == obsOriginalPrice}}' + // BTOCSITE-5387 세일가격이 값0 이였을때
-                            '{{#if obsOriginalPrice}}' +
-                            '<div class="total">' +
-                                '<em class="blind">판매가격</em>' +
-                                '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                            '</div>' +
-                            '{{/if}}' +
-
-                            '{{#else}}' +
-
-                             '{{#if obsOriginalPrice}}' +
-                                '<div class="original">' +
-                                    '<em class="blind">판매가격</em>' +
-                                    '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                                '</div>' +
-                             '{{/if}}' +
-
-                            '{{#if obsSellingPrice}}' +
-                                '<div class="total">' +
-                                    '<em class="blind">총 판매가격</em>' +
-                                    '<span class="price">{{obsSellingPrice}}<em>원</em></span>' +
-                                '</div>' +
-                            '{{/if}}' +
-                        '{{/if}}' +
-                    '{{/if}}' +
-
-                '{{#else}}' +
-                 '{{#if obsOriginalPrice}}' +
-                    '<div class="total">' +
-                        '<em class="blind">총 판매가격</em>' +
-                        '<span class="price">{{obsOriginalPrice}}<em>원</em></span>' +
-                    '</div>' +
-                    '{{/if}}' +
-                '{{/if}}' +
-             '{{/if}}' +
-           '{{/if}}' +
-
-            '<div class="btn-area-wrap">' +
-                '<div class="btn-area">' +
-                    '<a href="{{storeUrlPath}}" class="btn border size-m btn-store">구매 매장 확인/예약하기</a>' +
-                '</div>' +
-                '<div class="btn-area">' +
-                    '<a href="{{modelUrlPath}}" class="btn border size-m btn-pdp-alert">제품 정보 확인하기</a>' +
-                '</div>' +
-            '</div>' +
-        '</div>' +
-    '</div>' +
-'</li>';
-
-
+//BTOCSITE-11191 지점별 필터 기능 추가
 var evFilter = {
     /**
      * 최초 실행 시 필요한 변수 정의 및 이벤트 함수 실행
@@ -191,10 +72,8 @@ var evFilter = {
 
         self.$allProductList = self.$container.find("#allProductList");
         self.$shopProductList = self.$container.find("#shopProductList");
-        self.shopProductListUrl = self.$container.data('shopProductListUrl');
-        self.cityUrl = self.$container.data('cityUrl');
-        self.countyUrl = self.$container.data('countyUrl');
-        self.shopUrl = self.$container.data('shopUrl');
+        self.storeFilterUrl = self.$container.data('storeFilterUrl');
+        self.planEventId = self.$container.data('planEventId');
 
         if(self.$filter) {
             /**
@@ -205,9 +84,14 @@ var evFilter = {
             self.selectAllReset();
             self.$allProductList.show();
             self.$shopProductList.hide();
-            
+
             // load 시 시/도 selectbox 목록 요청
-            self.requestCityList();
+            var formData = {};
+            formData.callType = 'CITY';
+            formData.planEventId = self.planEventId;
+            formData.areaName = 'CITY';
+            formData.areaDetailName = '';
+            self.requestCityList(formData);
 
             // load 시 이벤트 관련 함수 실행
             self.bindEvent();
@@ -228,7 +112,7 @@ var evFilter = {
                 self.$shop.removeClass('is-active');
                 self.$allProductList.show();
                 self.$shopProductList.hide();
-                
+
                 // 전체보기 선택 시 선택했던 지점 셀렉트박스 및 상담예약 버튼 노출 초기화
                 self.selectAllReset();
             } else {
@@ -243,10 +127,15 @@ var evFilter = {
                 self.selectSingleReset(null, self.$countySelect, true);
                 self.selectSingleReset(null, self.$shopSelect, true);
             } else {
-                self.selectSingleReset(null, self.$countySelect, true);
-                self.selectSingleReset(null, self.$shopSelect, true);
+                var formData = {};
+                formData.callType = 'COUNTY';
+                formData.planEventId = self.planEventId;
+                formData.areaName = $("#evFilterCity option:checked").text();
+                formData.areaDetailName = e.target.value+' ';
 
-                self.requestCountyList(e.target.value);
+                self.selectSingleReset(null, self.$countySelect, false);
+                self.selectSingleReset(null, self.$shopSelect, true);
+                self.requestCountyList(formData);
             }
         });
 
@@ -255,22 +144,34 @@ var evFilter = {
             if(e.target.value == "") {
                 self.selectSingleReset(null, self.$shopSelect, true);
             } else {
-                self.selectSingleReset(null, self.$shopSelect, true);
-                self.requestShopList(self.$citySelect.val(), e.target.value);
+                var formData = {};
+                formData.callType = 'SHOP';
+                formData.planEventId = self.planEventId;
+                formData.areaName = $("#evFilterCity option:checked").text();
+                formData.areaDetailName = self.$citySelect.val()+' '+e.target.value;
+
+                self.selectSingleReset(null, self.$shopSelect, false);
+                self.requestShopList(formData);
+
             }
         });
 
-        // 매장 선택 시 매장 예약 버튼 노출 & 매장 코드 붙여 (orgCode) href 삽입 & orgCode 기준 상품목록 재호출
+        // 매장 선택 시 매장 예약 버튼 노출
         self.$shopSelect.on('change', function(e) {
             if(e.target.value == "") {
                 self.$reservationButton.removeClass('is-active');
             } else {
                 var baseUrl = self.$reservationButton.find(".btn").data('baseUrl');
 
-                self.$reservationButton.find(".btn").attr('href', baseUrl + '?orgCord=' + e.target.value)
+                self.$reservationButton.find(".btn").attr('href', baseUrl + '&orgcode=' + e.target.value)
                 self.$reservationButton.addClass('is-active');
 
-                self.requestShopProductList(e.target.value)
+                var formData = {};
+                formData.callType = 'PRODUCT';
+                formData.planEventId = self.planEventId;
+                formData.areaName = $("#evFilterCity option:checked").text();
+                formData.areaDetailName = self.$citySelect.val()+' '+self.$countySelect.val();
+                formData.hrOrgCode = e.target.value;
             }
         });
     },
@@ -310,179 +211,15 @@ var evFilter = {
     },
 
     /**
-     * 상품 목록 버튼 플래그 관련
-     * @param {string} item 상품 목록 data
-     */
-    checkBtnFlag: function(item) {
-        if(item.bizType == "PRODUCT") {
-            var btnFlag = item.obsCartFlag ?  item.obsCartFlag : (item.buyBtnFlag ? item.buyBtnFlag: "N");
-            if(lgkorUI.stringToBool(btnFlag) && item.obsBtnRule=="enable" && item.careshipOnlyFlag != "Y") {
-                return true
-            } else {
-                return false;
-            }
-        } else if(item.bizType == "CARESOLUTION") {
-            if (item.years1TotAmt && item.years1TotAmt != "") {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            //소모품 DISPOSABLE
-            if (item.obsInventoryQty > 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    },
-
-    /**
-     * 상품 목록 가격 플래그 관련
-     * @param {string} item 상품 목록 data
-     */
-    checkPriceFlag: function(item) {
-        if(item.bizType == "PRODUCT") {
-            if(lgkorUI.stringToBool(item.obsSellFlag) && item.obsBtnRule=="enable") {
-                return true;
-            } else if(item.obsTotalDiscountPrice == 0 || item.obsSellingPrice == 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if(item.bizType == "CARESOLUTION") {
-            if ((item.rTypeCount && item.rTypeCount != "") || (item.cTypeCount && item.cTypeCount != "")) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            //소모품 DISPOSABLE
-            if(item.obsTotalDiscountPrice && item.obsTotalDiscountPrice != "") {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    },
-
-    /**
-     * 상품 목록 template 처리
-     * KRP0007의 상품 목록 생성 코드를 기초하여 사용하는 부분만 조합하여 추가함.
-     * 관련 함수 checkBtnFlag, checkPriceFlag 포함하여 작성됨
-     * @param {string} item 상품 목록 data
-     */
-    makeListItem: function(item) {
-        var self = this;
-
-        var inputdata = lgkorUI.getHiddenInputData();
-
-        item.checkBtnFlag = self.checkBtnFlag(item);
-        item.checkPriceFlag = self.checkPriceFlag(item);
-
-        item.obsOriginalPrice = (item.obsOriginalPrice != null) ? vcui.number.addComma(item.obsOriginalPrice) : null;
-        item.obsTotalDiscountPrice = (item.obsTotalDiscountPrice != null) ? vcui.number.addComma(item.obsTotalDiscountPrice) : null;
-
-        item.obsSellingPrice = (item.obsSellingPrice != null) ? vcui.number.addComma(item.obsSellingPrice) : null;
-
-        item.reviewsCount = (item.reviewsCount != null) ? vcui.number.addComma(item.reviewsCount) : "0";
-
-        item.years1TotAmt = (item.years1TotAmt != null) ? vcui.number.addComma(item.years1TotAmt) : null;
-
-        var bulletLength, showLength;
-
-        item.firstBulletName = null;
-        item.lastBulletName = null;
-        item.showBulletFeatures = [];
-        if(item.bizType == "PRODUCT"){
-            if(item.bulletFeatures && item.bulletFeatures.length > 0){
-                bulletLength = item.bulletFeatures.length;
-                showLength = item.cTypeCount > 0 ? 4 : bulletLength;
-                if(showLength > bulletLength) showLength = bulletLength;
-                for(var i=0;i<showLength;i++) item.showBulletFeatures.push(item.bulletFeatures[i]);
-            }
-
-            if(item.cTypeCount > 0) item.lastBulletName = inputdata.lastBulletName;
-        } else if(item.bizType == "CARESOLUTION"){
-            if(item.bulletFeatures && item.bulletFeatures.length > 0){
-                bulletLength = item.bulletFeatures.length;
-                showLength = bulletLength > 4 ? 4 : bulletLength;
-                if(showLength > bulletLength) showLength = bulletLength;
-                for(i=0;i<showLength;i++) item.showBulletFeatures.push(item.bulletFeatures[i]);
-            }
-            item.lastBulletName = inputdata.lastBulletName;
-        } else if(item.bizType == "DISPOSABLE"){
-            if(item.compatibleModels && item.compatibleModels.length > 0){
-                item.firstBulletName = inputdata.lastBulletName;
-                bulletLength = item.compatibleModels.length;
-                showLength = bulletLength > 5 ? 5 : bulletLength;
-                for(i=0;i<showLength;i++) item.showBulletFeatures.push({specText:item.compatibleModels[i].model});
-
-                if(showLength < bulletLength) item.showBulletFeatures.push({specText:"총 " + bulletLength + "개"});
-            }
-        }
-
-        if(!item.obsBtnRule) item.obsBtnRule = "";
-
-        if(!item.sku) item.sku = item.modelName;
-
-        if(!item.obsSellingPrice) item.obsSellingPrice = "";
-
-        item.modelDisplayAltName = item.modelDisplayName.replace(/(<([^>]+)>)/ig, "");
-
-        item.modelUrlPath = (item.bizType == "CARESOLUTION") ? item.modelUrlPath + "?dpType=careTab" : item.modelUrlPath;
-
-        // 20210728 BTOCSITE-3608 매장 키오스크 LGE.COM 노출 개선 요청
-        var kiosk = lgkorUI.getParameterByName("kiosk");
-        if(kiosk && item.modelUrlPath.indexOf('kiosk=') === -1) {
-            item.modelUrlPath += (item.modelUrlPath.indexOf("?") === -1) ? "?" : "&";
-            item.modelUrlPath += 'kiosk='+kiosk;
-        }
-        return vcui.template(evFilterItemTemplate, item);
-    },
-
-    /**
-     * 상품 목록 데이터 호출
-     * @param {string} orgCode 매장 코드
-     */
-    requestShopProductList: function(orgCode) {
-        var self = this;
-        var formData = {};
-
-        if(orgCode) {
-            formData.orgCode = orgCode;
-        }
-
-        lgkorUI.requestAjaxDataPost(self.shopProductListUrl, formData, function(result) {
-            var data = result.data;
-            var dataArray = (data && data instanceof Array) ? data : [];
-
-            if(dataArray.length) {
-                self.$shopProductList.empty();
-                dataArray.forEach(function (item, index) {
-                    var listItem = self.makeListItem(item);
-                    self.$shopProductList.append(listItem);
-                });
-
-                self.$allProductList.hide();
-                self.$shopProductList.show();
-
-                goPdpUrl();
-            }
-        });
-    },
-
-    /**
      * 시/도 목록 데이터 호출
      */
-    requestCityList: function() {
+    requestCityList: function(formData) {
         var self = this;
-        var optionTemplate = '<option value="{{value}}">{{title}}</option>';
+        var optionTemplate = '<option value="{{areaName}}">{{areaCode}}</option>';
 
-        lgkorUI.requestAjaxDataFailCheck(self.cityUrl, null,function(result) {
+        lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
             var dataArray = (data && data instanceof Array) ? data : [];
-
             if(dataArray.length) {
                 self.$citySelect.find("option:gt(0)").remove();
 
@@ -495,16 +232,15 @@ var evFilter = {
             }
         });
     },
-    
+
     /**
      * 구/군 목록 데이터 호출
-     * @param {string} city 시/도 value
      */
-    requestCountyList: function(city) {
+    requestCountyList: function(formData) {
         var self = this;
-        var optionTemplate = '<option value="{{value}}">{{title}}</option>';
+        var optionTemplate = '<option value="{{areaName}}">{{areaName}}</option>';
 
-        lgkorUI.requestAjaxDataFailCheck(self.countyUrl, {city:encodeURI(city)}, function(result) {
+        lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
             var dataArray = (data && data instanceof Array) ? data : [];
 
@@ -516,7 +252,6 @@ var evFilter = {
                     self.$countySelect.append($(option).get(0));
                 });
 
-                self.$countySelect.prop('disabled', false);
                 self.$countySelect.vcSelectbox('update');
             }
         });
@@ -524,14 +259,12 @@ var evFilter = {
 
     /**
      * 매장 목록 데이터 호출
-     * @param {string} city 시/도 value
-     * @param {string} county 구/군 value
      */
-    requestShopList: function(city, county) {
+    requestShopList: function(formData) {
         var self = this;
-        var optionTemplate = '<option value="{{orgCode}}">{{shopName}}</option>';
+        var optionTemplate = '<option value="{{hrOrgCode}}">{{hrOrgName}}</option>';
 
-        lgkorUI.requestAjaxDataFailCheck(self.shopUrl, {city:encodeURI(city), county:encodeURI(county)}, function(result) {
+        lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
             var dataArray = (data && data instanceof Array) ? data : [];
 
@@ -543,7 +276,6 @@ var evFilter = {
                     self.$shopSelect.append($(option).get(0));
                 });
 
-                self.$shopSelect.prop('disabled', false);
                 self.$shopSelect.vcSelectbox('update');
             }
         });
@@ -552,5 +284,4 @@ var evFilter = {
 
 $(function(){
     evFilter.init();
-})
-
+});
