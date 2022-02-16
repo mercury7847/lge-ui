@@ -84,7 +84,7 @@
                         cancelBtnName: "아니오",
                         okBtnName: "네",
                         ok: function(){
-                            var link =  options.loginFlag ? '/my-page/manage-products' : "/sso/api/Login";
+                            var link =  options.loginFlag ? '/my-page/manage-products?tab=1' : "/sso/api/Login";
                             location.href = link;
                         }
                     });
