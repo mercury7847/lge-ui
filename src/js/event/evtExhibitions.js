@@ -51,7 +51,7 @@ function goPdpUrl() {
 }
 // BTOCSITE-4785 e
 
-//BTOCSITE-11191 지점별 필터 기능 추가
+// BTOCSITE-11191 매장 필터 기능 추가
 var evFilter = {
     /**
      * 최초 실행 시 필요한 변수 정의 및 이벤트 함수 실행
@@ -113,7 +113,7 @@ var evFilter = {
                 self.$allProductList.show();
                 self.$shopProductList.hide();
 
-                // 전체보기 선택 시 선택했던 지점 셀렉트박스 및 상담예약 버튼 노출 초기화
+                // 전체보기 선택 시 선택했던 매장 셀렉트박스 및 상담예약 버튼 노출 초기화
                 self.selectAllReset();
             } else {
                 // 재고 보유 매장 확인하기 선택 시
@@ -133,7 +133,7 @@ var evFilter = {
                 formData.areaName = $("#evFilterCity option:checked").text();
                 formData.areaDetailName = e.target.value+' ';
 
-                self.selectSingleReset(null, self.$countySelect, false);
+                self.selectSingleReset(null, self.$countySelect, true);
                 self.selectSingleReset(null, self.$shopSelect, true);
                 self.requestCountyList(formData);
             }
@@ -268,11 +268,14 @@ var evFilter = {
         var self = this;
         var optionTemplate = '<option value="{{areaName}}">{{areaName}}</option>';
 
+        self.$countySelect.parent('.select-wrap').addClass('loading');
+
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
             var dataArray = (data && data instanceof Array) ? data : [];
 
             if(dataArray.length) {
+
                 self.$countySelect.find("option:gt(0)").remove();
 
                 dataArray.forEach(function (item, index) {
@@ -280,7 +283,9 @@ var evFilter = {
                     self.$countySelect.append($(option).get(0));
                 });
 
+                self.$countySelect.prop('disabled', false);
                 self.$countySelect.vcSelectbox('update');
+                self.$countySelect.parent('.select-wrap').removeClass('loading');
             }
         });
     },
@@ -291,6 +296,8 @@ var evFilter = {
     requestShopList: function(formData) {
         var self = this;
         var optionTemplate = '<option value="{{hrOrgCode}}">{{hrOrgName}}</option>';
+
+        self.$shopSelect.parent('.select-wrap').addClass('loading');
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
@@ -304,7 +311,9 @@ var evFilter = {
                     self.$shopSelect.append($(option).get(0));
                 });
 
+                self.$shopSelect.prop('disabled', false);
                 self.$shopSelect.vcSelectbox('update');
+                self.$shopSelect.parent('.select-wrap').removeClass('loading');
             }
         });
     }
