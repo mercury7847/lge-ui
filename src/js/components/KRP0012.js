@@ -50,6 +50,7 @@
             var $section = $('.KRP0012');
             var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/mkt/api/product/retrieveProductRegisterInfo';
             var options = {
+                isMobile: vcui.detect.isMobile,
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
                 productcode : $section.data('productCode'),
                 ownStatus: false,
@@ -58,7 +59,7 @@
                 '<div class="txt-area">'+
                 '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
                 '</div>'+
-                '<button type="button" class="{{#if orderStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}">리뷰 작성하기</button>'+
+                '<button type="button" class="{{#if orderStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{enModelName}}" data-own-status="{{ownStatus}}" {{#if isMobile}}review-source="mobile_my_orders"{{/if}}>리뷰 작성하기</button>'+
                 '</div>'
             };
             var sendata = (options.loginFlag) ? {
@@ -70,28 +71,23 @@
                 options.orderStatus = (options.loginFlag && lgkorUI.stringToBool(data.isregistered)) ? true:false;
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
                 console.log(options)
-                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus}));
+                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus, "isMobile":options.isMobile}));
             },"POST", null, null, null, null, function(request){
-                if(!options.loginFlag) options.ownStatus = true;
-                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus}));
+                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus, "isMobile":options.isMobile}));
                 var err = "ERROR : " + (request == undefined) ? 'undefined' : request.status;
                 console.log(err, options.loginFlag);
             });
             $section.on('click','.review-write-wrap .btn', function(e) {
-                var msg = '보유제품 등록 후 리뷰 등록 가능합니다' //options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
-                if(options.loginFlag) {
-                    if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
-                        lgkorUI.confirm(msg, {
-                            cancelBtnName: "아니오",
-                            okBtnName: "네",
-                            ok: function(){
-                                var link =  '/my-page/manage-products'; //options.loginFlag ? '/my-page/manage-products' : "/sso/api/Login";
-                                location.href = link;
-                            }
-                        });
-                    }
-                }else {
-                    alert('비회원은 리뷰를 작성할 수 없습니다.');
+                var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
+                if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
+                    lgkorUI.confirm(msg, {
+                        cancelBtnName: "아니오",
+                        okBtnName: "네",
+                        ok: function(){
+                            var link =  options.loginFlag ? '/my-page/manage-products?tab=1' : "/sso/api/Login";
+                            location.href = link;
+                        }
+                    });
                 }
             });
         }

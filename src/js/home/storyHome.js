@@ -202,9 +202,12 @@
                 loadStoryList('user_story', 1, 'UserStory');
             } 
 
-            setTimeout(function(){
-                $('html, body').animate({scrollTop:moveScrollTop}, 120);
-            }, 10);
+            // BTOCSITE-12128 메인성능개선 - 모바일 메인스와이프 있는경우 상단이동 무시
+            if(moveScrollTop > 0) {
+                setTimeout(function(){
+                    $('html, body').animate({scrollTop:moveScrollTop}, 120);
+                }, 10);
+            } 
         });
 
         
