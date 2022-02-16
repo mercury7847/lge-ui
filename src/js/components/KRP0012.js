@@ -69,6 +69,7 @@
                 var data = result.data[0];
                 options.orderStatus = (!options.loginFlag || lgkorUI.stringToBool(data.isregistered)) ? true:false;
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
+                console.log(options)
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus, "orderStatus":options.orderStatus}));
             },"POST", null, null, null, null, function(request){
                 if(!options.loginFlag) options.ownStatus = true;
@@ -78,7 +79,7 @@
             });
             $section.on('click','.review-write-wrap .btn', function(e) {
                 var msg = '보유제품 등록 후 리뷰 등록 가능합니다' //options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
-                if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
+                if(options.loginFlag && !lgkorUI.stringToBool($(this).attr('data-own-status'))) {
                     lgkorUI.confirm(msg, {
                         cancelBtnName: "아니오",
                         okBtnName: "네",
