@@ -67,8 +67,8 @@
             }:null;
             lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
                 var data = result.data;
-                options.ownStatus = (!options.loginFlag) ? true:lgkorUI.stringToBool(data.ownStatus);
-                options.orderStatus = lgkorUI.stringToBool(data.orderStatus);
+                options.ownStatus = (!options.loginFlag || lgkorUI.stringToBool(data.isregistered)) ? true:false;
+                options.orderStatus = lgkorUI.stringToBool(data.isregistered);
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, {"enModelName":options.productcode, "ownStatus":options.ownStatus}));
             },"POST", null, null, null, null, function(request){
                 if(!options.loginFlag) options.ownStatus = true;
