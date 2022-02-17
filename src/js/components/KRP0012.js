@@ -43,9 +43,7 @@
                 $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
             */
-           if($('.star-rating-wrap').size()>0) {
-               setTimeout(self.reviewWrite, 1500); // BTOCSITE-8083
-           }
+           setTimeout(self.reviewWrite, 1500); // BTOCSITE-8083
         },
         // S : BTOCSITE-8083
         reviewWrite: function() {
