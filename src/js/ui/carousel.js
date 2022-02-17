@@ -821,7 +821,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if (self.slideCount > opt.slidesToShow) {
                         self.slideHandler(self.currentSlide - slideOffset, false, dontAnimate);
                     }
-                    $(event.target).focusout(); // BTOCSITE-5938-222
                     break;
 
                 case 'next':
@@ -829,7 +828,6 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                     if (self.slideCount > opt.slidesToShow) {
                         self.slideHandler(self.currentSlide + slideOffset, false, dontAnimate);
                     }
-                    $(event.target).focusout(); // BTOCSITE-5938-222
                     break;
 
                 case 'index':
@@ -842,6 +840,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 default:
                     return;
             }
+            $(event.target).focusout(); // BTOCSITE-5938-222
         },
         checkNavigable: function checkNavigable(index) {
 
