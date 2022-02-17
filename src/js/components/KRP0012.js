@@ -48,7 +48,7 @@
         // S : BTOCSITE-8083
         reviewWrite: function() {
             var $section = $('.KRP0012');
-            var ajaxUrl = '/lg5-common/data-ajax/pdp/pdp_status.json'//$section.attr('data-product-status')?$section.attr('data-product-status'):'/mkt/api/product/retrieveProductRegisterInfo';
+            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/mkt/api/product/retrieveProductRegisterInfo';
             var options = {
                 isMobile: vcui.detect.isMobile,
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
