@@ -63,6 +63,7 @@
                 '</div>'
             };
             var sendata = (options.loginFlag) ? {
+                modelName: options.productcode,
                 modelId: digitalData.productInfo.model_id,
                 unifyId: digitalData.userInfo.unifyId,
             }:null;
