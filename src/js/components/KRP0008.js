@@ -1641,9 +1641,9 @@
                 });
 
                 //렌탈 케어솔루션 계약기간
-                 // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
-                if(self.$caresolutionRentalInfoSelectBox.length > 0) {
-                    //가입비 선택
+                // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+                var caresolutionSelectBoxLength = self.$caresolutionRentalInfoSelectBox.length;
+                if(caresolutionSelectBoxLength > 0) {                    //가입비 선택
                     self.$caresolutionRentalInfoSelectBox.eq(0).on('change', function(e,data){
                         var value = $(this).vcSelectbox('selectedOption').value;
                         var array = Object.keys(self.rentalInfoData[value]);
@@ -1715,6 +1715,9 @@
 
                         var selectIndex = array.indexOf(max);
                         
+						if (caresolutionSelectBoxLength == 4) { // 서비스타입 셀렉트박스가 없는경우
+                        	self.updateRentalInfoPrice(itemData[selectIndex]);
+                        }
                         
                         self.rentalInfoBoxUpdate(3, $(this));
                         self.rentalInfoSelectBoxUpdate(4,itemData,selectIndex, true);
