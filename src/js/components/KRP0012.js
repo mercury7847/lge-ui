@@ -43,12 +43,12 @@
                 $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
             */
-           setTimeout(self.reviewWrite, 1500); // BTOCSITE-8083
+            setTimeout(self.reviewWrite, 1500); // BTOCSITE-8083
         },
         // S : BTOCSITE-8083
         reviewWrite: function() {
             var $section = $('.KRP0012');
-            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/mkt/api/product/retrieveProductRegisterInfo';
+            var ajaxUrl = '/lg5-common/data-ajax/pdp/pdp_status.json'//$section.attr('data-product-status')?$section.attr('data-product-status'):'/mkt/api/product/retrieveProductRegisterInfo';
             var options = {
                 isMobile: vcui.detect.isMobile,
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
@@ -56,9 +56,9 @@
                 ownStatus: false,
                 orderStatus: false,
                 cremaReviewTemplate: '<div class="review-write-wrap">'+
-                '<div class="txt-area">'+
-                '{{#if isProduct}}<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>{{/if}}'+
-                '</div>'+
+                '{{#if isProduct}}<div class="txt-area">'+
+                '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
+                '</div>{{/if}}'+
                 '<button type="button" class="{{#if orderStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{productcode}}" data-own-status="{{ownStatus}}" {{#if isMobile}}review-source="mobile_my_orders"{{/if}}>리뷰 작성하기</button>'+
                 '</div>'
             };
@@ -91,6 +91,7 @@
                     });
                 }
             });
+            lgkorUI.cremaReload();
         }
         // E : BTOCSITE-8083
     }
