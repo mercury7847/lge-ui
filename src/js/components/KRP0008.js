@@ -1730,7 +1730,11 @@
 
                         var selectIndex = array.indexOf(max);
                         
+<<<<<<< HEAD
                         if (caresolutionSelectBoxLength == 4) { // 서비스타입 셀렉트박스가 없는경우
+=======
+						if (caresolutionSelectBoxLength == 4) { // 서비스타입 셀렉트박스가 없는경우
+>>>>>>> BTOCSITE-9177-dev
                         	self.updateRentalInfoPrice(itemData[selectIndex]);
                         }
                         
