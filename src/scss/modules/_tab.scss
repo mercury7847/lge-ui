@@ -96,15 +96,12 @@
         }
         &:before {
             position: absolute;
-            bottom: 1px !important;
             right: 0;
             left: 0;
+            bottom:0;
             height: 1px;
             background: $color-border;
             content: '';
-            @include mobile {
-                bottom:-1px !important;
-            }
         }
         .tabs {
             display:inline-block;
@@ -141,7 +138,7 @@
                         content: '';
                         @include mobile {
                             left: -50%;
-                            bottom: -3px;
+                            bottom: -2px;
                             width: 200%;
                             height: 3px;
                             transform: scale(0.5);
