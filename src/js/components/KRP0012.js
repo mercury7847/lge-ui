@@ -57,7 +57,7 @@
                 orderStatus: false,
                 cremaReviewTemplate: '<div class="review-write-wrap">'+
                 '<div class="txt-area">'+
-                '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
+                '{{#if isProduct}}<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>{{/if}}'+
                 '</div>'+
                 '<button type="button" class="{{#if orderStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{productcode}}" data-own-status="{{ownStatus}}" {{#if isMobile}}review-source="mobile_my_orders"{{/if}}>리뷰 작성하기</button>'+
                 '</div>'
@@ -70,6 +70,7 @@
                 var data = result.data[0];
                 options.orderStatus = (options.loginFlag && lgkorUI.stringToBool(data.isregistered)) ? true:false;
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
+                options.isProduct = lgkorUI.stringToBool(data.isproduct);
                 // console.log(options)
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
             },"POST", null, null, null, null, function(request){
