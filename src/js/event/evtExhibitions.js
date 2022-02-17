@@ -266,7 +266,7 @@ var evFilter = {
         var self = this;
         var optionTemplate = '<option value="{{areaName}}">{{areaName}}</option>';
 
-        self.$countySelect.parent('.select-wrap').addClass('loading');
+        self.$countySelect.closest('.select-wrap').addClass('loading');
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
@@ -283,7 +283,7 @@ var evFilter = {
 
                 self.$countySelect.prop('disabled', false);
                 self.$countySelect.vcSelectbox('update');
-                self.$countySelect.parent('.select-wrap').removeClass('loading');
+                self.$countySelect.closest('.select-wrap').removeClass('loading');
             }
         });
     },
@@ -295,7 +295,7 @@ var evFilter = {
         var self = this;
         var optionTemplate = '<option value="{{hrOrgCode}}">{{hrOrgName}}</option>';
 
-        self.$shopSelect.parent('.select-wrap').addClass('loading');
+        self.$shopSelect.closest('.select-wrap').addClass('loading');
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
@@ -311,7 +311,7 @@ var evFilter = {
 
                 self.$shopSelect.prop('disabled', false);
                 self.$shopSelect.vcSelectbox('update');
-                self.$shopSelect.parent('.select-wrap').removeClass('loading');
+                self.$shopSelect.closest('.select-wrap').removeClass('loading');
             }
         });
     }
