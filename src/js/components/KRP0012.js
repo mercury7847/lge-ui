@@ -43,7 +43,7 @@
                 $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
             */
-           setTimeout(self.reviewWrite, 500); // BTOCSITE-8083
+           setTimeout(self.reviewWrite, 1500); // BTOCSITE-8083
         },
         // S : BTOCSITE-8083
         reviewWrite: function() {
@@ -70,7 +70,7 @@
                 var data = result.data[0];
                 options.orderStatus = (options.loginFlag && lgkorUI.stringToBool(data.isregistered)) ? true:false;
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
-                console.log(options)
+                // console.log(options)
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
             },"POST", null, null, null, null, function(request){
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
