@@ -17,6 +17,7 @@ br.pc {display:block}
 .com-tabs .tabs-wrap.border-type {padding-top:33px}
 .com-tabs .tabs-wrap.border-type .tabs {overflow:visible}
 .com-tabs .tabs-wrap.border-type .tabs>li {position:relative}
+.com-tabs .tabs-wrap.border-type .tabs>li.on>a:after {height:2px;}
 .com-tabs .tabs>li:hover .tabs-over {display:block}
 .com-tabs .tabs-over {display:none; position:absolute; background-color:#ffffff; box-shadow:0 4px 12px 0 rgba(0,0,0,0.14); width:138px; border-radius:4px; padding:4px 0; left:calc(50% - 69px); top:44px}
 .com-tabs .tabs-over::before {display:block; content:""; position:absolute; width:134px; height:4px; top:-4px}
