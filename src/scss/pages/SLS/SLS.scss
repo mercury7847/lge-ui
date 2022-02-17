@@ -65,13 +65,6 @@ br.pc {
         margin-bottom: 32px;
         @include mobile {
             margin-bottom: 20px;
-            .tabs{
-                >li{
-                    >a{
-                        border-width:1.5px;           
-                    }
-                }
-            }
         }
     }
     &.care-recommended {
