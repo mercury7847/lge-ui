@@ -1739,13 +1739,14 @@
                     });
                     
                     // 서비스타입 선택 BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 수정
-                    self.$caresolutionRentalInfoSelectBox.eq(4).on('change', function(e,data){
-                      var selectOption = $(this).vcSelectbox('selectedOption');
-                      var itemData = $(selectOption).data('item');
-                      self.updateRentalInfoPrice(itemData);
-                      self.rentalInfoBoxUpdate(4, $(this));
-                    }); 
-
+                    if (caresolutionSelectBoxLength > 4) { // 서비스타입이 있을경우
+                    	self.$caresolutionRentalInfoSelectBox.eq(4).on('change', function(e,data){
+                            var selectOption = $(this).vcSelectbox('selectedOption');
+                            var itemData = $(selectOption).data('item');
+                            self.updateRentalInfoPrice(itemData);
+                            self.rentalInfoBoxUpdate(4, $(this));
+                          });
+                    }
                 };
                 // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 START
                  //케어십 계약기간

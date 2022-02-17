@@ -93,7 +93,7 @@ br.m {
                 margin-left: 0;
                 text-align: center;
                 a {
-                    padding-bottom: 6.5px;
+                    padding-bottom: 6px;
                 }
             }
         }
@@ -275,7 +275,7 @@ br.m {
                             padding: 0 16px;
                             > li {
                                 > a {
-                                    padding: 8px 0 6.5px;
+                                    padding: 8px 0 6px;
                                     @include font(15px,24px);
                                 }
                             }

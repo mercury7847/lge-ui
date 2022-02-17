@@ -1,7 +1,8 @@
 {
     "data": [
         {
-            "isregistered": "Y"
+            "isproduct": "Y",
+            "isregistered": "N"
         }
     ],
     "message": "",
