@@ -37,8 +37,9 @@ $(function () {
 
     vcui.require(['ui/scrollNavi','ui/smoothScroll','ui/lazyLoaderSwitch','libs/intersection-observer.min'], function () {
         // 플로우배너
-        
-        $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
+      
+        // 메인성능개선 - 제거
+        // $('body').vcLazyLoaderSwitch('reload', $context.find('.contents'));
         
         // BTOCSITE-5938-285 메인 검색창 스크롤 밀림 현상 수정
         // $('body').addClass('ignore-overflow-hidden');
