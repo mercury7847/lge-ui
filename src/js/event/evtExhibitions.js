@@ -130,8 +130,8 @@ var evFilter = {
                 var formData = {};
                 formData.callType = 'COUNTY';
                 formData.planEventId = self.planEventId;
-                formData.areaName = $("#evFilterCity option:checked").text();
-                formData.areaDetailName = e.target.value+' ';
+                formData.areaName = e.target.value;
+                formData.areaDetailName = $("#evFilterCity option:checked").text()+' ';
 
                 self.selectSingleReset(null, self.$countySelect, true);
                 self.selectSingleReset(null, self.$shopSelect, true);
@@ -147,8 +147,8 @@ var evFilter = {
                 var formData = {};
                 formData.callType = 'SHOP';
                 formData.planEventId = self.planEventId;
-                formData.areaName = $("#evFilterCity option:checked").text();
-                formData.areaDetailName = self.$citySelect.val()+' '+e.target.value;
+                formData.areaName = self.$citySelect.val();
+                formData.areaDetailName = $("#evFilterCity option:checked").text()+' '+e.target.value;
 
                 self.selectSingleReset(null, self.$shopSelect, false);
                 self.requestShopList(formData);
@@ -169,8 +169,8 @@ var evFilter = {
                 var formData = {};
                 formData.callType = 'PRODUCT';
                 formData.planEventId = self.planEventId;
-                formData.areaName = $("#evFilterCity option:checked").text();
-                formData.areaDetailName = self.$citySelect.val()+' '+self.$countySelect.val();
+                formData.areaName = self.$citySelect.val();
+                formData.areaDetailName = $("#evFilterCity option:checked").text()+' '+self.$countySelect.val();
                 formData.hrOrgCode = e.target.value;
 
                 self.requestShopProductList(formData)
@@ -197,8 +197,6 @@ var evFilter = {
 
                 self.$allProductList.hide();
                 self.$shopProductList.show();
-
-                goPdpUrl();
             }
         });
     },
@@ -243,7 +241,7 @@ var evFilter = {
      */
     requestCityList: function(formData) {
         var self = this;
-        var optionTemplate = '<option value="{{areaName}}">{{areaCode}}</option>';
+        var optionTemplate = '<option value="{{areaCode}}">{{areaName}}</option>';
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
