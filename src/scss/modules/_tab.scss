@@ -182,12 +182,12 @@
                     margin-left:0;
                 }
                 > a {
-                    padding-bottom:10px;
+                    padding-bottom:8px;
                     font-weight:500;
                     font-size: $font-large;
                     line-height: 28px;
                     @include mobile {
-                        padding-bottom:7px;
+                        padding-bottom:6px;
                         font-size:($font-medium - 1);
                         line-height:1.67;
                     }
@@ -442,7 +442,7 @@
                 > a {
                     display: block;
                     position: relative;
-                    padding-bottom: 10px;
+                    padding-bottom: 8px;
                     //border-bottom: 2px solid transparent;
                     font-weight: 500;
                     @include font-large;
@@ -470,7 +470,7 @@
             li {
                 @include mobile {
                     > a {
-                        padding-bottom:7px;
+                        padding-bottom:6px;
                     }
                 }
                 a:after {
