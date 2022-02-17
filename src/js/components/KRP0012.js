@@ -43,11 +43,7 @@
                 $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '" data-widget-id="' + widgetId + '"></div>');
             }
             */
-            var idx = 0;
-            $contWrap.bind("DOMSubtreeModified", function() {
-                console.log(idx++)
-            });
-           setTimeout(self.reviewWrite, 1500); // BTOCSITE-8083
+            setTimeout(self.reviewWrite, 1500); // BTOCSITE-8083
         },
         // S : BTOCSITE-8083
         reviewWrite: function() {
@@ -95,6 +91,7 @@
                     });
                 }
             });
+            lgkorUI.cremaReload();
         }
         // E : BTOCSITE-8083
     }
