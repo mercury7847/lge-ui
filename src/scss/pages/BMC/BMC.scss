@@ -470,7 +470,10 @@
                     }
 
                     @include mobile {
-                        min-width: 100%;
+                        min-width: 132px;
+                        height: 46px;
+                        font-size: 14px;
+                        line-height: 14px;
                     }
 
                     &-wrap {
