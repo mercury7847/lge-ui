@@ -40,7 +40,12 @@ $(window).ready(function(){
                 $(item).find('.dropContent').removeClass('on');
                 $(item).find('.drop-info .dropInfo_openBtn').show();
             }
-            $(window).scrollTop($(this).parents('.drop-info').attr('data-sc-top')); // BTOCSITE-11987
+            // S : BTOCSITE-11987
+			var winTop = $(window).scrollTop()+100, targetTop = $(this).parents('.drop-info').find('.dropInfo_openBtn').offset().top
+            if(winTop > targetTop) {
+                $(window).scrollTop($(this).parents('.drop-info').attr('data-sc-top'));
+            }
+			// E : BTOCSITE-11987
         });
         
     });
