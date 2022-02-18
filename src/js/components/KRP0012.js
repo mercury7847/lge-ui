@@ -53,6 +53,7 @@
                 isMobile: vcui.detect.isMobile,
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
                 productcode : $section.data('productCode'),
+                isProduct: true,
                 ownStatus: false,
                 orderStatus: false,
                 cremaReviewTemplate: '<div class="review-write-wrap">'+
