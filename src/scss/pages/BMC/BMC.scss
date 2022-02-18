@@ -390,7 +390,6 @@
             border-top: 2px solid #000;
 
             &-wrap {
-
                 @include pc {
                     max-width: 1380px + 80px;
                     margin: 16px auto -10px;
@@ -403,7 +402,8 @@
                 }
             }
 
-            .chk-wrap {
+            &-sort {
+                overflow: hidden;
                 span {
                     position: relative;
                 }
