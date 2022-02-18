@@ -182,30 +182,6 @@ var evFilter = {
         });
     },
 
-
-    /**
-     * 상품 목록 데이터 호출
-     */
-    requestShopProductList: function(formData) {
-        var self = this;
-
-        lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
-            var data = result.data;
-            var dataArray = (data && data instanceof Array) ? data : [];
-
-            if(dataArray.length) {
-                self.$shopProductList.empty();
-                dataArray.forEach(function (item, index) {
-                    self.$shopProductList.append($("#"+item.modelId).clone());
-                });
-
-                self.$allProductList.hide();
-                self.$shopProductList.show();
-            }
-        });
-    },
-
-
     /**
      * 개별 셀렉트박스 초기화
      * @param {string} type 시/군 일 경우에 실행되는 코드가 달라 분기하기 위해 추가
@@ -320,6 +296,29 @@ var evFilter = {
                 self.$shopSelect.prop('disabled', false);
                 self.$shopSelect.vcSelectbox('update');
                 self.$shopSelect.closest('.select-wrap').removeClass('loading');
+            }
+        });
+    },
+
+
+    /**
+     * 상품 목록 데이터 호출
+     */
+    requestShopProductList: function(formData) {
+        var self = this;
+
+        lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
+            var data = result.data;
+            var dataArray = (data && data instanceof Array) ? data : [];
+
+            if(dataArray.length) {
+                self.$shopProductList.empty();
+                dataArray.forEach(function (item, index) {
+                    self.$shopProductList.append($("#"+item.modelId).clone());
+                });
+
+                self.$allProductList.hide();
+                self.$shopProductList.show();
             }
         });
     }
