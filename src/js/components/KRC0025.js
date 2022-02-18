@@ -29,6 +29,7 @@ $(window).ready(function(){
                 $(item).find('.dropContent').addClass('on');
                 $(this).hide();
             }
+            $(this).parents('.drop-info').attr('data-sc-top', $(window).scrollTop()); // BTOCSITE-11987
         });
 
         $(item).find('.drop-info .dropInfo_closeBtn').on('click', function(e){
@@ -39,6 +40,7 @@ $(window).ready(function(){
                 $(item).find('.dropContent').removeClass('on');
                 $(item).find('.drop-info .dropInfo_openBtn').show();
             }
+            $(window).scrollTop($(this).parents('.drop-info').attr('data-sc-top')); // BTOCSITE-11987
         });
         
     });
