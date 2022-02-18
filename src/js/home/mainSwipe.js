@@ -290,7 +290,13 @@ MainSwiper.prototype = {
             url : href,
             dataType : 'html',
             success : function( res ){
-                $(currentSlide).html( res );
+                var html = res.replace(/(<img[^>]+data-m-src\s*=\s*[\"']?([^>\"']*)[\"']?[^>]*>)/g ,function(match,p1,p2){
+                    var mSrc = p2;
+                    var pcSrc = p1.replace(/(<img[^>]+data-pc-src\s*=\s*[\"']?([^>\"']*)[\"']?[^>]*>)/g,"$2");
+                    var alt = p1.replace(/(<img[^>]+alt\s*=\s*[\"']?([^>\"']*)[\"']?[^>]*>)/g,"$2");
+                    return '<img src="'+mSrc+'" data-pc-src="'+pcSrc+'" data-m-src="'+mSrc+'" data-current-image="'+mSrc+'" alt="'+alt+'" />';
+                })
+                $(currentSlide).html( html );
             },
             error : function(error){
                 console.log('mainSwiper cant get HTML', error);
@@ -322,12 +328,13 @@ MainSwiper.prototype = {
                     self.getContent();
 
 
-                    vcui.require(['ui/lazyLoaderSwitch'], function (){
-                        setTimeout(function(){
-                            mainSwiper.swiper.updateAutoHeight();
-                            $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
-                        }, 500);
-                    });
+                    // 메인 성능개선  - 비동기 html 가공처리 테스트중
+                    // vcui.require(['ui/lazyLoaderSwitch'], function (){
+                    //     setTimeout(function(){
+                    //         mainSwiper.swiper.updateAutoHeight();
+                    //         // $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
+                    //     }, 500);
+                    // });
                 });
             }
         });

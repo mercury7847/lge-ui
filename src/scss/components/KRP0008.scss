@@ -945,6 +945,19 @@
                                 margin-top:0 !important;
                             }
                         }
+                        //BTOCSITE-7550 pdp colorchip
+                        .color {
+                            .option-list {
+                                .chk-wrap-colorchip {
+                                    input {
+                                        &::before {
+                                            width: 24px;
+                                            height: 24px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                     &[class*="text"] {
                         margin-top: 24px;

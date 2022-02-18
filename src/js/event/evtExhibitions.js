@@ -130,8 +130,8 @@ var evFilter = {
                 var formData = {};
                 formData.callType = 'COUNTY';
                 formData.planEventId = self.planEventId;
-                formData.areaName = $("#evFilterCity option:checked").text();
-                formData.areaDetailName = e.target.value+' ';
+                formData.areaName = e.target.value;
+                formData.areaDetailName = $("#evFilterCity option:checked").text()+' ';
 
                 self.selectSingleReset(null, self.$countySelect, true);
                 self.selectSingleReset(null, self.$shopSelect, true);
@@ -147,8 +147,8 @@ var evFilter = {
                 var formData = {};
                 formData.callType = 'SHOP';
                 formData.planEventId = self.planEventId;
-                formData.areaName = $("#evFilterCity option:checked").text();
-                formData.areaDetailName = self.$citySelect.val()+' '+e.target.value;
+                formData.areaName = self.$citySelect.val();
+                formData.areaDetailName = $("#evFilterCity option:checked").text()+' '+e.target.value;
 
                 self.selectSingleReset(null, self.$shopSelect, false);
                 self.requestShopList(formData);
@@ -169,8 +169,8 @@ var evFilter = {
                 var formData = {};
                 formData.callType = 'PRODUCT';
                 formData.planEventId = self.planEventId;
-                formData.areaName = $("#evFilterCity option:checked").text();
-                formData.areaDetailName = self.$citySelect.val()+' '+self.$countySelect.val();
+                formData.areaName = self.$citySelect.val();
+                formData.areaDetailName = $("#evFilterCity option:checked").text()+' '+self.$countySelect.val();
                 formData.hrOrgCode = e.target.value;
 
                 self.requestShopProductList(formData)
@@ -197,8 +197,6 @@ var evFilter = {
 
                 self.$allProductList.hide();
                 self.$shopProductList.show();
-
-                goPdpUrl();
             }
         });
     },
@@ -243,7 +241,7 @@ var evFilter = {
      */
     requestCityList: function(formData) {
         var self = this;
-        var optionTemplate = '<option value="{{areaName}}">{{areaCode}}</option>';
+        var optionTemplate = '<option value="{{areaCode}}">{{areaName}}</option>';
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
@@ -268,7 +266,7 @@ var evFilter = {
         var self = this;
         var optionTemplate = '<option value="{{areaName}}">{{areaName}}</option>';
 
-        self.$countySelect.parent('.select-wrap').addClass('loading');
+        self.$countySelect.closest('.select-wrap').addClass('loading');
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
@@ -285,7 +283,7 @@ var evFilter = {
 
                 self.$countySelect.prop('disabled', false);
                 self.$countySelect.vcSelectbox('update');
-                self.$countySelect.parent('.select-wrap').removeClass('loading');
+                self.$countySelect.closest('.select-wrap').removeClass('loading');
             }
         });
     },
@@ -297,7 +295,7 @@ var evFilter = {
         var self = this;
         var optionTemplate = '<option value="{{hrOrgCode}}">{{hrOrgName}}</option>';
 
-        self.$shopSelect.parent('.select-wrap').addClass('loading');
+        self.$shopSelect.closest('.select-wrap').addClass('loading');
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
@@ -313,7 +311,7 @@ var evFilter = {
 
                 self.$shopSelect.prop('disabled', false);
                 self.$shopSelect.vcSelectbox('update');
-                self.$shopSelect.parent('.select-wrap').removeClass('loading');
+                self.$shopSelect.closest('.select-wrap').removeClass('loading');
             }
         });
     }

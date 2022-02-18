@@ -1655,8 +1655,9 @@
                 });
 
                 //렌탈 케어솔루션 계약기간
-                 // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
-                if(self.$caresolutionRentalInfoSelectBox.length > 0) {
+                // 20210721 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
+                var caresolutionSelectBoxLength = self.$caresolutionRentalInfoSelectBox.length;
+                if(caresolutionSelectBoxLength > 0) {
                     //가입비 선택
                     self.$caresolutionRentalInfoSelectBox.eq(0).on('change', function(e,data){
                         var value = $(this).vcSelectbox('selectedOption').value;
@@ -1729,19 +1730,23 @@
 
                         var selectIndex = array.indexOf(max);
                         
+                        if (caresolutionSelectBoxLength == 4) { // 서비스타입 셀렉트박스가 없는경우
+                        	self.updateRentalInfoPrice(itemData[selectIndex]);
+                        }
                         
                         self.rentalInfoBoxUpdate(3, $(this));
                         self.rentalInfoSelectBoxUpdate(4,itemData,selectIndex, true);
                     });
                     
                     // 서비스타입 선택 BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 수정
-                    self.$caresolutionRentalInfoSelectBox.eq(4).on('change', function(e,data){
-                      var selectOption = $(this).vcSelectbox('selectedOption');
-                      var itemData = $(selectOption).data('item');
-                      self.updateRentalInfoPrice(itemData);
-                      self.rentalInfoBoxUpdate(4, $(this));
-                    }); 
-
+                    if (caresolutionSelectBoxLength > 4) { // 서비스타입이 있을경우
+                    	self.$caresolutionRentalInfoSelectBox.eq(4).on('change', function(e,data){
+                            var selectOption = $(this).vcSelectbox('selectedOption');
+                            var itemData = $(selectOption).data('item');
+                            self.updateRentalInfoPrice(itemData);
+                            self.rentalInfoBoxUpdate(4, $(this));
+                          });
+                    }
                 };
                 // BTOCSITE-9177 [렌탈케어] RAC 제품군 런칭에 따른 케어서비스 타입 구분자 생성 START
                  //케어십 계약기간
