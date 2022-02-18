@@ -91,6 +91,10 @@ var evFilter = {
             formData.planEventId = self.planEventId;
             formData.areaName = 'CITY';
             formData.areaDetailName = '';
+
+            self.$citySelect.prop('disabled', true);
+            self.$citySelect.vcSelectbox('update');
+
             self.requestCityList(formData);
 
             // load 시 이벤트 관련 함수 실행
@@ -243,6 +247,8 @@ var evFilter = {
         var self = this;
         var optionTemplate = '<option value="{{areaCode}}">{{areaName}}</option>';
 
+        self.$citySelect.closest('.select-wrap').addClass('loading');
+
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
             var dataArray = (data && data instanceof Array) ? data : [];
@@ -254,7 +260,9 @@ var evFilter = {
                     self.$citySelect.append($(option).get(0));
                 });
 
+                self.$citySelect.prop('disabled', false);
                 self.$citySelect.vcSelectbox('update');
+                self.$citySelect.closest('.select-wrap').removeClass('loading');
             }
         });
     },
