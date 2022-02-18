@@ -138,20 +138,20 @@
 								self.enterEvent();
 							}
 						});
-						//화면에 들어왔을때 컴포넌트안에 마우스, 포커스에 따라 반복 재생/정지
-						$(root).on('mouseenter touchstart mouseleave focusin focusout touchend', function(e){
-							var autoPlayFlag = $(root).data('autoplay') != undefined && $(root).data('autoplay') != "" && $(root).data('autoplay') == true;
-							if( e.type == "mouseenter" || e.type == 'touchstart' || e.type == 'focusin' ) {
-								if( autoPlayFlag) {
-									clearInterval(self.timer);
-								}
-							}
-							if( e.type == "mouseleave" || e.type == 'touchend' || e.type == 'focusout' ) {
-								if( autoPlayFlag && self.viewInFlag == true) {
-									self.enterEvent();
-								}
-							}
-						})
+						//화면에 들어왔을때 컴포넌트안에 마우스, 포커스에 따라 반복 재생/정지 : BTOCSITE-12545(삭제)
+						// $(root).on('mouseenter touchstart mouseleave focusin focusout touchend', function(e){
+						// 	var autoPlayFlag = $(root).data('autoplay') != undefined && $(root).data('autoplay') != "" && $(root).data('autoplay') == true;
+						// 	if( e.type == "mouseenter" || e.type == 'touchstart' || e.type == 'focusin' ) {
+						// 		if( autoPlayFlag) {
+						// 			clearInterval(self.timer);
+						// 		}
+						// 	}
+						// 	if( e.type == "mouseleave" || e.type == 'touchend' || e.type == 'focusout' ) {
+						// 		if( autoPlayFlag && self.viewInFlag == true) {
+						// 			self.enterEvent();
+						// 		}
+						// 	}
+						// })
 						/* e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 */
 					},
 					intervalClear: function(){

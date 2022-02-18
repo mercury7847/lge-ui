@@ -29,6 +29,7 @@ $(window).ready(function(){
                 $(item).find('.dropContent').addClass('on');
                 $(this).hide();
             }
+            $(this).parents('.drop-info').attr('data-sc-top', $(window).scrollTop()); // BTOCSITE-11987
         });
 
         $(item).find('.drop-info .dropInfo_closeBtn').on('click', function(e){
@@ -39,6 +40,12 @@ $(window).ready(function(){
                 $(item).find('.dropContent').removeClass('on');
                 $(item).find('.drop-info .dropInfo_openBtn').show();
             }
+            // S : BTOCSITE-11987
+			var winTop = $(window).scrollTop()+100, targetTop = $(this).parents('.drop-info').find('.dropInfo_openBtn').offset().top
+            if(winTop > targetTop) {
+                $(window).scrollTop($(this).parents('.drop-info').attr('data-sc-top'));
+            }
+			// E : BTOCSITE-11987
         });
         
     });
