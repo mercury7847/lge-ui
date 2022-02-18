@@ -386,11 +386,11 @@
             }
         }
         .ev-filter {
+            overflow: hidden;
             padding: 20px 0;
             border-top: 2px solid #000;
 
             &-wrap {
-
                 @include pc {
                     max-width: 1380px + 80px;
                     margin: 16px auto -10px;
@@ -404,6 +404,9 @@
             }
 
             .chk-wrap {
+                span {
+                    position: relative;
+                }
                 span + span {
                     margin-left: 30px;
                 }
