@@ -407,7 +407,13 @@
                     position: relative;
                 }
                 span + span {
-                    margin-left: 30px;
+                    @include pc {
+                        margin-left: 30px;
+                    }
+
+                    @include mobile {
+                        margin-left: 20px;
+                    }
                 }
             }
 
