@@ -44,8 +44,15 @@ $(document).ready(function(){
 				height = height - ((target.offset().top + target.height()) - (_this.offset().top +_this.outerHeight()));
 			}
 			if (height > 0) target.css('marginBottom', height);
+			_this.parents('.drop-info').attr('data-sc-top', $(window).scrollTop()); // BTOCSITE-11987
 		}else {
 			target.removeAttr('style');
+			// S : BTOCSITE-11987
+			var winTop = $(window).scrollTop()+100, targetTop = _this.parents('.drop-info').find('.dropInfo_openBtn').offset().top
+            if(winTop > targetTop) {
+                $(window).scrollTop(_this.parents('.drop-info').attr('data-sc-top'));
+            }
+			// E : BTOCSITE-11987
 		}
 	}
 	// e : BTOCSITE-9207 2022-02-04

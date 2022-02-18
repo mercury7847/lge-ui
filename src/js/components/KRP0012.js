@@ -63,17 +63,17 @@
                 '<button type="button" class="{{#if orderStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{productcode}}" data-own-status="{{ownStatus}}" {{#if isMobile}}review-source="mobile_my_orders"{{/if}}>리뷰 작성하기</button>'+
                 '</div>'
             };
-            var sendata = (options.loginFlag) ? {
+            var sendata = {
                 modelName: options.productcode,
-                modelId: digitalData.productInfo.model_id,
-                unifyId: digitalData.userInfo.unifyId,
-            }:null;
+                modelId: (digitalData.productInfo)? digitalData.productInfo.model_id:null,
+                unifyId: (digitalData.userInfo)? digitalData.userInfo.unifyId:null,
+            };
             lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
                 var data = result.data[0];
                 options.orderStatus = (options.loginFlag && lgkorUI.stringToBool(data.isregistered)) ? true:false;
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
                 options.isProduct = lgkorUI.stringToBool(data.isproduct);
-                // console.log(options)
+                console.log(options, sendata)
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
             },"POST", null, null, null, null, function(request){
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
