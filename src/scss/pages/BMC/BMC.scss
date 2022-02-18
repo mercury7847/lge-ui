@@ -434,6 +434,7 @@
                 @include mobile {
                     margin-top: 18px;
                     padding: 17px 16px;
+                    border-radius: 4px;
 
                     &.is-active {
                         display: block;
