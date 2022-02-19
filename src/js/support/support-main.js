@@ -1021,7 +1021,7 @@
             init : function(){
                 var self = this;
                 if(isMobileDevice) $("body>"+self.el.popup).remove(); // 고객지원 백앤드 템틀릿 오류 강제 제거
-                var $popup = isMobileDevice ? $('#sw_con [data-hash="support"] '+self.el.popup).remove().appendTo('body') : $(self.el.popup);
+                var $popup = isMobileDevice ? $(document).find('#sw_con [data-hash="support"] '+self.el.popup).remove().appendTo('body') : $(self.el.popup);
                 
                 if($popup.length ) {
                     $popup.each(function(v, i){
@@ -1193,7 +1193,7 @@
                         if($(currentSlide).attr('data-hash') === 'support') {
                             setTimeout(function(){
                                 _this.modal.init();
-                            },50);
+                            },100);
                         }
                     })
                 }
