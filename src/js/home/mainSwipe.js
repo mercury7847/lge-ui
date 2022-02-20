@@ -191,7 +191,9 @@ MainSwiper.prototype = {
                 },
                 // BTOCSITE-11602 고객지원 팝업 오류 대응
                 'transitionEnd' : function(swiper){
-                    $(window).trigger("swConChange", swiper);
+                    setTimeout(function(){
+                        $(window).trigger("swConChange", swiper);
+                    },100);
                 }
                 
                 
@@ -274,7 +276,7 @@ MainSwiper.prototype = {
             }
 
             self.isLoading = false;
-            self.getContent();
+            // self.getContent();
             self.storyHomeToastChk(currentSlide) //BTOCSITE-188
 
             
@@ -325,7 +327,7 @@ MainSwiper.prototype = {
 
                     if (self.isFirstLoad) self.isFirstLoad = false;
 
-                    self.getContent();
+                    // self.getContent();
 
 
                     // 메인 성능개선  - 비동기 html 가공처리 테스트중
@@ -558,6 +560,14 @@ MainSwiper.prototype = {
 }
 
 $(function(){
+    if(location.pathname.indexOf("support") > -1){
+        // 고객지원 템프릿 오루 강제수정
+        $("body>script[src='/lg5-common/js/libs/slick.min.js']").remove();
+        $("body>script[src='/lg5-common/js/support-common.min.js']").remove();
+        $("body>script[src='/lg5-common/js/caresolution/addressManagement.min.js']").remove();
+        $("body>script[src='/lg5-common/js/support/support-main.min.js']").remove();
+    }
+
     var mainSwiperID = 'mobileNav';
     window.mainSwiper = new MainSwiper( mainSwiperID );
 
