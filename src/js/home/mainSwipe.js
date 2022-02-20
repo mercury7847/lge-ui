@@ -192,6 +192,7 @@ MainSwiper.prototype = {
                 // BTOCSITE-11602 고객지원 팝업 오류 대응
                 'transitionEnd' : function(swiper){
                     setTimeout(function(){
+                        console.log("swConChange 이엔트 발생");
                         $(window).trigger("swConChange", swiper);
                     },100);
                 }
@@ -276,7 +277,7 @@ MainSwiper.prototype = {
             }
 
             self.isLoading = false;
-            // self.getContent();
+            self.getContent();
             self.storyHomeToastChk(currentSlide) //BTOCSITE-188
 
             
@@ -327,7 +328,7 @@ MainSwiper.prototype = {
 
                     if (self.isFirstLoad) self.isFirstLoad = false;
 
-                    // self.getContent();
+                    self.getContent();
 
 
                     // 메인 성능개선  - 비동기 html 가공처리 테스트중
