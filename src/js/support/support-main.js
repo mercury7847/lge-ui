@@ -1192,8 +1192,9 @@
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         if($(currentSlide).attr('data-hash') === 'support') {
                             setTimeout(function(){
+                                console.log("swConChange 이엔트 수신");
                                 _this.modal.init();
-                            },100);
+                            },500);
                         }
                     })
                 }
