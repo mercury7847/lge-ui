@@ -1191,7 +1191,9 @@
                     $(window).on('swConChange',function(e,swiper) {
                         var currentSlide = swiper.slides[swiper.activeIndex];
                         if($(currentSlide).attr('data-hash') === 'support') {
+                            setTimeout(function(){
                                 _this.modal.init();
+                            },100);
                         }
                     })
                 }
