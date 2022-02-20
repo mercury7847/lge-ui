@@ -1186,10 +1186,12 @@
 
             // BTOCSITE-11602 고객지원 팝업 오류 대응
             if(isMobileDevice) {
-                var isSwipe = !!$('#sw_con').length;
-                if(isSwipe) {
+                // var isSwipe = !!$('#sw_con').length;
+                // if(isSwipe) {
                     $(window).on('swConChange',function(e,swiper) {
                         var currentSlide = swiper.slides[swiper.activeIndex];
+
+                        console.log("swConChange 이엔트 수신 %o",$(currentSlide));
                         if($(currentSlide).attr('data-hash') === 'support') {
                             setTimeout(function(){
                                 console.log("swConChange 이엔트 수신");
@@ -1197,7 +1199,7 @@
                             },500);
                         }
                     })
-                }
+                // }
             } else {
                 _this.modal.init();
             }
