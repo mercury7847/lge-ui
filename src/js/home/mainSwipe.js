@@ -192,8 +192,14 @@ MainSwiper.prototype = {
                 // BTOCSITE-11602 고객지원 팝업 오류 대응
                 'transitionEnd' : function(swiper){
                     setTimeout(function(){
-                        console.log("swConChange 이엔트 발생");
-                        $(window).trigger("swConChange", swiper);
+                        console.log("scriptChange 이엔트 발생");
+                        // $(window).trigger("swConChange", swiper);
+
+                        $(window).trigger('scriptChange',{
+                            swiper : swiper,
+                            script: null
+                        })
+
                     },100);
                 }
                 
@@ -219,7 +225,19 @@ MainSwiper.prototype = {
             if (isCategoryTab || isCarouselList || isTagScrollTab || isSlick || isCareSmoothTab || isSmoothTab){ //BTOCSITE-2196  //BTOCSITE-6882
                 e.stopPropagation();
             }
-        });        
+        });  
+        
+        $(window).on('swConScriptLoad',function(e,data) {
+
+            console.log("data %o",data);
+
+            $(window).trigger('scriptLoad',{
+                swiper : window.mainSwiper.swiper,
+                script: data.script
+            })
+
+
+        })
 
     },
     loadContent : function( currentSlide, pushFlag ){
