@@ -1186,18 +1186,27 @@
 
             // BTOCSITE-11602 고객지원 팝업 오류 대응
             if(isMobileDevice) {
-                var isSwipe = !!$('#sw_con').length;
-                if(isSwipe) {
-                    $(window).on('swConChange',function(e,swiper) {
-                        var currentSlide = swiper.slides[swiper.activeIndex];
+                $(window).off('scriptLoad').on('scriptLoad',function(e,data) {
+                    if(data.script == 'support-main'){
+                        var currentSlide = data.swiper.slides[data.swiper.activeIndex];
                         if($(currentSlide).attr('data-hash') === 'support') {
                             setTimeout(function(){
-                                console.log("swConChange 이엔트 수신");
                                 _this.modal.init();
-                            },500);
+                            },150);
                         }
-                    })
-                }
+                    }
+                })
+
+                $(window).on('scriptChange',function(e,data) {
+                    var currentSlide = data.swiper.slides[data.swiper.activeIndex];
+                    if($(currentSlide).attr('data-hash') === 'support') {
+                        setTimeout(function(){
+                            _this.modal.init();
+                        },150);
+                    }
+                })
+
+                $(window).trigger('swConScriptLoad',{ script : 'support-main'});
             } else {
                 _this.modal.init();
             }
