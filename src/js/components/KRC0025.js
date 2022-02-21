@@ -35,8 +35,7 @@ $(window).ready(function(){
         $(item).find('.drop-info .dropInfo_closeBtn').on('click', function(e){
             var mybtnAttr = $(this).attr('aria-describedby', slideID);
             var winTop = $(window).scrollTop() // BTOCSITE-11987
-            , currentTop = Number($(this).parents('.drop-info').attr('data-sc-top'))
-            , targetHeight= $(this).parents('.drop-info').height();
+            , currentTop = Number($(this).parents('.drop-info').attr('data-sc-top'));
  
             if(titleAttr = mybtnAttr) {
                 //console.log("111");
@@ -45,7 +44,6 @@ $(window).ready(function(){
             }
             // S : BTOCSITE-11987
             if(winTop !== currentTop && currentTop < winTop) {
-                // console.log('..3', currentTop, winTop, targetHeight, $(this).parents('.drop-info').height())
                 $(window).scrollTop(currentTop);
             }
 			// E : BTOCSITE-11987
