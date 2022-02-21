@@ -104,11 +104,11 @@
 					bindEvents: function() {
 						var self = this;
 						
-						self.$carousel.on('mouseenter', '.slider-nav .ui_carousel_slide', function() {
-							$(this).addClass('hover');
-						}).on('mouseleave', '.slider-nav .ui_carousel_slide', function() {
-							$(this).removeClass('hover');
-						});
+						// self.$carousel.on('mouseenter', '.slider-nav .ui_carousel_slide', function() {
+						// 	$(this).addClass('hover');
+						// }).on('mouseleave', '.slider-nav .ui_carousel_slide', function() {
+						// 	$(this).removeClass('hover');
+						// });
 		
 						self.$carousel.on('click', '.slider-nav .ui_carousel_slide a', self.selectIndex);
 						/* s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 */
