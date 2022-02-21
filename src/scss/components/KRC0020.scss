@@ -32,7 +32,7 @@
             }
         }
         @include mobile {
-            padding-bottom:32px;
+            padding-bottom:32px !important;
         }
     }
     // e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
