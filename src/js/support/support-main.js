@@ -1,4 +1,6 @@
-(function(){
+(function(global){
+    if(global['supportMain']) return; // 중복로딩 차단 
+
     var detect = vcui.detect;
     var isMobileDevice = detect.isMobileDevice;    
     var $context = isMobileDevice ? $('[data-hash="support"]') : $(document);
@@ -1018,7 +1020,8 @@
             },
             init : function(){
                 var self = this;
-                var $popup = isMobileDevice ? $(self.el.popup).remove().appendTo('body') : $(self.el.popup);
+                if(isMobileDevice) $("body>"+self.el.popup).remove(); // 고객지원 백앤드 템틀릿 오류 강제 제거
+                var $popup = isMobileDevice ? $(document).find('#sw_con [data-hash="support"] '+self.el.popup).remove().appendTo('body') : $(self.el.popup);
                 
                 if($popup.length ) {
                     $popup.each(function(v, i){
@@ -1183,16 +1186,37 @@
 
             // BTOCSITE-11602 고객지원 팝업 오류 대응
             if(isMobileDevice) {
-                var isSwipe = !!$('#sw_con').length;
-                if(isSwipe) {
-                    $(window).off('swConChange').on('swConChange',function(e,swiper) {
-                        var currentSlide = swiper.slides[swiper.activeIndex];
+                $(window).off('scriptLoad').on('scriptLoad',function(e,data) {
+
+                    console.log("scriptLoad 111 이엔트 수신 %o",data);
+
+                    if(data.script == 'support-main'){
+
+                        var currentSlide = data.swiper.slides[data.swiper.activeIndex];
+
+                        console.log("scriptLoad 222 이엔트 수신 %o",$(currentSlide));
                         if($(currentSlide).attr('data-hash') === 'support') {
-                            console.log("모바일 서포트 재진입 ");
-                            _this.modal.init();
+                            setTimeout(function(){
+                                console.log("scriptLoad 333 이엔트 수신");
+                                _this.modal.init();
+                            },150);
                         }
-                    })
-                }
+                    }
+                })
+
+                $(window).on('scriptChange',function(e,data) {
+                    var currentSlide = data.swiper.slides[data.swiper.activeIndex];
+
+                    console.log("scriptChange 이엔트 수신 %o",$(currentSlide));
+                    if($(currentSlide).attr('data-hash') === 'support') {
+                        setTimeout(function(){
+                            console.log("scriptChange 이엔트 수신");
+                            _this.modal.init();
+                        },150);
+                    }
+                })
+
+                $(window).trigger('swConScriptLoad',{ script : 'support-main'});
             } else {
                 _this.modal.init();
             }
@@ -1204,6 +1228,8 @@
     }
     
     supportHome.slide.firstInit();
+
+
 
     $(window).ready(function(){
         supportHome.initialize();    
@@ -1225,5 +1251,7 @@
         $(window).on('load', function(){
             supportHome.slide.refresh();
         });
+
+        global['supportMain'] = true; // 중복 로딩 체크
     })
-})();
+})(window);
