@@ -40,7 +40,7 @@
                     //이메일
                     userEmail: {
                         required: true,
-                        pattern: /^([0-9a-zA-Z]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+)*(\.ac\.kr|\.edu)$/,
+                        pattern: /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+)*(\.ac\.kr|\.edu)$/,
                         minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
