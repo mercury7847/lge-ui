@@ -52,7 +52,8 @@ $(document).ready(function(){
 			target.removeAttr('style');
 			var winTop = $(window).scrollTop();
             if(winTop !== currentTop && currentTop < winTop) {
-                $(window).scrollTop(winTop-targetHeight);
+				// console.log('..1', currentTop, winTop, targetHeight, _this.parents('.drop-info').height())
+				$(window).scrollTop(currentTop);
             }
 			// E : BTOCSITE-11987
 		}
