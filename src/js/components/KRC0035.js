@@ -46,11 +46,13 @@ $(document).ready(function(){
 			if (height > 0) target.css('marginBottom', height);
 			_this.parents('.drop-info').attr('data-sc-top', $(window).scrollTop()); // BTOCSITE-11987
 		}else {
-			target.removeAttr('style');
 			// S : BTOCSITE-11987
-			var winTop = $(window).scrollTop()+100, targetTop = _this.parents('.drop-info').find('.dropInfo_openBtn').offset().top
-            if(winTop > targetTop) {
-                $(window).scrollTop(_this.parents('.drop-info').attr('data-sc-top'));
+			var currentTop = Number(_this.parents('.drop-info').attr('data-sc-top'))
+            , targetHeight= Number(target.css('marginBottom').replace('px',''));
+			target.removeAttr('style');
+			var winTop = $(window).scrollTop();
+            if(winTop !== currentTop && currentTop < winTop) {
+                $(window).scrollTop(winTop-(targetHeight*2));
             }
 			// E : BTOCSITE-11987
 		}

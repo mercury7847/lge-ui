@@ -34,6 +34,8 @@ $(window).ready(function(){
 
         $(item).find('.drop-info .dropInfo_closeBtn').on('click', function(e){
             var mybtnAttr = $(this).attr('aria-describedby', slideID);
+            var currentTop = Number($(this).parents('.drop-info').attr('data-sc-top')) // BTOCSITE-11987
+            , targetHeight= $(this).parents('.drop-info').outerHeight();
  
             if(titleAttr = mybtnAttr) {
                 //console.log("111");
@@ -41,9 +43,9 @@ $(window).ready(function(){
                 $(item).find('.drop-info .dropInfo_openBtn').show();
             }
             // S : BTOCSITE-11987
-			var winTop = $(window).scrollTop()+100, targetTop = $(this).parents('.drop-info').find('.dropInfo_openBtn').offset().top
-            if(winTop > targetTop) {
-                $(window).scrollTop($(this).parents('.drop-info').attr('data-sc-top'));
+            var winTop = $(window).scrollTop();
+            if(winTop !== currentTop && currentTop < winTop) {
+                $(window).scrollTop(winTop-targetHeight);
             }
 			// E : BTOCSITE-11987
         });
