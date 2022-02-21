@@ -486,6 +486,7 @@
                     @include mobile{ background: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_seoul-m.svg') no-repeat 0 0; background-size: 100%; }
 
                     .pin{
+                        &.idx00{ left: 58.5%; top: 56.1%; }
                         &.idx01{ left: 53.5%; top: 70.7%; }
                         &.idx02{ left: 33.5%; top: 47.7%; }
                         &.idx03{ left: 39.5%; top: 75.7%; }
@@ -499,6 +500,7 @@
                         &.idx11{ left: 46.5%; top: 91.7%; }
                         &.idx12{ left: 17.5%; top: 6.7%; }
                         @include mobile{
+                            &.idx00 {left: 62.9%; top: 53.7%; }
                             &.idx01 {left: 58.7%; top: 61.7%; }
                             &.idx02 {left: 32.5%; top: 45.7%; }
                             &.idx03 {left: 41.6%; top: 67.7%; }
@@ -543,8 +545,10 @@
                     }
                     .pin{
                         &.idx01{ left: 44.4%; top: 44.3%; }
+                        &.idx02{ left: 33.4%; top: 32%; }
                         @include mobile{
                             &.idx01 {left: 44.4%; top: 41.3%; }
+                            &.idx02 {left: 27.6%; top: 34.2%; }
                         }
                     }
                 }
@@ -587,14 +591,16 @@
                                 }
                             }
                         }
-                        &.idx02{ left: 65.6%; top: 60.5%; }
+                        &.idx02{ left: 66.2%; top: 58.5%; }
                         &.idx03{ left: 48.6%; top: 32.5%; }
                         &.idx04{ left: 53.6%; top: 70.5%; }
+                        &.idx05{ left: 62%; top: 67.3%; }
                         @include mobile{
                             &.idx01 {left: 51.3%; top: 78.3%; padding: 3vw 0 0 0;background-image: url('/lg5-common/images/MA/unmanned-store/unmanned-store_map_pin-m_reverse.svg'); background-size: 100%;}
                             &.idx02 {left: 56.5%; top: 58.5%; }
                             &.idx03{ left: 30%; top: 32.5%; }
                             &.idx04{ left: 36.6%; top: 69.5%; }
+                            &.idx05{ left: 51.5%; top: 66.5%; }
                         }
                     }
                 }
