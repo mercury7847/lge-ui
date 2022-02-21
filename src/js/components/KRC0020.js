@@ -88,17 +88,15 @@
 						});
 					},
 	
-					selectIndex:function(e){
-	
-						e.preventDefault();
-						var $this = $(this).closest('.ui_carousel_slide');
-						var thisIndex = $this.index();
+					selectIndex:function(target, currentIndex){
+						var $this = target.closest('.ui_carousel_slide');
+						var thisIndex = currentIndex;
 						$this.siblings().removeClass('active').attr('aria-selected', false); //PJTWAUS-1 :  20191223 modify
 						$this.addClass('active').attr('aria-selected', true); //PJTWAUS-1 : 20191223 modify
 						
-						$(this).parents('.KRC0020').attr('data-index',thisIndex);
-						$(this).parents('.KRC0020').find('.slider-for .group.active').removeClass('active');
-						$(this).parents('.KRC0020').find('.slider-for .group:nth-child(' + (thisIndex+1) + ')').addClass('active');
+						target.parents('.KRC0020').attr('data-index',thisIndex);
+						target.parents('.KRC0020').find('.slider-for .group.active').removeClass('active');
+						target.parents('.KRC0020').find('.slider-for .group:nth-child(' + (thisIndex+1) + ')').addClass('active');
 					},
 		
 					bindEvents: function() {
@@ -110,7 +108,15 @@
 						// 	$(this).removeClass('hover');
 						// });
 		
-						self.$carousel.on('click', '.slider-nav .ui_carousel_slide a', self.selectIndex);
+						// S : BTOCSITE-12545
+						self.$carousel.on('click', '.slider-nav .ui_carousel_slide a', function(e) {
+							e.preventDefault();
+							var autoPlayFlag = $(root).data('autoplay') != undefined && $(root).data('autoplay') != "" && $(root).data('autoplay') == true;
+							if(autoPlayFlag) clearInterval(self.timer);
+							self.selectIndex($(this), $(this).closest('.ui_carousel_slide').index());
+							if(autoPlayFlag && self.viewInFlag) self.enterEvent();
+						});
+						// E : BTOCSITE-12545
 						/* s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 */
 						// autoplay 슬라이드 컨트롤 버튼
 						self.$carousel.on('click', '.ui_carousel_play .btn-play', function() {
@@ -189,7 +195,8 @@
 								var $next = $(root).find('.slider-nav .ui_carousel_slide.active').next();
 								var currentIndex = $next.length > 0 ? $next.index() : 0;
 								if(currentIndex == $(root).find('.slider-for .group').size()-1) self.intervalCount++;
-								$(root).find('.slider-nav .ui_carousel_slide').eq(currentIndex).find('a').trigger('click');
+								self.selectIndex($(root).find('.slider-nav .ui_carousel_slide').eq(currentIndex).find('a'), currentIndex); // BTOCSITE-12545
+								// $(root).find('.slider-nav .ui_carousel_slide').eq(currentIndex).find('a').trigger('click');
 								if( !$(root).find('.slider-nav .ui_carousel_slide').eq(currentIndex).hasClass('on')) {
 									self.$carousel.vcCarousel('goTo', currentIndex)
 								}
