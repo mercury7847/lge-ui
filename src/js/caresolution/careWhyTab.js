@@ -9,9 +9,9 @@
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}">'+
         '       <div class="img-wrap">'+
-        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}<a href="{{modelUrlPath}}">{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2" || moduleType == "module-type5"}}<a href="{{modelUrlPath}}">{{/if}}'+
         '               <img src="{{modelImg}}" alt="{{#raw userFriendlyName}}">'+
-        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2" || moduleType == "module-type5"}}</a>{{/if}}'+
         '       </div>'+
         '       <div class="txt-wrap">'+
         '       {{#if moduleType == "module-type3"}}'+
