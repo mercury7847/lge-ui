@@ -1,229 +1,242 @@
+//BTOCSITE-12128 메인성능개선 - 스크립트 구조 변경
+(function(global){
+    var script = {
+        name : "caresolutionHome",
+        hash : 'care-solutions'
+    };
 
-//BTOCSITE-7335 홈 개선 - 템플릿 삭제
-$(function(){
+    if(global[script.name]) return; // 중복로딩 차단 
 
-    var $context = !!$('[data-hash="care"]').length ? $('[data-hash="care"]') : $(document);
-    
-    vcui.require(['ui/carousel','ui/tab','libs/jquery.transit.min'], function () {
+    var detect = vcui.detect;
+    var isMobileDevice = detect.isMobileDevice;    
 
-        // 제품 코드 관리 부분
-        $context.find('.ui_carousel_slider').vcCarousel({
-            infinite: false,
-            autoplay: false,
-            slidesToScroll: 1,
-            slidesToShow: 1,
-            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-            speed: 150,
-            touchThreshold: 100
-        });
+    var $context = isMobileDevice ? $('[data-hash="care-solutions"]') : $(document);
+    var careCommon = {
+        setting : function(){
+            var self = this;
+            // 제품 코드 관리 부분
+            $context.find('.ui_carousel_slider').vcCarousel({
+                infinite: false,
+                autoplay: false,
+                slidesToScroll: 1,
+                slidesToShow: 1,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100
+            });
 
-        // 플로우배너
-        $context.find('.ui_carousel_slider_banner').vcCarousel({
-            infinite: true,
-            //autoplay: true,
-            //autoplaySpeed: 2000,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            variableWidth : true,
-            centerMode: true,
-            centerPadding: '13.5%',
-            dots: false,
-            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-            speed: 150,
-            touchThreshold: 100,
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: {
-                        infinite: true,
-                        //autoplay: true,
-                        variableWidth : false,
-                        // dots: true,
-                        slidesToShow: 3,
-                        slidesToScroll: 1, 
-                        centerMode: true,
-                        centerPadding: '13.5%',
+            // 플로우배너
+            $context.find('.ui_carousel_slider_banner').vcCarousel({
+                infinite: true,
+                //autoplay: true,
+                //autoplaySpeed: 2000,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                variableWidth : true,
+                centerMode: true,
+                centerPadding: '13.5%',
+                dots: false,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100,
+                responsive: [
+                    {
+                        breakpoint: 10000,
+                        settings: {
+                            infinite: true,
+                            //autoplay: true,
+                            variableWidth : false,
+                            // dots: true,
+                            slidesToShow: 3,
+                            slidesToScroll: 1, 
+                            centerMode: true,
+                            centerPadding: '13.5%',
+                        }
+                    },                
+                    {
+                        breakpoint: 1400,
+                        settings: {
+                            infinite: true,
+                            //autoplay: true,
+                            variableWidth : false,
+                            // dots: true,
+                            slidesToShow: 2,
+                            slidesToScroll: 1,  
+                            centerMode: true, 
+                            centerPadding: '17%',
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            infinite: true,
+                            variableWidth : false,
+                            // dots: true,
+                            slidesToShow: 1, 
+                            slidesToScroll: 1,
+                            centerMode: true,
+                            centerPadding: '25%',
+                        }
                     }
-                },                
-                {
-                    breakpoint: 1400,
-                    settings: {
-                        infinite: true,
-                        //autoplay: true,
-                        variableWidth : false,
-                        // dots: true,
-                        slidesToShow: 2,
-                        slidesToScroll: 1,  
-                        centerMode: true, 
-                        centerPadding: '17%',
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        infinite: true,
-                        variableWidth : false,
-                        // dots: true,
-                        slidesToShow: 1, 
-                        slidesToScroll: 1,
-                        centerMode: true,
-                        centerPadding: '25%',
-                    }
-                }
-            ]
-        });        
+                ]
+            });        
 
-        $context.find('.ui_carousel_slider_banner2').vcCarousel({
-            infinite: true,
-            //autoplay: true,
-            autoplaySpeed: 1800,
-            slidesToShow: 4,
-            slidesToScroll: 1,
-            variableWidth : true,
-            dots: false,
-            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-            speed: 150,
-            touchThreshold: 100,
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: {
-                        infinite: true,
-                        //autoplay: true,
-                        variableWidth : false,
-                        // dots: true,
-                        slidesToShow: 4,
-                        slidesToScroll: 1
+            $context.find('.ui_carousel_slider_banner2').vcCarousel({
+                infinite: true,
+                //autoplay: true,
+                autoplaySpeed: 1800,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                variableWidth : true,
+                dots: false,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100,
+                responsive: [
+                    {
+                        breakpoint: 10000,
+                        settings: {
+                            infinite: true,
+                            //autoplay: true,
+                            variableWidth : false,
+                            // dots: true,
+                            slidesToShow: 4,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 1400,
+                        settings: {
+                            infinite: true,
+                            //autoplay: true,
+                            variableWidth : false,
+                            // dots: true,
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    },
+                    /*
+                    {
+                        breakpoint: 900,
+                        settings: {
+                            infinite: true,
+                            variableWidth : true,
+                            dots: true,
+                            slidesToShow: 2, 
+                            slidesToScroll: 1
+                        }
+                    },*/
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            infinite: true,
+                            variableWidth : false,
+                            // dots: true,
+                            slidesToShow: 2, 
+                            slidesToScroll: 1
+                        }
                     }
-                },
-                {
-                    breakpoint: 1400,
-                    settings: {
-                        infinite: true,
-                        //autoplay: true,
-                        variableWidth : false,
-                        // dots: true,
-                        slidesToShow: 3,
-                        slidesToScroll: 1
+                ]
+            });
+
+            // 케어솔루션 가이드
+            $context.find('.care-guide-visual .ui_carousel_slider2').vcCarousel({
+                infinite: false,
+                centerMode: true,
+                //centerPadding: '25%',
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                variableWidth : true,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150,
+                touchThreshold: 100,
+                responsive: [
+                    {
+                        breakpoint: 10000,
+                        settings: {
+                            infinite: false,
+                            variableWidth : false,
+                            dots: false,
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                            centerMode: true,
+                            
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            infinite: false,
+                            variableWidth : false,
+                            dots: false,
+                            slidesToShow: 1, 
+                            slidesToScroll: 1
+                        }
                     }
-                },
-                /*
-                {
-                    breakpoint: 900,
-                    settings: {
+                ]
+            });
+
+            /* BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어 */
+            // 히어로배너
+            var $hSlider =  $context.find('.contents.caresolution .ui_wide_slider').vcCarousel('refresh').vcCarousel({
+                autoplay: true,
+                autoplaySpped: 5000,
+                infinite: true,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                swipeToSlide: true,
+                dotsSelector: '.ui_wideslider_dots',
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                variableWidth: false,
+                touchThreshold: 100,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150
+            }).on('carouselafterchange', function(e, slide, prev, next){
+                self.careHeroBanner();
+            })
+
+            self.careHeroBanner();
+
+        },
+        bindEvent : function() {
+            // 케어솔루션 혜택
+            // 다른 케어솔루션 
+            $(window).off('breakpointchange.caresolution').on('breakpointchange.caresolution', function(e){
+
+                var breakpoint = window.breakpoint;    
+                if(breakpoint.name == 'mobile'){    
+                    $context.find('.ui_carousel_m1_slider').vcCarousel({
                         infinite: true,
-                        variableWidth : true,
-                        dots: true,
-                        slidesToShow: 2, 
-                        slidesToScroll: 1
-                    }
-                },*/
-                {
-                    breakpoint: 768,
-                    settings: {
-                        infinite: true,
-                        variableWidth : false,
-                        // dots: true,
-                        slidesToShow: 2, 
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
-
-        // 케어솔루션 혜택
-        // 다른 케어솔루션 
-        $(window).on('breakpointchange.caresolution', function(e){
-
-            var breakpoint = window.breakpoint;    
-            if(breakpoint.name == 'mobile'){    
-                $context.find('.ui_carousel_m1_slider').vcCarousel({
-                    infinite: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-                    speed: 150,
-                    touchThreshold: 100
-                });
-                
-            }else if(breakpoint.name == 'pc'){    
-                $context.find('.ui_carousel_m1_slider').vcCarousel('destroy');       
-                $context.find('.ui_carousel_m1_slider').find('.indi-wrap').hide();                     
-            }    
-        });
-
-        $(window).trigger('breakpointchange.caresolution');
-
-        // 케어솔루션 가이드
-        $context.find('.care-guide-visual .ui_carousel_slider2').vcCarousel({
-            infinite: false,
-            centerMode: true,
-            //centerPadding: '25%',
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            variableWidth : true,
-            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-            speed: 150,
-            touchThreshold: 100,
-            responsive: [
-                {
-                    breakpoint: 10000,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        centerMode: true,
-                        
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        infinite: false,
-                        variableWidth : false,
-                        dots: false,
-                        slidesToShow: 1, 
-                        slidesToScroll: 1
-                    }
-                }
-            ]
-        });
+                        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                        speed: 150,
+                        touchThreshold: 100
+                    });
+                    
+                }else if(breakpoint.name == 'pc'){    
+                    $context.find('.ui_carousel_m1_slider').vcCarousel('destroy');       
+                    $context.find('.ui_carousel_m1_slider').find('.indi-wrap').hide();                     
+                }    
+            });
+
+            $(window).trigger('breakpointchange.caresolution');
 
 
-        $(document).on('click', '.ui_care_detail_btn', function(e){
-            e.preventDefault();
-            var $target = $(e.currentTarget);
-            var url = $target.data('url');
-            if(url) location.href = url;
-        });
+            $('.ui_care_detail_btn').off('click').on('click', function(e){
+                e.preventDefault();
+                var $target = $(e.currentTarget);
+                var url = $target.data('url');
+                if(url) location.href = url;
+            });
+        },
 
-        /* BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어 */
-        // 히어로배너
-        $context.find('.contents.caresolution .ui_wide_slider').vcCarousel('destroy').vcCarousel({
-            autoplay: true,
-            autoplaySpped: 5000,
-            infinite: true,
-            pauseOnHover: false,
-            pauseOnFocus: false,
-            swipeToSlide: true,
-            dotsSelector: '.ui_wideslider_dots',
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            variableWidth: false,
-            touchThreshold: 100,
-            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-            speed: 150
-        }).on('carouselafterchange', function(e, slide, prev, next){
-            careHeroBanner();
-        })
-
-        function careHeroBanner() {
-            var heroList = $('.contents.caresolution .hero-banner .slide-track > li');
+        careHeroBanner : function() {
+            var heroList = $context.find('.contents.caresolution .hero-banner .slide-track > li');
             var heroListAct = heroList.siblings('.ui_carousel_current').index();
             var heroListLens = heroList.length;
-            var custom = $('.contents.caresolution .custom-indi-wrap');
+            var custom = $context.find('.contents.caresolution .custom-indi-wrap');
             var slideCurrent = custom.find('.slide-page .current');
             var slideCount = custom.find('.slide-page .count');        
 
@@ -232,11 +245,16 @@ $(function(){
                 slideCurrent.text(heroListAct);
                 slideCount.text(heroListLens - 2);
             }
-        }
+        },
 
-        careHeroBanner();
-        /* //BTOCSITE-6883 신규 WSG 적용 - 렌탈/케어 */
-    }); 
+        init : function(){
+            var self = this;
+
+            self.setting();
+            self.bindEvent();
+        }
+    }
+
 
     /* 케어솔루션 추천 제품 */ 
     // BTOCSITE-11900 QA535 오류수정 start
@@ -352,6 +370,38 @@ $(function(){
             }
         }
     };
-    careRecomTab.init();
-    // BTOCSITE-11900 QA535 오류수정 end
-});
+
+    $(window).ready(function(){
+        if(isMobileDevice) {
+            $(window).off('scriptLoad').on('scriptLoad',function(e,data) {
+                if(data.script == SCRIPT_NAME){
+                    var currentSlide = data.swiper.slides[data.swiper.activeIndex];
+                    if($(currentSlide).attr('data-hash') === script.hash) {
+                        setTimeout(function(){
+                            careCommon.init();
+                            careRecomTab.init();
+                        },150);
+                    }
+                }
+            })
+
+            $(window).on('scriptChange',function(e,data) {
+                var currentSlide = data.swiper.slides[data.swiper.activeIndex];
+                if($(currentSlide).attr('data-hash') === script.name) {
+                    setTimeout(function(){
+                        careCommon.init();
+                        careRecomTab.init();
+                    },150);
+                }
+            })
+
+            $(window).trigger('swConScriptLoad',{ script : script.name});
+        } else {
+            careCommon.init();
+            careRecomTab.init();
+        }
+
+        global[script.name] = true; // 중복 로딩 체크
+    })
+})(window);
+

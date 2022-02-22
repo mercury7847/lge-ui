@@ -1,6 +1,11 @@
+//BTOCSITE-12128 메인성능개선 - 스크립트 구조 변경
 (function(global){
-    if(global['supportMain']) return; // 중복로딩 차단 
+    var script = {
+        name : "support-main",
+        hash : 'support'
+    };
 
+    if(global[script.name]) return; // 중복로딩 차단 
     var detect = vcui.detect;
     var isMobileDevice = detect.isMobileDevice;    
     var $context = isMobileDevice ? $('[data-hash="support"]') : $(document);
@@ -1187,17 +1192,10 @@
             // BTOCSITE-11602 고객지원 팝업 오류 대응
             if(isMobileDevice) {
                 $(window).off('scriptLoad').on('scriptLoad',function(e,data) {
-
-                    console.log("scriptLoad 111 이엔트 수신 %o",data);
-
                     if(data.script == 'support-main'){
-
                         var currentSlide = data.swiper.slides[data.swiper.activeIndex];
-
-                        console.log("scriptLoad 222 이엔트 수신 %o",$(currentSlide));
-                        if($(currentSlide).attr('data-hash') === 'support') {
+                        if($(currentSlide).attr('data-hash') === script.hash) {
                             setTimeout(function(){
-                                console.log("scriptLoad 333 이엔트 수신");
                                 _this.modal.init();
                             },150);
                         }
@@ -1206,17 +1204,14 @@
 
                 $(window).on('scriptChange',function(e,data) {
                     var currentSlide = data.swiper.slides[data.swiper.activeIndex];
-
-                    console.log("scriptChange 이엔트 수신 %o",$(currentSlide));
-                    if($(currentSlide).attr('data-hash') === 'support') {
+                    if($(currentSlide).attr('data-hash') === script.hash) {
                         setTimeout(function(){
-                            console.log("scriptChange 이엔트 수신");
                             _this.modal.init();
                         },150);
                     }
                 })
 
-                $(window).trigger('swConScriptLoad',{ script : 'support-main'});
+                $(window).trigger('swConScriptLoad',{ script : script.name});
             } else {
                 _this.modal.init();
             }
@@ -1252,6 +1247,6 @@
             supportHome.slide.refresh();
         });
 
-        global['supportMain'] = true; // 중복 로딩 체크
+        global[script.name] = true; // 중복 로딩 체크
     })
 })(window);
