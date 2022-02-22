@@ -76,9 +76,9 @@
                 console.log(options, sendata)
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
             },"POST", null, null, null, null, function(request){
+                var err = (request == undefined) ? 'undefined' : request.status;
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
-                var err = "ERROR : " + (request == undefined) ? 'undefined' : request.status;
-                console.log(err, options.loginFlag);
+                console.log("ERROR : " + err);
             });
             $section.on('click','.review-write-wrap .btn', function(e) {
                 var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
