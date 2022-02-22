@@ -100,6 +100,8 @@
 	.laypop.btn-wrap {
 		.btn {
 			width: 100%;
+			margin: 0;
+			border-radius: 0;
 			&.ui_modal_close {
 				position: absolute;
 				right: 0;
