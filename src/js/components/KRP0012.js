@@ -83,29 +83,26 @@
             });
             $section.off("click").on('click','.review-write-wrap .btn', function(e) {
                 var flag = false;
-                if($(this).hasClass('crema-new-review-link')) {
-                    if(flag) return false;
-                    flag = true;
-                } else {
-                    var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
-                    var opt = (options.loginFlag) ? {
-                        typeClass: "crema-review-confirm",
-                        okBtnName: "보유제품 등록하기",
-                        ok: function(){
-                            var link =  '/my-page/manage-products?tab=1';
-                            location.href = link;
-                        }
-                    }:{
-                        cancelBtnName: "아니오",
-                        okBtnName: "예",
-                        ok: function(){
-                            var link =  "/sso/api/Login";
-                            location.href = link;
-                        }
-                    };
-                    if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
-                        lgkorUI.confirm(msg, opt);
+                if(flag) return false;
+                flag = true;
+                var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
+                var opt = (options.loginFlag) ? {
+                    typeClass: "crema-review-confirm",
+                    okBtnName: "보유제품 등록하기",
+                    ok: function(){
+                        var link =  '/my-page/manage-products?tab=1';
+                        location.href = link;
                     }
+                }:{
+                    cancelBtnName: "아니오",
+                    okBtnName: "예",
+                    ok: function(){
+                        var link =  "/sso/api/Login";
+                        location.href = link;
+                    }
+                };
+                if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
+                    lgkorUI.confirm(msg, opt);
                 }
             });
             lgkorUI.cremaReload();
