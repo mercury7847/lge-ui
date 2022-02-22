@@ -74,14 +74,14 @@
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
                 options.isProduct = lgkorUI.stringToBool(data.isproduct);
                 console.log(options, sendata)
-                $section.find('.review-info-text').append('<span style="padding: 0 3px;font-size:6px;background-color:#ff746a;color: #fff">STAGING: '+options.loginFlag+' / '+options.ownStatus+'</span>')
+                $section.find('.review-info-text').append('<span style="padding: 0 3px;font-size:6px;background-color:#ff746a;color: #fff">STAGING: '+options.loginFlag+' / '+options.ownStatus+'/'+sendata.modelName+'/'+sendata.modelId+'</span>')
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
             },"POST", null, null, null, null, function(request){
                 var err = (request == undefined) ? 'undefined' : request.status;
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
                 alert("ERROR : " + err);
             });
-            $section.on('click','.review-write-wrap .btn', function(e) {
+            $section.off("click").on('click','.review-write-wrap .btn', function(e) {
                 var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
                 var opt = (options.loginFlag) ? {
                     typeClass: "crema-review-confirm",
@@ -101,6 +101,7 @@
                 if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
                     lgkorUI.confirm(msg, opt);
                 }
+                return false;
             });
             lgkorUI.cremaReload();
         }
