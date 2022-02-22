@@ -48,7 +48,7 @@
         // S : BTOCSITE-8083
         reviewWrite: function() {
             var $section = $('.KRP0012');
-            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/mkt/api/product/retrieveProductRegisterInfo';
+            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/lg5-common/data-ajax/pdp/pdp_status.json'//'/mkt/api/product/retrieveProductRegisterInfo';
             var options = {
                 isMobile: vcui.detect.isMobile,
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
@@ -81,28 +81,35 @@
                 console.log("ERROR : " + err);
                 // $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
             });
+            var flag = false;
             $section.off("click").on('click','.review-write-wrap .btn', function(e) {
-                var flag = false;
-                if(flag) return false;
-                flag = true;
-                var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
-                var opt = (options.loginFlag) ? {
-                    typeClass: "crema-review-confirm",
-                    okBtnName: "보유제품 등록하기",
-                    ok: function(){
-                        var link =  '/my-page/manage-products?tab=1';
-                        location.href = link;
+                if(!flag && !$(this).hasClass('crema-new-review-link')) {
+                    flag = true;
+                    var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
+                    var opt = (options.loginFlag) ? {
+                        typeClass: "crema-review-confirm",
+                        okBtnName: "보유제품 등록하기",
+                        cancel: function(){
+                            flag = false;
+                        },
+                        ok: function(){
+                            var link =  '/my-page/manage-products?tab=1';
+                            location.href = link;
+                        }
+                    }:{
+                        cancelBtnName: "아니오",
+                        okBtnName: "예",
+                        cancel: function(){
+                            flag = false;
+                        },
+                        ok: function(){
+                            var link =  "/sso/api/Login";
+                            location.href = link;
+                        }
+                    };
+                    if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
+                        lgkorUI.confirm(msg, opt);
                     }
-                }:{
-                    cancelBtnName: "아니오",
-                    okBtnName: "예",
-                    ok: function(){
-                        var link =  "/sso/api/Login";
-                        location.href = link;
-                    }
-                };
-                if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
-                    lgkorUI.confirm(msg, opt);
                 }
                 return false;
             });
