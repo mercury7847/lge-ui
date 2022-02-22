@@ -1,0 +1,230 @@
+{
+    "data": [
+        {
+            "sortTypeList": [
+                {
+                    "commonCodeName": "최신순",
+                    "sortNo": 1,
+                    "commonCodeId": "sort_new"
+                },
+                {
+                    "commonCodeName": "인기순",
+                    "sortNo": 2,
+                    "commonCodeId": "sort_popular"
+                }
+            ],
+            "sortParam": "sort_new",
+            "superCategoryList": [
+                {
+                    "categoryName": "TV/AV",
+                    "categoryId": "CT50000024"
+                },
+                {
+                    "categoryName": "주방가전",
+                    "categoryId": "CT50000064"
+                },
+                {
+                    "categoryName": "생활가전",
+                    "categoryId": "CT50000100"
+                },
+                {
+                    "categoryName": "에어컨/에어케어",
+                    "categoryId": "CT50000130"
+                },
+                {
+                    "categoryName": "LG Objet Collection",
+                    "categoryId": "CT50019002"
+                }
+            ],
+            "storyList": [
+                {
+                    "storyId": "ST00022020",
+                    "storyListThumbnailServerName": "Thumb_lifestyle_004_S[20210326_182647].png",
+                    "storyTypeName": "라이프스타일",
+                    "storyListThumbnailPath": "https://wwwstg.lge.co.kr/kr/upload/admin/storyThumbnail/",
+                    "lastUpdateDate": "2021.06.07",
+                    "storyDesc": "요리를 통해 얻는 행복은 무엇과도 바꿀 수 없지요. 함께 나눈다는 것에서 얻는 즐거움, 여러분도 한 번 시도해보시겠어요?",
+                    "categoryInfo": [
+                        {
+                            "subCategory": "광파오븐",
+                            "superCategoryId": "CT50000064",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "CT50022012",
+                            "category": "광파오븐/전자레인지",
+                            "categoryId": "CT50019018"
+                        },
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000064",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "",
+                            "category": "식기세척기",
+                            "categoryId": "CT50000086"
+                        },
+                        {
+                            "subCategory": "인덕션",
+                            "superCategoryId": "CT50000064",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "CT50000077",
+                            "category": "전기레인지",
+                            "categoryId": "CT50000076"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009040",
+                            "tagName": "홈쿡"
+                        }
+                    ],
+                    "storyListThumbnailAltText": " 맛있는 주말을 위한 레시피",
+                    "storyTitle": "맛있는 주말을 위한 레시피",
+                    "storyUrl": "/story/lifestyle/weekend-recipe",
+                    "ORDER_KEY": 1,
+                    "storyType": "life_style"
+                },
+                {
+                    "storyId": "ST00022005",
+                    "storyListThumbnailServerName": "Thumb_lifestyle_006_S[20210419_185047].png",
+                    "storyTypeName": "라이프스타일",
+                    "storyListThumbnailPath": "https://wwwstg.lge.co.kr/kr/upload/admin/storyThumbnail/",
+                    "lastUpdateDate": "2021.06.07",
+                    "storyDesc": "아내와 저의 술에 대한 취향은 극명하게 갈리죠. 저는 온리 맥주파인데 제 아내는 온리 와인파! 하지만 결국 우린 둘의 취향을 모두 만족시키는 방법을 찾아냈죠.",
+                    "categoryInfo": [
+                        {
+                            "subCategory": "와인셀러",
+                            "superCategoryId": "CT50000064",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "CT50000071",
+                            "category": "냉장고",
+                            "categoryId": "CT50000065"
+                        },
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000064",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "",
+                            "category": "맥주제조기",
+                            "categoryId": "CT50000087"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009040",
+                            "tagName": "홈쿡"
+                        }
+                    ],
+                    "storyListThumbnailAltText": "우리 오늘 살짝 취해볼까요",
+                    "storyTitle": "우리 오늘 살짝 취해볼까요",
+                    "storyUrl": "/story/lifestyle/wine-n-beer",
+                    "ORDER_KEY": 1,
+                    "storyType": "life_style"
+                },
+                {
+                    "storyId": "ST00022014",
+                    "storyListThumbnailServerName": "Thumb_lifestyle_002_S[20210419_184855].png",
+                    "storyTypeName": "라이프스타일",
+                    "storyListThumbnailPath": "https://wwwstg.lge.co.kr/kr/upload/admin/storyThumbnail/",
+                    "lastUpdateDate": "2021.06.07",
+                    "storyDesc": "때로는 혼자만의 내밀한 시간, 일상으로부터 벗어난 특별한 공간이 필요할 때도 있습니다. 지금 제 아지트로 여러분을 초대합니다.",
+                    "categoryInfo": [
+                        {
+                            "subCategory": "투사형",
+                            "superCategoryId": "CT50000024",
+                            "superCategory": "TV/AV",
+                            "subCategoryId": "CT50000034",
+                            "category": "프로젝터",
+                            "categoryId": "CT50000032"
+                        },
+                        {
+                            "subCategory": "일반형",
+                            "superCategoryId": "CT50000064",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "CT50000067",
+                            "category": "냉장고",
+                            "categoryId": "CT50000065"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009047",
+                            "tagName": "이사"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009048",
+                            "tagName": "인테리어"
+                        }
+                    ],
+                    "storyListThumbnailAltText": "여기, 나만의 아지트",
+                    "storyTitle": "여기, 나만의 아지트",
+                    "storyUrl": "/story/lifestyle/my-agit",
+                    "ORDER_KEY": 1,
+                    "storyType": "life_style"
+                },
+                {
+                    "storyId": "ST00022017",
+                    "storyListThumbnailServerName": "Thumb_lifestyle_001_S[20210326_144135].png",
+                    "storyTypeName": "라이프스타일",
+                    "storyListThumbnailPath": "https://wwwstg.lge.co.kr/kr/upload/admin/storyThumbnail/",
+                    "lastUpdateDate": "2021.06.07",
+                    "storyDesc": "화사한 햇살을 닮은 옐로가 취향인 아내와 차분하면서도 따뜻한 그레이가 취향인 나. 우리가 만나면 어떤 인테리어가 탄생할까요?",
+                    "categoryInfo": [
+                        {
+                            "subCategory": "에어컨",
+                            "superCategoryId": "CT50019002",
+                            "superCategory": "LG Objet Collection",
+                            "subCategoryId": "CT50022015",
+                            "category": "LG 오브제컬렉션",
+                            "categoryId": "CT50020191"
+                        },
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000100",
+                            "superCategory": "생활가전",
+                            "subCategoryId": "",
+                            "category": "워시타워",
+                            "categoryId": "CT50000110"
+                        },
+                        {
+                            "subCategory": "상냉장/하냉동",
+                            "superCategoryId": "CT50000064",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "CT50000069",
+                            "category": "냉장고",
+                            "categoryId": "CT50000065"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009047",
+                            "tagName": "이사"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009048",
+                            "tagName": "인테리어"
+                        }
+                    ],
+                    "storyListThumbnailAltText": "나의 그레이와 당신의 옐로우를 담은 하우스",
+                    "storyTitle": "나의 그레이와 당신의 옐로우를 담은 하우스",
+                    "storyUrl": "/story/lifestyle/gray-with-yellow-house",
+                    "ORDER_KEY": 1,
+                    "storyType": "life_style"
+                }
+            ],
+            "storyListTotalCount": 10,
+            "pagination": {
+                "page": "2",
+                "totalCount": 2,
+                "visibleCount": 5
+            }
+        }
+    ],
+    "message": null,
+    "status": "success",
+    "dataCount": 1
+}

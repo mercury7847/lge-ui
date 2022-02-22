@@ -91,6 +91,10 @@ var evFilter = {
             formData.planEventId = self.planEventId;
             formData.areaName = 'CITY';
             formData.areaDetailName = '';
+
+            self.$citySelect.prop('disabled', true);
+            self.$citySelect.vcSelectbox('update');
+
             self.requestCityList(formData);
 
             // load 시 이벤트 관련 함수 실행
@@ -178,30 +182,6 @@ var evFilter = {
         });
     },
 
-
-    /**
-     * 상품 목록 데이터 호출
-     */
-    requestShopProductList: function(formData) {
-        var self = this;
-
-        lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
-            var data = result.data;
-            var dataArray = (data && data instanceof Array) ? data : [];
-
-            if(dataArray.length) {
-                self.$shopProductList.empty();
-                dataArray.forEach(function (item, index) {
-                    self.$shopProductList.append($("#"+item.modelId).clone());
-                });
-
-                self.$allProductList.hide();
-                self.$shopProductList.show();
-            }
-        });
-    },
-
-
     /**
      * 개별 셀렉트박스 초기화
      * @param {string} type 시/군 일 경우에 실행되는 코드가 달라 분기하기 위해 추가
@@ -237,11 +217,28 @@ var evFilter = {
     },
 
     /**
+     * 셀렉트 background loading animation
+     */
+    selectLoading: function(type, element) {
+        if(type == 'start') {
+            $(element).closest('.select-wrap').addClass('loading');
+        }
+
+        if(type == 'finish') {
+            $(element).prop('disabled', false);
+            $(element).vcSelectbox('update');
+            $(element).closest('.select-wrap').removeClass('loading');
+        }
+    },
+
+    /**
      * 시/도 목록 데이터 호출
      */
     requestCityList: function(formData) {
         var self = this;
         var optionTemplate = '<option value="{{areaCode}}">{{areaName}}</option>';
+
+        self.selectLoading('start', self.$citySelect);
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
@@ -254,7 +251,7 @@ var evFilter = {
                     self.$citySelect.append($(option).get(0));
                 });
 
-                self.$citySelect.vcSelectbox('update');
+                self.selectLoading('finish', self.$citySelect);
             }
         });
     },
@@ -266,7 +263,7 @@ var evFilter = {
         var self = this;
         var optionTemplate = '<option value="{{areaName}}">{{areaName}}</option>';
 
-        self.$countySelect.closest('.select-wrap').addClass('loading');
+        self.selectLoading('start', self.$countySelect);
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
@@ -281,9 +278,7 @@ var evFilter = {
                     self.$countySelect.append($(option).get(0));
                 });
 
-                self.$countySelect.prop('disabled', false);
-                self.$countySelect.vcSelectbox('update');
-                self.$countySelect.closest('.select-wrap').removeClass('loading');
+                self.selectLoading('finish', self.$countySelect);
             }
         });
     },
@@ -295,7 +290,7 @@ var evFilter = {
         var self = this;
         var optionTemplate = '<option value="{{hrOrgCode}}">{{hrOrgName}}</option>';
 
-        self.$shopSelect.closest('.select-wrap').addClass('loading');
+        self.selectLoading('start', self.$shopSelect);
 
         lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
             var data = result.data;
@@ -309,9 +304,30 @@ var evFilter = {
                     self.$shopSelect.append($(option).get(0));
                 });
 
-                self.$shopSelect.prop('disabled', false);
-                self.$shopSelect.vcSelectbox('update');
-                self.$shopSelect.closest('.select-wrap').removeClass('loading');
+                self.selectLoading('finish', self.$shopSelect);
+            }
+        });
+    },
+
+
+    /**
+     * 상품 목록 데이터 호출
+     */
+    requestShopProductList: function(formData) {
+        var self = this;
+
+        lgkorUI.requestAjaxDataPost(self.storeFilterUrl, formData, function(result) {
+            var data = result.data;
+            var dataArray = (data && data instanceof Array) ? data : [];
+
+            if(dataArray.length) {
+                self.$shopProductList.empty();
+                dataArray.forEach(function (item, index) {
+                    self.$shopProductList.append($("#"+item.modelId).clone());
+                });
+
+                self.$allProductList.hide();
+                self.$shopProductList.show();
             }
         });
     }

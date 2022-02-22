@@ -9,9 +9,9 @@
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}">'+
         '       <div class="img-wrap">'+
-        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}<a href="{{modelUrlPath}}">{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2" || moduleType == "module-type5"}}<a href="{{modelUrlPath}}">{{/if}}'+
         '               <img src="{{modelImg}}" alt="{{#raw userFriendlyName}}">'+
-        '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
+        '           {{#if moduleType == "module-type1" || moduleType == "module-type2" || moduleType == "module-type5"}}</a>{{/if}}'+
         '       </div>'+
         '       <div class="txt-wrap">'+
         '       {{#if moduleType == "module-type3"}}'+
@@ -97,6 +97,20 @@
         '                   </dd>'+
         '               </dl>'+
         '           {{/if}}'+
+    	'           {{#if typeof siblingSvcType !== "undefined" && siblingSvcType.length > 0}}'+        
+        '               <dl {{#if siblingSvcType.length == 1}}class="disabled"{{/if}}>'+
+        '                   <dt>서비스타입</dt>'+
+        '                   <dd>'+
+        '                       <div class="sort-select-wrap">'+
+        '                           <select class="ui_selectbox" data-combo-id="5" id="svcTypeSet-{{modelId}}" title="서비스타입선택" data-sibling-type="siblingSvcType" {{#if siblingSvcType.length == 1}}disabled{{/if}}>'+
+        '                           {{#each item in siblingSvcType}}'+
+        '                               <option value="{{item.siblingCode}}"{{#if selectSvcTypeCd==item.siblingCode}} selected{{/if}}>{{item.siblingValue}}</option>'+
+        '                           {{/each}}'+
+        '                           </select>'+
+        '                       </div>'+
+        '                   </dd>'+
+        '               </dl>'+
+        '           {{/if}}'+  
         '           </div>'+
         '       {{#if priceInfo != null && priceInfo != undefined && priceInfo != ""}}'+
         '           <div class="txt-info price-info">'+
@@ -226,6 +240,9 @@
                 for(key in item.siblingFee) item.siblingFee[key].siblingCode = item.siblingFee[key].siblingCode.toString();
                 for(key in item.siblingUsePeriod) item.siblingUsePeriod[key].siblingCode = item.siblingUsePeriod[key].siblingCode.toString();
                 for(key in item.siblingVisitCycle) item.siblingVisitCycle[key].siblingCode = item.siblingVisitCycle[key].siblingCode.toString();
+                if(typeof item.siblingSvcType !== "undefined" && item.siblingSvcType.length > 0){                    
+                    for(key in item.siblingSvcType) item.siblingSvcType[key].siblingCode = item.siblingSvcType[key].siblingCode.toString();//BTOCSITE-11892  
+                } 
             },
 
             selectBoxReinit:function($target){
@@ -366,6 +383,7 @@
                     "feeCd": optdata.siblingFee && optdata.siblingFee.value ? optdata.siblingFee.value : '',
                     "usePeriodCd": optdata.siblingUsePeriod && optdata.siblingUsePeriod.value ? optdata.siblingUsePeriod.value : '',
                     "visitCycleCd": optdata.siblingVisitCycle && optdata.siblingVisitCycle.value ? optdata.siblingVisitCycle.value : '',
+                    "svcTypeCd"  : optdata.siblingSvcType && optdata.siblingSvcType.value ? optdata.siblingSvcType.value : '',
                     "blockID": idx
                 }
                 var ajaxUrl = self.$contents.data('priceStatus');

@@ -390,7 +390,6 @@
             border-top: 2px solid #000;
 
             &-wrap {
-
                 @include pc {
                     max-width: 1380px + 80px;
                     margin: 16px auto -10px;
@@ -403,9 +402,18 @@
                 }
             }
 
-            .chk-wrap {
+            &-sort {
+                span {
+                    position: relative;
+                }
                 span + span {
-                    margin-left: 30px;
+                    @include pc {
+                        margin-left: 30px;
+                    }
+
+                    @include mobile {
+                        margin-left: 20px;
+                    }
                 }
             }
 
@@ -426,6 +434,7 @@
                 @include mobile {
                     margin-top: 18px;
                     padding: 17px 16px;
+                    border-radius: 4px;
 
                     &.is-active {
                         display: block;
@@ -470,7 +479,10 @@
                     }
 
                     @include mobile {
-                        min-width: 100%;
+                        min-width: 132px;
+                        height: 46px;
+                        font-size: 14px;
+                        line-height: 14px;
                     }
 
                     &-wrap {
@@ -670,9 +682,6 @@
         padding-bottom: 187px;
         @include mobile{
             padding-bottom: 32px;
-            a {
-                height: auto
-            }
         }
         .product-bottom{
             bottom:40px;
