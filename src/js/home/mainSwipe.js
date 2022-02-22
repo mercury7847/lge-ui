@@ -567,14 +567,6 @@ MainSwiper.prototype = {
 }
 
 $(function(){
-    if(location.pathname.indexOf("support") > -1){
-        // 고객지원 템프릿 오루 강제수정
-        $("body>script[src='/lg5-common/js/libs/slick.min.js']").remove();
-        $("body>script[src='/lg5-common/js/support-common.min.js']").remove();
-        $("body>script[src='/lg5-common/js/caresolution/addressManagement.min.js']").remove();
-        $("body>script[src='/lg5-common/js/support/support-main.min.js']").remove();
-    }
-
     var mainSwiperID = 'mobileNav';
     window.mainSwiper = new MainSwiper( mainSwiperID );
 
