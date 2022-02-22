@@ -1,0 +1,42 @@
+
+	<div class="component-wrap @@zero">
+		<!--
+			[component-wrap 옵션]
+			1. 여백
+			.zero-top : 상단여백 없음
+			.zero-btm : 하단여백 없음
+
+			[item-info 옵션]
+			1. align
+			.align-left : left
+			.align-right : right
+			.align-center : center
+		-->
+		<section class="component KRP0044"
+			data-list-url="/lg5-common/data-ajax/KRP0044/KRP0044.json"
+			data-story-type="storytypetest"
+		>
+			<div class="component-inner">
+				@@if (context.heading) {
+					<div class="title">
+						@@heading <!-- H1, H2, H3, H4, H5, H6 사용가능 -->
+					</div>
+				}
+				<div class="story-list-wrap">
+					<div class="list-sorting">
+						<div class="list-count" id="totalCount"></div>
+					</div>
+					<div class="story-list">
+						<ul class="story-box">
+						</ul>
+						<div class="pagination"></div>
+					</div>
+					
+				</div>
+			</div>	
+		</section>
+	</div>		
+	
+		
+
+		 

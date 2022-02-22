@@ -1,0 +1,297 @@
+{
+    "data": [
+        {
+            "sortTypeList": [
+                {
+                    "commonCodeName": "최신순",
+                    "sortNo": 1,
+                    "commonCodeId": "sort_new"
+                },
+                {
+                    "commonCodeName": "인기순",
+                    "sortNo": 2,
+                    "commonCodeId": "sort_popular"
+                }
+            ],
+            "sortParam": "sort_new",
+            "superCategoryList": [
+                {
+                    "categoryName": "TV/AV",
+                    "categoryId": "CT50000024"
+                },
+                {
+                    "categoryName": "주방가전",
+                    "categoryId": "CT50000064"
+                },
+                {
+                    "categoryName": "생활가전",
+                    "categoryId": "CT50000100"
+                },
+                {
+                    "categoryName": "에어컨/에어케어",
+                    "categoryId": "CT50000130"
+                },
+                {
+                    "categoryName": "LG Objet Collection",
+                    "categoryId": "CT50019002"
+                }
+            ],
+            "storyList": [
+                {
+                    "storyId": "ST00088001",
+                    "storyListThumbnailServerName": "라이프스타일_에어로타워로_삶과_공기의_질을_상승시키기[20220216_173921].jpg",
+                    "storyTypeName": "라이프스타일",
+                    "storyListThumbnailPath": "https://wwwstg.lge.co.kr/kr/upload/admin/storyThumbnail/",
+                    "lastUpdateDate": "2022.02.16",
+                    "storyDesc": "공기만 달라져도 바뀌는 건강하고 청정한 일상 에어로타워로 우리집 공기 질이 달라져요. 계절에 상관없이 4계절 내내 쾌적한 공기를 더해주는 에어로타워로 일상을 업그레이드 하세요.",
+                    "categoryInfo": [
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000130",
+                            "superCategory": "에어컨/에어케어",
+                            "subCategoryId": "",
+                            "category": "공기청정기",
+                            "categoryId": "CT50000143"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009045",
+                            "tagName": "건강"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00010008",
+                            "tagName": "인테리어템"
+                        }
+                    ],
+                    "storyListThumbnailAltText": "삶과 공기의 질을 상승시키는 상승템!",
+                    "storyTitle": "에어로타워로 삶과 공기의 질을 상승시키기",
+                    "storyUrl": "/story/lifestyle/aerotower-lifestyle",
+                    "ORDER_KEY": 1,
+                    "storyType": "life_style"
+                },
+                {
+                    "storyId": "ST00072000",
+                    "storyListThumbnailServerName": "03_240x180[20211102_085845].png",
+                    "storyTypeName": "라이프스타일",
+                    "storyListThumbnailPath": "https://wwwstg.lge.co.kr/kr/upload/admin/storyThumbnail/",
+                    "lastUpdateDate": "2022.01.18",
+                    "storyDesc": "식물생활가전 틔운이 반려식물을 보살펴 줄거에요. 식물생활가전 LG 틔운과 함께 나의 공간을 초록빛으로 채워보세요. ",
+                    "categoryInfo": [
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000100",
+                            "superCategory": "생활가전",
+                            "subCategoryId": "",
+                            "category": "식물생활가전",
+                            "categoryId": "CT50064001"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009048",
+                            "tagName": "인테리어"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009074",
+                            "tagName": "스마트홈"
+                        }
+                    ],
+                    "storyListThumbnailAltText": "LG틔운으로 라이프 스타일을 틔우다",
+                    "storyTitle": "틔운과 함께하는 반려식물생활",
+                    "storyUrl": "/story/lifestyle/plant-interior-lifestyle",
+                    "ORDER_KEY": 1,
+                    "storyType": "life_style"
+                },
+                {
+                    "storyId": "ST00023052",
+                    "storyListThumbnailServerName": "엘지적반려동물시점_댕댕이위시리스트_List썸네일[20210408_181757].png",
+                    "storyTypeName": "라이프스타일",
+                    "storyListThumbnailPath": "https://wwwstg.lge.co.kr/kr/upload/admin/storyThumbnail/",
+                    "lastUpdateDate": "2021.12.28",
+                    "storyDesc": "말티즈, 닥스훈트 등 다양한 종의 강아지의 시점으로, 강아지가 살아가면서 꼭 필요한 펫가전 위시리스트를 소개합니다. LG의 펫 맞춤 제품을 확인해 보세요.",
+                    "categoryInfo": [
+                        {
+                            "subCategory": "트롬",
+                            "superCategoryId": "CT50000100",
+                            "superCategory": "생활가전",
+                            "subCategoryId": "CT50000102",
+                            "category": "세탁기",
+                            "categoryId": "CT50000101"
+                        },
+                        {
+                            "subCategory": "코드제로 A9S",
+                            "superCategoryId": "CT50000100",
+                            "superCategory": "생활가전",
+                            "subCategoryId": "CT50000115",
+                            "category": "청소기",
+                            "categoryId": "CT50000111"
+                        },
+                        {
+                            "subCategory": "공기청정기",
+                            "superCategoryId": "CT50000130",
+                            "superCategory": "에어컨/에어케어",
+                            "subCategoryId": "CT50000144",
+                            "category": "공기청정기",
+                            "categoryId": "CT50000143"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009050",
+                            "tagName": "반려동물"
+                        }
+                    ],
+                    "storyListThumbnailAltText": "먕멍뭉무뭉 뭉망뭉",
+                    "storyTitle": "우리 집 강아지의 펫 가전 위시 리스트",
+                    "storyUrl": "/story/lifestyle/pet-wish-list",
+                    "ORDER_KEY": 1,
+                    "storyType": "life_style"
+                },
+                {
+                    "storyId": "ST00084000",
+                    "storyListThumbnailServerName": "썸네일_리스트 (1)[20211213_111904].jpg",
+                    "storyTypeName": "라이프스타일",
+                    "storyListThumbnailPath": "https://wwwstg.lge.co.kr/kr/upload/admin/storyThumbnail/",
+                    "lastUpdateDate": "2022.01.18",
+                    "storyDesc": "바쁜 하루 일상 속에서 LG코드제로 A9S 오브제컬렉션과 함께 여유로운 나만의 삶을 완성시켜보세요. 평소 꿈꾸던 여유로운 청소 라이프가 일상에서 실현될 수 있어요.",
+                    "categoryInfo": [
+                        {
+                            "subCategory": "청소기",
+                            "superCategoryId": "CT50019002",
+                            "superCategory": "LG Objet Collection",
+                            "subCategoryId": "CT50022016",
+                            "category": "LG 오브제컬렉션",
+                            "categoryId": "CT50020191"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009058",
+                            "tagName": "워라벨"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009065",
+                            "tagName": "청소"
+                        }
+                    ],
+                    "storyListThumbnailAltText": "리스트 썸네일",
+                    "storyTitle": "코드제로 A9S와 함께하는 새로운 청소라이프!",
+                    "storyUrl": "/story/lifestyle/cleaning-life-with-A9S",
+                    "ORDER_KEY": 1,
+                    "storyType": "life_style"
+                },
+                {
+                    "storyId": "ST00074000",
+                    "storyListThumbnailServerName": "05_틔운02_썸네일_240x180[20211123_180025].png",
+                    "storyTypeName": "라이프스타일",
+                    "storyListThumbnailPath": "https://wwwstg.lge.co.kr/kr/upload/admin/storyThumbnail/",
+                    "lastUpdateDate": "2022.01.18",
+                    "storyDesc": "틔운이 피워내는 씨앗 패키지로 다양한 라이프 스타일을 경험해보세요. 반려식물을 키우는 즐거움에 빠지실 거예요. 여러분의 집안에 향기와 소소한 즐거움으로 채워보세요.",
+                    "categoryInfo": [
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000100",
+                            "superCategory": "생활가전",
+                            "subCategoryId": "",
+                            "category": "식물생활가전",
+                            "categoryId": "CT50064001"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009045",
+                            "tagName": "건강"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00010029",
+                            "tagName": "오브제컬렉션"
+                        }
+                    ],
+                    "storyListThumbnailAltText": "싱그러운 틔운 라이프",
+                    "storyTitle": "생기를 불어넣어 줄 틔운 라이프 ",
+                    "storyUrl": "/story/lifestyle/tiiun-lifestyle",
+                    "ORDER_KEY": 1,
+                    "storyType": "life_style"
+                },
+                {
+                    "storyId": "ST00023050",
+                    "storyListThumbnailServerName": "List 썸네일용[20210407_201418].png",
+                    "storyTypeName": "라이프스타일",
+                    "storyListThumbnailPath": "https://wwwstg.lge.co.kr/kr/upload/admin/storyThumbnail/",
+                    "lastUpdateDate": "2021.11.14",
+                    "storyDesc": "4가지로 분류한 스트레스 처방전과 함께 건강한 스트레스 관리에 도움이 되는 다양한 LG 제품들을 소개합니다. LG 광파오븐, 홈브루 등 자세히 확인해 보세요.",
+                    "categoryInfo": [
+                        {
+                            "subCategory": "광파오븐",
+                            "superCategoryId": "CT50019002",
+                            "superCategory": "LG Objet Collection",
+                            "subCategoryId": "CT50022010",
+                            "category": "LG 오브제컬렉션",
+                            "categoryId": "CT50020191"
+                        },
+                        {
+                            "subCategory": "올레드 TV",
+                            "superCategoryId": "CT50000024",
+                            "superCategory": "TV/AV",
+                            "subCategoryId": "CT50000028",
+                            "category": "TV",
+                            "categoryId": "CT50000025"
+                        },
+                        {
+                            "subCategory": "트롬",
+                            "superCategoryId": "CT50000100",
+                            "superCategory": "생활가전",
+                            "subCategoryId": "CT50000102",
+                            "category": "세탁기",
+                            "categoryId": "CT50000101"
+                        },
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000064",
+                            "superCategory": "주방가전",
+                            "subCategoryId": "",
+                            "category": "맥주제조기",
+                            "categoryId": "CT50000087"
+                        }
+                    ],
+                    "tags": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009045",
+                            "tagName": "건강"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009069",
+                            "tagName": "소확행"
+                        }
+                    ],
+                    "storyListThumbnailAltText": "내스트레스는 어떤 종류일까?",
+                    "storyTitle": "LG는 내맘RG #1",
+                    "storyUrl": "/story/lifestyle/relieve-stress",
+                    "ORDER_KEY": 1,
+                    "storyType": "life_style"
+                }
+            ],
+            "storyListTotalCount": 10,
+            "pagination": {
+                "page": "1",
+                "totalCount": 2,
+                "visibleCount": 5
+            }
+        }
+    ],
+    "message": null,
+    "status": "success",
+    "dataCount": 1
+}
