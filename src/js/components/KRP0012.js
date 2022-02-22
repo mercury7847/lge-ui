@@ -82,6 +82,9 @@
                 // $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
             });
             $section.off("click").on('click','.review-write-wrap .btn', function(e) {
+                var flag = false;
+                if(flag) return false;
+                flag = true;
                 var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
                 var opt = (options.loginFlag) ? {
                     typeClass: "crema-review-confirm",
