@@ -104,6 +104,7 @@
                 if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
                     lgkorUI.confirm(msg, opt);
                 }
+                return false;
             });
             lgkorUI.cremaReload();
         }
