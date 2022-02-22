@@ -122,7 +122,7 @@
         "commonCodeId": "89^089"
       }
     ],
-    "listData": [
+    "bestShopListData": [
       {
         "orderNumber": "1000030790",
         "orderType": "SM",
@@ -130,6 +130,7 @@
         "status": "Canceled",
         "apiType": "OBS",
         "orderTotal": 3,
+        "storeName": "운정점",
         "productList": [
           {
             "productNameKR": "고정판",
@@ -155,7 +156,7 @@
             ],
             "orderStatus": {
               "disabled": "",
-              "statusText": "취소 완료",
+              "statusText": "매장 문의 필요",
               "statusClass": "",
               "statusDate": "",
               "deliveryUrl": ""
@@ -190,7 +191,7 @@
             ],
             "orderStatus": {
               "disabled": "",
-              "statusText": "취소 완료",
+              "statusText": "",
               "statusClass": "",
               "statusDate": "",
               "deliveryUrl": ""
@@ -225,12 +226,17 @@
             ],
             "orderStatus": {
               "disabled": "",
-              "statusText": "취소 완료",
+              "statusText": "",
               "statusClass": "",
               "statusDate": "",
               "deliveryUrl": ""
             },
-            "statusButtonList": [],
+            "statusButtonList": [
+              {
+                "className": "deliveryInquiry",
+                "buttonName": "배송조회"
+              }
+            ],
             "orderCancelAbleYn": "N",
             "orderRetuenAbleYn": "N",
             "itemCancelAbleYn": "Y",
@@ -265,6 +271,7 @@
       "receiptUrl": ""
     },
     "shipping": {
+      "storeName": "운정점",
       "recyclingPickup": "",
       "shippingNoteTxt": " ",
       "inspectionVisit": "",

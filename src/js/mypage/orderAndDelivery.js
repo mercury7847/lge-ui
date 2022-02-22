@@ -9,6 +9,7 @@
                     '<li>{{orderNumberTitle}}<em>{{groupNumber}}</em></li>'+
                 '</ul>'+
                 '<p class="totals">총 {{orderTotal}}건</p>'+
+                '{{#if activeTabFlag == "BESTSHOP"}}<p class="store-name">{{storeName}}</p>{{/if}}'+
             '</div>'+
             '<div class="tbl-layout sizeType3">'+
                 '<div class="thead" aria-hidden="true">'+
@@ -20,8 +21,10 @@
                 '</div>'+
             '</div>'+
             '<div class="btn-link-area">'+
+                '{{#if activeTabFlag !== "BESTSHOP"}}' +
                 '{{#if orderCancelAbleYn == "Y"}}'+
                 '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
+                '{{/if}}'+
                 '{{/if}}'+
                 '{{#if isDetailViewBtn}}<a href="#n" class="btn-link orderDetail-btn">주문/배송 상세보기</a>{{/if}}'+
             '</div>'+
@@ -68,11 +71,13 @@
             '<div class="row {{disabled}}">'+
                 '<div class="col-table" data-prod-id="{{listData.prodID}}">'+
                     '<div class="col col1">'+
-                        '<span class="blind">제품정보</span>'+
+                        '<span class="blind">제품정보 {{listData.activeTabFlag}}</span>'+
                         '<div class="product-info">'+
+                            '{{#if listData.activeTabFlag !== "BESTSHOP"}}' +
                             '<div class="thumb">'+
                                 '<a {{#if listData.productPDPurl && listData.productPDPurl.length > 0}}href="{{listData.productPDPurl}}"{{/if}}><img onError="lgkorUI.addImgErrorEvent(this);" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
                             '</div>'+
+                            '{{/if}}'+
                             '<div class="infos">'+
                                 '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
                                 '<p class="name"><a {{#if listData.productPDPurl && listData.productPDPurl.length > 0}}href="{{listData.productPDPurl}}"{{/if}}><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
@@ -252,12 +257,13 @@
         '<li><dl><dt>배송주소</dt><dd>{{postcode}} {{maskingAddress}}</dd></dl></li>' +
         '<li><dl><dt>휴대폰</dt><dd>{{maskingTelephone}}</dd></dl></li>' +
         '<li><dl><dt>연락처</dt><dd>{{maskingTelephonenumber}}</dd></dl></li>' +
-        '<li><dl><dt>배송시 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
+        '{{#if activeTabFlag !== "BESTSHOP"}}<li><dl><dt>배송시 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>{{/if}}' +
         '{{#if isBeforeVisit && instpectionVisit}}<li><dl><dt>사전 방문 신청</dt><dd>신청</dd></dl></li>{{/if}}' +
         //'{{#if recyclingPickup}}<li><dl><dt>폐가전 수거</dt><dd>수거신청</dd></dl></li>{{/if}}';
         // '{{#if isBeforeVisit}}<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>{{/if}}' +
-        '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
-    
+        '{{#if activeTabFlag !== "BESTSHOP"}}<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>{{/if}}'+
+        '{{#if activeTabFlag == "BESTSHOP"}}<li><dl><dt>구매지점</dt><dd>{{storeName}}</dd></dl></li>{{/if}}';
+
     var careShippingListTemplate = '<li><dl><dt>성명</dt><dd>{{maskingName}}</dd></dl></li>' +
         '<li><dl><dt>인수자 휴대폰</dt><dd>{{maskingTelephone}}</dd></dl></li>' +
         '<li><dl><dt>일반전화번호</dt><dd>{{maskingTelephonenumber}}</dd></dl></li>' +
@@ -272,12 +278,14 @@
 
     var paymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
+        '{{#if activeTabFlag !== "BESTSHOP"}}'+
         '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
         '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
         '<li><dl><dt>할인 금액</dt><dd>{{discountPrice}}원</dd></dl></li>'+        
-        '<li><dl><dt>멤버십포인트</dt><dd>{{memberShipPoint}}원</dd></dl></li>'+        
+        '<li><dl><dt>멤버십포인트</dt><dd>{{memberShipPoint}}원</dd></dl></li>'+
+        '{{/if}}'+
         '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
 
     var carePaymentListTemplate = 
@@ -385,11 +393,13 @@
 
     var PAGE_TYPE_LIST = "orderListPage";
     var PAGE_TYPE_DETAIL = "orderDetailPage";
+    var PAGE_TYPE_BESTSHOP_DETAIL = "bestShopOrderDetailPage";
     var PAGE_TYPE_NONMEM_DETAIL = "orderNoneMemberPage";
     var PAGE_TYPE_CAREDETAIL = "careOrderDetailPage";
     var PAGE_TYPE_RECORD_DETAIL = "recordDetailPage";
 
     var TAB_FLAG_ORDER = "ORDER";
+    var TAB_FLAG_ORDER_BESTSHOP = "BESTSHOP";
     var TAB_FLAG_CARE = "CARE";
     var TAB_FLAG_RECORD = "RECORD";
 
@@ -399,6 +409,7 @@
     var START_INDEX;
 
     var ORDER_LIST;
+    var BESTSHOP_LIST;
     var CARE_LIST;
     var RECORD_LIST;
 
@@ -447,6 +458,28 @@
 
     var datalayerResult = null; //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청
 
+    var getTabData = function(flag){
+        var listData = [];
+        switch(flag){
+            case TAB_FLAG_ORDER:
+                listData = ORDER_LIST;
+                break;
+
+            case TAB_FLAG_ORDER_BESTSHOP:
+                listData = BESTSHOP_LIST;
+                break;
+
+            case TAB_FLAG_CARE:
+                listData = CARE_LIST;
+                break;
+
+            case TAB_FLAG_RECORD:
+                listData = RECORD_LIST;
+                break;
+        }
+
+        return listData;
+    }
     function init(){
         if(!$('.contents.mypage').data('consumables')) {
             vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter', 'ui/formatter', 'helper/textMasking'], function () {             
@@ -499,6 +532,7 @@
 
         TAB_FLAG = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : TAB_FLAG_ORDER;
         if(TAB_FLAG == TAB_FLAG_CARE && PAGE_TYPE == PAGE_TYPE_DETAIL) PAGE_TYPE = PAGE_TYPE_CAREDETAIL;
+        if(TAB_FLAG == TAB_FLAG_ORDER_BESTSHOP && PAGE_TYPE == PAGE_TYPE_DETAIL) PAGE_TYPE = PAGE_TYPE_BESTSHOP_DETAIL;
 
         var register = {
             paymentCard:{
@@ -541,7 +575,7 @@
             SELECT_PERIOD = data.periodSelect;
 
             var tab = tabMenu.find('li[class=on]');
-            TAB_FLAG = tab.index() ? TAB_FLAG_CARE : TAB_FLAG_ORDER;
+            TAB_FLAG = String(tab.data('tabName'));
 
             requestOrderInquiry();
         });
@@ -772,11 +806,13 @@
     }
 
     function sendDetailPage(dataID){
-        var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : TAB_FLAG == TAB_FLAG_CARE ? CARE_LIST : RECORD_LIST;
-
+        var listdata = getTabData(TAB_FLAG);
         var prodlist = listdata[dataID].productList;
+
         var orderNumbers = [];
-        for(var idx in prodlist) orderNumbers.push(prodlist[idx].orderNumber);
+        for(var idx in prodlist) {
+            orderNumbers.push(prodlist[idx].orderNumber);
+        }
         var orderNumberList = JSON.stringify(orderNumbers);
 
         var sendata = {
@@ -802,7 +838,7 @@
         tabMenu.children().removeClass('on');
         tab.addClass('on');
         
-        TAB_FLAG = tab.index() ? TAB_FLAG_CARE : TAB_FLAG_ORDER;
+        TAB_FLAG = String(tab.data('tabName'));
 
         START_INDEX = 0;
         setOrderListContents();
@@ -1263,14 +1299,16 @@
     }
 
     function setDeliveryInquiry(dataID, prodID){
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var listData = getTabData(TAB_FLAG)
+
         var orderStatus = listData[dataID].productList[prodID].orderStatus;
         
         void(window.open(orderStatus.deliveryUrl, "_blank", "width=360, height=600, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
     }
 
     function setDeliveryRequest(dataID, prodID){
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var listData = getTabData(TAB_FLAG)
+
         var productNameEN = listData[dataID].productList[prodID].productNameEN.split(".")[0];
 
         //2021-08-06 - BTOCSITE-4140
@@ -1290,7 +1328,8 @@
     }
 
     function setProductReview(dataID, prodID){
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var listData = getTabData(TAB_FLAG)
+
         var url = listData[dataID].productList[prodID].productPDPurl;
         if(url && url.length > 0) {
             var productPDPurl = url + "#pdp_review";
@@ -1336,7 +1375,7 @@
 
     //리스트 랜더...
     function setOrderListContents(){
-        var list = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var list = getTabData(TAB_FLAG);
         var leng = list.length;
 
         $('.pastlist-notyfy').remove();
@@ -1355,6 +1394,8 @@
             for(var idx=start;idx<end;idx++){
                 var template = TAB_FLAG == TAB_FLAG_CARE ? careInquiryListTemplate : inquiryListTemplate;
                 list[idx].isDetailViewBtn
+                list[idx].activeTabFlag = TAB_FLAG;
+
                 var templateList = $(vcui.template(template, list[idx])).get(0);
                 $('.inquiry-list-wrap').append(templateList);
 
@@ -1363,11 +1404,13 @@
                     var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
                     prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
                     template = TAB_FLAG == TAB_FLAG_CARE ? careProdListTemplate : prodListTemplate;
-                    
+
                     prodlist.specList = vcui.array.filter(prodlist.specList, function(item){
                         var chk = item != null && item != "null" && item != undefined && item != "" ? true : false;
                         return chk;
                     });
+
+                    prodlist.activeTabFlag = TAB_FLAG;
 
                     $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true, isQuantity:true}));
                 }
@@ -1600,7 +1643,7 @@
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
             lgkorUI.hideLoading();
             if(result.status == "fail"){
-                if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL || PAGE_TYPE == PAGE_TYPE_DETAIL){
+                if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL || PAGE_TYPE == PAGE_TYPE_DETAIL || PAGE_TYPE == PAGE_TYPE_BESTSHOP_DETAIL){
                     lgkorUI.alert("", {
                         title: result.message,
                         ok: function(){
@@ -1620,6 +1663,7 @@
     
                 START_INDEX = 0;
                 ORDER_LIST = [];
+                BESTSHOP_LIST = [];
                 CARE_LIST = [];
                 RECORD_LIST = [];
                 SHIPPING_DATA = {};
@@ -1660,7 +1704,40 @@
                         ORDER_LIST.push(list[idx]);
                     }
                 }
-    
+
+                // LGECOMVIO-114 BESTSHOP 추가 PAGE_TYPE_LIST, PAGE_TYPE_BEST_DETAIL
+                if(data.bestShopListData && data.bestShopListData.length){
+                    var leng, cdx, idx;
+                    var list = data.bestShopListData;
+                    for(idx in list){
+                        leng = ORDER_LIST.length;
+                        list[idx]['dataID'] = leng.toString();
+
+                        list[idx].dateTitle = "주문일";
+                        list[idx].orderNumberTitle = "주문번호";
+                        list[idx].groupNumber = list[idx].orderNumber;
+
+                        var chk = 0;
+                        for(cdx in list[idx].productList){
+                            list[idx].productList[cdx]["prodID"] = cdx;
+                            list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
+
+                            if(list[idx].productList[cdx].orderCancelAbleYn == "Y") chk++;
+                        }
+
+                        if(chk > 0) list[idx].orderCancelAbleYn = "Y";
+                        else list[idx].orderCancelAbleYn = "N";
+
+                        if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
+                            list[idx].apiType = "OBS";
+                            list[idx].requestNo = "";
+                        }
+
+                        list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
+
+                        BESTSHOP_LIST.push(list[idx]);
+                    }
+                }
                 
                 //구매목록 리스트...PAGE_TYPE_CAREDETAIL
                 if(data.careListData && data.careListData.length){
@@ -1725,7 +1802,7 @@
                     if(Object.keys(data.payment).length){
                         var orderReceiptAbleYn;
                         if(TAB_FLAG == TAB_FLAG_RECORD) orderReceiptAbleYn = "N";
-                        else orderReceiptAbleYn = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].orderReceiptAbleYn : data.careListData[0].orderReceiptAbleYn;
+                        else orderReceiptAbleYn = getTabData(TAB_FLAG)[0].orderReceiptAbleYn
 
                         PAYMENT_DATA = resetPaymentData(data.payment, orderReceiptAbleYn);
                     }
@@ -1799,7 +1876,22 @@
                     //납부정보 변경 버튼 유무..
                     if(monthpayment.cancelFlag == "Y") monthpayment.isChangePayment = false;
                     else{
-                        var listData = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? CARE_LIST[0] : ORDER_LIST[0];
+                        var listData = [];
+
+                        switch(PAGE_TYPE){
+                            case PAGE_TYPE_DETAIL:
+                                listData = ORDER_LIST[0];
+                                break;
+
+                            case PAGE_TYPE_BESTSHOP_DETAIL:
+                                listData = BESTSHOP_LIST[0];
+                                break;
+
+                            case PAGE_TYPE_CAREDETAIL:
+                                listData = CARE_LIST[0];
+                                break;
+                        }
+
                         var cancelProdList = vcui.array.filter(listData.productList, function(item){
                             return item.itemStatus != "Cancel Refunded";
                         });
@@ -2130,7 +2222,7 @@
     function savePaymentInfoOk(){
         var chk = paymentInfoValidation();
         if(chk){
-            var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
+            var listData = getTabData(TAB_FLAG)[0];
 
             var sendata = {
                 confirmType: sendPaymentMethod,
@@ -2199,9 +2291,13 @@
         var cnt = leng ? "(" + leng + ")" : "";
         $('.lnb-contents .tabs-wrap .tabs > li:nth-child(1) .count').text(cnt);
 
-        leng = CARE_LIST.length;
+        leng = BESTSHOP_LIST.length;
         cnt = leng ? "(" + leng + ")" : "";
         $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text(cnt);
+
+        leng = CARE_LIST.length;
+        cnt = leng ? "(" + leng + ")" : "";
+        $('.lnb-contents .tabs-wrap .tabs > li:nth-child(3) .count').text(cnt);
 
 
         /* BTOCSITE-98 add */
@@ -2222,6 +2318,8 @@
             if(leng){
                 template = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? careShippingListTemplate : shippingListTemplate;
 
+                shippingData.activeTabFlag = TAB_FLAG;
+
                 if(!shippingData.installPlaceNm) shippingData.installPlaceNm = "";
                 if(!shippingData.instReqDate) shippingData.instReqDate = "";
                 if(!shippingData.shippingNoteTxt) shippingData.shippingNoteTxt = "";
@@ -2235,7 +2333,7 @@
         //결제정보
         $listBox = wrap.find('.inner-box.payment');
         if($listBox.length > 0) {
-            var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
+            var listData = getTabData(TAB_FLAG)[0];
             
             leng = paymentData ? Object.keys(paymentData).length : 0;
             
@@ -2250,6 +2348,8 @@
                 else template = paymentListTemplate;
 
                 console.log("paymentData:",paymentData)
+
+                paymentData.activeTabFlag = TAB_FLAG;
 
                 $listBox.show().find('ul').html(vcui.template(template, paymentData));
             } else{
@@ -2299,7 +2399,7 @@
 
     //청약 주문상세 팝업
     function openOrderInfoPop(dataId, prodId, opener){
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var listData = getTabData(TAB_FLAG);
         var productList = listData[dataId].productList[prodId];
         var shipping;
 
@@ -2319,7 +2419,7 @@
 
     //주문접수...
     function setOrderRequest(dataId, prodId){
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[dataId] : CARE_LIST[dataId];
+        var listData = getTabData(TAB_FLAG)[dataId];
         // var productList = vcui.array.map(listData.productList, function(item, idx){
         //     return{
         //         orderedQuantity: item.orderedQuantity,
@@ -2407,7 +2507,7 @@
 
     //취소/반품 신청을 위한 데이터 요정...후 팝업 열기
     function getPopOrderData(dataId, calltype, opener){
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var listData = getTabData(TAB_FLAG);
         var memInfos = lgkorUI.getHiddenInputData();
         var orderNumber = listData[dataId].orderNumber;
         var requestNo = listData[dataId].requestNo;
@@ -2555,7 +2655,7 @@
 
                 var prodId = popup.data('prodId');
 
-                var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+                var listData = getTabData(TAB_FLAG);
                 productList = vcui.array.filter(productList, function(item, idx){
                     return item.modelID == listData[dataId].productList[prodId].modelID;
                 });
@@ -2734,7 +2834,7 @@
     function setCancelTakebackData(popname, prodlist, matchIds){
         var popup = $('#'+popname);
 
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var listData = getTabData(TAB_FLAG);
         var dataId = popup.data('dataId');    
         
         var orderNumber = listData[dataId].orderNumber;
@@ -2894,7 +2994,7 @@
 
     //영수증 발급내역...
     function setReceiptListPop(opener){
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var listData = getTabData(TAB_FLAG);
         var method = PAYMENT_DATA.transType == METHOD_CARD ? "카드영수증" : "현금영수증";
         if(PAYMENT_DATA.transType == METHOD_BANK && listData[0].cashReceiptAbleYn != "Y") method = "";
         var header = $(vcui.template(receiptHeaderTemplate, {receiptUrl:PAYMENT_DATA.receiptUrl, method:method})).get(0);
@@ -2913,7 +3013,7 @@
     }
     //거래 영수증 팝업...
     function setSalesReceiotPop(opener){
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
+        var listData = getTabData(TAB_FLAG)[0];
 
         receiptdata = {};
         receiptdata.orderNumber = listData.groupNumber;
@@ -2939,7 +3039,7 @@
         //상세보기 둘다 체크후..go pdp
         //리스트에서는 네임은 상세로...go detail
         
-        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
+        var listData = getTabData(TAB_FLAG);
         var sendata = {
             "sku": listData[dataId].productList[prodId].productNameEN,
             contDtlType: listData[dataId].productList[prodId].contDtlType,

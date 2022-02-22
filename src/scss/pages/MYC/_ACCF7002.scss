@@ -28,6 +28,8 @@
         .bullet-list {
             margin-top:8px;
         }
+
+
     }
     .customer-center-info {
         display:table;
@@ -173,5 +175,15 @@
                 }
             }
         }
+    }
+
+    .store-name {
+        display:inline-block;
+        margin-left:8px;
+        padding: 0 5px;
+        color:#fff;
+        background: darkred;
+        border-radius: 5px;
+        @include font-medium;
     }
 }
