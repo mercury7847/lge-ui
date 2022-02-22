@@ -374,7 +374,7 @@
     $(window).ready(function(){
         if(isMobileDevice) {
             $(window).off('scriptLoad').on('scriptLoad',function(e,data) {
-                if(data.script == SCRIPT_NAME){
+                if(data.script == script.name){
                     var currentSlide = data.swiper.slides[data.swiper.activeIndex];
                     if($(currentSlide).attr('data-hash') === script.hash) {
                         setTimeout(function(){
@@ -387,7 +387,7 @@
 
             $(window).on('scriptChange',function(e,data) {
                 var currentSlide = data.swiper.slides[data.swiper.activeIndex];
-                if($(currentSlide).attr('data-hash') === script.name) {
+                if($(currentSlide).attr('data-hash') === script.hash) {
                     setTimeout(function(){
                         careCommon.init();
                         careRecomTab.init();

@@ -1192,7 +1192,7 @@
             // BTOCSITE-11602 고객지원 팝업 오류 대응
             if(isMobileDevice) {
                 $(window).off('scriptLoad').on('scriptLoad',function(e,data) {
-                    if(data.script == 'support-main'){
+                    if(data.script == script.name){
                         var currentSlide = data.swiper.slides[data.swiper.activeIndex];
                         if($(currentSlide).attr('data-hash') === script.hash) {
                             setTimeout(function(){
