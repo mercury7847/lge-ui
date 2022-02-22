@@ -2437,8 +2437,8 @@ var goAppUrl = function(path) {
                 if(typeof crema !== 'undefined') {
                     lgkorUI.requestAjaxDataPost('/mkt/commonModule/cremaInfo.lgajax', null, function(result){
                         if(result.status && result.data) {
-                            var cremaid   = result.data[0].data.cremaId;
-                            var cremaname = result.data[0].data.cremaName;
+                            var cremaid   = result.data[0].data.cremaId || '';
+                            var cremaname = result.data[0].data.cremaName || '';
                             crema.init(cremaid , cremaname);
                         }
                     }) 
