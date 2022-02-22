@@ -2435,11 +2435,10 @@ var goAppUrl = function(path) {
             // 크레마 init 구조상 cremaAsyncInit 함수가 먼저 선언되 있어야 초기화 오류가 안난다.
             window.cremaAsyncInit = function () {
                 if(typeof crema !== 'undefined') {
-                    lgkorUI.requestAjaxDataPost('/commonModule/cremaInfo.lgajax', null, function(result){
+                    lgkorUI.requestAjaxDataPost('/mkt/commonModule/cremaInfo.lgajax', null, function(result){
                         if(result.status && result.data) {
-                            var cremaid   = result.data.cremaInfo.cremaId;
-                            var cremaname = result.data.cremaInfo.cremaName;
-                            console.log("result %o",result)
+                            var cremaid   = result.data[0].data.cremaId;
+                            var cremaname = result.data[0].data.cremaName;
                             crema.init(cremaid , cremaname);
                         }
                     }) 
