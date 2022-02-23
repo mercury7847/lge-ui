@@ -59,6 +59,7 @@
                 }
                 .component-wrap {
                     position: relative;
+                    padding:0; //BTOCSITE-12528 (공유하기 수정 틀어짐)
                 }
             }
         }
