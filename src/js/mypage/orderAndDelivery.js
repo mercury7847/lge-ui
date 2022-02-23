@@ -71,7 +71,7 @@
             '<div class="row {{disabled}}">'+
                 '<div class="col-table" data-prod-id="{{listData.prodID}}">'+
                     '<div class="col col1">'+
-                        '<span class="blind">제품정보 {{listData.activeTabFlag}}</span>'+
+                        '<span class="blind">제품정보</span>'+
                         '<div class="product-info">'+
                             '{{#if listData.activeTabFlag !== "BESTSHOP"}}' +
                             '<div class="thumb">'+
@@ -529,6 +529,20 @@
         START_DATE = dateData.startDate;
         END_DATE = dateData.endDate;
         SELECT_PERIOD = dateData.periodSelect;
+
+        // 서비스 개편 이전 날짜 선택 시 내역보기 영역 노출/비노출
+       $('.inquiryPeriodFilter .datepicker input').on('calendarinsertdate', function(){
+            var getSelectDate = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
+            var targetDate = Number($(this).attr('name') == 'startDate' ? getSelectDate.startDate : getSelectDate.endDate);
+            var oldDateStartDate = 20200413;
+            var oldDateEndDate = 20210426;
+
+            if(targetDate >= oldDateStartDate && targetDate <= oldDateEndDate) {
+                $(".open-before-order-history").show();
+            } else {
+                $(".open-before-order-history").hide();
+            }
+        })
 
         TAB_FLAG = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : TAB_FLAG_ORDER;
         if(TAB_FLAG == TAB_FLAG_CARE && PAGE_TYPE == PAGE_TYPE_DETAIL) PAGE_TYPE = PAGE_TYPE_CAREDETAIL;
@@ -1451,7 +1465,11 @@
             $('.inquiry-list-wrap').empty();            
 
             for(var idx=start;idx<end;idx++){
+
+                RECORD_LIST[idx].activeTabFlag = TAB_FLAG;
+
                 var templateList = $(vcui.template(inquiryListTemplate, RECORD_LIST[idx])).get(0);
+
                 $('.inquiry-list-wrap').append(templateList);
 
                 for(var cdx in RECORD_LIST[idx].productList){
@@ -1460,7 +1478,8 @@
                         var chk = item != null && item != "null" && item != undefined && item != "" ? true : false;
                         return chk;
                     });
-                    
+
+                    prodlist.activeTabFlag = TAB_FLAG;
                     $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:false, isBtnSet:true, isQuantity:true}));
                 }
             }
@@ -1476,12 +1495,24 @@
     }
 
     function setStepInfoStatus(){
-        if(TAB_FLAG == TAB_FLAG_ORDER){
+        if(TAB_FLAG == TAB_FLAG_ORDER || TAB_FLAG == TAB_FLAG_ORDER_BESTSHOP){
             $('.buy-step-info').show();
             $('.care-step-info').hide();
+
+            if(TAB_FLAG == TAB_FLAG_ORDER) {
+                $("#lgeOrderNotice").show();
+                $("#bestshopOrderNotice").hide();
+            } else {
+                $("#lgeOrderNotice").hide();
+                $("#bestshopOrderNotice").show();
+            }
+
         } else{
             $('.buy-step-info').hide();
             $('.care-step-info').show();
+
+            $("#lgeOrderNotice").show();
+            $("#bestshopOrderNotice").hide();
         }
     }
     
@@ -2791,6 +2822,8 @@
                 return chk;
             });
 
+            listdata.activeTabFlag = TAB_FLAG;
+
             var disabled = listdata.itemCancelAbleYn == "N" ? "disabled" : "";
             prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, disabled:disabled, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
@@ -3006,6 +3039,8 @@
             prodlist.statusButtonList = [];
             var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
             prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
+
+            prodlist.activeTabFlag = TAB_FLAG;
             $(header).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:false, isBtnSet:false, isQuantity:isQuantity}));
         }
         
