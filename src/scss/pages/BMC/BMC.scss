@@ -3,6 +3,15 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+// s : BTOCSITE-12128 홈 영역 UI 성능 개선 작업 0211
+.component-wrap {
+    width: auto;  
+    clear:unset;  
+    margin: 0;  
+    padding: 0;  
+} 
+// e: BTOCSITE-12128 홈 영역 UI 성능 개선 작업 0211
+
 .contents.membership {
     @at-root .page-header + & {
         margin-top: -40px;
@@ -376,6 +385,133 @@
                 padding: 0 16px;
             }
         }
+        .ev-filter {
+            padding: 20px 0;
+            border-top: 2px solid #000;
+
+            &-wrap {
+                @include pc {
+                    max-width: 1380px + 80px;
+                    margin: 16px auto -10px;
+                    padding: 0 40px;
+                }
+                @include mobile {
+                    max-width: 100%;
+                    padding: 0 16px;
+                    margin: 10px auto -14px;
+                }
+            }
+
+            &-sort {
+                span {
+                    position: relative;
+                }
+                span + span {
+                    @include pc {
+                        margin-left: 30px;
+                    }
+
+                    @include mobile {
+                        margin-left: 20px;
+                    }
+                }
+            }
+
+            &-shop {
+                display: none;
+                background-color: #f4f4f4;
+
+                @include pc {
+                    height: 100px;
+                    padding: 24px;
+                    margin-top: 20px;
+
+                    &.is-active {
+                        display: flex;
+                    }
+                }
+
+                @include mobile {
+                    margin-top: 18px;
+                    padding: 17px 16px;
+                    border-radius: 4px;
+
+                    &.is-active {
+                        display: block;
+                    }
+                }
+
+                .select-wrap {
+                    @include pc {
+                        max-width: 255px;
+                        &:not(:first-child) {
+                            margin-left: 8px;
+                        }
+                    }
+
+                    @include mobile {
+                        &:not(:first-child) {
+                            margin-top: 8px;
+                        }
+                    }
+
+                    @keyframes shine {
+                        to {
+                            background-position-x: -200%;
+                        }
+                    }
+
+                    &.loading {
+                        .ui-selectbox-wrap {
+                            .ui-select-button {
+                                background: linear-gradient(110deg, #eee 0%, #f5f5f5 18%, #ececec 33%);
+                                background-size: 200% 100%;
+                                animation: 1s shine linear infinite;
+                            }
+                        }
+                    }
+                }
+
+                .btn {
+                    @include tablet {
+                        padding-left: 15px;
+                        padding-right: 15px;
+                    }
+
+                    @include mobile {
+                        min-width: 132px;
+                        height: 46px;
+                        font-size: 14px;
+                        line-height: 14px;
+                    }
+
+                    &-wrap {
+                        display: none;
+                        &.is-active {
+                            display: inline-block;
+                            @include pc {
+                                display: inline-block;
+                            }
+
+                            @include mobile {
+                                display: block;
+                            }
+                        }
+
+                        @include pc {
+                           flex: none;
+                           margin-left: 8px;
+                        }
+
+                        @include mobile {
+                           margin-top: 8px;
+                           text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+
         .tab-contents {
             padding-bottom: 12px;
             &:last-child {
@@ -440,6 +576,7 @@
             margin-top: 48px;
         }
     }
+
 }
 
 

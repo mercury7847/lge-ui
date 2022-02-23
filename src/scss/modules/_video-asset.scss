@@ -1,7 +1,5 @@
 @charset "UTF-8";
-
-@import "../utilities/mixins";
-
+/* video-asset start */
 .video-asset {
 	width: 100%;
 	height: 56.25vw;
@@ -51,9 +49,11 @@
 	}
 }
 
-.visual-area {
+.component .visual-area  { 
 	position: relative;
+}
 
+.visual-area {
 	&.video-box {
 		position: relative;
 	}

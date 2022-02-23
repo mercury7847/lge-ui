@@ -93,7 +93,7 @@ br.m {
                 margin-left: 0;
                 text-align: center;
                 a {
-                    padding-bottom: 15px;
+                    padding-bottom: 6px;
                 }
             }
         }
@@ -269,13 +269,13 @@ br.m {
                     }
                 }
                 @include mobile {
-                    margin: 22px -16px 0;
+                    margin: 19px -16px 0;
                     &.btn-type {
                         .tabs {
                             padding: 0 16px;
                             > li {
                                 > a {
-                                    padding: 10px 0;
+                                    padding: 8px 0 6px;
                                     @include font(15px,24px);
                                 }
                             }

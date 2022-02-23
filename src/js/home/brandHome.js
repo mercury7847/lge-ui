@@ -74,7 +74,7 @@
             //체험하기 팝업
             self.$btnExperience.on('click',function(e){
                 if(!vcui.detect.isMobile && !vcui.detect.isIE){
-                    var target = "https://s3-an2-op-t20-css-contents.s3.ap-northeast-2.amazonaws.com/workexperience/index.html";
+                    var target = "https://thinq.link/workexperience/index.html"; //BTOCSITE-12312 ThinQ 체험하기 URL 변경 요청
                     var width = 460;
                     var height = 800;
                     var xpos = (screen.availWidth - width)/2;
@@ -392,6 +392,9 @@
             },
             setSlickDetail: function() { // BTOCSITE-11029
                 var idx = thinQMain.$appTablist.filter('.is-active').index();
+                if(idx != thinQMain.$appTabCont.find('.tab-cont').filter('.is-active').index()) {
+                    thinQMain.$appTabCont.find('.tab-cont').removeClass('is-active').eq(idx).addClass('is-active');
+                }
                 if(window.breakpoint.isMobile) {
                     if(!thinQMain.$appTabContDetail.eq(idx).hasClass('slick-initialized')) {
                         if(thinQMain.$appTabContDetail.eq(idx).width() > 0) thinQMain.$appTabContDetail.eq(idx).slick(thinQMain.appSmartTab.slideContentDetailConfig); 

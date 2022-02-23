@@ -29,16 +29,24 @@ $(window).ready(function(){
                 $(item).find('.dropContent').addClass('on');
                 $(this).hide();
             }
+            $(this).parents('.drop-info').attr('data-sc-top', $(window).scrollTop()); // BTOCSITE-11987
         });
 
         $(item).find('.drop-info .dropInfo_closeBtn').on('click', function(e){
             var mybtnAttr = $(this).attr('aria-describedby', slideID);
+            var winTop = $(window).scrollTop() // BTOCSITE-11987
+            , currentTop = Number($(this).parents('.drop-info').attr('data-sc-top'));
  
             if(titleAttr = mybtnAttr) {
                 //console.log("111");
                 $(item).find('.dropContent').removeClass('on');
                 $(item).find('.drop-info .dropInfo_openBtn').show();
             }
+            // S : BTOCSITE-11987
+            if(winTop !== currentTop && currentTop < winTop) {
+                $(window).scrollTop(currentTop);
+            }
+			// E : BTOCSITE-11987
         });
         
     });

@@ -70,6 +70,7 @@
 							});
 						}
 						self.$carousel.vcCarousel({
+							pauseOnHover: false,
 							autoplay: false,
 							infinite: false,
 							cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
@@ -87,29 +88,35 @@
 						});
 					},
 	
-					selectIndex:function(e){
-	
-						e.preventDefault();
-						var $this = $(this).closest('.ui_carousel_slide');
-						var thisIndex = $this.index();
+					selectIndex:function(target, currentIndex){
+						var $this = target.closest('.ui_carousel_slide');
+						var thisIndex = currentIndex;
 						$this.siblings().removeClass('active').attr('aria-selected', false); //PJTWAUS-1 :  20191223 modify
 						$this.addClass('active').attr('aria-selected', true); //PJTWAUS-1 : 20191223 modify
 						
-						$(this).parents('.KRC0020').attr('data-index',thisIndex);
-						$(this).parents('.KRC0020').find('.slider-for .group.active').removeClass('active');
-						$(this).parents('.KRC0020').find('.slider-for .group:nth-child(' + (thisIndex+1) + ')').addClass('active');
+						target.parents('.KRC0020').attr('data-index',thisIndex);
+						target.parents('.KRC0020').find('.slider-for .group.active').removeClass('active');
+						target.parents('.KRC0020').find('.slider-for .group:nth-child(' + (thisIndex+1) + ')').addClass('active');
 					},
 		
 					bindEvents: function() {
 						var self = this;
 						
-						self.$carousel.on('mouseenter', '.slider-nav .ui_carousel_slide', function() {
-							$(this).addClass('hover');
-						}).on('mouseleave', '.slider-nav .ui_carousel_slide', function() {
-							$(this).removeClass('hover');
-						});
+						// self.$carousel.on('mouseenter', '.slider-nav .ui_carousel_slide', function() {
+						// 	$(this).addClass('hover');
+						// }).on('mouseleave', '.slider-nav .ui_carousel_slide', function() {
+						// 	$(this).removeClass('hover');
+						// });
 		
-						self.$carousel.on('click', '.slider-nav .ui_carousel_slide a', self.selectIndex);
+						// S : BTOCSITE-12545
+						self.$carousel.on('click', '.slider-nav .ui_carousel_slide a', function(e) {
+							e.preventDefault();
+							var autoPlayFlag = $(root).data('autoplay') != undefined && $(root).data('autoplay') != "" && $(root).data('autoplay') == true;
+							if(autoPlayFlag) clearInterval(self.timer);
+							self.selectIndex($(this), $(this).closest('.ui_carousel_slide').index());
+							if(autoPlayFlag && self.viewInFlag) self.enterEvent();
+						});
+						// E : BTOCSITE-12545
 						/* s : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 */
 						// autoplay 슬라이드 컨트롤 버튼
 						self.$carousel.on('click', '.ui_carousel_play .btn-play', function() {
@@ -137,20 +144,20 @@
 								self.enterEvent();
 							}
 						});
-						//화면에 들어왔을때 컴포넌트안에 마우스, 포커스에 따라 반복 재생/정지
-						$(root).on('mouseenter touchstart mouseleave focusin focusout touchend', function(e){
-							var autoPlayFlag = $(root).data('autoplay') != undefined && $(root).data('autoplay') != "" && $(root).data('autoplay') == true;
-							if( e.type == "mouseenter" || e.type == 'touchstart' || e.type == 'focusin' ) {
-								if( autoPlayFlag) {
-									clearInterval(self.timer);
-								}
-							}
-							if( e.type == "mouseleave" || e.type == 'touchend' || e.type == 'focusout' ) {
-								if( autoPlayFlag && self.viewInFlag == true) {
-									self.enterEvent();
-								}
-							}
-						})
+						//화면에 들어왔을때 컴포넌트안에 마우스, 포커스에 따라 반복 재생/정지 : BTOCSITE-12545(삭제)
+						// $(root).on('mouseenter touchstart mouseleave focusin focusout touchend', function(e){
+						// 	var autoPlayFlag = $(root).data('autoplay') != undefined && $(root).data('autoplay') != "" && $(root).data('autoplay') == true;
+						// 	if( e.type == "mouseenter" || e.type == 'touchstart' || e.type == 'focusin' ) {
+						// 		if( autoPlayFlag) {
+						// 			clearInterval(self.timer);
+						// 		}
+						// 	}
+						// 	if( e.type == "mouseleave" || e.type == 'touchend' || e.type == 'focusout' ) {
+						// 		if( autoPlayFlag && self.viewInFlag == true) {
+						// 			self.enterEvent();
+						// 		}
+						// 	}
+						// })
 						/* e : BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건 */
 					},
 					intervalClear: function(){
@@ -165,7 +172,7 @@
 						//화면 중앙에 컴포넌트가 들어왔을때 이벤트 - BTOCSITE-8039 WCMS 컴포넌트 개선 요청 건
 						var self = this;
 						var $currentGroup = $(root).find('.slider-for .group.active');
-						var $currentVideo = $currentGroup.find('.animation-box video');
+						var $currentVideo = $currentGroup.find('.animation-box video').filter(':visible');
 						var $playWrap = self.$carousel.find('.ui_carousel_play');
 
 						self.intervalClear();
@@ -173,7 +180,7 @@
 							$playWrap.removeClass('play').addClass('stop');
 		
 							if( $currentVideo.length > 0 ) {
-								if($currentVideo.get(0).hasAttribute('autoplay')) {
+								if($currentVideo.attr('autoplay') != undefined && $currentVideo.get(0).readyState > 0) {
 									$currentVideo.get(0).currentTime = 0;
 									$currentVideo.get(0).play();
 									self.autoSpeed = $currentVideo.get(0).duration * 1000	
@@ -188,7 +195,8 @@
 								var $next = $(root).find('.slider-nav .ui_carousel_slide.active').next();
 								var currentIndex = $next.length > 0 ? $next.index() : 0;
 								if(currentIndex == $(root).find('.slider-for .group').size()-1) self.intervalCount++;
-								$(root).find('.slider-nav .ui_carousel_slide').eq(currentIndex).find('a').trigger('click');
+								self.selectIndex($(root).find('.slider-nav .ui_carousel_slide').eq(currentIndex).find('a'), currentIndex); // BTOCSITE-12545
+								// $(root).find('.slider-nav .ui_carousel_slide').eq(currentIndex).find('a').trigger('click');
 								if( !$(root).find('.slider-nav .ui_carousel_slide').eq(currentIndex).hasClass('on')) {
 									self.$carousel.vcCarousel('goTo', currentIndex)
 								}

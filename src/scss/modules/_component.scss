@@ -1,127 +1,8 @@
-@charset "UTF-8";
-
-/* bootstrap 확인용 */
-// @import "bootstrap-grid.min";
-// @import "bootstrap.min";
-/* //bootstrap 확인용 */
-@import "../utilities/variables";
-@import "../modules/video-asset";
-@import "../modules/animation-asset";
-
-//@import './components/filter-default'; // filter default css (filter: GPC0007/GPC0026)
-//@import './components/no-content';
-//@import './components/colorchip';
-
 /* 부트스트랩 충돌 추가 */
 .col-lg-12 {
     padding: 0;
 }
 /* //부트스트랩 충돌 추가 */
-
-@mixin font-family($font, $sytle:normal) {
-    @if ($font == $font-weight-regular) or ($font == $font-weight-bold) {
-        @if $sytle == italic {
-            font-style: italic;
-        } @else if $sytle == normal {
-            font-style: normal;
-        }
-    }
-
-    //font-weight:normal;
-    @if ($font == $font-weight-regular) {
-        font-weight: 400;
-    } @else if ($font == $font-weight-medium) {
-        font-weight: 500;
-    } @else if ($font == $font-weight-bold) {
-        font-weight: 700;
-    } @else {
-        font-weight: 400;
-    }
-}
-
-// Title Font Mixin
-@mixin eyebrow {
-    margin-bottom:8px;
-    font-weight:700;
-    font-size:24px;
-    line-height:34px;
-    @include mobile {
-        margin-bottom:6px;
-        font-size:16px;
-        line-height:24px;
-    }
-    &:only-child {
-        margin-bottom:0;
-    }
-}
-@mixin eyebrow-h3 {
-    margin-bottom:8px;
-    font-size:16px;
-    line-height:26px;
-    font-weight:700;
-    @media screen and (max-width: #{$tablet-s-width}) {
-        margin-bottom:6px;
-        font-size:14px;
-        line-height:22px;
-    }
-    &:only-child {
-        margin-bottom:0;
-    }
-}
-@mixin title-h1 {
-    font-size:52px;
-    line-height:70px;
-    font-weight:700;
-    @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:32px;
-        line-height:42px;
-    }
-}
-@mixin title-h2 {
-    font-size:48px;
-    line-height:66px;
-    font-weight:700;
-    @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:32px;
-        line-height:42px;
-    }
-}
-@mixin title-h3 {
-    font-size:40px;
-    line-height:56px;
-    font-weight:700;
-    @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:27px;
-        line-height:38px;
-    }
-}
-@mixin title-h4 {
-    font-size:32px;
-    line-height:52px;
-    font-weight:700;
-    @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:24px;
-        line-height:33px;
-    }
-}
-@mixin title-h5 {
-    font-size:24px;
-    line-height:34px;
-    font-weight:700;
-    @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:20px;
-        line-height:28px;
-    }
-}
-@mixin title-h6 {
-    font-size:24px;
-    line-height:34px;
-    font-weight:700;
-    @media screen and (max-width: #{$tablet-s-width}) {
-        font-size:20px;
-        line-height:28px;
-    }
-}
 
 .component-wrap .title.title-h1 * {
     @include title-h1;
@@ -633,68 +514,6 @@
                 }
             }
         }
-    }
-}
-
-@mixin bodycopy ($own, $prev) {
-    @if $own == h1 or $own == h2 {
-        @include font-large;
-    } @else if $own == h3 {
-        font-size:16px;
-        line-height:26px;
-        @include mobile {
-            font-size:14px;
-            line-height:22px;
-        }
-    }
-    
-    @if $prev == h1 {
-        margin-top:32px;
-        @include mobile {
-            margin-top:16px;
-        }
-    } @else if $prev == h2 {
-        margin-top:20px;
-        @include mobile {
-            margin-top:12px;
-        }
-    } @else if $prev == h3 {
-        margin-top:16px;
-        @include mobile {
-            margin-top:14px;
-        }
-    }
-
-    &:first-child {
-        margin-top:0;
-    }
-}
-@mixin cta-btn {
-    margin-top:32px;
-    font-size:0;
-    &:first-child {
-        margin-top:0;
-    }
-    .btn.border,
-    .text-link {
-        margin-right:16px;
-        &:last-child {
-            margin-right:0;
-        }
-    }
-    @include mobile {
-        margin-top: 24px;
-    }
-}
-
-@mixin boxs ($size) {
-    @if $size == w { // wide
-        max-width:((1146px * 100%) / 1380px);
-    } @else if $size == n { // narrow
-        max-width:((678px * 100%) / 1440px);
-    }
-    @include mobile {
-        max-width:100%;
     }
 }
 
@@ -1443,11 +1262,12 @@
 
 }
 
-.component-wrap {
-    .component[class*=KRC] * {
-        word-break:keep-all;
-    }
-}
+/* 메인 성능 개선 체트 */
+// .component-wrap {
+//     .component[class*=KRC] * {
+//         word-break:keep-all;
+//     }
+// }
 
 html.modal-open {
     overflow: hidden;

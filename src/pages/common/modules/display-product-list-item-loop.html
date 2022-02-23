@@ -1,4 +1,4 @@
-<li>
+<li id="@@modelId">
     <!-- BTOCSITE-4785 : .product-contents > .flag-wrap.bar-type 제거, .product-bottom > .flag-wrap.bar-type 제거, 장바구니버튼 제거, 진열제품 구매가능매장 확인하기 버튼 추가 -->
     <div class="item @@itemClass">
         @@if (context.imageFlags) {
@@ -11,63 +11,11 @@
         </div>
         }
         <div class="product-image" aria-hidden="true">
-            @@if(!context.singleImage) {
-                @@include('./common/partials/KRP0007-carousel.html', {
-                    "pdpType" : "displayPdp",
-                    "buttonUrl" : "https://www.lge.co.kr/refrigerators/w821mww463s",
-                    "slideArr" : [
-                        {"visual" : "/lg5-common/images/dummy/@img-product.jpg"},
-                        {"visual" : "/lg5-common/images/dummy/@img-product2.jpg"}
-                    ]
-                })
-        }
-        @@if(context.singleImage) {
             <a href="@@eventItem.buttonUrl" class="btn-pdp-alert">
-                <img src="@@singleImage" alt="LG DIOS 노크온 매직스페이스">
+                <img src="@@image" alt="LG DIOS 노크온 매직스페이스">
             </a>
-        }
         </div>
         <div class="product-contents">
-            @@if (context.optionColor) {
-            <div class="product-option color ui_smooth_scrolltab">
-                <div class="ui_smooth_tab">
-                    <ul class="option-list" role="radiogroup">
-                        @@for (var i = 0; i < context.colorSet.length; i++) {
-                        <li>
-                            <div role="radio" class="chk-wrap-colorchip `+colorSet[i].color+`" title="`+colorSet[i].title+`">
-                                <input type="radio" id="`+colorSet[i].id+`" name="`+colorSet[i].name+`" `+colorSet[i].checked+` value="MD08045006"> <!-- 2021.2.10 vlaue=modelId 추가-->
-                                <label for="`+colorSet[i].id+`"><span class="blind">`+colorSet[i].title+`</span></label>
-                            </div>
-                        </li>
-                        }
-                    </ul>
-                </div>
-                <div class="scroll-controls ui_smooth_controls"> 
-                    <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
-                    <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
-                </div>
-            </div>
-            }
-            @@if (context.optionText) {
-            <div class="product-option text ui_smooth_scrolltab">
-                <div class="ui_smooth_tab"> 
-                    <ul class="option-list" role="radiogroup">
-                        @@for (var i = 0; i < context.textSet.length; i++) {
-                        <li>
-                            <div role="radio" class="rdo-wrap" title="`+textSet[i].title+`">
-                                <input type="radio" id="`+textSet[i].id+`" name="`+textSet[i].name+`" `+textSet[i].checked+`>
-                                <label for="`+textSet[i].id+`">`+textSet[i].title+`</label>
-                            </div>
-                        </li>
-                        }
-                    </ul>
-                </div>
-                <div class="scroll-controls ui_smooth_controls">
-                    <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
-                    <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
-                </div>
-            </div>
-            }
             <div class="product-info">
                 <div class="product-name">
                     <a href="#" class="btn-pdp-alert">LG DIOS 노크온 매직스페이스</a>
@@ -162,11 +110,11 @@
                 <div class="btn-area-wrap">
                     <div class="btn-area">
                         <!-- BTOCSITE-4785 : 파라미터 전달값 - dpPdp(제품명전달), cartPrdList, salesCode -->
-                        <a href="@@eventItem.storeUrl" class="btn border size-m btn-store">진열제품 구매가능매장 확인하기</a>
+                        <a href="@@eventItem.storeUrl" class="btn border size-m btn-store">구매 매장 확인/예약하기</a><!-- BTOCSITE-11191 텍스트 변경 -->
                     </div>
                     <div class="btn-area">
                         <!-- BTOCSITE-4785 : .btn-pdp-alert - 자세히보기 버튼 클릭시 팝업 노출 -->
-                        <a href="https://www.lge.co.kr/refrigerators/w821mww463s" class="btn border size-m btn-pdp-alert">@@eventItem.button</a>
+                        <a href="https://www.lge.co.kr/refrigerators/w821mww463s" class="btn border size-m btn-pdp-alert">@@eventItem.button</a><!-- BTOCSITE-11191 텍스트 변경 -->
                     </div>
                 </div>
             </div>
@@ -182,10 +130,10 @@
                 </div>
                 <div class="btn-area-wrap">
                     <div class="btn-area">
-                        <a href="@@eventItem.storeUrl" class="btn border size-m btn-store">진열제품 구매가능매장 확인하기</a>
+                        <a href="@@eventItem.storeUrl" class="btn border size-m btn-store">구매 매장 확인/예약하기</a><!-- BTOCSITE-11191 텍스트 변경 -->
                     </div>
                     <div class="btn-area">
-                        <a href="@@eventItem.buttonUrl" class="btn border size-m btn-pdp-alert">@@eventItem.button</a>
+                        <a href="@@eventItem.buttonUrl" class="btn border size-m btn-pdp-alert">@@eventItem.button</a><!-- BTOCSITE-11191 텍스트 변경 -->
                     </div>
                 </div>
             </div>

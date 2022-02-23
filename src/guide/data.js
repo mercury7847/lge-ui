@@ -128,7 +128,8 @@ var res = {
 				"KRP0041 PDP  Product instructions [KRP0041]" : ["/html/components/KRP0041.html","",""],
 				"KRP0042 PDP promotion banner [KRP0042]" : ["/html/components/KRP0042.html","",""],
 				//BTOCSITE-6032 PDP에 Q&A게시판 생성 요청
-				"KRP0043 PDP/Q&A 게시판[KRP0043]" : ["/html/components/KRP0043.html","",""]
+				"KRP0043 PDP/Q&A 게시판[KRP0043]" : ["/html/components/KRP0043.html","",""],
+				"KRP0044 PDP Stroy latest [KRP0044]" : ["/html/components/KRP0044.html","",""], // BTOCSITE-12581
 			}
 		},
 		// "Component" : {
@@ -274,7 +275,10 @@ var res = {
 			},
 			"브랜드관(PRH)" : {
 				"LG ThinQ" : ["/html/PRH/MKTF1110.html","","진행중"],
-				"LG SIGNATURE" : ["/html/PRH/MKTF1111.html","","진행중"]
+				"LG SIGNATURE" : ["/html/PRH/MKTF1111.html","","진행중"],
+			},
+			"브랜드관(OBJ)" : {
+				"LG Object" : ["/html/OBJ/OBJ0100.html","","진행중"],
 			},
 			"스토리(STS)" : {
 				"홈(서브메인)" : ["/html/STS/OBS5001.html","",""],

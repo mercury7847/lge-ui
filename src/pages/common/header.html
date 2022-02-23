@@ -63,6 +63,28 @@
                     <!-- // 20201230 수정 -->
                 </ul>
             </div>
+            @@if (context.shareBtn === "shareBtn") {
+            <div class="story-page">
+                <div class="sns-cont">
+                    <div class="sns-share">
+                        <div class="tooltip-wrap share"><a href="#" class="tooltip-icon ui_tooltip-target" data-fixed="fixed-right" ui-modules="TooltipTarget,TooltipTarget"><span class="blind">제품 공유하기</span></a>
+                            <div class="tooltip-box">
+                                <span class="title">공유</span>
+                                <div class="sns-wrap">
+                                    <ul class="sns-list">
+                                        <li><a href="#" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>
+                                        <li><a href="#" class="ico-btn tw" title="component-twiiterShareBlank" data-link-name="twitter">트위터<span class="blind">로 페이지 공유하기</span></a></li>
+                                        <li><a href="#" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지 공유하기</span></a></li>
+                                        <li><a href="#" class="ico-btn url" data-link-name="copy_url">URL복사<span class="blind">하기</span></a></li>
+                                    </ul>
+                                </div>
+                                <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
         </div>
 
         <!--
@@ -2665,11 +2687,14 @@
     [.isActive] : 현재 활성화 페이지에 해당하는 카테고리 li에 class 추가
     [data-current="on"] : 현재 활성화 페이지에 해당하는 카테고리 li에 data 추가 (레이어 닫힌 후 재 활성화 표시 위하여)
 -->
-<div class="mobile-nav-wrap is-depth sub-renew-nav-wrap">
+<div class="mobile-nav-wrap @@is-depth sub-renew-nav-wrap">
     <a href="#" class="btn-back"><span class="blind">이전</span></a>
     <!--현재 페이지의 타이틀이 노출되는 경우 하기 영역 노출-->
-    <a href="#n" class="nav-item">노트북</a>
+    @@if (context.hasTitle === "hasTitle") {
+    <a href="#n" class="nav-item">@@titleName</a>
+    }
     <!--//현재 페이지의 타이틀이 노출되는 경우 하기 영역 노출-->
+    @@if (context.subCategory === "subCategory") {
     <div class="nav-category-container">
         <ul class="superCategory">
             <!--[D] 현재 활성화 페이지 일 경우 대카테고리, 서브카테고리 각각에 class 및 data-current="on" 추가 -->
@@ -2723,6 +2748,7 @@
             <li><a href="http://www.lge.co.kr">케어용품/소모품</a></li>
         </ul>
     </div>
+    }
 </div>
 <div class="sub-renew-dimmed"></div>
 <!--// Mobile Sub Depth Header -->

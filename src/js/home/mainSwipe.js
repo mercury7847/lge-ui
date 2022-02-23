@@ -48,6 +48,9 @@ MainSwiper.prototype = {
         this.setMobileNav();
         this.setSwipe();
         this.setUrlEvent();
+        this.setArBtn(); // BTOCSITE-12128 메인성능개선
+
+
         
     },
     setSwipe : function(){
@@ -151,11 +154,15 @@ MainSwiper.prototype = {
                     //BTOCSITE_1967
                     //self.setStatusBar(swiper);
 
+
                     // $('html,body').stop().animate({scrollTop:0}, 300);
-                    setTimeout(function(){
-                        //$('html,body').stop().animate({scrollTop:0}, 300);
-                        $(window).scrollTop(0);
-                    }, 500);
+
+                    self._rafRun(
+                        window.scrollTo({
+                            left : 0,
+                            top : (window.pageYOffset === 0) ? 0 : $(".header").height()
+                        })
+                    );
                     
 
                     // GA 커스텀 이벤트 실행
@@ -181,27 +188,16 @@ MainSwiper.prototype = {
                     */
 
                     //console.log('slideChange arguments', arguments);
-                }
-                /*
+                },
+                // BTOCSITE-11602 고객지원 팝업 오류 대응
                 'transitionEnd' : function(swiper){
-                    console.log("transitionEnd swiper", swiper );
-                    
-                    var currentSlide = swiper.slides[swiper.activeIndex];
-                    var hash = '/' + $(currentSlide).data().hash;
-                    if (hash == '/home'){
-                        hash = '/';
-                    }
-
-                    if(self.ablePushState) {
-                        history.pushState({}, '', hash);      
-                        self.switchQuickMenu( hash );  
-                        self.ablePushState = false;
-                    }
-                    
-                    
+                    setTimeout(function(){
+                        $(window).trigger('scriptChange',{
+                            swiper : swiper,
+                            script: null
+                        })
+                    },100);
                 }
-                */
-                
             }
         });
 
@@ -223,8 +219,14 @@ MainSwiper.prototype = {
             if (isCategoryTab || isCarouselList || isTagScrollTab || isSlick || isCareSmoothTab || isSmoothTab){ //BTOCSITE-2196  //BTOCSITE-6882
                 e.stopPropagation();
             }
-        });        
-
+        });  
+        
+        $(window).on('swConScriptLoad',function(e,data) {
+            $(window).trigger('scriptLoad',{
+                swiper : window.mainSwiper.swiper,
+                script: data.script
+            })
+        })
     },
     loadContent : function( currentSlide, pushFlag ){
         this.loadQUE.push({
@@ -297,14 +299,20 @@ MainSwiper.prototype = {
             url : href,
             dataType : 'html',
             success : function( res ){
-                $(currentSlide).html( res );
+                var html = res.replace(/(<img[^>]+data-m-src\s*=\s*[\"']?([^>\"']*)[\"']?[^>]*>)/g ,function(match,p1,p2){
+                    var mSrc = p2;
+                    var pcSrc = p1.replace(/(<img[^>]+data-pc-src\s*=\s*[\"']?([^>\"']*)[\"']?[^>]*>)/g,"$2");
+                    var alt = p1.replace(/(<img[^>]+alt\s*=\s*[\"']?([^>\"']*)[\"']?[^>]*>)/g,"$2");
+                    return '<img src="'+mSrc+'" data-pc-src="'+pcSrc+'" data-m-src="'+mSrc+'" data-current-image="'+mSrc+'" alt="'+alt+'" />';
+                })
+                $(currentSlide).html( html );
             },
             error : function(error){
                 console.log('mainSwiper cant get HTML', error);
             },
             complete: function(){
                 lgkorUI.init( $(currentSlide) ).done(function( msg ){
-                    //console.log('컨텐츠 로드 성공', msg);
+                    // console.log('컨텐츠 로드 성공', msg);
                     $(currentSlide).data().isLoaded = true;                
                     $(currentSlide).attr('data-isLoaded', true);
                     isLoaded = true;
@@ -329,12 +337,13 @@ MainSwiper.prototype = {
                     self.getContent();
 
 
-                    vcui.require(['ui/lazyLoaderSwitch'], function (){
-                        setTimeout(function(){
-                            mainSwiper.swiper.updateAutoHeight();
-                            $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
-                        }, 500);
-                    });
+                    // 메인 성능개선  - 비동기 html 가공처리 테스트중
+                    // vcui.require(['ui/lazyLoaderSwitch'], function (){
+                    //     setTimeout(function(){
+                    //         mainSwiper.swiper.updateAutoHeight();
+                    //         // $('body').vcLazyLoaderSwitch('reload', $(currentSlide));
+                    //     }, 500);
+                    // });
                 });
             }
         });
@@ -468,21 +477,97 @@ MainSwiper.prototype = {
         }
     },
     storyHomeToastChk: function(target){
+        var self = this;
         //BTOCSITE-188
-        setTimeout(function(){
+        self._rafRun(function(){
             if( $('.swiper-slide-active').find('.story-main').length > 0 && lgkorUI.getCookie('storyHomeFirstTag') != "Y" && $('.swiper-slide-active').find('.story-main .user_story').is(':visible') == true) {
                 $(window).trigger("toastshow", "구독하고 있는 스토리를 확인해보세요");
                 lgkorUI.setCookie('storyHomeFirstTag', "Y", false, 30)
-            }    
-        }, 100);
+            }   
+        });
         
-    }
+    },
+
+    // S BTOCSITE-12128 메인성능개선
+    setArBtn : function(){
+        var self = this;
+        // 플로팅 버튼 AR 관련
+        if (vcui.detect.isMobileDevice){
+            var isApplication = isApp();
+
+            self._rafRun(function(){
+                if (isApplication){
+                    $('.floating-menu.btn-app-ar').css('display', 'block');                    
+                    $('.floating-menu.top').hide();
+                    $('.floating-menu.top').addClass('call-yet');
+                    $(window).trigger('floatingTopHide');
+                    $(window).scrollTop(0);
+                }
+            });
+
+            $(window).on('scroll.floating', function(){                
+                var scrollTop = $(window).scrollTop();
+                var hasTop = $('.floating-menu.top').hasClass('call-yet');
+
+                if(scrollTop == 0){
+                    if(hasTop){
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        
+                        $(window).trigger('floatingTopHide');
+                        if(!(isApplication && location.pathname == "/")) {
+                            $(window).trigger('floatingTopHide');
+                        }
+                    } else {
+                        //앱인데 메인이 아닐경우에만 실행
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        $(window).trigger('floatingTopHide');
+                        if(!(isApplication && location.pathname == "/")) {
+                            $(window).trigger('floatingTopHide');
+                        }
+                        //임시 추가 끝
+                    }
+                }else{
+                    if(hasTop){
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        
+                        $(window).trigger('floatingTopShow');
+
+                    } else {
+                        if ($('[data-hash=home]').hasClass('swiper-slide-active')){
+                            $('.floating-menu.btn-app-ar').css('display', 'block');
+                        }
+                        $(window).trigger('floatingTopShow');
+                    }                       
+                }
+            });
+        }
+    },
+    _rafRun : function (cb) {
+        var tick = false
+      
+        return function trigger() {
+          if (tick) {
+            return
+          }
+      
+          tick = true
+          return requestAnimationFrame(function task() {
+            tick = false
+            return cb()
+          })
+        }
+      }
+    // E BTOCSITE-12128 메인성능개선
 }
 
 $(function(){
     var mainSwiperID = 'mobileNav';
     window.mainSwiper = new MainSwiper( mainSwiperID );
-
-    //$('#floatBox').hide();
 
 });

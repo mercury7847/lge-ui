@@ -8,13 +8,15 @@
 
             var planEventId = $('#planEventId').val();
             var memberStatus = self.memberCheck();
+            var checkEmail = $("#checkEmail").val().split(',');
+
             if (memberStatus == 'Y') {
                 location.href = "/benefits/exhibitions/detail-"+planEventId;
             }
 
             if (lgkorUI.stringToBool(loginFlag)) {
                 // 테스트를 위한 나이제한 변경 부분
-                // if(birthDt > 19750101 && birthDt < 20040102){
+                // if(birthDt > 19750101 && birthDt < 20040102){ 
                 if(birthDt > 19920101 && birthDt < 20040102){
                     $('.login-ok').show();
                     $('.login-no').hide();
@@ -31,9 +33,6 @@
             self.$emailInput = $('#userEmail');
             self.$completeBtn = $('#btnCertified');
             self.$loginBtn = $('#btnLogin');
-            var checkEmail = $('#checkEmail').val();
-            var checklength = checkEmail.split(',').length;
-
             self.$emailInput.attr('maxlength', 50);
 
             vcui.require(['ui/validation'], function() {
@@ -41,29 +40,25 @@
                     //이메일
                     userEmail: {
                         required: true,
-                        pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        pattern: /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+)*(\.ac\.kr|\.edu)$/,
                         minLength: 1,
                         maxLength: 50,
                         msgTarget: '.err-block',
                         errorMsg: '이메일 주소를 입력해주세요.',
                         patternMsg: '@ac.kr 계정의 이메일을 입력해 주세요.',
                         validate: function(value) {
-                            var _pattern = new RegExp(this.pattern);
-                            if (_pattern.test(value) == true) {
-                                if (value.split('@')[0].length <= 30 && value.split('@')[1].length <= 20) {
-                                    for (var i = 0; i < checklength; i++) {
-                                        if (value.split('@')[1] === checkEmail.split(',')[i]) {
-                                            return true;
-                                            break;
-                                        }
-                                    }
-                                    return false;
+                            var email = value.split('@'),emailId = email[0], emailDomain = email[1];
+                            if (emailId.length <= 30 && emailDomain.length <= 20) { 
+                                var _pattern = new RegExp(this.pattern);
+                                if (_pattern.test(value) == true) {
+                                    return value.indexOf(".ac.kr") > -1 || value.indexOf(".edu") > -1 ? true : false;
                                 } else {
-                                    return false;
+                                    // 예외사항 처리
+                                    return checkEmail.indexOf(emailDomain) > -1 && !!emailId.match(/^([0-9a-zA-Z_\.-]+)$/) ? true : false;
                                 }
                             } else {
                                 return false;
-                            }
+                            }              
                         }
                     },
                     //약관동의
@@ -164,7 +159,7 @@
             self.$emailInput.on('input', function(e) {
                 var $this = $(this),
                     value = $this.val(),
-                    regex = /[^a-zA-Z0-9.\@]/g;
+                    regex = /[^a-zA-Z0-9._\-\@]/g; 
                 if (regex.test(value)) {
                     $this.val(value.replace(regex, ""));
                     return;
@@ -177,20 +172,24 @@
 
         memberCheck : function() {
             var planEventId = $('#planEventId').val();
+            var url = $('#planEventId').data("memberCheckUrl");
+                url = url || "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId=" + planEventId;
             var memberStatus = '';
-            $.ajax({
-                type: "POST",
-                async: false,
-                url: "/evt/api/exhibitions/retrieveAuthEmail.lgajax?planEventId=" + planEventId,
-                dataType: "json",
-                success: function(json) {
-                    memberStatus = json.data;
-                },
-                error: function(request, status, error) {
-                    alert("오류가 발생하였습니다.");
-                    return;
-                }
-            });
+            if(url) {
+                $.ajax({
+                    type: "POST",
+                    async: false,
+                    url: url,
+                    dataType: "json",
+                    success: function(json) {
+                        memberStatus = json.data;
+                    },
+                    error: function(request, status, error) {
+                        if(location.hostname !== "localhost") alert("오류가 발생하였습니다.");
+                        return;
+                    }
+                });
+            }
             return memberStatus;
         }
     }

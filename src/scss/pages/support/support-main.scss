@@ -146,7 +146,6 @@
     }
     @include tablet {
         &.init-type {
-            display: block;
             overflow:auto;
             padding:40px;
 

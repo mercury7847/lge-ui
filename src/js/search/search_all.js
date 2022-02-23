@@ -270,6 +270,7 @@ if ('scrollRestoration' in history) {
                 '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                 '<div class="result-tit">' +
                     '<a href="{{url}}">{{#raw title}}</a>' +
+                    '{{#if type=="trouble" && content}}<a href="{{url}}" class="search-content"><p class="desc">{{#raw content}}</p></a>{{/if}}' +
                     '<a href="{{url}}" class="cs">' +
                         '<span class="cs-inner">' +
                             '{{#each (item, index) in category}}{{#if index != 0}}>{{/if}}<span>{{item}}</span>{{/each}}' +
@@ -1191,6 +1192,7 @@ if ('scrollRestoration' in history) {
                                 item.hash = [];
                             }
                             item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                            item.content = vcui.string.replaceAll(item.content, searchedValue, replaceText); //BTOCSITE-11326
                             if(item.type=="product") {
                                 $list_ul.append(vcui.template(customerProductItemTemplate, item));
                             } else {
