@@ -75,7 +75,7 @@
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
                 options.isProduct = lgkorUI.stringToBool(data.isproduct);
                 console.log(options, sendata)
-                $section.find('.review-info-text').append('<span style="padding: 0 3px;font-size:6px;background-color:#ff746a;color: #fff">STAGING: '+options.loginFlag+' / '+options.ownStatus+'/'+sendata.modelName+'/'+sendata.modelId+'<a href="/html/components/KRP0012.html">test url</a></span>')
+                $section.find('.review-info-text').append('<span style="padding: 0 3px;font-size:6px;background-color:#ff746a;color: #fff">STAGING: '+options.loginFlag+' / '+options.ownStatus+'/'+sendata.modelName+'/'+sendata.modelId+'<a href="/html/components/KRP0012.html">test url</a><a href="https://sreview1.cre.ma/lge.co.kr/mobile/reviews/new?close_url=https%3A%2F%2Fwwwdev50.lge.co.kr%2Ftvs%2Foled88zxkna%23pdp_review&product_code=OLED88ZXKNA&review_source=mobile_my_orders&app=0&device=mobile&secure_username=V292147c59acedc6e6bce4a638cb4007c3c8eb0de709484d17b102a51ab0b046b627424c38a031ce562903d8e3e038ddec&secure_user_name=V2cb54ba54b131b5ee6f38c12c31960aaa&secure_device_token=HNsfm0BNzgPnfC80">test2 url</a></span>')
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
                 lgkorUI.cremaReload();
             },"POST", null, null, null, null, function(request){
@@ -103,12 +103,12 @@
                         lgkorUI.confirm(msg, opt);
                     }else {
                         alert(isApp()+'/'+ vcui.detect.isIOS+'/'+ vcui.detect.isAndroid)
-                        var params;
-                        return params = {
-                            "close_url": location.href,
-                            "product_code": options.productcode,
-                            "review_source": 'mobile_my_orders'
-                        }, window.location.href = crema.util.review_url("mobile/reviews/new", params);
+                        // var params;
+                        // return params = {
+                        //     "close_url": location.href,
+                        //     "product_code": options.productcode,
+                        //     "review_source": 'mobile_my_orders',
+                        // }, window.location.href = crema.util.review_url("mobile/reviews/new", params);
                     }
                 }
                 return false;
