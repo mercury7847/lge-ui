@@ -49,7 +49,7 @@
         reviewWrite: function() {
             var $section = $('.KRP0012');
             var ajaxUrl = '/mkt/api/product/retrieveProductRegisterInfo';
-            if(location.hostname == 'localhost') ajaxUrl = '/lg5-common/data-ajax/pdp/pdp_status.json';
+            if(location.hostname == 'localhost' || location.port == '3010') ajaxUrl = '/lg5-common/data-ajax/pdp/pdp_status.json';
             var options = {
                 isMobile: vcui.detect.isMobile,
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
@@ -61,7 +61,7 @@
                 '{{#if isProduct}}<div class="txt-area">'+
                 '<p>보유 제품 등록하고 제품 리뷰 작성하면 최대 <strong>1,000P</strong>의 멤버십 포인트를 드립니다.</p>'+
                 '</div>{{/if}}'+
-                '<button type="button" class="{{#if orderStatus}}crema-new-review-link{{/if}} btn" data-product-code="{{productcode}}" data-own-status="{{ownStatus}}" {{#if isMobile}}review-source="mobile_my_orders"{{/if}}>리뷰 작성하기</button>'+
+                '<button type="button" class="{{#if orderStatus}}js-crema-new-review-link{{/if}} btn" data-product-code="{{productcode}}" data-own-status="{{ownStatus}}" {{#if isMobile}}data-review-source="mobile_my_orders"{{/if}}>리뷰 작성하기</button>'+
                 '</div>'
             };
             var sendata = {
@@ -101,6 +101,14 @@
                     };
                     if(!lgkorUI.stringToBool($(this).attr('data-own-status'))) {
                         lgkorUI.confirm(msg, opt);
+                    }else {
+                        alert(isApp()+'/'+ vcui.detect.isIOS+'/'+ vcui.detect.isAndroid)
+                        var params;
+                        return params = {
+                            "close_url": location.href,
+                            "product_code": options.productcode,
+                            "review_source": 'mobile_my_orders'
+                        }, window.location.href = crema.util.review_url("mobile/reviews/new", params);
                     }
                 }
                 return false;
