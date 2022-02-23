@@ -75,7 +75,7 @@
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
                 options.isProduct = lgkorUI.stringToBool(data.isproduct);
                 console.log(options, sendata)
-                $section.find('.review-info-text').append('<span style="padding: 0 3px;font-size:6px;background-color:#ff746a;color: #fff">STAGING: '+options.loginFlag+' / '+options.ownStatus+'/'+sendata.modelName+'/'+sendata.modelId+'<a href="https://sreview1.cre.ma/lge.co.kr/mobile/reviews/new?order_code=&sub_order_code=&product_subcode=&product_code=OLED88ZXKNA&review_source=&close_url='+location.href+'&app=0&device=mobile&secure_username=V292147c59acedc6e6bce4a638cb4007c3c8eb0de709484d17b102a51ab0b046b627424c38a031ce562903d8e3e038ddec&secure_user_name=V2cb54ba54b131b5ee6f38c12c31960aaa&secure_device_token=HNsfm0BNzgPnfC80&widget_env=100">test url</a></span>')
+                $section.find('.review-info-text').append('<span style="padding: 0 3px;font-size:6px;background-color:#ff746a;color: #fff">STAGING: '+options.loginFlag+' / '+options.ownStatus+'/'+sendata.modelName+'/'+sendata.modelId+'<a href="/html/components/KRP0012.html">test url</a></span>')
                 $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
                 lgkorUI.cremaReload();
             },"POST", null, null, null, null, function(request){
