@@ -48,7 +48,7 @@
         // S : BTOCSITE-8083
         reviewWrite: function() {
             var $section = $('.KRP0012');
-            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/lg5-common/data-ajax/pdp/pdp_status.json'//'/mkt/api/product/retrieveProductRegisterInfo';
+            var ajaxUrl = $section.attr('data-product-status')?$section.attr('data-product-status'):'/mkt/api/product/retrieveProductRegisterInfo';
             var options = {
                 isMobile: vcui.detect.isMobile,
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
@@ -83,27 +83,17 @@
             });
             var flag = false;
             $section.off("click").on('click','.review-write-wrap .btn', function(e) {
-                if(!flag && !$(this).hasClass('crema-new-review-link')) {
+                if(!flag) {
                     flag = true;
                     var msg = options.loginFlag ? '보유제품 등록 후 리뷰 등록 가능합니다':'리뷰 작성을 위해 로그인을 해주세요.';
-                    var opt = (options.loginFlag) ? {
-                        typeClass: "crema-review-confirm",
-                        okBtnName: "보유제품 등록하기",
+                    var opt = {
+                        typeClass: options.loginFlag ? 'crema-review-confirm':'',
+                        okBtnName: options.loginFlag ? '보유제품 등록하기':'예',
                         cancel: function(){
                             flag = false;
                         },
                         ok: function(){
-                            var link =  '/my-page/manage-products?tab=1';
-                            location.href = link;
-                        }
-                    }:{
-                        cancelBtnName: "아니오",
-                        okBtnName: "예",
-                        cancel: function(){
-                            flag = false;
-                        },
-                        ok: function(){
-                            var link =  "/sso/api/Login";
+                            var link =  options.loginFlag ? '/my-page/manage-products?tab=1': '/sso/api/Login';
                             location.href = link;
                         }
                     };
