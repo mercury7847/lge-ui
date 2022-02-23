@@ -37,7 +37,7 @@
             self.$totalCounter = self.$section.find('#totalCount');
             self.$list = self.$section.find('ul.story-box');
             self.$pagination = self.$section.find('.pagination').vcPagination();
-            self.requestData({"categoryId":lgePdpSendData.categoryId, 'page': 1});
+            self.requestData({"modelId":lgePdpSendData.modelId, 'page': 1});
         },
 
         bindEvents: function() {
@@ -45,7 +45,7 @@
 
             self.$pagination.on('page_click', function(e, data) {
                 //기존에 입력된 데이타와 변경된 페이지로 검색
-                var param = {"categoryId":lgePdpSendData.categoryId, 'page':data}
+                var param = {"modelId":lgePdpSendData.modelId, 'page':data}
                 self.requestData(param);
             });
 
@@ -62,11 +62,11 @@
                 ajaxUrl = '/lg5-common/data-ajax/KRP0044/KRP0044_pg2.json'
             }
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
-                console.log(">>", result)
+                console.log(">>", result, param)
                 var tempData = result.data;
                 var data = (tempData && tempData instanceof Array && tempData.length > 0) ? tempData[0] : {};
                 self.$pagination.vcPagination('setPageInfo',data.pagination);
-                self.$totalCounter.text('총 '+ vcui.number.addComma(data.storyListTotalCount) +'개');
+                // self.$totalCounter.text('총 '+ vcui.number.addComma(data.storyListTotalCount) +'개');
 
                 var arr = data.storyList instanceof Array ? data.storyList : [];
                 self.$list.empty();
