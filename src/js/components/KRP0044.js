@@ -55,9 +55,6 @@
         requestData: function(param) {
             var self = this;
             var ajaxUrl = self.$section.data('responseUrl');
-            if(location.pathname == '/html/components/KRP0044.html' && param.page == '2') {
-                ajaxUrl = '/lg5-common/data-ajax/KRP0044/KRP0044_pg2.json'
-            }
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                 var tempData = result.data;
                 var data = (tempData && tempData instanceof Array && tempData.length > 0) ? tempData[0] : {};
