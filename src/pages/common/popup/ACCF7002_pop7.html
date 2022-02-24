@@ -1,55 +1,38 @@
 <article id="@@popupID" class="popup-wrap">
     <header class="pop-header">
-        <h1 class="tit"><span>주문 상세</span></h1>
+        <h1 class="tit"><span>배송 정보</span></h1>
     </header>
-    <section class="pop-conts no-footer">
+    <section class="pop-conts">
         <div class="section-wrap">
-            <div class="sects">
-                <div class="section-inner type0">
-                    <!-- 배송 설치 정보 -->
-                    <div class="inner-box shipping">
-                        <p class="inner-tit">배송 설치 정보 (실사용자)</p>
-                        @@include('./common/modules/dl-infolist.html', {
-                            "list" : [
-                                { "dt" : "인수자 성명", "dd" : "이*수" },
-                                { "dt" : "인수자 휴대폰", "dd" : "010-****-1234" },
-                                { "dt" : "일반전화번호", "dd" : "02-****-1234" },
-                                { "dt" : "설치 주소", "dd" : "21655 서울특별시 엘지구 엘지로 ****" },
-                                { "dt" : "배송 요청사항", "dd" : "배송 요청사항이 노출됩니다." },
-                                { "dt" : "설치장소", "dd" : "설치장소가 노출됩니다." },
-                                { "dt" : "설치희망 일시", "dd" : "2020.09.23 10:00 ~ 12:00" },
-                                { "dt" : "사전 방문 신청", "dd" : "미신청 혹은 신청" },
-                                { "dt" : "폐가전 수거", "dd" : "수거신청 혹은 해당없음" },
-                            ]
-                        })
+            <div class="delivery-info">
+                <div class="delivery-step">
+                    <div class="delivery-text active">
+                        <strong class="delivery-status">배송완료</strong>
+                        <p class="delivery_date">2022.01.21</p>
+                        <span class="delivery_name">배송기사 김*지 <em>010-****-1234</em></span>
                     </div>
-                    <!-- // 배송 설치 정보 -->
-
-                    <!-- 결제 정보 -->
-                    <div class="inner-box payment">
-                        <p class="inner-tit">결제 정보</p>
-                        @@include('./common/modules/dl-infolist.html', {
-                            "list" : [
-                                { "dt" : "결제수단", "dd" : "<span>신용카드 할부 05개월</span><a href='#n' class='btn-link receiptList-btn'>영수증 발급 내역</a>" },
-                            ]
-                        })
+                </div>
+                <div class="delivery-step">
+                    <div class="delivery-text">
+                        <strong class="delivery-status">배송중</strong>
+                        <p class="delivery_date">2022.01.21</p>
+                        <span class="delivery_name">배송기사 김*지 <em class="bar">010-****-1234</em></span>
+                        <a href="#" class="delivery_detail">상세보기</a>
                     </div>
-                    <!-- // 결제 정보 -->
-
-                    <!-- 2021-04-06 제품 주문 정보 추가 -->
-                    <div class="inner-box prodOrderInfo">
-                        <p class="inner-tit">제품 주문 정보</p>
-                        @@include('./common/modules/dl-infolist.html', {
-                            "list" : [
-                                { "dt" : "배송 요청사항", "dd" : "이*수" },
-                                { "dt" : "배송 희망일", "dd" : "010-****-1234" }
-                            ]
-                        })
+                </div>
+                <div class="delivery-step">
+                    <div class="delivery-text">
+                        <strong class="delivery-status">주문일</strong>
+                        <p class="delivery_date">2022.01.21</p>
                     </div>
-                    <!-- // 제품 주문 정보 -->
                 </div>
             </div>
         </div>
     </section>
+    <footer class="pop-footer center">
+        <div class="btn-group">
+            <button type="button" class="btn pink ui_modal_close"><span>확인</span></button>
+        </div>
+    </footer>
     <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
 </article>
