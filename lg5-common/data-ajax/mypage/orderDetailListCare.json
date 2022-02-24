@@ -1,0 +1,389 @@
+{
+  "data": {
+    "bankList": [
+      {
+        "commonCodeName": "산업은행",
+        "sortNo": 1,
+        "commonCodeId": "02^002"
+      },
+      {
+        "commonCodeName": "기업은행",
+        "sortNo": 2,
+        "commonCodeId": "03^003"
+      },
+      {
+        "commonCodeName": "국민은행",
+        "sortNo": 3,
+        "commonCodeId": "04^004"
+      },
+      {
+        "commonCodeName": "수협중앙",
+        "sortNo": 5,
+        "commonCodeId": "07^007"
+      },
+      {
+        "commonCodeName": "농협중앙회",
+        "sortNo": 6,
+        "commonCodeId": "11^011"
+      },
+      {
+        "commonCodeName": "단위농협",
+        "sortNo": 7,
+        "commonCodeId": "12^012"
+      },
+      {
+        "commonCodeName": "우리은행",
+        "sortNo": 8,
+        "commonCodeId": "20^020"
+      },
+      {
+        "commonCodeName": "신한은행",
+        "sortNo": 9,
+        "commonCodeId": "21^088"
+      },
+      {
+        "commonCodeName": "SC제일",
+        "sortNo": 10,
+        "commonCodeId": "23^023"
+      },
+      {
+        "commonCodeName": "KEB하나은행(구하나,구외환)",
+        "sortNo": 11,
+        "commonCodeId": "25^081"
+      },
+      {
+        "commonCodeName": "씨티은행",
+        "sortNo": 12,
+        "commonCodeId": "27^027"
+      },
+      {
+        "commonCodeName": "대구은행",
+        "sortNo": 13,
+        "commonCodeId": "31^031"
+      },
+      {
+        "commonCodeName": "부산은행",
+        "sortNo": 14,
+        "commonCodeId": "32^032"
+      },
+      {
+        "commonCodeName": "광주은행",
+        "sortNo": 15,
+        "commonCodeId": "34^034"
+      },
+      {
+        "commonCodeName": "제주은행",
+        "sortNo": 16,
+        "commonCodeId": "35^035"
+      },
+      {
+        "commonCodeName": "전북은행",
+        "sortNo": 17,
+        "commonCodeId": "37^037"
+      },
+      {
+        "commonCodeName": "경남은행",
+        "sortNo": 18,
+        "commonCodeId": "39^039"
+      },
+      {
+        "commonCodeName": "마을금고",
+        "sortNo": 19,
+        "commonCodeId": "45^045"
+      },
+      {
+        "commonCodeName": "신용협동",
+        "sortNo": 20,
+        "commonCodeId": "48^048"
+      },
+      {
+        "commonCodeName": "상호저축",
+        "sortNo": 21,
+        "commonCodeId": "50^050"
+      },
+      {
+        "commonCodeName": "HSBC은행",
+        "sortNo": 22,
+        "commonCodeId": "54^054"
+      },
+      {
+        "commonCodeName": "도이치",
+        "sortNo": 23,
+        "commonCodeId": "55^055"
+      },
+      {
+        "commonCodeName": "우체국",
+        "sortNo": 24,
+        "commonCodeId": "71^071"
+      },
+      {
+        "commonCodeName": "K뱅크",
+        "sortNo": 25,
+        "commonCodeId": "89^089"
+      }
+    ],
+    "cardList": [
+      {
+        "commonCodeName": "국민카드",
+        "sortNo": 1,
+        "commonCodeId": "A01"
+      },
+      {
+        "commonCodeName": "신한카드",
+        "sortNo": 2,
+        "commonCodeId": "A02"
+      },
+      {
+        "commonCodeName": "우리카드",
+        "sortNo": 3,
+        "commonCodeId": "A03"
+      },
+      {
+        "commonCodeName": "롯데카드",
+        "sortNo": 4,
+        "commonCodeId": "A04"
+      },
+      {
+        "commonCodeName": "현대카드",
+        "sortNo": 5,
+        "commonCodeId": "A05"
+      },
+      {
+        "commonCodeName": "외환카드",
+        "sortNo": 6,
+        "commonCodeId": "A06"
+      },
+      {
+        "commonCodeName": "농협카드",
+        "sortNo": 7,
+        "commonCodeId": "A07"
+      },
+      {
+        "commonCodeName": "씨티카드",
+        "sortNo": 8,
+        "commonCodeId": "A08"
+      },
+      {
+        "commonCodeName": "하나카드",
+        "sortNo": 9,
+        "commonCodeId": "A09"
+      },
+      {
+        "commonCodeName": "삼성카드",
+        "sortNo": 10,
+        "commonCodeId": "A10"
+      },
+      {
+        "commonCodeName": "BC카드",
+        "sortNo": 11,
+        "commonCodeId": "A11"
+      },
+      {
+        "commonCodeName": "NH카드",
+        "sortNo": 12,
+        "commonCodeId": "B01"
+      },
+      {
+        "commonCodeName": "광주카드",
+        "sortNo": 13,
+        "commonCodeId": "B02"
+      },
+      {
+        "commonCodeName": "산은캐피탈",
+        "sortNo": 14,
+        "commonCodeId": "B03"
+      },
+      {
+        "commonCodeName": "전북카드",
+        "sortNo": 15,
+        "commonCodeId": "B04"
+      },
+      {
+        "commonCodeName": "제주카드",
+        "sortNo": 16,
+        "commonCodeId": "B05"
+      },
+      {
+        "commonCodeName": "수협카드",
+        "sortNo": 17,
+        "commonCodeId": "B99"
+      }
+    ],
+    "cardTypeList": [
+      {
+        "commonCodeName": "LG전자 렌탈애",
+        "sortNo": 1,
+        "commonCodeId": "00001"
+      },
+      {
+        "commonCodeName": "LG전자 라카드",
+        "sortNo": 1,
+        "commonCodeId": "00002"
+      },
+      {
+        "commonCodeName": "LG전자 렌탈플러스",
+        "sortNo": 1,
+        "commonCodeId": "00005"
+      },
+      {
+        "commonCodeName": "LG전자 스페셜",
+        "sortNo": 1,
+        "commonCodeId": "00004"
+      },
+      {
+        "commonCodeName": "LG전자 베스트렌탈",
+        "sortNo": 1,
+        "commonCodeId": "00003"
+      }
+    ],
+    "careListData": [
+      {
+        "requestNo": "OR22011007641",
+        "orderDate": "2022.01.10",
+        "apiType": "OBS",
+        "status": "A",
+        "statusNm": "승인",
+        "grandTotalValue": 972000,
+        "grandTotalCurrency": "",
+        "contDtlType": "R00",
+        "orderNumber": "1000028919",
+        "orderCancelAbleYn": "N",
+        "requestOrderAbleYn": "N",
+        "email": "angel400412@cnspartner.com",
+        "cashReceiptAbleYn": null,
+        "bundleCancelYn": null,
+        "orderTotal": 1,
+        "productList": [
+          {
+            "productFlag": "케어솔루션",
+            "rtModelSeq": "1565609",
+            "reqLineSeq": "14111146",
+            "orderedQuantity": "1",
+            "productNameKR": "상하좌우 정수기",
+            "productNameEN": "WD503AP.AKOR",
+            "modelID": "MD08750473",
+            "productImage": "/kr/images/water-purifiers/md08750473/md08750473-350x350.jpg",
+            "productPDPurl": "/care-solutions/water-purifiers/wd503ap",
+            "productPrice": "972000",
+            "productSalePriceCurrency": "",
+            "discountPrice": "3700",
+            "years1TotAmt": 33200,
+            "memberShipPoint": "",
+            "orderStatus": {
+              "disabled": "",
+              "statusText": "취소 완료",
+              "statusClass": "",
+              "statusDate": "",
+              "deliveryUrl": ""
+            },
+            "contDtlType": "R00",
+            "cardCorpCode": "",
+            "cardType": "",
+            "modelType": "일반(G)",
+            "shipping": {
+              "name": "최규식",
+              "email": "",
+              "street": "서울 강남구 가로수길 14  (신사동) 1111",
+              "city": "",
+              "countryId": "",
+              "postcode": "06036",
+              "telephone": "010-3244-9800",
+              "telephonenumber": "010-3244-9800",
+              "installPlaceNm": "가정",
+              "instReqDate": "2022.01.25",
+              "shippingNoteTxt": "",
+              "company": "",
+              "recyclingPickup": "N",
+              "inspectionVisit": "N"
+            },
+            "orderShipping": {
+              "name": "최규식",
+              "email": "angel400412@cnspartner.com",
+              "street": "서울 강남구 가로수길 14  (신사동)\n1111",
+              "city": ".",
+              "countryId": "KR",
+              "postcode": "06036",
+              "telephone": "01032449800",
+              "telephonenumber": "01032449800",
+              "company": "OBS",
+              "recyclingPickup": "N",
+              "inspectionVisit": "",
+              "shippingNoteTxt": "",
+              "delivWish": "",
+              "installPlaceNm": ""
+            },
+            "paymentMethod": {
+              "creditCard": "",
+              "installment": "00",
+              "installmentName": "일시불",
+              "paymentDate": "",
+              "bankName": "",
+              "bankAccountNo": "",
+              "bankAccountNm": "최규식",
+              "depositExpectedDate": "",
+              "membershipPoint": "0",
+              "paymentApprovalNumber": "",
+              "originalTotalPrice": "1776000",
+              "grandTotal": "0",
+              "discount": 1776000,
+              "paymentMethodName": "기타",
+              "transType": "ETC",
+              "paymentType": "0",
+              "paymentTypeName": "기타",
+              "receiptUrl": ""
+            },
+            "specList": [
+              "냉온정수기",
+              "데스크형"
+            ],
+            "statusButtonList": [
+              {
+                "className": "orderInfos",
+                "buttonName": "주문상세"
+              }
+            ],
+            "orderCancelAbleYn": "N",
+            "itemCancelAbleYn": "N",
+            "productTotalPrice": "",
+            "itemStatus": "Cancel Refunded",
+            "orderNumber": "1000028919"
+          }
+        ]
+      }
+    ],
+    "orderUser": {
+      "userName": "최규식",
+      "phoneNumber": "010-3244-9800",
+      "email": "angel400412@cnspartner.com"
+    },
+    "monthlyPayment": {
+      "transTypeNm": "계좌이체",
+      "transType": "BANK",
+      "transAccountNum": "01032449800",
+      "prepayFlag": "N",
+      "prepayFlagNm": "후불",
+      "pointUseYn": "N",
+      "pointUseYnName": "포인트 미사용",
+      "yearsTotAmt1": "1년차 월 0원",
+      "cancelFlag": "N",
+      "cardCorpCode": "",
+      "cardType": "",
+      "custRegNo": "810529",
+      "cardReqYn": "N",
+      "cardReqYnName": "미신청",
+      "cardCorpName": "",
+      "cardTypeName": "",
+      "transCorpCode": "20",
+      "transCorpName": "우리은행",
+      "transCardExpiry": "",
+      "transMemName": "최규식"
+    }
+  },
+  "param": {
+    "pagination": {
+      "page": "1"
+    }
+  },
+  "message": "success",
+  "status": "success"
+}

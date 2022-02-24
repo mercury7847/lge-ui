@@ -1,0 +1,330 @@
+//쿠폰목록(베스트샵)
+.coupon-list-wrap {
+  margin-top:48px;
+  @include mobile {
+      margin-top:20px;
+  }
+  .coupon-lists {
+      overflow:hidden;
+      > ul {
+          margin:-24px -12px 0;
+          font-size:0;
+          @media screen and (max-width:1024px) {
+              margin:0;
+          }
+          .lists {
+              display:inline-block;
+              width:calc(100% / 3);
+              margin-top:24px;
+              padding:0 12px;
+              vertical-align:top;
+              @media screen and (max-width:1284px) {
+                  width:50%;
+              }
+              @media screen and (max-width:1024px) {
+                  display:block;
+                  width:100%;
+                  margin-top:12px;
+                  padding:0;
+                  &:first-child {
+                      margin-top:0;
+                  }
+              }
+          }
+      }
+  }
+  @each $type in shop-dc, shop-benefit, disabled {
+      $color:transparent;
+      @if $type == shop-dc {
+          $color:#ec455a;
+      } @else if $type == shop-benefit {
+          $color:#ae02eb;
+      } @else if $type == disabled {
+          $color:#aaa;
+      }
+      .coupon-box.bshop.#{$type} {
+          position:relative;
+          display:block;
+          padding-right:73px;
+          overflow:hidden;
+          @include mobile {
+              padding-right:65px;
+          }
+          .coupon-cont {
+              position:relative;
+              height:233px;
+              padding:24px 23px;
+              border:1px solid #cf68e4;
+              @if $type == disabled {
+                  border:1px solid #ddd;
+              }
+              border-right:none;
+              border-radius:8px 0 0 8px;
+              @include mobile {
+                  height:209px;
+                  padding:24px 19px;
+              }
+              .top {
+                  display:table;
+                  width:100%;
+                  padding:2px 0 8px;
+                  border-bottom:1px solid #ddd;
+                  .name {
+                    display:table-cell;
+                    color:#da0f47;
+                    @include font-medium;
+                    font-weight:700;
+                    vertical-align:bottom;
+                    @if $type == disabled {
+                        color:#aaa;
+                    }
+                  }
+              }
+              .desc {
+                  max-height:48px;
+                  margin-top:13px;
+                  font-weight:$font-weight-bold;
+                  color:#000;
+                  @if $type == disabled {
+                      color:#aaa;
+                  }
+                  @include font-small;
+                  @include textEllipsisClamp(2);
+                  @include mobile {
+                      max-height:42px;
+                  }
+              }
+              .bottom {
+                  position:absolute;
+                  left:23px;
+                  right:24px;
+                  bottom:68px;
+                  p {
+                      @include font-small;
+                      color:#666;
+                      @if $type == disabled {
+                          color:#aaa;
+                    }
+                  }
+                  @include mobile {
+                      left:19px;
+                      right:20px;
+                      bottom:58px;
+                  }
+              }
+              .btn-link-text {
+                  position:absolute;
+                  left:23px;
+                  bottom:26px;
+                  display:inline-block;
+                  padding-right:20px;
+                  color:#000;
+                  @include font-medium;
+                  text-decoration:underline;
+                  text-underline-position:under;
+                  &:after{
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: calc(50% + 1px);
+                    transform:translateY(-50%);
+                    width: 15px;
+                    height: 15px;
+                    background: url(/lg5-common/images/icons/btn-arr-16-black.svg) center no-repeat;
+                    background-size: 15px;
+                  }
+                  @if $type == disabled{
+                        display:none;
+                  }
+                  @include mobile {
+                      left:19px;
+                      bottom:23px;
+                  }
+              }
+              .end-flags {
+                  position:absolute;
+                  bottom:12px;
+                  right:12px;
+                  width:72px;
+                  height:72px;
+                  border-radius:50%;
+                  background:#aaa;
+                  text-align:center;
+                  color:#fff;
+                  font-size:12px;
+                  line-height:72px;
+                  font-weight:700;
+                  @include mobile {
+                      width:70px;
+                      height:70px;
+                  }
+              }
+          }
+          .coupon-bg {
+              position:absolute;
+              top:0;
+              right:0;
+              bottom:0;
+              width:73px;
+              @if $type == disabled {
+                  border:1px solid #ddd;
+              }
+              border-left:none;
+              border-radius:8px;
+              @if $type == shop-dc {
+                  background:#cf68e4;
+              } @else if $type == shop-benefit {
+                  background:#cf68e4;
+              } @else if $type == disabled {
+                  background:#f4f4f4;
+              }
+              @include mobile {
+                  width:65px;
+              }
+              &::before, &::after {
+                  content:' ';
+                  position:absolute;
+                  width:22px;
+                  height:22px;
+                  @if $type == shop-dc {
+                      border:1px solid #cf68e4;
+                  } @else if $type == shop-benefit {
+                      border:1px solid #cf68e4;
+                  } @else if $type == disabled {
+                      border:1px solid #ddd;
+                  }
+                  border-radius:22px;
+                  background:#fff;
+                  transform:rotate(45deg);
+              }
+              &::before {
+                  top:-11px;
+                  left:-11px;
+              }
+              &::after {
+                  bottom:-11px;
+                  left:-11px;
+              }
+              em {
+                  display:block;
+                  position:absolute;
+                  top:50%;
+                  left:50%;
+                  padding-left:4px;
+                  color:#fff;
+                  @if $type == disabled {
+                      color:#aaa;
+                  }
+                  font-size:16px;
+                  line-height:26px;
+                  font-weight:700;
+                  letter-spacing:4px;
+                  white-space:nowrap;
+                  opacity:.7;
+                  transform:translateX(-50%) translateY(-50%) rotate(-90deg);
+                  @include mobile {
+                      font-size:14px;
+                      line-height:21px;
+                  }
+              }
+          }
+      }
+  }
+}
+.coupon-tabs{margin-top:-8px;
+  .tabs-wrap{
+    &.btn-type + .bar-type{
+      margin-top:12px;
+      .tabs > li.on a{
+        text-decoration:underline;
+        text-underline-position:under;
+      }
+    }
+  }
+  ~ .tab-contents{margin-top:43px;
+    .list-sorting + .coupon-list-wrap{
+      margin-top:10px;
+    }
+  }
+}
+//쿠폰목록(베스트샵-layer)
+@at-root{
+  .lay-wrap .lay-conts .input-wrap{width:100%;margin-top:12px;
+    input.comm-code{
+      width:100%;
+      color:$color-gray-1;
+      font-size:$font-large;
+      line-height:46px;
+      text-align:center;
+      border:solid $color-border;
+      border-width:0 0 2px 0;
+      border-radius:0;
+      @include mobile{
+        font-size:$font-medium;
+      }
+    }
+    .err-msg{margin-top:8px}
+  }
+  .mybestshop{
+    .coupon-info{
+      &-moreview{text-align:center;
+        @include mobile{
+          padding:25px 16px;
+        }
+        .title-info{display:block;padding:2px 0;font-weight:$font-weight-bold;font-size:$font-large-2;line-height:32px;
+          @include mobile{
+            padding:1px 0;
+            font-size:$font-large;
+            line-height:24px;
+          }
+        }
+        .period-info{padding-top:9px;@include font-medium;
+          @include mobile{
+            padding-top:7px;
+            font-size:$font-small;
+            line-height:22px;
+          }
+        }
+      }
+      &-model{margin-top:32px;
+        @include mobile{
+          margin-top:23px;
+        }
+        .sub-tit{margin-bottom:8px;color:$color-default;font-weight:$font-weight-bold;font-size:$font-medium;line-height:24px;
+            @include mobile{
+              font-size:$font-small;
+              line-height:13px;
+          }
+        }
+        .sub-cont{
+          overflow-y:auto;
+          max-height:163px;
+          padding:16px 16px 16px 24px;
+          font-size:$font-small;
+          line-height:20px;
+          border:1px solid $color-border;
+          border-radius:8px;
+          @include mobile{
+            max-height:138px;
+            padding:14px 14px 14px 16px;
+            font-size:$font-x-small;
+            line-height:18px;
+          }
+        }
+      }
+      &-noti{margin-top:32px;
+        @include mobile{
+          margin-top:23px;
+        }
+        .sub-tit{margin-bottom:8px;color:$color-default;font-weight:$font-weight-bold;font-size:$font-medium;line-height:24px;
+          + .bullet-list{margin-top:0}
+          @include mobile{
+            margin-top:23px;
+              font-size:$font-small;
+              line-height:13px;
+          }
+        }
+      }
+    }
+  }  
+}

@@ -108,8 +108,24 @@
                     var cntxt;
                     var orderList = result.orderList;
                     var $orderProcess = $('.my-management.shopping .order-process');
+                    
+                    // LGECOMVIO-114 총 주문 건수 관련 추가
+                    var $orderBtnGroup = $('.my-management.shopping .btn-group-order');
                     var cnt = orderList.data.myShoppingCnt;
-                    $orderProcess.find('.box-title .title').text("주문 조회(" + cnt + ")");
+                    var totalFormat = function(val){
+                        if(val >= 1000) {
+                            return '999+';
+                        } else {
+                            return val;
+                        }
+                    }
+
+                    $orderProcess.find('.box-title .title').text("주문 조회(" + totalFormat(cnt) + ")");
+
+                    $orderBtnGroup.find('.order-lge .count').html('('+totalFormat(orderList.data.normalDataTotal)+')');
+                    $orderBtnGroup.find('.order-bestshop .count').html('('+totalFormat(orderList.data.bestShopDataTotal)+')');
+                    $orderBtnGroup.find('.order-care .count').html('('+totalFormat(orderList.data.careDataTotal)+')');
+
                     if(orderList.dataFlag == "Y"){                        
                         var num, key, numwrap;
                         var numberData = orderList.data.normalData;

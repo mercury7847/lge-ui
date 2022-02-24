@@ -1,0 +1,31 @@
+<!-- loop -->
+<li class="lists">
+    @@if ( context.type1 ) {
+    <div class="coupon-box bshop shop-dc"><!-- 매장제품할인 .shop-dc -->
+    }
+    @@if ( context.type2 ) {
+    <div class="coupon-box bshop shop-benefit"><!-- 매장방문혜택 .shop-benefit -->
+    }
+    @@if ( context.type3 ) {
+    <div class="coupon-box bshop disabled"><!-- 사용불가/종료 .disabled -->
+    }
+        <div class="coupon-cont">
+            <div class="top">
+                <p class="name">@@name</p>
+            </div>
+            <p class="desc">@@desc</p>
+            <div class="bottom">
+                <p>유효기간 : @@period</p>
+                <p>대상모델 : @@model</p>
+            </div>
+            @@if ( !context.type3 ) {
+            <a href="#" class="btn-link-text" title="자세히보기"><span>@@btn-text</span></a>
+            }
+            @@if ( context.type3 ) {
+            <div class="end-flags">@@end</div>
+            }
+        </div>
+        <span class="coupon-bg" aria-hidden="true"><em>BEST SHOP</em></span>
+    </div>
+</li>
+<!-- //loop -->

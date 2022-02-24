@@ -21,6 +21,7 @@
             padding-top:0;
         }
     }
+
     // mypage lnb layout
     .lnb-wrap {
         @include clearfix;
@@ -371,6 +372,11 @@
                     }
                 }
             }
+
+            &.care-step-info,
+            &.bestshop-order-info {
+                display: none;
+            }
         }
 
         .btn-moreview {
@@ -407,6 +413,7 @@
         }
 
         .open-before-order-history {
+            display: none;
             margin: -32px 0 48px;
             padding: 24px 48px;
             border: 1px solid $color-border;
@@ -494,6 +501,9 @@
 
     // 상담 예약 조회 // 2022.02.23 LGECOMVIO-143
     @import "ACCF8000";
+
+    // 쿠폰(베스트샵)
+    @import "ACCF7510"; //20220224 LGECOMVIO-195
 }
 
 
@@ -1139,7 +1149,7 @@
 }
 
 // BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
-.popup-wrap {
+.popup-wrap:not(.small) {
     .pop-conts {
         @include mobile {
             height:calc(100vh - 122px);
@@ -1148,17 +1158,18 @@
             padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
         }
     }
-}
 
-.pop-footer {
-    @include mobile {
-        position:fixed;
-        width:100%;
-        bottom: 0;
-        bottom: env(safe-area-inset-bottom);
-        bottom: constant(safe-area-inset-bottom);
+    .pop-footer {
+        @include mobile {
+            position:fixed;
+            width:100%;
+            bottom: 0;
+            bottom: env(safe-area-inset-bottom);
+            bottom: constant(safe-area-inset-bottom);
+        }
     }
 }
+
 
 /* 20210624 납부내역 : 팝업*/
 #popup-paymentHistory {
@@ -1640,6 +1651,139 @@
     //border:1px solid $color-border;
 }
 
+
+
+// LGECOMVIO - 114 베스트샵 배송조회 팝업
+#bestShopDeliveryPopup {
+    .delivery-info {
+        .delivery-step {
+            padding:0 0 0 23px;
+
+            &:last-child {
+                .delivery-text:before {
+                    width:0;
+                }
+                .delivery-text {
+                    padding-bottom:0;
+                }
+            }
+
+        }
+        .delivery-text {
+            position:relative;
+            padding:0 0 44px 41px;
+
+
+            &:before {
+                display:block;
+                content:"";
+                position:absolute;
+                top:32px;
+                bottom:0;
+                left:-2px;
+                width:1px;
+                background:#ddd;
+            }
+
+            .delivery-status {
+                position:relative;
+                display:block;
+
+                &:before {
+                    display:block;
+                    content:"";
+                    position:absolute;
+                    top:-1px;
+                    left:-59px;
+                    width:32px;
+                    height:32px;
+                    background:#fff;
+                    border-radius:50%;
+                }
+                &:after {
+                    display:block;
+                    content:"";
+                    position:absolute;
+                    top:8px;
+                    left:-49px;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #DA0F47;
+                    border-radius:50%;
+                    background:#fff;
+                }
+            }
+            &.active {
+                &:before {
+                    top:41px;
+                }
+
+                .delivery-status {
+                    font-size:18px;
+
+                    &:before {
+                        display:block;
+                        content:"";
+                        position:absolute;
+                        top:-2px;
+                        left:-61px;
+                        width:36px;
+                        height:36px;;
+                        background:#fbe7ec;
+                        border-radius:50%;
+                    }
+                    &:after {
+                        top:9px;
+                        border:none;
+                        background:#DA0F47;
+                    }
+                }
+            }
+        }
+        .delivery-status {
+            font-size:18px;
+            line-height:28px;
+        }
+        .delivery_date {
+            margin-top:4px;
+            font-size:16px;
+            font-weight:500;
+            //line-height:38px;
+        }
+        .delivery_name {
+            display:block;
+            margin-top:4px;
+            font-size:16px;
+            line-height:24px;
+            color:#666;
+
+            .bar:before {
+                display:inline-block;
+                content:"";
+                position:relative;
+                top:-1px;
+                width:1px;
+                height:10px;
+                background:#ddd;
+                margin:0 7px 0 6px;
+            }
+        }
+        .delivery_detail {
+            display:inline-block;
+            margin-top:12px;
+            padding-right:20px;
+            text-decoration:underline;
+            background:url("/lg5-common/images/icons/btn-arr-16-black-sm.svg") right center no-repeat
+        }
+    }
+    .delivery-data {
+        width:100%;
+        padding:40px 0;
+        border-radius: 8px;
+        background:#F4F4F4;
+        text-align:center;
+    }
+}
 // BTOCSITE-5938-17 s
 @include mobile {
     #registMyProductPopup{
