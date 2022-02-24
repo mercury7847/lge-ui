@@ -1,0 +1,434 @@
+// 마이 베스트샵 / 상담 예약 조회
+.consult_view-wrap {
+    .tabs-wrap.btn-type{
+        text-align: left;
+        .tabs{
+            @include mobile {
+               padding: 0;
+            }
+            & li{
+                @include mobile {
+                    padding: 0;
+                }
+                & a{
+                    font-weight: 500;
+                    @include mobile {
+                        font-size: 15px;
+                        line-height: 21px;
+                    }
+                }
+            }
+        }
+    }
+    .no-data{
+        padding: 100px 0;
+        border-bottom: 1px solid #ddd;
+        font-size: 16px;
+        color: #767676;
+        line-height: 34px;
+        @include mobile {
+            padding: 80px 0;
+            font-size: 14px;
+            line-height: 22px;
+        }
+    }
+	.cv_list{
+        margin-top: 48px;
+		color: #000;
+		font-size: 16px;
+        font-weight: 400;
+		line-height: 24px;
+        @include mobile {
+            margin-top: 40px;
+        }
+        li{
+            border-top: 1px solid #ddd;
+            padding: 24px 0;
+            @include mobile {
+                padding: 18px 0;
+            }
+            &:first-child{
+                border-top: 0;
+                padding-top: 0;
+            }
+        }
+        li.li_cancel{
+            opacity: .5;
+            .tit_txt{
+                position: relative;
+                padding-right: 64px;
+                @include mobile {
+                    padding-right: 50px;
+                }
+                &::after{
+                    content: "고객취소";
+                    position: absolute;
+                    top:3px;
+                    right: 0;
+                    width: 54px;
+                    height: 20px;
+                    border-radius: 2px;
+                    border: .8px solid #ff3723;
+                    font-size: 12px;
+                    font-weight: 400;
+                    color: #ff3723;
+                    text-align: center;
+                    line-height: 19px;
+                    @include mobile {
+                        top:0;
+                        width: 45px;
+                        height: 16px;
+                        font-size: 10px;
+                        line-height: 13px;
+                    }
+                }
+            }
+        }
+        .li_tit{
+            overflow: hidden;
+            .tit_txt{
+                float: left;
+                font-size: 18px;
+                font-weight: 700;
+                color: #000;
+                line-height: 26px;
+                @include mobile {
+                    font-size: 14px;
+                    line-height: 16px;
+                }
+            }
+            .tit_link{
+                position: relative;
+                float: right;
+                padding-right: 21px;
+                font-size: 16px;
+                line-height: 26px;
+                text-decoration: underline;
+                @include mobile {
+                    padding-right: 14px;
+                    font-size: 11px;
+                    line-height: 12px;
+                }
+                &::after{
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    width: 16px;
+                    height: 26px;
+                    background: url("/lg5-common/images/icons/btn-arr-16-black-sm.svg") no-repeat 50%/16px;
+                    @include mobile {
+                        width: 12px;
+                        height: 12px;
+                        background-size: 12px;
+                    }
+                }
+            }
+        }
+        .li_page{
+            display: table;
+            margin-top: 16px;
+            @include mobile {
+                margin-top: 12px;
+            }
+            dt{
+                display: table-cell;
+                width: 90px;
+                @include mobile {
+					width: 68px;
+                    font-size: 13px;
+                }
+            }
+            dd{
+                display: table-cell;
+                max-width: 1056px;
+                @include mobile {
+                    font-size: 13px;
+                    line-height: 19px;
+				}
+            }
+        }
+        .li_date{
+            display: table;
+            width: 100%;
+            margin-top: 2px;
+            @include mobile {
+                margin-top: 4px;
+            }
+            dt{
+                display: table-cell;
+                width: 90px;
+                font-weight: 500;
+                @include mobile {
+					width: 68px;
+                    font-size: 13px;
+				}
+            }
+            dd{
+                display: table-cell;
+                max-width: 1056px;
+                @include mobile {
+                    font-size: 13px;
+                    line-height: 19px;
+				}
+            }
+        }
+        .linkbtn{
+            display: inline-block;
+            width: 16px;
+            height: 19px;
+            margin-left: 4px;
+            vertical-align: middle;
+            color: transparent;
+            font-size: 0;
+            background: url("/lg5-common/images/icons/btn-outlink-16.svg") no-repeat top/16px;
+        }
+        .li_box{
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 14px;
+            padding: 24px 32px;
+            border-radius: 8px;
+            background-color: #f4f4f4;
+            @include mobile {
+                margin-top: 12px;
+                padding: 16px;
+            }
+            dl{
+                position: relative;
+                width: 33%;
+                padding-left: 46px;
+                line-height: 24px;
+                &:first-child{
+                    padding-left: 0;
+                    dt{
+                        left: 0;
+                        @include mobile {
+                            margin-top: 0;
+                        }
+                    }
+                    dd{
+                        @include mobile {
+                            margin-top: 0;
+                        }
+                    }
+                }
+                @include mobile {
+                    width: 100%;
+                    padding-left: 0;
+				}
+                dt{
+                    position: absolute;
+                    left: 46px;
+                    margin-top: 4px;
+                    font-weight: 500;
+                    @include mobile {
+                        left: 0;
+                        margin-top: 8px;
+                        font-size: 13px;
+                        line-height: 19px;
+                    }
+                }
+                dd{
+                    margin-top: 4px;
+                    padding-left: 90px;
+                    @include mobile {
+                        margin-top: 8px;
+                        padding-left: 86px;
+                        font-size: 13px;
+                        line-height: 19px;
+                    }
+                }
+            }
+            .li_categ{
+                overflow: hidden;
+                margin-top: 4px;
+                @include mobile {
+                    margin-top: 3px;
+                }
+                &:first-child{
+                    margin-top: 0;
+                }
+                span{
+                    float: left;
+                    font-size: 16px;
+                    color: #000;
+                    line-height: 24px;
+                    vertical-align: middle;
+                    @include mobile {
+                        font-size: 13px;
+                        line-height: 19px;
+                    }
+                    &:first-child{
+                        color: #666;
+                    }
+                }
+                span.gap{
+                    float: left;
+                    width: 16px;
+                    height: 24px;
+                    margin-left: 4px;
+                    background: url("/lg5-common/images/icons/btn-arr-16-gray.svg") no-repeat 50% 5px/16px;
+                    @include mobile {
+                        background-size: 12px;
+                        height: 19px;
+                        margin-left: 2px;
+                    }
+                }
+            }
+
+        }
+        .li_box.booking{
+            dl{
+                &:first-child{
+                    dd{
+                        padding-left: 110px;
+                        @include mobile {
+                            padding-left: 96px;
+                        }
+                    }
+                }
+                dd{
+                    @include mobile {
+                        padding-left: 96px;
+                    }
+                }
+            }
+        }
+	}
+    .readmore{
+        text-align: center;
+        a{
+            display: inline-block;
+            width: 92px;
+            height: 40px;
+            margin-top: 8px;
+            padding: 10px 16px 10px 36px;
+            border: 1px solid #000;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18px;
+            color: #000;
+            background: url("/lg5-common/images/icons/btn-plus-16.svg") no-repeat 16px 50%/16px;
+            @include mobile {
+                margin-top: 37px;
+                width: 88px;
+                font-size: 13px;
+            }
+        }
+    }
+    .cv_note{
+        margin-top: 110px;
+        padding: 40px;
+        border-radius: 8px;
+        background-color: #f4f4f4;
+        font-size: 14px;
+        color: #000;
+        line-height: 24px;
+        @include mobile {
+            margin-top: 60px;
+            padding: 32px;
+            line-height: 20px;
+        }
+        .note_tit{
+            font-weight: 700;
+        }
+        ul{
+            margin-top: 10px;
+            li{
+                position: relative;
+                margin-top: 3px;
+                padding-left: 10px;
+                @include mobile {
+                    margin-top: 6px;
+                }
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: calc(50% - 1px);
+                    left: 0;
+                    width: 2px;
+                    height: 2px;
+                    background-color: #000;
+                    border-radius: 50%;
+                }
+            }
+
+        }
+
+    }
+}
+// 마이 베스트샵 / 상담 예약 취소 완료 팝업
+.consult_view-cancelpop{
+    .tit{
+        font-size: 16px;
+        font-weight: 500;
+        color: #000;
+        line-height: 26px;
+    }
+    .msg_box{
+        margin-top: 16px;
+        padding: 24px;
+        border-radius: 8px;
+        background-color: #f4f4f4;
+        font-size: 16px;
+        color: #000;
+        line-height: 26px;
+    }
+}
+// 마이 베스트샵 / 상품정보 팝업
+.consult_view-prdpop{
+    .prd_img{
+        text-align: center;
+        img{
+            margin: 0 auto;
+            width: 226px;
+            height: 226px;
+        }
+    }
+    .prd_name{
+        margin-top: 16px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #000;
+        line-height: 26px;
+    }
+    .prd_model{
+        margin-top: 2px;
+        font-size: 14px;
+        color: #767676;
+        line-height: 22px;
+    }
+    .prd_visit{
+        overflow: hidden;
+        margin-top: 16px;
+        padding: 9px 20px;
+        border-radius: 8px;
+        background-color: #ededed;
+        font-size: 14px;
+        color: #767676;
+        line-height: 22px;
+        dt{
+            float: left;
+        }
+        dd{
+            float: right;
+        }
+    }
+    .prd_pay{
+        overflow: hidden;
+        margin-top: 10px;
+        line-height: 30px;
+        dt{
+            float: left;
+            font-size: 14px;
+            color: #767676;
+        }
+        dd{
+            float: right;
+            font-size: 20px;
+            color: #000;
+        }
+    }
+}
