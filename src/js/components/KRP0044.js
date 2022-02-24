@@ -34,10 +34,11 @@
             var self = this;
 
             self.$section = $('.KRP0044');
-            self.$totalCounter = self.$section.find('#totalCount');
+            self.modelId = self.$section.data('modelId');
             self.$list = self.$section.find('ul.story-box');
             self.$pagination = self.$section.find('.pagination').vcPagination();
-            self.requestData({"modelId":lgePdpSendData.modelId, 'page': 1});
+            console.log(self.modelId)
+            self.requestData({"modelId":self.modelId, 'page': 1});
         },
 
         bindEvents: function() {
@@ -45,7 +46,7 @@
 
             self.$pagination.on('page_click', function(e, data) {
                 //기존에 입력된 데이타와 변경된 페이지로 검색
-                var param = {"modelId":lgePdpSendData.modelId, 'page':data}
+                var param = {"modelId":self.modelId, 'page':data}
                 self.requestData(param);
             });
 
@@ -53,27 +54,15 @@
 
         requestData: function(param) {
             var self = this;
-            var ajaxUrl = self.$section.data('listUrl');
-            var storyType = self.$section.data('storyType');
-            if(storyType) {
-                param.storyType = storyType;
-            }
-            if(location.pathname == '/html/components/KRP0044.html' && param.page == '2') {
-                ajaxUrl = '/lg5-common/data-ajax/KRP0044/KRP0044_pg2.json'
-            }
+            var ajaxUrl = self.$section.data('responseUrl');
             lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
-                console.log(">>", result, param)
                 var tempData = result.data;
                 var data = (tempData && tempData instanceof Array && tempData.length > 0) ? tempData[0] : {};
                 self.$pagination.vcPagination('setPageInfo',data.pagination);
-                // self.$totalCounter.text('총 '+ vcui.number.addComma(data.storyListTotalCount) +'개');
+                // self.$section.find('#totalCount').text('총 '+ vcui.number.addComma(data.storyListTotalCount) +'개');
 
                 var arr = data.storyList instanceof Array ? data.storyList : [];
                 self.$list.empty();
-                
-                /* arr.sort(function(a,b){
-                    return new Date(b.lastUpdateDate) - new Date(a.lastUpdateDate);
-                }); */
                 arr.forEach(function(item, index) {
                     item.storyDesc = vcui.string.replaceAll(item.storyDesc, '\n', '<br>');
                     self.$list.append(vcui.template(storyListItemTemplate, item));
