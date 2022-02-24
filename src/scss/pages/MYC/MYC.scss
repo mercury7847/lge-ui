@@ -1143,7 +1143,7 @@
 }
 
 // BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
-.popup-wrap {
+.popup-wrap:not(.small) {
     .pop-conts {
         @include mobile {
             height:calc(100vh - 122px);
