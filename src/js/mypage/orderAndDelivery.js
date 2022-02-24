@@ -1095,22 +1095,24 @@
             okBtnName: "네",
             ok: function(){
                 if( datalayerResult != null) {
-                    //console.log("datalayerResult", datalayerResult);
                     if(typeof dataLayer !== 'undefined' && dataLayer) {
 
+                        //BTOCSITE-11351 [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 : 구분값 네이밍 수정요청
+                        function modelTypeCheck(model){
+                            if(model.indexOf('일반')) {
+                                return '일반';
+                            }else if(model.indexOf('소모품')){
+                                return '소모품';
+                            }else if(model.indexOf('케어솔루션')){
+                                return '케어솔루션';
+                            }else {
+                                return '';
+                            }
+                        }
 
                         /* BTOCSITE-11351 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 : 여러 제품 이였을때 수정*/
                         if(TAB_FLAG == TAB_FLAG_ORDER) {
-                            console.log("구매 탭");
-                            //var orderProdutID = datalayerResult.listData[0].orderNumber;
-
-                            // function getOrderID(datalayerResult){
-                            //     if( orderProdutID == "" || orderProdutID == undefined) {
-                            //         return "ORD-" + orderProdutID
-                            //     }
-                            // }
-
-                            var list = datalayerResult.listData;     
+                            var list = datalayerResult.listData;
                             /* 체크된 항목 선택자 */
                             var elCancelChecked = $('#popup-cancel .tbl-layout').find('input:checkbox[name="chk-cancel"]:checked');
 
@@ -1142,19 +1144,15 @@
                                             'brand': 'LG',
                                             'price': list[idx].productList[cdx].productTotalPrice,
                                             'quantity': list[idx].productList[cdx].orderedQuantity,
-                                            'model_gubun': list[idx].productList[cdx].modelType,
+                                            'model_gubun': modelTypeCheck(list[idx].productList[cdx].modelType),
                                             'ct_id': null
                                         });
                                     }
                                 }
                             }
-                            console.log("dataLayer : ", JSON.stringify(pushDataEvent));
                             dataLayer.push(pushDataEvent);
 
                         } else {
-
-                            console.log("케어솔루션 탭");
-
                             var CARE_list = datalayerResult.careListData;
                             /* 체크된 항목 선택자 */
                             var care_elCancelChecked = $('#popup-cancel .tbl-layout').find('input:checkbox[name="chk-cancel"]:checked');
@@ -1186,15 +1184,13 @@
                                             'brand': 'LG',
                                             'price': CARE_list[idx].productList[CARE_cdx].years1TotAmt,
                                             'quantity': CARE_list[idx].productList[CARE_cdx].orderedQuantity,
-                                            'model_gubun': CARE_list[idx].productList[CARE_cdx].productFlag,
+                                            'model_gubun': modelTypeCheck(CARE_list[idx].productList[CARE_cdx].productFlag),
                                             'ct_id': null
                                         });
                                     }
                                 }
             
                             }
-    
-                            console.log("dataLayer : ", JSON.stringify(pushDataEvent));
                             dataLayer.push(pushDataEvent);
                         }
                         /* BTOCSITE-11351 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 : 여러 제품 이였을때 수정*/
