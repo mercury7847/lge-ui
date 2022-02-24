@@ -1152,19 +1152,18 @@
             padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
         }
     }
-}
 
-.pop-footer {
-    @at-root .popup-wrap:not(.small) {
+    .pop-footer {
         @include mobile {
-            position: fixed;
-            width: 100%;
+            position:fixed;
+            width:100%;
             bottom: 0;
             bottom: env(safe-area-inset-bottom);
             bottom: constant(safe-area-inset-bottom);
         }
     }
 }
+
 
 /* 20210624 납부내역 : 팝업*/
 #popup-paymentHistory {
