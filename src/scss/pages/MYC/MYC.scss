@@ -1155,12 +1155,14 @@
 }
 
 .pop-footer {
-    @include mobile {
-        position:fixed;
-        width:100%;
-        bottom: 0;
-        bottom: env(safe-area-inset-bottom);
-        bottom: constant(safe-area-inset-bottom);
+    @at-root .popup-wrap:not(.small) {
+        @include mobile {
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            bottom: env(safe-area-inset-bottom);
+            bottom: constant(safe-area-inset-bottom);
+        }
     }
 }
 
