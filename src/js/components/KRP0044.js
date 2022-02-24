@@ -6,7 +6,7 @@
             '<p class="hidden mobile">{{storyListThumbnailAltText}}</p>' +
         '</div>' +
         '<div class="item-info">' +
-            '<div class="flag-wrap bar-type"><span class="flag">{{storyTypeName}}</span></div>' +
+            '<div class="flag-wrap bar-type"><span class="flag">{{storyTypeNm}}</span></div>' +
             '<p class="tit">{{#raw storyTitle}}</p>' +
             '<p class="desc">{{#raw storyDesc}}</p>' +
             '{{#if tags.length > 0}}' +
