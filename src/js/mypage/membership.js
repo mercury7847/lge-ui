@@ -71,7 +71,7 @@
 
             //조회 버튼
             self.$inquiryButton.on('click',function (e) {
-                self.requestData( 1, false);
+                self.requestData( 1, true);
             });
 
             //멤버십 포인트 종류 라디오버튼
