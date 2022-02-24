@@ -2088,6 +2088,13 @@ html {
             padding-top:86px;
         }
     }
+
+    #sw_con {
+        .swiper-wrapper,.swiper-slide {
+            will-change: transform;
+            transition-timing-function : cubic-bezier(0.49, 0.46, 1, 1)
+        }
+    }
 }
 
 
