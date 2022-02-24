@@ -2784,6 +2784,17 @@ var goAppUrl = function(path) {
                     domain : location.host
                 });
             }
+        },
+        // BTOCSITE-12458 [앱스플라이어] 이벤트 공통 함수
+        afEvent: function(eventName,eventValue){
+            if(isApp() && eventName && eventValue) {
+                var eventValue = JSON.stringify(eventValue);
+                var iframe = document.createElement("IFRAME");
+                    iframe.setAttribute("src", "af-event://inappevent?eventName="+eventName+"&eventValue="+eventValue);
+                    document.documentElement.appendChild(iframe);
+                    iframe.parentNode.removeChild(iframe);
+                    iframe = null;
+            }
         }
     }
 
