@@ -13,66 +13,71 @@
             "produncName":"LG TROMM ThinQ",
             "sku":"A9579I",
             "quantity":"2",
-            "store":"LG BEST SHOP 서초점",
+            "store":"",
             "date":"20190729",
             "imageUrl":"/lg5-common/images/membership/img-prod01.jpg",
             "imageAlt":"LG TROMM ThinQ",
             "type" : "구매",
             "pdpUrl":"#",
             "startDate":"20210101",
-            "endDate":"20220102"
+            "endDate":"20220102",
+            "serviceDt": "2021.12.23~2024.12.22"
         },
         {
             "produncName":"LG SIGNATURE 트윈워시",
             "sku":"F12WHTS",
             "quantity":"3",
-            "store":"LG BEST SHOP 서초점",
+            "store":"",
             "date":"20191229",
             "imageUrl":"/lg5-common/images/membership/img-prod02.jpg",
             "imageAlt":"LG SIGNATURE 트윈워시",
             "type" : "취소",
             "pdpUrl":"",
             "startDate":"20210102",
-            "endDate":"20220103"
+            "endDate":"20220103",
+            "serviceDt": "2021.12.23~2024.12.22"
         },
         {
             "produncName":"LG 올레드 AI ThinQ TV",
             "sku":"OLED65B9GNA",
             "quantity":"4",
-            "store":"LG BEST SHOP 서초점",
+            "store":"",
             "date":"20200304",
             "imageUrl":"/lg5-common/images/membership/img-prod03.jpg",
             "imageAlt":"LG 올레드 AI ThinQ TV",
             "type" : "취소",
             "pdpUrl":"#",
             "startDate":"20210103",
-            "endDate":"20220104"
+            "endDate":"20220104",
+            "serviceDt": "2021.12.23~2024.12.22"
         },
         {
             "produncName":"LG TROMM ThinQ",
             "sku":"A9579I",
             "quantity":"2",
-            "store":"LG BEST SHOP 서초점",
+            "store":"",
             "date":"20190729",
             "imageUrl":"/lg5-common/images/membership/img-prod01.jpg",
             "imageAlt":"LG TROMM ThinQ",
             "type" : "구매",
             "pdpUrl":"",
             "startDate":"20210104",
-            "endDate":"20220105"
+            "endDate":"20220105",
+            "serviceDt": "2021.12.23~2024.12.22"
         },
         {
             "produncName":"LG SIGNATURE 트윈워시",
             "sku":"F12WHTS",
             "quantity":"3",
-            "store":"LG BEST SHOP 서초점",
+            "store":"",
             "date":"20191229",
             "imageUrl":"/lg5-common/images/membership/img-prod02.jpg",
             "imageAlt":"LG SIGNATURE 트윈워시",
             "type" : "취소",
             "pdpUrl":"#",
             "startDate":"20210105",
-            "endDate":"20220106"
+            "endDate":"20220106",
+            "serviceDt": "2021.12.23~2024.12.22"
         }
     ]
 }
