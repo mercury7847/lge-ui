@@ -9,9 +9,9 @@
             '<div class="flag-wrap bar-type"><span class="flag">{{storyTypeNm}}</span></div>' +
             '<p class="tit">{{#raw storyTitle}}</p>' +
             '<p class="desc">{{#raw storyDesc}}</p>' +
-            '{{#if tags.length > 0}}' +
+            '{{#if tagList.length > 0}}' +
             '<div class="hashtag-wrap">' +
-                '{{#each item in tags}}' +
+                '{{#each item in tagList}}' +
                     '<span class="hashtag"><span>#</span>{{item.tagName}}</span>' +
                 '{{/each}}' +
             '</div>' +
