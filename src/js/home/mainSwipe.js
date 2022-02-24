@@ -60,7 +60,7 @@ MainSwiper.prototype = {
         var idx = mainSwiper.getIndexByHash( hash !== '' ? hash : 'home' );        
 
         this.swiper = new Swiper('#sw_con', {
-            speed:500,
+            speed:250,
             autoHeight : true,
             observer : true,
             slidesPerView : 1,
