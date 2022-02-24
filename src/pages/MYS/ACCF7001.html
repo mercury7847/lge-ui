@@ -137,92 +137,16 @@
                                                     <a href="#"><span class="title">주문 조회(22)</span></a><!-- 210329 수정 [span 태그 추가] -->
                                                     <span class="sub-text">최근 3개월 기준</span>
                                                 </h4>
-                                                <div class="process-wrap">
-                                                    <ul>
-                                                        <li>
-                                                            <span class="title">일반제품</span>
-                                                            <ul class="process-list">
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>주문접수</dt>
-                                                                        <dd class="ordered">8</dd>
-                                                                    </dl>
-                                                                </li>
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>결제완료</dt>
-                                                                        <dd class="invoiced">1</dd>
-                                                                    </dl>
-                                                                </li>
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>배송준비중</dt>
-                                                                        <dd class="picking zero">0</dd><!-- 210329 수정 [0일 경우 컬러 변경(.zero 클래스 추가)] -->
-                                                                    </dl>
-                                                                </li>
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>배송중</dt>
-                                                                        <dd class="shipped zero">0</dd>
-                                                                    </dl>
-                                                                </li>
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>배송완료</dt>
-                                                                        <dd class="delivered">1</dd>
-                                                                    </dl>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li>
-                                                            <span class="title">케어솔루션</span>
-                                                            <ul class="process-list">
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>청약완료</dt>
-                                                                        <dd class="requestOk">8</dd>
-                                                                    </dl>
-                                                                </li>
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>주문접수</dt>
-                                                                        <dd class="ordered">1</dd>
-                                                                    </dl>
-                                                                </li>
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>결제완료</dt>
-                                                                        <dd class="invoiced">2</dd>
-                                                                    </dl>
-                                                                </li>
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>배송준비중</dt>
-                                                                        <dd class="picking">2</dd>
-                                                                    </dl>
-                                                                </li>
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>배송중</dt>
-                                                                        <dd class="shipped">2</dd>
-                                                                    </dl>
-                                                                </li>
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>배송완료</dt>
-                                                                        <dd class="delivered">1</dd>
-                                                                    </dl>
-                                                                </li>
-                                                                <li>
-                                                                    <dl class="box">
-                                                                        <dt>계약완료</dt>
-                                                                        <dd class="complete">1</dd>
-                                                                    </dl>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
+                                                <!--
+                                                    LGECOMVIO-114 추가, ?tabFlag=탭명 으로 이동되면 해당 탭으로 활성화
+                                                    (기존 개발에 기능이 이미 있으므로 BESTSHOP일 경우도 가능하도록 처리 필요함)
+                                                -->
+                                                <div class="btn-group-order">
+                                                    <a href="/html/MYC/ACCF7002.html" class="order-lge">LGE.COM 구매 <span class="count"></span></a>
+                                                    <a href="/html/MYC/ACCF7002.html?tabFlag=BESTSHOP" class="order-bestshop">베스트샵 구매 <span class="count"></span></a>
+                                                    <a href="/html/MYC/ACCF7002.html?tabFlag=CARE" class="order-care">케어솔루션 <span class="count"></span></a>
                                                 </div>
+
                                             </div>
                                         </li>
                                         <li>
