@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#laypop1" data-control="modal" class="btn pink"><span>상담예약취소 선택 시(취소가능건)</span></button><br><br>
+        <button type="button" data-href="#laypop2" data-control="modal" class="btn pink"><span>상담예약취소 선택 시(예약당일건)</span></button><br><br>
+        <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>상담예약취소 완료</span></button><br><br>
+        <button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>제품 정보</span></button><br><br>
+    </div>
+
+    <!-- 상담예약취소 선택 시(취소가능건) -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop1",
+        "msgOnly" : true,
+        "msg" : "접수하신 상담예약을 취소하시겠습니까?.",
+        "twobtn" : true,
+        "btnTxt1" : "취소",
+        "btnTxt2" : "확인"
+    })
+    <!-- 상담예약취소 선택 시(취소가능건) -->
+
+    <!-- 상담예약취소 선택 시(예약당일건) -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop2",
+        "msgOnly" : true,
+        "msg" : "예약일 당일에는 취소가 불가 합니다.",
+        "twobtn" : false,
+        "btnTxt" : "확인"
+    })
+    <!-- 상담예약취소 선택 시(예약당일건) -->
+
+    <!-- 상담예약취소 완료 -->
+    @@include('./common/popup/ACCF8000_pop1.html', {
+        popupID: 'popup1'
+    })
+    <!-- 상담예약취소 완료 -->
+
+    <!-- 제품 정보 -->
+    @@include('./common/popup/ACCF8000_pop2.html', {
+        popupID: 'popup2'
+    })
+    <!-- 제품 정보 -->
+</body>
+</html>
