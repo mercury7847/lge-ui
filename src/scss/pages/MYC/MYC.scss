@@ -21,6 +21,7 @@
             padding-top:0;
         }
     }
+
     // mypage lnb layout
     .lnb-wrap {
         @include clearfix;
@@ -370,6 +371,11 @@
                         }
                     }
                 }
+            }
+
+            &.care-step-info,
+            &.bestshop-order-info {
+                display: none;
             }
         }
         

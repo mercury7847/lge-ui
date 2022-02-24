@@ -5,11 +5,12 @@
         '<div class="box" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
                 '<ul class="infos">'+
+                    '{{#if activeTabFlag == "BESTSHOP"}}<li class="type-m"><p class="store-name">{{storeName}}</p></li>{{/if}}'+
                     '<li>{{dateTitle}}<em>{{orderDate}}</em></li>'+
                     '<li>{{orderNumberTitle}}<em>{{groupNumber}}</em></li>'+
                 '</ul>'+
                 '<p class="totals">총 {{orderTotal}}건</p>'+
-                '{{#if activeTabFlag == "BESTSHOP"}}<p class="store-name">{{storeName}}</p>{{/if}}'+
+                '{{#if activeTabFlag == "BESTSHOP"}}<p class="store-name type-pc">{{storeName}}</p>{{/if}}'+
             '</div>'+
             '<div class="tbl-layout sizeType3">'+
                 '<div class="thead" aria-hidden="true">'+
@@ -20,11 +21,10 @@
                 '<div class="tbody">'+
                 '</div>'+
             '</div>'+
+            '{{#if activeTabFlag !== "BESTSHOP"}}' +
             '<div class="btn-link-area">'+
-                '{{#if activeTabFlag !== "BESTSHOP"}}' +
                 '{{#if orderCancelAbleYn == "Y"}}'+
                 '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
-                '{{/if}}'+
                 '{{/if}}'+
                 '{{#if isDetailViewBtn}}<a href="#n" class="btn-link orderDetail-btn">주문/배송 상세보기</a>{{/if}}'+
             '</div>'+
@@ -32,6 +32,7 @@
             '<div class="btns">'+
                 '<a href="#n" class="btn-link detailView-btn">주문/배송 상세보기</a>'+
             '</div>'+
+            '{{/if}}'+
             '{{/if}}'+
         '</div>';
 
@@ -393,7 +394,6 @@
 
     var PAGE_TYPE_LIST = "orderListPage";
     var PAGE_TYPE_DETAIL = "orderDetailPage";
-    var PAGE_TYPE_BESTSHOP_DETAIL = "bestShopOrderDetailPage";
     var PAGE_TYPE_NONMEM_DETAIL = "orderNoneMemberPage";
     var PAGE_TYPE_CAREDETAIL = "careOrderDetailPage";
     var PAGE_TYPE_RECORD_DETAIL = "recordDetailPage";
@@ -459,27 +459,61 @@
     var datalayerResult = null; //BTOCSITE-4088 - [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 삽입 요청
 
     var getTabData = function(flag){
-        var listData = [];
         switch(flag){
             case TAB_FLAG_ORDER:
-                listData = ORDER_LIST;
+                return ORDER_LIST;
                 break;
 
             case TAB_FLAG_ORDER_BESTSHOP:
-                listData = BESTSHOP_LIST;
+                return BESTSHOP_LIST;
                 break;
 
             case TAB_FLAG_CARE:
-                listData = CARE_LIST;
+                return CARE_LIST;
                 break;
 
             case TAB_FLAG_RECORD:
-                listData = RECORD_LIST;
+                return RECORD_LIST;
                 break;
         }
-
-        return listData;
     }
+
+    var getTabName = function(idx){
+        switch(idx){
+            case 0:
+                return TAB_FLAG_ORDER;
+                break;
+
+            case 1:
+                return TAB_FLAG_ORDER_BESTSHOP;
+                break;
+
+            case 2:
+                return TAB_FLAG_CARE;
+                break;
+        }
+    }
+
+    // 탭 이동 시 선택된 날짜 기간이 서비스 개편 이전 날짜 일 시 체크하여 노출/비노출 처리
+    var openBeforeHistoryCheck = function() {
+        console.log(222)
+        var startDate = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption").startDate;
+        var endDate = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption").endDate;
+        var oldDateStartDate = 20200413;
+        var oldDateEndDate = 20210426;
+
+        if(getTabName($('.lnb-contents .tabs-wrap .tabs').find('li[class=on]').index()) == TAB_FLAG_ORDER_BESTSHOP) {
+            $(".open-before-order-history").hide();
+        } else {
+            console.log(333)
+            if((startDate >= oldDateStartDate && startDate <= oldDateEndDate) || (endDate >= oldDateStartDate && endDate <= oldDateEndDate)) {
+                $(".open-before-order-history").show();
+            } else {
+                $(".open-before-order-history").hide();
+            }
+        }
+    }
+
     function init(){
         if(!$('.contents.mypage').data('consumables')) {
             vcui.require(['ui/checkboxAllChecker', 'ui/modal', 'ui/calendar', 'ui/datePeriodFilter', 'ui/formatter', 'helper/textMasking'], function () {             
@@ -531,22 +565,13 @@
         SELECT_PERIOD = dateData.periodSelect;
 
         // 서비스 개편 이전 날짜 선택 시 내역보기 영역 노출/비노출
-       $('.inquiryPeriodFilter .datepicker input').on('calendarinsertdate', function(){
-            var getSelectDate = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption");
-            var targetDate = Number($(this).attr('name') == 'startDate' ? getSelectDate.startDate : getSelectDate.endDate);
-            var oldDateStartDate = 20200413;
-            var oldDateEndDate = 20210426;
-
-            if(targetDate >= oldDateStartDate && targetDate <= oldDateEndDate) {
-                $(".open-before-order-history").show();
-            } else {
-                $(".open-before-order-history").hide();
-            }
+        $('.inquiryPeriodFilter .datepicker input').on('calendarinsertdate', function(){
+           console.log(11)
+           openBeforeHistoryCheck();
         })
 
         TAB_FLAG = $('.contents.mypage').data('tabFlag') ? $('.contents.mypage').data('tabFlag') : TAB_FLAG_ORDER;
         if(TAB_FLAG == TAB_FLAG_CARE && PAGE_TYPE == PAGE_TYPE_DETAIL) PAGE_TYPE = PAGE_TYPE_CAREDETAIL;
-        if(TAB_FLAG == TAB_FLAG_ORDER_BESTSHOP && PAGE_TYPE == PAGE_TYPE_DETAIL) PAGE_TYPE = PAGE_TYPE_BESTSHOP_DETAIL;
 
         var register = {
             paymentCard:{
@@ -589,7 +614,7 @@
             SELECT_PERIOD = data.periodSelect;
 
             var tab = tabMenu.find('li[class=on]');
-            TAB_FLAG = String(tab.data('tabName'));
+            TAB_FLAG = getTabName(tab.index());
 
             requestOrderInquiry();
         });
@@ -615,6 +640,9 @@
             switch(btntype){
                 case "deliveryInquiry":
                     setDeliveryInquiry(dataID, prodID);
+                    break;
+                case "bestShopDeliveryInquiry":
+                    setBestShopDeliveryInquiry(dataID, prodID);
                     break;
 
                 case "deliveryRequest":
@@ -852,7 +880,7 @@
         tabMenu.children().removeClass('on');
         tab.addClass('on');
         
-        TAB_FLAG = String(tab.data('tabName'));
+        TAB_FLAG = getTabName(tab.index());
 
         START_INDEX = 0;
         setOrderListContents();
@@ -1319,6 +1347,11 @@
         
         void(window.open(orderStatus.deliveryUrl, "_blank", "width=360, height=600, scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"));   
     }
+    
+    // LGECOMVIO-114 베스트샵 배송조회 추가
+    function setBestShopDeliveryInquiry(dataID, prodID){
+        alert('베스트샵 배송조회');
+    }
 
     function setDeliveryRequest(dataID, prodID){
         var listData = getTabData(TAB_FLAG)
@@ -1495,24 +1528,27 @@
     }
 
     function setStepInfoStatus(){
-        if(TAB_FLAG == TAB_FLAG_ORDER || TAB_FLAG == TAB_FLAG_ORDER_BESTSHOP){
-            $('.buy-step-info').show();
-            $('.care-step-info').hide();
+        openBeforeHistoryCheck();
 
-            if(TAB_FLAG == TAB_FLAG_ORDER) {
-                $("#lgeOrderNotice").show();
-                $("#bestshopOrderNotice").hide();
-            } else {
-                $("#lgeOrderNotice").hide();
-                $("#bestshopOrderNotice").show();
-            }
-
-        } else{
-            $('.buy-step-info').hide();
-            $('.care-step-info').show();
-
-            $("#lgeOrderNotice").show();
-            $("#bestshopOrderNotice").hide();
+        switch (TAB_FLAG) {
+            case TAB_FLAG_ORDER:
+                $('.noti-info').show();
+                $('.buy-step-info').show();
+                $('.care-step-info').hide();
+                $('.bestshop-order-info').hide();
+                break;
+            case TAB_FLAG_ORDER_BESTSHOP:
+                $('.noti-info').hide();
+                $('.buy-step-info').hide();
+                $('.care-step-info').hide();
+                $('.bestshop-order-info').show();
+                break;
+            case TAB_FLAG_CARE:
+                $('.buy-step-info').hide();
+                $('.bestshop-order-info').hide();
+                $('.noti-info').show();
+                $('.care-step-info').show();
+                break;
         }
     }
     
@@ -1674,7 +1710,7 @@
         lgkorUI.requestAjaxData(ORDER_INQUIRY_LIST_URL, sendata, function(result){
             lgkorUI.hideLoading();
             if(result.status == "fail"){
-                if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL || PAGE_TYPE == PAGE_TYPE_DETAIL || PAGE_TYPE == PAGE_TYPE_BESTSHOP_DETAIL){
+                if(PAGE_TYPE == PAGE_TYPE_CAREDETAIL || PAGE_TYPE == PAGE_TYPE_DETAIL){
                     lgkorUI.alert("", {
                         title: result.message,
                         ok: function(){
@@ -1736,12 +1772,12 @@
                     }
                 }
 
-                // LGECOMVIO-114 BESTSHOP 추가 PAGE_TYPE_LIST, PAGE_TYPE_BEST_DETAIL
+                // LGECOMVIO-114 BESTSHOP 추가
                 if(data.bestShopListData && data.bestShopListData.length){
                     var leng, cdx, idx;
                     var list = data.bestShopListData;
                     for(idx in list){
-                        leng = ORDER_LIST.length;
+                        leng = BESTSHOP_LIST.length;
                         list[idx]['dataID'] = leng.toString();
 
                         list[idx].dateTitle = "주문일";
@@ -1758,13 +1794,6 @@
 
                         if(chk > 0) list[idx].orderCancelAbleYn = "Y";
                         else list[idx].orderCancelAbleYn = "N";
-
-                        if(PAGE_TYPE == PAGE_TYPE_NONMEM_DETAIL){
-                            list[idx].apiType = "OBS";
-                            list[idx].requestNo = "";
-                        }
-
-                        list[idx].isDetailViewBtn = PAGE_TYPE == PAGE_TYPE_LIST ? true : false;
 
                         BESTSHOP_LIST.push(list[idx]);
                     }
@@ -1912,10 +1941,6 @@
                         switch(PAGE_TYPE){
                             case PAGE_TYPE_DETAIL:
                                 listData = ORDER_LIST[0];
-                                break;
-
-                            case PAGE_TYPE_BESTSHOP_DETAIL:
-                                listData = BESTSHOP_LIST[0];
                                 break;
 
                             case PAGE_TYPE_CAREDETAIL:
