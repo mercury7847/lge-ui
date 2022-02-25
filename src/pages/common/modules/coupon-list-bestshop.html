@@ -7,7 +7,10 @@
     <div class="coupon-box bshop shop-benefit"><!-- 매장방문혜택 .shop-benefit -->
     }
     @@if ( context.type3 ) {
-    <div class="coupon-box bshop disabled"><!-- 사용불가/종료 .disabled -->
+    <div class="coupon-box bshop shop-dc disabled"><!-- 매장제품할인(사용불가/종료) .disabled -->
+    }
+    @@if ( context.type4 ) {
+    <div class="coupon-box bshop shop-benefit disabled"><!-- 매장방문혜택(사용불가/종료) .disabled -->
     }
         <div class="coupon-cont">
             <div class="top">
@@ -16,12 +19,12 @@
             <p class="desc">@@desc</p>
             <div class="bottom">
                 <p>유효기간 : @@period</p>
-                <p>대상모델 : @@model</p>
+                <p>@@if ( context.type1 || context.type3) {대상모델}@@if ( context.type2 || context.type4) {대상매장} : @@model</p>                
             </div>
-            @@if ( !context.type3 ) {
+            @@if ( !context.type3 || !context.type4 ) {
             <a href="#" class="btn-link-text" title="자세히보기"><span>@@btn-text</span></a>
             }
-            @@if ( context.type3 ) {
+            @@if ( context.type3 || context.type4 ) {
             <div class="end-flags">@@end</div>
             }
         </div>
