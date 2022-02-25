@@ -237,8 +237,9 @@
             //매거진 탭 내부 유튜브 영상 & 슬라이드
             var self = this;
             var videoTmpl = '<iframe src={{link}} '+
-            'id="videoPlayerCode" frameborder="0" allowfullscreen="1" '+
+            'id="videoPlayerCode" frameborder="0" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1" '+
             'allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" '+
+            'sandbox="allow-scripts allow-same-origin allow-presentation" ' +
             'title="YouTube video player"></iframe>';
 
             $('#thinq-cont4').off('click', '.video-thumb a');

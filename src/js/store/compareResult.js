@@ -17,6 +17,7 @@
 
     function setting(){
         var self = this;
+            self.fromLogin = document.referrer.indexOf('/sso/api/emp/callbackLogin') > -1 && digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId  ? true : false;
 
         // 모니터링 357 :  뒤로가기시 스크롤탑 위치 메뉴얼로 변경
         if (history.scrollRestoration) {
@@ -36,6 +37,26 @@
 
         // BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 (테스트할때 주석처리 해야함, local 테스트시 오류뜸)
         setDifferentBenefit();
+
+
+        console.log("referer %o",document.referrer)
+
+
+        if(self.fromLogin) {
+
+            console.log("로그인 페이지에서  이동 ")
+
+        } else {
+
+            console.log("일반 페이지  이동 ")
+
+
+
+        }
+
+
+
+        // 
     }
 
     function bindEvents(){
@@ -77,6 +98,17 @@
                 $(this).parents('.card-selec-box').find('strong').removeClass('mo-sel');
             }else{
                 $(this).parents('.card-selec-box').find('strong').addClass('mo-sel');
+            }
+       })
+
+       $('.page-header .btn-link').on('click',function(e){
+            e.preventDefault();
+            if(self.fromLogin) {
+                console.log("로그인에서 이동시 처리 =================> -4");
+                history.go(-4)
+            } else {
+                console.log("일반 페이지  이동시 처리 =================> -1");
+                history.back();
             }
        })
     }

@@ -1298,6 +1298,17 @@ if ('scrollRestoration' in history) {
                         /* //BTOCSITE-5017 : 모니터링 - 검색결과가 상이하게 표시됨 수정 2021-09-02 */
 
                         self.$searchNotResult.show();
+                        
+                        /* BTOCSITE-12682 검색 > 검색어 미 입력시 검색결과 내 안내 문구 노출 */
+                        if( self.$inputSearch.val().trim() == "" ) {
+                            self.$searchNotResult.find('span').hide();
+                            self.$searchNotResult.find('span.txt-none').show();
+                            
+                        } else {
+                            self.$searchNotResult.find('span').show();
+                            self.$searchNotResult.find('span.txt-none').hide();
+                        }
+                        /* //BTOCSITE-12682 검색 > 검색어 미 입력시 검색결과 내 안내 문구 노출 */
                     } else {
                         //self.$tab.parents('.search-tabs-wrap').show();
                         //self.$tab.vcSmoothScroll('refresh');

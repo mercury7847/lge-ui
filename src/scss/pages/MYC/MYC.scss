@@ -172,7 +172,7 @@
                         margin-bottom: 25px;
                     }
                 }
-                
+
                 @include mobile {
                     flex-direction: column;
                     li {
@@ -378,7 +378,7 @@
                 display: none;
             }
         }
-        
+
         .btn-moreview {
             @include mobile {
                 margin-bottom: 24px;
@@ -498,6 +498,12 @@
 
     // 해지 상담 신청
     @import "ACCF7055";
+
+    // 상담 예약 조회 // 2022.02.23 LGECOMVIO-143
+    @import "ACCF8000";
+
+    // 쿠폰(베스트샵)
+    @import "ACCF7510"; //20220224 LGECOMVIO-195
 }
 
 
@@ -711,7 +717,7 @@
                         top:7px;
                         width:1px;
                         height:14px;
-                        background:#fff;    
+                        background:#fff;
                     }
                 }
             }
@@ -834,7 +840,7 @@
                     @include font-medium;
                     font-weight:700;
                     &:before {
-                        content:'';   
+                        content:'';
                         position:absolute;
                         left:0;
                         top:50%;
@@ -1208,7 +1214,7 @@
                                 font-size: 14px;
                             }
                         }
-                        span { 
+                        span {
                             font-size: 14px;
                             color: #666;
                         }
@@ -1337,7 +1343,7 @@
             .example-type-inbox{
                 padding: 0 8px;
                 button{
-                    width: 100%; 
+                    width: 100%;
                     height: 88px;
                     border-radius: 8px;
                     box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.16);
@@ -1382,9 +1388,9 @@
         cursor: default;
     }
     // -S- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
-    .info-msg { 
-        
-        border-top:1px solid #ddd; 
+    .info-msg {
+
+        border-top:1px solid #ddd;
         margin-top:48px;
         padding-top:13px;
         li {
@@ -1399,7 +1405,7 @@
             }
             line-height:19px; padding-left:11px; margin:3px 0;
         }
-       
+
         @include mobile{
             margin-top:40px;
             padding-top:4px;
@@ -1413,12 +1419,12 @@
         }
     }
     // -E- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
-} 
+}
 
 #registMyProductPopup .common-pop .form-wrap .forms .tit .app-exec{
     display: none;
     @include mobile {
-        margin:0 0 0 6px; 
+        margin:0 0 0 6px;
         &.active {
             display: inline-block;
         }
@@ -1530,7 +1536,7 @@
             .scan-type-inbox{
                 padding: 0 6px;
                 button{
-                    width: 100%; 
+                    width: 100%;
                     height: 120px;
                     border-radius: 8px;
                     box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
@@ -1581,7 +1587,7 @@
     }
     h3 {
         position: absolute;
-        top:24px; 
+        top:24px;
         left:0;
         height: 148px;
         width:181px;
@@ -1618,7 +1624,7 @@
         .example-type-inbox{
             padding: 0 8px;
             button{
-                width: 100%; 
+                width: 100%;
                 height: 88px;
                 border-radius: 8px;
                 box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
@@ -1802,12 +1808,12 @@
                 .conts {
                     z-index: 0;
                 }
-            } 
+            }
             .forms:first-child  {
                 .conts {
                     z-index:1;
                 }
-            } 
+            }
         }
     }
 }
@@ -1838,7 +1844,7 @@
             padding: 20px 16px 54px;
 			padding-bottom: calc(env(safe-area-inset-bottom) + 174px);
 			padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
-			
+
         }
         .desc {
             padding-bottom: 30px;
@@ -1865,8 +1871,8 @@
                     &.btn-type2 div.item {
                         display: flex;
                         width: 100% !important;
-                        padding: 11px 50px;  
-                        border-radius: 8px;                  
+                        padding: 11px 50px;
+                        border-radius: 8px;
                         border-width:0;
                         position: relative;
                         &:before {
@@ -1878,7 +1884,7 @@
                             content:"";
                             display: block;
                             border:1px solid #000;
-                            border-radius: 8px;  
+                            border-radius: 8px;
                         }
                         @include mobile {
                             padding: 15px 17px;
@@ -1923,7 +1929,7 @@
                     &.btn-type2 div.item.active {
                         color: #000;
                         &:before {
-                            border: 2px solid #da0f47; 
+                            border: 2px solid #da0f47;
                         }
                     }
                 }
@@ -1931,7 +1937,7 @@
                     .rdo-wrap {
                         &.btn-type2 div.item {
                             &:before {
-                                border: 2px solid #da0f47; 
+                                border: 2px solid #da0f47;
                             }
                         }
                     }
@@ -1942,7 +1948,7 @@
     .pop-footer {
         padding: 20px 48px 50px;
         @include mobile {
-            padding: 0;    
+            padding: 0;
         }
         .btn {
             min-width: 140px;

@@ -24,16 +24,16 @@ var goAppUrl = function(path) {
             this.addEventListener("touchmove", handle, { passive: !(ns.indexOf('noPreventDefault') > -1) });
         }
     };
-    $.event.special.wheel = {
-        setup: function( _, ns, handle ){
-            this.addEventListener("wheel", handle, { passive: true });
-        }
-    };
-    $.event.special.mousewheel = {
-        setup: function( _, ns, handle ){
-            this.addEventListener("mousewheel", handle, { passive: true });
-        }
-    };
+    // $.event.special.wheel = {
+    //     setup: function( _, ns, handle ){
+    //         this.addEventListener("wheel", handle, { passive: true });
+    //     }
+    // };
+    // $.event.special.mousewheel = {
+    //     setup: function( _, ns, handle ){
+    //         this.addEventListener("mousewheel", handle, { passive: true });
+    //     }
+    // };
 
     $.event.special.scroll = {
         setup: function( _, ns, handle ){
@@ -1323,8 +1323,8 @@ var goAppUrl = function(path) {
             var self = this;
             var compareIDs = [];
             var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
-                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id); });
-            var compareCookie = compareIDs.join("|");
+                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id + '|' + item.careType); }); // BTOCSITE-5938-545 care type 추가
+            var compareCookie = compareIDs.join(",");
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
         },
@@ -2436,7 +2436,7 @@ var goAppUrl = function(path) {
             window.cremaAsyncInit = function () {
                 if(typeof crema !== 'undefined') {
                     lgkorUI.requestAjaxDataPost('/mkt/commonModule/cremaInfo.lgajax', null, function(result){
-                        if(result.status && result.data) {
+                        if(result.status === 'success' && result.data) {
                             var cremaid   = result.data[0].data.cremaId || '';
                             var cremaname = result.data[0].data.cremaName || '';
                             crema.init(cremaid , cremaname);
@@ -2783,6 +2783,36 @@ var goAppUrl = function(path) {
                     expires : new Date('1999/01/01'),
                     domain : location.host
                 });
+            }
+        },
+        // BTOCSITE-12458 [앱스플라이어] 이벤트 공통 함수
+        afEvent: function(eventName,eventValue){
+            if(isApp() && eventName && eventValue) {
+                var eventValue = JSON.stringify(eventValue);
+                var iframe = document.createElement("IFRAME");
+                    iframe.setAttribute("src", "af-event://inappevent?eventName="+eventName+"&eventValue="+eventValue);
+                    document.documentElement.appendChild(iframe);
+                    iframe.parentNode.removeChild(iframe);
+                    iframe = null;
+            }
+        },
+        // BTOCSITE-11928 챗봇 pincode 파라미터 연결 수정
+        getChatPinCode: function(el) {
+            if(el.length > 0) {
+                lgkorUI.requestAjaxData('/support/getPinCode.lgajax', null, function(result) {
+                    var pinCode = null;
+                    var data = result.data;
+                    if(data) {
+                        var receveResult = data.result;
+                        if(receveResult && receveResult.code) {
+                            pinCode = receveResult.code;
+                        }
+                    }
+
+                    var url = lgkorUI.parseUrl(el.attr('href')),
+                        params = $.extend(url.searchParams.getAll(),{'channel': isApp() ? "lg_app" : "lg_homepage", 'code' :  pinCode || ''});
+                        el.attr('href',vcui.uri.addParam(url.origin+url.pathname,params));
+                },"GET", "json", true, null, true);
             }
         }
     }

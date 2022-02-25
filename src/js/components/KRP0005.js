@@ -6,8 +6,6 @@
             self.setting();
             self.bindEvents();
 
-            self.getChatPinCode();
-
             var cookieValue = lgkorUI.getCookie(lgkorUI.RECENT_PROD_COOKIE_NAME);
             if(cookieValue) {
                 self.requestData(false);
@@ -22,42 +20,13 @@
             
             self.$floatingWrap = $('.btn-floating-wrap');
             self.$KRP0005 = $('.KRP0005.floating-menu');
-            self.$morePlus = $('.KRP0005.floating-menu.more-plus');
             self.moreButton = self.$KRP0005.find('.more-plus-linker a');
 
             self.$popup = $('#KRP0032:eq(0)');
             self.$list = self.$popup.find('div.lately-list ul');
+            // BTOCSITE-11928 챗봇 pincode 파라미터 연결 수정
+            lgkorUI.getChatPinCode(self.$KRP0005.find('div.floating-linker.chat a'));
         },        
-
-        getChatPinCode: function() {
-            var self = this;
-            var $chat = self.$KRP0005.find('div.floating-linker.chat a');
-            if($chat.length > 0) {
-                var ajaxUrl = self.$morePlus.data('pincodeUrl');
-                if(ajaxUrl) {
-                    lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {
-                        var pinCode = null;
-                        var data = result.data;
-                        if(data) {
-                            var receveResult = data.result;
-                            if(receveResult && receveResult.code) {
-                                pinCode = receveResult.code;
-                            }
-                        }
-
-                        var chatUrl = self.$morePlus.data('chatUrl');
-                        var isApplication = isApp();
-                        chatUrl += (isApplication ? "?channel=lg_app" : "?channel=lg_homepage");
-                        if(pinCode) {
-                            chatUrl += ("&code="+pinCode);
-                        }
-
-                        $chat.attr('href',chatUrl);
-                    },"GET", "json", true, null, true);
-                }
-            }
-        },
-
         bindEvents: function() {
             var self = this;
 
