@@ -2795,6 +2795,25 @@ var goAppUrl = function(path) {
                     iframe.parentNode.removeChild(iframe);
                     iframe = null;
             }
+        },
+        // BTOCSITE-11928 챗봇 pincode 파라미터 연결 수정
+        getChatPinCode: function(el) {
+            if(el.length > 0) {
+                lgkorUI.requestAjaxData('/support/getPinCode.lgajax', null, function(result) {
+                    var pinCode = null;
+                    var data = result.data;
+                    if(data) {
+                        var receveResult = data.result;
+                        if(receveResult && receveResult.code) {
+                            pinCode = receveResult.code;
+                        }
+                    }
+
+                    var url = lgkorUI.parseUrl(el.attr('href')),
+                        params = $.extend(url.searchParams.getAll(),{'channel': isApp() ? "lg_app" : "lg_homepage", 'code' :  pinCode || ''});
+                        el.attr('href',vcui.uri.addParam(url.origin+url.pathname,params));
+                },"GET", "json", true, null, true);
+            }
         }
     }
 
