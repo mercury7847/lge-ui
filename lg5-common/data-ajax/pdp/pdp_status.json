@@ -1,8 +1,11 @@
 {
-    "status":"success",
-    "message":null,
-    "data": {
-        "orderStatus": "Y",
-        "ownStatus": "N"
-    }
+    "data": [
+        {
+            "isproduct": "Y",
+            "isregistered": "Y"
+        }
+    ],
+    "message": "",
+    "status": "success",
+    "dataCount": 1
 }

@@ -1,49 +1,52 @@
 {
-    "orderList":{
-              "dataFlag":"Y",
-              "data":{
-                    "normalData":{
-                                  "ordered":0
-                                , "invoiced":1
-                                , "picking":2
-                                , "shipped":3
-                                , "delivered":4
-                               },
-                    "caresolutionData":{
-                                        "requestOk":6
-                                      , "ordered":5
-                                      , "invoiced":4
-                                      , "picking":3
-                                      , "shipped":2
-                                      , "delivered":1
-                                      , "complete":8
-                                     },
-                    "completeUrl":"/my-page/care-solution-contract-status",
-                    "myShoppingCnt":2
-                   }
-             },
-    "wishList":{
-              "dataFlag" : "Y", 
-              "data":{
-                    "list":[
-                          {
-                             "title":"LG TROMM 스타일러"
-                           , "imageUrl":"/kr/images/lg-styler/md08040392/md08040392-280x280.jpg"
-                           , "imageAlt":"LG TROMM 스타일러"
-                           , "pdpUrl":"/lg-styler/s3bf"
-                           , "originalPrice":77777
-                           , "price":77777
-                          },
-                          {
-                             "title":"LG Healing Me 안마의자"
-                           , "imageUrl":"/kr/images/lg-styler/md08040392/md08040392-280x280.jpg"
-                           , "imageAlt":"LG Healing Me 안마의자"
-                           , "pdpUrl":"/lg-styler/s3bf"
-                           , "originalPrice":12900
-                           , "price":14300
-                          }
-                         ],
-                    "wishCnt":4 
-                   }
-             }
-   }
+  "orderList": {
+    "dataFlag": "Y",
+    "data": {
+      "normalData": {
+        "ordered": 0,
+        "invoiced": 1,
+        "picking": 2,
+        "shipped": 3,
+        "delivered": 4
+      },
+      "caresolutionData": {
+        "requestOk": 6,
+        "ordered": 5,
+        "invoiced": 4,
+        "picking": 3,
+        "shipped": 2,
+        "delivered": 1,
+        "complete": 8
+      },
+      "completeUrl": "/my-page/care-solution-contract-status",
+      "myShoppingCnt": 30,
+      "normalDataTotal": 10,
+      "bestShopDataTotal": 12,
+      "careDataTotal": 8
+    }
+  },
+  "wishList":{
+    "dataFlag" : "Y",
+    "data":{
+      "list":[
+        {
+         "title":"LG TROMM 스타일러",
+         "imageUrl":"/kr/images/lg-styler/md08040392/md08040392-280x280.jpg",
+         "imageAlt":"LG TROMM 스타일러",
+         "pdpUrl":"/lg-styler/s3bf",
+         "originalPrice":77777,
+         "price":77777
+        },
+        {
+         "title":"LG Healing Me 안마의자",
+         "imageUrl":"/kr/images/lg-styler/md08040392/md08040392-280x280.jpg",
+         "imageAlt":"LG Healing Me 안마의자",
+         "pdpUrl":"/lg-styler/s3bf",
+         "originalPrice":12900,
+         "price":14300
+        }
+      ],
+      "wishCnt":4
+    }
+  }
+}

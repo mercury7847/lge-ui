@@ -271,6 +271,7 @@
                         padding: 0 5px;
                     }
                 }
+                //BTOCSITE-7550 plp colorchip
                 .chk-wrap-colorchip {
                     input {
                         & + label {
@@ -278,14 +279,34 @@
                             height:24px;
                             padding-left:0;
                         }
+                        &:before {
+                            top: 3px;
+                            left: 3px;
+                            width: 18px;
+                            height: 18px;
+                        }
                         &:checked {
                             & + label {
                                 &:after {
+                                    top: -2px;
+                                    left: -2px;
+                                    width: 28px;
+                                    height: 28px;
                                     border-color: $color-primary;
+                                    @include mobile {
+                                        top: -3px;
+                                        left: -3px;
+                                        width: 34px;
+                                        height: 34px;
+                                    }
                                 }
                             }
                         }
                         @include mobile {
+                            &:before {
+                                width: 22px;
+                                height: 22px;
+                            }
                             & + label {
                                 width:28px;
                                 height:28px;
@@ -296,6 +317,7 @@
                                     left:3px;
                                     width:22px;
                                     height:22px;
+                                    background-size: 150px auto;
                                 }
                                 &:after {
                                     width:28px;

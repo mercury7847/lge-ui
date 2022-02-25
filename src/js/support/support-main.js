@@ -1,17 +1,14 @@
-(function(){
+//BTOCSITE-12128 메인성능개선 - 스크립트 구조 변경
+(function(global){
+    var script = {
+        name : "support-main",
+        hash : 'support'
+    };
+
+    if(global[script.name]) return; // 중복로딩 차단 
     var detect = vcui.detect;
     var isMobileDevice = detect.isMobileDevice;    
-
-    if(isMobileDevice) {
-        var $context = $('#sw_con .swiper-slide[data-hash="support"]');
-    } else {
-        var $context = $(document);
-    }
-
-    var $contextLabel = String($context.attr('aria-label'));
-    var contextLeft = !!$('.swiper-slide-active[data-hash="support"]').length ? $context.width() * (Number($contextLabel.split('/')[0].trim()) - 1) : null;
-
-
+    var $context = isMobileDevice ? $('[data-hash="support"]') : $(document);
 
     var supportHome = {
         loginTooltip : function(){
@@ -1026,27 +1023,10 @@
                 check : '[data-role="today-cookie-check"]',
                 close : '.btn-close'
             },
-            init : function(el){
-
-
-                // BTOCSITE-11602 고객지원 팝업 오류 대응
-                if(el) {
-                    $context = $(el);
-                    $contextLabel = String($context.attr('aria-label'));
-                    contextLeft = $context.width() * (Number($contextLabel.split('/')[0].trim()) - 1);
-                }
-
-
-                console.log("popup ");
-
-                if (contextLeft != null){
-                    this.el.modal = '<div class="ui_modal_wrap init-type" style="position:fixed; z-index:9000; top:0; left:'+ contextLeft +'px; width:100%; height:100%;"/>'
-                }
-                
-
+            init : function(){
                 var self = this;
-                var $popup = $context.find(self.el.popup);
-
+                if(isMobileDevice) $("body>"+self.el.popup).remove(); // 고객지원 백앤드 템틀릿 오류 강제 제거
+                var $popup = isMobileDevice ? $(document).find('#sw_con [data-hash="support"] '+self.el.popup).remove().appendTo('body') : $(self.el.popup);
                 
                 if($popup.length ) {
                     $popup.each(function(v, i){
@@ -1060,14 +1040,8 @@
                     $popup.not('.hidden').addClass('active').attr('tabindex', '0');
 
                     if( $(".ui_modal_wrap.init-type").length == 0 && $popup.filter('.active').length ) {
-                        //$('html').css('overflow', 'hidden');
-                        console.log("popup wrap");
                         $popup.filter('.active').wrapAll(self.el.modal);
-                        // if( $popup.filter('.active').length == 1) {
-                        //     $context.find('.ui_modal_wrap.init-type').addClass('center-only');
-                        // }
                         $popup.filter('.active').stop().fadeIn();
-
                         $popup.filter('.active').first().focus();
 
                         if( !vcui.detect.isMobileDevice) {
@@ -1100,18 +1074,14 @@
                     } else {
                         $curModal.stop().fadeOut(function(){
                             $(this).removeClass('active');
-
-                            // if( $modalWrap.find('.popup-init.active').length == 1) {
-                            //     $modalWrap.addClass('center-only');
-                            // }
                         })
                     }
                     e.preventDefault();
                 });
 
-                var $elFocus = $context.find('.ui_modal_wrap.init-type').find('a, button, input, textarea').filter(':visible');
+                var $elFocus = $('.ui_modal_wrap.init-type').find('a, button, input, textarea').filter(':visible');
 
-                $context.find('.ui_modal_wrap.init-type .ui_modal_dim').on('click', function(e){
+                $('.ui_modal_wrap.init-type .ui_modal_dim').on('click', function(e){
                     e.preventDefault();
                     e.stopPropagation();
                 })
@@ -1129,7 +1099,6 @@
                 })
 
                 $elFocus.last().on('keydown', function(e){
-
                     if( !e.shiftKey && e.keyCode == 9) {
                         e.preventDefault();
                         $elFocus.first().focus();
@@ -1218,21 +1187,33 @@
             _this.toggleList.init();
             _this.reservation.init();
             _this.getRegisterdProduct.init();
-            _this.modal.init();
             _this.keyword.init();
 
             // BTOCSITE-11602 고객지원 팝업 오류 대응
             if(isMobileDevice) {
-                var isSwipe = !!$('#sw_con').length;
-                if(isSwipe) {
-                    $(window).off('swConChange').on('swConChange',function(e,swiper) {
-                        var currentSlide = swiper.slides[swiper.activeIndex];
-                        
-                        if($(currentSlide).attr('data-hash') === 'support') {
-                            _this.modal.init(currentSlide);
+                $(window).off('scriptLoad').on('scriptLoad',function(e,data) {
+                    if(data.script == script.name){
+                        var currentSlide = data.swiper.slides[data.swiper.activeIndex];
+                        if($(currentSlide).attr('data-hash') === script.hash) {
+                            setTimeout(function(){
+                                _this.modal.init();
+                            },150);
                         }
-                    })
-                }
+                    }
+                })
+
+                $(window).on('scriptChange',function(e,data) {
+                    var currentSlide = data.swiper.slides[data.swiper.activeIndex];
+                    if($(currentSlide).attr('data-hash') === script.hash) {
+                        setTimeout(function(){
+                            _this.modal.init();
+                        },150);
+                    }
+                })
+
+                $(window).trigger('swConScriptLoad',{ script : script.name});
+            } else {
+                _this.modal.init();
             }
 
             if (lgkorUI.searchParamsToObject('smq') == 'Y') {
@@ -1242,6 +1223,8 @@
     }
     
     supportHome.slide.firstInit();
+
+
 
     $(window).ready(function(){
         supportHome.initialize();    
@@ -1263,5 +1246,7 @@
         $(window).on('load', function(){
             supportHome.slide.refresh();
         });
+
+        global[script.name] = true; // 중복 로딩 체크
     })
-})();
+})(window);

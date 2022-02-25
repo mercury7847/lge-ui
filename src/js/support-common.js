@@ -1460,10 +1460,10 @@ function validatePhone(value){
 (function($){
     vcui.require(['support/common/quickMenu.min'], function() {
         var isSwipe = !!$('#sw_con').length;
-
+    
         if (isSwipe){
             if($('#floatBox').length == 0) $('#sw_con').after('<div id="floatBox"></div>');
-
+    
             var quickMenu = $('#sw_con #quickMenu').remove();
             if ($('#floatBox').find('#quickMenu').length < 1){
           
@@ -1640,9 +1640,7 @@ function validatePhone(value){
         }
     }
 
-    $(window).ready(function(){
-        commonInit();
-    })
+    document.addEventListener('DOMContentLoaded', commonInit);
 
     $('[data-control="modal"]').each(function() {
         var target = $(this).data('href') || $(this).attr('href');

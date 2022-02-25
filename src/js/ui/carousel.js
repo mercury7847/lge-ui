@@ -840,6 +840,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 default:
                     return;
             }
+            $(event.target).focusout(); // BTOCSITE-5938-222
         },
         checkNavigable: function checkNavigable(index) {
 

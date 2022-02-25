@@ -74,7 +74,7 @@
             //체험하기 팝업
             self.$btnExperience.on('click',function(e){
                 if(!vcui.detect.isMobile && !vcui.detect.isIE){
-                    var target = "https://s3-an2-op-t20-css-contents.s3.ap-northeast-2.amazonaws.com/workexperience/index.html";
+                    var target = "https://thinq.link/workexperience/index.html"; //BTOCSITE-12312 ThinQ 체험하기 URL 변경 요청
                     var width = 460;
                     var height = 800;
                     var xpos = (screen.availWidth - width)/2;
@@ -237,8 +237,9 @@
             //매거진 탭 내부 유튜브 영상 & 슬라이드
             var self = this;
             var videoTmpl = '<iframe src={{link}} '+
-            'id="videoPlayerCode" frameborder="0" allowfullscreen="1" '+
+            'id="videoPlayerCode" frameborder="0" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1" '+
             'allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" '+
+            'sandbox="allow-scripts allow-same-origin allow-presentation" ' +
             'title="YouTube video player"></iframe>';
 
             $('#thinq-cont4').off('click', '.video-thumb a');

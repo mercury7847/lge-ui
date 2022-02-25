@@ -49,9 +49,11 @@
 	}
 }
 
-.visual-area {
+.component .visual-area  { 
 	position: relative;
+}
 
+.visual-area {
 	&.video-box {
 		position: relative;
 	}

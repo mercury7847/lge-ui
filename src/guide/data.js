@@ -128,7 +128,8 @@ var res = {
 				"KRP0041 PDP  Product instructions [KRP0041]" : ["/html/components/KRP0041.html","",""],
 				"KRP0042 PDP promotion banner [KRP0042]" : ["/html/components/KRP0042.html","",""],
 				//BTOCSITE-6032 PDP에 Q&A게시판 생성 요청
-				"KRP0043 PDP/Q&A 게시판[KRP0043]" : ["/html/components/KRP0043.html","",""]
+				"KRP0043 PDP/Q&A 게시판[KRP0043]" : ["/html/components/KRP0043.html","",""],
+				"KRP0044 PDP Stroy latest [KRP0044]" : ["/html/components/KRP0044.html","",""], // BTOCSITE-12581
 			}
 		},
 		// "Component" : {
@@ -309,7 +310,7 @@ var res = {
 			// "스토리(STR)" : {
 			// 	// "매거진" : {
 			// 	// 	"비하인드스토리" : ["/html/STR/OBS5006.html","","검수완료"]
-			// 	// },	
+			// 	// },
 			// 	// "활용가이드" : {
 			// 	// 	"체험리뷰" : ["/html/STR/OBS5008.html","","검수완료"],
 			// 	// 	"제품관리팁" : ["/html/STR/OBS5010.html","","검수완료"]
@@ -386,6 +387,8 @@ var res = {
 					"배송지 주소 관리 팝업" : ["/html/MYC/ACCF7009_popup.html","","검수완료"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","검수완료"],
 					"쿠폰 상세보기 팝업" : ["/html/MYC/ACCF7018_popup.html","","검수완료"],
+					"쿠폰(베스트샵)" : ["/html/MYC/ACCF7510.html","",""],
+					"쿠폰(베스트샵) 상세보기 팝업" : ["/html/MYC/ACCF7510_popup.html","",""],
 				},
 				"케어솔루션" : {
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
@@ -431,8 +434,14 @@ var res = {
 					"멤버십 포인트 조회" : ["/html/MYC/ACCF7052.html","","검수완료"],
 					"무상서비스 제품 조회" : ["/html/MYC/ACCF7039_myFreeHistory.html","",""],
 					"영수증 등록" : ["/html/MYC/ACCF7037.html","","검수완료"]
-				}
+				},
 				// "알림" : ["/html/MYC/ACCF7062.html","","검수완료"]
+				"마이 베스트샵" : {
+					"상담 예약 조회(방문상담/화상상담)" : ["/html/MYC/ACCF8000.html","","진행중"],
+					"상담 예약 조회(케이십 상담)" : ["/html/MYC/ACCF8010.html","","진행중"],
+					"상담 예약 조회(소모품 구매 예약)" : ["/html/MYC/ACCF8020.html","","진행중"],
+					"상담 예약 조회 팝업" : ["/html/MYC/ACCF8000_popup.html","","진행중"],
+				}
 			},
 			"고객지원(CS)" : {
 				"매장찾기" : {
@@ -475,7 +484,7 @@ var res = {
 				"최신하이라이트 아이프레임(LLS)" : ["/html/LLS/LLS0101.html","",""],
 				"엘라쇼 benefits링크 이벤트 개별 페이지 아이프레임(LLS)" : ["/html/LLS/LLS0101_1.html","",""],
 			},
-			
+
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],
 			// "페이지3" : ["./html/gr/M.GR-7.html","","검수완료"]
@@ -500,11 +509,11 @@ var res = {
 				"06. 오픈기획전" : ["/html/BMC/OBS4002_06.html","","검수완료"],
 				"09. 오브제컬렉션기획전" : ["/html/BMC/OBS4002_09.html","","검수완료"],
 				"10. 라이프스타일기획전" : ["/html/BMC/OBS4002_10.html","","검수완료"]
-				
+
 			},
 			"Temp" : {
 				"휘센 당첨자 아코디언" : ["/html/Temp/2021/05/0507_whisen/whisen.html","","검수완료"]
-				
+
 			},
 			"임직원안내페이지" : ["/html/BMC/MKT4002_13.html","","검수완료"]
 		},

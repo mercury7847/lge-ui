@@ -953,10 +953,18 @@
                                 margin-left: 20px;
                                 margin-bottom: -1px;
                                 > a {
-                                    padding-bottom: 20px;
+                                    padding-bottom: 8px;
+                                    @include mobile {
+                                        padding-bottom: 6px;
+                                    }
                                 }
                                 &:first-child {
                                     margin-left: 0;
+                                }
+                                &.on {
+                                    > a:after {
+                                        bottom: -1px;
+                                    }
                                 }
                             }
                         }

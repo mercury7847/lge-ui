@@ -1,0 +1,40 @@
+
+	<div class="component-wrap @@zero">
+		<!--
+			[component-wrap 옵션]
+			1. 여백
+			.zero-top : 상단여백 없음
+			.zero-btm : 하단여백 없음
+
+			[component 옵션]
+			data-model-id: 제품ID
+			data-response-url: responsee ajax url
+		-->
+		<section class="component KRP0044"
+			data-response-url="/lg5-common/data-ajax/KRP0044/KRP0044.json"
+			data-model-id= "MD08920827"
+		>
+			<div class="component-inner">
+				@@if (context.heading) {
+					<div class="title">
+						@@heading <!-- H1, H2, H3, H4, H5, H6 사용가능 -->
+					</div>
+				}
+				<div class="story-list-wrap">
+					<div class="list-sorting">
+						<div class="list-count" id="totalCount"></div>
+					</div>
+					<div class="story-list">
+						<ul class="story-box">
+						</ul>
+						<div class="pagination"></div>
+					</div>
+					
+				</div>
+			</div>	
+		</section>
+	</div>		
+	
+		
+
+		 

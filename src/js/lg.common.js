@@ -12,6 +12,36 @@ var goAppUrl = function(path) {
     
 }
 
+// 메인 성능 개선 - jquery passive event 적용
+;(function($){
+    $.event.special.touchstart = {
+        setup: function( _, ns, handle ) {
+            this.addEventListener("touchstart", handle, { passive: !(ns.indexOf('noPreventDefault') > -1) });  
+        }
+    };
+    $.event.special.touchmove = {
+        setup: function( _, ns, handle ) {
+            this.addEventListener("touchmove", handle, { passive: !(ns.indexOf('noPreventDefault') > -1) });
+        }
+    };
+    // $.event.special.wheel = {
+    //     setup: function( _, ns, handle ){
+    //         this.addEventListener("wheel", handle, { passive: true });
+    //     }
+    // };
+    // $.event.special.mousewheel = {
+    //     setup: function( _, ns, handle ){
+    //         this.addEventListener("mousewheel", handle, { passive: true });
+    //     }
+    // };
+
+    $.event.special.scroll = {
+        setup: function( _, ns, handle ){
+            this.addEventListener("scroll", handle, { passive: true });
+        }
+    };
+})(jQuery);
+
 ;(function(global){
 
     if(global['lgkorUI']) return;
@@ -944,7 +974,7 @@ var goAppUrl = function(path) {
                 }
                 self.scrollTimer = setTimeout(
                     _rafRun(function() {
-                        if (window.scrollY > 100) {
+                        if (window.pageYOffset > 100) {
                             $(window).trigger('floatingTopShow');
                         } else {
                             $(window).trigger('floatingTopHide');          
@@ -2405,7 +2435,13 @@ var goAppUrl = function(path) {
             // 크레마 init 구조상 cremaAsyncInit 함수가 먼저 선언되 있어야 초기화 오류가 안난다.
             window.cremaAsyncInit = function () {
                 if(typeof crema !== 'undefined') {
-                    crema.init(cremaid, cremaname);
+                    lgkorUI.requestAjaxDataPost('/mkt/commonModule/cremaInfo.lgajax', null, function(result){
+                        if(result.status === 'success' && result.data) {
+                            var cremaid   = result.data[0].data.cremaId || '';
+                            var cremaname = result.data[0].data.cremaName || '';
+                            crema.init(cremaid , cremaname);
+                        }
+                    }) 
                 }
             };
 
@@ -2747,6 +2783,17 @@ var goAppUrl = function(path) {
                     expires : new Date('1999/01/01'),
                     domain : location.host
                 });
+            }
+        },
+        // BTOCSITE-12458 [앱스플라이어] 이벤트 공통 함수
+        afEvent: function(eventName,eventValue){
+            if(isApp() && eventName && eventValue) {
+                var eventValue = JSON.stringify(eventValue);
+                var iframe = document.createElement("IFRAME");
+                    iframe.setAttribute("src", "af-event://inappevent?eventName="+eventName+"&eventValue="+eventValue);
+                    document.documentElement.appendChild(iframe);
+                    iframe.parentNode.removeChild(iframe);
+                    iframe = null;
             }
         }
     }

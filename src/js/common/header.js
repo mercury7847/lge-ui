@@ -58,9 +58,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     lastFix : true
                 });
 
-                $(window).on('scroll', function(){
-                    self._rafRun(self._mobileGnbSticky(window.scrollY));
-                });
             });
 
             var gotourl = self.$el.data('gotoUrl');
@@ -378,7 +375,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                 }
             }
 
-            self._rafRun(self._mobileGnbSticky()); //BTOCSITE-1967 2차 추가수정
         },
 
         _arrowState: function(){
@@ -782,11 +778,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
             self.prevScrollTop = $(window).scrollTop() || 0;
 
-            $('.is-main-sticky-header #skipToContent').on('focusin', function(){
-                $('.is-main-sticky-header').addClass('show-skip')
-            }).on('blur', function(){
-                $('.is-main-sticky-header').removeClass('show-skip')
-            });
 
             //BTOCSITE-1967 웹하단바 - 전체메뉴 클릭시 햄버거메뉴 열림
             self.$statusBar = $('.mobile-status-bar');
@@ -804,55 +795,6 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 			})
         },
 
-        _mobileGnbSticky: function(scrollTop){
-            //BTOCSITE-178 모바일웹/앱 상단 GNB 스티키 처리 - BOTCSITE-2115
-            var self = this;
-            var direction = scrollTop > self.prevScrollTop ? 1:-1;
-            if( Math.abs(scrollTop - self.prevScrollTop) < 15) {
-                return;
-            }
-            
-            //BTOCSITE-1967 2차 추가수정 start
-            if( window.innerWidth < 768) {
-                if( self.$scrollContainer.hasClass('is-main-sticky-header')) {
-                    if( scrollTop > 0) {
-                        if(!self.$scrollContainer.hasClass('header-fixed')) self.$scrollContainer.addClass('header-fixed')
-                    } else {
-                        if(self.$scrollContainer.hasClass('header-fixed')) self.$scrollContainer.removeClass('header-fixed')
-                    }
-    
-                    if( scrollTop > 84) {
-                        if( direction === 1 ) {
-                            if(!self.$scrollContainer.hasClass('scroll-down')) self.$scrollContainer.addClass('scroll-down')
-                        } else if (direction === -1) {
-                            if(self.$scrollContainer.hasClass('scroll-down')) self.$scrollContainer.removeClass('scroll-down')
-                        }
-                    } else {
-                        if(self.$scrollContainer.hasClass('scroll-down')) self.$scrollContainer.removeClass('scroll-down')
-                    }
-                    self.prevScrollTop = scrollTop;
-                }
-            } else {
-                self.$scrollContainer.removeClass('scroll-down header-fixed')
-            }
-            //BTOCSITE-1967 2차 추가수정 end
-        },
-
-        _rafRun : function (cb) {
-            var tick = false
-          
-            return function trigger() {
-              if (tick) {
-                return
-              }
-          
-              tick = true
-              return requestAnimationFrame(function task() {
-                tick = false
-                return cb()
-              })
-            }
-          },
 
         _mypageOver: function(){
             var self = this;
