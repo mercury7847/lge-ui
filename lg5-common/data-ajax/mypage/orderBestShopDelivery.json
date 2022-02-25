@@ -1,0 +1,14 @@
+{
+  "data": {
+    "orderDate": "2022.01.04",
+    "deliveryStatus": 4,
+    "deliveryStatusDate": "2020.02.22",
+    "deliveryDriver": {
+      "name": "박*은",
+      "phoneNumber": "010-****-1234"
+    },
+    "deliveryTrackingURL": "https://www.lge.co.kr/"
+  },
+  "message": "",
+  "status": "success"
+}
