@@ -109,6 +109,7 @@ html {
 
 @include mobile {
     .mobile-nav-wrap {
+        position:relative;
         background: #fff;
         font-size: 0;
 
