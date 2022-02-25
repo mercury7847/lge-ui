@@ -511,6 +511,117 @@ br.pc {
     }
 }
 
+// BTOCSITE-12758 LNB, Submain UI/UX개선 및 신규페이지 생성 건
+// 케어솔루션 카테고리
+.care-category {
+    margin-top:48px;
+    padding: 0;
+    .category-list {
+        @include mobile{
+            background-color:#f4f4f4;
+            .slide-wrap.slide-solo {
+                padding-bottom: 0;
+            }
+        }
+        ul {
+            margin-top: 20px;
+            font-size:0;
+            @include mobile{
+                display: flex;
+                flex-wrap: wrap;
+                height:100%;
+                margin-top:0;
+                padding: 25px 0;
+                overflow:hidden;
+            }
+            li {
+                display:inline-block;
+                width:25%;
+                margin-top:28px;
+                @media screen and (min-width:768px) and (max-width:1200px) {
+                    width:33.33%;
+                }
+                @include mobile{
+                    display:inline-block;
+                    width:25%;
+                    padding: 0 5px;
+                    margin-top: 17px;
+                    text-align:center;
+                    vertical-align:top;
+                    &:nth-child(-n + 4) {
+                        margin-top: 0;
+                    }
+                }
+                a {
+                    display:block;
+                    overflow:hidden;
+                    font-size:0;
+                    @include mobile{
+                        padding: 0;
+                    }
+                    i {
+                        display:inline-block;
+                        width:64px;
+                        height:64px;
+                        @include mobile {
+                            width: 40px;
+                            height: 40px;
+                        }
+                        img {
+                            width:100%;
+                        }
+                    }
+                    .txt {
+                        display:inline-block;
+                        position:relative;
+                        padding:0 18px 0 16px;
+                        font-size:20px;
+                        font-weight:500;
+                        line-height:28px;
+                        vertical-align:middle;
+                        @media screen and (max-width:980px) {
+                            font-size:18px;
+                            line-height:26px;
+                        }
+                        @include mobile{
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            width:100%;
+                            height: 36px;
+                            margin-top:6px;
+                            padding:0 2px;
+                            font-size:13px;
+                            line-height:19px;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                            word-break: break-all;
+                        }
+                    }
+                }
+                &:hover {
+                    .txt {
+                        // text-decoration:underline;
+                        &:after {
+                            content:' ';
+                            position:absolute;
+                            top:50%;
+                            right:0;
+                            width:16px;
+                            height:16px;
+                            margin-top:-8px;
+                            background:url('/lg5-common/images/icons/btn_arrow_right_16.svg') no-repeat 0 0;
+                            @include mobile {
+                                display:none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 // 케어솔루션 링크
 .care-home-link {
     .tit-wrap {
