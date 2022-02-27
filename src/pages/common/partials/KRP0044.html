@@ -16,7 +16,7 @@
 		>
 			<div class="component-inner">
 				@@if (context.heading) {
-					<div class="title">
+					<div class="title"><!-- 타이틀 없는 경우 title 영역 삭제 -->
 						@@heading <!-- H1, H2, H3, H4, H5, H6 사용가능 -->
 					</div>
 				}
