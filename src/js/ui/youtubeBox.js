@@ -33,7 +33,7 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
                 '   <div class="modal-video-asset">'+
                 '       <div class="video-asset">'+
                 '           {{#if videoType == "youtube"}}'+
-                '           <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{video_url}}"></iframe>'+
+                '           <iframe id="videoPlayerCode" frameborder="0"  webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" sandbox="allow-scripts allow-same-origin allow-presentation" title="YouTube video player" width="640" height="360" src="{{video_url}}"></iframe>'+
                 '           {{#else}}'+
                 '           <video controls {{params}} style="width:100%;height:100%">'+
                 '               <source src="{{video_url}}" type="video/mp4">'+
@@ -46,7 +46,7 @@ vcui.define('ui/youtubeBox', ['jquery', 'vcui'], function ($, core) {
             layerTemplate:
                 '<div class="video-asset video-box-closeset">'+
                 '   {{#if videoType == "youtube"}}'+
-                '   <iframe id="videoPlayerCode" frameborder="0" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="360" src="{{video_url}}"></iframe>'+
+                '   <iframe id="videoPlayerCode" frameborder="0" webkitallowfullscreen="1" mozallowfullscreen="1" allowfullscreen="1" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" sandbox="allow-scripts allow-same-origin allow-presentation" title="YouTube video player" width="640" height="360" src="{{video_url}}"></iframe>'+
                 '   {{#else}}'+
                 '   <video controls {{params}} style="width:100%;height:100%">'+
                 '       <source src="{{video_url}}" type="video/mp4">'+

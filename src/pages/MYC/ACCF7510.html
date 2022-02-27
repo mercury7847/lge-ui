@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/myCoupon"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "쿠폰"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect1" : [
+                                { "on": "", "page": "주문/배송 조회" },
+                                { "on": "", "page": "배송지 주소 관리" },
+                                { "on": "on", "page": "쿠폰" }
+                            ]
+                        })
+                        <!-- <div class="lnb-contents" data-coupon-list-url="/lg5-common/data-ajax/mypage/shopping/couponList.json"></div> 쿠폰참조용 -->
+                        <div class="lnb-contents">
+                            <div class="coupon-tabs">
+                                <div class="tabs-wrap btn-type left">
+                                    <ul class="tabs">
+                                        <li><a href="/html/MYC/ACCF7018.html#url">LGE.COM</a></li>
+                                        <li class="on"><a href="#url">베스트샵<em class="blind">선택됨</em></a></li>
+                                    </ul>
+                                </div>
+                                <div class="tabs-wrap bar-type ui_tab left">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#tab-coupon-on">매장 제품 할인 쿠폰<em class="blind">선택됨</em></a></li>
+                                        <li><a href="#tab-coupon-end">매장 방문 혜택 쿠폰</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="tab-coupon-on" class="tab-contents">
+                                <div class="list-sorting">
+                                    <div class="sort-area">
+                                        <div class="sort-list">
+                                            <div class="sort-select-wrap">
+                                                <select class="ui_selectbox" id="select1" title="정렬 기준 선택">
+                                                    <option selected>사용가능 쿠폰</option>
+                                                    <option>종료된 쿠폰</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="coupon-list-wrap mybestshop">
+                                    <div class="coupon-lists">
+                                        <ul>
+                                            @@loop('./common/modules/coupon-list-bestshop.html', [
+                                                {
+                                                    "type1" : true,
+                                                    "name" : "50,000원",
+                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "65ART90EKPA 등",
+                                                    "btn-text" : "대상모델 보기"
+                                                },
+                                                {
+                                                    "type1" : true,
+                                                    "name" : "50,000원",
+                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "65ART90EKPA 등",
+                                                    "btn-text" : "대상모델 보기"
+                                                },
+                                                {
+                                                    "type1" : true,
+                                                    "name" : "50,000원",
+                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "65ART90EKPA 등",
+                                                    "btn-text" : "대상모델 보기"
+                                                },
+                                                {
+                                                    "type3" : true,
+                                                    "name" : "50,000원",
+                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "65ART90EKPA 등",
+                                                    "end" : "사용완료"
+                                                },
+                                                {
+                                                    "type3" : true,
+                                                    "name" : "50,000원",
+                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "65ART90EKPA 등",
+                                                    "end" : "기간만료"
+                                                },
+                                                {
+                                                    "type3" : true,
+                                                    "name" : "50,000원",
+                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "65ART90EKPA 등",
+                                                    "end" : "기간만료"
+                                                },
+                                            ]);
+                                        </ul>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-moreview block"><span>더보기</span></button>
+                                <!-- nodata -->
+                                <div class="no-data">
+                                    <p>사용 할 수 있는 쿠폰이 없습니다.</p>
+                                </div>
+                                <!-- // nodata -->
+                            </div>
+                            <div id="tab-coupon-end" class="tab-contents" style="display:none;">
+                                <div class="list-sorting">
+                                    <div class="sort-area">
+                                        <div class="sort-list">
+                                            <div class="sort-select-wrap">
+                                                <select class="ui_selectbox" id="select2" title="정렬 기준 선택">
+                                                    <option selected>사용가능 쿠폰</option>
+                                                    <option>종료된 쿠폰</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="coupon-list-wrap">
+                                    <div class="coupon-lists">
+                                        <ul>
+                                            @@loop('./common/modules/coupon-list-bestshop.html', [
+                                                {
+                                                    "type2" : true,
+                                                    "name" : "매장 방문 혜택 쿠폰",
+                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "강남본점 등",
+                                                    "btn-text" : "사용하기"
+                                                },
+                                                {
+                                                    "type2" : true,
+                                                    "name" : "매장 방문 혜택 쿠폰",
+                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "강남본점 등",
+                                                    "btn-text" : "사용하기"
+                                                },
+                                                {
+                                                    "type2" : true,
+                                                    "name" : "매장 방문 혜택 쿠폰",
+                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "강남본점 등",
+                                                    "btn-text" : "사용하기"
+                                                },
+                                                {
+                                                    "type4" : true,
+                                                    "name" : "매장 방문 혜택 쿠폰",
+                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "강남본점 등",
+                                                    "end" : "사용완료"
+                                                },
+                                                {
+                                                    "type4" : true,
+                                                    "name" : "매장 방문 혜택 쿠폰",
+                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "강남본점 등",
+                                                    "end" : "기간만료"
+                                                },
+                                                {
+                                                    "type4" : true,
+                                                    "name" : "매장 방문 혜택 쿠폰",
+                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
+                                                    "period" : "2022.11.25~2021.11.29",
+                                                    "model" : "강남본점 등",
+                                                    "end" : "기간만료"
+                                                },
+                                            ]);
+                                        </ul>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-moreview block" style="display:none;"><span>더보기</span></button>
+                                <!-- nodata -->
+                                <div class="no-data">
+                                    <p>종료된 쿠폰이 없습니다.</p>
+                                </div>
+                                <!-- // nodata -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        <article id="couponPopup" class="popup-wrap small">
+        </article>
+
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

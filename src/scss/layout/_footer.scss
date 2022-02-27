@@ -459,6 +459,13 @@ footer {
                         &:first-child {
                             margin-left:0;
                         }
+                        //BTOCSITE-12557 푸터 소셜 채널에 카카오 채널 추가 요청
+                        &.mo-only{
+                            display:none;
+                            @include mobile{
+                                display:block;
+                            }
+                        }
                         a {
                             display:flex;
                             align-items: center;
@@ -495,6 +502,12 @@ footer {
                             &.sns6 {
                                 &:before {
                                     background-image:url('/lg5-common/images/icons/icon-sns4.svg');
+                                }
+                            }
+                            //BTOCSITE-12557 푸터 소셜 채널에 카카오 채널 추가 요청
+                            &.sns7 {
+                                &:before {
+                                    background-image:url('/lg5-common/images/icons/icon-sns7.svg');
                                 }
                             }
                         }
@@ -569,7 +582,7 @@ footer {
                     .sns-link {
                         margin:12px -14px 0;
                         li {
-                            width: (100% / 3);
+                            width: (100% / 4); //BTOCSITE-12557 푸터 소셜 채널에 카카오 채널 추가 요청
                             margin-top: 0;
                             padding: 0 14px;
                             a {
