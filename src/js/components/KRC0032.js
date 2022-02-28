@@ -125,7 +125,8 @@ $(window).ready(function(){
 			var $slide 			= $(this),
 				autoPlay 		= $slide.data('autoplay') != undefined && $slide.data('autoplay') !== "" ? $slide.data('autoplay') : true,
 				autoPlaySpeed 	= $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') !== "" ? $slide.data('autoSpeed') : 3000,
-				autoCount 		= $slide.data('autoCount') != undefined && $slide.data('autoCount') !== "" ? $slide.data('autoCount') : false;
+				autoCount 		= $slide.data('autoCount') != undefined && $slide.data('autoCount') !== "" ? $slide.data('autoCount') : false,
+				isVariable		= ($slide.hasClass('slide-show-right')) ? true:false;
 
 			if( autoCount != 'loop' && autoCount != undefined) {
 				$slide.data('currentCount', 0);
@@ -133,6 +134,52 @@ $(window).ready(function(){
 
 			if( $slide.find('.ui_carousel_slide').eq(0).find('video').length ) {
 				autoPlaySpeed = $slide.find('.ui_carousel_slide').eq(0).find('video')[0].duration * 1000;
+			}
+			var opt = (isVariable) ? {
+				infinite: true,
+				pauseOnHover: false,
+				autoplay: true,
+				autoplaySpeed: autoPlaySpeed,
+				prevArrow:'.btn-arrow.prev',
+				nextArrow:'.btn-arrow.next',
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				playSelector: '.btn-play.play',
+				adaptiveHeight:true,
+				// cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+				speed: 150,
+				touchThreshold: 100,
+				customPaging: function(slide, i) {
+					return customDots(slide, i)
+				},
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: {
+							centerMode: true,
+							variableWidth:true,
+							outerEdgeLimit: true,
+							slidesToShow: 1
+						}
+					}
+				]
+			}:{
+				infinite: true,
+				pauseOnHover: false,
+				autoplay: true,
+				autoplaySpeed: autoPlaySpeed,
+				prevArrow:'.btn-arrow.prev',
+				nextArrow:'.btn-arrow.next',
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				playSelector: '.btn-play.play',
+				adaptiveHeight:true,
+				// cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+				speed: 150,
+				touchThreshold: 100,
+				customPaging: function(slide, i) {
+					return customDots(slide, i)
+				}
 			}
 
 			$slide.on('carouselinit', function(e,data){
@@ -160,24 +207,7 @@ $(window).ready(function(){
 					}
 				})
 			})
-			.vcCarousel({
-				infinite: true,
-				pauseOnHover: false,
-				autoplay: false,
-				autoplaySpeed: autoPlaySpeed,
-				prevArrow:'.btn-arrow.prev',
-				nextArrow:'.btn-arrow.next',
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				playSelector: '.btn-play.play',
-				adaptiveHeight:true,
-				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-				speed: 150,
-				touchThreshold: 100,
-				customPaging: function(slide, i) {
-					return customDots(slide, i)
-				},
-			})
+			.vcCarousel(opt)
 			.on('carouselbeforechange', function(e, slide, prev, next){
 
 				prevVideoPause(slide);
@@ -191,12 +221,10 @@ $(window).ready(function(){
 				var $indiBar = $slider.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar');
 				var autoSpeed = $slider.data('autoSpeed') ? $slider.data('autoSpeed') : 3000;
 				var $currentVideo = $currentSlide.find('video').filter(':visible');
-				if($currentSlide.attr("ui-modules") == "VideoBox"){
-					if($currentVideo.attr('autoplay')!==undefined && $currentVideo.get(0).readyState > 0) {
-						$currentVideo.get(0).currentTime = 0;
-						autoSpeed =	$currentVideo.get(0).duration * 1000;
-						$currentVideo.get(0).play();
-					}
+				if($currentVideo.attr('autoplay')!=undefined && $currentVideo.get(0).readyState > 0) {
+					autoSpeed =	$currentVideo.get(0).duration * 1000;
+					$currentVideo.get(0).currentTime = 0;
+					$currentVideo.get(0).play()
 				}
 				slide.$dots.find('button').blur();
 				$indiBar.css({'animation-duration' : autoSpeed/1000 + 's', 'animation-play-state' : 'running'})
