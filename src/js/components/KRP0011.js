@@ -142,20 +142,22 @@
                 });
             },
             makeProdList: function(tabType,now,loopData){
+            	//BTOCSITE-12856 start
                 var self = this;
                 var $compareId = [];
 
                 now.tabName = tabType;
-                $compareId.push(now.modelId); //스펙비교하기에 모델명 추가
+                $compareId.push(now.modelId+ '|R' ); //스펙비교하기에 모델명 추가
                 self.$prodViewNow.append(vcui.template(productItem,now)); //지금보고 있는 상품에 템플릿 그리기
                 $.each(loopData,function(idx,item){
-                    $compareId.push(item.modelId); //스펙비교하기에 모델명 추가
+                    $compareId.push(item.modelId+ '|R' ); //스펙비교하기에 모델명 추가
                     item.tabName = tabType;
                     self.$prodRecommend.append(vcui.template(productItem,item));//추천 상품리스트 템플릿 그리기
                 });
 
                 //스펙비교하기 버튼에 모델명 교체
-                self.$compareModelIds = $compareId.join("|");
+                self.$compareModelIds = $compareId.join(",");
+            	//BTOCSITE-12856 END
                 self.$section.find(".bottom-area button").attr('data-model-ids', self.$compareModelIds);
             }
         }
