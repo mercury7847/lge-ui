@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/orderAndDelivery"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "주문/배송 상세보기"
+            })
+            <!-- mypage -->
+            <!-- 2021.1.29 class "orderAndDelivery-detail" 추가-->
+            <!-- 2021.2.25 data-account-check 추가 -->
+            <div class="contents mypage orderAndDelivery-detail"                
+                data-order-inquiry-list="/lg5-common/data-ajax/mypage/orderDetailListCare.json"
+                data-product-status="/lg5-common/data-ajax/mypage/productStatusChecked.json"
+                data-order-cancel-popup="/lg5-common/data-ajax/mypage/orderCancelPop.json"
+                data-order-sales="/lg5-common/data-ajax/mypage/orderCancel.json"
+                data-account-check="/lg5-common/data-ajax/mypage/orderBankAbled.json"
+                data-order-number="AD9876898765"
+                data-tab-flag="CARE"
+            >
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect1" : [
+                                { "on": "on", "page": "주문/배송 조회" },
+                                { "on": "", "page": "배송지 주소 관리" },
+                                { "on": "", "page": "쿠폰" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="section-wrap">
+                                <div class="sects">
+                                    <!-- 주문정보 : '취소신청' 버튼 노출 케이스 -->
+                                    <!-- 2021.1.29 class "inquiry-list-wrap" 추가-->
+                                    <div class="info-tbl-wrap inquiry-list-wrap">
+                                    </div>
+                                    <!-- // 주문정보 : '취소신청' 버튼 노출 케이스 -->
+
+                                    <div class="section-inner type3">
+                                        <!-- 배송 정보 -->
+                                        <div class="inner-box shipping"> <!-- 2021.2.19 클래스 추가-->
+                                            <p class="inner-tit">배송 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "성명", "dd" : "이*지" },
+                                                    { "dt" : "배송주소", "dd" : "21655 서울특별시 엘지구 엘지로 ****" },
+                                                    { "dt" : "휴대폰", "dd" : "010****1234" },
+                                                    { "dt" : "연락처", "dd" : "010****1234" },
+                                                    { "dt" : "배송시 요청사항", "dd" : "배송시 요청사항 노출" },
+                                                    { "dt" : "사전 방문 신청", "dd" : "미신청 혹은 신청" },
+                                                    { "dt" : "폐가전 수거", "dd" : "수거신청 혹은 해당없음" },
+                                                ]
+                                            })
+                                        </div>
+                                        <!-- // 배송 정보 -->
+
+                                        <!-- 결제 정보 : 신용카드 -->
+                                        <div class="inner-box payment"> <!-- 2021.2.19 클래스 추가-->
+                                            <p class="inner-tit">결제 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "결제 수단", "dd" : "<span>신용카드 할부 05개월</span><a href='#n' class='btn-link receiptList-btn'>영수증 발급 내역</a>" },
+                                                    { "dt" : "주문 금액", "dd" : "2,834,060원" },
+                                                    { "dt" : "할인 금액", "dd" : "-283,405원" },
+                                                    { "dt" : "멤버십포인트", "dd" : "0원" },
+                                                    { "dt" : "총 결제 금액", "dd" : "<em>2,550,654원</em>" },
+                                                ]
+                                            })
+                                        </div>
+                                        <!-- // 결제 정보 : 신용카드 -->
+
+                                        <!-- 결제 정보 : 가상계좌 -->
+                                        <!-- <div class="inner-box">
+                                            <p class="inner-tit">결제 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "결제 수단", "dd" : "가상계좌 하나은행(123456789) 예금주: 엘지씨엔에스 2020.09.14까지 입금" },
+                                                    { "dt" : "주문 금액", "dd" : "2,834,060원" },
+                                                    { "dt" : "할인 금액", "dd" : "-283,405원" },
+                                                    { "dt" : "멤버십포인트", "dd" : "0원" },
+                                                    { "dt" : "총 결제 금액", "dd" : "<em>2,550,654원</em>" },
+                                                ]
+                                            })
+                                        </div> -->
+                                        <!-- // 결제 정보 : 가상계좌 -->
+
+                                        <!-- 결제 정보 : 가상계좌 입금완료 -->
+                                        <!-- <div class="inner-box">
+                                            <p class="inner-tit">결제 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "결제 수단", "dd" : "<span>가상계좌</span><a href='#n' class='btn-link receiptList-btn'>영수증 발급 내역</a>" },
+                                                    { "dt" : "주문 금액", "dd" : "2,834,060원" },
+                                                    { "dt" : "할인 금액", "dd" : "-283,405원" },
+                                                    { "dt" : "멤버십포인트", "dd" : "0원" },
+                                                    { "dt" : "총 결제 금액", "dd" : "<em>2,550,654원</em>" },
+                                                ]
+                                            })
+                                        </div> -->
+                                        <!-- // 결제 정보 : 가상계좌 입금완료 -->
+
+                                        <!-- 결제 정보 : 분할 결제 -->
+                                        <!-- <div class="inner-box">
+                                            <p class="inner-tit">결제 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "결제 수단", "dd" : "<span>신용카드(분할결제) 1번 카드: 할부 06개월 / 2번 카드: 할부 05개월</span><a href='#n' class='btn-link receiptList-btn'>영수증 발급 내역</a>" },
+                                                    { "dt" : "주문 금액", "dd" : "2,834,060원" },
+                                                    { "dt" : "할인 금액", "dd" : "-283,405원" },
+                                                    { "dt" : "멤버십포인트", "dd" : "0원" },
+                                                    { "dt" : "총 결제 금액", "dd" : "<em>2,550,654원</em>" },
+                                                ]
+                                            })
+                                        </div> -->
+                                        <!-- // 결제 정보 : 분할 결제 -->
+
+                                        <!-- 결제 정보 : 간편 결제 -->
+                                        <!-- <div class="inner-box">
+                                            <p class="inner-tit">결제 정보</p>
+                                            @@include('./common/modules/dl-infolist.html', {
+                                                "list" : [
+                                                    { "dt" : "결제 수단", "dd" : "<span>LG 페이 / 하나카드 일시불</span><a href='#n' class='btn-link receiptList-btn'>영수증 발급 내역</a>" },
+                                                    { "dt" : "주문 금액", "dd" : "2,834,060원" },
+                                                    { "dt" : "할인 금액", "dd" : "-283,405원" },
+                                                    { "dt" : "멤버십포인트", "dd" : "0원" },
+                                                    { "dt" : "총 결제 금액", "dd" : "<em>2,550,654원</em>" },
+                                                ]
+                                            })
+                                        </div> -->
+                                        <!-- // 결제 정보 : 간편 결제 -->
+                                        <!-- 2021.08.27 BTOCSITE-4704 : 마이페이지>주문배송조회> 하단 문구 변경 -->
+                                        @@include('./common/modules/bullet-list.html', {
+                                            "topBorder" : true,
+                                            "bulletTxt" : [
+                                                "제품의 주문/배송 진행 상태에 따라 취소 및 반품 가능 여부가 달라질 수 있습니다. 취소 신청 및 배송 정보 변경은 배송이 시작되기 전까지만 가능하며, 고객센터(1544-6351)로 문의하세요.",
+                                                "구매한 제품의 교환 및 취소는 '결제완료' 단계까지는 마이페이지를 통해 취소 후 재주문이 가능하며, 그 이후는 고객센터(1544-6351)로 문의하세요.",
+                                                "배송이 진행 중인 경우 취소 및 반품 신청이 불가합니다. 이 경우 제품 수령을 완료한 후 반품 신청을 진행하세요.",
+                                                "단순 변심에 의한 반품은 제품 배송 완료 후 7일 이내에 온라인 접수가 가능합니다. 단, 설치 제품의 경우 인수 완료 후에는 반품이 불가하니 유의하세요."
+                                            ]
+                                        })
+                                        <!-- //2021.08.27 BTOCSITE-4704 : 마이페이지>주문배송조회> 하단 문구 변경 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn-group center">
+                                <button type="button" class="btn"><span>주문/배송 목록가기</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+    
+    <!-- 취소신청-->
+    @@include('./common/popup/ACCF7002_pop1.html', {
+        popupID: 'popup-cancel'
+    })
+    <!-- // 취소신청 -->
+
+    <!-- 반품신청-->
+    @@include('./common/popup/ACCF7002_pop2.html', {
+        popupID: 'popup-takeback'
+    })
+    <!-- // 반품신청 -->
+
+    <!-- 영수증 발급 내역 -->
+    @@include('./common/popup/ACCF7002_pop3.html', {
+        popupID: 'popup-receipt-list'
+    })
+    <!-- // 영수증 발급 내역 -->
+
+    <!-- 거래 영수증 -->
+    //BTOCSITE-5010
+    <article id="popup-salesReceipt" class="popup-wrap sales-receipt-popup">
+        <header class="pop-header">
+            <h1 class="tit"><span>거래 영수증</span></h1>
+        </header>
+        <section class="pop-conts mypage">
+            <h2 class="h2-tbl-tit">거래 영수증 내역</h2>
+            <div class="tb-col th-center">
+                <table>
+                    <caption>거래 영수증 내역을 주문번호, 거래일시, 상품명, 총 거래금액, 결제수단, 서명 순으로 안내</caption>
+                    <colgroup>
+                        <col style="width:30%">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "거래 영수증은 세금계산서 등 세무상 증빙서류로 활동할 수 없으며, 거래내역 및 거래금액을 확인하는 용도로만 사용 가능합니다."
+                ]
+            })
+
+            <div class="lg-comp-infos">
+                <div class="logos"><img src="/lg5-common/images/foot-logo.svg" alt="LG전자 로고"></div>
+                <ul>
+                    <li>주소 : 서울특별시 영등포구 여의대로 128 LG트윈타워</li>
+                    <li>대표이사 : 권봉석, 배두용</li>
+                    <li>개인정보보호책임자 : LG전자 정보보호담당</li>
+                    <li>사업자등록번호 : 107-86-14075</li>
+                    <li>통신판매업신고번호 : 제1997-00084호</li>
+                    <li>쇼핑몰 이용 문의 : 1661-2471</li>
+                    <li>제품 및 AS 문의 : 1544-7777, 1588-7777</li>
+                    <li>자급제폰 상담전용 : 1661-7945</li>
+                </ul>
+            </div>
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>인쇄</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 영수증 발급 내역 -->
+</body>
+</html>

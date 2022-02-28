@@ -2784,6 +2784,36 @@ var goAppUrl = function(path) {
                     domain : location.host
                 });
             }
+        },
+        // BTOCSITE-12458 [앱스플라이어] 이벤트 공통 함수
+        afEvent: function(eventName,eventValue){
+            if(isApp() && eventName && eventValue) {
+                var eventValue = JSON.stringify(eventValue);
+                var iframe = document.createElement("IFRAME");
+                    iframe.setAttribute("src", "af-event://inappevent?eventName="+eventName+"&eventValue="+eventValue);
+                    document.documentElement.appendChild(iframe);
+                    iframe.parentNode.removeChild(iframe);
+                    iframe = null;
+            }
+        },
+        // BTOCSITE-11928 챗봇 pincode 파라미터 연결 수정
+        getChatPinCode: function(el) {
+            if(el.length > 0) {
+                lgkorUI.requestAjaxData('/support/getPinCode.lgajax', null, function(result) {
+                    var pinCode = null;
+                    var data = result.data;
+                    if(data) {
+                        var receveResult = data.result;
+                        if(receveResult && receveResult.code) {
+                            pinCode = receveResult.code;
+                        }
+                    }
+
+                    var url = lgkorUI.parseUrl(el.attr('href')),
+                        params = $.extend(url.searchParams.getAll(),{'channel': isApp() ? "lg_app" : "lg_homepage", 'code' :  pinCode || ''});
+                        el.attr('href',vcui.uri.addParam(url.origin+url.pathname,params));
+                },"GET", "json", true, null, true);
+            }
         }
     }
 

@@ -21,6 +21,7 @@
             padding-top:0;
         }
     }
+
     // mypage lnb layout
     .lnb-wrap {
         @include clearfix;
@@ -171,7 +172,7 @@
                         margin-bottom: 25px;
                     }
                 }
-                
+
                 @include mobile {
                     flex-direction: column;
                     li {
@@ -371,8 +372,13 @@
                     }
                 }
             }
+
+            &.care-step-info,
+            &.bestshop-order-info {
+                display: none;
+            }
         }
-        
+
         .btn-moreview {
             @include mobile {
                 margin-bottom: 24px;
@@ -407,6 +413,7 @@
         }
 
         .open-before-order-history {
+            display: none;
             margin: -32px 0 48px;
             padding: 24px 48px;
             border: 1px solid $color-border;
@@ -491,6 +498,12 @@
 
     // 해지 상담 신청
     @import "ACCF7055";
+
+    // 상담 예약 조회 // 2022.02.23 LGECOMVIO-143
+    @import "ACCF8000";
+
+    // 쿠폰(베스트샵)
+    @import "ACCF7510"; //20220224 LGECOMVIO-195
 }
 
 
@@ -704,7 +717,7 @@
                         top:7px;
                         width:1px;
                         height:14px;
-                        background:#fff;    
+                        background:#fff;
                     }
                 }
             }
@@ -827,7 +840,7 @@
                     @include font-medium;
                     font-weight:700;
                     &:before {
-                        content:'';   
+                        content:'';
                         position:absolute;
                         left:0;
                         top:50%;
@@ -1136,7 +1149,7 @@
 }
 
 // BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
-.popup-wrap {
+.popup-wrap:not(.small) {
     .pop-conts {
         @include mobile {
             height:calc(100vh - 122px);
@@ -1145,17 +1158,18 @@
             padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
         }
     }
-}
 
-.pop-footer {
-    @include mobile {
-        position:fixed;
-        width:100%;
-        bottom: 0;
-        bottom: env(safe-area-inset-bottom);
-        bottom: constant(safe-area-inset-bottom);
+    .pop-footer {
+        @include mobile {
+            position:fixed;
+            width:100%;
+            bottom: 0;
+            bottom: env(safe-area-inset-bottom);
+            bottom: constant(safe-area-inset-bottom);
+        }
     }
 }
+
 
 /* 20210624 납부내역 : 팝업*/
 #popup-paymentHistory {
@@ -1200,7 +1214,7 @@
                                 font-size: 14px;
                             }
                         }
-                        span { 
+                        span {
                             font-size: 14px;
                             color: #666;
                         }
@@ -1329,7 +1343,7 @@
             .example-type-inbox{
                 padding: 0 8px;
                 button{
-                    width: 100%; 
+                    width: 100%;
                     height: 88px;
                     border-radius: 8px;
                     box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.16);
@@ -1374,9 +1388,9 @@
         cursor: default;
     }
     // -S- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
-    .info-msg { 
-        
-        border-top:1px solid #ddd; 
+    .info-msg {
+
+        border-top:1px solid #ddd;
         margin-top:48px;
         padding-top:13px;
         li {
@@ -1391,7 +1405,7 @@
             }
             line-height:19px; padding-left:11px; margin:3px 0;
         }
-       
+
         @include mobile{
             margin-top:40px;
             padding-top:4px;
@@ -1405,12 +1419,12 @@
         }
     }
     // -E- BTOCSITE-8000 보유제품등록 시리얼번호 규칙 및 문구 수정 요청
-} 
+}
 
 #registMyProductPopup .common-pop .form-wrap .forms .tit .app-exec{
     display: none;
     @include mobile {
-        margin:0 0 0 6px; 
+        margin:0 0 0 6px;
         &.active {
             display: inline-block;
         }
@@ -1522,7 +1536,7 @@
             .scan-type-inbox{
                 padding: 0 6px;
                 button{
-                    width: 100%; 
+                    width: 100%;
                     height: 120px;
                     border-radius: 8px;
                     box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
@@ -1573,7 +1587,7 @@
     }
     h3 {
         position: absolute;
-        top:24px; 
+        top:24px;
         left:0;
         height: 148px;
         width:181px;
@@ -1610,7 +1624,7 @@
         .example-type-inbox{
             padding: 0 8px;
             button{
-                width: 100%; 
+                width: 100%;
                 height: 88px;
                 border-radius: 8px;
                 box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
@@ -1637,6 +1651,139 @@
     //border:1px solid $color-border;
 }
 
+
+
+// LGECOMVIO - 114 베스트샵 배송조회 팝업
+#bestShopDeliveryPopup {
+    .delivery-info {
+        .delivery-step {
+            padding:0 0 0 23px;
+
+            &:last-child {
+                .delivery-text:before {
+                    width:0;
+                }
+                .delivery-text {
+                    padding-bottom:0;
+                }
+            }
+
+        }
+        .delivery-text {
+            position:relative;
+            padding:0 0 44px 41px;
+
+
+            &:before {
+                display:block;
+                content:"";
+                position:absolute;
+                top:32px;
+                bottom:0;
+                left:-2px;
+                width:1px;
+                background:#ddd;
+            }
+
+            .delivery-status {
+                position:relative;
+                display:block;
+
+                &:before {
+                    display:block;
+                    content:"";
+                    position:absolute;
+                    top:-1px;
+                    left:-59px;
+                    width:32px;
+                    height:32px;
+                    background:#fff;
+                    border-radius:50%;
+                }
+                &:after {
+                    display:block;
+                    content:"";
+                    position:absolute;
+                    top:8px;
+                    left:-49px;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #DA0F47;
+                    border-radius:50%;
+                    background:#fff;
+                }
+            }
+            &.active {
+                &:before {
+                    top:41px;
+                }
+
+                .delivery-status {
+                    font-size:18px;
+
+                    &:before {
+                        display:block;
+                        content:"";
+                        position:absolute;
+                        top:-2px;
+                        left:-61px;
+                        width:36px;
+                        height:36px;;
+                        background:#fbe7ec;
+                        border-radius:50%;
+                    }
+                    &:after {
+                        top:9px;
+                        border:none;
+                        background:#DA0F47;
+                    }
+                }
+            }
+        }
+        .delivery-status {
+            font-size:18px;
+            line-height:28px;
+        }
+        .delivery_date {
+            margin-top:4px;
+            font-size:16px;
+            font-weight:500;
+            //line-height:38px;
+        }
+        .delivery_name {
+            display:block;
+            margin-top:4px;
+            font-size:16px;
+            line-height:24px;
+            color:#666;
+
+            .bar:before {
+                display:inline-block;
+                content:"";
+                position:relative;
+                top:-1px;
+                width:1px;
+                height:10px;
+                background:#ddd;
+                margin:0 7px 0 6px;
+            }
+        }
+        .delivery_detail {
+            display:inline-block;
+            margin-top:12px;
+            padding-right:20px;
+            text-decoration:underline;
+            background:url("/lg5-common/images/icons/btn-arr-16-black-sm.svg") right center no-repeat
+        }
+    }
+    .delivery-data {
+        width:100%;
+        padding:40px 0;
+        border-radius: 8px;
+        background:#F4F4F4;
+        text-align:center;
+    }
+}
 // BTOCSITE-5938-17 s
 @include mobile {
     #registMyProductPopup{
@@ -1645,12 +1792,12 @@
                 .conts {
                     z-index: 0;
                 }
-            } 
+            }
             .forms:first-child  {
                 .conts {
                     z-index:1;
                 }
-            } 
+            }
         }
     }
 }
@@ -1681,7 +1828,7 @@
             padding: 20px 16px 54px;
 			padding-bottom: calc(env(safe-area-inset-bottom) + 174px);
 			padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
-			
+
         }
         .desc {
             padding-bottom: 30px;
@@ -1708,8 +1855,8 @@
                     &.btn-type2 div.item {
                         display: flex;
                         width: 100% !important;
-                        padding: 11px 50px;  
-                        border-radius: 8px;                  
+                        padding: 11px 50px;
+                        border-radius: 8px;
                         border-width:0;
                         position: relative;
                         &:before {
@@ -1721,7 +1868,7 @@
                             content:"";
                             display: block;
                             border:1px solid #000;
-                            border-radius: 8px;  
+                            border-radius: 8px;
                         }
                         @include mobile {
                             padding: 15px 17px;
@@ -1766,7 +1913,7 @@
                     &.btn-type2 div.item.active {
                         color: #000;
                         &:before {
-                            border: 2px solid #da0f47; 
+                            border: 2px solid #da0f47;
                         }
                     }
                 }
@@ -1774,7 +1921,7 @@
                     .rdo-wrap {
                         &.btn-type2 div.item {
                             &:before {
-                                border: 2px solid #da0f47; 
+                                border: 2px solid #da0f47;
                             }
                         }
                     }
@@ -1785,7 +1932,7 @@
     .pop-footer {
         padding: 20px 48px 50px;
         @include mobile {
-            padding: 0;    
+            padding: 0;
         }
         .btn {
             min-width: 140px;
