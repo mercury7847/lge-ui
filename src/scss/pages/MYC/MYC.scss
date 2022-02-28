@@ -1199,6 +1199,7 @@
         @include mobile {
             position:fixed;
             width:100%;
+            left: 0;
             bottom: 0;
             bottom: env(safe-area-inset-bottom);
             bottom: constant(safe-area-inset-bottom);
