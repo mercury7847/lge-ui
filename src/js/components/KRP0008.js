@@ -78,6 +78,12 @@
         
         var KRP0008 = {
             init: function() {
+                // AR 체험하기 APP 호출시 실행
+                var modelId = lgkorUI.getParameterByName('openAR');
+                if( isApp() && modelId) {
+                    lgkorUI.openAR(modelId);
+                }
+
                 // 20211014 BTOCSITE-6768 사전예약 버튼클릭 시 로그인 체크
                 loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
                 
@@ -1007,10 +1013,7 @@
                     }
                     if(index == 0) {
                         //구매
-                        //$('.cardDiscount').removeClass('retalCareOn');
-                        /* BTOCSITE-10166 : 롯데카드 혜택 배지 수정요청의 건  */
-                        var isShow = lgkorUI.isShowDate('20210601','20220301') // 2022.01.01 00:00 ~ 2022.02.28 24:00  ( 신한/롯데 프로모션 적용 기간)
-                        if(isShow) $('.cardDiscount').show();
+                        $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
                         bannerStore.show(); //BTOCSITE-5727 //BTOCSITE-6416
