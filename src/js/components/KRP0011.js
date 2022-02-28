@@ -147,10 +147,18 @@
                 var $compareId = [];
 
                 now.tabName = tabType;
-                $compareId.push(now.modelId+'|'+'R'); //스펙비교하기에 모델명 추가
+                
+                var careType = '';
+                if(tabType=='careTab'){
+                	careType ='R'
+                }else{
+                	careType ='C'
+                }
+                
+                $compareId.push(now.modelId+'|'+careType); //스펙비교하기에 모델명 추가
                 self.$prodViewNow.append(vcui.template(productItem,now)); //지금보고 있는 상품에 템플릿 그리기
                 $.each(loopData,function(idx,item){
-                    $compareId.push(item.modelId+'|'+'R'); //스펙비교하기에 모델명 추가
+                    $compareId.push(item.modelId+'|'+careType); //스펙비교하기에 모델명 추가
                     item.tabName = tabType;
                     self.$prodRecommend.append(vcui.template(productItem,item));//추천 상품리스트 템플릿 그리기
                 });
