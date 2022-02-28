@@ -1345,7 +1345,11 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                         targetLeft = targetSlide[0] ? targetSlide[0].offsetLeft * -1 : 0;
                     }
 
-                    targetLeft += (self.$list.width() - targetSlide.outerWidth()) / 2;
+                    if(self.$el.hasClass('slide-show-right')) { // BTOCSITE-12757
+                        targetLeft += (targetSlide.outerWidth() - $(window).width());
+                    }else {
+                        targetLeft += (self.$list.width() - targetSlide.outerWidth()) / 2;
+                    }
                 }
             }
 
