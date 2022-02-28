@@ -373,9 +373,28 @@
                 }
             }
 
-            &.care-step-info,
+            &.noti-info,
+            &.buy-step-info {
+                @include mobile {
+                    margin-top: 40px;
+                }
+            }
             &.bestshop-order-info {
                 display: none;
+                @include pc {
+                    margin-top: 0;
+                }
+
+                @include mobile {
+                    border-top: 0;
+                    padding-top: 47px;
+
+                    .bullet-list {
+                        border-top: 1px solid #ddd;
+                        padding-top: 27px;
+                        margin-top: 0;
+                    }
+                }
             }
         }
 
@@ -504,6 +523,23 @@
 
     // 쿠폰(베스트샵)
     @import "ACCF7510"; //20220224 LGECOMVIO-195
+
+
+    &.orderAndDelivery {
+        .info-tbl-wrap {
+            .no-data {
+                padding: 75px 0;
+                margin-top: -48px;
+                border-bottom: 1px solid #ddd;
+
+                @include mobile {
+                    border-bottom: 0;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
 }
 
 
@@ -1655,6 +1691,9 @@
 
 // LGECOMVIO - 114 베스트샵 배송조회 팝업
 #popup-bestshop-delivery {
+    .pop-conts {
+        overflow-y: hidden;
+    }
     .delivery-info {
         .delivery-step {
             padding:0 0 0 23px;
