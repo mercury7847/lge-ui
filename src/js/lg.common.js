@@ -2543,17 +2543,10 @@ var goAppUrl = function(path) {
                 }
                 return true;
             }else{
-                //return false;
                 if(modelId && vcui.detect.isMobile) {
-                    var iosScheme = "lgeapp://goto?type=AR&product=" + modelId;
-                    var androidScheme = "Intent://goto?type=AR&product=" + modelId;
-                    if(location.hostname == "www.lge.co.kr") {
-                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
-                    } else {
-                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end";
-                    }
-                    //var androidScheme = "Intent://goto?type=AR&product=" + modelId + "#Intent;scheme=lgeapp;package=kr.co.lge.android;end"
-                    lgkorUI.isAPPInstall(iosScheme, androidScheme);
+                        var url =  lgkorUI.parseUrl(location.href);
+                        goAppUrl(url.origin+url.pathname+((url.search) ?  '?'+url.search+'&onenAR='+modelId : ''));
+
                     return true;
                 } else {
                     return false;
