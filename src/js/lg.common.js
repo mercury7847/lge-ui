@@ -2574,7 +2574,7 @@ var goAppUrl = function(path) {
 
                         // location.href = url;
                         var url =  lgkorUI.parseUrl(location.href);
-                        goAppUrl(url.origin+url.pathname);
+                        goAppUrl(url.origin+url.pathname+((url.search) ?  '?'+url.search : ''));
 
 
                     return true;
