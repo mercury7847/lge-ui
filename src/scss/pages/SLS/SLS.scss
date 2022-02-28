@@ -564,8 +564,15 @@ br.pc {
                         width:64px;
                         height:64px;
                         @include mobile {
+                            display: none;
                             width: 40px;
                             height: 40px;
+                        }
+                        &.mobile {
+                            display: none;
+                            @include mobile {
+                                display:inline-block;
+                            }
                         }
                         img {
                             width:100%;
