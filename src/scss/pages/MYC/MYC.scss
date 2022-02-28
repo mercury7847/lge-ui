@@ -1699,6 +1699,10 @@
         .delivery-step {
             padding:0 0 0 23px;
 
+            @include mobile {
+                padding-left: 13px;
+            }
+
             &:last-child {
                 .delivery-text:before {
                     width:0;
@@ -1712,6 +1716,10 @@
         .delivery-text {
             position:relative;
             padding:0 0 44px 41px;
+
+            @include mobile {
+                padding: 0 0 38px 31px;
+            }
 
             &:before {
                 display:block;
@@ -1755,11 +1763,22 @@
                     border:1px solid #DA0F47;
                     border-radius:50%;
                     background:#fff;
+
+                    @include mobile {
+                        width: 11px;
+                        height: 11px;
+                        top: 9px;
+                        left: -38px;
+                    }
                 }
             }
             &.active {
                 &:before {
                     top:41px;
+
+                    @include mobile {
+                        top: 35px;
+                    }
                 }
 
                 .delivery-status {
@@ -1773,11 +1792,24 @@
                         height:36px;
                         background:#fbe7ec;
                         border-radius:50%;
+
+                        @include mobile {
+                            width: 26px;
+                            height: 26px;
+                            top: 1px;
+                            left: -46px;
+                        }
                     }
                     &:after {
                         top:9px;
                         border:none;
                         background:#DA0F47;
+                        @include mobile {
+                            top: 8.5px;
+                            left: -38.5px;
+                            width: 11px;
+                            height: 11px;
+                        }
                     }
                 }
             }
@@ -1800,6 +1832,7 @@
             font-size:16px;
             line-height:24px;
             color:#666;
+
             @include mobile {
                 font-size:14px;
             }

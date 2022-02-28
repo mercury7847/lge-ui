@@ -2,7 +2,7 @@
 
    
     var inquiryListTemplate =
-        '<div class="box" data-id="{{dataID}}">'+
+        '<div class="box{{#if activeTabFlag == "BESTSHOP"}} box-type-2{{/if}}" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
                 '<ul class="infos">'+
                     '{{#if activeTabFlag == "BESTSHOP"}}<li class="type-m"><p class="store-name">{{storeName}}</p></li>{{/if}}'+
@@ -69,7 +69,7 @@
         
 
         var prodListTemplate = 
-            '<div class="row {{disabled}}{{#if listData.activeTabFlag == "BESTSHOP"}}row-type-2{{/if}}">'+
+            '<div class="row {{disabled}}">'+
                 '<div class="col-table" data-prod-id="{{listData.prodID}}">'+
                     '<div class="col col1">'+
                         '<span class="blind">제품정보</span>'+
