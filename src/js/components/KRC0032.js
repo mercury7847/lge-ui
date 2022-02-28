@@ -117,7 +117,8 @@ $(window).ready(function(){
 		//슬라이드가 화면 중앙인지 아닌지를 체크하여 해당 이벤트 실행 -BTOCSITE-8039
 		var io = new IntersectionObserver(function(entries, observer) {
 			entries.forEach(function(entry) {
-				entry.isIntersecting ? sectionEnterEvent(entry.target) : sectionLeaveEvent(entry.target);
+				if($(entry.target).data('autoplay')) (entry.isIntersecting) ? sectionEnterEvent(entry.target) : sectionLeaveEvent(entry.target);
+				else sectionLeaveEvent(entry.target);
 			});                            
 		}, {root: null, threshold: 0.5});
 		
@@ -138,7 +139,7 @@ $(window).ready(function(){
 			var opt = (isVariable) ? {
 				infinite: true,
 				pauseOnHover: false,
-				autoplay: true,
+				autoplay: autoPlay,
 				autoplaySpeed: autoPlaySpeed,
 				prevArrow:'.btn-arrow.prev',
 				nextArrow:'.btn-arrow.next',
@@ -166,7 +167,7 @@ $(window).ready(function(){
 			}:{
 				infinite: true,
 				pauseOnHover: false,
-				autoplay: true,
+				autoplay: autoPlay,
 				autoplaySpeed: autoPlaySpeed,
 				prevArrow:'.btn-arrow.prev',
 				nextArrow:'.btn-arrow.next',
