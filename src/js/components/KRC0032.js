@@ -147,13 +147,12 @@ $(window).ready(function(){
 				slidesToScroll: 1,
 				playSelector: '.btn-play.play',
 				adaptiveHeight:true,
-				// cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
 				speed: 150,
 				touchThreshold: 100,
 				customPaging: function(slide, i) {
 					return customDots(slide, i)
 				},
-				responsive: (isVariable) ? [ //BTOCSITE-12757
+				responsive: (isVariable) ? [
 					{
 						breakpoint: 768,
 						settings: {
@@ -163,7 +162,7 @@ $(window).ready(function(){
 							slidesToShow: 1
 						}
 					}
-				]:null
+				]:null,  //BTOCSITE-12757
 			}
 
 			$slide.on('carouselinit', function(e,data){
