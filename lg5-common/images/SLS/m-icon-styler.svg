@@ -1,0 +1,13 @@
+<svg id="img_Styler_80" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <g id="ic" transform="translate(20 2)">
+    <g id="Path" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10">
+      <path d="M36.744,0H3.256A3.21,3.21,0,0,0,0,3.167V72.833A3.21,3.21,0,0,0,3.256,76H36.744A3.21,3.21,0,0,0,40,72.833V3.167A3.21,3.21,0,0,0,36.744,0Z" stroke="none"/>
+      <path d="M 3.255817413330078 3 C 3.097316741943359 3 3 3.097068786621094 3 3.166664123535156 L 3 72.83333587646484 C 3 72.90293121337891 3.097316741943359 73 3.255817413330078 73 L 36.74418258666992 73 C 36.90268325805664 73 37 72.90293121337891 37 72.83333587646484 L 37 3.166664123535156 C 37 3.097068786621094 36.90268325805664 3 36.74418258666992 3 L 3.255817413330078 3 M 3.255817413330078 0 L 36.74418258666992 0 C 38.54418182373047 0 40 1.415946960449219 40 3.166664123535156 L 40 72.83333587646484 C 40 74.58405303955078 38.54418182373047 76 36.74418258666992 76 L 3.255817413330078 76 C 1.455818176269531 76 0 74.58405303955078 0 72.83333587646484 L 0 3.166664123535156 C 0 1.415946960449219 1.455818176269531 0 3.255817413330078 0 Z" stroke="none" fill="#000"/>
+    </g>
+    <g id="Group_12" data-name="Group 12" transform="translate(10 12)">
+      <path id="Path-2" data-name="Path" d="M3.929,8a4,4,0,1,0,0-8C1.72,0,0,1.184,0,3.393" transform="translate(6.071)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Rectangle" d="M10.03,0H10L20,6H0Z" transform="translate(0 11)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      <path id="Path-3" data-name="Path" d="M1,0V3" transform="translate(9 8)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+    </g>
+  </g>
+</svg>
