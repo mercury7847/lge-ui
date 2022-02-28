@@ -127,7 +127,7 @@ $(window).ready(function(){
 				autoPlay 		= $slide.data('autoplay') != undefined && $slide.data('autoplay') !== "" ? $slide.data('autoplay') : true,
 				autoPlaySpeed 	= $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') !== "" ? $slide.data('autoSpeed') : 3000,
 				autoCount 		= $slide.data('autoCount') != undefined && $slide.data('autoCount') !== "" ? $slide.data('autoCount') : false,
-				isVariable		= ($slide.hasClass('slide-show-right')) ? true:false;
+				isVariable		= ($slide.hasClass('slide-show-right')) ? true:false; // BTOCSITE-12757
 
 			if( autoCount != 'loop' && autoCount != undefined) {
 				$slide.data('currentCount', 0);
@@ -136,7 +136,7 @@ $(window).ready(function(){
 			if( $slide.find('.ui_carousel_slide').eq(0).find('video').length ) {
 				autoPlaySpeed = $slide.find('.ui_carousel_slide').eq(0).find('video')[0].duration * 1000;
 			}
-			var opt = (isVariable) ? {
+			var opt = {
 				infinite: true,
 				pauseOnHover: false,
 				autoplay: autoPlay,
@@ -153,7 +153,7 @@ $(window).ready(function(){
 				customPaging: function(slide, i) {
 					return customDots(slide, i)
 				},
-				responsive: [
+				responsive: (isVariable) ? [ //BTOCSITE-12757
 					{
 						breakpoint: 768,
 						settings: {
@@ -163,24 +163,7 @@ $(window).ready(function(){
 							slidesToShow: 1
 						}
 					}
-				]
-			}:{
-				infinite: true,
-				pauseOnHover: false,
-				autoplay: autoPlay,
-				autoplaySpeed: autoPlaySpeed,
-				prevArrow:'.btn-arrow.prev',
-				nextArrow:'.btn-arrow.next',
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				playSelector: '.btn-play.play',
-				adaptiveHeight:true,
-				// cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-				speed: 150,
-				touchThreshold: 100,
-				customPaging: function(slide, i) {
-					return customDots(slide, i)
-				}
+				]:null
 			}
 
 			$slide.on('carouselinit', function(e,data){
