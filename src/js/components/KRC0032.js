@@ -207,6 +207,7 @@ $(window).ready(function(){
 						$(this).get(0).currentTime = 0;
 					}
 				})
+				if(!autoPlay) $(data.$slider).find('.indi-wrap li').eq(0).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar').css({'animation-play-state':'running'})
 			})
 			.vcCarousel(opt)
 			.on('carouselbeforechange', function(e, slide, prev, next){
