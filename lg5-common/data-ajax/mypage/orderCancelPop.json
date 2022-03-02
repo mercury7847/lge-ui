@@ -166,7 +166,8 @@
             "statusButtonList": [
               
             ],
-            "itemCancelAbleYn": ""
+            "itemCancelAbleYn": "Y",
+            "modelType": "일반 (G)"
           },
           {
             "productNameKR": "LG TROMM",
@@ -198,7 +199,8 @@
             "statusButtonList": [
               
             ],
-            "itemCancelAbleYn": ""
+            "itemCancelAbleYn": "Y",
+            "modelType": "소모품(S)"
           }
         ],
         "orderReceiptAbleYn": "N",

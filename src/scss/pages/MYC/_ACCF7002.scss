@@ -1,3 +1,26 @@
+&.orderAndDelivery {
+    .tabs-wrap.new-type .tabs {
+        display: flex;
+        @include mobile {
+            white-space: normal;
+            li {
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    word-break: keep-all;
+
+                    div {
+                        width: 75px;
+                    }
+                    height: auto;
+                    min-height: 68px;
+                    line-height: normal;
+                }
+            }
+        }
+    }
+}
 .section-wrap {
     .sects {
         &.noti-info{
@@ -28,6 +51,7 @@
         .bullet-list {
             margin-top:8px;
         }
+
     }
     .customer-center-info {
         display:table;

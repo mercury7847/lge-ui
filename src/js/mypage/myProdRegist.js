@@ -847,6 +847,10 @@
                                 gtag('event', 'conversion',{'send_to': 'AW-362582935/fK-XCM6O6IgDEJen8qwB'});
                                 fbq('trackCustom', 'Buttonconvprodreg');
 
+                                //BTOCSITE-12458 [앱스플라이어] 이벤트 참여 완료 인앱이벤트 개발 요청건
+                                lgkorUI.afEvent("af_content_registration", { 'af_content_mdcode_registration' : param.sku })
+
+
                                 self.$registMyProductPopup.vcModal('close');
 
                                 //현재 탭과 다른탭의 카운트를 갱신하기위해 모두다 호출한다
@@ -1138,6 +1142,7 @@
                     item.isMobile = self.isMobileNow;
                     item.isPackgaeModel = !!item.packageModelCode;
                     item.myProductModelGuide = data.myProductModelGuide;
+                    item.factoryModel = item.factoryModel || '';
 
                     // BTOCSITE-4086 [UI] 보유제품 등록 qr인식을 위한 요청의 건 (2차)
                     if(!item.isPackgaeModel) item.packageModelCode = "";

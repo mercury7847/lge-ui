@@ -24,16 +24,16 @@ var goAppUrl = function(path) {
             this.addEventListener("touchmove", handle, { passive: !(ns.indexOf('noPreventDefault') > -1) });
         }
     };
-    $.event.special.wheel = {
-        setup: function( _, ns, handle ){
-            this.addEventListener("wheel", handle, { passive: true });
-        }
-    };
-    $.event.special.mousewheel = {
-        setup: function( _, ns, handle ){
-            this.addEventListener("mousewheel", handle, { passive: true });
-        }
-    };
+    // $.event.special.wheel = {
+    //     setup: function( _, ns, handle ){
+    //         this.addEventListener("wheel", handle, { passive: true });
+    //     }
+    // };
+    // $.event.special.mousewheel = {
+    //     setup: function( _, ns, handle ){
+    //         this.addEventListener("mousewheel", handle, { passive: true });
+    //     }
+    // };
 
     $.event.special.scroll = {
         setup: function( _, ns, handle ){
@@ -1323,8 +1323,8 @@ var goAppUrl = function(path) {
             var self = this;
             var compareIDs = [];
             var compareStorage = self.getStorage(self.COMPARE_KEY, categoryId);
-                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id); });
-            var compareCookie = compareIDs.join("|");
+                compareStorage['data'].forEach(function(item){ compareIDs.push(item.id + '|' + item.careType); }); // BTOCSITE-5938-545 care type 추가
+            var compareCookie = compareIDs.join(",");
 
             self.setCookie(self.COMPARE_COOKIE_NAME, compareCookie);
         },
@@ -2436,7 +2436,7 @@ var goAppUrl = function(path) {
             window.cremaAsyncInit = function () {
                 if(typeof crema !== 'undefined') {
                     lgkorUI.requestAjaxDataPost('/mkt/commonModule/cremaInfo.lgajax', null, function(result){
-                        if(result.status && result.data) {
+                        if(result.status === 'success' && result.data) {
                             var cremaid   = result.data[0].data.cremaId || '';
                             var cremaname = result.data[0].data.cremaName || '';
                             crema.init(cremaid , cremaname);
@@ -2544,16 +2544,39 @@ var goAppUrl = function(path) {
                 return true;
             }else{
                 //return false;
+                // if(modelId && vcui.detect.isMobile) {
+                //     var iosScheme = "lgeapp://goto?type=AR&product=" + modelId;
+                //     var androidScheme = "Intent://goto?type=AR&product=" + modelId;
+                //     if(location.hostname == "www.lge.co.kr") {
+                //         androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
+                //     } else {
+                //         androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end";
+                //     }
+                //     //var androidScheme = "Intent://goto?type=AR&product=" + modelId + "#Intent;scheme=lgeapp;package=kr.co.lge.android;end"
+                //     lgkorUI.isAPPInstall(iosScheme, androidScheme);
+                //     return true;
+                // } else {
+                //     return false;
+                // }
+
+
                 if(modelId && vcui.detect.isMobile) {
-                    var iosScheme = "lgeapp://goto?type=AR&product=" + modelId;
-                    var androidScheme = "Intent://goto?type=AR&product=" + modelId;
-                    if(location.hostname == "www.lge.co.kr") {
-                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
-                    } else {
-                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end";
-                    }
-                    //var androidScheme = "Intent://goto?type=AR&product=" + modelId + "#Intent;scheme=lgeapp;package=kr.co.lge.android;end"
-                    lgkorUI.isAPPInstall(iosScheme, androidScheme);
+
+                    console.log("modelId %o",modelId);
+
+                    //  var url = "https://lge.onelink.me/5teT?pid=User_invite&c=AR 체험 바로가기&is_retargeting=true&af_inactivity_window=7d&deep_link_value="+url+"&af_dp=lgeapp://goto3/4";
+
+                    // https://lge.onelink.me/5teT?pid=User_invite&c=AR%20%EC%B2%B4%ED%97%98%20%EB%B0%94%EB%A1%9C%EA%B0%80%EA%B8%B0&is_retargeting=true&af_inactivity_window=7d&deep_link_value=https%3A%2F%2Fwwwstg.lge.co.kr%2Ftvs%2Foled65rxkna&af_dp=lgeapp%3A%2F%2Fgoto3/4	
+
+                    // var url = "https://lge.onelink.me/5teT?pid=User_invite&c=AR 체험 바로가기&is_retargeting=true&af_inactivity_window=7d&deep_link_value=https://wwwstg.lge.co.kr/tvs/oled65rxkna";
+                    // var url = "https://lge.onelink.me/5teT?pid=User_invite&c=AR%20%EC%B2%B4%ED%97%98%20%EB%B0%94%EB%A1%9C%EA%B0%80%EA%B8%B0&is_retargeting=true&af_inactivity_window=7d&deep_link_value="+url;
+                    
+
+                        // location.href = url;
+                        var url =  lgkorUI.parseUrl(location.href);
+                        goAppUrl(url.origin+url.pathname+((url.search) ?  '?'+url.search : ''));
+
+
                     return true;
                 } else {
                     return false;
@@ -2783,6 +2806,36 @@ var goAppUrl = function(path) {
                     expires : new Date('1999/01/01'),
                     domain : location.host
                 });
+            }
+        },
+        // BTOCSITE-12458 [앱스플라이어] 이벤트 공통 함수
+        afEvent: function(eventName,eventValue){
+            if(isApp() && eventName && eventValue) {
+                var eventValue = JSON.stringify(eventValue);
+                var iframe = document.createElement("IFRAME");
+                    iframe.setAttribute("src", "af-event://inappevent?eventName="+eventName+"&eventValue="+eventValue);
+                    document.documentElement.appendChild(iframe);
+                    iframe.parentNode.removeChild(iframe);
+                    iframe = null;
+            }
+        },
+        // BTOCSITE-11928 챗봇 pincode 파라미터 연결 수정
+        getChatPinCode: function(el) {
+            if(el.length > 0) {
+                lgkorUI.requestAjaxData('/support/getPinCode.lgajax', null, function(result) {
+                    var pinCode = null;
+                    var data = result.data;
+                    if(data) {
+                        var receveResult = data.result;
+                        if(receveResult && receveResult.code) {
+                            pinCode = receveResult.code;
+                        }
+                    }
+
+                    var url = lgkorUI.parseUrl(el.attr('href')),
+                        params = $.extend(url.searchParams.getAll(),{'channel': isApp() ? "lg_app" : "lg_homepage", 'code' :  pinCode || ''});
+                        el.attr('href',vcui.uri.addParam(url.origin+url.pathname,params));
+                },"GET", "json", true, null, true);
             }
         }
     }

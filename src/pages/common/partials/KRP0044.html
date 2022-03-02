@@ -6,19 +6,17 @@
 			.zero-top : 상단여백 없음
 			.zero-btm : 하단여백 없음
 
-			[item-info 옵션]
-			1. align
-			.align-left : left
-			.align-right : right
-			.align-center : center
+			[component 옵션]
+			data-model-id: 제품ID
+			data-response-url: responsee ajax url
 		-->
 		<section class="component KRP0044"
-			data-list-url="/lg5-common/data-ajax/KRP0044/KRP0044.json"
-			data-story-type="storytypetest"
+			data-response-url="/lg5-common/data-ajax/KRP0044/KRP0044.json"
+			data-model-id= "MD08920827"
 		>
 			<div class="component-inner">
 				@@if (context.heading) {
-					<div class="title">
+					<div class="title"><!-- 타이틀 없는 경우 title 영역 삭제 -->
 						@@heading <!-- H1, H2, H3, H4, H5, H6 사용가능 -->
 					</div>
 				}

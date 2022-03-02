@@ -11,7 +11,7 @@
 				"disclaimerBtn": "fc-white" //흰색 버튼
 			-->
 			<!-- component-wrap -->
-			<!-- 기본 도트 타입 && 모바일 엣지 타입 -->
+			<!-- 기본 도트 타입 && 모바일 엣지 타입(Type B) -->
 			@@include('./common/partials/KRC0032.html', {
 				stageSize: "stage-full",
 				slideShowType : true,
@@ -130,7 +130,7 @@
 			})
 			<!-- //바 + 텍스트 타입 -->
 			<!-- //component-wrap -->
-
+			
 			<!-- component-wrap -->
 			<!-- 바 + 텍스트 타입 -->
 			@@include('./common/partials/KRC0032.html', {
@@ -155,6 +155,22 @@
 				dotType: "bar-text",
 				autoSpeed: "5000",
                 "slideBox-bg": "",
+				"disclaimerBtn": ""
+
+			})
+			<!-- //바 + 텍스트 타입 -->
+			<!-- //component-wrap -->
+
+			<!-- component-wrap -->
+			<!-- 바 + 텍스트 타입 : 모바일 엣지 타입(Type B) -->
+			@@include('./common/partials/KRC0032.html', {
+				stageSize : "stage-full",
+				slideShowType : true,
+				autoplay: true,
+				autoCount: "3",
+				dotType: "bar-text",
+				autoSpeed: "1000",
+                "slideBox-bg": "bg-lightgray",
 				"disclaimerBtn": ""
 
 			})

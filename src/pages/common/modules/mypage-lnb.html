@@ -46,15 +46,31 @@
                 @@for ( var i=0; i < sect3.length; i++ ) {
                 <li><a href="#n" class="my-dep2 `+sect3[i].on+`">`+sect3[i].page+`</a></li>
                 }
-            </ul>    
+            </ul>
             }
             @@if ( !context.sect3 ) {
             <ul class="myp-sub">
                 <li><a href="#n" class="my-dep2">찜한 제품</a></li>
                 <li><a href="#n" class="my-dep2">최근 본 제품</a></li>
                 <li><a href="#n" class="my-dep2">구독</a></li>
-                <li><a href="#n" class="my-dep2">단골매장</a></li>
+                <li><a href="#n" class="my-dep2">단골매장 등록수정</a></li><!-- 2022.02.28(수정) : LGECOMVIO-193(메뉴명 변경) -->
                 <li><a href="#n" class="my-dep2">재입고 알림</a></li>
+            </ul>
+            }
+        </li>
+        <li>
+            <a href="#n" class="my-dep1">마이 베스트샵</a>
+            @@if ( context.sect9 ) {
+            <ul class="myp-sub">
+                @@for ( var i=0; i < sect9.length; i++ ) {
+                <li><a href="#n" class="my-dep2 `+sect9[i].on+`">`+sect9[i].page+`</a></li>
+                }
+            </ul>
+            }
+            @@if ( !context.sect9 ) {
+            <ul class="myp-sub">
+                <li><a href="#n" class="my-dep2">상담 예약 조회</a></li>
+                <li><a href="#n" class="my-dep2">인테리어 상담 신청</a></li>
             </ul>
             }
         </li>
@@ -73,7 +89,7 @@
                 @@for ( var i=0; i < sect5.length; i++ ) {
                 <li><a href="#n" class="my-dep2 `+sect5[i].on+`">`+sect5[i].page+`</a></li>
                 }
-            </ul>    
+            </ul>
             }
             @@if ( !context.sect5 ) {
             <ul class="myp-sub">
@@ -89,7 +105,7 @@
                 @@for ( var i=0; i < sect6.length; i++ ) {
                 <li><a href="#n" class="my-dep2 `+sect6[i].on+`">`+sect6[i].page+`</a></li>
                 }
-            </ul>    
+            </ul>
             }
             @@if ( !context.sect6 ) {
             <ul class="myp-sub">
@@ -109,7 +125,7 @@
                 @@for ( var i=0; i < sect7.length; i++ ) {
                 <li><a href="#n" class="my-dep2 `+sect7[i].on+`">`+sect7[i].page+`</a></li>
                 }
-            </ul>    
+            </ul>
             }
             @@if ( !context.sect7 ) {
             <ul class="myp-sub">
@@ -125,7 +141,7 @@
                 @@for ( var i=0; i < sect8.length; i++ ) {
                 <li><a href="#n" class="my-dep2 `+sect8[i].on+`">`+sect8[i].page+`</a></li>
                 }
-            </ul>    
+            </ul>
             }
             @@if ( !context.sect8 ) {
             <ul class="myp-sub">
