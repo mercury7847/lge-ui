@@ -863,7 +863,18 @@
                             });
                         }
 
-
+                        // BTOCSITE-12917 [버즈빌] 광고스크립트 추가 요청 (보유제품 등록)
+                        (function (img) { img.onload = function () {
+                            var length = localStorage.BuzzAd.length;
+                            if(localStorage.BuzzAd.indexOf('10023_71ffbffd-ccf1-4edf-9c4c') != -1){
+                              alert("[연동 완료] 자바스크립트 연동을 완료하셨습니다! 연동이 완료되었음을 버즈빌 광고 담당자에게 알려주세요.");
+                            } else{
+                                alert("[연동 실패]");
+                            };
+                            //*필요시 여기서 리다이렉트 수행*
+                         };
+                        if (localStorage.BuzzAd == null) { localStorage.BuzzAd = ""; }
+                        img.src = "//track.buzzvil.com/action/pb/cpa/default/pixel.gif" + localStorage.BuzzAd; }) (new Image())
 
 
                         //BTOCSITE-4086 등록 > 제품 정보 정상일 경우, 팝업 닫히며, 해당 제품 정상 반영 후 제품목록 탭으로 이동됨.
