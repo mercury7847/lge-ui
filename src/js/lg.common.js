@@ -7,12 +7,8 @@ var isApp = function(){
 *  @path : 랜딩할 경로
 */
 var goAppUrl = function(path) {
-    var weblink = path ? path : location.href;
-
-    weblink = weblink.replace('wwwdev50','www');
-    
+    var weblink = path ? path : location.href;    
     location.href =  'https://lgeapp.page.link/?link='+weblink+'&apn=kr.co.lge.android&isi=1561079401&ibi=kr.co.lge.ios'; // 앱실행 
-    
 }
 
 // 메인 성능 개선 - jquery passive event 적용
