@@ -2544,16 +2544,39 @@ var goAppUrl = function(path) {
                 return true;
             }else{
                 //return false;
+                // if(modelId && vcui.detect.isMobile) {
+                //     var iosScheme = "lgeapp://goto?type=AR&product=" + modelId;
+                //     var androidScheme = "Intent://goto?type=AR&product=" + modelId;
+                //     if(location.hostname == "www.lge.co.kr") {
+                //         androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
+                //     } else {
+                //         androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end";
+                //     }
+                //     //var androidScheme = "Intent://goto?type=AR&product=" + modelId + "#Intent;scheme=lgeapp;package=kr.co.lge.android;end"
+                //     lgkorUI.isAPPInstall(iosScheme, androidScheme);
+                //     return true;
+                // } else {
+                //     return false;
+                // }
+
+
                 if(modelId && vcui.detect.isMobile) {
-                    var iosScheme = "lgeapp://goto?type=AR&product=" + modelId;
-                    var androidScheme = "Intent://goto?type=AR&product=" + modelId;
-                    if(location.hostname == "www.lge.co.kr") {
-                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
-                    } else {
-                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end";
-                    }
-                    //var androidScheme = "Intent://goto?type=AR&product=" + modelId + "#Intent;scheme=lgeapp;package=kr.co.lge.android;end"
-                    lgkorUI.isAPPInstall(iosScheme, androidScheme);
+
+                    console.log("modelId %o",modelId);
+
+                    //  var url = "https://lge.onelink.me/5teT?pid=User_invite&c=AR 체험 바로가기&is_retargeting=true&af_inactivity_window=7d&deep_link_value="+url+"&af_dp=lgeapp://goto3/4";
+
+                    // https://lge.onelink.me/5teT?pid=User_invite&c=AR%20%EC%B2%B4%ED%97%98%20%EB%B0%94%EB%A1%9C%EA%B0%80%EA%B8%B0&is_retargeting=true&af_inactivity_window=7d&deep_link_value=https%3A%2F%2Fwwwstg.lge.co.kr%2Ftvs%2Foled65rxkna&af_dp=lgeapp%3A%2F%2Fgoto3/4	
+
+                    // var url = "https://lge.onelink.me/5teT?pid=User_invite&c=AR 체험 바로가기&is_retargeting=true&af_inactivity_window=7d&deep_link_value=https://wwwstg.lge.co.kr/tvs/oled65rxkna";
+                    // var url = "https://lge.onelink.me/5teT?pid=User_invite&c=AR%20%EC%B2%B4%ED%97%98%20%EB%B0%94%EB%A1%9C%EA%B0%80%EA%B8%B0&is_retargeting=true&af_inactivity_window=7d&deep_link_value="+url;
+                    
+
+                        // location.href = url;
+                        var url =  lgkorUI.parseUrl(location.href);
+                        goAppUrl(url.origin+url.pathname+((url.search) ?  '?'+url.search : ''));
+
+
                     return true;
                 } else {
                     return false;

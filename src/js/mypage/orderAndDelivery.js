@@ -3075,7 +3075,8 @@
                     // BTOCSITE-4124 현금결제, 입금확인 대상자 체크 210823 - E
 
                     // 모니터링 227 : 구매 탭으로 다시 돌아왔을 경우 (주문 취소를 하였음에도)'취소 신청' 버튼이 노출되고 있습니다.
-                    location.reload(true);
+                    // 모니터링 520 : 비회원 주문후 취소완료시 주문정보 안나오는 오류 수정
+                    if(PAGE_TYPE == PAGE_TYPE_LIST) location.reload(true);
                 }
             }
         });

@@ -2404,7 +2404,7 @@ vcui.define('ui/carousel', ['jquery', 'vcui'], function ($, core) {
                 self.$slideTrack.css(positionProps);
             } else {
                 positionProps = {};
-                if (self.cssTransitions === false) {
+                if (self.cssTransitions === false || vcui.detect.isIE) { // BTOCSITE-12804
                     positionProps[self.animType] = 'translate(' + x + ', ' + y + ')';
                     self.$slideTrack.css(positionProps);
                 } else {
