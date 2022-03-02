@@ -1846,12 +1846,17 @@
                 height:10px;
                 background:#ddd;
                 margin:0 7px 0 6px;
+
+                @include mobile {
+                    top: 0;
+                    margin: 0 6px 0 4px;
+                }
             }
         }
         .delivery-detail {
             display:inline-block;
             margin-top:12px;
-            padding-right:20px;
+            padding-right:18px;
             text-decoration:underline;
             background:url("/lg5-common/images/icons/btn-arr-16-black-sm.svg") right center no-repeat;
 
