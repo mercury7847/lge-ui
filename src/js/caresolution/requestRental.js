@@ -1107,6 +1107,12 @@
                     if(consumeTypeEnable.indexOf($.trim(result.data.consumeType)) > -1) {
                         step2Block.find('.datepicker').removeClass('disabled');
                         var mindate = vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd");
+                        
+                        // BTOCSITE-13040 설치 희망일이 희망일 선택불가 일 때 청약실패 현상 수정 요청 temp 삭제예정
+                        var mindate2 = vcui.date.format(result.data.deliveryDate, "yyyy.MM.dd");
+                        $('input[name="inatallDate"]').data("deliveryDateNotSelect",vcui.date.format(result.data.deliveryDate, "yyyy.MM.dd"));
+                        // BTOCSITE-13040 설치 희망일이 희망일 선택불가 일 때 청약실패 현상 수정 요청 temp 삭제예정
+                        
                         var maxdate = vcui.date.add(vcui.date.parse(mindate), "d", 14);
                         var disabledDays = vcui.array.map(result.data.holidaysSet, function(item){
                             return vcui.date.format(item, "yyyy-MM-dd");
@@ -1127,7 +1133,10 @@
                         }
 
                         $('input[name="inatallDate"]').val("희망일 선택불가");
-                        $('input[name="inatallDate"]').data("deliveryDateNotSelect",vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd"));
+                        // BTOCSITE-13040 설치 희망일이 희망일 선택불가 일 때 청약실패 현상 수정 요청
+                        // $('input[name="inatallDate"]').data("deliveryDateNotSelect",vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd"));
+                        $('input[name="inatallDate"]').data("deliveryDateNotSelect",vcui.date.format(result.data.deliveryDate, "yyyy.MM.dd"));
+                        
 
                         $('.ui_calendar').attr('disabled',true);
                         $('.ui_calendar').vcCalendar('update');
