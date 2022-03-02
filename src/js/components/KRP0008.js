@@ -81,7 +81,7 @@
                 // AR 체험하기 APP 호출시 실행
                 var modelId = lgkorUI.getParameterByName('openAR');
                 if( isApp() && modelId) {
-                    lgkorUI.openAR(modelId);
+                    // lgkorUI.openAR(modelId);
                 }
 
                 // 20211014 BTOCSITE-6768 사전예약 버튼클릭 시 로그인 체크
