@@ -17,6 +17,11 @@
                     min-height: 68px;
                     line-height: normal;
                 }
+                &.on {
+                    a {
+                        z-index: 2;
+                    }
+                }
             }
         }
     }
