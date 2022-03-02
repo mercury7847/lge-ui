@@ -255,7 +255,7 @@
                 if( isApp() && modelId) {
 
                     console.log("openar");
-                    // lgkorUI.openAR(modelId);
+                    lgkorUI.openAR(modelId);
                 }
 
                 //더보기 버튼 체크
