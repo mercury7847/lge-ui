@@ -500,6 +500,7 @@
                         &.idx10{ left: 5%; top: 48.7%; }
                         &.idx11{ left: 46.5%; top: 91.7%; }
                         &.idx12{ left: 17.5%; top: 6.7%; }
+                        &.idx13{ left: 56.8%; top: 25%; }
                         @include mobile{
                             &.idx00 {left: 62.9%; top: 53.7%; }
                             &.idx01 {left: 58.7%; top: 61.7%; }
@@ -514,6 +515,7 @@
                             &.idx10 {left: 4.5%; top: 48.7%; }
                             &.idx11 {left: 42.5%; top: 82.7%; }
                             &.idx12 {left: 13%; top: 15.7%; }
+                            &.idx13 {left: 61.8%; top: 31%; }
                         }          
                     }
                     & ~ .list {
