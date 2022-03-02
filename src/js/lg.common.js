@@ -2544,9 +2544,8 @@ var goAppUrl = function(path) {
                 return true;
             }else{
                 if(modelId && vcui.detect.isMobile) {
-                        var url =  lgkorUI.parseUrl(location.href);
-                        goAppUrl(url.origin+url.pathname+((url.search) ?  '?'+url.search+'&onenAR='+modelId : ''));
-
+                    var url =  lgkorUI.parseUrl(location.href);
+                    goAppUrl(url.origin+url.pathname+((url.search) ?  '?'+url.search+'&openAR='+modelId : '?openAR='+modelId ));
                     return true;
                 } else {
                     return false;
