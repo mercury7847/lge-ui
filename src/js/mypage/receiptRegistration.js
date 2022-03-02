@@ -11,7 +11,6 @@
                 self.setting();
                 self.bindEvents();
                 self.requestSelectData();
-                $('.foot-last').append('<a href="/html/MYC/ACCF7037.html" style="color: #eee">DEV</a>');//test
             },
 
             setting: function() {
