@@ -43,7 +43,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">신한/롯데카드 5% 결제일 할인</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">{{cardDiscountName}}</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -249,6 +249,12 @@
                 
                 self.setting();
                 self.bindEvents();
+
+                // AR 체험하기 APP 호출시 실행
+                var modelId = lgkorUI.getParameterByName('openAR');
+                if( isApp() && modelId) {
+                    lgkorUI.openAR(modelId);
+                }
 
                 //더보기 버튼 체크
                 self.setPageData(lgkorUI.getHiddenInputData());
@@ -1063,7 +1069,7 @@
 
                 // 20210728 BTOCSITE-3608 매장 키오스크 LGE.COM 노출 개선 요청 
                 var kiosk = lgkorUI.getParameterByName("kiosk");
-                if(kiosk && item.modelUrlPath.indexOf('kiosk=') === -1) {
+                if(lgkorUI.stringToBool(kiosk) && item.modelUrlPath.indexOf('kiosk=') === -1) {
                     item.modelUrlPath += (item.modelUrlPath.indexOf("?") === -1) ? "?" : "&";
                     item.modelUrlPath += 'kiosk='+kiosk;
                 }
@@ -1118,11 +1124,6 @@
                 }
                 /* //BTOCSITE-1683 : 카테고리ID 추가 2021-07-09 */
                 item.ecProduct = JSON.stringify(ecProduct);
-                //console.log("-------------------------------");
-                //console.log(item.subCategoryId);
-
-                // item.isShow = true;
-                // console.log("item %o",item);
 
                 //BTOCSITE-8312 프로젝터>시네빔과 프로빔 스펙비교 예외처리 요청
                 item.b2bCateMapping = item.b2bCateMapping || "N";
@@ -1133,8 +1134,9 @@
                 } else {
                     item.isShowPrice = item.obsSellingPriceNumber;
                 }
-                /* BTOCSITE-10166: 롯데카드 혜택 배지 수정요청의 건  */
-                item.isShow = kiosk ? false : lgkorUI.isShowDate('20220101','20220301'); //  2022.01.01 00:00 ~ 2021.02.28 24:00  ( 신한/롯데 프로모션 적용 기간)
+                /* BTOCSITE-12969 5% 결제일 할인 뱃지 적용기간 연장요청건  */
+                item.isShow = lgkorUI.stringToBool(item.cardDiscountFlag) && !lgkorUI.stringToBool(kiosk) ? true :  false;
+                item.cardDiscountName = $('.hidden-input-group input[name="cardDiscountName"]').val();
                 
                 return vcui.template(productItemTemplate, item);
             },
@@ -1253,7 +1255,6 @@
                 var categoryId = lgkorUI.getHiddenInputData().categoryId;
                 var storageCompare = lgkorUI.getStorage(lgkorUI.COMPARE_KEY, categoryId);
 
-                console.log(storageCompare)
                 if(storageCompare && storageCompare['data'].length > 0){
                     var data = storageCompare['data'][0];
                     // 비교하기 버튼 상태 변경
