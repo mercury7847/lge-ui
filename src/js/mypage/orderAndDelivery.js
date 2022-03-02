@@ -388,7 +388,6 @@
             '</strong>'+
             '{{#if deliveryStatusDate}}<p class="delivery-date">{{deliveryStatusDate}}</p>{{/if}}'+
             '{{#if deliveryDriver.name}}<span class="delivery-name">배송기사 {{deliveryDriver.name}} <em class="bar">{{deliveryDriver.phoneNumber}}</em></span>{{/if}}'+
-            '{{#if deliveryTrackingURL}}<a href="{{deliveryTrackingURL}}" target="_blank" class="delivery-detail">상세보기</a>{{/if}}'+
         '</div>'+
     '</div>'+
     '<div class="delivery-step">'+
