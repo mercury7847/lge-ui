@@ -1007,6 +1007,7 @@
                     }
                     if(index == 0) {
                         //구매
+                        $('.cardDiscount').show();
                         /* 20210528 추가 */
                         $('.care-solution-info').hide();
                         bannerStore.show(); //BTOCSITE-5727 //BTOCSITE-6416
