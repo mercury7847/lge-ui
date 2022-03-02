@@ -411,12 +411,23 @@
                 location.href = LOGIN_URL;
             }
         } else{
-            // s : BTOCSITE-9974
-            if(selectTags.mode == "search"){
-                $('.new_story').hide();
+            if(section.hasClass('new_story')){
+                loadStoryList('new_story', 1, 'NewStory', selectTags);
+            } else{
+                if(section.hasClass('new_story')){
+                    loadStoryList('new_story', 1, 'NewStory', selectTags);
+                } else{
+                    if(IS_LOGIN == "Y"){
+                        if(selectTags.mode == "search"){
+                            $('.new_story').hide();
+                        }
+                        loadStoryList('user_story', 1, "UserStory", selectTags);
+                    } else{
+                        location.href = LOGIN_URL;
+                    }
+                }
             }
-            loadStoryList('user_story', 1, "UserStory", selectTags);
-            // e : BTOCSITE-9974
+            
         }
 
         $('html, body').stop().animate({scrollTop:0}, 180);
