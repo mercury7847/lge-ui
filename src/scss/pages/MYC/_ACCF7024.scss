@@ -724,7 +724,6 @@
         .state-box {
             text-align:center;
             @include mobile {
-                margin-top:12px;
                 font-size:0;
             }
             .tit {
@@ -736,6 +735,7 @@
                 }
                 @include mobile {
                     display:inline-block;
+                    margin-top: 11px;
                     margin-right:6px;
                     vertical-align:top;
                 }
@@ -747,6 +747,7 @@
                 word-break:keep-all;
                 @include mobile {
                     // display:inline-block;
+                    margin-top: 11px;
                     vertical-align:top;
                 }
             }
@@ -760,7 +761,7 @@
                     text-decoration:underline;
                 }
                 @include mobile {
-                    margin-top:6px;
+                    margin-top:8px;
                     margin-left:-3px;
                     .btn {
                         margin:6px 3px 0;
@@ -891,6 +892,7 @@
                     .tbody {
                         .row {
                             padding-left: 0;
+                            padding-bottom: 24px;
                         }
                     }
                 }
