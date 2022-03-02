@@ -1131,8 +1131,6 @@
                 /* BTOCSITE-12969 5% 결제일 할인 뱃지 적용기간 연장요청건  */
                 item.isShow = lgkorUI.stringToBool(item.cardDiscountFlag) && !lgkorUI.stringToBool(kiosk) ? true :  false;
                 item.cardDiscountName = $('.hidden-input-group input[name="cardDiscountName"]').val();
-
-                console.log("cardDiscountFlag %o",item,item.cardDiscountFlag);
                 
                 return vcui.template(productItemTemplate, item);
             },
