@@ -803,6 +803,10 @@
             flex: 1;
             text-align: center;
 
+            @include mobile {
+                height: 95px;
+            }
+
             .inner {
                 position: relative;
                 display: inline-block;
