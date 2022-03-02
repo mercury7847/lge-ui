@@ -1,6 +1,7 @@
 &.orderAndDelivery {
     .tabs-wrap.new-type .tabs {
         display: flex;
+        overflow: hidden;
         @include mobile {
             white-space: normal;
             li {
@@ -13,14 +14,10 @@
                     div {
                         width: 75px;
                     }
+
                     height: auto;
                     min-height: 68px;
                     line-height: normal;
-                }
-                &.on {
-                    a {
-                        z-index: 2;
-                    }
                 }
             }
         }
