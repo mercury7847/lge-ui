@@ -120,11 +120,11 @@
                         }
                     }
 
-                    $orderProcess.find('.box-title .title').text("주문 조회(" + totalFormat(cnt) + ")");
+                    $orderProcess.find('.box-title .title').text("주문 조회 (" + totalFormat(cnt) + ")");
 
-                    $orderBtnGroup.find('.order-lge .count').html('('+totalFormat(orderList.data.normalDataTotal)+')');
-                    $orderBtnGroup.find('.order-bestshop .count').html('('+totalFormat(orderList.data.bestShopDataTotal)+')');
-                    $orderBtnGroup.find('.order-care .count').html('('+totalFormat(orderList.data.careDataTotal)+')');
+                    $orderBtnGroup.find('.order-lge .count').text(totalFormat(orderList.data.normalDataTotal));
+                    $orderBtnGroup.find('.order-bestshop .count').text(totalFormat(orderList.data.bestShopDataTotal));
+                    $orderBtnGroup.find('.order-care .count').text(totalFormat(orderList.data.careDataTotal));
 
                     if(orderList.dataFlag == "Y"){                        
                         var num, key, numwrap;

@@ -788,6 +788,135 @@
         }
     }
 
+    .btn-group-order {
+        display: flex;
+        max-width: 940px;
+        margin: 0 auto;
+        padding-top: 45px;
+        @include mobile {
+            padding-top: 22px;
+            margin-bottom: -8px;
+        }
+
+        a {
+            $root : &;
+            flex: 1;
+            text-align: center;
+
+            .inner {
+                position: relative;
+                display: inline-block;
+
+                @include pc {
+                    padding-left: 84px;
+                }
+
+                @include tablet {
+                    padding-left: 54px;
+                }
+
+                @include mobile {
+                    padding-left: 0;
+                }
+
+                &:before {
+                    content: "";
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+
+                    @include pc {
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        width: 64px;
+                        height: 64px;
+                        margin-top: -31px;
+                        background-position: 0 center;
+                    }
+
+                    @include tablet {
+                        width: 44px;
+                        height: 44px;
+                        margin-top: -21px;
+                    }
+
+                    @include mobile {
+                        display: block;
+                        width: 40px;
+                        height: 40px;
+                        position: static;
+                        margin: 0 auto;
+                        background-position: center top;
+                    }
+                }
+            }
+
+            strong {
+                font-weight: 500;
+                //border-bottom: 1px solid #000;
+                text-decoration: underline;
+
+                @include pc {
+                    font-size: 16px;
+                }
+
+                @include tablet {
+                    font-size: 14px;
+                }
+
+                @include mobile {
+                    display: block;
+                    margin-top: 4px;
+                    font-size: 13px;
+                    //line-height: 18px;
+                }
+            }
+
+            .count {
+                position: relative;
+                top: 2px;
+                color: #da0f47;
+                font-weight: bold;
+
+                @include pc {
+                    margin-left: 12px;
+                    font-size: 24px;
+                }
+
+                @include tablet {
+                    margin-left: 8px;
+                    font-size: 18px;
+                }
+
+                @include mobile {
+                    display: block;
+                    margin-top: 12px;
+                    margin-left: 0;
+                    font-size: 20px;
+                }
+            }
+
+            &.order-lge {
+                .inner:before {
+                    background-image: url('/lg5-common/images/MYS/icon-lge.png');
+                }
+            }
+
+            &.order-bestshop {
+                .inner:before {
+                    background-image: url('/lg5-common/images/MYS/icon-bestshop.png');
+                }
+            }
+
+            &.order-care {
+                .inner:before {
+                    background-image: url('/lg5-common/images/MYS/icon-careship.png');
+                }
+            }
+
+        }
+    }
+
     .my-management.shopping {
         .product-items {
             margin: 32px 0 0;
