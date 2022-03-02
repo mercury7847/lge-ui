@@ -867,9 +867,7 @@
                         (function (img) { img.onload = function () {
                             var length = localStorage.BuzzAd.length;
                             if(localStorage.BuzzAd.indexOf('10023_71ffbffd-ccf1-4edf-9c4c') != -1){
-                              alert("[연동 완료] 자바스크립트 연동을 완료하셨습니다! 연동이 완료되었음을 버즈빌 광고 담당자에게 알려주세요.");
-                            } else{
-                                alert("[연동 실패]");
+                            alert("[연동 완료] 자바스크립트 연동을 완료하셨습니다! 연동이 완료되었음을 버즈빌 광고 담당자에게 알려주세요.");
                             };
                             //*필요시 여기서 리다이렉트 수행*
                          };
