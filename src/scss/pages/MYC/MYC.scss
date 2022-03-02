@@ -1853,17 +1853,6 @@
                 }
             }
         }
-        .delivery-detail {
-            display:inline-block;
-            margin-top:12px;
-            padding-right:18px;
-            text-decoration:underline;
-            background:url("/lg5-common/images/icons/btn-arr-16-black-sm.svg") right center no-repeat;
-
-            @include mobile {
-                font-size:14px;
-            }
-        }
     }
     .delivery-data {
         width:100%;
