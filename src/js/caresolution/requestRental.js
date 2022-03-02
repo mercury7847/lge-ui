@@ -1127,7 +1127,7 @@
                         }
 
                         $('input[name="inatallDate"]').val("희망일 선택불가");
-                        // BTOCSITE-13040 설치 희망일이 희망일 선택불가 일 때 청약실패 현상 수정 요청
+                        // BTOCSITE-13040 설치 희망일이 희망일 선택불가 일 때 청약실패 현상 수정 요청.
                         // $('input[name="inatallDate"]').data("deliveryDateNotSelect",vcui.date.format(result.data.deliveryDate, "yyyy-MM-dd"));
                         $('input[name="inatallDate"]').data("deliveryDateNotSelect",vcui.date.format(result.data.deliveryDate, "yyyy.MM.dd"));
                         
