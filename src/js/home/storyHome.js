@@ -237,15 +237,13 @@
                 if(page == 1){
                     newsHeight = $context.find('#content').find('.new_story > .inner > .flexbox-wrap').height();
                 }
-                if(section.find('.subscribe-wrap').is(":visible")) {
-                    loadStoryList('new_story', page+1, 'NewStory', {
-                        mode: section.find('.subscribe-wrap .subscription-btn').data().mode,
-                        tagCode: section.find('.subscribe-wrap .subscription-btn').data().code,
-                        tagName: section.find('.subscribe-wrap .subscription-btn').data().name
-                    });
-                }else {
-                    loadStoryList('new_story', page+1, 'NewStory');
-                }
+                // s : BTOCSITE-9974
+                loadStoryList('new_story', page+1, 'NewStory', section.find('.subscribe-wrap').is(":visible") ? {
+                    mode: section.find('.subscribe-wrap .subscription-btn').data().mode,
+                    tagCode: section.find('.subscribe-wrap .subscription-btn').data().code,
+                    tagName: section.find('.subscribe-wrap .subscription-btn').data().name
+                }:undefined);
+                // e : BTOCSITE-9974
             }
         }).on('click', '.subscribe-wrap button.btn-close', function(e){
             e.preventDefault();
@@ -411,7 +409,7 @@
         
         if(selectTags.mode == "add" || selectTags.mode == "remove"){
             if(IS_LOGIN == "Y"){
-                loadStoryList('user_story', 1, "UserStory", selectTags);
+                loadStoryList('user_story', 1, "UserStory", (selectTags.mode == "add") ? selectTags:undefined); // BTOCSITE-9974
                 loadStoryList('new_story', 1, 'NewStory');
             } else{
                 location.href = LOGIN_URL;
