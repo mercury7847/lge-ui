@@ -409,7 +409,7 @@
         
         if(selectTags.mode == "add" || selectTags.mode == "remove"){
             if(IS_LOGIN == "Y"){
-                loadStoryList('user_story', 1, "UserStory", (selectTags.mode == "add") ? selectTags:undefined); // BTOCSITE-9974
+                loadStoryList('user_story', 1, "UserStory", selectTags);
                 loadStoryList('new_story', 1, 'NewStory');
             } else{
                 location.href = LOGIN_URL;
