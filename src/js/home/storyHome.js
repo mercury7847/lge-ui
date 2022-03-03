@@ -21,7 +21,7 @@
         '</div>';
 
     //BTOCSITE-7260 뷰저블 셀렉터 id 추가
-    var storyListTemplate = 
+    var storyListTemplate =
         '<div class="flexbox" data-contents-type="{{contentsType}}">'+
             //'<div class="box-wrap">'+
                 '<div class="box {{contentsType}}">'+
@@ -157,7 +157,7 @@
                 if(breakpoint.name == 'mobile'){ 
                     $context.find('.story-review').find('.indi-wrap').show();
                     $context.find('.story-review').vcCarousel({
-                        // variableWidth: true,
+                        // BTOCSITE-6881
                         slidesToShow: 2.16,
                         slidesToScroll: 1,
                         speed: 150,
@@ -166,7 +166,7 @@
                         centerMode:false,
                         centerPadding:0,
                         infinite:false,
-
+                        // BTOCSITE-6881
                     });
                 }else if(breakpoint.name == 'pc'){   
                     $context.find('.story-review').find('.indi-wrap').hide();
@@ -177,21 +177,23 @@
             bindEvent();
 
             var moveScrollTop = 0;
-            if(window.sessionStorage){    
-                var storyUserHeight = sessionStorage.getItem('storyUserHeight');
-                var storyNewHeight = sessionStorage.getItem('storyNewHeight');
+            // s : BTOCSITE-9974
+            if(window.sessionStorage){
+                // var storyUserHeight = sessionStorage.getItem('storyUserHeight');
+                // var storyNewHeight = sessionStorage.getItem('storyNewHeight');
                 var storyHomeScrollTop = sessionStorage.getItem('storyHomeScrollTop');
-                if(storyUserHeight){
+                /* if(storyUserHeight){
                     $context.find('.user_story > .inner > .flexbox-wrap').height(storyUserHeight);
                 }
                 if(storyNewHeight){
                     $context.find('.new_story > .inner > .flexbox-wrap').height(storyNewHeight);
-                }
+                } */
 
                 if(storyHomeScrollTop) {
                     moveScrollTop = storyHomeScrollTop;        
                 }
             }
+            // e : BTOCSITE-9974
 
             loadStoryList('new_story', 1, 'NewStory');
 
@@ -209,8 +211,6 @@
                 }, 10);
             } 
         });
-
-        
     }
 
     var userHeight = 0;
@@ -237,7 +237,15 @@
                 if(page == 1){
                     newsHeight = $context.find('#content').find('.new_story > .inner > .flexbox-wrap').height();
                 }
-                loadStoryList('new_story', page+1, 'NewStory');
+                if(section.find('.subscribe-wrap').is(":visible")) {
+                    loadStoryList('new_story', page+1, 'NewStory', {
+                        mode: section.find('.subscribe-wrap .subscription-btn').data().mode,
+                        tagCode: section.find('.subscribe-wrap .subscription-btn').data().code,
+                        tagName: section.find('.subscribe-wrap .subscription-btn').data().name
+                    });
+                }else {
+                    loadStoryList('new_story', page+1, 'NewStory');
+                }
             }
         }).on('click', '.subscribe-wrap button.btn-close', function(e){
             e.preventDefault();
@@ -319,8 +327,6 @@
                 }
             }
         });
-
-        
     }
 
     function setTagMngChecked(){
@@ -414,20 +420,15 @@
             if(section.hasClass('new_story')){
                 loadStoryList('new_story', 1, 'NewStory', selectTags);
             } else{
-                if(section.hasClass('new_story')){
-                    loadStoryList('new_story', 1, 'NewStory', selectTags);
-                } else{
-                    if(IS_LOGIN == "Y"){
-                        if(selectTags.mode == "search"){
-                            $('.new_story').hide();
-                        }
-                        loadStoryList('user_story', 1, "UserStory", selectTags);
-                    } else{
-                        location.href = LOGIN_URL;
+                if(IS_LOGIN == "Y"){
+                    if(selectTags.mode == "search"){
+                        $('.new_story').hide();
                     }
+                    loadStoryList('user_story', 1, "UserStory", selectTags);
+                } else{
+                    location.href = LOGIN_URL;
                 }
             }
-            
         }
 
         $('html, body').stop().animate({scrollTop:0}, 180);
@@ -456,7 +457,7 @@
             type: type,
             selectTags: selectTag ? selectTag : ""
         }
-        // console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
+        console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
         // var sendUrl = sectioname == "user_story" ? STORY_LIST_URL : "/lg5-common/data-ajax/home/storyList_new.json";
         // lgkorUI.requestAjaxData(sendUrl, sendata, function(result){
 
@@ -464,7 +465,7 @@
         //20210924 BTOCSITE-5933 메인홈 Request 수정 요청
         if(STORY_LIST_URL){
             lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
-
+                console.log("######", result, sendata)
                 if(result.data.loginUrl){
                     location.href = result.data.loginUrl;
 
@@ -626,13 +627,13 @@
         // s : BTOCSITE-9974
         var status = getAlignStatusValues(item);
         var boxwidth = status.boxwidth;
-        var boxheight = (window.innerWidth < 480) ? boxwidth * 1.25 + 50 : boxwidth * 1.6544;
+        // var boxheight = (window.innerWidth < 480) ? boxwidth * 1.25 + 50 : boxwidth * 1.6544;
         var boxmargin = (window.innerWidth < 768)?8:24;
 
         item.find('.flexbox').not('.tag-area').each(function(i) {
             $(this).css({
                 width: boxwidth,
-                height: boxheight,
+                // height: boxheight,
                 marginLeft: (i%status.rawnum==0)? 0:boxmargin+'px',
                 marginTop: (i<status.rawnum)? 0:boxmargin+'px',
             })
@@ -653,13 +654,13 @@
             distance = 8;
             distances = distance * (rawnum-1);
             boxwidth = parseInt((wrapwidth-distances)/rawnum);
+
         }else{
             while(boxwidth < 310){
                 rawnum--;
                 distances = distance * (rawnum-1);
                 boxwidth = parseInt((wrapwidth-distances)/rawnum);
             }
-
             if(rawnum < 1){
                 rawnum = 1;
                 boxwidth = wrapwidth;
