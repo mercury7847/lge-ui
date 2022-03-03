@@ -28,7 +28,7 @@
                         '<span class="blind">모델명</span>{{#raw modelName}}' +
                     '</a>'+
                     '</div>' +
-                    '{{#if factoryModel && enModelName !== factoryModel }}' + 
+                    '{{#if factoryModel && (enModelName !== factoryModel || modelCode !== factoryModel) }}' + 
                         '<div class="e-name">' +
                             '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}>'+
                                 '<span class="blind">영문모델명</span>{{enModelName}} [{{factoryModel}}]'+
