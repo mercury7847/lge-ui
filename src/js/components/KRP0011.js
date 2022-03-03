@@ -155,7 +155,7 @@
                 });
 
                 //스펙비교하기 버튼에 모델명 교체
-                self.$compareModelIds = $compareId.join("|");
+                self.$compareModelIds = $compareId.join(","); // BTOCSITE-5938-567 데이터 구분자 변경
                 self.$section.find(".bottom-area button").attr('data-model-ids', self.$compareModelIds);
             }
         }
