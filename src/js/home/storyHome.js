@@ -411,6 +411,7 @@
             if(IS_LOGIN == "Y"){
                 loadStoryList('user_story', 1, "UserStory", selectTags);
                 loadStoryList('new_story', 1, 'NewStory');
+                if(selectTags.mode == "remove") loadStoryList('user_story', 1, "UserStory"); // BTOCSITE-9974
             } else{
                 location.href = LOGIN_URL;
             }
