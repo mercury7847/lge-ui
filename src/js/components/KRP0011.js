@@ -125,7 +125,12 @@
                             }else{
                                 self.$section.hide();
                             }
-                        }
+                        }else{//BTOCSITE-12856 start
+                       	 if(dataList.productInfo !== null && dataList.compareList.length === 2){
+                       		   drawTab("purchaseTab", dataList.productInfo, dataList.compareList);
+                       	 }
+                       }
+                      //BTOCSITE-12856 END
                     });
                     function drawTab(tab,now,recommend){
                         self.$section.show();
@@ -149,7 +154,7 @@
                 now.tabName = tabType;
                 
                 var careType = '';
-                if(tabType=='careTab'){
+                if(tabType=='rentalTab'){
                 	careType ='R'
                 }else{
                 	careType ='C'
