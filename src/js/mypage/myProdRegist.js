@@ -28,18 +28,20 @@
                         '<span class="blind">모델명</span>{{#raw modelName}}' +
                     '</a>'+
                     '</div>' +
-                    '{{#if factoryModel && enModelName !== factoryModel }}' + 
+                    '{{#if factoryModel && (enModelName !== factoryModel || modelCode !== factoryModel) }}' + 
                         '<div class="e-name">' +
                             '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}>'+
-                                '<span class="blind">영문모델명</span>{{enModelName}} [{{factoryModel}}]'+
+                                '<span class="blind">영문모델명</span>{{enModelName}} {{#if enModelName !== factoryModel }}[{{factoryModel}}]{{/if}}'+
                             '</a>'+
-                            '<div class="tooltip-wrap">'+
-                            '    <button class="tooltip-icon ui_tooltip-target" >자세히 보기</button>'+
-                            '    <div class="tooltip-box">'+
-                            '        <p>{{#raw myProductModelGuide}}</p>'+
-                            '        <button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
-                            '    </div>'+
-                            '</div>'+
+                            '{{#if enModelName !== factoryModel }}'+
+                                '<div class="tooltip-wrap">'+
+                                '    <button class="tooltip-icon ui_tooltip-target" >자세히 보기</button>'+
+                                '    <div class="tooltip-box">'+
+                                '        <p>{{#raw myProductModelGuide}}</p>'+
+                                '        <button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
+                                '    </div>'+
+                                '</div>'+
+                            '{{/if}}'+
                         '</div>' +
                     '{{#else}}' + 
                         '<div class="e-name">'+
