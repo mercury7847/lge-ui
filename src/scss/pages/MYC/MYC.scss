@@ -62,6 +62,21 @@
                         &:first-child {
                             margin-top:0;
                         }
+                        //LGECOMVIO-192 : 인테리어 상담 신청(새창)
+                        a {
+                            &[target="_blank"] {
+                                &::after {
+                                    content:' ';
+                                    display:inline-block;
+                                    width:16px;
+                                    height:16px;
+                                    margin-left:4px;
+                                    margin-top:-4px;
+                                    vertical-align:middle;
+                                    background:url("/lg5-common/images/icons/icon-blank-arr3.svg") no-repeat;
+                                }
+                            }
+                        }
                     }
                 }
             }
