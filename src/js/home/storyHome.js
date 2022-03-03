@@ -463,8 +463,10 @@
                 }
                 
                 // s : BTOCSITE-9974
-                if(sendata.selectTags !== '' && sendata.selectTags.mode == 'remove' ) {
-                    return loadStoryList(sectioname, sendata.page, sendata.type);
+                if(sendata.selectTags !== '' && (sendata.selectTags.mode == 'add' || sendata.selectTags.mode == 'remove') ) {
+                    loadStoryList('user_story', 1, 'UserStory');
+                    loadStoryList('new_story', 1, 'NewStory');
+                    return;
                 }
                 // e : BTOCSITE-9974
 
