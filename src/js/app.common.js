@@ -244,6 +244,12 @@ var appInit = function() {
                     if(chkSerialNum(barcode)) {
                         $("#inp02").val(barcode);
                         $('.info-req-box .qr-active').text("제품 정보가 자동 입력되었습니다.").show();
+                        //  s : BTOCSITE-12307
+                        if($('#receiptCodeInputWrap').size() > 0) {
+                            $('#receiptCodeInputWrap').show();
+                            $('#inquiryButton').focus();
+                        }
+                        //  e : BTOCSITE-12307
                     } else {
                         $('.info-req-box .qr-active').text("바코드 형식이 잘못되었습니다.").show();
                     }
@@ -251,6 +257,13 @@ var appInit = function() {
                 // BTOCSITE-4086 210924 - E
             }
         }
+
+        // s : BTOCSITE-12307
+        receiptCodeDirectInput = function() {
+            if($('#receiptCodeInputWrap').size() > 0) $('#receiptCodeInputWrap').show();
+            $('#inp02').focus();
+        }
+        // e : BTOCSITE-12307
 
         // URL 형식 체크[정규식] - BTOCSITE-4086 210923 QR용
         function isURL(barcode) {

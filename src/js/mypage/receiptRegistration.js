@@ -20,9 +20,15 @@
                 self.$categorySelect = self.$formWrap.find('#categorySelect');
                 self.$areaSelect = self.$formWrap.find('#areaSelect');
                 self.$branchSelect = self.$formWrap.find('#branchSelect');
-                self.$inputReceipt = self.$formWrap.find('#inputReceipt');
+                // s : BTOCSITE-12307
+                self.$barcodWrap = isApp() ? $('.borcode-wrap.app') : $('.borcode-wrap.web');
+                self.$barcodWrap.addClass('active').siblings('.borcode-wrap').remove();
+                self.$inputReceipt = self.$barcodWrap.find('#inputReceipt, #inp02');
                 self.$inputReceipt.attr("autocomplete","off");
-                self.$inquiryButton = self.$formWrap.find('#inquiryButton');
+                self.$inquiryButton = self.$barcodWrap.find('#inquiryButton');
+                self.$barcodeButton = self.$barcodWrap.find('.btn-barcode-web');
+                self.$appInstallPopup = $('#appInstallGuidePopup');
+                // e : BTOCSITE-12307
 
                 var register = {
                     accountFlag:{
@@ -165,6 +171,17 @@
                                 lgkorUI.alert("", {title: item.errmsg});
                             }
                         }
+                    }
+                })
+                self.$barcodeButton.on('click', function(e) {
+                    e.preventDefault();
+                    if(vcui.detect.isMobileDevice){
+                        var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인', ok: function() { return goAppUrl()}}
+                        var desc = 'LGE.COM APP을 통해 이용 가능합니다.<br>APP을 실행하시겠습니까?';
+
+                        lgkorUI.confirm(desc, obj);
+                    } else {
+                        self.$appInstallPopup.vcModal({opener:$(this)});
                     }
                 })
             },
