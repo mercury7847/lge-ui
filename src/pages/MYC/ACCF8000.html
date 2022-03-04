@@ -2,7 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["MYC/MYC"],
-        pageJS: ["mypage/deliveryAddress"]
+        pageJS: ["mypage/bestShopCounsel"]
     })
 <body>
     <div class="wrap">
@@ -13,9 +13,7 @@
                 "pageTitle": "상담 예약 조회"
             })
             <!-- mypage -->
-            <div class="contents mypage"
-                data-address-list=""
-            >
+            <div class="contents mypage">
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         @@include('./common/modules/mypage-lnb.html', {
@@ -24,19 +22,23 @@
                             ]
                         })
                         <div class="lnb-contents">
-                            <div class="consult_view-wrap">
+                            <div class="consult_view-wrap"
+                                data-id="1234"
+                                data-reservation-list="/lg5-common/data-ajax/mypage/bestshop/counselList.json"
+                                data-reservation-cancel="/lg5-common/data-ajax/mypage/bestshop/counselCancel.json"
+                            >
                                 <!-- 탭 -->
                                 <div class="tabs-wrap btn-type ui_tab">
                                     <ul class="tabs">
-                                        <li class="on"><a href="#tab1_1">방문상담/화상상담 <span>999</span><em class="blind">선택됨</em></a></li>
-                                        <li><a href="#tab2_1">케어십 상담 <span>999</span></a></li>
-                                        <li><a href="#tab3_1">소모품 구매 예약 <span>999</span></a></li>
+                                        <li class="on"><a href="#tab1_1">방문상담/화상상담 <span></span><em class="blind">선택됨</em></a></li>
+                                        <li><a href="#tab2_1">케어십 상담 <span></span></a></li>
+                                        <li><a href="#tab3_1">소모품 구매 예약 <span></span></a></li>
                                     </ul>
                                 </div>
                                 <!-- // 탭 -->
                                 <!-- 리스트 -->
                                 <ul class="cv_list">
-                                    <li>
+                                    <!--li>
                                         <div class="li_tit">
                                             <div class="tit_txt">방문 상담 예약</div>
                                             <a href="#n" data-href="#laypop1" data-control="modal" class="tit_link">상담예약취소</a>
@@ -132,7 +134,7 @@
                                             </dl>
                                         </div>
                                     </li>
-                                    <!-- 고객 취소시 -->
+                                    <!-- 고객 취소시 -- //>
                                     <li class="li_cancel">
                                         <div class="li_tit">
                                             <div class="tit_txt">화상 상담 예약 </div>
@@ -163,19 +165,19 @@
                                                 <dd>010-****-5678</dd>
                                             </dl>
                                         </div>
-                                    </li>
+                                    </li-->
                                     <!--// 고객 취소시 -->
                                 </ul>
                                 <!-- // 리스트 -->
 
                                 <!-- 더보기 -->
-                                <div class="readmore">
+                                <div class="readmore" style="display: none;">
                                     <a href="#n">더보기</a>
                                 </div>
                                 <!-- // 더보기 -->
 
                                 <!-- nodata -->
-                                <div class="no-data">
+                                <div class="no-data" style="display: none;">
                                     <p>조회된 상담 예약 내역이 없습니다.<br>상담 예약 조회 내역은 최근 6개월내 내역까지만 제공됩니다.</p>
                                 </div>
                                 <!-- // nodata -->
