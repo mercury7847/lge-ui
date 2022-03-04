@@ -493,7 +493,7 @@
                     sectionItem.find('.inner h2.title').hide();
 
                     var stickyTag = vcui.template(stickyTagTemplate, result.data.selectTags);
-                    sectionItem.prepend(stickyTag);
+                    if(page == 1) sectionItem.prepend(stickyTag);
 
                     // sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
                     $context.find('.user_story').find('.story-title-area').hide();
