@@ -87,7 +87,12 @@
 
                 //스펙 비교하기 버튼
                 self.$compareModelIds = "";
-
+                //BTOCSITE-12856 start
+                if(self.$tabList.length == 0){
+                	console.log(self.$tabList.length);
+                    self.makeProdList("purchaseTab",dataList.productInfo, dataList.compareList);	
+                }
+                //BTOCSITE-12856 END
             },
             setPath: function(){
                 var self = this;
@@ -125,12 +130,7 @@
                             }else{
                                 self.$section.hide();
                             }
-                        }else{//BTOCSITE-12856 start
-                       	 if(dataList.productInfo !== null && dataList.compareList.length === 2){
-                       		   drawTab("purchaseTab", dataList.productInfo, dataList.compareList);
-                       	 }
-                       }
-                      //BTOCSITE-12856 END
+                        }
                     });
                     function drawTab(tab,now,recommend){
                         self.$section.show();
