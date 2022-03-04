@@ -233,7 +233,7 @@
             } else{
                 // s : BTOCSITE-9974
                 loadStoryList('new_story', page+1, 'NewStory', section.find('.subscribe-wrap').is(":visible") ? {
-                    mode: section.find('.subscribe-wrap .subscription-btn').data().mode,
+                    mode: 'search',
                     tagCode: section.find('.subscribe-wrap .subscription-btn').data().code,
                     tagName: section.find('.subscribe-wrap .subscription-btn').data().name
                 }:undefined);
