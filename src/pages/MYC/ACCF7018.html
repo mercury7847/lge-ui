@@ -27,22 +27,24 @@
                         <div class="lnb-contents"
                             data-coupon-list-url="/lg5-common/data-ajax/mypage/shopping/couponList.json"
                         >
-                            <!-- 20220224(추가) -->
+                            <!-- LGECOMVIO-141 : 쿠폰 tab 추가(2022.02.24) -->
                             <div class="coupon-tabs">
                                 <div class="tabs-wrap btn-type left">
                                     <ul class="tabs">
-                                        <li class="on"><a href="/html/MYC/ACCF7018.html#url">LGE.COM<em class="blind">선택됨</em></a></li>
-                                        <li><a href="/html/MYC/ACCF7510.html#url">베스트샵</a></li>
+                                        <li class="on"><a href="/html/MYC/ACCF7018.html">LGE.COM <span class="count"><em class="blind">사용가능 쿠폰</em>15</span><em class="blind">선택됨</em></a></li>
+                                        <li><a href="/html/MYC/ACCF7096.html">베스트샵 <span class="count"><em class="blind">사용가능 쿠폰</em>5</span></a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <!-- //20220224(추가) -->
-                            <div class="tabs-wrap new-type ui_tab">
+                            <!-- //LGECOMVIO-141 : 쿠폰 tab 추가(2022.02.24) -->
+                            <!-- LGECOMVIO-141 : 쿠폰 tab(as-is) 삭제(2022.02.24) - 스크립트 참조용 -->
+                            <!--<div class="tabs-wrap new-type ui_tab">
                                 <ul class="tabs">
                                     <li class="on"><a href="#tab-coupon-on">사용가능 쿠폰 <span class="count">(15)</span><em class="blind">선택됨</em></a></li>
                                     <li><a href="#tab-coupon-end">종료된 쿠폰 <span class="count">(6)</span></a></li>
                                 </ul>
-                            </div>
+                            </div>-->
+                            <!-- //LGECOMVIO-141 : 쿠폰 tab(as-is) 삭제(2022.02.24) - 스크립트 참조용 -->
                             <div id="tab-coupon-on" class="tab-contents">
                                 <!-- 2021.1.29 hidden-input-group 삭제
                                 <div class="hidden-input-group">
@@ -51,7 +53,7 @@
                                 </div>
                                  //2021.1.29 hidden-input-group 삭제-->
                                 <!-- 최초 데이타는 가져와서 js에서 그려질 예정이므로 리스트내용(ul)은 비워주세요 -->
-                                <!-- 20220224(추가) -->
+                                <!-- LGECOMVIO-141 : 쿠폰 Sorting(to-be) 추가(2022.02.24) -->
                                 <div class="list-sorting">
                                     <div class="sort-area">
                                         <div class="sort-list">
@@ -64,7 +66,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- //20220224(추가) -->
+                                <!-- //LGECOMVIO-141 : 쿠폰 Sorting(to-be) 추가(2022.02.24) -->
                                 <div class="coupon-list-wrap">
                                     <div class="coupon-lists">
                                         <!-- 2021.1.29 리스트 삭제 -->
@@ -85,7 +87,7 @@
                                     <input type="hidden" name="totalCount" value="1">
                                     <input type="hidden" name="page" value="1">
                                 </div>
-                                <!-- 20220224(추가) -->
+                                <!-- LGECOMVIO-141 : 쿠폰 Sorting(to-be) 추가(2022.02.24) -->
                                 <div class="list-sorting">
                                     <div class="sort-area">
                                         <div class="sort-list">
@@ -98,7 +100,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- //20220224(추가) -->
+                                <!-- //LGECOMVIO-141 : 쿠폰 Sorting(to-be) 추가(2022.02.24) -->
                                 <p class="coupon-end-txt">최근 내역 1년 까지만 조회 가능 합니다.</p>
                                 <div class="coupon-list-wrap">
                                     <div class="coupon-lists">
