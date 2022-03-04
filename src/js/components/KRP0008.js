@@ -81,7 +81,15 @@
                 // AR 체험하기 APP 호출시 실행
                 var modelId = lgkorUI.getParameterByName('openAR');
                 if( isApp() && modelId) {
-                    // lgkorUI.openAR(modelId);
+                    if(location.host !== "wwwdev50.lge.co.kr"){
+                        lgkorUI.openAR(modelId);
+
+                        var url = lgkorUI.parseUrl(location.href);
+                        var params = url.searchParams.getAll();
+                        delete params.openAR;
+                            params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
+                        window.history.replaceState('', '', url.pathname + params)
+                    }
                 }
 
                 // 20211014 BTOCSITE-6768 사전예약 버튼클릭 시 로그인 체크
@@ -990,9 +998,9 @@
                     }
                 });
 
-                $(window).on('appNotInstall', function(e){
-                    $('#arPlayPop').vcModal({opener: e.currentTarget});
-                });
+                // $(window).on('appNotInstall', function(e){
+                //     $('#arPlayPop').vcModal({opener: e.currentTarget});
+                // });
             },
 
             bindSideEvents: function() {
