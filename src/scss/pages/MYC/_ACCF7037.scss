@@ -78,9 +78,9 @@
 		}
 	}
 	// S : BTOCSITE-12307
-    .borcode-wrap {
-        display: none;
-        &.active { display: block; }
+	.borcode-wrap {
+		display: none;
+		&.active { display: block; }
 		.btn:focus { border-color: #da0f47; color: #da0f47; outline: 0;}
 		@include pc {
 			.box + .box {
@@ -164,7 +164,6 @@
 				}
 			}
 		}
-
-    }
-    // E : BTOCSITE-12307 
+	}
+	// E : BTOCSITE-12307
 }
