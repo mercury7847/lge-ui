@@ -90,7 +90,9 @@
                 //BTOCSITE-12856 start
                 if(self.$tabList.length == 0){
                 	console.log(self.$tabList.length);
-                    self.makeProdList("purchaseTab",dataList.productInfo, dataList.compareList);	
+                	if(dataList.productInfo !== null && dataList.compareList.length === 2){
+                		self.makeProdList("purchaseTab",dataList.productInfo, dataList.compareList);
+                	}
                 }
                 //BTOCSITE-12856 END
             },
