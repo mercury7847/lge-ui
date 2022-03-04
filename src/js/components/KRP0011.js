@@ -90,9 +90,16 @@
                 //BTOCSITE-12856 start
                 if(self.$tabList.length == 0){
                 	console.log(self.$tabList.length);
-                	if(dataList.productInfo !== null && dataList.compareList.length === 2){
-                		self.makeProdList("purchaseTab",dataList.productInfo, dataList.compareList);
-                	}
+                	 var $compareId = [];
+                     var careType ='C'
+                     $compareId.push(dataList.productInfo.modelId+'|'+careType); //스펙비교하기에 모델명 추가
+                     $.each( dataList.compareList,function(idx,item){
+                         $compareId.push(item.modelId+'|'+careType); //스펙비교하기에 모델명 추가
+                     });
+
+                     //스펙비교하기 버튼에 모델명 교체
+                     self.$compareModelIds = $compareId.join(","); 
+                     self.$section.find(".bottom-area button").attr('data-model-ids', self.$compareModelIds);
                 }
                 //BTOCSITE-12856 END
             },
