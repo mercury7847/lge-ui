@@ -1416,9 +1416,9 @@
                         /* //20210602 BTOCSITE-495 추가 */
                         .select-info {
                             .select-text {
-                                top:12px; // BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
-                                transform:translateY(0); // BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
-                                word-break:keep-all; // BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
+                                top:12px; //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
+                                transform:translateY(0); //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
+                                word-break:keep-all; //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
                                 font-weight: 700;
                             }
                         }                            
@@ -1713,8 +1713,8 @@
             }
 
             .select-wrap {
+                /* BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */ 
                 .ui-selectbox-wrap {
-                    /* BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */
                     .ui-select-button {
                         padding: 11px 40px 11px 80px;
                         text-align: right;
@@ -1742,8 +1742,8 @@
                             text-align: right;
                         }
                     }
-                    /* //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */
                 }
+                /* //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */ 
                 .select-button {
                     display: block;
                     position: relative;
