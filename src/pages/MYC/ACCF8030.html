@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/deliveryAddress"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "상담 예약 조회"
+            })
+            <!-- mypage -->
+            <div class="contents mypage"
+                data-address-list=""
+            >
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect9" : [
+                                { "on": "on", "page": "상담 예약 조회" },
+                                { "on": "", "page": "인테리어 상담 신청" }
+                            ]
+                        })
+                        <div class="lnb-contents">
+                            <div class="consult_view-wrap">
+                                <!-- 탭 -->
+                                <div class="tabs-wrap btn-type ui_tab">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#tab1_1">방문상담/화상상담 <span>999</span><em class="blind">선택됨</em></a></li>
+                                        <li><a href="#tab2_1">케어십 상담 <span>999</span></a></li>
+                                        <li><a href="#tab3_1">소모품 구매 예약 <span>999</span></a></li>
+                                    </ul>
+                                </div>
+                                <!-- // 탭 -->
+                                <!-- error -->
+                                <div class="cv_error">
+                                    <div class="head_msg">이용에 불편을 드려 죄송합니다.</div>
+                                    <div class="body_msg">요청하신 페이지가 정상적으로 처리되지 않았습니다.</div>
+                                    <div class="msg_cnt">해당 요청 사항 처리 중 점검 및 일시적인 장애 등의 이유로 페이지가 정상적으로 서비스 되지 않았습니다.</div>
+                                    <dl class="msg_annex">
+                                        <dt>시스템 점검 시간</dt>
+                                        <dd>2022.03.01 15:55 ~ 2022.03.01 15:59</dd>
+                                    </dl>
+                                </div>
+                                <!-- // error -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
