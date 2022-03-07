@@ -191,7 +191,7 @@
                     if (isApp()) {
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                             var obj = new Object();
-                            obj.command = "scanBarcode";
+                            obj.command = "scanReceiptBarCode";
                             obj.callback ="receiptCodeDirectReturn";
                             var jsonString= JSON.stringify(obj);
                             webkit.messageHandlers.callbackHandler.postMessage(jsonString);
