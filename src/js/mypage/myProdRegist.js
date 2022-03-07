@@ -561,7 +561,7 @@
                     $('body').vcLazyLoaderSwitch('reload',self.$packageModal);
                 } else {
                     self.$downloadPopup.data('modelId', data.modelId);
-                    self.$downloadPopup.attr('modelCode', data.modelCode);
+                    self.$downloadPopup.data('modelCode', data.modelCode);
                     self.$downloadSearch.val("");
                     self.$downloadSearch.data('search',null);
                     self.requestDownloadData({"page":1}, true, true);
@@ -1385,7 +1385,7 @@
 
         requsetOSData:function(param) {
             var self = this;
-            var ajaxUrl = self.$downloadPopup.attr('data-os-url');
+            var ajaxUrl = self.$downloadPopup.data('osUrl');
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                 var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
                 var selectedIndex = 0;
@@ -1414,7 +1414,7 @@
             var self = this;
 
             if(!self.osList) {
-                var ajaxUrl = self.$downloadPopup.attr('data-os-url');
+                var ajaxUrl = self.$downloadPopup.data('osUrl');
                 self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
@@ -1442,11 +1442,11 @@
                     self.$downloadSearch.val(param.search);
                 }
 
-                var _id = self.$downloadPopup.attr('data-model-id');
+                var _id = self.$downloadPopup.data('modelId');
                 if(_id) {
                     param.id = _id;
                 }
-                var sku = self.$downloadPopup.attr('data-model-code');
+                var sku = self.$downloadPopup.data('modelCode');
                 if(sku) {
                     param.sku = sku;
                 }
@@ -1454,7 +1454,7 @@
                 //OS 또 갱신
                 self.requsetOSData(param);
 
-                var ajaxUrl = self.$downloadPopup.attr('data-list-url');
+                var ajaxUrl = self.$downloadPopup.data('listUrl');
 
                 self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
