@@ -1728,6 +1728,9 @@
                             padding: 10px 48px 10px 76px;
                         }
                         .ui-select-text {
+                            top:12px;
+                            transform:translateY(0);
+                            white-space:normal;
                             @include font-small;
                         }
                         .ico{
