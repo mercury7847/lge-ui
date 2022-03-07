@@ -227,17 +227,16 @@
 
             var section = $(this).closest('.story-section');
             var page = section.data("page");
+            var selectTags = section.find('.subscribe-wrap').is(":visible") ? {
+                mode: 'search',
+                tagCode: section.find('.subscribe-wrap .subscription-btn').data().code,
+                tagName: section.find('.subscribe-wrap .subscription-btn').data().name
+            }:undefined; // BTOCSITE-9974
 
             if(section.hasClass('user_story')){
-                loadStoryList('user_story', page+1, "UserStory");
+                loadStoryList('user_story', page+1, "UserStory", selectTags); // BTOCSITE-9974
             } else{
-                // s : BTOCSITE-9974
-                loadStoryList('new_story', page+1, 'NewStory', section.find('.subscribe-wrap').is(":visible") ? {
-                    mode: 'search',
-                    tagCode: section.find('.subscribe-wrap .subscription-btn').data().code,
-                    tagName: section.find('.subscribe-wrap .subscription-btn').data().name
-                }:undefined);
-                // e : BTOCSITE-9974
+                loadStoryList('new_story', page+1, 'NewStory', selectTags); // BTOCSITE-9974
             }
         }).on('click', '.subscribe-wrap button.btn-close', function(e){
             e.preventDefault();
