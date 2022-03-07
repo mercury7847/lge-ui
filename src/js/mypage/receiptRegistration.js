@@ -21,13 +21,18 @@
                 self.$areaSelect = self.$formWrap.find('#areaSelect');
                 self.$branchSelect = self.$formWrap.find('#branchSelect');
                 // s : BTOCSITE-12307
-                self.$barcodWrap = isApp() ? $('.borcode-wrap.app') : $('.borcode-wrap.web');
-                self.$barcodWrap.addClass('active').siblings('.borcode-wrap').remove();
-                self.$inputReceipt = self.$barcodWrap.find('#inputReceipt, #inp02');
+                self.$barcodWrap = $('.borcode-wrap');
+                self.$inputReceipt = self.$barcodWrap.find('#inputReceipt');
                 self.$inputReceipt.attr("autocomplete","off");
                 self.$inquiryButton = self.$barcodWrap.find('#inquiryButton');
                 self.$barcodeButton = self.$barcodWrap.find('.btn-barcode');
                 self.$appInstallPopup = $('#appInstallGuidePopup');
+                if(isApp()) {
+                    self.$barcodWrap.find('.app').show();
+                }else {
+                    self.$barcodWrap.find('.web').show();
+                    self.$barcodWrap.find('#receiptCodeInputWrap').show();
+                }
                 // e : BTOCSITE-12307
 
                 var register = {
@@ -183,14 +188,26 @@
                 })
                 self.$barcodeButton.on('click', function(e) {
                     e.preventDefault();
-                    if(isApp()) return false;
-                    if(vcui.detect.isMobileDevice){
-                        var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인', ok: function() { return goAppUrl()}}
-                        var desc = 'LGE.COM APP을 통해 이용 가능합니다.<br>APP을 실행하시겠습니까?';
-
-                        lgkorUI.confirm(desc, obj);
+                    $(this).addClass("on").siblings("button").removeClass("on");
+                    if (isApp()) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                            var obj = new Object();
+                            obj.command = "scanBarcode";
+                            obj.callback ="receiptCodeDirectReturn";
+                            var jsonString= JSON.stringify(obj);
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            void android.openBarcodeScannerForReceipt("receiptCodeDirectReturn");
+                        }
                     } else {
-                        self.$appInstallPopup.vcModal({opener:$(this)});
+                        if(vcui.detect.isMobileDevice){
+                            var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인', ok: function() { return goAppUrl()}}
+                            var desc = 'LGE.COM APP을 통해 이용 가능합니다.<br>APP을 실행하시겠습니까?';
+    
+                            lgkorUI.confirm(desc, obj);
+                        } else {
+                            self.$appInstallPopup.vcModal({opener:$(this)});
+                        }
                     }
                 })
             },

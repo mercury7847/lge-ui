@@ -79,14 +79,19 @@
 	}
 	// S : BTOCSITE-12307
 	.borcode-wrap {
-		display: none;
-		&.active { display: block; }
 		.btn:focus { border-color: #da0f47; color: #da0f47; outline: 0;}
-		&.web {
+		@include pc {
+			.box + .box {
+				margin-top: 32px;
+			}
+		}
+		@include mobile {
+			.box + .box {
+				margin-top: 20px;
+			}
+		}
+		.web {
 			@include pc {
-				.box + .box {
-					margin-top: 32px;
-				}
 				.btn-barcode {
 					display: block;
 					width: 100%;
@@ -116,9 +121,6 @@
 				}
 			}
 			@include mobile {
-				.box + .box {
-					margin-top: 20px;
-				}
 				.btn-barcode {
 					display: block;
 					width: 100%;
@@ -148,7 +150,7 @@
 				}
 			}
 		}
-		&.app {
+		.app {
 			.btn-barcode {
 				width: 100%;
 				height: 72px;

@@ -1,5 +1,5 @@
 var LGEAPPHostName = window.location.hostname;
-var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount, LGEAPPsetQrCode; // LGEAPPsetQrCode 추가 BTOCSITE-4086
+var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount, LGEAPPsetQrCode, receiptCodeDirectReturn, receiptCodeDirectInput; // LGEAPPsetQrCode 추가 BTOCSITE-4086
 var LGEAPPclickCNT = 0;
 
 /*
@@ -244,12 +244,6 @@ var appInit = function() {
                     if(chkSerialNum(barcode)) {
                         $("#inp02").val(barcode);
                         $('.info-req-box .qr-active').text("제품 정보가 자동 입력되었습니다.").show();
-                        //  s : BTOCSITE-12307
-                        if($('#receiptCodeInputWrap').size() > 0) {
-                            $('#receiptCodeInputWrap').show();
-                            $('#inquiryButton').focus();
-                        }
-                        //  e : BTOCSITE-12307
                     } else {
                         $('.info-req-box .qr-active').text("바코드 형식이 잘못되었습니다.").show();
                     }
@@ -259,9 +253,23 @@ var appInit = function() {
         }
 
         // s : BTOCSITE-12307
+        receiptCodeDirectReturn = function(barcode) {
+            if (barcode != null && barcode != "" && barcode != undefined) {
+                if(chkSerialNum(barcode)) {
+                    $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
+                    $("#inputReceipt").val(barcode);
+                    $('#receiptCodeInputWrap').show();
+                    $('#inquiryButton').focus();
+                } else {
+                    $('#receiptCodeInputWrap').find('.err-block').show().find('.err-msg').text("바코드 형식이 잘못되었습니다.")
+                    $('#receiptCodeInputWrap').show();
+                }
+            }
+        }
+
         receiptCodeDirectInput = function() {
-            if($('#receiptCodeInputWrap').size() > 0) $('#receiptCodeInputWrap').show();
-            $('#inp02').focus();
+            $('#receiptCodeInputWrap').show();
+            $('#inputReceipt').focus();
         }
         // e : BTOCSITE-12307
 
