@@ -26,7 +26,7 @@
                 self.$inputReceipt = self.$barcodWrap.find('#inputReceipt, #inp02');
                 self.$inputReceipt.attr("autocomplete","off");
                 self.$inquiryButton = self.$barcodWrap.find('#inquiryButton');
-                self.$barcodeButton = self.$barcodWrap.find('.btn-barcode-web');
+                self.$barcodeButton = self.$barcodWrap.find('.btn-barcode');
                 self.$appInstallPopup = $('#appInstallGuidePopup');
                 // e : BTOCSITE-12307
 
@@ -51,7 +51,15 @@
                         pattern: /^[0-9]+$/,
                         errorMsg: "영수증번호를 입력해주세요.",
                         // BTOCSITE-5938-359
-                        msgTarget: '.err-block:eq(1)'
+                        msgTarget: '.err-block:eq(1)',
+                        // BTOCSITE-12307
+                        validate: function(value) {
+                            var len = $('#categorySelect').val() == 'emart'?16:22;
+                            if(value.length < len || value.length > len) {
+                                this.errorMsg = "영수증번호를 확인해주세요.";
+                                return false;
+                            } 
+                        }
                     }
                 };
                 vcui.require(['ui/validation'], function () {
@@ -175,6 +183,7 @@
                 })
                 self.$barcodeButton.on('click', function(e) {
                     e.preventDefault();
+                    if(isApp()) return false;
                     if(vcui.detect.isMobileDevice){
                         var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인', ok: function() { return goAppUrl()}}
                         var desc = 'LGE.COM APP을 통해 이용 가능합니다.<br>APP을 실행하시겠습니까?';
