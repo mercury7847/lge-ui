@@ -1177,11 +1177,11 @@
 
                         //BTOCSITE-11351 [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 : 구분값 네이밍 수정요청
                         function modelTypeCheck(model){
-                            if(model.indexOf('일반')) {
+                            if(model.indexOf('일반') > -1) {
                                 return '일반제품';
-                            }else if(model.indexOf('소모품')){
+                            }else if(model.indexOf('소모품') > -1){
                                 return '소모품';
-                            }else if(model.indexOf('케어솔루션')){
+                            }else if(model.indexOf('케어솔루션') > -1){
                                 return '케어솔루션';
                             }else {
                                 return '';
