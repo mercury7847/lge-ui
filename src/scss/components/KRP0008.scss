@@ -1716,15 +1716,16 @@
                 .ui-selectbox-wrap {
                     /* BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */
                     .ui-select-button {
-                        padding: 11px 40px 11px 84px;
+                        padding: 11px 40px 11px 80px;
                         text-align: right;
                         @include mobile {
-                            padding: 10px 48px 10px 76px;
+                            padding: 10px 45px 10px 70px;
                         }
                         .ui-select-text {
                             top:12px;
                             transform:translateY(0);
                             white-space:normal;
+                            word-break:keep-all;
                             @include font-small;
                         }
                         .ico{
