@@ -91,7 +91,7 @@
                 if(self.$tabList.length == 0){
                 	console.log(self.$tabList.length);
                 	 var $compareId = [];
-                     var careType ='R'
+                     var careType ='C';
                      $compareId.push(dataList.productInfo.modelId+'|'+careType); //스펙비교하기에 모델명 추가
                      $.each( dataList.compareList,function(idx,item){
                          $compareId.push(item.modelId+'|'+careType); //스펙비교하기에 모델명 추가
