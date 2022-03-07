@@ -183,14 +183,26 @@
                 })
                 self.$barcodeButton.on('click', function(e) {
                     e.preventDefault();
-                    if(isApp()) return false;
-                    if(vcui.detect.isMobileDevice){
-                        var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인', ok: function() { return goAppUrl()}}
-                        var desc = 'LGE.COM APP을 통해 이용 가능합니다.<br>APP을 실행하시겠습니까?';
-
-                        lgkorUI.confirm(desc, obj);
+                    $(this).addClass("on").siblings("button").removeClass("on");
+                    if (isApp()) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                            var obj = new Object();
+                            obj.command = "scanBarcode";
+                            obj.callback ="receiptCodeDirectReturn";
+                            var jsonString= JSON.stringify(obj);
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            void android.openBarcodeScannerForReceipt("receiptCodeDirectReturn");
+                        }
                     } else {
-                        self.$appInstallPopup.vcModal({opener:$(this)});
+                        if(vcui.detect.isMobileDevice){
+                            var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인', ok: function() { return goAppUrl()}}
+                            var desc = 'LGE.COM APP을 통해 이용 가능합니다.<br>APP을 실행하시겠습니까?';
+    
+                            lgkorUI.confirm(desc, obj);
+                        } else {
+                            self.$appInstallPopup.vcModal({opener:$(this)});
+                        }
                     }
                 })
             },
