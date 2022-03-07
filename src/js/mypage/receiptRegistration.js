@@ -188,7 +188,6 @@
                 })
                 self.$barcodeButton.on('click', function(e) {
                     e.preventDefault();
-                    $(this).addClass("on").siblings("button").removeClass("on");
                     if (isApp()) {
                         if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
                             var obj = new Object();
