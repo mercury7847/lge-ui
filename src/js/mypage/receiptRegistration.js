@@ -21,13 +21,18 @@
                 self.$areaSelect = self.$formWrap.find('#areaSelect');
                 self.$branchSelect = self.$formWrap.find('#branchSelect');
                 // s : BTOCSITE-12307
-                self.$barcodWrap = isApp() ? $('.borcode-wrap.app') : $('.borcode-wrap.web');
-                self.$barcodWrap.addClass('active').siblings('.borcode-wrap').remove();
-                self.$inputReceipt = self.$barcodWrap.find('#inputReceipt, #inp02');
+                self.$barcodWrap = $('.borcode-wrap');
+                self.$inputReceipt = self.$barcodWrap.find('#inputReceipt');
                 self.$inputReceipt.attr("autocomplete","off");
                 self.$inquiryButton = self.$barcodWrap.find('#inquiryButton');
                 self.$barcodeButton = self.$barcodWrap.find('.btn-barcode');
                 self.$appInstallPopup = $('#appInstallGuidePopup');
+                if(isApp()) {
+                    self.$barcodWrap.find('.app').show();
+                }else {
+                    self.$barcodWrap.find('.web').show();
+                    self.$barcodWrap.find('#receiptCodeInputWrap').show();
+                }
                 // e : BTOCSITE-12307
 
                 var register = {
