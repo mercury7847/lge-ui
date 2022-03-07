@@ -1275,14 +1275,6 @@
                                     }
                                 }
                             }
-                            /* BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */
-                            .ui_accord_content {
-                                .select-text{
-                                    top:12px;
-                                    transform:translateY(0);
-                                }
-                            }
-                            /* //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */
                             &.on {
                                 .ui_accord_content {
                                     margin-top: 0;
@@ -1389,6 +1381,12 @@
                     &.benefit {
                         .ui_accord_content {
                             padding-top: 12px;
+                            /* BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */
+                            .select-text{
+                                top:12px;
+                                transform:translateY(0);
+                            }
+                            /* //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */
                             ul > li {
                                 &:not(:first-child) {
                                     .price-info {
