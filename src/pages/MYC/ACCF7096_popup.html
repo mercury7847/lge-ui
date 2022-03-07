@@ -9,7 +9,8 @@
         <button type="button" data-href="#popup2" data-control="modal" class="btn"><span>쿠폰 상세 팝업(매장방문혜택쿠폰)</span></button><br><br>
         <button type="button" data-id="#laypop1" data-control="modal" class="btn"><span>[Confirm] 매니저 확인</span></button><br><br>
         <button type="button" data-id="#laypop2" data-control="modal" class="btn"><span>[Alert] 확인1</span></button><br><br>
-        <button type="button" data-id="#laypop3" data-control="modal" class="btn"><span>[Alert] 확인2</span></button>
+        <button type="button" data-id="#laypop3" data-control="modal" class="btn"><span>[Alert] 확인2</span></button><br><br>
+        <button type="button" data-id="#laypop4" data-control="modal" class="btn"><span>[Alert] 확인3</span></button>
     </div>
 
     <!-- 쿠폰 상세보기(매장제품할인쿠폰) -->
@@ -36,15 +37,21 @@
                     desc = '<span class="input-wrap error"><input type="text" class="comm-code" placeholder="확인 코드를 입력해주세요." title="확인 코드를 입력해주세요." maxlength="9" data-min-length="8" data-max-length="9" data-required="true"><p class="err-msg">확인 코드가 올바르지 않습니다.</p></span>';
                     lgkorUI.confirm(desc, obj);
                 }
-                //쿠폰사용(완료)
+                //쿠폰알림1
                 if(id=="#laypop2"){
                     obj = $.extend(obj,{title:'쿠폰 사용이 완료되었습니다.'});
                     desc = '';
                     lgkorUI.alert(desc, obj);
                 }
-                //쿠폰사용(미사용)
+                //쿠폰알림2
                 if(id=="#laypop3"){
-                    obj = $.extend(obj,{title:'쿠폰이 정상적으로 사용되지 않았습니다.<br>잠시 후 다시 시도해주세요.'});
+                    obj = $.extend(obj,{title:'쿠폰 사용기간이 지났습니다.'});
+                    desc = '';
+                    lgkorUI.alert(desc, obj);
+                }
+                //쿠폰알림3
+                if(id=="#laypop4"){
+                    obj = $.extend(obj,{title:'이미 사용한 쿠폰입니다.'});
                     desc = '';
                     lgkorUI.alert(desc, obj);
                 }
