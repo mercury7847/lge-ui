@@ -2,7 +2,7 @@
 
    
     var inquiryListTemplate =
-        '<div class="box" data-id="{{dataID}}">'+
+        '<div class="box{{#if activeTabFlag == "BESTSHOP"}} box-type-2{{/if}}" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
                 '<ul class="infos">'+
                     '{{#if activeTabFlag == "BESTSHOP"}}<li class="type-m"><p class="store-name">{{storeName}}</p></li>{{/if}}'+
@@ -108,13 +108,13 @@
                     '</div>'+
                     '<div class="col col2">'+
                         '<div class="state-box">'+
-                            '<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>'+
+                            '{{#if listData.orderStatus.statusText}}<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>{{/if}}'+
                             '{{#if !vcui.isEmpty(listData.itemCancelAbleMassege) }}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
                             '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
                             '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                             '<div class="state-btns">'+
                                 '{{#each status in listData.statusButtonList}}'+
-                                '<a href="#n" class="btn size border stateInner-btn" data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
+                                '<a href="#n" class="btn size border stateInner-btn" {{#if status.className == "bestShopDeliveryInquiry"}}data-related-order-number="{{listData.orderStatus.relatedOrderNumber}}"{{/if}} data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
                                 '{{/each}}'+
                             '</div>'+
                             '{{/if}}'+
@@ -149,7 +149,7 @@
                                         '<ul>'+
                                             '{{#each spec in listData.specList}}'+
                                             '<li>{{spec}}</li>'+
-                                            '{{/each}}'+                     
+                                            '{{/each}}'+
                                         '</ul>'+
                                     '</div>'+
                                     '{{/if}}'+
@@ -376,7 +376,27 @@
 
     var pastListNotyfyVerPC = '<ul class="bullet-list pastlist-notyfy" style="margin-top:10px"><li class="b-txt">2020.04.13~2021.04.26 주문 건에 대한  주문취소/배송정보/반품/기타 사항에 대해서는 1661-2471로  문의 주세요. </li></ul>';
     var pastListNotyfyVerMobile = '<ul class="bullet-list pastlist-notyfy" style="margin-top:10px"><li class="b-txt">2020.04.13~2021.04.26 주문 건에 대한  주문취소/배송정보/반품/기타 사항에 대해서는 <a href="tel:1661-2471">1661-2471</a>로  문의 주세요. </li></ul>';
-    
+
+    var bestShopDeliveryInfoTemplate =
+    '<div class="delivery-step">'+
+        '<div class="delivery-text active">'+
+            '<strong class="delivery-status">'+
+            '{{#if deliveryStatus == 1}}주문완료{{/if}}'+
+            '{{#if deliveryStatus == 2 || deliveryStatus == 3}}배송준비중{{/if}}'+
+            '{{#if deliveryStatus == 4}}배송중{{/if}}'+
+            '{{#if deliveryStatus == 5}}배송완료{{/if}}'+
+            '</strong>'+
+            '{{#if deliveryStatusDate}}<p class="delivery-date">{{deliveryStatusDate}}</p>{{/if}}'+
+            '{{#if deliveryDriver.name}}<span class="delivery-name">배송기사 {{deliveryDriver.name}} <em class="bar">{{deliveryDriver.phoneNumber}}</em></span>{{/if}}'+
+        '</div>'+
+    '</div>'+
+    '<div class="delivery-step">'+
+        '<div class="delivery-text">'+
+            '<strong class="delivery-status">주문일</strong>'+
+            '<p class="delivery-date">{{orderDate}}</p>'+
+        '</div>'+
+    '</div>';
+
     var ORDER_INQUIRY_LIST_URL;     //리스트 조회 연동 json
     var ORDER_DETAIL_URL;               //상세 페이지 경로
     var PRODUCT_STATUS_URL;          //제품 상태 체크
@@ -479,13 +499,19 @@
     }
 
     var getTabName = function(idx){
+        var tabLength = $('.lnb-contents .tabs-wrap .tabs li').length;
+
         switch(idx){
             case 0:
                 return TAB_FLAG_ORDER;
                 break;
 
             case 1:
-                return TAB_FLAG_ORDER_BESTSHOP;
+                if(tabLength == 2) {
+                    return TAB_FLAG_CARE;
+                } else {
+                    return TAB_FLAG_ORDER_BESTSHOP;
+                }
                 break;
 
             case 2:
@@ -496,7 +522,6 @@
 
     // 탭 이동 시 선택된 날짜 기간이 서비스 개편 이전 날짜 일 시 체크하여 노출/비노출 처리
     var openBeforeHistoryCheck = function() {
-        console.log(222)
         var startDate = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption").startDate;
         var endDate = $('.inquiryPeriodFilter').vcDatePeriodFilter("getSelectOption").endDate;
         var oldDateStartDate = 20200413;
@@ -505,7 +530,6 @@
         if(getTabName($('.lnb-contents .tabs-wrap .tabs').find('li[class=on]').index()) == TAB_FLAG_ORDER_BESTSHOP) {
             $(".open-before-order-history").hide();
         } else {
-            console.log(333)
             if((startDate >= oldDateStartDate && startDate <= oldDateEndDate) || (endDate >= oldDateStartDate && endDate <= oldDateEndDate)) {
                 $(".open-before-order-history").show();
             } else {
@@ -545,6 +569,8 @@
         ARS_AGREE_CHECK_URL = $('.contents.mypage').data('arsAgreeCheckUrl');
         PAYMENT_SAVE_URL = $('.contents.mypage').data('paymentSaveUrl');
 
+        BESTSHOP_DELIVERY_URL = $('.contents.mypage').data('bestshopDeliveryUrl');
+
         txtMasking = new vcui.helper.TextMasking();
 
         tabMenu = $('.lnb-contents .tabs-wrap .tabs');
@@ -566,7 +592,6 @@
 
         // 서비스 개편 이전 날짜 선택 시 내역보기 영역 노출/비노출
         $('.inquiryPeriodFilter .datepicker input').on('calendarinsertdate', function(){
-           console.log(11)
            openBeforeHistoryCheck();
         })
 
@@ -642,7 +667,7 @@
                     setDeliveryInquiry(dataID, prodID);
                     break;
                 case "bestShopDeliveryInquiry":
-                    setBestShopDeliveryInquiry(dataID, prodID);
+                    setBestShopDeliveryInquiry($(this).data("relatedOrderNumber"));
                     break;
 
                 case "deliveryRequest":
@@ -1347,8 +1372,17 @@
     }
     
     // LGECOMVIO-114 베스트샵 배송조회 추가
-    function setBestShopDeliveryInquiry(dataID, prodID){
-        alert('베스트샵 배송조회');
+    function setBestShopDeliveryInquiry(number){
+        var sendata = {
+            relatedOrderNumber: number
+        }
+
+        lgkorUI.requestAjaxDataFailCheck(BESTSHOP_DELIVERY_URL, sendata, function(result){
+            $('#popup-bestshop-delivery').find('.delivery-data').hide();
+            $('#popup-bestshop-delivery').find('.delivery-info').empty();
+            $('#popup-bestshop-delivery').find('.delivery-info').html(vcui.template(bestShopDeliveryInfoTemplate, result.data));
+            $('#popup-bestshop-delivery').vcModal('show');
+        });
     }
 
     function setDeliveryRequest(dataID, prodID){
@@ -3042,7 +3076,8 @@
                     // BTOCSITE-4124 현금결제, 입금확인 대상자 체크 210823 - E
 
                     // 모니터링 227 : 구매 탭으로 다시 돌아왔을 경우 (주문 취소를 하였음에도)'취소 신청' 버튼이 노출되고 있습니다.
-                    location.reload(true);
+                    // 모니터링 520 : 비회원 주문후 취소완료시 주문정보 안나오는 오류 수정
+                    if(PAGE_TYPE == PAGE_TYPE_LIST) location.reload(true);
                 }
             }
         });

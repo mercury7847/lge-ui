@@ -87,7 +87,21 @@
 
                 //스펙 비교하기 버튼
                 self.$compareModelIds = "";
+                //BTOCSITE-12856 start
+                if(self.$tabList.length == 0){
+                	console.log(self.$tabList.length);
+                	 var $compareId = [];
+                     var careType ='C';
+                     $compareId.push(dataList.productInfo.modelId+'|'+careType); //스펙비교하기에 모델명 추가
+                     $.each( dataList.compareList,function(idx,item){
+                         $compareId.push(item.modelId+'|'+careType); //스펙비교하기에 모델명 추가
+                     });
 
+                     //스펙비교하기 버튼에 모델명 교체
+                     self.$compareModelIds = $compareId.join(","); 
+                     self.$section.find(".bottom-area button").attr('data-model-ids', self.$compareModelIds);
+                }
+                //BTOCSITE-12856 END
             },
             setPath: function(){
                 var self = this;
@@ -141,21 +155,30 @@
                     lgkorUI.addEqualCompare($(this).data('modelIds'), url);
                 });
             },
-            makeProdList: function(tabType,now,loopData){
+            makeProdList: function(tabType,now,loopData){               
+                //BTOCSITE-12856 start
                 var self = this;
                 var $compareId = [];
 
                 now.tabName = tabType;
-                $compareId.push(now.modelId); //스펙비교하기에 모델명 추가
+                
+                var careType = '';
+                if(tabType=='rentalTab'){
+                	careType ='R'
+                }else{
+                	careType ='C'
+                }
+                
+                $compareId.push(now.modelId+'|'+careType); //스펙비교하기에 모델명 추가
                 self.$prodViewNow.append(vcui.template(productItem,now)); //지금보고 있는 상품에 템플릿 그리기
                 $.each(loopData,function(idx,item){
-                    $compareId.push(item.modelId); //스펙비교하기에 모델명 추가
+                    $compareId.push(item.modelId+'|'+careType); //스펙비교하기에 모델명 추가
                     item.tabName = tabType;
                     self.$prodRecommend.append(vcui.template(productItem,item));//추천 상품리스트 템플릿 그리기
                 });
 
                 //스펙비교하기 버튼에 모델명 교체
-                self.$compareModelIds = $compareId.join("|");
+                self.$compareModelIds = $compareId.join(","); // BTOCSITE-5938-567 데이터 구분자 변경
                 self.$section.find(".bottom-area button").attr('data-model-ids', self.$compareModelIds);
             }
         }

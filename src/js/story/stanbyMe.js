@@ -293,14 +293,15 @@
                     }
 
                     self.$pagination.vcPagination('setPageInfo', page);
+                    window.history.replaceState({ data: '.history-back-page' }, null, location.pathname + '?tab=prod2&listPage='+ page.page+'&orderType='+self.params.orderType); // BTOCSITE-9974
                 });
             },
             bindEvent: function() {
                 var self = this;
 
-                self.$listWrap.on('click', '.board-tit a', function() {
+                /* self.$listWrap.on('click', '.board-tit a', function() {
                     lgkorUI.historyBack(this);
-                });
+                }); */
 
                 self.$sortSelect.filter('#orderType').on('change', function() {
                     self.params = $.extend({}, self.params, {

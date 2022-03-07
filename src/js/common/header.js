@@ -708,7 +708,10 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             var self = this;
             var isSwipe = !!$('#sw_con').length;
 
-            if( isSwipe ) { $('body').addClass('is-main-sticky-header'); }            
+            if( isSwipe ) { $('body').addClass('is-main-sticky-header'); }  
+            
+            // BTOCSITE-11928 챗봇 pincode 파라미터 연결 수정
+            lgkorUI.getChatPinCode($('.mobile-status-bar .chatbot a'));
 
             /* BTOCSITE-1937 스프레드 메뉴 수정 */
             // self.$mobileNaviItems.each(function(idx, item){

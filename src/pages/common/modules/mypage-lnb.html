@@ -53,7 +53,7 @@
                 <li><a href="#n" class="my-dep2">찜한 제품</a></li>
                 <li><a href="#n" class="my-dep2">최근 본 제품</a></li>
                 <li><a href="#n" class="my-dep2">구독</a></li>
-                <li><a href="#n" class="my-dep2">단골매장</a></li>
+                <li><a href="#n" class="my-dep2">단골매장 등록수정</a></li><!-- 2022.02.28(수정) : LGECOMVIO-193(메뉴명 변경) -->
                 <li><a href="#n" class="my-dep2">재입고 알림</a></li>
             </ul>
             }
@@ -65,12 +65,13 @@
                 @@for ( var i=0; i < sect9.length; i++ ) {
                 <li><a href="#n" class="my-dep2 `+sect9[i].on+`">`+sect9[i].page+`</a></li>
                 }
+                <li><a href="#n" class="my-dep2" target="_blank" title="새창열림">인테리어 상담 신청</a></li> <!-- 2022.03.03(수정) : LGECOMVIO-192(target/title추가) -->
             </ul>
             }
             @@if ( !context.sect9 ) {
             <ul class="myp-sub">
                 <li><a href="#n" class="my-dep2">상담 예약 조회</a></li>
-                <li><a href="#n" class="my-dep2">인테리어 상담 신청</a></li>
+                <li><a href="#n" class="my-dep2" target="_blank" title="새창열림">인테리어 상담 신청</a></li> <!-- 2022.03.03(수정) : LGECOMVIO-192(target/title추가) -->
             </ul>
             }
         </li>

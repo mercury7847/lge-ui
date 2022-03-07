@@ -117,7 +117,8 @@ $(window).ready(function(){
 		//슬라이드가 화면 중앙인지 아닌지를 체크하여 해당 이벤트 실행 -BTOCSITE-8039
 		var io = new IntersectionObserver(function(entries, observer) {
 			entries.forEach(function(entry) {
-				entry.isIntersecting ? sectionEnterEvent(entry.target) : sectionLeaveEvent(entry.target);
+				if($(entry.target).data('autoplay')) (entry.isIntersecting) ? sectionEnterEvent(entry.target) : sectionLeaveEvent(entry.target);
+				else sectionLeaveEvent(entry.target);
 			});                            
 		}, {root: null, threshold: 0.5});
 		
@@ -125,7 +126,8 @@ $(window).ready(function(){
 			var $slide 			= $(this),
 				autoPlay 		= $slide.data('autoplay') != undefined && $slide.data('autoplay') !== "" ? $slide.data('autoplay') : true,
 				autoPlaySpeed 	= $slide.data('autoSpeed') != undefined && $slide.data('autoSpeed') !== "" ? $slide.data('autoSpeed') : 3000,
-				autoCount 		= $slide.data('autoCount') != undefined && $slide.data('autoCount') !== "" ? $slide.data('autoCount') : false;
+				autoCount 		= $slide.data('autoCount') != undefined && $slide.data('autoCount') !== "" ? $slide.data('autoCount') : false,
+				isVariable		= ($slide.hasClass('slide-show-right')) ? true:false; // BTOCSITE-12757
 
 			if( autoCount != 'loop' && autoCount != undefined) {
 				$slide.data('currentCount', 0);
@@ -133,6 +135,34 @@ $(window).ready(function(){
 
 			if( $slide.find('.ui_carousel_slide').eq(0).find('video').length ) {
 				autoPlaySpeed = $slide.find('.ui_carousel_slide').eq(0).find('video')[0].duration * 1000;
+			}
+			var opt = {
+				infinite: true,
+				pauseOnHover: false,
+				autoplay: autoPlay,
+				autoplaySpeed: autoPlaySpeed,
+				prevArrow:'.btn-arrow.prev',
+				nextArrow:'.btn-arrow.next',
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				playSelector: '.btn-play.play',
+				adaptiveHeight:true,
+				speed: 150,
+				touchThreshold: 100,
+				customPaging: function(slide, i) {
+					return customDots(slide, i)
+				},
+				responsive: (isVariable) ? [
+					{
+						breakpoint: 768,
+						settings: {
+							centerMode: true,
+							variableWidth:true,
+							outerEdgeLimit: true,
+							slidesToShow: 1
+						}
+					}
+				]:null,  //BTOCSITE-12757
 			}
 
 			$slide.on('carouselinit', function(e,data){
@@ -159,25 +189,9 @@ $(window).ready(function(){
 						$(this).get(0).currentTime = 0;
 					}
 				})
+				// if(!autoPlay) $(data.$slider).find('.indi-wrap li').eq(0).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar').css({'animation-play-state':'running'})
 			})
-			.vcCarousel({
-				infinite: true,
-				pauseOnHover: false,
-				autoplay: false,
-				autoplaySpeed: autoPlaySpeed,
-				prevArrow:'.btn-arrow.prev',
-				nextArrow:'.btn-arrow.next',
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				playSelector: '.btn-play.play',
-				adaptiveHeight:true,
-				cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-				speed: 150,
-				touchThreshold: 100,
-				customPaging: function(slide, i) {
-					return customDots(slide, i)
-				},
-			})
+			.vcCarousel(opt)
 			.on('carouselbeforechange', function(e, slide, prev, next){
 
 				prevVideoPause(slide);
@@ -191,12 +205,10 @@ $(window).ready(function(){
 				var $indiBar = $slider.find('.indi-wrap li').eq(currentSlide).find('.btn-indi-bar .bar, .btn-indi-bar-text .bar');
 				var autoSpeed = $slider.data('autoSpeed') ? $slider.data('autoSpeed') : 3000;
 				var $currentVideo = $currentSlide.find('video').filter(':visible');
-				if($currentSlide.attr("ui-modules") == "VideoBox"){
-					if($currentVideo.attr('autoplay')!==undefined && $currentVideo.get(0).readyState > 0) {
-						$currentVideo.get(0).currentTime = 0;
-						autoSpeed =	$currentVideo.get(0).duration * 1000;
-						$currentVideo.get(0).play();
-					}
+				if($currentVideo.attr('autoplay')!=undefined && $currentVideo.get(0).readyState > 0) {
+					autoSpeed =	$currentVideo.get(0).duration * 1000;
+					$currentVideo.get(0).currentTime = 0;
+					$currentVideo.get(0).play()
 				}
 				slide.$dots.find('button').blur();
 				$indiBar.css({'animation-duration' : autoSpeed/1000 + 's', 'animation-play-state' : 'running'})

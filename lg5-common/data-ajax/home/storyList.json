@@ -1,277 +1,289 @@
 {
-    "status":"success",
-    "message":null,
-    "param":{
-        "pagination":{
-            "page":"1",
-            "totalCount":"22"
-        }
-    },
-    "data":{
-        "loginUrl":"",
+    "data": {
         "recommendTags": [
             {
-                "tagCode": "가전은역시LG",
-                "tagName": "가전은역시LG"
+                "tagCode": "TD00009022",
+                "tagName": "거실"
             },
             {
-                "tagCode": "웰빙",
-                "tagName": "코로나싱글라이프싱글"
+                "tagCode": "TD00009060",
+                "tagName": "습기 제거"
             },
             {
-                "tagCode": "코로나싱글라이프싱글",
-                "tagName": "코로나싱글라이프싱글"
+                "tagCode": "TD00009040",
+                "tagName": "홈쿡"
             },
             {
-                "tagCode": "미세먼지",
-                "tagName": "코로나싱글라이프싱글"
+                "tagCode": "TD00009049",
+                "tagName": "여행"
             },
             {
-                "tagCode": "",
-                "tagName": "코로나싱글라이프싱글"
+                "tagCode": "TD00009077",
+                "tagName": "밀레니얼"
             }
         ],
         "storyList": [
             {
+                "storyId": "ST00096000",
+                "tagList": [
+                    {
+                        "tagCode": "TD00009074",
+                        "tagName": "스마트홈"
+                    },
+                    {
+                        "tagCode": "TD00009075",
+                        "tagName": "인공지능"
+                    }
+                ],
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/upappliance (640x800) - 배포용[20220209_173131].jpg",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/upappliance (240x180)[20220209_165722].jpg",
                 "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "가전은역시LG",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "반려동물",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-test.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":"newContent"
+                "contentsName": "Only & Best",
+                "storyUrl": "/story/only-and-best/upappliance",
+                "regDate": "2022.02.09",
+                "smallImageAlt": "시작은 당신이었습니다. LG UP가전",
+                "storyType": "best_only",
+                "title": "시작은 당신이었습니다. LG UP가전",
+                "largeImageAlt": "시작은 당신이었습니다. LG UP가전"
             },
             {
-                "contentsType": "video",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
+                "storyId": "ST00096005",
                 "tagList": [
                     {
-                        "tagCode": "가전은역시LG",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "웰빙",
-                        "tagName": "웰빙"
+                        "tagCode": "TD00009054",
+                        "tagName": "스포츠"
                     }
                 ],
-                "largeImage": "/lg5-common/images/STS/img-test2.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test2.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":"topContent"
-            },
-            {
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/선수응원_TOP콘텐츠_1_수정본[20220128_154549].png",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/선수 응원_리스트 썸네일_1[20220126_150833].png",
                 "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "코로나싱글라이프싱글"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "미세먼지"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":"topBuy"
+                "contentsName": "트렌드",
+                "storyUrl": "/story/trend/athletes-with-lg",
+                "regDate": "2022.01.28",
+                "smallImageAlt": "리스트 썸네일",
+                "storyType": "trend",
+                "title": "LG전자와 함께하는 스포츠 선수들",
+                "largeImageAlt": "메인 썸네일"
             },
             {
+                "storyId": "ST00024025",
+                "tagList": [
+                    {
+                        "tagCode": "TD00010001",
+                        "tagName": "재택"
+                    },
+                    {
+                        "tagCode": "TD00010002",
+                        "tagName": "온라인개학"
+                    }
+                ],
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/pandemic-college-lifestyle (640x800) - TOP[20220104_154132].jpg",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/pandemic-college-lifestyle (240x180)[20220103_153838].jpg",
                 "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-test4.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test4.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":"bestContent"
+                "contentsName": "트렌드",
+                "storyUrl": "/story/trend/pandemic-college-lifestyle",
+                "regDate": "2022.01.04",
+                "smallImageAlt": "언제 어디서나 그램360답게",
+                "storyType": "trend",
+                "title": "언제 어디서나 그램360답게",
+                "largeImageAlt": "언제 어디서나 그램360답게"
             },
             {
-                "contentsType": "video",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
+                "storyId": "ST00023032",
                 "tagList": [
                     {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
+                        "tagCode": "TD00009043",
+                        "tagName": "홈 엔터테인먼트"
                     },
                     {
-                        "tagCode": "",
-                        "tagName": "코로나싱글라이프싱글"
+                        "tagCode": "TD00010002",
+                        "tagName": "온라인개학"
                     }
                 ],
-                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":""
-            },
-            {
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/01_BEST 뱃지(O)[20220118_084433].jpg",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/3_240x180[20210406_161549].jpg",
                 "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":""
+                "contentsName": "고객 리뷰",
+                "storyUrl": "/story/hands-on-reviews/how-to-tv1",
+                "regDate": "2022.01.18",
+                "smallImageAlt": "TV 더 이상 바보상자가 아니에요(Feat.다양한 활용법) #1",
+                "storyType": "customer_review",
+                "title": "TV 더 이상 바보상자가 아니에요",
+                "largeImageAlt": "TV 더 이상 바보상자가 아니에요(Feat.다양한 활용법) #1"
             },
             {
+                "storyId": "ST00088006",
+                "tagList": [],
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/02_TOP 뱃지(X)[20220128_132508].png",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/240x180_[20220217_093753].jpg",
                 "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "웰빙"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":""
+                "contentsName": "Only & Best",
+                "storyUrl": "/story/only-and-best/momsholic-baby-awards",
+                "regDate": "2022.02.17",
+                "smallImageAlt": "맘스홀릭 어워즈가 선택한 최고의 브랜드 LG전자",
+                "storyType": "best_only",
+                "title": "맘스홀릭 회원이 선택한 최고의 가전",
+                "largeImageAlt": "맘스홀릭 어워즈가 선택한 최고의 브랜드 LG전자"
             },
             {
-                "contentsType": "video",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
+                "storyId": "ST00101000",
                 "tagList": [
                     {
-                        "tagCode": "",
-                        "tagName": "미세먼지"
+                        "tagCode": "TD00010002",
+                        "tagName": "온라인개학"
                     },
                     {
-                        "tagCode": "",
-                        "tagName": "반려동물"
+                        "tagCode": "TD00010003",
+                        "tagName": "아카데미"
                     }
                 ],
-                "largeImage": "/lg5-common/images/STS/img-test5.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test5.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":""
-            },
-            {
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/plusview_student (640x800)[20220228_121219].jpg",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/plusview_student (266x200)[20220228_121219].jpg",
                 "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "웰빙"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":""
+                "contentsName": "가전꿀팁",
+                "storyUrl": "/story/useful-tip/plusview_student",
+                "regDate": "2022.02.28",
+                "smallImageAlt": "플러스뷰 라이프스타일 (대학생 편)",
+                "storyType": "tips",
+                "title": "플러스뷰 라이프스타일 (대학생 편)",
+                "largeImageAlt": "플러스뷰 라이프스타일 (대학생 편)"
             },
             {
+                "storyId": "ST00093000",
+                "tagList": [],
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/640 X 800[20220120_152447].png",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/240 X 180[20220120_152447].jpg",
                 "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
-                "tagList": [
-                    {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
-                    },
-                    {
-                        "tagCode": "",
-                        "tagName": "반려동물"
-                    }
-                ],
-                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":""
+                "contentsName": "Only & Best",
+                "storyUrl": "/story/only-and-best/oled-evo-object-workofart",
+                "regDate": "2022.02.15",
+                "smallImageAlt": "공간을 예술로 만드는 가전 올레드 evo 오브제컬렉션",
+                "storyType": "best_only",
+                "title": "공간을 예술로 만드는 가전 올레드 evo 오브제컬렉션",
+                "largeImageAlt": "공간을 예술로 만드는 가전 올레드 evo 오브제컬렉션"
             },
             {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
+                "storyId": "ST00101001",
                 "tagList": [
                     {
-                        "tagCode": "",
-                        "tagName": "가전은역시LG"
+                        "tagCode": "TD00009053",
+                        "tagName": "비즈니스"
                     },
                     {
-                        "tagCode": "",
-                        "tagName": "반려동물"
+                        "tagCode": "TD00010003",
+                        "tagName": "아카데미"
                     }
                 ],
-                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":""
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/plusview_rabotnik (640x800)[20220228_121236].jpg",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/plusview_rabotnik (266x200)[20220228_121236].jpg",
+                "contentsType": "image",
+                "contentsName": "가전꿀팁",
+                "storyUrl": "/story/useful-tip/plusview_rabotnik",
+                "regDate": "2022.02.28",
+                "smallImageAlt": "플러스뷰 라이프스타일 (직장인 편)",
+                "storyType": "tips",
+                "title": "플러스뷰 라이프스타일 (직장인 편)",
+                "largeImageAlt": "플러스뷰 라이프스타일 (직장인 편)"
             },
             {
-                "contentsType": "image",
-                "regDate": "방금 전",
-                "contentsName": "제품 활용 팁",
-                "title": "혁신이 만들어낸 TV 이상의 작품",
+                "storyId": "ST00088001",
                 "tagList": [
                     {
-                        "tagCode": "",
-                        "tagName": "코로나싱글라이프싱글"
+                        "tagCode": "TD00009045",
+                        "tagName": "건강"
                     },
                     {
-                        "tagCode": "",
-                        "tagName": "미세먼지"
+                        "tagCode": "TD00010008",
+                        "tagName": "인테리어템"
                     }
                 ],
-                "largeImage": "/lg5-common/images/STS/img-test3.jpg",
-                "smallImage": "/lg5-common/images/STS/img-test3.jpg",
-                "storyUrl": "lg.com",
-                "storyLabel":""
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/대지 1-01[20220118_141605].png",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/라이프스타일_에어로타워로_삶과_공기의_질을_상승시키기[20220216_173921].jpg",
+                "contentsType": "image",
+                "contentsName": "라이프스타일",
+                "storyUrl": "/story/lifestyle/aerotower-lifestyle",
+                "regDate": "2022.02.25",
+                "smallImageAlt": "삶과 공기의 질을 상승시키는 상승템!",
+                "storyType": "life_style",
+                "title": "에어로타워로 삶과 공기의 질을 상승시키기",
+                "largeImageAlt": "삶과 공기의 질을 상승시키는 상승템!"
+            },
+            {
+                "storyId": "ST00075002",
+                "tagList": [
+                    {
+                        "tagCode": "TD00009042",
+                        "tagName": "뷰티 관리"
+                    }
+                ],
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/multicare-tutorial (640x800)[20220117_174724].jpg",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/multicare-tutorial (240x180)[20220117_174724].jpg",
+                "contentsType": "image",
+                "contentsName": "사용가이드",
+                "storyUrl": "/story/user-guide/multicare-tutorial",
+                "regDate": "2022.02.11",
+                "smallImageAlt": "프라엘 인텐시브 멀티케어 기본사용법",
+                "storyType": "esay_use",
+                "title": "프라엘 인텐시브 멀티케어 기본사용법",
+                "largeImageAlt": "프라엘 인텐시브 멀티케어 기본사용법"
+            },
+            {
+                "storyId": "ST00101002",
+                "tagList": [
+                    {
+                        "tagCode": "TD00009053",
+                        "tagName": "비즈니스"
+                    },
+                    {
+                        "tagCode": "TD00010003",
+                        "tagName": "아카데미"
+                    }
+                ],
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/plusview_vneshtatnik (640x800)[20220228_121122].jpg",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/plusview_vneshtatnik (266x200)[20220228_121123].jpg",
+                "contentsType": "image",
+                "contentsName": "가전꿀팁",
+                "storyUrl": "/story/useful-tip/plusview_vneshtatnik",
+                "regDate": "2022.02.28",
+                "smallImageAlt": "플러스뷰 라이프스타일 (프리랜서 편)",
+                "storyType": "tips",
+                "title": "플러스뷰 라이프스타일 (프리랜서 편)",
+                "largeImageAlt": "플러스뷰 라이프스타일 (프리랜서 편)"
+            },
+            {
+                "storyId": "ST00098000",
+                "tagList": [
+                    {
+                        "tagCode": "TD00009062",
+                        "tagName": "필터 관리"
+                    },
+                    {
+                        "tagCode": "TD00009063",
+                        "tagName": "살균"
+                    }
+                ],
+                "largeImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/QnA-waterpurifiers (640x800)[20220208_103423].jpg",
+                "smallImage": "https://www.lge.co.kr/kr/upload/admin/storyThumbnail/QnA-waterpurifiers (240x180)[20220208_100432].jpg",
+                "contentsType": "image",
+                "contentsName": "사용가이드",
+                "storyUrl": "/story/user-guide/QnA-waterpurifiers",
+                "regDate": "2022.02.15",
+                "smallImageAlt": "상하좌우 정수기에 대한 궁금증, 모두 답해드립니다",
+                "storyType": "esay_use",
+                "title": "상하좌우 정수기에 대한 궁금증, 모두 답해드립니다",
+                "largeImageAlt": "상하좌우 정수기에 대한 궁금증, 모두 답해드립니다"
             }
-        ]
-    }
+        ],
+        "selectTags": null,
+        "success": "Y"
+    },
+    "param": {
+        "pagination": {
+            "page": "1",
+            "totalCount": 57
+        }
+    },
+    "message": null,
+    "ssoCheckUrl": null,
+    "status": "success"
 }

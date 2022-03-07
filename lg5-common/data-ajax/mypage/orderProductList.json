@@ -860,8 +860,6 @@
             "productNameKR": "LG 트롬 스타일러",
             "productNameEN": "FQ17SADWP3",
             "modelID": "MD08918846",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
             "modelType": "소모품(A)",
             "orderedQuantity": "1",
             "discountAmount": "0.0000",
@@ -892,8 +890,6 @@
             "productNameKR": "세탁기 > 식기세척기",
             "productNameEN": "FQ17SADWP3",
             "modelID": "MD08919869",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/eac63382204",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08919869/md08919869-350x350.jpg",
             "modelType": "소모품(A)",
             "orderedQuantity": "1",
             "discountAmount": "0.0000",
@@ -912,7 +908,8 @@
               "statusText": "",
               "statusClass": "",
               "statusDate": "",
-              "deliveryUrl": ""
+              "deliveryUrl": "",
+              "relatedOrderNumber": "S0214658792-1-96459469"
             },
             "statusButtonList": [
               {
@@ -947,8 +944,6 @@
             "productNameKR": "에어컨 > 에어컨",
             "productNameEN": "FQ17SADWP3",
             "modelID": "MD08747120",
-            "productPDPurl": "https://wwwstg.lge.co.kr/water-purifiers/wu900as",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-350x350.jpg",
             "modelType": "일반(G)",
             "orderedQuantity": "1",
             "discountAmount": "0.0000",
@@ -992,15 +987,13 @@
         "grandTotalCurrency": "KRW",
         "contDtlType": "",
         "email": "",
-        "orderTotal": 2,
+        "orderTotal": 1,
         "storeName": "운정점",
         "productList": [
           {
             "productNameKR": "LG 퓨리케어 상하좌우 정수기",
             "productNameEN": "FQ17SADWP3",
             "modelID": "MD08918846",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
             "modelType": "소모품(A)",
             "orderedQuantity": "1",
             "discountAmount": "0.0000",
@@ -1051,8 +1044,6 @@
             "productNameKR": "LG 트롬 스타일러",
             "productNameEN": "FQ17SADWP3",
             "modelID": "MD08918846",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
             "modelType": "소모품(A)",
             "orderedQuantity": "1",
             "discountAmount": "0.0000",
@@ -1083,8 +1074,6 @@
             "productNameKR": "세탁기 > 식기세척기",
             "productNameEN": "FQ17SADWP3",
             "modelID": "MD08919869",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/eac63382204",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08919869/md08919869-350x350.jpg",
             "modelType": "소모품(A)",
             "orderedQuantity": "1",
             "discountAmount": "0.0000",
@@ -1103,499 +1092,14 @@
               "statusText": "",
               "statusClass": "",
               "statusDate": "",
-              "deliveryUrl": ""
+              "deliveryUrl": "",
+              "relatedOrderNumber": "S0214658792-1-96459469"
             },
             "statusButtonList": [
               {
-                "className": "deliveryInquiry",
+                "className": "bestShopDeliveryInquiry",
                 "buttonName": "배송조회"
               }
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "Y",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000004101",
-        "orderDate": "2021.03.17",
-        "orderType": "NB",
-        "status": "Wait for Authorization",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "12900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 1,
-        "storeName": "신세계 Art & Science 점",
-        "productList": [
-          {
-            "productNameKR": "에어컨 > 에어컨",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08747120",
-            "productPDPurl": "https://wwwstg.lge.co.kr/water-purifiers/wu900as",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-350x350.jpg",
-            "modelType": "일반(G)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "12900",
-            "productTotalPrice": 12900,
-            "rowTotal": 12900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "냉온정수기+세척수",
-              "언더싱크형"
-            ],
-            "itemStatus": "Cancel Pending",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "N",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "N",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000010600",
-        "orderDate": "2021.04.08",
-        "orderType": "SM",
-        "status": "Fail",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "105900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 2,
-        "storeName": "운정점",
-        "productList": [
-          {
-            "productNameKR": "LG 퓨리케어 상하좌우 정수기",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08918846",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "10900",
-            "productTotalPrice": 10900,
-            "rowTotal": 10900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "매장 문의 필요",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "Y",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000010600",
-        "orderDate": "2021.04.08",
-        "orderType": "SM",
-        "status": "Fail",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "105900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 2,
-        "storeName": "운정점",
-        "productList": [
-          {
-            "productNameKR": "LG 트롬 스타일러",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08918846",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "10900",
-            "productTotalPrice": 10900,
-            "rowTotal": 10900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "매장 문의 필요",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
-          },
-          {
-            "productNameKR": "세탁기 > 식기세척기",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08919869",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/eac63382204",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08919869/md08919869-350x350.jpg",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "95000",
-            "productTotalPrice": 95000,
-            "rowTotal": 95000,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-              {
-                "className": "deliveryInquiry",
-                "buttonName": "배송조회"
-              }
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "Y",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000004101",
-        "orderDate": "2021.03.17",
-        "orderType": "NB",
-        "status": "Wait for Authorization",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "12900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 1,
-        "storeName": "신세계 Art & Science 점",
-        "productList": [
-          {
-            "productNameKR": "에어컨 > 에어컨",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08747120",
-            "productPDPurl": "https://wwwstg.lge.co.kr/water-purifiers/wu900as",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-350x350.jpg",
-            "modelType": "일반(G)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "12900",
-            "productTotalPrice": 12900,
-            "rowTotal": 12900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "냉온정수기+세척수",
-              "언더싱크형"
-            ],
-            "itemStatus": "Cancel Pending",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "N",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "N",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000010600",
-        "orderDate": "2021.04.08",
-        "orderType": "SM",
-        "status": "Fail",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "105900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 2,
-        "storeName": "운정점",
-        "productList": [
-          {
-            "productNameKR": "LG 퓨리케어 상하좌우 정수기",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08918846",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "10900",
-            "productTotalPrice": 10900,
-            "rowTotal": 10900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "매장 문의 필요",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "Y",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000010600",
-        "orderDate": "2021.04.08",
-        "orderType": "SM",
-        "status": "Fail",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "105900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 2,
-        "storeName": "운정점",
-        "productList": [
-          {
-            "productNameKR": "LG 트롬 스타일러",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08918846",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "10900",
-            "productTotalPrice": 10900,
-            "rowTotal": 10900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "매장 문의 필요",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
-          },
-          {
-            "productNameKR": "세탁기 > 식기세척기",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08919869",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/a9-vacuum-cleaner/eac63382204",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/a9-vacuum-cleaner/md08919869/md08919869-350x350.jpg",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "95000",
-            "productTotalPrice": 95000,
-            "rowTotal": 95000,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-              {
-                "className": "deliveryInquiry",
-                "buttonName": "배송조회"
-              }
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "Y",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000004101",
-        "orderDate": "2021.03.17",
-        "orderType": "NB",
-        "status": "Wait for Authorization",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "12900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 1,
-        "storeName": "신세계 Art & Science 점",
-        "productList": [
-          {
-            "productNameKR": "에어컨 > 에어컨",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08747120",
-            "productPDPurl": "https://wwwstg.lge.co.kr/water-purifiers/wu900as",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/water-purifiers/md08747120/md08747120-350x350.jpg",
-            "modelType": "일반(G)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "12900",
-            "productTotalPrice": 12900,
-            "rowTotal": 12900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "냉온정수기+세척수",
-              "언더싱크형"
-            ],
-            "itemStatus": "Cancel Pending",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "N",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "N",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000010600",
-        "orderDate": "2021.04.08",
-        "orderType": "SM",
-        "status": "Fail",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "105900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 2,
-        "storeName": "운정점",
-        "productList": [
-          {
-            "productNameKR": "LG 퓨리케어 상하좌우 정수기",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08918846",
-            "productPDPurl": "https://wwwstg.lge.co.kr/care-accessories/top-load-washer/adq72933301",
-            "productImage": "https://wwwstg.lge.co.kr/kr/images/care-accessories/top-load-washer/md08918846/md08918846-350x350.jpg",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "10900",
-            "productTotalPrice": 10900,
-            "rowTotal": 10900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "매장 문의 필요",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
             ],
             "orderCancelAbleYn": "Y",
             "orderRetuenAbleYn": "N"
@@ -1627,8 +1131,6 @@
             "productNameKR": "LG DIOS 식기세척기 스팀",
             "productNameEN": "DFB22SAR.AKOR",
             "modelID": "MD08045871",
-            "productImage": "/kr/images/dishwashers/md08045871/md08045871-350x350.jpg",
-            "productPDPurl": "/care-solutions/dishwashers/dfb22sar",
             "productPrice": "1540000",
             "productSalePriceCurrency": "",
             "discountPrice": "5000",
@@ -1666,8 +1168,6 @@
             "productNameKR": "상하좌우 정수기",
             "productNameEN": "WD503AP.AKOR",
             "modelID": "MD08750473",
-            "productImage": "/kr/images/water-purifiers/md08750473/md08750473-350x350.jpg",
-            "productPDPurl": "/care-solutions/water-purifiers/wd503ap",
             "productPrice": "1600000",
             "productSalePriceCurrency": "",
             "discountPrice": "3000",
@@ -1720,8 +1220,6 @@
             "productNameKR": "LG DIOS 식기세척기 스팀",
             "productNameEN": "DFB22SAR.AKOR",
             "modelID": "MD08045871",
-            "productImage": "/kr/images/dishwashers/md08045871/md08045871-350x350.jpg",
-            "productPDPurl": "/care-solutions/dishwashers/dfb22sar",
             "productPrice": "1540000",
             "productSalePriceCurrency": "",
             "discountPrice": "0",

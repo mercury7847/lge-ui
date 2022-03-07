@@ -40,6 +40,7 @@
             <!-- data-order-sails : 취소/반품 확인 -->
             <!-- data-account-check : 환불계좌확인 -->
             <!-- data-order-request : 주문접수 -->
+            <!-- LGECOMVIO-114 data-bestshop-delivery-url 추가 -->
             <div class="contents mypage orderAndDelivery"
                 data-order-inquiry-list="/lg5-common/data-ajax/mypage/orderProductList.json"
                 data-order-detail="/html/MYC/ACCF7003.html"
@@ -49,6 +50,7 @@
                 data-account-check="/lg5-common/data-ajax/mypage/orderBankAbled.json"
                 data-order-request="/lg5-common/data-ajax/mypage/orderTakeBack.json"
                 data-payment-method-url="/lg5-common/data-ajax/mypage/paymentMethodAbled.json"
+                data-bestshop-delivery-url="/lg5-common/data-ajax/mypage/orderBestShopDelivery.json"
                 data-tab-flag="ORDER"
             >
                 <form id="goDetailForm" action="" method="post">
@@ -106,11 +108,11 @@
                                 <!-- 210414 수정 [구매내역 조회 추가] -->
                                 <div class="open-before-order-history">
                                     <div class="inner">
-                                        <p class="text">서비스 개편 이전 2020.04.13 ~ 2021.04.15 주문 내역은 ‘내역 보기’ 버튼을 선택하여 확인하실 수 있습니다.</p>
-                                        <button type="button" class="btn size border recordList-btn"><span>내역 보기</span></button>
-                                    </div>
-                                </div>
-                                <!-- // 210414 수정 [구매내역 조회 추가] -->
+                                       <p class="text">LGE.COM 개편이전 2020.04.13 ~ 2021.04.15 주문 내역은 ‘내역 보기’ 버튼을 선택하여 확인하실 수 있습니다.</p><!-- LGECOMVIO-114 문구 변경 -->
+                                       <button type="button" class="btn size border recordList-btn"><span>내역 보기</span></button>
+                                   </div>
+                               </div>
+                               <!-- // 210414 수정 [구매내역 조회 추가] -->
 
                                 <!-- data 있을 때 -->
                                 <!-- list -->
@@ -203,7 +205,7 @@
                                         "topBorder" : true,
                                         "bulletTit" : "확인하세요.",
                                         "bulletTxt" : [
-                                            "주문/배송 내역은 PC 웹에서는 5년, 모바일 웹에서는 1년까지 조회 가능합니다.",
+                                            "주문/배송 내역은 PC 웹에서는 5년, 모바일 웹에서는 2년까지 조회 가능합니다.",
                                             "케어솔루션 제품의 취소 신청은 배송이 시작되기 전까지만 가능하며 배송 완료 시 계약 취소를 진행하셔야 합니다.",
                                             "단, 설치 제품의 경우 인수 완료 후에는 단순 반품은 불가능하며 계약 취소가 진행됩니다. 이때, 위약금이 발생하게 됩니다. 고객 서비스 센터(1544-7777)로 문의하세요.",
                                             "멤버십 포인트는 구매 제품은 배송 완료 후, 케어솔루션 제품의 경우 배송 및 설치 완료 14일 이후 적립됩니다."
@@ -216,7 +218,7 @@
                                 <!-- LGECOMVIO-114 베스트샵 문구 추가 -->
                                 <div class="sects bestshop-order-info">
                                     @@include('./common/modules/bullet-list.html', {
-                                    "topBorder" : true,
+                                    "topBorder" : false,
                                     "bulletTit" : "확인하세요.",
                                     "bulletTxt" : [
                                             "배송정보 변경은 수신 받으신 알림 톡에서 변경이 가능합니다.",
@@ -254,5 +256,11 @@
         popupID: 'popup-takeback'
     })
     <!-- // 반품신청 -->
+
+    <!-- LGECOMVIO-114 베스트샵 배송조회 -->
+    @@include('./common/popup/ACCF7002_pop7.html', {
+    popupID: 'popup-bestshop-delivery'
+    })
+    <!-- //  LGECOMVIO-114 베스트샵 배송조회  -->
 </body>
 </html>

@@ -7,9 +7,8 @@ var isApp = function(){
 *  @path : 랜딩할 경로
 */
 var goAppUrl = function(path) {
-    var weblink = path ? path : location.href;
+    var weblink = path ? path : location.href;    
     location.href =  'https://lgeapp.page.link/?link='+weblink+'&apn=kr.co.lge.android&isi=1561079401&ibi=kr.co.lge.ios'; // 앱실행 
-    
 }
 
 // 메인 성능 개선 - jquery passive event 적용
@@ -2543,17 +2542,9 @@ var goAppUrl = function(path) {
                 }
                 return true;
             }else{
-                //return false;
                 if(modelId && vcui.detect.isMobile) {
-                    var iosScheme = "lgeapp://goto?type=AR&product=" + modelId;
-                    var androidScheme = "Intent://goto?type=AR&product=" + modelId;
-                    if(location.hostname == "www.lge.co.kr") {
-                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android;end";
-                    } else {
-                        androidScheme += "#Intent;scheme=lgeapp;package=kr.co.lge.android.stg;end";
-                    }
-                    //var androidScheme = "Intent://goto?type=AR&product=" + modelId + "#Intent;scheme=lgeapp;package=kr.co.lge.android;end"
-                    lgkorUI.isAPPInstall(iosScheme, androidScheme);
+                    var url =  lgkorUI.parseUrl(location.href);
+                    goAppUrl(url.origin+url.pathname+((url.search) ?  '?'+url.search+'&openAR='+modelId : '?openAR='+modelId ));
                     return true;
                 } else {
                     return false;
@@ -2794,6 +2785,25 @@ var goAppUrl = function(path) {
                     document.documentElement.appendChild(iframe);
                     iframe.parentNode.removeChild(iframe);
                     iframe = null;
+            }
+        },
+        // BTOCSITE-11928 챗봇 pincode 파라미터 연결 수정
+        getChatPinCode: function(el) {
+            if(el.length > 0) {
+                lgkorUI.requestAjaxData('/support/getPinCode.lgajax', null, function(result) {
+                    var pinCode = null;
+                    var data = result.data;
+                    if(data) {
+                        var receveResult = data.result;
+                        if(receveResult && receveResult.code) {
+                            pinCode = receveResult.code;
+                        }
+                    }
+
+                    var url = lgkorUI.parseUrl(el.attr('href')),
+                        params = $.extend(url.searchParams.getAll(),{'channel': isApp() ? "lg_app" : "lg_homepage", 'code' :  pinCode || ''});
+                        el.attr('href',vcui.uri.addParam(url.origin+url.pathname,params));
+                },"GET", "json", true, null, true);
             }
         }
     }
