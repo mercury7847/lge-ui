@@ -67,6 +67,12 @@
                 self.$contents = $("div.lnb-contents");
 
                 self.$tab = self.$contents.find("div.ui_tab");
+
+                self.$couponList = self.$contents.find(".tab-contents:eq(0)").find("div.coupon-lists ul");
+                self.$couponMore = self.$contents.find(".tab-contents:eq(0)").find("button.btn-moreview");
+                self.$couponMore.data("on-coupon-page", 0);
+                self.$couponMore.data("end-coupon-page", 0);
+
                 self.$tabCouponOn = self.$contents.find("#tab-coupon-on");
                 self.$tabCouponEnd = self.$contents.find("#tab-coupon-end");
 
@@ -103,12 +109,19 @@
                 });
 
                 self.$contents.find("button.btn-moreview").on("click", function (e) {
-                    var tabIndex = $(this).data("tabIndex");
-                    var page = $(this).data("page");
+                    var page;
+                    var selOptIdx = self.$contents.find(".ui_selectbox").find("option:selected").index();
 
-                    $(this).data("page", page + 1);
-
-                    self.addCouponList(tabIndex, page + 1);
+                    if (selOptIdx === 0) {
+                        //사용가능 쿠폰
+                        page = $(this).data("on-coupon-page");
+                        $(this).data("on-coupon-page", page + 1);
+                    } else {
+                        //종료된 쿠폰
+                        page = $(this).data("end-coupon-page");
+                        $(this).data("end-coupon-page", page + 1);
+                    }
+                    self.addCouponList(selOptIdx, page + 1);
                 });
 
                 self.$couponPopup.on("click", "div.btn-group button", function (e) {
@@ -117,6 +130,27 @@
                         location.href = url;
                     }
                 });
+
+                self.$contents
+                    .find(".ui_selectbox")
+                    .vcSelectbox()
+                    .on("change", function () {
+                        //li 목록 삭제
+                        self.$couponList.find("li").remove();
+
+                        //li 목록 추가
+                        var page;
+                        var selOptIdx = $(this).find("option:selected").index();
+                        if (selOptIdx === 0) {
+                            page = self.$couponMore.data("on-coupon-page");
+                        } else {
+                            page = self.$couponMore.data("end-coupon-page");
+                        }
+
+                        for (var i = 0; i <= page; i++) {
+                            self.addCouponList(selOptIdx, i);
+                        }
+                    });
             },
 
             requestCouponData: function () {
@@ -133,7 +167,6 @@
                     self.$couponEndMore.hide();
 
                     self.setCouponList(0);
-                    self.setCouponList(1);
 
                     lgkorUI.hideLoading();
                 });
@@ -175,8 +208,9 @@
             addCouponList: function (idx, page) {
                 var self = this;
 
-                var targetList = idx ? self.$couponEndList : self.$couponOnList;
-                var moreButton = idx ? self.$couponEndMore : self.$couponOnMore;
+                var targetList = self.$couponList;
+                var moreButton = self.$couponMore;
+
                 var listbottom = targetList.offset().top + targetList.height();
                 var totalList = self.listData[idx].length;
                 var start = page * self.visibleCount;
