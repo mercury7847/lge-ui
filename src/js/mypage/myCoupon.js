@@ -72,6 +72,7 @@
                 self.$couponMore = self.$contents.find(".tab-contents:eq(0)").find("button.btn-moreview");
                 self.$couponMore.data("on-coupon-page", 0);
                 self.$couponMore.data("end-coupon-page", 0);
+                self.$couponNoData = self.$contents.find(".tab-contents:eq(0)").find("div.no-data");
 
                 self.$tabCouponOn = self.$contents.find("#tab-coupon-on");
                 self.$tabCouponEnd = self.$contents.find("#tab-coupon-end");
@@ -147,8 +148,12 @@
                             page = self.$couponMore.data("end-coupon-page");
                         }
 
-                        for (var i = 0; i <= page; i++) {
-                            self.addCouponList(selOptIdx, i);
+                        self.setCouponList(selOptIdx);
+
+                        if (page > 0) {
+                            for (var i = 1; i <= page; i++) {
+                                self.addCouponList(selOptIdx, i);
+                            }
                         }
                     });
             },
@@ -174,15 +179,8 @@
 
             setCouponList: function (idx) {
                 var self = this;
-
-                var targetList, noData;
-                if (idx) {
-                    targetList = self.$couponEndList;
-                    noData = self.$couponEndNoData;
-                } else {
-                    targetList = self.$couponOnList;
-                    noData = self.$couponOnNoData;
-                }
+                var targetList = self.$couponList;
+                var noData = self.$couponNoData;
 
                 targetList.empty();
                 var count = self.listData[idx].length;
@@ -199,6 +197,7 @@
                 } else {
                     noData.show();
                     targetList.hide();
+                    self.$couponMore.hide();
                     self.$tab.find("ul li").eq(idx).find(".count").text("");
 
                     if (idx) self.$tabCouponEnd.find(".coupon-end-txt").hide();
