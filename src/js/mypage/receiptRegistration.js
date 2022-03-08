@@ -20,9 +20,20 @@
                 self.$categorySelect = self.$formWrap.find('#categorySelect');
                 self.$areaSelect = self.$formWrap.find('#areaSelect');
                 self.$branchSelect = self.$formWrap.find('#branchSelect');
-                self.$inputReceipt = self.$formWrap.find('#inputReceipt');
+                // s : BTOCSITE-12307
+                self.$barcodWrap = $('.borcode-wrap');
+                self.$inputReceipt = self.$barcodWrap.find('#inputReceipt');
                 self.$inputReceipt.attr("autocomplete","off");
-                self.$inquiryButton = self.$formWrap.find('#inquiryButton');
+                self.$inquiryButton = self.$barcodWrap.find('#inquiryButton');
+                self.$barcodeButton = self.$barcodWrap.find('.btn-barcode');
+                self.$appInstallPopup = $('#appInstallGuidePopup');
+                if(isApp()) {
+                    self.$barcodWrap.find('.app').show();
+                }else {
+                    self.$barcodWrap.find('.web').show();
+                    self.$barcodWrap.find('#receiptCodeInputWrap').show();
+                }
+                // e : BTOCSITE-12307
 
                 var register = {
                     accountFlag:{
@@ -45,7 +56,15 @@
                         pattern: /^[0-9]+$/,
                         errorMsg: "영수증번호를 입력해주세요.",
                         // BTOCSITE-5938-359
-                        msgTarget: '.err-block:eq(1)'
+                        msgTarget: '.err-block:eq(1)',
+                        // BTOCSITE-12307
+                        validate: function(value) {
+                            var len = $('#categorySelect').val() == 'emart'?16:22;
+                            if(value.length < len || value.length > len) {
+                                this.errorMsg = "영수증번호를 확인해주세요.";
+                                return false;
+                            } 
+                        }
                     }
                 };
                 vcui.require(['ui/validation'], function () {
@@ -164,6 +183,29 @@
                                 self.$inputReceipt.blur();
                                 lgkorUI.alert("", {title: item.errmsg});
                             }
+                        }
+                    }
+                })
+                self.$barcodeButton.on('click', function(e) {
+                    e.preventDefault();
+                    if (isApp()) {
+                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                            var obj = new Object();
+                            obj.command = "scanReceiptBarCode";
+                            obj.callback ="receiptCodeDirectReturn";
+                            var jsonString= JSON.stringify(obj);
+                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                        } else {
+                            void android.openBarcodeScannerForReceipt("receiptCodeDirectReturn");
+                        }
+                    } else {
+                        if(vcui.detect.isMobileDevice){
+                            var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인', ok: function() { return goAppUrl()}}
+                            var desc = 'LGE.COM APP을 통해 이용 가능합니다.<br>APP을 실행하시겠습니까?';
+    
+                            lgkorUI.confirm(desc, obj);
+                        } else {
+                            self.$appInstallPopup.vcModal({opener:$(this)});
                         }
                     }
                 })

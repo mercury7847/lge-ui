@@ -28,18 +28,20 @@
                         '<span class="blind">모델명</span>{{#raw modelName}}' +
                     '</a>'+
                     '</div>' +
-                    '{{#if factoryModel && enModelName !== factoryModel }}' + 
+                    '{{#if factoryModel && (enModelName !== factoryModel || modelCode !== factoryModel) }}' + 
                         '<div class="e-name">' +
                             '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}>'+
-                                '<span class="blind">영문모델명</span>{{enModelName}} [{{factoryModel}}]'+
+                                '<span class="blind">영문모델명</span>{{enModelName}} {{#if enModelName !== factoryModel }}[{{factoryModel}}]{{/if}}'+
                             '</a>'+
-                            '<div class="tooltip-wrap">'+
-                            '    <button class="tooltip-icon ui_tooltip-target" >자세히 보기</button>'+
-                            '    <div class="tooltip-box">'+
-                            '        <p>{{#raw myProductModelGuide}}</p>'+
-                            '        <button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
-                            '    </div>'+
-                            '</div>'+
+                            '{{#if enModelName !== factoryModel }}'+
+                                '<div class="tooltip-wrap">'+
+                                '    <button class="tooltip-icon ui_tooltip-target" >자세히 보기</button>'+
+                                '    <div class="tooltip-box">'+
+                                '        <p>{{#raw myProductModelGuide}}</p>'+
+                                '        <button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
+                                '    </div>'+
+                                '</div>'+
+                            '{{/if}}'+
                         '</div>' +
                     '{{#else}}' + 
                         '<div class="e-name">'+
@@ -559,7 +561,7 @@
                     $('body').vcLazyLoaderSwitch('reload',self.$packageModal);
                 } else {
                     self.$downloadPopup.data('modelId', data.modelId);
-                    self.$downloadPopup.attr('modelCode', data.modelCode);
+                    self.$downloadPopup.data('modelCode', data.modelCode);
                     self.$downloadSearch.val("");
                     self.$downloadSearch.data('search',null);
                     self.requestDownloadData({"page":1}, true, true);
@@ -842,6 +844,17 @@
                                     'customEventAction': '보유제품 등록 완료',				
                                     'customEventLabel': param.sku
                                 });	
+
+                                // BTOCSITE-12917 [버즈빌] 광고스크립트 추가 요청 (보유제품 등록)
+                                (function (img) { img.onload = function () {
+                                    var length = localStorage.BuzzAd.length;
+                                    if(localStorage.BuzzAd.indexOf('10023_71ffbffd-ccf1-4edf-9c4c') != -1){
+                                    alert("[연동 완료] 자바스크립트 연동을 완료하셨습니다! 연동이 완료되었음을 버즈빌 광고 담당자에게 알려주세요.");
+                                    };
+                                    //*필요시 여기서 리다이렉트 수행*
+                                };
+                                if (localStorage.BuzzAd == null) { localStorage.BuzzAd = ""; }
+                                img.src = "//track.buzzvil.com/action/pb/cpa/default/pixel.gif" + localStorage.BuzzAd; }) (new Image())
                                 
                                 // BTOCSITE-9426 LGE.COM 2022년 1월 이벤트 개발의 건
                                 gtag('event', 'conversion',{'send_to': 'AW-362582935/fK-XCM6O6IgDEJen8qwB'});
@@ -862,9 +875,6 @@
                                 self.hideLoading(true);
                             });
                         }
-
-
-
 
                         //BTOCSITE-4086 등록 > 제품 정보 정상일 경우, 팝업 닫히며, 해당 제품 정상 반영 후 제품목록 탭으로 이동됨.
                         self.$myProductTab.trigger('click');
@@ -1375,7 +1385,7 @@
 
         requsetOSData:function(param) {
             var self = this;
-            var ajaxUrl = self.$downloadPopup.attr('data-os-url');
+            var ajaxUrl = self.$downloadPopup.data('osUrl');
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                 var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
                 var selectedIndex = 0;
@@ -1404,7 +1414,7 @@
             var self = this;
 
             if(!self.osList) {
-                var ajaxUrl = self.$downloadPopup.attr('data-os-url');
+                var ajaxUrl = self.$downloadPopup.data('osUrl');
                 self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
@@ -1432,11 +1442,11 @@
                     self.$downloadSearch.val(param.search);
                 }
 
-                var _id = self.$downloadPopup.attr('data-model-id');
+                var _id = self.$downloadPopup.data('modelId');
                 if(_id) {
                     param.id = _id;
                 }
-                var sku = self.$downloadPopup.attr('data-model-code');
+                var sku = self.$downloadPopup.data('modelCode');
                 if(sku) {
                     param.sku = sku;
                 }
@@ -1444,7 +1454,7 @@
                 //OS 또 갱신
                 self.requsetOSData(param);
 
-                var ajaxUrl = self.$downloadPopup.attr('data-list-url');
+                var ajaxUrl = self.$downloadPopup.data('listUrl');
 
                 self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {

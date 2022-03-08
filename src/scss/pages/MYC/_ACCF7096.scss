@@ -198,19 +198,46 @@
       }
   }
 }
-.coupon-tabs {margin-top:-8px;
+.coupon-tabs {margin-top:-10px;
   .tabs-wrap {
-    &.btn-type + .bar-type{
-      margin-top:12px;
-      .tabs > li.on a{
+    &.btn-type {
+      .tabs > li{
+        &:nth-child(n+2) {margin-left:24px}
+        > a {
+          padding:8px 0 5px;
+          font-weight:$font-weight-medium;
+        }
+      }
+    }
+    &.btn-type + .bar-type {margin-top:12px;
+      .tabs > li.on a {
         text-decoration:underline;
         text-underline-position:under;
       }
     }
+    @include mobile {margin:0 -16px;
+      &.btn-type {
+        .tabs > li {
+          &:nth-child(n+2) {margin-left:20px}
+           > a{
+            font-size:15px;
+          }
+        }
+      }
+      &.btn-type + .bar-type {
+        .tabs > li a {
+          font-size:$font-small;
+        }
+      }
+    }
   }
-  ~ .tab-contents {margin-top:43px;
+  ~ .tab-contents {
+    margin-top:44px;
     .list-sorting + .coupon-list-wrap{
       margin-top:10px;
+    }
+    @include mobile {
+      margin-top:18px;
     }
   }
 }
@@ -294,6 +321,74 @@
           font-size:$font-x-small;
           line-height:18px;
         }
+      }
+    }
+  }
+}
+//쿠폰(점검및오류)
+.coupon-error-cont {
+  padding:80px 0;
+  text-align:center;
+  br.m-br {
+    display:none;
+  }
+  @include mobile {
+    padding:22px 14px;
+    br.m-br {
+      display:block;
+    }
+  }
+  .tit {
+    font-weight:$font-weight-bold;
+    font-size:40px;
+    line-height:56px;
+    @include mobile {
+      font-size:27px;
+      line-height:38px;
+    }
+    small {
+      display:block;
+      margin-top:13px;
+      font-weight:$font-weight-bold;
+      @include font-large;
+      @include mobile {
+        margin-top:9px;
+      }
+    }
+  }
+  .desc {
+    margin-top:40px;
+    @include font-large;
+    span {
+      display:inline-block;
+      vertical-align:top;
+    }
+    @include mobile {
+      margin-top:24px;
+    }
+  }
+  dl {
+    display:block;
+    margin-top:22px;
+    @include mobile {
+      margin-top:18px;
+    }
+    dt {
+      display:inline-block;
+      font-weight:$font-weight-bold;
+      @include font-large;
+      vertical-align:top;
+    }
+    dd {
+      display:inline-block;
+      margin-left:9px;
+      color:#DA0F47;
+      font-weight:$font-weight-bold;
+      @include font-large;
+      @include mobile {
+        display:block;
+        margin-top:4px;
+        margin-left:2px;
       }
     }
   }

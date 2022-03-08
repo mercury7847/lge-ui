@@ -87,7 +87,21 @@
 
                 //스펙 비교하기 버튼
                 self.$compareModelIds = "";
+                //BTOCSITE-12856 start
+                if(self.$tabList.length == 0){
+                	console.log(self.$tabList.length);
+                	 var $compareId = [];
+                     var careType ='C';
+                     $compareId.push(dataList.productInfo.modelId+'|'+careType); //스펙비교하기에 모델명 추가
+                     $.each( dataList.compareList,function(idx,item){
+                         $compareId.push(item.modelId+'|'+careType); //스펙비교하기에 모델명 추가
+                     });
 
+                     //스펙비교하기 버튼에 모델명 교체
+                     self.$compareModelIds = $compareId.join(","); 
+                     self.$section.find(".bottom-area button").attr('data-model-ids', self.$compareModelIds);
+                }
+                //BTOCSITE-12856 END
             },
             setPath: function(){
                 var self = this;
@@ -149,7 +163,7 @@
                 now.tabName = tabType;
                 
                 var careType = '';
-                if(tabType=='careTab'){
+                if(tabType=='rentalTab'){
                 	careType ='R'
                 }else{
                 	careType ='C'
@@ -164,8 +178,7 @@
                 });
 
                 //스펙비교하기 버튼에 모델명 교체
-                self.$compareModelIds = $compareId.join(",");
-                //BTOCSITE-12856 END
+                self.$compareModelIds = $compareId.join(","); // BTOCSITE-5938-567 데이터 구분자 변경
                 self.$section.find(".bottom-area button").attr('data-model-ids', self.$compareModelIds);
             }
         }

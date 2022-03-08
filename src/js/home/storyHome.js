@@ -21,7 +21,7 @@
         '</div>';
 
     //BTOCSITE-7260 뷰저블 셀렉터 id 추가
-    var storyListTemplate = 
+    var storyListTemplate =
         '<div class="flexbox" data-contents-type="{{contentsType}}">'+
             //'<div class="box-wrap">'+
                 '<div class="box {{contentsType}}">'+
@@ -157,7 +157,7 @@
                 if(breakpoint.name == 'mobile'){ 
                     $context.find('.story-review').find('.indi-wrap').show();
                     $context.find('.story-review').vcCarousel({
-                        // variableWidth: true,
+                        // BTOCSITE-6881
                         slidesToShow: 2.16,
                         slidesToScroll: 1,
                         speed: 150,
@@ -166,7 +166,7 @@
                         centerMode:false,
                         centerPadding:0,
                         infinite:false,
-
+                        // BTOCSITE-6881
                     });
                 }else if(breakpoint.name == 'pc'){   
                     $context.find('.story-review').find('.indi-wrap').hide();
@@ -177,21 +177,23 @@
             bindEvent();
 
             var moveScrollTop = 0;
-            if(window.sessionStorage){    
-                var storyUserHeight = sessionStorage.getItem('storyUserHeight');
-                var storyNewHeight = sessionStorage.getItem('storyNewHeight');
+            // s : BTOCSITE-9974
+            if(window.sessionStorage){
+                // var storyUserHeight = sessionStorage.getItem('storyUserHeight');
+                // var storyNewHeight = sessionStorage.getItem('storyNewHeight');
                 var storyHomeScrollTop = sessionStorage.getItem('storyHomeScrollTop');
-                if(storyUserHeight){
+                /* if(storyUserHeight){
                     $context.find('.user_story > .inner > .flexbox-wrap').height(storyUserHeight);
                 }
                 if(storyNewHeight){
                     $context.find('.new_story > .inner > .flexbox-wrap').height(storyNewHeight);
-                }
+                } */
 
                 if(storyHomeScrollTop) {
                     moveScrollTop = storyHomeScrollTop;        
                 }
             }
+            // e : BTOCSITE-9974
 
             loadStoryList('new_story', 1, 'NewStory');
 
@@ -209,8 +211,6 @@
                 }, 10);
             } 
         });
-
-        
     }
 
     var userHeight = 0;
@@ -227,17 +227,16 @@
 
             var section = $(this).closest('.story-section');
             var page = section.data("page");
+            var selectTags = section.find('.subscribe-wrap').is(":visible") ? {
+                mode: 'search',
+                tagCode: section.find('.subscribe-wrap .subscription-btn').data().code,
+                tagName: section.find('.subscribe-wrap .subscription-btn').data().name
+            }:undefined; // BTOCSITE-9974
 
             if(section.hasClass('user_story')){
-                if(page == 1){
-                    userHeight = $context.find('#content').find('.user_story > .inner > .flexbox-wrap').height();
-                }
-                loadStoryList('user_story', page+1, "UserStory");
+                loadStoryList('user_story', page+1, "UserStory", selectTags); // BTOCSITE-9974
             } else{
-                if(page == 1){
-                    newsHeight = $context.find('#content').find('.new_story > .inner > .flexbox-wrap').height();
-                }
-                loadStoryList('new_story', page+1, 'NewStory');
+                loadStoryList('new_story', page+1, 'NewStory', selectTags); // BTOCSITE-9974
             }
         }).on('click', '.subscribe-wrap button.btn-close', function(e){
             e.preventDefault();
@@ -319,8 +318,6 @@
                 }
             }
         });
-
-        
     }
 
     function setTagMngChecked(){
@@ -459,12 +456,18 @@
         //20210924 BTOCSITE-5933 메인홈 Request 수정 요청
         if(STORY_LIST_URL){
             lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
-
                 if(result.data.loginUrl){
                     location.href = result.data.loginUrl;
-
                     return;
                 }
+                
+                // s : BTOCSITE-9974
+                if(sendata.selectTags !== '' && (sendata.selectTags.mode == 'add' || sendata.selectTags.mode == 'remove') ) {
+                    loadStoryList('user_story', 1, 'UserStory');
+                    loadStoryList('new_story', 1, 'NewStory');
+                    return;
+                }
+                // e : BTOCSITE-9974
 
                 var sectionItem = $('.' + sectioname)
                 var page = parseInt(result.param.pagination.page);
@@ -489,7 +492,7 @@
                     sectionItem.find('.inner h2.title').hide();
 
                     var stickyTag = vcui.template(stickyTagTemplate, result.data.selectTags);
-                    sectionItem.prepend(stickyTag);
+                    if(page == 1) sectionItem.prepend(stickyTag);
 
                     // sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
                     $context.find('.user_story').find('.story-title-area').hide();
@@ -618,66 +621,21 @@
     }
 
     function setRepositionTagBox(item){
-        var maxBottom = 0;
+        // s : BTOCSITE-9974
         var status = getAlignStatusValues(item);
+        var boxwidth = status.boxwidth;
+        // var boxheight = (window.innerWidth < 480) ? boxwidth * 1.25 + 50 : boxwidth * 1.6544;
+        var boxmargin = (window.innerWidth < 768)?8:24;
 
-        var raw = 0;
-        var col = 0;
-        var boxmap = [];
-        for(var i=0;i<status.rawnum;i++) boxmap.push([]);
-
-        /* BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
-        item.find('.flexbox').each(function(idx, box){
-            var boxtop = 0, raw = idx, lastbox, leng, lasty, boxheight, contype, txtheight, titleheight, tagheight, overflow;
-            var boxheight = $('.flexbox').height();
-            var boxwidth = $('.flexbox').width();
-            if(idx >= status.rawnum){
-                boxtop = 1000000000;
-                for(i=0;i<status.rawnum;i++){
-                    leng = boxmap[i].length;
-                    lastbox = boxmap[i][leng-1];
-
-                    contype = lastbox.data('contentsType');
-
-                    if(window.innerWidth < 480){
-                        //boxheight = boxwidth * 1.25 + 50;
-                        //BTOCSITE-9038
-                        boxheight = boxwidth * 1.7969;
-                    }else{
-                        //boxheight = boxwidth * 1.25;
-                         //BTOCSITE-9038
-                         boxheight = boxwidth * 1.6544;
-                    }
-
-                    lasty = lastbox.position().top + boxheight + status.distance;
-                    if(lasty < boxtop - 40){
-                        raw = i;
-                        col = leng-1;
-                        boxtop = lasty;
-                    }
-                }
-            }
-
-            overflow = "auto";
-            contype = $(box).data('contentsType');
-           
-            var boxleft = raw * (status.boxwidth + status.distance);
-            $(box).css({
-                position:'absolute',
-                width: status.boxwidth,
+        item.find('.flexbox').not('.tag-area').each(function(i) {
+            $(this).css({
+                width: boxwidth,
                 // height: boxheight,
-                left: boxleft,
-                top: boxtop
-            });
-            boxmap[raw][col] = $(box);
-
-            var bottom = $(box).position().top + boxheight;
-            maxBottom = Math.max(maxBottom, bottom);
-            $('.new_story .flexbox, .user_story .flexbox').css('height', boxheight);
-        });
-        /* //BTOCSITE-8513 스토리 리사이징시 UI 찌그러짐 현상 개선 */
-
-        item.find('.flexbox-wrap').height(maxBottom);
+                marginLeft: (i%status.rawnum==0)? 0:boxmargin+'px',
+                marginTop: (i<status.rawnum)? 0:boxmargin+'px',
+            })
+        })
+        // e : BTOCSITE-9974
     }
     
     function getAlignStatusValues(item){
@@ -693,13 +651,13 @@
             distance = 8;
             distances = distance * (rawnum-1);
             boxwidth = parseInt((wrapwidth-distances)/rawnum);
+
         }else{
             while(boxwidth < 310){
                 rawnum--;
                 distances = distance * (rawnum-1);
                 boxwidth = parseInt((wrapwidth-distances)/rawnum);
             }
-
             if(rawnum < 1){
                 rawnum = 1;
                 boxwidth = wrapwidth;

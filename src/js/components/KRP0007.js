@@ -250,6 +250,20 @@
                 self.setting();
                 self.bindEvents();
 
+                // AR 체험하기 APP 호출시 실행
+                var modelId = lgkorUI.getParameterByName('openAR');
+                if( isApp() && modelId) {
+                    if(location.host !== "wwwdev50.lge.co.kr"){
+                        lgkorUI.openAR(modelId);
+
+                        var url = lgkorUI.parseUrl(location.href);
+                        var params = url.searchParams.getAll();
+                        delete params.openAR;
+                            params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
+                        window.history.replaceState('', '', url.pathname + params)
+                    }
+                }
+
                 //더보기 버튼 체크
                 self.setPageData(lgkorUI.getHiddenInputData());
 
@@ -579,9 +593,9 @@
                     }
                 });
 
-                $(window).on('appNotInstall', function(e){
-                    $('#arPlayPop').vcModal();
-                });
+                // $(window).on('appNotInstall', function(e){
+                //     $('#arPlayPop').vcModal();
+                // });
 
                 //모바일 카테고리 풀다운메뉴
                 self.$cateFulldown.on('click', function(e){
