@@ -1,5 +1,5 @@
-
-(function(){
+(function () {
+    // prettier-ignore
     var couponItemTemplate = '<li class="lists" data-json="{{jsonString}}">' +
         '<a href="#n" class="coupon-box{{#if type}} {{type}}{{/if}}{{#if end}} disabled{{/if}}" title="쿠폰 자세히 보기">' +
             '<div class="coupon-cont">' +
@@ -18,6 +18,7 @@
         '</a>' +
     '</li>'
 
+    // prettier-ignore
     var couponPopupTemplate = '<header class="pop-header">' +
             '<h1 class="tit" id="modal_6_title"><span>{{title}}</span></h1>' +
         '</header>' +
@@ -46,9 +47,9 @@
         '</footer>' +
     '<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>'
 
-    $(window).ready(function() {
+    $(window).ready(function () {
         var coupon = {
-            init: function(){
+            init: function () {
                 var self = this;
                 self.setting();
                 self.bindEvents();
@@ -56,75 +57,109 @@
                 self.requestCouponData();
             },
 
-            setting: function() {
+            setting: function () {
                 var self = this;
 
                 self.listData = [];
 
                 self.visibleCount = 12;
 
-                self.$contents = $('div.lnb-contents');
+                self.$contents = $("div.lnb-contents");
 
-                self.$tab = self.$contents.find('div.ui_tab');
-                self.$tabCouponOn = self.$contents.find('#tab-coupon-on');
-                self.$tabCouponEnd = self.$contents.find('#tab-coupon-end');
+                self.$tab = self.$contents.find("div.ui_tab");
 
-                self.$couponOnList = self.$tabCouponOn.find('div.coupon-lists ul');
-                self.$couponEndList = self.$tabCouponEnd.find('div.coupon-lists ul');
+                self.$couponList = self.$contents.find(".tab-contents:eq(0)").find("div.coupon-lists ul");
+                self.$couponMore = self.$contents.find(".tab-contents:eq(0)").find("button.btn-moreview");
+                self.$couponMore.data("on-coupon-page", 0);
+                self.$couponMore.data("end-coupon-page", 0);
 
-                self.$couponOnMore = self.$tabCouponOn.find('button.btn-moreview');
+                self.$tabCouponOn = self.$contents.find("#tab-coupon-on");
+                self.$tabCouponEnd = self.$contents.find("#tab-coupon-end");
+
+                self.$couponOnList = self.$tabCouponOn.find("div.coupon-lists ul");
+                self.$couponEndList = self.$tabCouponEnd.find("div.coupon-lists ul");
+
+                self.$couponOnMore = self.$tabCouponOn.find("button.btn-moreview");
                 self.$couponOnMore.data("page", 0);
                 self.$couponOnMore.data("tabIndex", 0);
 
-                self.$couponEndMore = self.$tabCouponEnd.find('button.btn-moreview');
+                self.$couponEndMore = self.$tabCouponEnd.find("button.btn-moreview");
                 self.$couponEndMore.data("page", 0);
                 self.$couponEndMore.data("tabIndex", 1);
 
                 self.$couponOnMore.hide();
                 self.$couponEndMore.hide();
 
-                self.$couponOnNoData = self.$tabCouponOn.find('div.no-data');
+                self.$couponOnNoData = self.$tabCouponOn.find("div.no-data");
 
-                self.$couponEndNoData = self.$tabCouponEnd.find('div.no-data');
+                self.$couponEndNoData = self.$tabCouponEnd.find("div.no-data");
 
-                self.$couponPopup = $('#couponPopup');
+                self.$couponPopup = $("#couponPopup");
             },
 
-            bindEvents: function() {
+            bindEvents: function () {
                 var self = this;
 
-                self.$contents.find('div.coupon-lists').on('click','li a', function(e){
+                self.$contents.find("div.coupon-lists").on("click", "li a", function (e) {
                     e.preventDefault();
                     var $li = $(this).parent();
-                    var obj = JSON.parse($li.attr('data-json'));
+                    var obj = JSON.parse($li.attr("data-json"));
                     self.$couponPopup.html(vcui.template(couponPopupTemplate, obj));
-                    self.$couponPopup.vcModal({opener:$(this)});
+                    self.$couponPopup.vcModal({ opener: $(this) });
                 });
 
-                self.$contents.find('button.btn-moreview').on('click',function(e){
-                    var tabIndex = $(this).data("tabIndex");
-                    var page = $(this).data("page");
+                self.$contents.find("button.btn-moreview").on("click", function (e) {
+                    var page;
+                    var selOptIdx = self.$contents.find(".ui_selectbox").find("option:selected").index();
 
-                    $(this).data('page', page+1);
-
-                    self.addCouponList(tabIndex, page+1);
+                    if (selOptIdx === 0) {
+                        //사용가능 쿠폰
+                        page = $(this).data("on-coupon-page");
+                        $(this).data("on-coupon-page", page + 1);
+                    } else {
+                        //종료된 쿠폰
+                        page = $(this).data("end-coupon-page");
+                        $(this).data("end-coupon-page", page + 1);
+                    }
+                    self.addCouponList(selOptIdx, page + 1);
                 });
 
-                self.$couponPopup.on('click','div.btn-group button', function(e){
+                self.$couponPopup.on("click", "div.btn-group button", function (e) {
                     var url = $(this).attr("data-coupon-url");
-                    if(!(!url)) {
+                    if (!!url) {
                         location.href = url;
                     }
                 });
+
+                self.$contents
+                    .find(".ui_selectbox")
+                    .vcSelectbox()
+                    .on("change", function () {
+                        //li 목록 삭제
+                        self.$couponList.find("li").remove();
+
+                        //li 목록 추가
+                        var page;
+                        var selOptIdx = $(this).find("option:selected").index();
+                        if (selOptIdx === 0) {
+                            page = self.$couponMore.data("on-coupon-page");
+                        } else {
+                            page = self.$couponMore.data("end-coupon-page");
+                        }
+
+                        for (var i = 0; i <= page; i++) {
+                            self.addCouponList(selOptIdx, i);
+                        }
+                    });
             },
 
-            requestCouponData: function() {
-                var self = this;    
+            requestCouponData: function () {
+                var self = this;
 
-                lgkorUI.showLoading();            
+                lgkorUI.showLoading();
 
-                var ajaxUrl = self.$contents.attr('data-coupon-list-url');
-                lgkorUI.requestAjaxData(ajaxUrl, {}, function(result) {
+                var ajaxUrl = self.$contents.attr("data-coupon-list-url");
+                lgkorUI.requestAjaxData(ajaxUrl, {}, function (result) {
                     self.listData.push(result.data.onListData);
                     self.listData.push(result.data.endListData);
 
@@ -132,67 +167,71 @@
                     self.$couponEndMore.hide();
 
                     self.setCouponList(0);
-                    self.setCouponList(1);
 
                     lgkorUI.hideLoading();
                 });
             },
 
-            setCouponList: function(idx){
+            setCouponList: function (idx) {
                 var self = this;
 
                 var targetList, noData;
-                if(idx){
+                if (idx) {
                     targetList = self.$couponEndList;
                     noData = self.$couponEndNoData;
-                } else{
+                } else {
                     targetList = self.$couponOnList;
                     noData = self.$couponOnNoData;
                 }
 
                 targetList.empty();
                 var count = self.listData[idx].length;
-                if(count > 0){
+                if (count > 0) {
                     noData.hide();
                     targetList.show();
-                    self.$tab.find('ul li').eq(idx).find('.count').text("(" + self.listData[idx].length + ")");
+                    self.$tab
+                        .find("ul li")
+                        .eq(idx)
+                        .find(".count")
+                        .text("(" + self.listData[idx].length + ")");
 
                     self.addCouponList(idx, 0);
-                } else{
+                } else {
                     noData.show();
                     targetList.hide();
-                    self.$tab.find('ul li').eq(idx).find('.count').text("");
+                    self.$tab.find("ul li").eq(idx).find(".count").text("");
 
-                    if(idx) self.$tabCouponEnd.find('.coupon-end-txt').hide();
+                    if (idx) self.$tabCouponEnd.find(".coupon-end-txt").hide();
                 }
             },
 
-            addCouponList: function(idx, page){
+            addCouponList: function (idx, page) {
                 var self = this;
 
-                var targetList = idx ? self.$couponEndList : self.$couponOnList;
-                var moreButton = idx ? self.$couponEndMore : self.$couponOnMore;
+                var targetList = self.$couponList;
+                var moreButton = self.$couponMore;
+
                 var listbottom = targetList.offset().top + targetList.height();
                 var totalList = self.listData[idx].length;
-                var start = page*self.visibleCount;
+                var start = page * self.visibleCount;
                 var end = start + self.visibleCount;
-                if(end > totalList) end = totalList;
-                for(var i=start;i<end;i++){
+                if (end > totalList) end = totalList;
+                for (var i = start; i < end; i++) {
                     var item = self.listData[idx][i];
-                    item.startDate = !item.startDate ? null : vcui.date.format(item.startDate,'yyyy.MM.dd');
-                    item.endDate = !item.endDate ? null : vcui.date.format(item.endDate,'yyyy.MM.dd');
+                    item.startDate = !item.startDate ? null : vcui.date.format(item.startDate, "yyyy.MM.dd");
+                    item.endDate = !item.endDate ? null : vcui.date.format(item.endDate, "yyyy.MM.dd");
                     item.jsonString = JSON.stringify(item);
                     targetList.append(vcui.template(couponItemTemplate, item));
                 }
 
-                if(end >= totalList) moreButton.hide();
+                if (end >= totalList) moreButton.hide();
                 else moreButton.show();
 
-                if(page > 0){
-                    $('html, body').stop().animate({scrollTop:listbottom}, 420);
+                if (page > 0) {
+                    $("html, body").stop().animate({ scrollTop: listbottom }, 420);
                 }
-            }
-        }
+            },
+        };
 
         coupon.init();
     });
