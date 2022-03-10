@@ -115,6 +115,9 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
 
             // BTOCSITE-3312 add :: 출장예약페이지인지 확인
             self.isEngineerReservation = self.$el.hasClass('service-engineer');
+
+            // BTOCSITE-11168 제품문제 해결 - 모델명 선택 절차 제외 요청
+            self.isSolutions = self.$el.hasClass('solutions');
             
             // 스텝 영역
             self.$stepBox = self.$el.find('.step-box');
@@ -202,6 +205,12 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                         }
                     }
                 }
+            }
+
+
+            /* BTOCSITE-11168 제품문제 해결 - 모델명 선택 절차 제외 요청 - start */
+            if(self.isSolutions) {    
+                self.$keywordBox.hide();
             }
         },
         _bindEvent: function _bindEvent() {
@@ -441,6 +450,18 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
                 self.updateSummary({
                     product: [data.categoryName, data.subCategoryName]
                 });
+
+                
+                /* BTOCSITE-11168 제품문제 해결 - 모델명 선택 절차 제외 요청 - start */
+                if(self.isSolutions) {                    
+                    data.categoryNm = data.categoryName;
+                    data.subCategoryNm = data.subCategoryName;
+                    data.modelCode = '';
+                    data.productCode = '';
+
+                    self.complete(data);
+                }
+                /* //BTOCSITE-11168 - end */
                 
                 self.$keywordBox.hide();
 
