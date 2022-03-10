@@ -153,7 +153,7 @@
 			transform:translateY(-50%);
 			padding-right:22px;
 			font-weight:500;
-			@include font-small;
+			@include font-medium; // BTOCSITE-13220
 			color: $color-white;
 			&:after {
 				content:' ';
@@ -162,7 +162,7 @@
 				right:0;
 				width:16px;
 				height:16px;
-				background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 0;
+				background:url('/lg5-common/images/icons/btn-arr-16-white.svg') no-repeat 0 2px; // BTOCSITE-13220
 			}
 		}
 		@include mobile {
@@ -177,7 +177,7 @@
 				// margin-top:24px; // BTOCSITE-13220
 				font-size: 16px; // BTOCSITE-13220
 				transform:translateY(0);
-				text-decoration: underline;
+				// text-decoration: underline; // BTOCSITE-13220
 			}
 		}
 	}
