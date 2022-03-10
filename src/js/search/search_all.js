@@ -279,8 +279,7 @@ if ('scrollRestoration' in history) {
                     '</a>' +
                 '</div>' +
                 '<div class="result-detail"><div class="info-btm">' +
-                    '<span class="text">{{date}}</span>' +
-                    '{{#each item in hash}}<span class="text">{{item}}</span>{{/each}}' +
+                    '{{#each item in hash}}{{#if item.indexOf("조회수") === -1}}<span class="text">{{item}}</span>{{/if}}{{/each}}' +
                 '</div></div>' +
             '</div>' +
             '{{#if linkItem}}<div class="btn-area">' +
