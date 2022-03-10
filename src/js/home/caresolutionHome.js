@@ -10,43 +10,6 @@
     var detect = vcui.detect;
     var isMobileDevice = detect.isMobileDevice;    
 
-
-    var carePopupInit = 
-    '<article id="care-init-popup" class="popup-wrap small main-init-popup care-popup"  style="max-width:500px">' + 
-        '<header class="pop-header">' + 
-            '<h1 class="tit"><span>안내</span></h1>' + 
-        '</header>' + 
-        '<section class="pop-conts" style="text-align:center;">' + 
-            '<section class="section">' + 
-                '<div class="headline">' + 
-                    '<h3 class="h-tit-3">주주확정기준일설정공고</h3>' + 
-                '</div>' + 
-                '<div class="text-cont">' + 
-                    '상법 제354조 및 우리 회사 정관 제21조에<br> 의거하여, ' + 
-                    '다음과 같이 임시주주총회에서<br> 의결권을 행사할 주주 확정을 위한 ' + 
-                    '기준일을<br> 정하였으니 양지하여 주시기 바랍니다. ' + 
-                    '<br><br> - 다  음 - <br><br>' + 
-                    '■주주확정기준일: 2021년 12월 10일<br><br>' +
-                    '<p style="text-align:right;">2021년 11월 25일</p>' +
-                    '<p style="text-align:right;">LG전자 주식회사</p>' +
-                '</div>' + 
-                '<div class="btn-wrap">' + 
-                    '<a href="https://www.lge.co.kr/company/investor/announceView?anncmNo=18&page=1#com-tabs02" title="pdf 확인하기" class="btn full border size-m"><span>자세히 보기</span></a>' + 
-                '</div>' + 
-            '</section>' + 
-        '</section>' + 
-        '<div class="pop-footer check-type align-between">' + 
-            '<span class="chk-wrap" data-role="today-cookie-check">' + 
-                '<input type="checkbox" id="init-popup-check-today" name="init-popup-check-today">' + 
-                '<label for="init-popup-check-today">7일동안 보지 않기</label>' + 
-            '</span>' + 
-            '<button type="button" class="btn pink btn-main-pop-close size"><span>닫기</span></button>' + 
-        '</div>' + 
-        '<button type="button" class="btn-close btn-main-pop-close"><span class="blind">닫기</span></button>' + 
-    '</article>';
-
-
-
     var $context = isMobileDevice ? $('[data-hash="care-solutions"]') : $(document);
     var careCommon = {
         setting : function(){
@@ -235,8 +198,6 @@
 
             self.careHeroBanner();
 
-            self.carePopupInit();
-
         },
         bindEvent : function() {
             // 케어솔루션 혜택
@@ -284,37 +245,6 @@
                 slideCurrent.text(heroListAct);
                 slideCount.text(heroListLens - 2);
             }
-        },
-
-        carePopupInit : function(){
-            var enableUrl = [
-                '^/care-solutions$', // 케어솔루션 홈
-            ];
-    
-            var isPopUp = enableUrl.some(function(element) {
-                return location.pathname.match(new RegExp(element,"g"))
-            });
-    
-            $(function() {
-                var cookie_InitPopName = '__LG_CARE_POPUP_INIT';
-                if (vcui.Cookie.get(cookie_InitPopName) === '' && isPopUp ) {
-                    if($('#care-init-popup').size() === 0 && !!vcui.modal) {
-                        $('body').append(vcui.template(carePopupInit));
-                        $('#care-init-popup').vcModal('show');
-    
-                        $(document).on('click', '#care-init-popup .btn-main-pop-close', function (e) {
-                            var _expireChecked = $('#care-init-popup').find('.check-type input:checkbox').prop('checked');
-    
-                            if( _expireChecked ) {
-                                vcui.Cookie.set(cookie_InitPopName, 'hide', {"expires": 7, "path": '/'});
-                            }
-                            $('#care-init-popup').vcModal('hide');
-                            $('html, body').css('overflow', '');
-                            return;
-                        });
-                    }
-                }
-            });
         },
 
         init : function(){
