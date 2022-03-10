@@ -217,21 +217,9 @@
                 // BTOCSITE-5938-285 scroll-lock 클래스 추가 : 팝업 뛰울시 바닥페이지 스크롤 밀림 방지 class
                 $('body').removeClass('scroll-lock');
             }
-                
-                /*
-            console.log('close',self.ignoreOverflow,self.bodyOvewflow);
-            if(self.ignoreOverflow) {
-                if(self.bodyOvewflow) {
-                    $('html, body').css({
-                        overflow:self.bodyOvewflow
-                    });
-                } else {
-                    $('html, body').css({
-                        overflow:"visible"
-                    });
-                }
-            }
-            */
+
+            // 모니터링 592 : 검색 레이어 닫힐때 오류 수정
+            $("body").scrollTop(0);
         },
 
         //검색어창에 입력후 검색

@@ -139,13 +139,18 @@
                         cancelBtnName: "아니오",
                         okBtnName: "네",
                         ok: function(){
-                            // 모니터링 262 : 베스트샵 매장찾기 공유하기시 오류 대응
-                            if(lgkorUI.getParameterByName("share") === 'Y') {
+                           
+                            if( isApp() && vcui.detect.isIOS) {
+                                 // 모니터링 590 : 로그인 페이지 이동 오류 수정
+                                var jsonString = JSON.stringify({'command':'closeAllInAppBrowser', 'url': result.data.loginUrl});
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            }else if(lgkorUI.getParameterByName("share") === 'Y') {
+                                 // 모니터링 262 : 베스트샵 매장찾기 공유하기시 오류 대응
                                 location.href = vcui.uri.updateQueryParam(result.data.loginUrl, 'state',location.href);
                             } else {
                                 window.opener.location.href = result.data.loginUrl;
                             }
-                            
+
                             window.close();
                         }
                     });
