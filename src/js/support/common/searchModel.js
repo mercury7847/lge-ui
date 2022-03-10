@@ -894,7 +894,10 @@ vcui.define('support/common/searchModel.min', ['jquery', 'vcui'], function ($, c
             self.$modelFilter.find('#categorySelect').vcSelectbox('update');
             self.$modelFilter.find('#subCategorySelect').find('option:not(.default)').remove();
             self.$modelFilter.find('#subCategorySelect').vcSelectbox('update');
-            self.$keywordBox.show();
+            /* BTOCSITE-11168 제품문제 해결 - 모델명 선택 절차 제외 요청 - start */
+            if(!self.isSolutions) {   
+                self.$keywordBox.show();
+            }
             self.$keywordBox.find('.search-desc').hide();
             self.$selectedModelBar.vcSticky('destroy');
 
