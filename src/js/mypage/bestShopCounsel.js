@@ -55,7 +55,7 @@
         '</dl>' +
       '{{/if}}' +
         '<dl>' +
-            '<dt>상담매장</dt>' +
+            '<dt>{{_loc}}매장</dt>' +
             '<dd>{{request_orgcode_name}}<a href="#n" data-url="/support/store-finder-ST00005604" class="linkbtn store">매장상세정보이동</a></dd>' +
             '<dt>예약일시</dt>' +
             '<dd>{{_visitDate}}</dd>' +
@@ -72,8 +72,11 @@
   var linkHost =
     window.LGEAPPHostName === "localhost" ? "https://www.lge.co.kr" : "";
 
+  var SESSION_TAB_INDEX = "bestshop_counsel_tabindex";
+
   var module = {
     variable: {
+      store: null,
       tabActIndex: 0, // 탭 활성화 index
       tabLabelKeys: ["매장상담", "케어십", "소모품"], // 탭별 json 데이터 filter 를 위한
       listData: [], // json 데이터 담을 팝업
@@ -89,6 +92,8 @@
       $listContainer: null, // 리스트 컨테이너
       $moreBtn: null, // 더보기 버튼
       $noData: null, // 내역 없음 문구
+      $error: null, // 에러 문구
+      $notice: null, // 유의사항 항목
 
       $popCancelAlert: null, // 취소 불가 팝업
       $popCancelConfirm: null, // 취소 컨펌 팝업
@@ -100,6 +105,8 @@
       listContainer: ".cv_list",
       moreBtn: ".readmore > a",
       noData: ".no-data",
+      error: ".cv_error",
+      notice: ".cv_note",
 
       popCancelAlert: "#laypop2",
       popCancelConfirm: "#laypop1",
@@ -113,15 +120,20 @@
       this.el.$listContainer = container.find(this.selector.listContainer);
       this.el.$moreBtn = container.find(this.selector.moreBtn);
       this.el.$noData = container.find(this.selector.noData);
+      this.el.$error = container.find(this.selector.error);
+      this.el.$notice = container.find(this.selector.notice);
 
       this.el.$popCancelAlert = $(this.selector.popCancelAlert);
       this.el.$popCancelConfirm = $(this.selector.popCancelConfirm);
       this.el.$popCancelComplete = $(this.selector.popCancelComplete);
       this.el.$popProduct = $(this.selector.popProduct);
+
+      this.variable.store = window.sessionStorage;
     },
     bind: function () {
       // 탭 변경
       this.el.$tabContainer.on("tabchange", this.handler.changeTab.bind(this));
+      this.el.$tabContainer.on("tabinit", this.handler.initedTab.bind(this));
 
       this.el.$container.on(
         "click",
@@ -154,8 +166,25 @@
        */
       changeTab: function (e, data) {
         this.variable.tabActIndex = parseInt(data.selectedIndex);
+        this.variable.store.setItem(
+          SESSION_TAB_INDEX,
+          this.variable.tabActIndex
+        );
 
         this.createList();
+      },
+      /**
+       * 탭 초기화 완료
+       * @param {Event} e
+       * @param {Object} data 탭 상태 정보
+       */
+      initedTab: function (e, data) {
+        if (this.variable.store.getItem(SESSION_TAB_INDEX)) {
+          this.variable.tabActIndex =
+            this.variable.store.getItem(SESSION_TAB_INDEX);
+
+          this.el.$tabContainer.vcTab("select", this.variable.tabActIndex);
+        }
       },
       /**
        * 더보기 클릭
@@ -215,7 +244,7 @@
           $popCancelConfirm.find(".btn:not(.gray)").attr("data-role", "ok");
           $popCancelConfirm
             .off("modalok")
-            .on("modalok", this.callCancel.bind(this));
+            .on("modalok", this.callCheckLogin.bind(this));
 
           $popCancelConfirm.vcModal({ opener: target });
 
@@ -258,26 +287,35 @@
         //console.log(item);
       });
     }, */
+    error: function (err) {
+      if (err.status === 404) {
+        // err.status : 404
+        // console.log(404);
+      } else {
+        // status !== "success"
+        // console.log("alert message");
+      }
+
+      this.el.$error.show();
+      this.el.$noData.hide();
+      this.el.$notice.hide();
+    },
     /**
      * list 요청
      */
     callList: function () {
-      // console.log("tab", this.variable.tabActIndex);
-
       var ajaxUrl = this.el.$container.data("reservation-list");
       var postData = this.el.$container.data("id")
         ? { request_id: this.el.$container.data("id") } // 회원 아이디 ??
         : null;
 
       lgkorUI.showLoading();
-      lgkorUI.requestAjaxDataPost(
+      lgkorUI.requestAjaxData(
         ajaxUrl,
         postData,
         function (result) {
-          lgkorUI.hideLoading();
-
           if (result.status !== "success") {
-            lgkorUI.alert(result.message);
+            this.error(result);
             return;
           }
 
@@ -285,7 +323,15 @@
 
           this.createCount();
           this.createList();
-        }.bind(this)
+
+          this.el.$notice.show();
+        }.bind(this),
+        "POST",
+        null,
+        true,
+        null,
+        null,
+        this.error.bind(this)
       );
     },
     /**
@@ -296,12 +342,11 @@
       var postData = { counsel_event_no: "" };
 
       lgkorUI.showLoading();
+
       lgkorUI.requestAjaxDataPost(
         ajaxUrl,
         postData,
         function (result) {
-          lgkorUI.hideLoading();
-
           if (result.status !== "success") {
             lgkorUI.alert(result.message);
             return;
@@ -311,6 +356,28 @@
             lgkorUI.alert(result.data.cancel_message);
           } else {
             this.cancelComplete();
+          }
+        }.bind(this)
+      );
+    },
+    /**
+     * cancel 요청 전 로그인 체크
+     */
+    callCheckLogin: function () {
+      var ajaxUrl = $("header").data("login-info");
+
+      if (!ajaxUrl) {
+        return;
+      }
+
+      lgkorUI.requestAjaxDataPost(
+        ajaxUrl,
+        {},
+        function (result) {
+          if (!result.data.isLogin) {
+            location.href = linkHost + "/sso/api/emp/Login";
+          } else {
+            this.callCancel();
           }
         }.bind(this)
       );
@@ -363,10 +430,10 @@
               // "store_visit_date_time" 바인딩 format 수정
               data._visitDate = vcui.date.format(
                 visitDate,
-                "yy년MM월dd일, hh시"
+                "yyyy년 MM월 dd일, hh시"
               );
               // "reg_date" 바인딩 format 수정
-              data._regDate = vcui.date.format(regDateStr, "yy년MM월dd일");
+              data._regDate = vcui.date.format(regDateStr, "yyyy년 MM월 dd일");
               // 정렬을 위한 등록일시 타임형태로 저장
               data._sort = vcui.date.parse(regDateStr).getTime();
               // today
@@ -504,8 +571,9 @@
       // 각 탭 마크업 특수
       if (vcui.array.has(keys, "cousel_event_type")) {
         item._method = item._type !== 2 ? "상담" : "구매";
+        item._loc = item._type !== 2 ? "상담" : "예약";
         item._title =
-          item._type === 0 ? "방문" : this.variable.tabLabelKeys[item._type];
+          item._type === 0 ? "" : this.variable.tabLabelKeys[item._type];
       }
 
       // 고객취소 | 매장취소
