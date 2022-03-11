@@ -89,7 +89,7 @@
     }
 
     .inner {
-        max-width: (1146px + 80px);
+        max-width: (832px + 80px);
         margin: 0 auto;
         padding: 180px 40px;
     }
@@ -177,7 +177,7 @@
                 left: 0;
                 right: 0;
                 z-index: 3;
-                padding: 24px 16px 20px 44px;
+                padding: 24px 52px 20px 52px;
                 background-color: $color-bg-wt;
             }
         }
@@ -201,9 +201,18 @@
             margin-bottom: 16px;
         }
     }
+    .recent-keyword{
+        .title-line{
+            margin-bottom: 18px;
+            @include mobile {
+                margin-bottom: 12px;
+            }
+        }
+    }
 
     .search-keyword-area {
         display: flex;
+        flex-wrap: wrap;
         padding-top: 80px;
         @include pc {
             margin: 0 -32px;
@@ -211,9 +220,13 @@
                 flex: 1;
                 padding: 0 32px;
             }
+            > .recent-keyword {
+                width: 100%;
+                flex: none;
+            }
         }
         @include mobile {
-            flex-wrap: wrap;
+            display: block;
             margin-left: -30px;
             padding-top: 20px;
             > div {
@@ -226,15 +239,137 @@
                     padding-bottom: 0;
                 }
             }
+            > div.recent-keyword {
+                flex: none;
+                padding-bottom: 32px !important;
+            }
         }
     }
 }
 
 .search-keyword-area {
     .recent-keyword {
+        position: relative;
+        margin-bottom: 80px;
+        padding-bottom: 60px !important;
+        border-bottom: 1px solid #ddd;
+        @include mobile {
+            position: relative;
+            border-bottom: 0;
+            margin-bottom: 0;
+        }
         .keyword-list {
+            ul {
+                @include mobile {
+                    position: relative;
+                    max-width: 100%;
+                    white-space: nowrap;
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                }
+            }
             li {
-                max-height:23px;
+                display: inline-block;
+                position: relative;
+                margin-right: 16px;
+                padding: 8px 16px;
+                border-radius: 37px;
+                background-color: #f4f4f4;
+                max-height:40px;
+                @include mobile {
+                    margin-top: 0;
+                    padding: 9px 12px 9px 16px;
+                }
+            }
+            .all-delete {
+                position: absolute;
+                bottom: 24px;
+                right: 0;
+                text-align: right;
+                @include mobile {
+                    bottom: auto;
+                    top: 2px;
+                }
+                a{
+                    display: inline-block;
+                    font-size: 14px;
+                    line-height: 20px;
+                    text-decoration: underline;
+                    @include mobile {
+                        font-size: 13px;
+                        line-height: 19px;
+                    }
+                }
+            }
+        }
+    }
+    .popular-keyword {
+        @include mobile {
+            position: relative;
+            overflow: hidden;
+            padding:0 0 32px 0;
+            margin-bottom:20px;
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 30px;
+                width: 100%;
+                height: 1px;
+                background-color: #ddd;
+            }
+        }
+        .keyword-list{
+            display: flex;
+            ul {
+                padding-right: 16px;
+                flex: 1;
+                li{
+                    &:first-child{
+                        margin-top: 0;
+                    }
+                    a {
+                        @include mobile {
+                            font-size: 15px;
+                            line-height: 21px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .symptom-keyword {
+        .keyword-list{
+            display: flex;
+            ul {
+                padding-right: 16px;
+                flex: 1;
+                li{
+                    position: relative;
+                    padding-left: 12px;
+                    &:first-child{
+                        margin-top: 0;
+                    }
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 12px;
+                        left: 0;
+                        width: 4px;
+                        height: 4px;
+                        border-radius: 50%;
+                        background-color: #000;
+                        @include mobile {
+                            top: 8px;
+                        }
+                    }
+                    a {
+                        @include mobile {
+                            font-size: 15px;
+                            line-height: 21px;
+                        }
+                    }
+                }
             }
         }
     }
@@ -246,13 +381,10 @@
             text-align: left;
         }
         li {
-            margin-top: 12px;
-            &:first-child {
-                margin-top: 0;
-            }
+            margin-top: 16px;
             a {
                 display: block;
-                height: 26px;
+                height: 24px;
                 @include mobile{
                     height: 23px;
                 }
@@ -266,7 +398,11 @@
             .box {
                 position: relative;
                 display: inline-block;
-                padding-right: 22px;
+                padding-right: 32px;
+                @include mobile{
+                    height: 23px;
+                    padding-right: 23px;
+                }
             }
         }
         .rounded-list {
@@ -280,13 +416,16 @@
     }
     .btn-delete {
         position: absolute;
-        top: 50%;
+        top: 0;
         right: 0;
-        width: 16px;
-        height: 16px;
-        margin-top: -8px;
-        margin-left: 4px;
-        background: url('/lg5-common/images/icons/btn-clear-16.svg') no-repeat 0 0;
+        width: 24px;
+        height: 24px;
+        background: url('/lg5-common/images/icons/btn-clear-24-gray.svg') no-repeat 0 0;
+        @include mobile {
+            width: 16px;
+            height: 16px;
+            background-size: 100%;
+        }
     }
 
     @include mobile {
@@ -304,17 +443,29 @@
 
 .search-result-area {
     display: flex;
-    padding-top: 80px;
+    padding-top: 20px;
 
     .auto-complete {
         position: relative;
         //display: table-cell;
-        width: ((100% / 10) * 3);
-        padding-right: 32px;
+        width: 100%;
         @include mobile {
             //display: none !important;
             width: 100%;
             padding: 0 0 40px;
+        }
+        li {
+            background: url('/lg5-common/images/icons/btn-autocomplete-26.svg') no-repeat right 22px center/26px;
+            @include mobile {
+                background-size: 16px;
+                background-position: right 12px center;
+            }
+            a {
+                @include mobile {
+                    font-size: 15px;
+                    line-height: 21px;
+                }
+            }
         }
     }
 
