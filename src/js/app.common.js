@@ -256,9 +256,8 @@ var appInit = function() {
         receiptCodeDirectReturn = function(barcode) {
             if (barcode != null && barcode != "" && barcode != undefined) {
                 if(chkSerialNum(barcode)) {
-                    var getBarcode = ($('#categorySelect').val() == 'emart') ? barcode.slice(0,16):barcode;
                     $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
-                    $("#inputReceipt").val(getBarcode);
+                    $("#inputReceipt").val(barcode);
                     $('#receiptCodeInputWrap').show();
                     $('#inquiryButton').focus();
                 } else {
