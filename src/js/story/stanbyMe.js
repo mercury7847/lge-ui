@@ -299,9 +299,9 @@
             bindEvent: function() {
                 var self = this;
 
-                /* self.$listWrap.on('click', '.board-tit a', function() {
-                    lgkorUI.historyBack(this);
-                }); */
+                self.$listWrap.on('click', '.board-tit a', function() {
+                    lgkorUI._historyBack(); // BTOCSITE-9974
+                });
 
                 self.$sortSelect.filter('#orderType').on('change', function() {
                     self.params = $.extend({}, self.params, {
