@@ -43,7 +43,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">{{cardDiscountName}}</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber >= 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">{{cardDiscountName}}</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
