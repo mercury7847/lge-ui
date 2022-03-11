@@ -388,8 +388,7 @@ var res = {
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","검수완료"],
 					"쿠폰 상세보기 팝업" : ["/html/MYC/ACCF7018_popup.html","","검수완료"],
 					"쿠폰(베스트샵)" : ["/html/MYC/ACCF7096.html","",""],
-					"쿠폰(베스트샵) 상세보기 팝업" : ["/html/MYC/ACCF7096_popup.html","",""],
-					"쿠폰(점검/시스템장애)" : ["/html/MYC/ACCF7096_505.html","",""]
+					"쿠폰(베스트샵) 상세보기 팝업" : ["/html/MYC/ACCF7096_popup.html","",""]
 				},
 				"케어솔루션" : {
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
