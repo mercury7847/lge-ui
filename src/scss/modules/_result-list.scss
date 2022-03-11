@@ -793,12 +793,14 @@
             }
         }
         .sku + .info-btm {
-            margin-right:0;
-            padding-right:0;
-            &:not(:last-child):after {
-                content: ' \2758';
-                display: inline-block;
-                margin: 0 5px;
+            .text {
+                margin-right:0;
+                padding-right:0;
+                &:not(:last-child):after {
+                    content: ' \2758';
+                    display: inline-block;
+                    margin: 0 5px;
+                }
             }
             @include mobile {
                 margin-top: 12px;
