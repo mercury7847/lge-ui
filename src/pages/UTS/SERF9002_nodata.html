@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTS/UTS"],
+        pageJS: ["search/curation","search/filterLayer","search/search_product"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <!-- search -->
+            <div class="contents search" data-search-value="" data-search-force=false
+                data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json"
+                data-search-url="/lg5-common/data-ajax/search/searchInput.json"
+                data-basic-url="http://schapi.lgekrdev.lge.co.kr:3100/searchgnb/populartag"
+                data-log-url="/search/searchrecord.lgajax"
+            >
+                <!-- 검색 영역 -->
+                @@include('./common/modules/search.html', {
+                    "placeholder" : "검색어를 입력해주세요.(예:제품명)",
+                    "value" : "",
+                    "title" : "검색어 입력",
+                    "related" : true,
+                    "layer" : true,
+                    "similar" : true
+                })
+                <!-- // 검색 영역 -->
+
+                <!-- 검색 결과 영역 -->
+                <div class="cont-wrap">
+                    <div class="search-result-wrap all">
+
+                        <div class="list-sorting"><!-- 스크롤시 상단 고정 class : fixed -->
+                            <div class="list-sorting-inner">
+                                <div class="sort-area left">
+                                </div>
+                                <div class="sort-area right">
+                                    <div class="sort-list">
+                                        <!-- 검색 영역 -->
+                                        @@include('./common/modules/search.html', {
+                                            "value" : "",
+                                        })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 검색 결과 없음 -->
+                        <div class="search-not-result">
+                            <div class="no-data">
+                                <p>
+                                    <span class="search_word_area">
+                                        <span class="search_word">"<span class="word_area">일이삼사오육칠팔구십일이삼사오육칠일이삼사오육칠팔구십일이삼사오육칠</span>"</span><em>검색결과가 없습니다</em>
+                                    </span>
+                                    <span class="search_word_msg">다시한번 확인해 주세요.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- // 검색 결과 없음 -->
+
+                        <!-- 고객 피드백 -->
+                        <div class="feedback-box-wrap">
+                            <div class="fb_title">고객 피드백</div>
+                            <div class="fb_msg">어떤 검색결과를 찾고 계셨나요?</div>
+                            <div class="select-list-wrap w-auto">
+                                <ul class="ui_radio_visible">
+                                    <li>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo01-1" name="rdo01" checked>
+                                            <label for="rdo01-1">제품</label>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo01-2" name="rdo01">
+                                            <label for="rdo01-2">소모품</label>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo01-3" name="rdo01">
+                                            <label for="rdo01-3">AS신청</label>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo01-4" name="rdo01">
+                                            <label for="rdo01-4">문제해결방법</label>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="#n" class="search-btn fix black">보내기</a>
+                        </div>
+                        <!-- // 고객 피드백 -->
+
+                        <div class="result-list-wrap">
+                            <div class="list-head">
+                                <h2 class="title">이런 제품 어떠세요?</h2>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="result-list product-list">
+                                    <li>
+                                        <div class="item ">
+                                            <div class="result-thumb">
+                                                <a href="#n">
+                                                    <img src="/lg5-common/images/dummy/@sample-2-240x240.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="result-info">
+                                                <div class="info-text">
+                                                    <div class="detail-wrap">
+                                                        <div class="result-tit">
+                                                            <span>LG 올레드 evo 오브제컬렉션</span>
+                                                        </div>
+                                                        <div class="result-detail">
+                                                            <div class="sku">5203FI3754D</div>
+                                                            <div class="review-info">
+                                                                <a href="#">
+                                                                    <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                                                                    <div class="average-rating"><span class="blind">평점</span>42</div>
+                                                                    <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="display-prduct">
+                                                                <dl>
+                                                                    <dt>진열제품</dt>
+                                                                    <dd>3</dd>
+                                                                </dl>
+                                                                <span class="pickup-label"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="info-price">
+                                                    <a href="#">
+                                                        <!-- S: 렌탈 -->
+                                                        <div class="price-info rental">
+                                                            <span class="price"><em>월</em> 40,900<em>원</em></span>
+                                                            <span class="month">60<em>개월</em></span>
+                                                        </div>
+                                                        <!-- E: 렌탈 -->
+                                                        <div class="price-info sales">
+                                                            <div class="salerate">
+                                                                <span class="rate">30<em>%</em></span>
+                                                            </div>
+                                                            <div class="price-in">
+                                                                <span class="price">5,200,000<em>원</em></span>
+                                                            </div>
+                                                            <div class="original">
+                                                                <em class="blind">원가</em>
+                                                                <span class="price">5,600,000<em>원</em></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="price-benefit">
+                                                            <div class="billsale">롯데/신한 청구할인 5%</div>
+                                                            <div class="interest">무이자 12개월</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="result-tabs">
+                                                <!--S: 탭 -->
+                                                <div class="tabs-wrap border-type ui_tab">
+                                                    <ul class="tabs">
+                                                        <li class="on"><a href="#tab1">스펙<em class="blind">선택됨</em></a></li>
+                                                        <li><a href="#tab2">소모품</a></li>
+                                                        <li><a href="#tab3">리뷰</a></li>
+                                                        <li><a href="#tab4">렌탈</a></li>
+                                                        <li><a href="#tab5">고객지원</a></li>
+                                                        <li><a href="#tab6">매장/견적</a></li>
+                                                    </ul>
+                                                </div>
+                                                <!--E: 탭 -->
+                                                <!--S: 탭-내용 -->
+                                                <div class="tabs-contant">
+                                                    <!--S: 탭-스펙 -->
+                                                    <div id="tab1">
+                                                        <div class="cnt-wrap type-tbl">
+                                                            <div class="cnt_area">
+                                                                <dl>
+                                                                    <dt>사용면적</dt>
+                                                                    <dd>61.2m²</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>필터</dt>
+                                                                    <dd>헤파필터(h3)</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>소비전력</dt>
+                                                                    <dd>72W</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>사용면적</dt>
+                                                                    <dd>61.2m²</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>필터</dt>
+                                                                    <dd>헤파필터(h3)</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>소비전력</dt>
+                                                                    <dd>72W</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>사용면적</dt>
+                                                                    <dd>61.2m²</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>필터</dt>
+                                                                    <dd>헤파필터(h3)</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>소비전력</dt>
+                                                                    <dd>72W</dd>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="btn_area">
+                                                                <button type="button" data-href="#layerMoreList" data-control="modal" class="btn search-btn fix black">제품상세보기</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--E: 탭-스펙 -->
+                                                    <!--S: 탭-소모품 -->
+                                                    <div id="tab2">tab2</div>
+                                                    <!--E: 탭-소모품 -->
+                                                    <!--S: 탭-리뷰 -->
+                                                    <div id="tab3">tab3</div>
+                                                    <!--E: 탭-리뷰 -->
+                                                    <!--S: 탭-렌탈 -->
+                                                    <div id="tab4">
+                                                        <dl>
+                                                            <dt>사용면적</dt>
+                                                            <dd>61.2m²</dd>
+                                                            <dt>필터</dt>
+                                                            <dd>헤파필터(h3)</dd>
+                                                            <dt>소비전력</dt>
+                                                            <dd>72W</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <!--E: 탭-렌탈 -->
+                                                    <!--S: 탭-고객지원 -->
+                                                    <div id="tab5">tab5</div>
+                                                    <!--E: 탭-고객지원 -->
+                                                    <!--S: 탭-매장/견적 -->
+                                                    <div id="tab6">tab6</div>
+                                                    <!--E: 탭-매장/견적 -->
+                                                </div>
+                                                <!--E: 탭-내용 -->
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="btn-area">
+                                <a href="#product" class="btn-link btn-moreview"><span>제품 더보기</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- // 검색 결과 영역 -->
+            </div>
+            <!-- // 통합검색 -->
+        </div>
+
+    @@include('./common/footer.html')
+    </div>
+
+    <!-- 제품 정보 -->
+    @@include('./common/popup/SERF9002_pop1.html', {
+        popupID: 'layerMoreList'
+    })
+    <!-- 제품 정보 -->
+
+</body>
+</html>

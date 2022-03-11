@@ -7,14 +7,13 @@
             margin-bottom: 12px;
         }
         .item {
-            display: flex;
-            flex-wrap: wrap;
-            min-height: 172px;
-            padding: 16px 32px;
-            //align-items: center;
-            border-radius: 8px;
-            box-shadow: 2px 4px 16px 0 rgba(0, 0, 0, 0.14);
-            background-color: #ffffff;
+            // display: flex;
+            // flex-wrap: wrap;
+            min-height: 240px;
+            padding: 24px 32px 28px 16px;
+            border-radius: 16px;
+            box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+            background-color: #fff;
             @include mobile {
                 min-height: 138px;
                 align-items: flex-start;
@@ -40,10 +39,12 @@
             z-index: 1;
         }
         .result-thumb {
-            position: relative;
-            width: 140px;
+            position: absolute;
+            top: 14px;
+            left: 16px;
+            width: 202px;
             //height: 140px;
-            margin-right: 32px;
+            // margin-right: 40px;
             a {
                 display:block;
             }
@@ -137,9 +138,10 @@
         }
         // -S- BTOCSITE-16 검색 결과 구획 정리
         .result-info {
-            display: flex;
-            flex: 1;
-            justify-content: space-between;
+            padding-left: 242px;
+            // display: flex;
+            // flex: 1;
+            // justify-content: space-between;
             //align-items: center;
             .info-text {
                 display: flex;
@@ -148,7 +150,7 @@
                 //align-items: start;
                 //flex: 1;
                 padding-top: 12px;
-                padding-right: 80px;
+                // padding-right: 80px;
             }
             @include mobile {
                 display: block;
@@ -202,24 +204,28 @@
                 }
             }
             .info-price {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
+                position: absolute;
+                top:108px;
+                right:32px;
+                text-align: right;
+                // display: flex;
+                // flex-direction: column;
+                // justify-content: center;
+                // align-items: flex-start;
                 @include pc {
-                    min-width: 248px;
-                    padding-left: 32px;
-                    &:before {
-                        position: absolute;
-                        top: 16px;
-                        bottom: 16px;
-                        right: 280px;
-                        width: 1px;
-                        background-color: $color-border;
-                        content: '';
-                    }
+                    // min-width: 248px;
+                    // padding-left: 32px;
+                    // &:before {
+                    //     position: absolute;
+                    //     top: 16px;
+                    //     bottom: 16px;
+                    //     right: 280px;
+                    //     width: 1px;
+                    //     background-color: $color-border;
+                    //     content: '';
+                    // }
 
-                    &.pc-only { 
+                    &.pc-only {
                         &:empty:before {
                             display:none;
                         }
@@ -233,7 +239,7 @@
                     padding-top: 6px;
                     // border-top: 1px solid $color-border;
                     text-align: left;
-                    &.mo-only { 
+                    &.mo-only {
                         display:block;
                         &:empty {
                             display:none;
@@ -241,11 +247,14 @@
                     }
                     &.pc-only { display:none; }
                 }
+                a {
+                    display: inline-block;
+                }
 
 
                 &.type2 {
                     align-items: center;
-                    margin-top: 0;  
+                    margin-top: 0;
                     @include mobile {
                         margin-top: 16px;
                         align-items: flex-start;
@@ -259,12 +268,12 @@
                         }
                     }
                     &.sales {
-                        display: flex;
-                        align-items: flex-end;
-                        @include pc {
-                            flex-direction: row-reverse;
-                            justify-content: flex-end;
-                        }
+                        // display: flex;
+                        // align-items: flex-end;
+                        // @include pc {
+                        //     flex-direction: row-reverse;
+                        //     justify-content: flex-end;
+                        // }
                         @include mobile {
                             position: relative;
                             justify-content: flex-end;
@@ -297,37 +306,94 @@
                     margin-left: 4px;
                 }
             }
-            
+
         }
         // -E- BTOCSITE-16 검색 결과 구획 정리
+        .result-tabs{
+            margin-top: 76px;
+            padding-left: 242px;
+            .tabs-wrap.border-type{
+                text-align: left;
+                .tabs{
+                    li{
+                        a{
+                            padding-bottom: 4px;
+                            font-size: 14px;
+                            font-weight: 400;
+                            line-height: 24px;
+                        }
+                    }
+                    li.on{
+                        a{
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+            .tabs-contant{
+                margin-top: 24px;
+                .cnt-wrap {
+                    &.type-tbl {
+                        display: table;
+                        .cnt_area {
+                            display: table-cell;
+                        }
+                        .btn_area {
+                            display: table-cell;
+                        }
+                    }
+                }
+                dl{
+                    display: inline-block;
+                    overflow: hidden;
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: #666;
+                    line-height: 20px;
+                    margin-right: 48px;
+                    dt{
+                        float: left;
+                    }
+                    dd{
+                        float: left;
+                        margin-left: 8px;
+                        font-weight: 500;
+                        color: #000;
+                    }
+                }
+                .btn.search-btn {
+                    padding: 0;
+                }
+            }
+        }
         .item-type2 {
             .info-price {
                 display: block;
             }
         }
-        
+
         .flag-wrap {
             margin-bottom: 2px;
             .flag {
-                display:inline;    
+                display:inline;
             }
         }
         .result-tit {
-            margin-bottom: 1px;
+            margin-bottom: 4px;
             font-weight: 700;
-            @include font($font-medium,26px);
+            @include font($font-large,26px);
             color: $color-default;
             @include mobile {
                 @include font(15px,23px);
             }
-            > a:first-child,
+            > span:first-child,
             > strong {
                 display: block;
                 max-height: 52px;
                 @include textEllipsisClamp(2);
                 word-break: break-all;
             }
-            
+
         }
         .cs {
             display: block;
@@ -378,7 +444,7 @@
                 .text {
                     display: inline-block;
                     position: relative; //BTOCSITE-3404 210809 수정
-                    margin-right: 6px;  
+                    margin-right: 6px;
                     padding-right: 6px;
                     @include font($font-small,24px);
                     &:last-child {
@@ -398,7 +464,7 @@
                     }
                     @include mobile {
                         display: inline-block;
-                        margin-right: 0;  
+                        margin-right: 0;
                         padding-right: 0;
                         @include font($font-x-small,20px);
                         &:before,
@@ -479,7 +545,7 @@
                     // }
                 }
 
-                
+
                 /* //BTOCSITE-3404 210809 추가 */
             }
         }
@@ -504,16 +570,16 @@
                 }
             }
         }
-        
+
         // -S- BTOCSITE-16 검색 결과 구획 정리
         .sku {
             display: inline-block;
-            font-weight: 500;
+            font-weight: 400;
             vertical-align: top;
-            margin-right: 6px;
-
-            @include font-small;
-
+            margin-right: 8px;
+            font-size: 12px;
+            line-height: 18px;
+            color: #666;
             .search-word {
                 color:#000;
             }
@@ -524,9 +590,9 @@
                 display: inline-block;
                 font-weight: 500;
                 margin-right:6px;
-                @include font-small;
+                @include font-x-small;
                 vertical-align: top;
-    
+
                 @include mobile {
                     display:none;
                 }
@@ -540,11 +606,11 @@
                 padding-left: 0 !important;
                 &:before {
                     display: none !important;
-                    
+
                 }
             }
         }
-        
+
         .desc {
             margin-bottom: 6px;
             @include textEllipsisClamp(1);
@@ -557,11 +623,23 @@
 
         // -S- BTOCSITE-16 검색 결과 구획 정리
         .review-info {
+            position: relative;
             display: inline-block;
-            margin-right: 12px;
+            margin-right: 8px;
+            padding-left: 8px;
             font-size: 0;
             vertical-align: top;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 5px;
+                left: 0;
+                width: 1px;
+                height: 8px;
+                background-color: #ddd;
+            }
             a {
+                overflow: hidden;
                 display:block;
                 //padding-bottom:10px;
             }
@@ -572,23 +650,58 @@
             .star,
             .average-rating,
             .review-count {
-                display: inline-block;
-                @include font-small;
+                float: left;
+                font-size: 12px;
+                line-height: 18px;
             }
             .star {
-                width: 20px;
-                height: 20px;
-                margin-right: 2px;
-                background: url("/lg5-common/images/icons/icon-star-off-20.svg") no-repeat 0 0;
-                vertical-align: -5px;
+                width: 16px;
+                height: 18px;
+                margin-right: 8px;
+                background: url("/lg5-common/images/icons/icon-star-off-20.svg") no-repeat 0 1px/100%;
                 &.is-review {
                     background-image: url("/lg5-common/images/icons/icon-star-on-20.svg");
                 }
             }
-
+            .review-count {
+                margin-left: 3px;
+            }
         }
         // -E- BTOCSITE-16 검색 결과 구획 정리
-        
+        .display-prduct {
+            position: relative;
+            display: inline-block;
+            padding-left: 8px;
+            font-size: 0;
+            vertical-align: top;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 5px;
+                left: 0;
+                width: 1px;
+                height: 8px;
+                background-color: #ddd;
+            }
+            dl {
+                overflow: hidden;
+                font-size: 12px;
+                line-height: 18px;
+                dt {
+                    float: left;
+                    color: #666;
+                }
+                dd {
+                    float: left;
+                    margin-left: 4px;
+                    color: #000;
+                }
+                .pickup-label {
+
+                }
+            }
+        }
+
         .shop-info {
             .desc {
                 display: block;
@@ -642,7 +755,9 @@
         }
         // -S- BTOCSITE-16 검색 결과 구획 정리
         .price-info {
+            overflow: hidden;
             white-space: nowrap;
+            text-align: right;
             .tit {
                 display:inline-block;
                 vertical-align: middle;
@@ -659,7 +774,7 @@
             .price {
                 display: inline-block;
                 vertical-align: middle;
-                @include font(16px,26px);
+                @include font(16px,24px);
                 color: $color-default;
                 font-weight: $font-weight-bold;
                 @include mobile {
@@ -671,12 +786,32 @@
                 }
 
             }
+            .month {
+                display: inline-block;
+                vertical-align: bottom;
+                margin-left: 8px;
+                @include font(12px,18px);
+                color: $color-gray-1;
+            }
+            .salerate {
+                float: left;
+                margin-right: 8px;
+                vertical-align: middle;
+                .rate {
+                    @include font(16px,24px);
+                    color: #da0f47;
+                }
+            }
+            .price-in {
+                float: left;
+            }
             .original {
+                float: left;
                 margin-left: 8px;
                 vertical-align: bottom;
                 .price {
                     font-weight: 400;
-                    @include font-x-small;
+                    @include font(12px,18px);
                     color: $color-gray-1;
                     text-decoration: line-through;
                 }
@@ -693,7 +828,31 @@
                         @include font(10px,19px);
                     }
                 }
-                
+
+            }
+        }
+        .price-benefit {
+            overflow: hidden;
+            margin-top: 2px;
+            @include font(12px,18px);
+            color: $color-default;
+            .billsale {
+                float: left;
+            }
+            .interest {
+                float: left;
+                position: relative;
+                margin-left: 8px;
+                padding-left: 9px;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 6px;
+                    left: 0;
+                    width: 1px;
+                    height: 8px;
+                    background-color: #ddd;
+                }
             }
         }
         // -E- BTOCSITE-16 검색 결과 구획 정리
@@ -873,9 +1032,9 @@
                 display: inline-block;
                 text-indent: -9999em;
                @include mobile {
-                    
+
                }
-           } 
+           }
         }
     }
     &.care-list {
