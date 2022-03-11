@@ -782,14 +782,10 @@
         .info-btm {
             .text {
                 display: inline-block;
+                margin-right: 6px;
+                padding-right: 6px;
                 font-size: 14px;
                 line-height: 21px;
-
-                &:not(:last-child):after {
-                    content: ' \2758';
-                    display: inline-block;
-                    margin: 0 5px;
-                }
             }
             @include mobile {
                 margin-top: 6px;
@@ -797,6 +793,13 @@
             }
         }
         .sku + .info-btm {
+            margin-right:0;
+            padding-right:0;
+            &:not(:last-child):after {
+                content: ' \2758';
+                display: inline-block;
+                margin: 0 5px;
+            }
             @include mobile {
                 margin-top: 12px;
             }
