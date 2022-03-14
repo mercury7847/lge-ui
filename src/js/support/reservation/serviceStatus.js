@@ -457,6 +457,8 @@
                 
                 self.el.time.on('timeselected', function() {
                     var param = {
+                        topic: $('#topic').val(),
+                        subTopic: $('#subtopic').val(),
                         zipId: $('input[name=zipId]').val(),
                         productCode: $('input[name=productCode]').val(),
                         userNm: $('input[name=userNm]').val(),
@@ -526,6 +528,8 @@
                     var param ;
 
                     param = {
+                        topic: $('#topic').val(),
+                        subTopic: $('#subtopic').val(),
                         serviceType: $('#serviceType').val(),
                         date: $('#date').val(),
                         time: $('#time').val(),
@@ -741,6 +745,8 @@
                     param;
     
                 param = {
+                    topic: $('#topic').val(),
+                    subTopic: $('#subtopic').val(),
                     zipId: $('input[name=zipId]').val(),
                     productCode: $('input[name=productCode]').val(),
                     userNm: $('input[name=userNm]').val(),
@@ -774,6 +780,8 @@
                     param;
     
                 param = {
+                    topic: $('#topic').val(),
+                    subTopic: $('#subtopic').val(),
                     zipId: $('input[name=zipId]').val(),
                     productCode: $('input[name=productCode]').val(),
                     userNm: $('input[name=userNm]').val(),
