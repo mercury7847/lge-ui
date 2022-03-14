@@ -71,13 +71,13 @@
 
   // prettier-ignore
   var productItem = '<div class="prd_img">' +
-      '<img src="{{_img}}" alt="{{modelDisplayName}}">' + 
+      '<img src="{{_img}}" alt="{{userFriendlyName}}">' + 
     '</div>' + 
-    '<p class="prd_name">{{modelDisplayName}}</p>' + 
+    '<p class="prd_name">{{userFriendlyName}}</p>' + 
     '<p class="prd_model">{{modelName}}</p>' + 
     '<dl class="prd_visit">' + 
       '<dt>방문주기</dt>' + 
-      '<dd>{{visitPer}}개월</dd>' + 
+      '<dd>{{selectVisitCycleID}}개월</dd>' + 
     '</dl>' + 
     '<dl class="prd_pay">' + 
       '<dt>이용요금</dt>' + 
@@ -182,6 +182,7 @@
           this.variable.tabActIndex
         );
 
+        // 에러인 경우 탭 클릭 방지
         if (this.el.$error.is(":hidden")) {
           this.createList();
         }
@@ -254,7 +255,7 @@
           lgkorUI.confirm(
             "<h6>접수하신 " +
               this.variable.revType +
-              "예약을 취소하시겠습니까?.</h6>",
+              "예약을 취소하시겠습니까?</h6>",
             {
               ok: function () {
                 this.callCheckLogin();
@@ -282,7 +283,7 @@
       this.setProperty();
       this.bind();
 
-      // 탭 초기화 완료
+      // 탭 초기화 완료 후 list ajax 호출
       this.el.$tabContainer.on("tabinit", this.initedTab.bind(this));
 
       this.inited = this.el.$container !== null;
@@ -295,7 +296,7 @@
      * @param {Object} data 탭 상태 정보
      */
     initedTab: function (e, data) {
-      // index 세션 존재 시 활성화 변경
+      // index 세션 존재 시 활성화 변경 (클릭 리스너 등록 전 선행)
       if (this.variable.store.getItem(SESSION_TAB_INDEX)) {
         this.variable.tabActIndex =
           this.variable.store.getItem(SESSION_TAB_INDEX);
@@ -306,17 +307,22 @@
       // 클릭 이벤트 등록
       this.el.$tabContainer.on("tabchange", this.handler.changeTab.bind(this));
 
+      // 리스트 요청
       this.callList();
     },
     error: function (result) {
-      var errorMsg = result.data.errorMsg || "";
+      var errorMsg = "";
+
+      if (result.status === "SYSTEM_DOWN_PLAN") {
+        errorMsg = result.message;
+      }
 
       this.el.$error.show().find(".msg_annex > dd").html(errorMsg);
       this.el.$noData.hide();
       this.el.$notice.hide();
     },
     /**
-     * list 요청
+     * 리스트 요청
      */
     callList: function () {
       var ajaxUrl = this.el.$container.data("reservation-list");
@@ -345,7 +351,7 @@
       );
     },
     /**
-     * cancel 요청
+     * 예약 취소 요청
      */
     callCancel: function () {
       var ajaxUrl = this.el.$container.data("reservation-cancel");
@@ -372,7 +378,7 @@
       );
     },
     /**
-     * cancel 요청 전 로그인 체크
+     * 예약 취소 요청 전 로그인 체크
      */
     callCheckLogin: function () {
       var ajaxUrl = $("header").data("login-info");
@@ -518,6 +524,8 @@
 
       this.sortList(); // 리스트 소팅
       this.addList(); // 리스트 추가
+
+      this.scrollToActTab(); // 탭 활성화 스크롤 이동
     },
     /**
      * 예약정보 리스트 추가 함수
@@ -685,13 +693,13 @@
       var keys = vcui.object.keys(item) || {};
 
       // 이미지
-      if (vcui.array.has(keys, "smallImageAddr")) {
-        item._img = linkHost + item.smallImageAddr;
+      if (vcui.array.has(keys, "modelImg")) {
+        item._img = linkHost + item.modelImg;
       }
 
       // 월 이용요
-      if (vcui.array.has(keys, "years1TotAmt")) {
-        item._price = vcui.number.addComma(item.years1TotAmt);
+      if (vcui.array.has(keys, "monthlyPrice")) {
+        item._price = vcui.number.addComma(item.monthlyPrice);
       }
 
       this.el.$popProduct
@@ -722,6 +730,20 @@
       masking = vcui.string.replaceAll(masking, /./, "*");
 
       return str.replace(regex, "$1" + masking + "$2");
+    },
+    /**
+     * 모바일 탭 활성화 스크롤 이동
+     */
+    scrollToActTab: function () {
+      var tabUL = this.el.$tabContainer.find("> ul");
+      var onBtn = tabUL.find("li.on");
+
+      if (onBtn.length > 0) {
+        var onBtnElm = onBtn.get(0);
+        var left = onBtnElm.offsetLeft;
+
+        tabUL.get(0).scrollTo({ left: left });
+      }
     },
     /**
      * 매장 정보 윈도우 팜업
