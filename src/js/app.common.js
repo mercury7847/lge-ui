@@ -255,9 +255,11 @@ var appInit = function() {
         // s : BTOCSITE-12307
         receiptCodeDirectReturn = function(barcode) {
             if (barcode != null && barcode != "" && barcode != undefined) {
-                if(chkSerialNum(barcode)) {
+                var setBarcode = barcode.split('/').join('');
+                if(chkSerialNum(setBarcode)) {
+                    var getBarcode = ($('#categorySelect').val() == 'emart') ? setBarcode.slice(0,16):setBarcode;
                     $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
-                    $("#inputReceipt").val(barcode);
+                    $("#inputReceipt").val(setBarcode);
                     $('#receiptCodeInputWrap').show();
                     $('#inquiryButton').focus();
                 } else {
