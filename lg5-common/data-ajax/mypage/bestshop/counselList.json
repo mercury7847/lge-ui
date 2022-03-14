@@ -88,8 +88,7 @@
         "counsel_event_url": "/reserve/CE10002006?event_no=CE10000001",
         "store_url": "/store/CE10012345?STID=ST000001"
       }
-    ],
-    "errorMsg": "2022.03.11 15:55 ~ 2022.03.11 15:59"
+    ]
   },
   "param": { "pagination": {} }
 }
