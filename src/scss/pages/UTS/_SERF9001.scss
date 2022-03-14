@@ -156,12 +156,12 @@
         .btn-close {
             position: fixed;
             right: auto;
-            left: 0;
+            left: 8px;
             z-index: 3;
             width: 32px;
             height: 46px;
-            background: url('/lg5-common/images/icons/btn-arr-48.svg') no-repeat left 8px center;
-            background-size: 24px;
+            background: url('/lg5-common/images/icons/btn-arr-32x32-headback.svg') no-repeat 0 center;
+            background-size: 32px;
         }
 
         .inner {
