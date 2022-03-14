@@ -6,7 +6,7 @@
     '<div class="li_tit">' +
         '<div class="tit_txt{{#if _customerCancel}} customer{{/if}}">' +
           '{{_title}} {{_method}} 예약</div>' +
-        '{{#if !_today && !cancel_flag}}<a href="#n" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
+        '{{#if (!_today && !_isOverTime) && !cancel_flag}}<a href="#n" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
     '</div>' +
     '<dl class="li_page">' +
         '<dt>신청페이지</dt>' +
@@ -26,7 +26,7 @@
             '<dt>상담제품</dt>' +
             '<dd>{{_category}}' +
               '{{#if _type == "1"}}' +
-                '<a href="#n" class="linkbtn product">제품정보팝업호출</a>' +
+                '<a href="#n" class="linkbtn product" data-prd-id="{{_prdId}}">제품정보팝업호출</a>' +
               '{{/if}}' +
             '</dd>' +
             '{{#if visit_cycle}}<dt>방문주기</dt>' +
@@ -56,7 +56,7 @@
       '{{/if}}' +
         '<dl>' +
             '<dt>{{_loc}}매장</dt>' +
-            '<dd>{{request_orgcode_name}}<a href="#n" data-url="/support/store-finder-ST00005604" class="linkbtn store">매장상세정보이동</a></dd>' +
+            '<dd>{{request_orgcode_name}}<a href="#n" data-url="/support/store-finder-{{_storeId}}" class="linkbtn store">매장상세정보이동</a></dd>' +
             '<dt>예약일시</dt>' +
             '<dd>{{_visitDate}}</dd>' +
         '</dl>' +
@@ -68,6 +68,21 @@
         '</dl>' +
     '</div>' +
   '</li>';
+
+  // prettier-ignore
+  var productItem = '<div class="prd_img">' +
+      '<img src="{{_img}}" alt="{{modelDisplayName}}">' + 
+    '</div>' + 
+    '<p class="prd_name">{{modelDisplayName}}</p>' + 
+    '<p class="prd_model">{{modelName}}</p>' + 
+    '<dl class="prd_visit">' + 
+      '<dt>방문주기</dt>' + 
+      '<dd>{{visitPer}}개월</dd>' + 
+    '</dl>' + 
+    '<dl class="prd_pay">' + 
+      '<dt>이용요금</dt>' + 
+      '<dd>월 {{_price}}원</dd>' + 
+    '</dl>';
 
   var linkHost =
     window.LGEAPPHostName === "localhost" ? "https://www.lge.co.kr" : "";
@@ -82,8 +97,8 @@
       listData: [], // json 데이터 담을 팝업
       showListLen: 0, // 리스트 노출된 갯수
       showListCount: 13, // 리스트 더보기 시 추가 노출할 갯수
-      products: [], // gnb 기준 제품 리스트
       dateRegex: /^(\d{4}-\d{2}-\d{2}).+/, // yyyy-mm-dd 형만 추출
+      revType: null, // 상담 | 예약
     },
     el: {
       $container: null, // 컨테이너
@@ -131,10 +146,6 @@
       this.variable.store = window.sessionStorage;
     },
     bind: function () {
-      // 탭 변경
-      this.el.$tabContainer.on("tabchange", this.handler.changeTab.bind(this));
-      this.el.$tabContainer.on("tabinit", this.handler.initedTab.bind(this));
-
       this.el.$container.on(
         "click",
         "a.linkbtn.product",
@@ -171,19 +182,8 @@
           this.variable.tabActIndex
         );
 
-        this.createList();
-      },
-      /**
-       * 탭 초기화 완료
-       * @param {Event} e
-       * @param {Object} data 탭 상태 정보
-       */
-      initedTab: function (e, data) {
-        if (this.variable.store.getItem(SESSION_TAB_INDEX)) {
-          this.variable.tabActIndex =
-            this.variable.store.getItem(SESSION_TAB_INDEX);
-
-          this.el.$tabContainer.vcTab("select", this.variable.tabActIndex);
+        if (this.el.$error.is(":hidden")) {
+          this.createList();
         }
       },
       /**
@@ -204,7 +204,9 @@
       clickProduct: function (e) {
         e.preventDefault();
 
-        this.el.$popProduct.vcModal({ opener: e.currentTarget });
+        var prdId = $(e.currentTarget).data("prd-id");
+
+        this.openProduct({ target: e.currentTarget, id: prdId });
       },
       /**
        * 상담 매장 클릭
@@ -225,6 +227,7 @@
 
         var target = $(e.currentTarget);
         var revDate = target.closest("li").data("rev-date");
+        this.variable.revType = target.closest("li").data("rev-type");
 
         if (revDate && this.getIsToday(revDate)) {
           // 당일 예약 불가
@@ -239,27 +242,31 @@
         } else {
           //  예약 취소 컴펌
 
-          var $popCancelConfirm = this.el.$popCancelConfirm;
+          /*  var $popCancelConfirm = this.el.$popCancelConfirm;
 
           $popCancelConfirm.find(".btn:not(.gray)").attr("data-role", "ok");
           $popCancelConfirm
             .off("modalok")
             .on("modalok", this.callCheckLogin.bind(this));
 
-          $popCancelConfirm.vcModal({ opener: target });
+          $popCancelConfirm.vcModal({ opener: target, title: vcui.template('') }); */
 
-          /* lgkorUI.confirm(
-            "<h6>접수하신 상담예약을 취소하시겠습니까?.</h6>",
+          lgkorUI.confirm(
+            "<h6>접수하신 " +
+              this.variable.revType +
+              "예약을 취소하시겠습니까?.</h6>",
             {
               ok: function () {
-                console.log("ok");
-              },
+                this.callCheckLogin();
+                //console.log("ok");
+              }.bind(this),
               cancel: function () {
+                this.variable.revType = null;
                 // console.log("cancel");
-              },
+              }.bind(this),
             },
             target
-          ); */
+          );
         }
       },
     },
@@ -275,28 +282,36 @@
       this.setProperty();
       this.bind();
 
-      //this.setProductCategory();
-      this.callList();
+      // 탭 초기화 완료
+      this.el.$tabContainer.on("tabinit", this.initedTab.bind(this));
 
       this.inited = this.el.$container !== null;
 
       // console.log("상담 예약 조회 :: init - complete");
     },
-    /* setProductCategory() {
-      $(".nav > li:eq(0) .nav-category-wrap").each((idx, item) => {
-        //console.log(item);
-      });
-    }, */
-    error: function (err) {
-      if (err.status === 404) {
-        // err.status : 404
-        // console.log(404);
-      } else {
-        // status !== "success"
-        // console.log("alert message");
+    /**
+     * 탭 초기화 완료
+     * @param {Event} e
+     * @param {Object} data 탭 상태 정보
+     */
+    initedTab: function (e, data) {
+      // index 세션 존재 시 활성화 변경
+      if (this.variable.store.getItem(SESSION_TAB_INDEX)) {
+        this.variable.tabActIndex =
+          this.variable.store.getItem(SESSION_TAB_INDEX);
+
+        this.el.$tabContainer.vcTab("select", this.variable.tabActIndex);
       }
 
-      this.el.$error.show();
+      // 클릭 이벤트 등록
+      this.el.$tabContainer.on("tabchange", this.handler.changeTab.bind(this));
+
+      this.callList();
+    },
+    error: function (result) {
+      var errorMsg = result.data.errorMsg || "";
+
+      this.el.$error.show().find(".msg_annex > dd").html(errorMsg);
       this.el.$noData.hide();
       this.el.$notice.hide();
     },
@@ -305,33 +320,28 @@
      */
     callList: function () {
       var ajaxUrl = this.el.$container.data("reservation-list");
-      var postData = this.el.$container.data("id")
+      /* var postData = this.el.$container.data("id")
         ? { request_id: this.el.$container.data("id") } // 회원 아이디 ??
-        : null;
+        : null; */
 
       lgkorUI.showLoading();
-      lgkorUI.requestAjaxData(
+      lgkorUI.requestAjaxDataPost(
         ajaxUrl,
-        postData,
+        {},
         function (result) {
-          if (result.status !== "success") {
+          if (result.data.success === "N") {
             this.error(result);
             return;
           }
 
-          this.variable.listData = result.data.listData || [];
+          this.variable.listData = result.data.counselOrderList || [];
 
           this.createCount();
           this.createList();
 
           this.el.$notice.show();
         }.bind(this),
-        "POST",
-        null,
-        true,
-        null,
-        null,
-        this.error.bind(this)
+        true
       );
     },
     /**
@@ -347,7 +357,7 @@
         ajaxUrl,
         postData,
         function (result) {
-          if (result.status !== "success") {
+          if (result.data.success === "N") {
             lgkorUI.alert(result.message);
             return;
           }
@@ -357,7 +367,8 @@
           } else {
             this.cancelComplete();
           }
-        }.bind(this)
+        }.bind(this),
+        true
       );
     },
     /**
@@ -396,7 +407,7 @@
 
           if (
             vcui.array.has(keys, "store_visit_date_time") &&
-            vcui.array.has(keys, "reg_date")
+            vcui.array.has(keys, "request_date")
           ) {
             // 예약일
             var visitDateData = data.store_visit_date_time;
@@ -406,7 +417,7 @@
             );
 
             // 등록일
-            var regDateData = data.reg_date;
+            var regDateData = data.request_date.replace(/\./g, "-");
             var regDateStr = regDateData.replace(this.variable.dateRegex, "$1");
 
             // 유효성 체크
@@ -432,12 +443,16 @@
                 visitDate,
                 "yyyy년 MM월 dd일, hh시"
               );
+              data._visitDateStr = visitDateStr; // yyyy-mm-dd 형태의 예약일
+
               // "reg_date" 바인딩 format 수정
               data._regDate = vcui.date.format(regDateStr, "yyyy년 MM월 dd일");
               // 정렬을 위한 등록일시 타임형태로 저장
               data._sort = vcui.date.parse(regDateStr).getTime();
               // today
               data._today = this.getIsToday(visitDateStr) || false;
+              // 지난 시간
+              data._isOverTime = vcui.date.compare(visitDate, new Date()) === 1;
 
               // 조회시점과 예약일 비교 (시간까지 비교위해 getTime)
               if (this.variable.date.getTime() > visitDate.getTime()) {
@@ -538,21 +553,32 @@
      * @param {Object} item 예약 정보 데이터 1건
      */
     addItem: function (item) {
-      var revDate; // yyyy-mm-dd 형태의 예약일
       var keys = vcui.object.keys(item) || [];
       item = $.extend({}, item);
 
-      item._type = this.variable.tabActIndex;
+      item._type = parseInt(this.variable.tabActIndex);
 
       // 신청페이지
-      item._reservationPage =
+      /* item._reservationPage =
         linkHost +
         "/support/visit-store-reservation?orgCode=" +
-        item.request_orgcode;
+        item.request_orgcode; */
+      if (vcui.array.has(keys, "counsel_event_url")) {
+        item._reservationPage = linkHost + item.counsel_event_url;
+      }
+
+      // 매장 코드
+      if (vcui.array.has(keys, "store_url")) {
+        var stRegex = /.+\?STID=(\w+)/i;
+        if (item.store_url.match(stRegex)) {
+          item._storeId = item.store_url.replace(stRegex, "$1");
+        }
+      }
 
       // 신청자
       if (vcui.array.has(keys, "visitor_name")) {
-        item._name = this.middleMaskingText(item.visitor_name);
+        // item._name = this.middleMaskingText(item.visitor_name);
+        item._name = item.visitor_name;
       }
 
       // 상담제품
@@ -564,6 +590,14 @@
           item._category =
             categorys[0] + " 외 " + (categorys.length - 1) + "개";
         } else {
+          if (item._type === 1) {
+            // 케어십
+            var prdRegex = /.+\((.+)\)/i;
+            if (item.request_category.match(prdRegex)) {
+              item._prdId = item.request_category.replace(prdRegex, "$1");
+            }
+          }
+
           item._category = item.request_category;
         }
       }
@@ -584,7 +618,8 @@
       this.el.$listContainer.append(vcui.template(reservationItem, item));
 
       var li = this.el.$listContainer.find("li:last");
-      li.data("rev-date", revDate); // 자정 넘기고 예약취소 노출 된 상태 클릭 시 비교를 위한 저장
+      li.data("rev-date", item._visitDateStr);
+      li.data("rev-type", item._method);
     },
     /**
      * 리스트 전부 제거
@@ -615,7 +650,53 @@
         location.reload();
       });
 
-      $popCancelComplete.vcModal();
+      $popCancelComplete.vcModal({
+        title: this.variable.revType + " 예약 취소 완료",
+      });
+    },
+    /**
+     * 제품 정보 열기
+     * @param {Object} data
+     * @param {*} data.target 팝업 여는 버튼 element
+     * @param {*} data.id 조회할 제품 id
+     */
+    openProduct: function (data) {
+      var target = data.target;
+      var id = data.id;
+      var ajaxUrl = this.el.$container.data("reservation-product-info");
+
+      lgkorUI.requestAjaxDataPost(
+        ajaxUrl,
+        { modelName: id },
+        function (result) {
+          this.el.$popProduct
+            .off("modalshow")
+            .on("modalshow", this.createProduct.bind(this, result.data));
+          this.el.$popProduct.vcModal({ opener: target });
+        }.bind(this),
+        true
+      );
+    },
+    /**
+     * 제품 정보 내부 마크업 생성
+     * @param {Object} item 제품 json 데이터
+     */
+    createProduct: function (item) {
+      var keys = vcui.object.keys(item) || {};
+
+      // 이미지
+      if (vcui.array.has(keys, "smallImageAddr")) {
+        item._img = linkHost + item.smallImageAddr;
+      }
+
+      // 월 이용요
+      if (vcui.array.has(keys, "years1TotAmt")) {
+        item._price = vcui.number.addComma(item.years1TotAmt);
+      }
+
+      this.el.$popProduct
+        .find(".consult_view-prdpop")
+        .html(vcui.template(productItem, item));
     },
     /**
      * 문자 중앙 마스킹
