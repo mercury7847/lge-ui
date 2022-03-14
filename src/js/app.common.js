@@ -257,7 +257,7 @@ var appInit = function() {
             if (barcode != null && barcode != "" && barcode != undefined) {
                 var setBarcode = barcode.split('/').join('');
                 if(chkSerialNum(setBarcode)) {
-                    var getBarcode = ($('#categorySelect').val() == 'emart') ? setBarcode.slice(0,16):setBarcode.slice(0,22);
+                    var getBarcode = ($('#categorySelect').val() == 'EMRT') ? setBarcode.slice(0,16):setBarcode.slice(0,22);
                     $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
                     $("#inputReceipt").val(getBarcode);
                     $('#receiptCodeInputWrap').show();

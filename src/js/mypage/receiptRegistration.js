@@ -59,7 +59,7 @@
                         msgTarget: '.err-block:eq(1)',
                         // BTOCSITE-12307
                         validate: function(value) {
-                            var len = $('#categorySelect').val() == 'emart'?16:22;
+                            var len = $('#categorySelect').val() == 'EMRT'?16:22;
                             if(value.length < len || value.length > len) {
                                 this.errorMsg = "영수증번호를 확인해주세요.";
                                 return false;
