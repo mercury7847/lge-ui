@@ -271,7 +271,7 @@ var appInit = function() {
 
         receiptCodeDirectInput = function() {
             $('#receiptCodeInputWrap').show();
-            $('#inputReceipt').focus();
+            $('#inputReceipt').val('').focus();
         }
         // e : BTOCSITE-12307
 
