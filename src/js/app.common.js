@@ -259,7 +259,7 @@ var appInit = function() {
                 if(chkSerialNum(setBarcode)) {
                     var getBarcode = ($('#categorySelect').val() == 'emart') ? setBarcode.slice(0,16):setBarcode;
                     $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
-                    $("#inputReceipt").val(setBarcode);
+                    $("#inputReceipt").val(getBarcode);
                     $('#receiptCodeInputWrap').show();
                     $('#inquiryButton').focus();
                 } else {
