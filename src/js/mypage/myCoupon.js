@@ -144,6 +144,25 @@
             this.el.$errorCoupon = $(this.selector.errorCoupon);
         },
         setStyle: function () {
+            var urlParams = new URLSearchParams(document.location.search);
+            if (urlParams.get("tab") && urlParams.get("tab") === "bestshop" && urlParams.get("store_coupon") === "visit") {
+                //베스트샵 > 매장 방문 혜택 쿠폰
+                this.variable.tabActIndex = 1;
+                this.el.$tab.find(">ul>li").eq(1).addClass("on");
+                this.el.$subTab.show();
+                this.el.$subTab.find(">ul>li").eq(1).addClass("on");
+            } else if (urlParams.get("tab") && urlParams.get("tab") === "bestshop") {
+                //베스트샵 > 매장 제품 할인 쿠폰
+                this.variable.tabActIndex = 1;
+                this.el.$tab.find(">ul>li").eq(1).addClass("on");
+                this.el.$subTab.show();
+                this.el.$subTab.find(">ul>li").eq(0).addClass("on");
+            } else {
+                //베스트샵 > 매장 제품 할인 쿠폰
+                this.variable.tabActIndex = 0;
+                this.el.$tab.find(">ul>li").eq(0).addClass("on");
+            }
+
             //LGE.COM 탭 일 경우 서브탭 숨김
             TAB = this.getTabName(this.variable.tabActIndex);
 
@@ -289,8 +308,10 @@
             }
             this.setProperty();
             this.setStyle();
-            this.bindEvents();
+
             this.requestCouponInquiry();
+
+            this.bindEvents();
         },
         changeTabMenu: function (e) {
             var $tab = $(e.currentTarget).parent();
@@ -375,6 +396,7 @@
         },
 
         setCouponList: function (key) {
+            var oSelf = this;
             var targetList = this.el.$couponList;
             var noData = this.el.$couponNoData;
             targetList.empty();
@@ -405,7 +427,10 @@
                     .eq(0)
                     .find(".count")
                     .text("(" + this.variable.listData[key].length + ")");
-                this.addCouponList(key, page);
+
+                for (var i = 0; i <= page; i++) {
+                    oSelf.addCouponList(key, i);
+                }
             } else {
                 noData.show();
                 targetList.hide();
