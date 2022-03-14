@@ -32,18 +32,18 @@
                             <div class="coupon-tabs">
                                 <div class="tabs-wrap btn-type left">
                                     <ul class="tabs">
-                                        <li class="on"><a href="#">LGE.COM <span class="count"><em class="blind">사용가능 쿠폰</em>15</span></a></li>
+                                        <li><a href="#">LGE.COM <span class="count"><em class="blind">사용가능 쿠폰</em>15</span></a></li>
                                         <li><a href="#">베스트샵 <span class="count"><em class="blind">사용가능 쿠폰</em>5</span><em class="blind">선택됨</em></a></li>
                                     </ul>
                                 </div>
-                                <div class="tabs-wrap bar-type ui_tab left">
+                                <div class="tabs-wrap bar-type ui_tab left" style="display: none;">
                                     <ul class="tabs">
                                         <li><a href="#">매장 제품 할인 쿠폰 <span class="count"><em class="blind">사용가능 쿠폰</em>4</span><em class="blind">선택됨</em></a></li>
-                                        <li class="on"><a href="#">매장 방문 혜택 쿠폰 <span class="count"><em class="blind">사용가능 쿠폰</em>1</span></a></li>
+                                        <li><a href="#">매장 방문 혜택 쿠폰 <span class="count"><em class="blind">사용가능 쿠폰</em>1</span></a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div id="tab-coupon-on" class="tab-contents">
+                            <div class="tab-contents">
                                 <!-- 스크립트 처리 예정 -->
                                 <div class="list-sorting">
                                     <div class="sort-area">
@@ -61,58 +61,7 @@
                                 <div class="coupon-list-wrap mybestshop">
                                     <div class="coupon-lists">
                                         <!-- 화면 UI 보기용 -->
-                                        <ul>
-                                            @@loop('./common/modules/coupon-list-bestshop.html', [
-                                                {
-                                                    "type1" : true,
-                                                    "name" : "50,000원",
-                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "65ART90EKPA 등",
-                                                    "btn-text" : "대상모델 보기"
-                                                },
-                                                {
-                                                    "type1" : true,
-                                                    "name" : "50,000원",
-                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "65ART90EKPA 등",
-                                                    "btn-text" : "대상모델 보기"
-                                                },
-                                                {
-                                                    "type1" : true,
-                                                    "name" : "50,000원",
-                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "65ART90EKPA 등",
-                                                    "btn-text" : "대상모델 보기"
-                                                },
-                                                {
-                                                    "type3" : true,
-                                                    "name" : "50,000원",
-                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "65ART90EKPA 등",
-                                                    "end" : "사용완료"
-                                                },
-                                                {
-                                                    "type3" : true,
-                                                    "name" : "50,000원",
-                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "65ART90EKPA 등",
-                                                    "end" : "기간만료"
-                                                },
-                                                {
-                                                    "type3" : true,
-                                                    "name" : "50,000원",
-                                                    "desc" : "LG Pra.L 인텐시브 멀티케어 타임딜",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "65ART90EKPA 등",
-                                                    "end" : "기간만료"
-                                                },
-                                            ]);
-                                        </ul>
+                                        <ul></ul>
                                         <!-- //화면 UI 보기용 -->
                                     </div>
                                 </div>
@@ -123,99 +72,7 @@
                                 </div>
                                 <!-- // nodata -->
                                 <!-- LGECOMVIO-141 : 점검 및 시스템 장애(2022.03.07 쿠폰 공통 추가) -->
-                                <div class="coupon-error-cont">
-                                    <p class="tit">이용에 불편을 <br class="m-br">드려 죄송합니다.<small>요청하신 페이지가 정상적으로  <br class="m-br">처리되지 않았습니다.</small></p>
-                                    <p class="desc">
-                                        <span>해당 요청 사항 처리 중 점검 및 <br class="m-br">일시적인 장애 등의 이유로 <br>페이지가 정상적으로 서비스 되지 않았습니다.</span>
-                                    </p>
-                                    <dl>
-                                        <dt>시스템 점검 시간</dt>
-                                        <dd>2022.03.01 15:55 ~ 2022.03.01 15:59</dd>
-                                    </dl>
-                                </div>
-                                <!-- //LGECOMVIO-141 : 점검 및 시스템 장애(2022.03.07 쿠폰 공통  추가) -->
-                            </div>
-                            <div id="tab-coupon-end" class="tab-contents" style="display:none;">
-                                <!-- 스크립트 처리 예정 -->
-                                <div class="list-sorting">
-                                    <div class="sort-area">
-                                        <div class="sort-list">
-                                            <div class="sort-select-wrap">
-                                                <select class="ui_selectbox" id="select2" title="정렬 기준 선택">
-                                                    <option selected>사용가능 쿠폰</option>
-                                                    <option>종료된 쿠폰</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- //스크립트 처리 예정 -->
-                                <div class="coupon-list-wrap">
-                                    <div class="coupon-lists">
-                                        <!-- 화면 UI 보기용 -->
-                                        <ul>
-                                            @@loop('./common/modules/coupon-list-bestshop.html', [
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "매장 방문 혜택 쿠폰",
-                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "강남본점 등",
-                                                    "btn-text" : "사용하기"
-                                                },
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "매장 방문 혜택 쿠폰",
-                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "강남본점 등",
-                                                    "btn-text" : "사용하기"
-                                                },
-                                                {
-                                                    "type2" : true,
-                                                    "name" : "매장 방문 혜택 쿠폰",
-                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "강남본점 등",
-                                                    "btn-text" : "사용하기"
-                                                },
-                                                {
-                                                    "type4" : true,
-                                                    "name" : "매장 방문 혜택 쿠폰",
-                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "강남본점 등",
-                                                    "end" : "사용완료"
-                                                },
-                                                {
-                                                    "type4" : true,
-                                                    "name" : "매장 방문 혜택 쿠폰",
-                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "강남본점 등",
-                                                    "end" : "기간만료"
-                                                },
-                                                {
-                                                    "type4" : true,
-                                                    "name" : "매장 방문 혜택 쿠폰",
-                                                    "desc" : "GRAND OPEN 매장 방문 혜택 쿠폰",
-                                                    "period" : "2022.11.25~2021.11.29",
-                                                    "model" : "강남본점 등",
-                                                    "end" : "기간만료"
-                                                },
-                                            ]);
-                                        </ul>
-                                        <!-- //화면 UI 보기용 -->
-                                    </div>
-                                </div>
-                                <button type="button" class="btn-moreview block" style="display:none;"><span>더보기</span></button>
-                                <!-- nodata -->
-                                <div class="no-data">
-                                    <p>종료된 쿠폰이 없습니다.</p>
-                                </div>
-                                <!-- // nodata -->
-                                <!-- LGECOMVIO-141 : 점검 및 시스템 장애(2022.03.07 쿠폰 공통 추가) -->
-                                <div class="coupon-error-cont">
+                                <div class="coupon-error-cont" style="display: none;">
                                     <p class="tit">이용에 불편을 <br class="m-br">드려 죄송합니다.<small>요청하신 페이지가 정상적으로  <br class="m-br">처리되지 않았습니다.</small></p>
                                     <p class="desc">
                                         <span>해당 요청 사항 처리 중 점검 및 <br class="m-br">일시적인 장애 등의 이유로 <br>페이지가 정상적으로 서비스 되지 않았습니다.</span>
