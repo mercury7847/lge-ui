@@ -871,6 +871,9 @@
                 // BTOCSITE-3200 출장서비스 예약 > 추가정보_건물유형 수정 등 
                 productCode = self.getbdTypeParam();
                 param = {
+                    // BTOCSITE-13336 출장 서비스 예약 > 고장증상 '세척서비스' 예약 가능하게 기능 수정 요청
+                    topic: $('input[name=topic]:checked').val(),
+                    subTopic: $('input[name=subTopic]:checked').val(),    
                     serviceType: $('#serviceType').val(),
                     category: $('#category').val(),
                     subCategory: $('#subCategory').val(),
@@ -995,6 +998,9 @@
                 productCode = self.getbdTypeParam();
 
                 param = {
+                    // BTOCSITE-13336 출장 서비스 예약 > 고장증상 '세척서비스' 예약 가능하게 기능 수정 요청
+                    topic: $('input[name=topic]:checked').val(),
+                    subTopic: $('input[name=subTopic]:checked').val(),    
                     serviceType: $('#serviceType').val(),
                     date: $('#date').val(),
                     time: $('#time').val(),
