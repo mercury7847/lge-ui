@@ -337,9 +337,12 @@
                         display: table;
                         .cnt_area {
                             display: table-cell;
+                            vertical-align: middle;
+                            margin-top: -8px;
                         }
                         .btn_area {
                             display: table-cell;
+                            vertical-align: middle;
                         }
                     }
                 }
@@ -350,13 +353,13 @@
                     font-weight: 400;
                     color: #666;
                     line-height: 20px;
-                    margin-right: 48px;
+                    margin:8px 24px 0 0;
                     dt{
                         float: left;
                     }
                     dd{
                         float: left;
-                        margin-left: 8px;
+                        margin-left:2px;
                         font-weight: 500;
                         color: #000;
                     }
