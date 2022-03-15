@@ -160,9 +160,6 @@
                 //베스트샵 > 매장 제품 할인 쿠폰
                 this.variable.tabActIndex = 0;
                 this.el.$tab.find(">ul>li").eq(0).addClass("on");
-
-                // console.log(">>", this.el.$tab.eq(0).find('.count').after().html('<em class="blind">선택됨</em>'));
-                // this.el.$tab.eq(0).find(".count").after().html('<em class="blind">선택됨</em>');
             }
 
             //LGE.COM 탭 일 경우 서브탭 숨김
@@ -173,6 +170,7 @@
             } else if (TAB === TAB_BESTSHOP_VISIT) {
                 this.el.$subTab.show();
             }
+            this.el.$tab.find("li.on a .count").after('<em class="blind">선택됨</em>');
         },
         bindEvents: function () {
             //상위 탭 클릭 시
@@ -361,6 +359,8 @@
             } else {
                 this.el.$subTab.show();
             }
+            this.el.$tab.find("li a > .blind").remove();
+            this.el.$tab.find("li.on a .count").after('<em class="blind">선택됨</em>');
 
             //탭 변경 시 데이터 새로 고침
             this.variable.tabActIndex = $tab.index();
@@ -425,40 +425,50 @@
                             oSelf.variable.listData[val] = result.data[val];
                         });
 
-                        this.renderPage(keyValue[0]);
+                        this.renderPage();
                     }
                 }.bind(this),
                 true
             );
         },
-        renderPage: function (type) {
-            this.el.$couponMore.hide();
-            this.setCouponList(type);
+        renderPage: function () {
+            var type;
+            var selOptIdx = this.el.$contents.find(".ui_selectbox").find("option:selected").index();
 
             // 게시글 수 출력
             TAB = this.getTabName(this.variable.tabActIndex);
             if (TAB === TAB_LGE) {
-                // $countCoupon = this.el.$tab
-                //     .find(">ul>li")
-                //     .eq(0)
-                //     .find(".count")
-                //     .html('<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["onListData"].length + "</span>");
+                if (selOptIdx === 0) {
+                    type = "onListData";
+                } else {
+                    type = "endListData";
+                }
+                this.el.$tab
+                    .find(">ul>li")
+                    .eq(0)
+                    .find(".count")
+                    .html('<em class="blind">사용가능 쿠폰</em>' + this.variable.listData["onListData"].length);
             } else if (TAB === TAB_BESTSHOP_VISIT) {
-                // $countCoupon = this.el.$tab
-                //     .find(">ul>li")
-                //     .eq(1)
-                //     .find(".count")
-                //     .html(
-                //         '<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["storeVisitOnListCount"] + "</span>"
-                //     );
-                // this.el.$subTab
-                //     .find("ul li")
-                //     .eq(1)
-                //     .find(".count")
-                //     .html(
-                //         '<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["storeVisitOnListCount"] + "</span>"
-                //     );
+                if (selOptIdx === 0) {
+                    type = "storeVisitOnList";
+                } else {
+                    type = "storeVisitOffList";
+                }
+
+                this.el.$tab
+                    .find(">ul>li")
+                    .eq(1)
+                    .find(".count")
+                    .html('<em class="blind">사용가능 쿠폰</em>' + this.variable.listData["storeVisitOnListCount"]);
+                this.el.$subTab
+                    .find("ul li")
+                    .eq(1)
+                    .find(".count")
+                    .html('<em class="blind">사용가능 쿠폰</em>' + this.variable.listData["storeVisitOnListCount"]);
             }
+
+            this.el.$couponMore.hide();
+            this.setCouponList(type);
         },
         setCouponList: function (key) {
             var oSelf = this;
