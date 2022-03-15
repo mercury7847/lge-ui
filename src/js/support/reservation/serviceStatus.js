@@ -457,8 +457,9 @@
                 
                 self.el.time.on('timeselected', function() {
                     var param = {
-                        topic: $('#topic').val(),
-                        subTopic: $('#subtopic').val(),
+                        // BTOCSITE-13336 toppic subTopic 추가
+                        topic: $('#sympCd').val(),
+                        subTopic: $('#sympSubCode').val(),
                         zipId: $('input[name=zipId]').val(),
                         productCode: $('input[name=productCode]').val(),
                         userNm: $('input[name=userNm]').val(),
@@ -526,10 +527,11 @@
                     var checkedTarget = self.el.slider.find('[name=engineer]').filter(':checked');
                     var currentData = checkedTarget.data();
                     var param ;
-
+                    
                     param = {
-                        topic: $('#topic').val(),
-                        subTopic: $('#subtopic').val(),
+                        // BTOCSITE-13336 toppic subTopic 추가
+                        topic: $('#sympCd').val(),
+                        subTopic: $('#sympSubCode').val(),
                         serviceType: $('#serviceType').val(),
                         date: $('#date').val(),
                         time: $('#time').val(),
@@ -745,8 +747,9 @@
                     param;
     
                 param = {
-                    topic: $('#topic').val(),
-                    subTopic: $('#subtopic').val(),
+                    // BTOCSITE-13336 toppic subTopic 추가
+                    topic: $('#sympCd').val(),
+                    subTopic: $('#sympSubCode').val(),
                     zipId: $('input[name=zipId]').val(),
                     productCode: $('input[name=productCode]').val(),
                     userNm: $('input[name=userNm]').val(),
@@ -780,8 +783,9 @@
                     param;
     
                 param = {
-                    topic: $('#topic').val(),
-                    subTopic: $('#subtopic').val(),
+                    // BTOCSITE-13336 toppic subTopic 추가
+                    topic: $('#sympCd').val(),
+                    subTopic: $('#sympSubCode').val(),
                     zipId: $('input[name=zipId]').val(),
                     productCode: $('input[name=productCode]').val(),
                     userNm: $('input[name=userNm]').val(),
