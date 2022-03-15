@@ -209,6 +209,7 @@
                             } else {
                                 void android.openBarcodeScannerForReceipt("receiptCodeDirectReturn");
                             }
+                            $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
                         } else {
                             self.validation.validate();
                         }
