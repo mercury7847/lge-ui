@@ -11,6 +11,7 @@
                 self.setting();
                 self.bindEvents();
                 self.requestSelectData();
+                $('.foot-bottom').append('<a href="/html/MYC/ACCF7037.html" style="color:#ddd">DEV</a>')
             },
 
             setting: function() {
@@ -209,9 +210,9 @@
                             } else {
                                 void android.openBarcodeScannerForReceipt("receiptCodeDirectReturn");
                             }
-                            $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
+                            self.$formWrap.find('.err-block').hide().find('.err-msg').text("")
                         } else {
-                            return self.validation.validate();
+                            self.validation.validate();
                         }
                     } else {
                         if(vcui.detect.isMobileDevice){
