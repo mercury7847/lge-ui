@@ -978,6 +978,20 @@
             padding-right:0;
             
         }
+        /* BTOCSITE-13364 브랜드관 히어로 배너 영역 수정 */
+        &.solo{
+            right:0;
+            bottom:20px;
+            @media screen and (max-width: 1475px){
+                padding-right:0;
+            }
+            @include mobile {
+                left:0%;
+                bottom:20px;
+                justify-content:center;
+            }
+        }
+        // /* /BTOCSITE-13364 브랜드관 히어로 배너 영역 수정 */
     }
 }
 // BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)

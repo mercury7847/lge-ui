@@ -122,10 +122,14 @@ $(function() {
         // });
 
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
+        /* BTOCSITE-13364 브랜드관 히어로 배너 영역 수정 */
         var $objSlideNum = $objMain.find('.slide-conts');
         var $objSlideLength = $objMain.find('.custom-indi-wrap')
+        var $txtInfoEtc = $objMain.find('.text-info-etc');
         if($objSlideNum.length === 1) {
             $objSlideLength.hide();
+            $txtInfoEtc.addClass('solo');
+            
         }
         /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 
