@@ -209,10 +209,10 @@
                             } else {
                                 void android.openBarcodeScannerForReceipt("receiptCodeDirectReturn");
                             }
-                            $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
                         } else {
-                            self.validation.validate();
+                            self.$inquiryButton.trigger('click');
                         }
+                        $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
                     } else {
                         if(vcui.detect.isMobileDevice){
                             var obj = {title:'', cancelBtnName:'취소', okBtnName:'확인', ok: function() { return goAppUrl()}}
