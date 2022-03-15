@@ -87,7 +87,7 @@
   var linkHost =
     window.LGEAPPHostName === "localhost" ? "https://www.lge.co.kr" : "";
 
-  var SESSION_TAB_INDEX = "bestshop_counsel_tabindex";
+  // var SESSION_TAB_INDEX = "bestshop_counsel_tabindex"; // hash 활성화로 변경하여 사용 안함
 
   var module = {
     variable: {
@@ -177,9 +177,18 @@
        */
       changeTab: function (e, data) {
         this.variable.tabActIndex = parseInt(data.selectedIndex);
-        this.variable.store.setItem(
+
+        /* this.variable.store.setItem(
           SESSION_TAB_INDEX,
           this.variable.tabActIndex
+        ); */
+
+        // hash 강제 변경
+        var id = data.button.attr("href");
+        history.replaceState(
+          null,
+          null,
+          location.origin + location.pathname + location.search + id
         );
 
         // 에러인 경우 탭 클릭 방지
@@ -297,11 +306,17 @@
      */
     initedTab: function (e, data) {
       // index 세션 존재 시 활성화 변경 (클릭 리스너 등록 전 선행)
-      if (this.variable.store.getItem(SESSION_TAB_INDEX)) {
+      /* if (this.variable.store.getItem(SESSION_TAB_INDEX)) {
         this.variable.tabActIndex =
           this.variable.store.getItem(SESSION_TAB_INDEX);
 
         this.el.$tabContainer.vcTab("select", this.variable.tabActIndex);
+      } */
+
+      // hash 활성화로 변경
+      if (location.hash) {
+        this.el.$tabContainer.vcTab("selectByName", location.hash);
+        this.variable.tabActIndex = this.el.$tabContainer.vcTab("getSelectIdx");
       }
 
       // 클릭 이벤트 등록
