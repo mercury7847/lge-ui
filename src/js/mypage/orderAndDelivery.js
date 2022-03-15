@@ -1,6 +1,4 @@
 (function() {
-
-   
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
