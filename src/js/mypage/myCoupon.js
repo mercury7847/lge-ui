@@ -144,14 +144,13 @@
             this.el.$errorCoupon = $(this.selector.errorCoupon);
         },
         setStyle: function () {
-            var urlParams = new URLSearchParams(document.location.search);
-            if (urlParams.get("tab") && urlParams.get("tab") === "bestshop" && urlParams.get("store_coupon") === "visit") {
+            if (this.urlParam("tab") && this.urlParam("tab") === "bestshop" && this.urlParam("store_coupon") === "visit") {
                 //베스트샵 > 매장 방문 혜택 쿠폰
                 this.variable.tabActIndex = 1;
                 this.el.$tab.find(">ul>li").eq(1).addClass("on");
                 this.el.$subTab.show();
                 this.el.$subTab.find(">ul>li").eq(1).addClass("on");
-            } else if (urlParams.get("tab") && urlParams.get("tab") === "bestshop") {
+            } else if (this.urlParam("tab") && this.urlParam("tab") === "bestshop") {
                 //베스트샵 > 매장 제품 할인 쿠폰
                 this.variable.tabActIndex = 1;
                 this.el.$tab.find(">ul>li").eq(1).addClass("on");
@@ -383,18 +382,49 @@
                         this.el.$couponWrap.show();
                         this.el.$errorCoupon.hide();
 
+                        TAB = this.getTabName(this.variable.tabActIndex);
+
                         var keyValue = Object.keys(result.data);
                         $.each(keyValue, function (idx, val) {
                             oSelf.variable.listData[val] = result.data[val];
                         });
-                        this.el.$couponMore.hide();
-                        this.setCouponList(keyValue[0]);
+
+                        this.renderPage(keyValue[0]);
                     }
                 }.bind(this),
                 true
             );
         },
+        renderPage: function (type) {
+            this.el.$couponMore.hide();
+            this.setCouponList(type);
 
+            // 게시글 수 출력
+            TAB = this.getTabName(this.variable.tabActIndex);
+            if (TAB === TAB_LGE) {
+                $countCoupon = this.el.$tab
+                    .find(">ul>li")
+                    .eq(0)
+                    .find(".count")
+                    .html('<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["onListData"].length + "</span>");
+            } else if (TAB === TAB_BESTSHOP_VISIT) {
+                $countCoupon = this.el.$tab
+                    .find(">ul>li")
+                    .eq(1)
+                    .find(".count")
+                    .html(
+                        '<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["storeVisitOnListCount"] + "</span>"
+                    );
+
+                this.el.$subTab
+                    .find("ul li")
+                    .eq(1)
+                    .find(".count")
+                    .html(
+                        '<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["storeVisitOnListCount"] + "</span>"
+                    );
+            }
+        },
         setCouponList: function (key) {
             var oSelf = this;
             var targetList = this.el.$couponList;
@@ -422,11 +452,6 @@
             if (count > 0) {
                 noData.hide();
                 targetList.show();
-                this.el.$tab
-                    .find("ul li")
-                    .eq(0)
-                    .find(".count")
-                    .text("(" + this.variable.listData[key].length + ")");
 
                 for (var i = 0; i <= page; i++) {
                     oSelf.addCouponList(key, i);
@@ -435,8 +460,6 @@
                 noData.show();
                 targetList.hide();
                 this.el.$couponMore.hide();
-                this.el.$subTab.find("ul li").eq(0).find(".count").text("");
-                if (key) this.el.$tabCouponEnd.find(".coupon-end-txt").hide();
             }
         },
         addCouponList: function (key, page) {
@@ -501,6 +524,14 @@
             var obj = { title: "" };
             obj = $.extend(obj, { title: "쿠폰 사용이 완료되었습니다." }); // 쿠폰 사용기간이 지났습니다., 이미 사용한 쿠폰입니다.
             lgkorUI.alert("", obj);
+        },
+        urlParam: function (name) {
+            var results = new RegExp("[?&]" + name + "=([^&#]*)").exec(window.location.href);
+            if (results == null) {
+                return null;
+            } else {
+                return decodeURI(results[1]) || 0;
+            }
         },
     };
 
