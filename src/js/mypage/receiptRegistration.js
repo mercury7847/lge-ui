@@ -189,14 +189,26 @@
                 self.$barcodeButton.on('click', function(e) {
                     e.preventDefault();
                     if (isApp()) {
-                        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                            var obj = new Object();
-                            obj.command = "scanReceiptBarCode";
-                            obj.callback ="receiptCodeDirectReturn";
-                            var jsonString= JSON.stringify(obj);
-                            webkit.messageHandlers.callbackHandler.postMessage(jsonString);
-                        } else {
-                            void android.openBarcodeScannerForReceipt("receiptCodeDirectReturn");
+                        var isValid = function() {
+                            var isValid = true;
+                            self.$formWrap.find('.select-wrap').filter(':visible').each(function() {
+                                if($(this).find('.ui_selectbox').val() == '') {
+                                    isValid = false;
+                                    return false;
+                                }
+                            });
+                            return isValid;
+                        }
+                        if(isValid()) {
+                            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                                var obj = new Object();
+                                obj.command = "scanReceiptBarCode";
+                                obj.callback ="receiptCodeDirectReturn";
+                                var jsonString= JSON.stringify(obj);
+                                webkit.messageHandlers.callbackHandler.postMessage(jsonString);
+                            } else {
+                                void android.openBarcodeScannerForReceipt("receiptCodeDirectReturn");
+                            }
                         }
                     } else {
                         if(vcui.detect.isMobileDevice){

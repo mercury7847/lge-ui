@@ -13,7 +13,7 @@
             }
         ],
         "area":{
-            "emart":[
+            "EMRT":[
                 {
                     "title":"서울",
                     "value":"area0001"
@@ -71,7 +71,7 @@
                     "value":"branch0009"
                 }
             ],
-            "homeplus":[
+            "HPT":[
                 {
                     "title":"홈플러스서울",
                     "value":"hp0001"
