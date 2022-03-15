@@ -160,6 +160,9 @@
                 //베스트샵 > 매장 제품 할인 쿠폰
                 this.variable.tabActIndex = 0;
                 this.el.$tab.find(">ul>li").eq(0).addClass("on");
+
+                // console.log(">>", this.el.$tab.eq(0).find('.count').after().html('<em class="blind">선택됨</em>'));
+                // this.el.$tab.eq(0).find(".count").after().html('<em class="blind">선택됨</em>');
             }
 
             //LGE.COM 탭 일 경우 서브탭 숨김
@@ -435,27 +438,26 @@
             // 게시글 수 출력
             TAB = this.getTabName(this.variable.tabActIndex);
             if (TAB === TAB_LGE) {
-                $countCoupon = this.el.$tab
-                    .find(">ul>li")
-                    .eq(0)
-                    .find(".count")
-                    .html('<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["onListData"].length + "</span>");
+                // $countCoupon = this.el.$tab
+                //     .find(">ul>li")
+                //     .eq(0)
+                //     .find(".count")
+                //     .html('<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["onListData"].length + "</span>");
             } else if (TAB === TAB_BESTSHOP_VISIT) {
-                $countCoupon = this.el.$tab
-                    .find(">ul>li")
-                    .eq(1)
-                    .find(".count")
-                    .html(
-                        '<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["storeVisitOnListCount"] + "</span>"
-                    );
-
-                this.el.$subTab
-                    .find("ul li")
-                    .eq(1)
-                    .find(".count")
-                    .html(
-                        '<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["storeVisitOnListCount"] + "</span>"
-                    );
+                // $countCoupon = this.el.$tab
+                //     .find(">ul>li")
+                //     .eq(1)
+                //     .find(".count")
+                //     .html(
+                //         '<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["storeVisitOnListCount"] + "</span>"
+                //     );
+                // this.el.$subTab
+                //     .find("ul li")
+                //     .eq(1)
+                //     .find(".count")
+                //     .html(
+                //         '<span class="count"><em class="blind">선택됨</em>' + this.variable.listData["storeVisitOnListCount"] + "</span>"
+                //     );
             }
         },
         setCouponList: function (key) {
