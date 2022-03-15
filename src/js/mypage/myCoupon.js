@@ -189,6 +189,10 @@
 
             //셀렉트 박스 변경 시 > 사용가능쿠폰/ 종료된 쿠폰 조회
             this.el.$contents.find(".ui_selectbox").vcSelectbox().on("change", $.proxy(this.handler.changeSelCoupon, this));
+
+            //매장 방문 혜택 쿠폰 > 매니저확인 팝업 > 영문, 숫자만 입력 가능
+            $(document).on("keyup.codeCoupon", ".comm-code", $.proxy(this.handler.keyupCodeCoupon, this));
+            $(document).on("keydown.codeCoupon", ".comm-code", $.proxy(this.handler.keydownCodeCoupon, this));
         },
         handler: {
             clickTabMenu: function (e) {
@@ -296,6 +300,35 @@
                     for (var i = 1; i <= page; i++) {
                         oSelf.addCouponList(key, i);
                     }
+                }
+            },
+            keyupCodeCoupon: function (e) {
+                var inputVal = $(e.currentTarget).val();
+                if (inputVal.length === 1) {
+                    //첫번째 글자는 영문만 입력
+                    $(e.currentTarget).val(inputVal.replace(/[^A-Za-z]/, ""));
+                } else {
+                    //나머지는 영문&숫자 입력
+                    $(e.currentTarget).val(inputVal.replace(/[^A-Za-z0-9]/g, ""));
+                }
+
+                //에러메시지 코드 출력
+                var reg_exp = new RegExp("^[a-zA-Z][a-zA-Z0-9]{7,8}$");
+                var match = reg_exp.exec(inputVal);
+                if (match == undefined) {
+                    $(e.currentTarget).siblings(".err-msg").show();
+                } else {
+                    $(e.currentTarget).siblings(".err-msg").hide();
+                }
+            },
+            keydownCodeCoupon: function (e) {
+                var inputVal = $(e.currentTarget).val();
+                if (inputVal.length === 1) {
+                    //첫번째 글자는 영문만 입력
+                    $(e.currentTarget).val(inputVal.replace(/[^A-Za-z]/, ""));
+                } else {
+                    //나머지는 영문&숫자 입력
+                    $(e.currentTarget).val(inputVal.replace(/[^A-Za-z0-9]/g, ""));
                 }
             },
         },
