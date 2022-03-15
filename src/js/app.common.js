@@ -272,6 +272,7 @@ var appInit = function() {
         receiptCodeDirectInput = function() {
             $('#receiptCodeInputWrap').show();
             $('#inputReceipt').val('').focus();
+            $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
         }
         // e : BTOCSITE-12307
 
