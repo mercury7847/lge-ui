@@ -211,7 +211,7 @@
                             }
                             $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
                         } else {
-                            self.validation.validate();
+                            return self.validation.validate();
                         }
                     } else {
                         if(vcui.detect.isMobileDevice){
