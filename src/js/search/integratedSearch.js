@@ -4,13 +4,10 @@
     '<li><span class="box"><a href="#{{text}}" data-contents="최근 검색어">{{text}}</a><button type="button" class="btn-delete" title="검색어 삭제"><span class="blind">삭제</span></button></span></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
   //인기검색어
   var popularItemTemplate =
-    '<li><a href="#{{text}}" data-contents="인기 검색어"><b>{{index}}.</b> {{text}}</a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
-  //추천태그 //LGECOMVIO-16 에서 제거
-  //var recommendItemTemplate =
-  //  '<li><a href="#{{text}}" data-contents="추천태그" class="rounded"><span class="text">#{{text}}</span></a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
-  //많이 찾는 키워드
-  var topicItemTemplate =
-    '<li><a href="#n" data-contents="많이 찾는 키워드">{{text}}</a></li>';
+    '<li><a href="#{{text}}" data-contents="인기 검색어">{{index}}.{{text}}</a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
+  //추천태그
+  var recommendItemTemplate =
+    '<li><a href="#{{text}}" data-contents="추천태그" class="rounded"><span class="text">#{{text}}</span></a></li>'; //BTOCSITE-1057 : data-contents 추가 2021-08-09;
 
   //자동완성
   var autoCompleteItemTemplate =
@@ -30,9 +27,6 @@
   var similarTextTemplate =
     '<a href="#{{text}}" class="similar-text"><span class="search-word">“{{text}}”</span> 찾으시나요?</a>';
 
-  var linkHost =
-    window.LGEAPPHostName === "localhost" ? "https://www.lge.co.kr" : "";
-
   var intergratedSearch = {
     init: function () {
       var self = this;
@@ -48,7 +42,6 @@
 
       //통합검색 레이어
       self.$searchLayer = $("#layerSearch");
-
       //검색어 입력input
       self.$inputSearch = self.$searchLayer.find("div.input-sch input.txt");
       self.$inputSearch.attr("data-autofocus", true);
@@ -57,11 +50,10 @@
         "div.input-sch button.btn-search"
       );
 
-      //검색 전 리스트 공간
+      //검색어 리스트 공간
       self.$searchKeywordArea = self.$searchLayer.find(
         "div.search-keyword-area"
       );
-
       //최근 검색어 리스트
       self.$recentKeywordList =
         self.$searchKeywordArea.find("div.recent-keyword");
@@ -69,37 +61,29 @@
       self.$popularKeywordList = self.$searchKeywordArea.find(
         "div.popular-keyword"
       );
-      //많이 찾는 증상 리스트
-      self.$topicKeywordList = self.$searchKeywordArea.find(
-        "div.symptom-keyword"
-      );
       //추천 태그 리스트
-      /* self.$suggestedTagsList =
-        self.$searchKeywordArea.find("div.suggested-tags"); */
+      self.$suggestedTagsList =
+        self.$searchKeywordArea.find("div.suggested-tags");
 
-      //자동 완성 & 검색 결과 공간
+      //검색 결과 공간
       self.$searchResultArea = self.$searchLayer.find("div.search-result-area");
-
       //자동 완성 리스트
       self.$autoComplete = self.$searchResultArea.find("div.auto-complete");
-
       //검색 결과
       self.$resultPreview = self.$searchResultArea.find("div.result-preview");
-      //검색 결과 - 카테고리 //LGECOMVIO-16 에서 제거
-      //self.$resultCategory = self.$resultPreview.find("div.result-category");
+      //검색 결과 - 카테고리
+      self.$resultCategory = self.$resultPreview.find("div.result-category");
       //검색 결과 - 리스트
       self.$resultPreviewList = self.$resultPreview.find(
         "div.result-preview-list"
       );
 
-      //연관검색어 ("xxx" 를 찾은시나요?)
+      //연관검색어
       self.$searchSimilar = self.$searchLayer.find("div.search-similar");
 
-      //돋보기 숨김
       $('li.search>a[href="#layerSearch"]').removeAttr("data-control");
       self.$searchLayer.attr("aria-hidden", true).show();
 
-      // 레이아웃 초기화
       //self.$searchResultArea.hide();
       self.hideSearchResultArea();
       self.$searchSimilar.hide();
@@ -194,15 +178,15 @@
         .on("click.intergrated", "div.keyword-list ul li a", function (e) {
           e.preventDefault();
           self.searchItem($(this), true);
-        });
-      /* .on("mouseover.intergrated", "div.keyword-list ul li a", function (e) { //LGECOMVIO-16 에서 제거
+        })
+        .on("mouseover.intergrated", "div.keyword-list ul li a", function (e) {
           //자동완성 리스트 오버
 
           e.preventDefault();
           self.searchItem($(this), false);
-        }); */ /*.on('mouseout', 'div.keyword-list ul li a', function(e){
-                e.preventDefault();
-            });*/
+        }); /*.on('mouseout', 'div.keyword-list ul li a', function(e){
+              e.preventDefault();
+          });*/
 
       //연관검색어 클릭
       self.$searchSimilar
@@ -220,13 +204,13 @@
           self.searchItem($(this), true);
         });
 
-      //추천태그 클릭 //LGECOMVIO-16 에서 제거
-      /* self.$suggestedTagsList
+      //추천태그 클릭
+      self.$suggestedTagsList
         .off(".intergrated")
         .on("click.intergrated", "div.keyword-list ul li a", function (e) {
           e.preventDefault();
           self.searchTagItem($(this), true);
-        }); */
+        });
 
       //최근검색어 클릭
       self.$recentKeywordList
@@ -247,18 +231,7 @@
               .replace("#", "");
             self.removeRecentSearcheText(text);
           }
-        )
-        .on("click.intergrated", ".all-delete > a", function (e) {
-          self.removeRecentSearcheText();
-        });
-
-      //많이 찾는 증상 클릭
-      self.$topicKeywordList
-        .off(".intergrated")
-        .on("click.intergrated", "div.keyword-list ul li a", function (e) {
-          e.preventDefault();
-          // console.log(e);
-        });
+        );
     },
 
     openSearchPopup: function () {
@@ -275,15 +248,15 @@
         });
       }
       /*
-            self.bodyOvewflow = $('body').css('overflow').toLowerCase();
-            self.ignoreOverflow = (self.bodyOvewflow != "hidden") && !$('body').hasClass('ignore-overflow-hidden');
-            console.log('open',self.ignoreOverflow,self.bodyOvewflow);
-            if(self.ignoreOverflow){
-                $('html, body').css({
-                    overflow:"hidden"
-                });
-            }
-            */
+          self.bodyOvewflow = $('body').css('overflow').toLowerCase();
+          self.ignoreOverflow = (self.bodyOvewflow != "hidden") && !$('body').hasClass('ignore-overflow-hidden');
+          console.log('open',self.ignoreOverflow,self.bodyOvewflow);
+          if(self.ignoreOverflow){
+              $('html, body').css({
+                  overflow:"hidden"
+              });
+          }
+          */
     },
 
     closeSearchPopup: function () {
@@ -297,8 +270,20 @@
         $("body").removeClass("scroll-lock");
       }
 
-      // 모니터링 592 : 검색 레이어 닫힐때 오류 수정
-      $("body").scrollTop(0);
+      /*
+          console.log('close',self.ignoreOverflow,self.bodyOvewflow);
+          if(self.ignoreOverflow) {
+              if(self.bodyOvewflow) {
+                  $('html, body').css({
+                      overflow:self.bodyOvewflow
+                  });
+              } else {
+                  $('html, body').css({
+                      overflow:"visible"
+                  });
+              }
+          }
+          */
     },
 
     //검색어창에 입력후 검색
@@ -310,7 +295,7 @@
         self.$buttonSearch.trigger("click");
         self.closeSearchPopup();
       } else {
-        //self.requestSearch(searchVal, false); //LGECOMVIO-16 에서 제거
+        self.requestSearch(searchVal, false);
       }
     },
 
@@ -323,7 +308,7 @@
         self.$buttonSearch.trigger("click");
         self.closeSearchPopup();
       } else {
-        //self.requestSearch(searchVal, false); //LGECOMVIO-16 에서 제거
+        self.requestSearch(searchVal, false);
       }
     },
 
@@ -343,8 +328,8 @@
       self.$autoComplete.hide();
       //검색 결과
       self.$resultPreview.hide();
-      //검색 결과 - 카테고리 //LGECOMVIO-16 에서 제거
-      //self.$resultCategory.hide();
+      //검색 결과 - 카테고리
+      self.$resultCategory.hide();
       //검색 결과 - 리스트
       self.$resultPreviewList.hide();
     },
@@ -378,7 +363,7 @@
           self.$autoComplete.show();
           self.openSearchInputLayer(false);
           self.$searchSimilar.hide();
-          //self.requestSearch(searchItem, false); //BTOCSITE-5938-316 PC 검색 카테고리 미노출 오류 //LGECOMVIO-16 에서 제거
+          self.requestSearch(searchItem, false); //BTOCSITE-5938-316 PC 검색 카테고리 미노출 오류
         } else {
           self.hideSearchResultArea();
           //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기
@@ -396,8 +381,8 @@
       });
     },
 
-    //검색어 미리보기(카테고리) 검색 //LGECOMVIO-16 에서 제거
-    /* requestSearch: function (value, isSaveRecentKeyword) {
+    //검색어 미리보기 검색
+    requestSearch: function (value, isSaveRecentKeyword) {
       var self = this;
       var ajaxUrl = self.$searchLayer.data("searchUrl");
       lgkorUI.requestAjaxData(ajaxUrl, { search: value }, function (result) {
@@ -451,23 +436,23 @@
 
         //검색 미리보기 리스트 갱신
         //210409 제거요청으로 제거
-        
-        // arr = (data.preview && data.preview) instanceof Array ? data.preview : [];
-        // var $list_ul = self.$resultPreviewList.find('ul');
-        // $list_ul.empty();
-        // if(arr.length > 0) {
-        //     arr.forEach(function(item, index) {
-        //         item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
-        //         item.price = vcui.number.addComma(item.price);
-        //         item.obsFlag = lgkorUI.stringToBool(item.obsFlag);
-        //         $list_ul.append(vcui.template(previewItemTemplate, item));
-        //     });
-        //     self.$resultPreviewList.show();
-        //     showSearchResultArea = true;
-        // } else {
-        //     self.$resultPreviewList.hide();
-        // }
-                
+        /*
+              arr = (data.preview && data.preview) instanceof Array ? data.preview : [];
+              var $list_ul = self.$resultPreviewList.find('ul');
+              $list_ul.empty();
+              if(arr.length > 0) {
+                  arr.forEach(function(item, index) {
+                      item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
+                      item.price = vcui.number.addComma(item.price);
+                      item.obsFlag = lgkorUI.stringToBool(item.obsFlag);
+                      $list_ul.append(vcui.template(previewItemTemplate, item));
+                  });
+                  self.$resultPreviewList.show();
+                  showSearchResultArea = true;
+              } else {
+                  self.$resultPreviewList.hide();
+              }
+              */
 
         if (showSearchResultArea) {
           //검색결과가 있는 경우.
@@ -478,46 +463,41 @@
         } else {
           //검색결과를 표시할것이 없을경우
           self.$searchSimilar.hide();
-          
-          // //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기
-          // if(data.similarText) {
-          //     self.hideAnimation(self.$searchKeywordArea);
-          //     //self.hideAnimation(self.$searchResultArea);
-          //     self.hideSearchResultArea();
-          //     self.$searchSimilar.html(vcui.template(similarTextTemplate, {"text":data.similarText}));
-          //     self.$searchSimilar.show();
-          // } else {
-          //     self.showAnimation(self.$searchKeywordArea);
-          //     //self.hideAnimation(self.$searchResultArea);
-          //     self.hideSearchResultArea();
-          //     self.$searchSimilar.hide();
-          // }
+          /*
+                  //연관검색어가 있으면 연관검색어를 표시하고 아니면 숨기기
+                  if(data.similarText) {
+                      self.hideAnimation(self.$searchKeywordArea);
+                      //self.hideAnimation(self.$searchResultArea);
+                      self.hideSearchResultArea();
+                      self.$searchSimilar.html(vcui.template(similarTextTemplate, {"text":data.similarText}));
+                      self.$searchSimilar.show();
+                  } else {
+                      self.showAnimation(self.$searchKeywordArea);
+                      //self.hideAnimation(self.$searchResultArea);
+                      self.hideSearchResultArea();
+                      self.$searchSimilar.hide();
+                  }
+                  */
         }
       });
-    }, */
+    },
 
     //최근 검색어 삭제
     removeRecentSearcheText: function (text) {
       var self = this;
       /*
-            var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
-            if(!searchedList) {
-                searchedList = [];
-            }
+          var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
+          if(!searchedList) {
+              searchedList = [];
+          }
 
-            var findIndex = $.inArray(text, searchedList);
-            if(findIndex >= 0) {
-                searchedList.splice(findIndex, 1);
-                localStorage.searchedList = JSON.stringify(searchedList);
-            }
-            */
-
-      if (text) {
-        lgkorUI.removeCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text);
-      } else {
-        lgkorUI.deleteCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
-      }
-
+          var findIndex = $.inArray(text, searchedList);
+          if(findIndex >= 0) {
+              searchedList.splice(findIndex, 1);
+              localStorage.searchedList = JSON.stringify(searchedList);
+          }
+          */
+      lgkorUI.removeCookieArrayValue(lgkorUI.INTERGRATED_SEARCH_VALUE, text);
       self.updateRecentSearchList();
     },
 
@@ -567,15 +547,11 @@
         //인기검색어
         var arr =
           data.popular && data.popular instanceof Array ? data.popular : [];
-
         if (arr.length > 0) {
-          var $list = self.$popularKeywordList.find("div.keyword-list");
-          $list.empty().append("<ul></ul>");
-          if (arr.length > 5) $list.append("<ul></ul>"); // 5개 이상 때 추가 ul
-          $list_ul = $list.find("> ul");
-
+          var $list_ul = self.$popularKeywordList.find("div.keyword-list ul");
+          $list_ul.empty();
           arr.forEach(function (item, index) {
-            $list_ul.eq(Math.floor(index / 5)).append(
+            $list_ul.append(
               vcui.template(popularItemTemplate, {
                 text: item,
                 index: index + 1,
@@ -587,8 +563,8 @@
           self.$popularKeywordList.hide();
         }
 
-        //추천태그 //LGECOMVIO-16 에서 제거
-        /*  arr =
+        //추천태그
+        arr =
           data.recommend && data.recommend instanceof Array
             ? data.recommend
             : [];
@@ -603,19 +579,6 @@
           self.$suggestedTagsList.show();
         } else {
           self.$suggestedTagsList.hide();
-        } */
-
-        //많이 찾는 증상
-        arr = data.topic && data.topic instanceof Array ? data.topic : [];
-        if (arr.length > 0) {
-          var $list_ul = self.$topicKeywordList.find("ul");
-          $list_ul.empty();
-          arr.forEach(function (item, index) {
-            $list_ul.append(vcui.template(topicItemTemplate, { text: item }));
-          });
-          self.$topicKeywordList.show();
-        } else {
-          self.$topicKeywordList.hide();
         }
       });
     },
@@ -627,7 +590,7 @@
       var ajaxUrl = self.$searchLayer.data("searchInputUrl");
 
       lgkorUI.requestAjaxData(
-        linkHost + "/search/searchKeyword.lgajax",
+        "/search/searchKeyword.lgajax",
         { keyword: value },
         function (result) {
           if (result.data && result.data.success == "Y" && result.data.url) {
