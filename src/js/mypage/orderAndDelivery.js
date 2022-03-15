@@ -1864,9 +1864,9 @@
                 }
 
                 // LGECOMVIO-114 BESTSHOP 추가
-                if(data.bestShopOrderList && data.bestShopOrderList.length){
+                if(data.bestShopListData && data.bestShopListData.length){
                     var leng, cdx, idx;
-                    var list = data.bestShopOrderList;
+                    var list = data.bestShopListData;
                     for(idx in list){
                         leng = BESTSHOP_LIST.length;
                         list[idx]['dataID'] = leng.toString();
