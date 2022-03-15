@@ -11,7 +11,6 @@
                 self.setting();
                 self.bindEvents();
                 self.requestSelectData();
-                $('.foot-bottom').append('<a href="/html/MYC/ACCF7037.html" style="color:#ddd">DEV</a>')
             },
 
             setting: function() {
@@ -138,6 +137,7 @@
                             } else {
                                 self.$branchSelect.parents('div.select-wrap').hide();
                                 self.validation.setRequireItem("spotName",false);
+                                self.validation.validate();
                             }
                         }
                     }
