@@ -209,6 +209,8 @@
                             } else {
                                 void android.openBarcodeScannerForReceipt("receiptCodeDirectReturn");
                             }
+                        } else {
+                            self.validation.validate();
                         }
                     } else {
                         if(vcui.detect.isMobileDevice){
