@@ -841,274 +841,142 @@
         "requestOrderAbleYn": "N"
       }
     ],
-    "bestShopListData": [
+    "bestShopOrderList":[
       {
-        "orderNumber": "000010600",
-        "orderDate": "2021.04.08",
-        "orderType": "SM",
-        "status": "Fail",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "105900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 2,
-        "storeName": "운정점",
-        "productList": [
+        "ordNo":"1061910604",
+        "ordCnt":1,
+        "store":"운정점",
+        "buyDt":"2020.06.22",
+        "productList":[
           {
-            "productNameKR": "LG 트롬 스타일러",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08918846",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "10900",
-            "productTotalPrice": 10900,
-            "rowTotal": 10900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "매장 문의 필요",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
+            "categoryLevel1":"HA",
+            "buyCnt":"1",
+            "buyAmt":"590000",
+            "categoryLevel4":"HADHDHDJ",
+            "categoryLevel3":"HADHDH",
+            "categoryLevel2":"HADH",
+            "modelCd":"DQ200PGAA",
+            "sku":"DQ200PGAA.AKOR",
+            "categoryName":"생활용품 > 제습기",
+            "modelDisplayName":"LG 휘센 제습기",
+            "deliveryStatus": false,
+            "deliveryStatusText":"매장 문의 필요",
+            "ordSysOrdNo":""
+          }
+        ]
+      },
+      {
+        "ordNo":"1054670085",
+        "ordCnt":1,
+        "store":"신세계 Art & Science 점",
+        "buyDt":"2018.11.17",
+        "productList":[
+          {
+            "categoryLevel1":"HC",
+            "buyCnt":"1",
+            "buyAmt":"784000",
+            "categoryLevel4":"HCWCASAC",
+            "categoryLevel3":"HCWCAS",
+            "categoryLevel2":"HCWC",
+            "modelCd":"AS181DAP",
+            "sku":"AS181DAP.AKOR",
+            "categoryName":"헬스케어 > 건강관리",
+            "modelDisplayName":"LG 퓨리케어 360˚ 공기청정기",
+            "deliveryStatus": false,
+            "deliveryStatusText":"매장 문의 필요",
+            "ordSysOrdNo":""
+          }
+        ]
+      },
+      {
+        "ordNo":"1050205128",
+        "ordCnt":1,
+        "store":"신세계 Art & Science 점",
+        "buyDt":"2017.12.16",
+        "productList":[
+          {
+            "categoryLevel1":"SP",
+            "buyCnt":"1",
+            "buyAmt":"389000",
+            "categoryLevel4":"SPOSAPAA",
+            "categoryLevel3":"SPOSAP",
+            "categoryLevel2":"SPOS",
+            "modelCd":"FHR0610FD",
+            "sku":"FHR0610FD.KMS",
+            "categoryName":"OS제품 > 외부매입상품",
+            "modelDisplayName":"쿠쿠 6인용 IH압력",
+            "deliveryStatus":false,
+            "ordSysOrdNo":""
+          }
+        ]
+      },
+      {
+        "ordNo":"1049694052",
+        "ordCnt":4,
+        "store":"운정점",
+        "buyDt":"2017.11.04",
+        "productList":[
+          {
+            "categoryLevel1":"WM",
+            "buyCnt":"1",
+            "buyAmt":"1304187",
+            "categoryLevel4":"WMWRWRCA",
+            "categoryLevel3":"WMWRWR",
+            "categoryLevel2":"WMWR",
+            "modelCd":"RH9SAW",
+            "sku":"RH9SAW.AKOR",
+            "categoryName":"세탁기 > 의류건조기",
+            "modelDisplayName":"전기식 건조기 (인버터 히트펌프)",
+            "deliveryStatus":true,
+            "deliveryStatusText":"배송조회",
+            "ordSysOrdNo":"SO2146829580-2-2-97151317"
           },
           {
-            "productNameKR": "세탁기 > 식기세척기",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08919869",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "95000",
-            "productTotalPrice": 95000,
-            "rowTotal": 95000,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": "",
-              "relatedOrderNumber": "S0214658792-1-96459469"
-            },
-            "statusButtonList": [
-              {
-                "className": "bestShopDeliveryInquiry",
-                "buttonName": "배송조회"
-              }
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "Y",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000004101",
-        "orderDate": "2021.03.17",
-        "orderType": "NB",
-        "status": "Wait for Authorization",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "12900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 1,
-        "storeName": "신세계 Art & Science 점",
-        "productList": [
-          {
-            "productNameKR": "에어컨 > 에어컨",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08747120",
-            "modelType": "일반(G)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "12900",
-            "productTotalPrice": 12900,
-            "rowTotal": 12900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "냉온정수기+세척수",
-              "언더싱크형"
-            ],
-            "itemStatus": "Cancel Pending",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "N",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "N",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000010600",
-        "orderDate": "2021.04.08",
-        "orderType": "SM",
-        "status": "Fail",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "105900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 1,
-        "storeName": "운정점",
-        "productList": [
-          {
-            "productNameKR": "LG 퓨리케어 상하좌우 정수기",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08918846",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "10900",
-            "productTotalPrice": 10900,
-            "rowTotal": 10900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "매장 문의 필요",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
-          }
-        ],
-        "orderCancelAbleYn": "Y",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
-      },
-      {
-        "orderNumber": "000010600",
-        "orderDate": "2021.04.08",
-        "orderType": "SM",
-        "status": "Fail",
-        "apiType": "OBS",
-        "requestNo": "",
-        "grandTotalValue": "105900",
-        "grandTotalCurrency": "KRW",
-        "contDtlType": "",
-        "email": "",
-        "orderTotal": 2,
-        "storeName": "운정점",
-        "productList": [
-          {
-            "productNameKR": "LG 트롬 스타일러",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08918846",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "10900",
-            "productTotalPrice": 10900,
-            "rowTotal": 10900,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "매장 문의 필요",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": ""
-            },
-            "statusButtonList": [
-
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
+            "categoryLevel1":"WM",
+            "buyCnt":"1",
+            "buyAmt":"750813",
+            "categoryLevel4":"WMWLTLMW",
+            "categoryLevel3":"WMWLTL",
+            "categoryLevel2":"WMWL",
+            "modelCd":"F2SC",
+            "sku":"F2SC.AKOR",
+            "categoryName":"세탁기 > 세탁기",
+            "modelDisplayName":"LG 꼬망스 미니세탁기",
+            "deliveryStatus":true,
+            "deliveryStatusText":"배송조회",
+            "ordSysOrdNo":"SO2146829580-2-1-97151316"
           },
           {
-            "productNameKR": "세탁기 > 식기세척기",
-            "productNameEN": "FQ17SADWP3",
-            "modelID": "MD08919869",
-            "modelType": "소모품(A)",
-            "orderedQuantity": "1",
-            "discountAmount": "0.0000",
-            "productPrice": "95000",
-            "productTotalPrice": 95000,
-            "rowTotal": 95000,
-            "productSalePriceCurrency": "KRW",
-            "specList": [
-              "",
-              ""
-            ],
-            "itemStatus": "Fail",
-            "requestNo": "",
-            "orderStatus": {
-              "disabled": "",
-              "statusText": "",
-              "statusClass": "",
-              "statusDate": "",
-              "deliveryUrl": "",
-              "relatedOrderNumber": "S0214658792-1-96459469"
-            },
-            "statusButtonList": [
-              {
-                "className": "bestShopDeliveryInquiry",
-                "buttonName": "배송조회"
-              }
-            ],
-            "orderCancelAbleYn": "Y",
-            "orderRetuenAbleYn": "N"
+            "categoryLevel1":"RF",
+            "buyCnt":"1",
+            "buyAmt":"3024000",
+            "categoryLevel4":"RFBFMD4D",
+            "categoryLevel3":"RFBFMD",
+            "categoryLevel2":"RFBF",
+            "modelCd":"F877TS55",
+            "sku":"F877TS55.AKOR",
+            "categoryName":"냉장고 > 상냉장",
+            "modelDisplayName":"LG DIOS V8700 더블매직스페이스",
+            "deliveryStatus": false,
+            "deliveryStatusText":"매장 문의 필요",
+            "ordSysOrdNo":"SO2146829580-1-97151314"
+          },
+          {
+            "categoryLevel1":"WM",
+            "buyCnt":"1",
+            "buyAmt":"940000",
+            "categoryLevel4":"WMWLTLTA",
+            "categoryLevel3":"WMWLTL",
+            "categoryLevel2":"WMWL",
+            "modelCd":"T18VQ",
+            "sku":"T18VQ.AKOR",
+            "categoryName":"세탁기 > 세탁기",
+            "modelDisplayName":"LG 통돌이 세탁기 (블랙라벨 플러스)",
+            "deliveryStatus": false,
+            "deliveryStatusText":"",
+            "ordSysOrdNo":"SO2146829580-1-97151314"
           }
-        ],
-        "orderCancelAbleYn": "Y",
-        "orderRetuenAbleYn": "N",
-        "bundleCancelYn": "N",
-        "requestOrderAbleYn": "N"
+        ]
       }
     ],
     "careListData": [

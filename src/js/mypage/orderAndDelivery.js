@@ -32,7 +32,30 @@
             '{{/if}}'+
         '</div>';
 
-        var careInquiryListTemplate =
+
+    var bestShopInquiryListTemplate =
+        '<div class="box box-type-2" data-id="{{dataID}}">'+
+            '<div class="info-wrap">'+
+                '<ul class="infos">'+
+                    '<li class="type-m"><p class="store-name">{{store}}</p></li>'+
+                    '<li>{{dateTitle}}<em>{{buyDt}}</em></li>'+
+                    '<li>{{orderNumberTitle}}<em>{{ordNo}}</em></li>'+
+                '</ul>'+
+                '<p class="totals">총 {{ordCnt}}건</p>'+
+                '<p class="store-name type-pc">{{store}}</p>'+
+            '</div>'+
+            '<div class="tbl-layout sizeType3">'+
+                '<div class="thead" aria-hidden="true">'+
+                    '<span class="th col1">제품정보</span>'+
+                    '<span class="th col2">결제금액</span>'+
+                    '<span class="th col3">진행상태</span>'+
+                '</div>'+
+                '<div class="tbody">'+
+                '</div>'+
+            '</div>'+
+        '</div>';
+
+    var careInquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
                 '<ul class="infos">'+
@@ -62,29 +85,6 @@
             '</div>'+
             '{{/if}}'+
         '</div>';
-
-        var bestShopInquiryListTemplate =
-        '<div class="box box-type-2" data-id="{{dataID}}">'+
-            '<div class="info-wrap">'+
-                '<ul class="infos">'+
-                    '<li class="type-m"><p class="store-name">{{storeName}}</p></li>'+
-                    '<li>{{dateTitle}}<em>{{orderDate}}</em></li>'+
-                    '<li>{{orderNumberTitle}}<em>{{groupNumber}}</em></li>'+
-                '</ul>'+
-                '<p class="totals">총 {{orderTotal}}건</p>'+
-                '<p class="store-name type-pc">{{storeName}}</p>'+
-            '</div>'+
-            '<div class="tbl-layout sizeType3">'+
-                '<div class="thead" aria-hidden="true">'+
-                    '<span class="th col1">제품정보</span>'+
-                    '<span class="th col2">결제금액</span>'+
-                    '<span class="th col3">진행상태</span>'+
-                '</div>'+
-                '<div class="tbody">'+
-                '</div>'+
-            '</div>'+
-        '</div>';
-        
 
         var prodListTemplate = 
             '<div class="row {{disabled}}">'+
@@ -130,7 +130,7 @@
                             '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                             '<div class="state-btns">'+
                                 '{{#each status in listData.statusButtonList}}'+
-                                '<a href="#n" class="btn size border stateInner-btn" {{#if status.className == "bestShopDeliveryInquiry"}}data-related-order-number="{{listData.orderStatus.relatedOrderNumber}}"{{/if}} data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
+                                '<a href="#n" class="btn size border stateInner-btn" data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
                                 '{{/each}}'+
                             '</div>'+
                             '{{/if}}'+
@@ -152,51 +152,30 @@
                             '<span class="blind">제품정보</span>'+
                             '<div class="product-info">'+
                                 '<div class="infos">'+
-                                    '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
-                                    '<p class="name"><a {{#if listData.productPDPurl && listData.productPDPurl.length > 0}}href="{{listData.productPDPurl}}"{{/if}}><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
-                                    '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.productNameEN}}</p>'+
-                                    '{{#if listData.specList && listData.specList.length > 0}}'+
-                                    '<div class="more">'+
-                                        '<span class="blind">제품스펙</span>'+
-                                        '<ul>'+
-                                            '{{#each spec in listData.specList}}'+
-                                            '<li>{{spec}}</li>'+
-                                            '{{/each}}'+
-                                        '</ul>'+
-                                    '</div>'+
-                                    '{{/if}}'+
-                                    '{{#if listData.orderedQuantity && isQuantity}}<p class="count">수량 : {{listData.orderedQuantity}}</p>{{/if}}'+
+                                    '<p class="name"><span class="blind">제품명</span>{{#if listData.modelDisplayName}}{{listData.modelDisplayName}}{{#else}}{{listData.categoryName}}{{/if}}</p>'+
+                                    '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.modelCd}}</p>'+
+                                    '{{#if listData.buyCnt}}<p class="count">수량 : {{listData.buyCnt}}</p>{{/if}}'+
                                 '</div>'+
                             '</div>'+
                          '</div>'+
                         '<div class="col col1-2">'+
                             '<div class="payment-price">'+
                                 '<p class="price">'+
-                                    '<span class="blind">구매가격</span>{{listData.addCommaProdPrice}}원'+
+                                    '<span class="blind">구매가격</span>{{listData.buyAmt}}원'+
                                 '</p>'+
                             '</div>'+
                         '</div>'+
                         '<div class="col col2">'+
                             '<div class="state-box">'+
-                            '{{#if listData.orderStatus.statusText}}<p class="tit {{listData.orderStatus.statusClass}}"><span class="blind">진행상태</span>{{listData.orderStatus.statusText}}</p>{{/if}}'+
-                            '{{#if !vcui.isEmpty(listData.itemCancelAbleMassege) }}<p class="desc">({{listData.itemCancelAbleMassege}})</p>{{/if}}'+
-                            '{{#if listData.orderStatus.statusDate !=""}}<p class="desc">{{listData.orderStatus.statusDate}}</p>{{/if}}'+
-                            '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
+                            '{{#if !listData.deliveryStatus}}<p class="tit "><span class="blind">진행상태</span>{{listData.deliveryStatusText}}</p>{{/if}}' +
+                            '{{#if listData.deliveryStatus && listData.ordSysOrdNo}}'+
                                 '<div class="state-btns">'+
-                                '{{#each status in listData.statusButtonList}}'+
-                                '<a href="#n" class="btn size border stateInner-btn" {{#if status.className == "bestShopDeliveryInquiry"}}data-related-order-number="{{listData.orderStatus.relatedOrderNumber}}"{{/if}} data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
-                                '{{/each}}'+
-                            '</div>'+
+                                    '<a href="#n" class="btn size border stateInner-btn" data-related-order-number="{{listData.ordSysOrdNo}}" data-type="bestShopDeliveryInquiry"><span>배송조회</span></a>'+
+                                '</div>'+
                             '{{/if}}'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
-                '{{#if isCheck}}'+
-                '<span class="chk-wrap cancel-select">'+
-                    '<input type="checkbox" id="chk-cancel{{listData.prodID}}" value="{{listData.prodID}}" name="chk-cancel" {{disabled}}>'+
-                    '<label for="chk-cancel{{listData.prodID}}"><span class="blind">해당 상품 선택</span></label>'+
-                '</span>'+
-                '{{/if}}'+
              '</div>';
 
             var careProdListTemplate = 
@@ -454,7 +433,8 @@
             '{{#if deliveryStatus == 5}}배송완료{{/if}}'+
             '</strong>'+
             '{{#if deliveryStatusDate}}<p class="delivery-date">{{deliveryStatusDate}}</p>{{/if}}'+
-            '{{#if deliveryDriver.name}}<span class="delivery-name">배송기사 {{deliveryDriver.name}} <em class="bar">{{deliveryDriver.phoneNumber}}</em></span>{{/if}}'+
+            '{{#if deliveryDriver.name}}<span class="delivery-name">배송기사 {{deliveryDriver.name}} {{#if deliveryDriver.phoneNumber}}<em class="bar">{{deliveryDriver.phoneNumber}}</em></span>{{/if}}{{/if}}'+
+            '{{#if deliveryDriver && !deliveryDriver.name}}<span class="delivery-name">{{deliveryDriver}}</span>{{/if}}'+
         '</div>'+
     '</div>'+
     '<div class="delivery-step">'+
@@ -1884,21 +1864,20 @@
                 }
 
                 // LGECOMVIO-114 BESTSHOP 추가
-                if(data.bestShopListData && data.bestShopListData.length){
+                if(data.bestShopOrderList && data.bestShopOrderList.length){
                     var leng, cdx, idx;
-                    var list = data.bestShopListData;
+                    var list = data.bestShopOrderList;
                     for(idx in list){
                         leng = BESTSHOP_LIST.length;
                         list[idx]['dataID'] = leng.toString();
 
                         list[idx].dateTitle = "주문일";
                         list[idx].orderNumberTitle = "주문번호";
-                        list[idx].groupNumber = list[idx].orderNumber;
 
                         var chk = 0;
                         for(cdx in list[idx].productList){
                             list[idx].productList[cdx]["prodID"] = cdx;
-                            list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
+                            list[idx].productList[cdx]["buyAmt"] = vcui.number.addComma(list[idx].productList[cdx]["buyAmt"]);
                         }
 
                         BESTSHOP_LIST.push(list[idx]);
