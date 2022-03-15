@@ -8,9 +8,11 @@
         <button type="button" data-href="#popup1" data-control="modal" class="btn"><span>쿠폰 상세 팝업(매장제품할인쿠폰)</span></button><br><br>
         <button type="button" data-href="#popup2" data-control="modal" class="btn"><span>쿠폰 상세 팝업(매장방문혜택쿠폰)</span></button><br><br>
         <button type="button" data-id="#laypop1" data-control="modal" class="btn"><span>[Confirm] 매니저 확인</span></button><br><br>
-        <button type="button" data-id="#laypop2" data-control="modal" class="btn"><span>[Alert] 확인1</span></button><br><br>
-        <button type="button" data-id="#laypop3" data-control="modal" class="btn"><span>[Alert] 확인2</span></button><br><br>
-        <button type="button" data-id="#laypop4" data-control="modal" class="btn"><span>[Alert] 확인3</span></button>
+        <button type="button" data-id="#laypop2" data-control="modal" class="btn"><span>[Alert] 확인1(완료)</span></button><br><br>
+        <button type="button" data-id="#laypop3" data-control="modal" class="btn"><span>[Alert] 확인2(만료)</span></button><br><br>
+        <button type="button" data-id="#laypop4" data-control="modal" class="btn"><span>[Alert] 확인3(사용)</span></button><br><br>
+        <button type="button" data-id="#laypop5" data-control="modal" class="btn"><span>[Alert] 확인4(비정상)</span></button><br><br>
+        *[Alert]은 공통UI로 문구 참조으로 저작되었습니다.
     </div>
 
     <!-- 쿠폰 상세보기(매장제품할인쿠폰) -->
@@ -52,6 +54,12 @@
                 //쿠폰알림3
                 if(id=="#laypop4"){
                     obj = $.extend(obj,{title:'이미 사용한 쿠폰입니다.'});
+                    desc = '';
+                    lgkorUI.alert(desc, obj);
+                }
+                //쿠폰알림4
+                if(id=="#laypop5"){
+                    obj = $.extend(obj,{title:'쿠폰이 정상적으로 사용되지 않았습니다.'});
                     desc = '';
                     lgkorUI.alert(desc, obj);
                 }
