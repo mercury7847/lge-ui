@@ -137,13 +137,13 @@
                             } else {
                                 self.$branchSelect.parents('div.select-wrap').hide();
                                 self.validation.setRequireItem("spotName",false);
-                                self.validation.validate();
                             }
                         }
                     }
 
                     self.$areaSelect.vcSelectbox('selectedIndex',0,false);
                     self.$branchSelect.vcSelectbox('selectedIndex',0,false);
+                    self.validation.validate();
                 });
 
                 self.$areaSelect.on('change', function(e){
