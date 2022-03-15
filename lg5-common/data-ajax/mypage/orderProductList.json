@@ -841,7 +841,7 @@
         "requestOrderAbleYn": "N"
       }
     ],
-    "bestShopOrderList":[
+    "bestShopListData":[
       {
         "ordNo":"1061910604",
         "ordCnt":1,
