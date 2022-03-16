@@ -121,9 +121,18 @@ $(function () {
     function sendaddressInfo(){
         var validate = addressInfoValidation.validate();
         var url = $('#popup-event-13447').data('ajax');
+
+        var param = {
+            agree: $('input[name=agreechk]:checked').val(),
+            userName: $('#name').val(),
+            phoneNumber: $('#phone').val(),
+            zipCode: $('#zipCode').val(),
+            userAddress: $('#userAddress').val(),
+            detailAddress: $('#detailAddress').val()
+        };
         
         if(validate.success){
-            lgkorUI.requestAjaxData(url, null, function(result) {
+            lgkorUI.requestAjaxData(url, param, function(result) {
                 if(result.status == 'success'){
                     lgkorUI.alert("", {
                         title: result.data.message,
