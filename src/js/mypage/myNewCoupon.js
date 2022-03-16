@@ -52,12 +52,12 @@
         '<div class="coupon-box bshop {{_clName}} {{_status}}">'+
             '<div class="coupon-cont">'+
                 '<div class="top">'+
-                    '<p class="name">{{cpn_sale_amt}}</p>'+
+                    '<p class="name">{{cpnEventName}}</p>'+
                 '</div>'+
-                '<p class="desc">{{cpn_main_title}}</p>'+
+                '<p class="desc">{{cpnMainTitle}}</p>'+
                 '<div class="bottom">'+
-                    '<p>유효기간 : {{cpn_from_date}}~{{cpn_to_date}}</p>'+
-                    '<p>{{#if _clName !== "shop-benefit"}}대상모델 : {{cpn_goods_model}}{{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcode_name}}{{/if}}</p>'+
+                    '<p>유효기간 : {{cpnFromDate}}~{{cpnToDate}}</p>'+
+                    '<p>{{#if _clName !== "shop-benefit"}}대상모델 : {{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcodeName}}{{/if}}</p>'+
                 '</div>'+
                 '<a href="#" class="btn-link-text" title="자세히보기"><span>자세히보기</span></a>'+
                 '{{#if _status==="disabled"}}<div class="end-flags">사용완료</div>{{/if}}'+
@@ -88,7 +88,7 @@
         '</section>'+
         '<footer class="pop-footer center">'+
             '<div class="btn-group">'+
-                '<button type="button" class="btn pink"><span>매니저 확인</span></button>'+
+                '<button type="button" class="btn pink confirmManage"><span>매니저 확인</span></button>'+
             '</div>'+
         '</footer>'+
         '<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>';
@@ -110,6 +110,7 @@
             bestShopPrdOffPage: 0, //베스트샵 > 매장 제품 할인 쿠폰 > 종료 쿠폰 리스트 페이지
             bestShopVisitOnPage: 0, //베스트샵 > 매장 방문 할인 쿠폰 > 사용 가능 리스트 페이지
             bestShopVisitOffPage: 0, //베스트샵 > 매장 방문 할인 쿠폰 > 종료 쿠폰 리스트 페이지
+            selOptVal: "on", //셀렉트 박스 옵션 값 설정
         },
         el: {
             $contents: null,
@@ -148,15 +149,21 @@
             if (this.urlParam("tab") && this.urlParam("tab") === "bestshop" && this.urlParam("store_coupon") === "visit") {
                 //베스트샵 > 매장 방문 혜택 쿠폰
                 this.variable.tabActIndex = 1;
+                this.variable.subTabActIndex = 1;
                 this.el.$tab.find(">ul>li").eq(1).addClass("on");
-                this.el.$subTab.show();
-                this.el.$subTab.find(">ul>li").eq(1).addClass("on");
+
+                //todo> subtab 생성
+                // this.el.$subTab.show();
+                // this.el.$subTab.find(">ul>li").eq(1).addClass("on");
             } else if (this.urlParam("tab") && this.urlParam("tab") === "bestshop") {
                 //베스트샵 > 매장 제품 할인 쿠폰
                 this.variable.tabActIndex = 1;
+                this.variable.subTabActIndex = 0;
                 this.el.$tab.find(">ul>li").eq(1).addClass("on");
-                this.el.$subTab.show();
-                this.el.$subTab.find(">ul>li").eq(0).addClass("on");
+
+                //todo> subtab 생성
+                // this.el.$subTab.show();
+                // this.el.$subTab.find(">ul>li").eq(0).addClass("on");
             } else {
                 //베스트샵 > 매장 제품 할인 쿠폰
                 this.variable.tabActIndex = 0;
@@ -190,7 +197,7 @@
             this.el.$couponPopup.on("click", "div.btn-group button", $.proxy(this.handler.clickBtnGroup, this));
 
             //쿠폰 팝업 > 매니저 확인 버튼 클릭 시 팝업 호출
-            this.el.$couponPopup.on("click", ".btn.pink", $.proxy(this.handler.clickBtnCheckManage, this));
+            this.el.$couponPopup.on("click", ".confirmManage", $.proxy(this.handler.clickBtnCheckManage, this));
 
             //셀렉트 박스 변경 시 > 사용가능쿠폰/ 종료된 쿠폰 조회
             this.el.$contents.find(".ui_selectbox").vcSelectbox().on("change", $.proxy(this.handler.changeSelCoupon, this));
@@ -202,11 +209,36 @@
         handler: {
             clickTabMenu: function (e) {
                 e.preventDefault();
-                this.changeTabMenu(e);
+                var $tab = $(e.currentTarget).parent();
+                $tab.siblings("li.on").removeClass("on");
+                $tab.addClass("on");
+
+                this.el.$tab.find("li a > .blind").remove();
+                this.el.$tab.find("li.on a .count").after('<em class="blind">선택됨</em>');
+
+                //사용 가능 쿠폰 초기 값 셋팅
+                this.el.$contents.find(".ui_selectbox").vcSelectbox("value", "on", true);
+                this.variable.selOptVal = "on";
+
+                //탭 변경 시 데이터 새로 고침
+                this.variable.tabActIndex = $tab.index();
+                this.requestCouponList();
+
+                //todo> subtab 생성
+                // TAB = this.getTabName($tab.index());
+                // if ($tab.index() === 0) {
+                //     this.el.$subTab.hide();
+                // } else {
+                //     this.el.$subTab.show();
+                // }
             },
             clickSubTabMenu: function (e) {
                 e.preventDefault();
-                this.changeSubTabMenu(e);
+                var $subTab = $(e.currentTarget).parent();
+
+                //탭 변경 시 데이터 새로 고침
+                this.variable.subTabActIndex = $subTab.index();
+                this.requestCouponList();
             },
             clickCoupon: function (e) {
                 e.preventDefault();
@@ -226,12 +258,10 @@
                 var page;
                 var key;
 
-                var selOptIdx = this.el.$contents.find(".ui_selectbox").find("option:selected").index();
-
                 TAB = this.getTabName(this.variable.tabActIndex);
 
                 if (TAB === TAB_LGE) {
-                    if (selOptIdx === 0) {
+                    if (this.variable.selOptVal === "on") {
                         key = "onListData";
                         this.variable.lgeOnPage = this.variable.lgeOnPage + 1;
                         page = this.variable.lgeOnPage;
@@ -241,7 +271,7 @@
                         page = this.variable.lgeOffPage;
                     }
                 } else if (TAB === TAB_BESTSHOP_VISIT) {
-                    if (selOptIdx === 0) {
+                    if (this.variable.selOptVal === "on") {
                         key = "storeVisitOnList";
                         this.variable.bestShopVisitOnPage = this.variable.bestShopVisitOnPage + 1;
                         page = this.variable.bestShopVisitOnPage;
@@ -281,13 +311,17 @@
             },
             changeSelCoupon: function (e) {
                 var oSelf = this;
-                var selOptIdx = $(e.currentTarget).find("option:selected").index();
+                if (this.variable.selOptVal === $(e.currentTarget).vcSelectbox("value")) {
+                    return;
+                }
+                this.variable.selOptVal = $(e.currentTarget).vcSelectbox("value");
+
                 var page;
                 this.el.$couponList.empty();
                 TAB = this.getTabName(this.variable.tabActIndex);
 
                 if (TAB === TAB_LGE) {
-                    if (selOptIdx === 0) {
+                    if (this.variable.selOptVal === "on") {
                         key = "onListData";
                         page = this.variable.lgeOnPage;
                     } else {
@@ -295,7 +329,7 @@
                         page = this.variable.lgeOffPage;
                     }
                 } else if (TAB === TAB_BESTSHOP_VISIT) {
-                    if (selOptIdx === 0) {
+                    if (this.variable.selOptVal === "on") {
                         key = "storeVisitOnList";
                         page = this.variable.bestShopVisitOnPage;
                     } else {
@@ -304,12 +338,6 @@
                     }
                 }
                 this.setCouponList(key);
-
-                if (page > 0) {
-                    for (var i = 1; i <= page; i++) {
-                        oSelf.addCouponList(key, i);
-                    }
-                }
             },
             keyupCodeCoupon: function (e) {
                 var inputVal = $(e.currentTarget).val();
@@ -354,29 +382,6 @@
 
             this.bindEvents();
         },
-        changeTabMenu: function (e) {
-            var $tab = $(e.currentTarget).parent();
-            $tab.siblings("li.on").removeClass("on");
-            $tab.addClass("on");
-
-            this.el.$tab.find("li a > .blind").remove();
-            this.el.$tab.find("li.on a .count").after('<em class="blind">선택됨</em>');
-
-            //사용 가능 쿠폰 초기 값 셋팅
-            this.el.$contents.find(".ui_selectbox").vcSelectbox("value", "on", true);
-
-            //탭 변경 시 데이터 새로 고침
-            this.variable.tabActIndex = $tab.index();
-            this.requestCouponList();
-
-            //todo> subtab 생성
-            // TAB = this.getTabName($tab.index());
-            // if ($tab.index() === 0) {
-            //     this.el.$subTab.hide();
-            // } else {
-            //     this.el.$subTab.show();
-            // }
-        },
         changeSubTabMenu: function (e) {
             var $subTab = $(e.currentTarget).parent();
 
@@ -407,90 +412,121 @@
         requestCouponList: function () {
             var oSelf = this;
             var ajaxUrl;
-            var ajaxUrlList;
+            var tabCouponCnt0;
+            var tabCouponCnt1;
             TAB = this.getTabName(this.variable.tabActIndex);
             if (TAB === TAB_LGE) {
                 ajaxUrl = this.el.$contents.data("coupon-list-url");
-                ajaxUrlList = this.el.$contents.data("bestshop-visit-coupon-list-url");
+                tabCouponCnt1 = this.el.$contents.data("bestshop-visit-coupon-list-url");
             } else if (TAB === TAB_BESTSHOP_VISIT) {
                 ajaxUrl = this.el.$contents.data("bestshop-visit-coupon-list-url");
-                ajaxUrlList = this.el.$contents.data("coupon-list-url");
+                tabCouponCnt0 = this.el.$contents.data("coupon-list-url");
             } else {
-                return;
+                this.el.$couponList.empty();
+                this.el.$couponMore.hide();
+                tabCouponCnt0 = this.el.$contents.data("coupon-list-url");
+                tabCouponCnt1 = this.el.$contents.data("bestshop-visit-coupon-list-url");
             }
 
             //활성화 탭 데이터 호출
-            lgkorUI.requestAjaxDataPost(
-                ajaxUrl,
-                {},
-                function (result) {
-                    lgkorUI.hideLoading();
+            if (ajaxUrl) {
+                lgkorUI.requestAjaxDataPost(
+                    ajaxUrl,
+                    {},
+                    function (result) {
+                        lgkorUI.hideLoading();
 
-                    if (result.status.toUpperCase() === "ERROR") {
-                        this.el.$couponWrap.hide();
-                        this.el.$couponNoData.hide();
-                        this.el.$errorCoupon.show();
+                        if (result.status.toUpperCase() === "ERROR") {
+                            this.el.$couponWrap.hide();
+                            this.el.$couponNoData.hide();
+                            this.el.$errorCoupon.show();
 
-                        if (result.downTime) {
-                            $(".coupon-error-cont dd").text(result.downTime + " ~ " + result.openTime);
-                        }
-                        return;
-                    }
-
-                    if (result.status.toUpperCase() === "SUCCESS") {
-                        this.el.$couponWrap.show();
-                        this.el.$errorCoupon.hide();
-
-                        var keyValue = Object.keys(result.data);
-                        $.each(keyValue, function (idx, val) {
-                            oSelf.variable.listData[val] = result.data[val];
-                        });
-
-                        this.renderContents();
-                    }
-                }.bind(this),
-                true
-            );
-
-            //비 활성화 탭 > 게시글 수 출력
-            lgkorUI.requestAjaxDataPost(
-                ajaxUrlList,
-                {},
-                function (result) {
-                    if (result.status.toUpperCase() === "ERROR") {
-                        this.el.$tab.find('li:not(".on") a .count span').text("0");
-                    }
-
-                    if (result.status.toUpperCase() === "SUCCESS") {
-                        var onListCnt;
-                        var keyValue = Object.keys(result.data);
-                        $.each(keyValue, function (idx, val) {
-                            if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
-                                onListCnt = val;
+                            if (result.downTime) {
+                                $(".coupon-error-cont dd").text(result.downTime + " ~ " + result.openTime);
                             }
-                        });
-                        this.el.$tab.find('li:not(".on") a .count span').text(result.data[onListCnt]);
-                        this.el.$subTab.find("li a .count span").eq(1).text(result.data[onListCnt]);
-                    }
-                }.bind(this),
-                true
-            );
+                            return;
+                        }
+
+                        if (result.status.toUpperCase() === "SUCCESS") {
+                            this.el.$couponWrap.show();
+                            this.el.$errorCoupon.hide();
+
+                            var keyValue = Object.keys(result.data);
+                            $.each(keyValue, function (idx, val) {
+                                oSelf.variable.listData[val] = result.data[val];
+                            });
+
+                            this.renderContents();
+                        }
+                    }.bind(this),
+                    true
+                );
+            }
+
+            //탭1 > 게시글 수 출력
+            if (tabCouponCnt0) {
+                lgkorUI.requestAjaxDataPost(
+                    tabCouponCnt0,
+                    {},
+                    function (result) {
+                        if (result.status.toUpperCase() === "ERROR") {
+                            this.el.$tab.find('li:not(".on") a .count span').text("0");
+                        }
+
+                        if (result.status.toUpperCase() === "SUCCESS") {
+                            var onListCnt;
+                            var keyValue = Object.keys(result.data);
+                            $.each(keyValue, function (idx, val) {
+                                if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
+                                    onListCnt = val;
+                                }
+                            });
+                            this.el.$tab.find("li a .count span").eq(0).text(result.data[onListCnt]);
+                        }
+                    }.bind(this),
+                    true
+                );
+            }
+
+            //탭2 > 게시글 수 출력
+            if (tabCouponCnt1) {
+                lgkorUI.requestAjaxDataPost(
+                    tabCouponCnt1,
+                    {},
+                    function (result) {
+                        if (result.status.toUpperCase() === "ERROR") {
+                            this.el.$tab.find('li:not(".on") a .count span').text("0");
+                        }
+
+                        if (result.status.toUpperCase() === "SUCCESS") {
+                            var onListCnt;
+                            var keyValue = Object.keys(result.data);
+                            $.each(keyValue, function (idx, val) {
+                                if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
+                                    onListCnt = val;
+                                }
+                            });
+                            this.el.$tab.find("li a .count span").eq(1).text(result.data[onListCnt]);
+                        }
+                    }.bind(this),
+                    true
+                );
+            }
         },
         renderContents: function () {
             var type;
-            var selOptIdx = this.el.$contents.find(".ui_selectbox").find("option:selected").index();
 
             // 게시글 수 출력
             TAB = this.getTabName(this.variable.tabActIndex);
             if (TAB === TAB_LGE) {
-                if (selOptIdx === 0) {
+                if (this.variable.selOptVal === "on") {
                     type = "onListData";
                 } else {
                     type = "endListData";
                 }
                 this.el.$tab.find(">ul>li").eq(0).find(".count span").text(this.variable.listData["onListData"].length);
             } else if (TAB === TAB_BESTSHOP_VISIT) {
-                if (selOptIdx === 0) {
+                if (this.variable.selOptVal === "on") {
                     type = "storeVisitOnList";
                 } else {
                     type = "storeVisitOffList";
@@ -509,17 +545,16 @@
             targetList.empty();
             var count = this.variable.listData[key].length;
 
-            var selOptIdx = this.el.$contents.find(".ui_selectbox").find("option:selected").index();
             TAB = this.getTabName(this.variable.tabActIndex);
 
             if (TAB === TAB_LGE) {
-                if (selOptIdx === 0) {
+                if (this.variable.selOptVal === "on") {
                     page = this.variable.lgeOnPage;
                 } else {
                     page = this.variable.lgeOffPage;
                 }
             } else if (TAB === TAB_BESTSHOP_VISIT) {
-                if (selOptIdx === 0) {
+                if (this.variable.selOptVal === "on") {
                     page = this.variable.bestShopVisitOnPage;
                 } else {
                     page = this.variable.bestShopVisitOffPage;
