@@ -72,12 +72,12 @@
         '</header>'+
         '<section class="pop-conts common-pop mypage mybestshop">'+
             '<div class="coupon-info-moreview">'+
-                '<strong class="title-info">{{cpn_event_name}}</strong>'+
-                '<p class="period-info">유효기간 : {{cpn_from_date}}~{{cpn_to_date}}</p>'+
+                '<strong class="title-info">{{cpnEventName}}</strong>'+
+                '<p class="period-info">유효기간 : {{cpnFromDate}}~{{cpnToDate}}</p>'+
             '</div>'+
             '<div class="coupon-info-model">'+
                 '<p class="sub-tit">대상매장</p>'+
-                '<div class="sub-cont">{{orgcode_name}}</div>'+
+                '<div class="sub-cont">{{orgcodeName}}</div>'+
             '</div>'+
             '<ul class="bullet-list">'+
                 '<li class="b-txt">본 쿠폰은 LG전자 베스트샵 매장에서만 사용할 수 있습니다.</li>'+
