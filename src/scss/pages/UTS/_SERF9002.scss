@@ -21,24 +21,53 @@
     border-radius: 16px;
     box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
     background-color: #fff;
+    @include mobile {
+        padding: 20px 16px 16px 16px;
+        margin-bottom: 40px;
+    }
     .fb_title{
         font-size: 14px;
         line-height: 20px;
         color: #666;
+        @include mobile {
+            font-size: 12px;
+            line-height: 17px;
+        }
     }
     .fb_msg{
         font-size: 18px;
         font-weight: 700;
         line-height: 26px;
+        @include mobile {
+            font-size: 16px;
+            line-height: 22px;
+        }
     }
     .select-list-wrap{
         margin: 24px 0 8px 0;
+        @include mobile {
+            margin: 20px 0 36px 0;
+        }
         li{
             padding:0 48px 0 0;
             .rdo-wrap{
                 input + label{
                     font-size: 12px;
                     line-height: 24px;
+                    @include mobile {
+                        font-size: 14px;
+                        line-height: 24px;
+                    }
+                }
+            }
+        }
+        &.w-auto {
+            > ul{
+                margin: 0;
+                li{
+                    @include mobile {
+                        width: 50%;
+                    }
                 }
             }
         }
@@ -47,37 +76,123 @@
         position: absolute;
         bottom: 32px;
         right: 32px;
+        @include mobile {
+            width: 100%;
+            display: block;
+            position: static;
+            height: 44px;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 44px;
+        }
     }
 }
-.morelist-layer{
-    max-width: 100%;
+
+
+// 통합검색 상세보기 팝업
+.morelist-layer {
     height: 100%;
     border-radius: 0;
     background-color: #fff;
     &::before {
         content: none;
     }
-    // &.open {
-    //     display:block !important;
-    //     top: 0;
-    //     @include mobile {
-    //         .btn-close {
-    //             top: 24px;
-    //         }
-    //         .input-keyword-wrap {
-    //             .input-keyword {
-    //                 top: 0;
-    //             }
-    //         }
-    //     }
-    // }
+    &.popup-wrap.full {
+        max-width: 100%;
+    }
+    .inner {
+        max-width: (832px + 80px);
+        margin: 0 auto;
+        padding: 180px 40px;
+        .morelist_tit {
+            @include font(24px,32px);
+            font-weight: 500;
+            margin-bottom: 24px;
+            .prod_name {
+                font-weight: 700;
+            }
+            .list_count {
+                font-weight: 400;
+                color: #da0f47;
+            }
+        }
+        .list-sorting {
+            padding-bottom: 16px;
+        }
+        .morelist_wrap {
+            li {
+                margin-top: 24px;
+                padding: 16px 32px;
+                border-radius: 16px;
+                box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+                &:first-child {
+                    margin-top: 0;
+                }
+
+            }
+            &.supplies {
+                li {
+                    position: relative;
+                    img {
+                        position: absolute;
+                        top: 16px;
+                        left: 32px;
+                        width: 116px;
+                    }
+                    .smore_cnt {
+                        position: relative;
+                        overflow: hidden;
+                        display: block;
+                        min-height: 116px;
+                        padding-left: 154px;
+                        .smore_prod {
+                            display: block;
+                            margin-top: 16px;
+                            .cata {
+                                display: block;
+                                @include font(14px,20px);
+                            }
+                            .name {
+                                display: block;
+                                @include font(18px,26px);
+                                font-weight: 700;
+                            }
+                            .model {
+                                display: block;
+                                margin-top: 8px;
+                                @include font(12px,18px);
+                                color: #666;
+                            }
+                        }
+                        .smore_pay {
+                            overflow: hidden;
+                            position: absolute;
+                            bottom: 16px;
+                            right: 38px;
+                            .sale {
+                                float: left;
+                                @include font(16px,24px);
+                                font-weight: 700;
+                            }
+                            .orig {
+                                float: left;
+                                margin-left: 8px;
+                                @include font(12px,24px);
+                                color: #666;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
     .btn-close {
         position: absolute;
         top: 48px;
         @include calc(right,50%,690px + 48px);
-        width: 48px;
-        height: 48px;
-        background: url('/lg5-common/images/icons/btn-close-48.svg') no-repeat 0 0;
+        width: 32px;
+        height: 32px;
+        background: url('/lg5-common/images/icons/btn-close-32.svg') no-repeat 0 0;
 
         @media screen and (max-width: 1606px) {
             right: 48px;
@@ -85,11 +200,8 @@
         @include mobile {
             top: 150%;
         }
-    }
-
-    .inner {
-        max-width: (832px + 80px);
-        margin: 0 auto;
-        padding: 180px 40px;
+        &::before {
+            content: none;
+        }
     }
 }

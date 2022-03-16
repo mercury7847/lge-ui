@@ -6,18 +6,24 @@
     })
 <body>
     <div class="wrap">
-<!--        <a href="#layerSearch"  data-control="modal" class="btn"><span>검색중 - Default 레이어 열기</span></a>-->
+        <ul>
+            <li class="search">
+                <a href="#layerSearch"  data-control="modal" class="btn"><span>검색</span></a>        
+            </li>
+        </ul>
     </div>
 
-
     <!-- 검색 중 -->
-    <article class="search-layer open" id="layerSearch"
+    <!-- data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json" -->
+    <!-- data-search-url="/lg5-common/data-ajax/search/searchValue.json" -->
+    <!-- data-search-input-url="/lg5-common/data-ajax/search/searchInput.json" -->
+    <article class="search-layer" id="layerSearch"
         data-remove-modal-css = true
-        data-basic-url="http://schapi.lgekrdev.lge.co.kr:3100/searchgnb/populartag"
-        data-autocomplete-url="http://schapi.lgekrdev.lge.co.kr:3100/autocomplete/search"
-        data-search-url="http://schapi.lgekrdev.lge.co.kr:3100/searchgnb/search"
-        data-search-input-url="/lg5-common/data-ajax/search/searchInput.json"
-        data-all-url=""
+        data-basic-url="/lg5-common/data-ajax/search/intergratedSearch.json"
+        data-autocomplete-url="https://www.lge.co.kr/search/autocomplete.lgajax"
+        data-search-url="https://www.lge.co.kr/search/searchgnbshow.lgajax"
+        data-search-input-url="https://www.lge.co.kr/search/searchCategory.lgajax"
+        data-all-url="/html/UTS/SERF9002.html"
         data-product-url=""
         data-event-url=""
         data-story-url=""
@@ -129,6 +135,13 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+
+                <!-- 연관 검색어 -->
+                <div class="search-similar">
+                    <a href="#" class="similar-text">
+                        <span class="search-word"></span> 찾으시나요?
+                    </a>
                 </div>
             </div>
         </div>
