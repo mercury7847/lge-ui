@@ -1,0 +1,10 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <path opacity=".795" d="M0 0h24v24H0z"/>
+        <path d="m15.304 3.567 3.177 3.466.08 13.1-12.817.297-.3-16.564 9.86-.3z" stroke="#000" stroke-width=".625" fill="#FFF"/>
+        <path d="M18.875 7.313h-3.438a.625.625 0 0 1-.624-.625V3.25" stroke="#000" stroke-width=".625"/>
+        <text font-family="NotoSansKR-Bold, Noto Sans KR" font-size="5" font-weight="bold" fill="#000" transform="translate(5.125 3.25)">
+                            <tspan x="1.875" y="15.375">PDF</tspan>
+                        </text>
+    </g>
+</svg>

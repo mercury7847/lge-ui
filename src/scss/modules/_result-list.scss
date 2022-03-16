@@ -7,8 +7,6 @@
             margin-bottom: 12px;
         }
         .item {
-            // display: flex;
-            // flex-wrap: wrap;
             min-height: 240px;
             padding: 24px 32px 28px 16px;
             border-radius: 16px;
@@ -17,7 +15,7 @@
             @include mobile {
                 min-height: 138px;
                 align-items: flex-start;
-                padding: 12px 20px 16px;
+                padding: 0;
             }
             &.item-type2 {
                 min-height: 153px;
@@ -28,6 +26,44 @@
                     padding: 16px 20px;
                 }
             }
+        }
+        .compare_check {
+            position: absolute;
+            top: 18px;
+            right: 24px;
+            @include mobile {
+                top: 12px;
+                right: 12px;
+            }
+            .chk-wrap {
+                input {
+                    + label {
+                        padding: 0 20px 0 0;
+                        @include font(12px,18px);
+                        @include mobile {
+                            @include font(10px,15px);
+                        }
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 1px;
+                            left: auto;
+                            right: 0;
+                            width: 16px;
+                            height: 16px;
+                            background: url(/lg5-common/images/icons/chk-compare-off-16.svg) no-repeat center/100%;
+                        }
+                    }
+                    &:checked {
+                        + label {
+                            &::after {
+                                background: url(/lg5-common/images/icons/chk-compare-on-16.svg) no-repeat center/100%;
+                            }
+                        }
+                    }
+                }
+            }
+
         }
         .point {
             color: $color-primary;
@@ -43,31 +79,17 @@
             top: 14px;
             left: 16px;
             width: 202px;
-            //height: 140px;
-            // margin-right: 40px;
             a {
                 display:block;
             }
             @include mobile {
-                position: absolute;
-                top: 12px;
-                left: 20px;
-                width: 110px;
-                //height: 110px;
-                margin-right: 16px;
+                top: 40px;
+                left: 8px;
+                width: 112px;
             }
             img {
                 max-width: 100%;
                 vertical-align: top;
-                //@at-root .result-list > li { 단종/구매불가 케이스
-                //    .discontinued {
-                //        .result-thumb {
-                //            img {
-                //                opacity: .3;
-                //            }
-                //        }
-                //    }
-                //}
             }
             .flag-end-wrap {
                 position: absolute;
@@ -121,49 +143,27 @@
             .result-thumb {
                 overflow: hidden;
                 width: 140px;
-                //height: 105px;
                 > div {
                     position: relative;
                 }
                 @include mobile {
                     width: 110px;
-                    //height: 82.5px;
                     top: 16px;
                 }
                 img.no-img {
                     width: 100%;
-                    //transform: translateY(-20px);
                 }
             }
         }
-        // -S- BTOCSITE-16 검색 결과 구획 정리
         .result-info {
             padding-left: 242px;
-            // display: flex;
-            // flex: 1;
-            // justify-content: space-between;
-            //align-items: center;
-            .info-text {
-                display: flex;
-                flex-direction: column;
-                width:100%;
-                //align-items: start;
-                //flex: 1;
-                padding-top: 12px;
-                // padding-right: 80px;
-            }
             @include mobile {
                 display: block;
-                .info-text {
-                    min-height: 110px;
-                    padding: 4px 0 0 126px;
-                }
+                padding:45px 16px 0 128px;
             }
-            .detail-wrap {
-                //flex: 1;
-                @include mobile {
-                    min-height: 110px;
-                }
+            .info-text {
+                width:100%;
+                padding-top: 20px;
             }
             .spec-info {
                 font-size: 0;
@@ -208,23 +208,7 @@
                 top:108px;
                 right:32px;
                 text-align: right;
-                // display: flex;
-                // flex-direction: column;
-                // justify-content: center;
-                // align-items: flex-start;
                 @include pc {
-                    // min-width: 248px;
-                    // padding-left: 32px;
-                    // &:before {
-                    //     position: absolute;
-                    //     top: 16px;
-                    //     bottom: 16px;
-                    //     right: 280px;
-                    //     width: 1px;
-                    //     background-color: $color-border;
-                    //     content: '';
-                    // }
-
                     &.pc-only {
                         &:empty:before {
                             display:none;
@@ -233,11 +217,10 @@
                     &.mo-only { display:none; }
                 }
                 @include mobile {
+                    position: static;
                     display: block;
                     width: 100%;
-                    margin-top: 6px;
-                    padding-top: 6px;
-                    // border-top: 1px solid $color-border;
+                    margin-top: 9px;
                     text-align: left;
                     &.mo-only {
                         display:block;
@@ -312,9 +295,51 @@
         .result-tabs{
             margin-top: 76px;
             padding-left: 242px;
+            @include mobile {
+                margin-top: 24px;
+                padding-left: 0;
+            }
+            .tab_mo_mask {
+                position: absolute;
+                top: 1px;
+                left: 0;
+                width: 30px;
+                height: 29px;
+                background: linear-gradient(to left, transparent, #fff 8px);
+                @include pc {
+                    display: none;
+                }
+                @include mobile {
+                    display: block;
+                }
+            }
+            .tab_mo_close {
+                position: absolute;
+                top: 1px;
+                right: 0;
+                width: 53px;
+                height: 29px;
+                background: url("/lg5-common/images/icons/btn-arr-16-up.svg") no-repeat left 14px center/16px, linear-gradient(to right, transparent, #fff 8px);
+                font-size: 0;
+                color: transparent;
+                @include pc {
+                    display: none;
+                }
+                @include mobile {
+                    display: block;
+                }
+            }
             .tabs-wrap.border-type{
                 text-align: left;
+                @include mobile {
+                    border-top: 1px solid #f4f4f4;
+                }
                 .tabs{
+                    @include mobile {
+                        padding: 0 55px 0 30px;
+                        margin-left: 2px;
+                        max-width: 99%;
+                    }
                     li{
                         a{
                             padding-bottom: 4px;
@@ -331,18 +356,449 @@
                 }
             }
             .tabs-contant{
-                margin-top: 24px;
+                padding-top: 20px;
+                @include mobile {
+                    padding: 12px 16px 16px 16px;
+                }
                 .cnt-wrap {
+                    &::after {
+                        content: '';
+                        display: table;
+                        clear: both;
+                    }
                     &.type-tbl {
                         display: table;
+                        width: 100%;
+                        @include mobile {
+                            display: block;
+                        }
                         .cnt_area {
                             display: table-cell;
                             vertical-align: middle;
-                            margin-top: -8px;
+                            // margin-top: -8px;
+                            @include mobile {
+                                display: block;
+                            }
+                            &.support {
+                                ul{
+                                    overflow: hidden;
+                                    @include mobile {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                    }
+                                    li {
+                                        float: left;
+                                        margin-right: 24px;
+                                        @include mobile {
+                                            display: block;
+                                            width: 100%;
+                                            margin-right: 4px;
+                                            border: 1px solid #ddd;
+                                            border-radius: 8px;
+                                            &:last-child {
+                                                margin-right: 0;
+                                            }
+                                        }
+                                        a{
+                                            display: block;
+                                            padding-left: 26px;
+                                            @include font(12px,24px);
+                                            background: no-repeat 0 center/24px;
+                                            @include mobile {
+                                                padding: 32px 0 8px 0;
+                                                @include font(11px,16px);
+                                                text-align: center;
+                                                background-position: center 8px;
+                                            }
+                                            span {
+                                                display: inline-block;
+                                                margin-left: 3px;
+                                                @include mobile {
+                                                    display: block;
+                                                    text-align: center;
+                                                }
+                                            }
+                                            &.pdf{
+                                                background-image: url(/lg5-common/images/icons/icon-support-24-pdf.svg);
+                                            }
+                                            &.html{
+                                                background-image: url(/lg5-common/images/icons/icon-support-24-html.svg);
+                                            }
+                                            &.sw{
+                                                background-image: url(/lg5-common/images/icons/icon-support-24-sw.svg);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                         .btn_area {
                             display: table-cell;
+                            width: 180px;
                             vertical-align: middle;
+                            @include mobile {
+                                display: block;
+                                width: 100%;
+                                margin-top: 16px;
+                                .search-btn {
+                                    width: 100%;
+                                    height: 44px;
+                                    border-radius: 8px;
+                                    @include font(13px,44px);
+                                }
+                            }
+                        }
+                    }
+                    &.type-lst {
+                        .cnt_area {
+                            &.supplies {
+                                max-width: 640px;
+                                li {
+                                    position: relative;
+                                    min-height: 96px;
+                                    padding: 16px 0;
+                                    border-top: 1px solid #f4f4f4;
+                                    @include mobile {
+                                        padding: 12px 0;
+                                        min-height: 80px;
+                                        &:first-child {
+                                            margin-top: -12px;
+                                        }
+                                    }
+                                    &:first-child {
+                                        border-top: 0;
+                                    }
+                                    img {
+                                        position: absolute;
+                                        top:16px;
+                                        left: 0;
+                                        width: 64px;
+                                        @include mobile {
+                                            width: 56px;
+                                            top: 12px;
+                                        }
+                                    }
+                                    .supplies_prod{
+                                        display: block;
+                                        padding-left: 88px;
+                                        @include mobile {
+                                            padding-left: 72px;
+                                        }
+                                        .info_area {
+                                            @include mobile {
+                                                float: none;
+                                            }
+                                            .name {
+                                                display: block;
+                                                font-size: 16px;
+                                                font-weight: 500;
+                                                line-height: 24px;
+                                                @include mobile {
+                                                    @include font(12px,17px);
+                                                }
+                                            }
+                                            .model {
+                                                display: block;
+                                                font-size: 12px;
+                                                color: #666;
+                                                line-height: 18px;
+                                                @include mobile {
+                                                    @include font(10px,15px);
+                                                }
+                                            }
+                                        }
+                                        .pay_area {
+                                            display: flex;
+                                            position: absolute;
+                                            bottom: 16px;
+                                            right: 0;
+                                            @include mobile {
+                                                position: static;
+                                            }
+                                            .orig_pay {
+                                                margin-right: 8px;
+                                                font-size: 12px;
+                                                color: #aaa;
+                                                line-height: 20px;
+                                                text-decoration: line-through;
+                                                @include mobile {
+                                                    @include font(10px,15px);
+                                                }
+                                            }
+                                            .sale_pay {
+                                                font-size: 14px;
+                                                font-weight: 700;
+                                                line-height: 20px;
+                                                @include mobile {
+                                                    @include font(12px,17px);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.review {
+                                li {
+                                    position: relative;
+                                    min-height: 72px;
+                                    padding: 16px 0;
+                                    border-top: 1px solid #f4f4f4;
+                                    @include mobile {
+                                        padding: 12px 0;
+                                    }
+                                    &:first-child {
+                                        border-top: 0;
+                                        margin-top: -12px;
+                                    }
+                                    .name {
+                                        position: absolute;
+                                        top: 16px;
+                                        left: 0;
+                                        font-size: 14px;
+                                        font-weight: 500;
+                                        line-height: 20px;
+                                        @include mobile {
+                                            position: static;
+                                            float: left;
+                                            margin-right: 8px;
+                                            @include font(13px,19px);
+                                        }
+                                    }
+                                    .cnt {
+                                        padding: 0 114px 0 153px;
+                                        p {
+                                            font-size: 14px;
+                                            color: #666;
+                                            line-height: 20px;
+                                            @include textEllipsisClamp(2);
+                                        }
+                                        @include mobile {
+                                            display: block;
+                                            clear: both;
+                                            padding: 8px 0 0 0;
+                                            p {
+                                                @include font(12px,17px);
+                                            }
+                                        }
+                                    }
+                                    .mark {
+                                        position: absolute;
+                                        top: 16px;
+                                        right: 0;
+                                        overflow: hidden;
+                                        @include mobile {
+                                            position: static;
+                                            float: left;
+                                        }
+                                        .star {
+                                            float: left;
+                                            width: 18px;
+                                            height: 18px;
+                                            background: no-repeat center/100%;
+                                            @include mobile {
+                                                width: 13px;
+                                                height: 19px;
+                                                background: no-repeat center/13px;
+                                            }
+                                            &.on {
+                                                background-image: url(/lg5-common/images/icons/icon-star-on-18.svg);
+                                            }
+                                            &.half {
+                                                background-image: url(/lg5-common/images/icons/icon-star-half-18.svg);
+                                            }
+                                            &.off {
+                                                background-image: url(/lg5-common/images/icons/icon-star-off-18.svg);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.shop {
+                                ul {
+                                    overflow: hidden;
+                                    @include mobile {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        margin-left: 0;
+                                    }
+                                    li {
+                                        float: left;
+                                        margin-left: 8px;
+                                        @include mobile {
+                                            display: block;
+                                            width: 100%;
+                                            margin-right: 4px;
+                                            &:last-child {
+                                                margin-right: 0;
+                                            }
+                                        }
+                                        &:first-child {
+                                            margin-left: 0;
+                                        }
+                                        a {
+                                            display: block;
+                                            width: 150px;
+                                            font-size: 14px;
+                                            line-height: 40px;
+                                            border-radius: 8px;
+                                            border: solid 1px #ddd;
+                                            @include mobile {
+                                                width: auto;
+                                                padding: 42px 0 14px 0;
+                                                @include font(11px,16px);
+                                                text-align: center;
+                                            }
+                                            &.reserve{
+                                                padding-left: 49px;
+                                                background: url(/lg5-common/images/icons/icon-shop-24-reserve.svg) no-repeat left 23px center/24px;
+                                                @include mobile {
+                                                    padding-left: 0;
+                                                    background-position: center 14px;
+                                                }
+                                            }
+                                            &.search{
+                                                padding-left: 49px;
+                                                background: url(/lg5-common/images/icons/icon-shop-24-search.svg) no-repeat left 23px center/24px;
+                                                @include mobile {
+                                                    padding-left: 0;
+                                                    background-position: center 14px;
+                                                }
+                                            }
+                                            &.estimate{
+                                                padding-left: 43px;
+                                                background: url(/lg5-common/images/icons/icon-shop-24-estimate.svg) no-repeat left 17px center/24px;
+                                                @include mobile {
+                                                    padding-left: 0;
+                                                    background-position: center 14px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            &.support {
+                                max-width: 640px;
+                                > ul > li {
+                                    position: relative;
+                                    min-height: 96px;
+                                    padding: 16px 0;
+                                    border-top: 1px solid #f4f4f4;
+                                    &:first-child {
+                                        border-top: 0;
+                                    }
+                                    @include mobile {
+                                        padding: 12px 0;
+                                    }
+                                    img {
+                                        position: absolute;
+                                            top:16px;
+                                            left: 0;
+                                            width: 64px;
+                                            @include mobile {
+                                                width: 50px;
+                                                top: 12px;
+                                            }
+                                    }
+                                    .support_prod{
+                                        display: block;
+                                        padding-left: 72px;
+                                        @include mobile {
+                                            padding-left: 62px;
+                                            min-height: 50px;
+                                        }
+                                        .name {
+                                            display: block;
+                                            font-size: 16px;
+                                            font-weight: 500;
+                                            line-height: 24px;
+                                            @include textEllipsis;
+                                            @include mobile {
+                                                margin-top: 9px;
+                                                @include font(12px,17px);
+                                            }
+                                        }
+                                        .model {
+                                            display: block;
+                                            font-size: 12px;
+                                            color: #666;
+                                            line-height: 18px;
+                                            @include mobile {
+                                                @include font(10px,15px);
+                                            }
+                                        }
+                                    }
+                                    .support_file{
+                                        overflow: hidden;
+                                        margin: 8px 0 0 72px;
+                                        @include mobile {
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: center;
+                                            margin-left: 0;
+                                        }
+                                        li {
+                                            float: left;
+                                            margin-right: 24px;
+                                            @include mobile {
+                                                display: block;
+                                                width: 100%;
+                                                margin-right: 4px;
+                                                border: 1px solid #ddd;
+                                                border-radius: 8px;
+                                                &:last-child {
+                                                    margin-right: 0;
+                                                }
+                                            }
+                                            a{
+                                                display: block;
+                                                padding-left: 26px;
+                                                @include font(12px,24px);
+                                                background: no-repeat 0 center/24px;
+                                                @include mobile {
+                                                    padding: 32px 0 8px 0;
+                                                    @include font(11px,16px);
+                                                    text-align: center;
+                                                    background-position: center 8px;
+                                                }
+                                                span {
+                                                    display: inline-block;
+                                                    margin-left: 3px;
+                                                    @include mobile {
+                                                        display: block;
+                                                        text-align: center;
+                                                    }
+                                                }
+                                                &.pdf{
+                                                    background-image: url(/lg5-common/images/icons/icon-support-24-pdf.svg);
+                                                }
+                                                &.html{
+                                                    background-image: url(/lg5-common/images/icons/icon-support-24-html.svg);
+                                                }
+                                                &.sw{
+                                                    background-image: url(/lg5-common/images/icons/icon-support-24-sw.svg);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .btn_area {
+                            margin-top: 8px;
+                            text-align: right;
+                            @include mobile {
+                                display: block;
+                                width: 100%;
+                                margin-top: 16px;
+                                .search-btn {
+                                    width: 100%;
+                                    height: 44px;
+                                    border-radius: 8px;
+                                    @include font(13px,44px);
+                                }
+                            }
                         }
                     }
                 }
@@ -354,6 +810,19 @@
                     color: #666;
                     line-height: 20px;
                     margin:8px 24px 0 0;
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                    @include mobile {
+                        display: block;
+                        dt {
+                            width: 108px;
+                            @include font(13px,19px);
+                        }
+                        dd {
+                            @include font(13px,19px);
+                        }
+                    }
                     dt{
                         float: left;
                     }
@@ -366,6 +835,35 @@
                 }
                 .btn.search-btn {
                     padding: 0;
+                }
+            }
+            .cnt_mo_default {
+                position: relative;
+                border-top: 1px solid #f4f4f4;
+                @include pc {
+                    display: none;
+                }
+                @include mobile {
+                    display: block;
+                }
+                .cnt_mo_txt {
+                    display: block;
+                    padding: 0 55px 0 30px;
+                    margin-left: 2px;
+                    overflow-y: auto;
+                    white-space: nowrap;
+                    @include font(13px,32px);
+                    color: #666;
+                }
+                .cnt_mo_open {
+                    position: absolute;
+                    top: 1px;
+                    right: 0;
+                    width: 53px;
+                    height: 29px;
+                    font-size: 0;
+                    color: transparent;
+                    background: url("/lg5-common/images/icons/btn-arr-16-down.svg") no-repeat left 14px center/16px, linear-gradient(to right, transparent, #fff 8px);
                 }
             }
         }
@@ -395,6 +893,10 @@
                 max-height: 52px;
                 @include textEllipsisClamp(2);
                 word-break: break-all;
+                @include mobile {
+                    font-size: 13px;
+                    line-height: 19px;
+                }
             }
 
         }
@@ -574,21 +1076,25 @@
             }
         }
 
-        // -S- BTOCSITE-16 검색 결과 구획 정리
         .sku {
-            display: inline-block;
+            float: left;
             font-weight: 400;
             vertical-align: top;
             margin-right: 8px;
             font-size: 12px;
             line-height: 18px;
             color: #666;
+            @include mobile {
+                font-size: 10px;
+                margin:0 4px 2px 0;
+            }
             .search-word {
                 color:#000;
             }
         }
 
         .result-detail {
+            overflow: hidden;
             .rentalModel {
                 display: inline-block;
                 font-weight: 500;
@@ -627,9 +1133,9 @@
         // -S- BTOCSITE-16 검색 결과 구획 정리
         .review-info {
             position: relative;
-            display: inline-block;
-            margin-right: 8px;
-            padding-left: 8px;
+            float: left;
+            margin-right: 16px;
+            padding-left:8px;
             font-size: 0;
             vertical-align: top;
             &::before {
@@ -640,15 +1146,17 @@
                 width: 1px;
                 height: 8px;
                 background-color: #ddd;
+                @include mobile {
+                    top: 6px;
+                }
             }
             a {
                 overflow: hidden;
                 display:block;
-                //padding-bottom:10px;
             }
             @include mobile {
-                margin-right: 0;
-                margin-left: 0;
+                margin: 0 8px 2px 0;
+                padding-left: 5px;
             }
             .star,
             .average-rating,
@@ -665,46 +1173,37 @@
                 &.is-review {
                     background-image: url("/lg5-common/images/icons/icon-star-on-20.svg");
                 }
+                @include mobile {
+                    width: 13px;
+                    height: 15px;
+                    margin-right: 4px;
+                    background-position: 0 3px;
+                }
             }
             .review-count {
                 margin-left: 3px;
             }
         }
-        // -E- BTOCSITE-16 검색 결과 구획 정리
-        .display-prduct {
-            position: relative;
-            display: inline-block;
-            padding-left: 8px;
+        .shop-lab {
+            float: left;
+            margin: 0 8px 2px 0;
+            height: 18px;
             font-size: 0;
-            vertical-align: top;
-            &::before {
-                content: "";
-                position: absolute;
-                top: 5px;
-                left: 0;
-                width: 1px;
-                height: 8px;
-                background-color: #ddd;
+            color: transparent;
+            @include mobile {
+                margin-bottom: 2px;
             }
-            dl {
-                overflow: hidden;
-                font-size: 12px;
-                line-height: 18px;
-                dt {
-                    float: left;
-                    color: #666;
-                }
-                dd {
-                    float: left;
-                    margin-left: 4px;
-                    color: #000;
-                }
-                .pickup-label {
-
-                }
+            &.pickup {
+                width: 42px;
+                height: 18px;
+                background: url("/lg5-common/images/icons/icon-shop-pickup.svg") no-repeat center/ 100%;
+            }
+            &.dpsale {
+                width: 57px;
+                height: 18px;
+                background: url("/lg5-common/images/icons/icon-shop-dpsale.svg") no-repeat center/ 100%;
             }
         }
-
         .shop-info {
             .desc {
                 display: block;
@@ -781,7 +1280,7 @@
                 color: $color-default;
                 font-weight: $font-weight-bold;
                 @include mobile {
-                    @include font(14px,22px);
+                    @include font(13px,19px);
                 }
 
                 @media screen and (max-width:320px) {
@@ -803,6 +1302,9 @@
                 .rate {
                     @include font(16px,24px);
                     color: #da0f47;
+                    @include mobile {
+                        @include font(13px,19px);
+                    }
                 }
             }
             .price-in {
@@ -819,10 +1321,9 @@
                     text-decoration: line-through;
                 }
                 @include mobile {
-                    margin-right: 4px;
-                    margin-left: 0;
+                    display: initial;
                     .price {
-                        @include font(11px,19px);
+                        @include font(10px,15px);
                     }
                 }
 
@@ -839,6 +1340,10 @@
             margin-top: 2px;
             @include font(12px,18px);
             color: $color-default;
+            @include mobile {
+                font-size: 10px;
+                line-height: 15px;
+            }
             .billsale {
                 float: left;
             }

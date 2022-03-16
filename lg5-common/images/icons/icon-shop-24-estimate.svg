@@ -1,0 +1,17 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <path opacity=".795" d="M0 0h24v24H0z"/>
+        <g transform="translate(3.25 4.813)">
+            <rect stroke="#000" stroke-width=".625" x=".313" y=".313" width="16.875" height="11.875" rx="1.25"/>
+            <path fill="#000" d="M0 9.063h17.5v1H0z"/>
+            <g transform="translate(4.375 12.5)" fill="#000">
+                <path d="M1.563 0h1v1.875h-1zM6.563 0h1v1.875h-1z"/>
+                <rect y="1.563" width="8.75" height="1" rx=".313"/>
+            </g>
+            <text font-family="AppleSDGothicNeo-Heavy, Apple SD Gothic Neo" font-size="3.75" font-weight="600" fill="#000">
+                                <tspan x="7.128" y="6.125">￦</tspan>
+                            </text>
+            <circle stroke="#000" stroke-width=".625" cx="8.75" cy="5" r="2.813"/>
+        </g>
+    </g>
+</svg>
