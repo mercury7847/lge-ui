@@ -1869,6 +1869,19 @@
                 }
             }
         }
+
+        .delivery-message {
+            display:block;
+            margin-top:4px;
+            font-size:16px;
+            line-height:24px;
+            color:#666;
+            word-break: keep-all;
+
+            @include mobile {
+                font-size:14px;
+            }
+        }
     }
     .delivery-data {
         width:100%;
