@@ -425,14 +425,11 @@
     '<div class="delivery-step">'+
         '<div class="delivery-text active">'+
             '<strong class="delivery-status">'+
-            '{{#if deliveryStatus == 1}}주문완료{{/if}}'+
-            '{{#if deliveryStatus == 2 || deliveryStatus == 3}}배송준비중{{/if}}'+
-            '{{#if deliveryStatus == 4}}배송중{{/if}}'+
-            '{{#if deliveryStatus == 5}}배송완료{{/if}}'+
+            '{{deliveryStatus}}'+
             '</strong>'+
             '{{#if deliveryStatusDate}}<p class="delivery-date">{{deliveryStatusDate}}</p>{{/if}}'+
-            '{{#if deliveryDriver.name}}<span class="delivery-name">배송기사 {{deliveryDriver.name}} {{#if deliveryDriver.phoneNumber}}<em class="bar">{{deliveryDriver.phoneNumber}}</em></span>{{/if}}{{/if}}'+
-            '{{#if deliveryDriver && !deliveryDriver.name}}<span class="delivery-name">{{deliveryDriver}}</span>{{/if}}'+
+            '{{#if deliveryDriverInfo}}<span class="delivery-name">배송기사 {{deliveryDriverName}} {{#if deliveryDriverPhoneNumber}}<em class="bar">{{deliveryDriverPhoneNumber}}</em></span>{{/if}}{{/if}}'+
+            '{{#if !deliveryDriverInfo}}<span class="delivery-message">{{deliveryDriverMessage}}</span>{{/if}}'+
         '</div>'+
     '</div>'+
     '<div class="delivery-step">'+
