@@ -12,7 +12,7 @@
         '<dt>신청페이지</dt>' +
         '<dd>{{main_title}}' +
           '{{#if _type == "0"}}' +
-            '<a href="{{_reservationPage}}" class="linkbtn">상세페이지이동</a>' +
+            '<a href="{{counsel_event_url}}" target="_blank" class="linkbtn">상세페이지이동</a>' +
           '{{/if}}' +
         '</dd>' +
     '</dl>' +
@@ -25,7 +25,7 @@
         '<dl>' +
             '<dt>상담제품</dt>' +
             '<dd>{{_category}}' +
-              '{{#if _type == "1"}}' +
+              '{{#if _type == "1" && _prdId}}' +
                 '<a href="#n" class="linkbtn product" data-prd-id="{{_prdId}}">제품정보팝업호출</a>' +
               '{{/if}}' +
             '</dd>' +
@@ -36,27 +36,19 @@
         '<dl>' +
           '<dt>구매예약제품</dt>' +
           '<dd>' +
-            '<div class="li_categ">' +
-              '<span>프라엘</span>' +
-              '<span class="gap"></span>' +
-              '<span>딥클렌징</span>' +
-          '</div>' +
-          '<div class="li_categ">' +
-              '<span>주방가전</span>' +
-              '<span class="gap"></span>' +
-              '<span>광파오븐/전자레인지</span>' +
-          '</div>' +
-          '<div class="li_categ">' +
-              '<span>에어컨/에어케어</span>' +
-              '<span class="gap"></span>' +
-              '<span>휴대용 공기청정기</span>' +
-          '</div>' +
+            '{{#each item in _category}} <div class="li_categ">' +
+              '{{#each cate in item}}<span>{{cate}}' + 
+                '{{#if $index!=0}} <span class="gap"></span> {{/if}}</span>' +
+              '{{/each}}' +
+            '</div> {{/each}}' +
           '</dd>' +
         '</dl>' +
       '{{/if}}' +
         '<dl>' +
             '<dt>{{_loc}}매장</dt>' +
-            '<dd>{{request_orgcode_name}}<a href="#n" data-url="/support/store-finder-{{_storeId}}" class="linkbtn store">매장상세정보이동</a></dd>' +
+            '<dd>{{request_orgcode_name}}' + 
+            '{{#if _storeId}}<a href="#n" data-url="/support/store-finder-{{_storeId}}" class="linkbtn store">매장상세정보이동</a>{{/if}}' +
+            '</dd>' +
             '<dt>예약일시</dt>' +
             '<dd>{{_visitDate}}</dd>' +
         '</dl>' +
@@ -424,11 +416,9 @@
 
       listData.forEach(
         function (data) {
-          var keys = vcui.object.keys(data) || [];
-
           if (
-            vcui.array.has(keys, "store_visit_date_time") &&
-            vcui.array.has(keys, "request_date")
+            data.hasOwnProperty("store_visit_date_time") &&
+            data.hasOwnProperty("request_date")
           ) {
             // 예약일
             var visitDateData = data.store_visit_date_time;
@@ -438,7 +428,7 @@
             );
 
             // 등록일
-            var regDateData = data.request_date.replace(/\./g, "-");
+            var regDateData = data.request_date;
             var regDateStr = regDateData.replace(this.variable.dateRegex, "$1");
 
             // 유효성 체크
@@ -513,7 +503,7 @@
       this.variable.tabLabelKeys.forEach(
         function (label, idx) {
           var group =
-            vcui.array.filter(listData, function (item) {
+            listData.filter(function (item) {
               return item.cousel_event_type === label;
             }) || [];
 
@@ -550,8 +540,7 @@
       var start = this.el.$listContainer.children().length;
 
       // 탭 활성화에 맞게 리스트 filter
-      listData = vcui.array.filter(
-        listData,
+      listData = listData.filter(
         function (item) {
           return (
             item.cousel_event_type ===
@@ -576,49 +565,56 @@
      * @param {Object} item 예약 정보 데이터 1건
      */
     addItem: function (item) {
-      var keys = vcui.object.keys(item) || [];
       item = $.extend({}, item);
 
       item._type = parseInt(this.variable.tabActIndex);
 
-      // 신청페이지
-      /* item._reservationPage =
-        linkHost +
-        "/support/visit-store-reservation?orgCode=" +
-        item.request_orgcode; */
-      if (vcui.array.has(keys, "counsel_event_url")) {
-        item._reservationPage = linkHost + item.counsel_event_url;
-      }
-
       // 매장 코드
-      if (vcui.array.has(keys, "store_url")) {
-        var stRegex = /.+\?STID=(\w+)/i;
+      if (item.hasOwnProperty("store_url")) {
+        item._storeId = null;
+
+        var stRegex = /.+\/detail-(\w+)/i;
         if (item.store_url.match(stRegex)) {
           item._storeId = item.store_url.replace(stRegex, "$1");
         }
       }
 
       // 신청자
-      if (vcui.array.has(keys, "visitor_name")) {
-        // item._name = this.middleMaskingText(item.visitor_name);
-        item._name = item.visitor_name;
+      if (item.hasOwnProperty("visitor_name")) {
+        item._name = this.middleMaskingText(item.visitor_name);
       }
 
       // 상담제품
-      if (vcui.array.has(keys, "request_category")) {
-        // 방문/화상 상담탭 && 공백 없는 '문자/문자' 인 경우
-        if (!item._type && item.request_category.match(/[^\s]\/[^\s]/g)) {
-          var categorys = item.request_category.split("/");
+      if (item.hasOwnProperty("request_category")) {
+        item._prdId = null;
+        item._category = null;
 
-          item._category =
-            categorys[0] + " 외 " + (categorys.length - 1) + "개";
+        // 방문/화상 상담탭 && 공백 없는 '문자,문자' 인 경우
+        if (item._type !== 1 && item.request_category.match(/\,/g)) {
+          var categorys = item.request_category.split(",").map(function (item) {
+            return item.trim();
+          });
+
+          if (!item._type) {
+            // 방문상담/화상상담
+            item._category =
+              categorys[0] + " 외 " + (categorys.length - 1) + "개";
+          } else {
+            // 소모품
+            item._category = categorys.map(function (item) {
+              return item
+                .replace(/\>/g, ",")
+                .split(",")
+                .map(function (label) {
+                  return label.trim();
+                });
+            });
+          }
         } else {
-          if (item._type === 1) {
-            // 케어십
-            var prdRegex = /.+\((.+)\)/i;
-            if (item.request_category.match(prdRegex)) {
-              item._prdId = item.request_category.replace(prdRegex, "$1");
-            }
+          // 케어십
+          var prdRegex = /.+\((.+)\)/i;
+          if (item.request_category.match(prdRegex)) {
+            item._prdId = item.request_category.replace(prdRegex, "$1");
           }
 
           item._category = item.request_category;
@@ -626,7 +622,7 @@
       }
 
       // 각 탭 마크업 특수
-      if (vcui.array.has(keys, "cousel_event_type")) {
+      if (item.hasOwnProperty("cousel_event_type")) {
         item._method = item._type !== 2 ? "상담" : "구매";
         item._loc = item._type !== 2 ? "상담" : "예약";
         item._title =
@@ -634,7 +630,7 @@
       }
 
       // 고객취소 | 매장취소
-      if (vcui.array.has(keys, "cancel_flag")) {
+      if (item.hasOwnProperty("cancel_flag")) {
         item._customerCancel = item.cancel_flag === "고객취소";
       }
 
@@ -705,15 +701,13 @@
      * @param {Object} item 제품 json 데이터
      */
     createProduct: function (item) {
-      var keys = vcui.object.keys(item) || {};
-
       // 이미지
-      if (vcui.array.has(keys, "modelImg")) {
+      if (item.hasOwnProperty("modelImg")) {
         item._img = linkHost + item.modelImg;
       }
 
       // 월 이용요
-      if (vcui.array.has(keys, "monthlyPrice")) {
+      if (item.hasOwnProperty("monthlyPrice")) {
         item._price = vcui.number.addComma(item.monthlyPrice);
       }
 
