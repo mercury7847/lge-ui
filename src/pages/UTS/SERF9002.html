@@ -2,21 +2,15 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
+        pageJS: ["search/curation","search/filterLayer","search/search_product"]
     })
-<!--        pageJS: ["search/curation","search/search_all"]-->
 <body>
-    <!--BTOCSITE-2117 : 공통 > 모바일 웹/앱 GNB 개선 - 서브페이지만 subRenewWrap 클래스 추가-->
-    <div class="wrap subRenewWrap">
-        <!-- 210311_H1추가 -->
-        @@include('./common/header.html', {
-            hiddenTitle: "통합검색",
-            mobileCase: "undefined"
-        })
-        <!-- //210311_H1추가 -->
+    <div class="wrap">
+        @@include('./common/header.html')
 
         <div class="container">
-            <!-- 통합검색 -->
-            <div class="contents search" data-search-value="노크온 매직스페이스" data-search-force=false
+            <!-- search -->
+            <div class="contents search" data-search-value="" data-search-force=false
                 data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json"
                 data-search-url="/lg5-common/data-ajax/search/searchInput.json"
                 data-basic-url="http://schapi.lgekrdev.lge.co.kr:3100/searchgnb/populartag"
@@ -25,335 +19,15 @@
                 <!-- 검색 영역 -->
                 @@include('./common/modules/search.html', {
                     "placeholder" : "검색어를 입력해주세요.(예:제품명)",
-                    "value" : "노크온 매직스페이스",
+                    "value" : "",
                     "title" : "검색어 입력",
                     "related" : true,
                     "layer" : true,
                     "similar" : true
                 })
                 <!-- // 검색 영역 -->
+
                 <!-- 검색 결과 영역 -->
-                <div class="search-tabs-wrap">
-                    <div class="tabs-wrap border-type ui_tab ui_smooth_scroll"><!-- 210218 수정 [.border-type 클래스 추가] -->
-                        <ul class="tabs">
-                            <li class="on" data-label="전체"><a href="/html/UTS/SERF9002.html" data-category-id="all" data-search-url="/lg5-common/data-ajax/search/search_all.json">전체<span>(210)</span><em class="blind">선택됨</em></a></li>
-                            <li data-label="제품"><a href="/html/UTS/SERF9003.html" data-category-id="product" data-search-url="/lg5-common/data-ajax/search/search_product.json">제품/케어솔루션<span>(59)</span></a></li>
-                            <li data-label="이벤트/기획전"><a href="/html/UTS/SERF9005.html" data-category-id="event" data-search-url="/lg5-common/data-ajax/search/search_event.json">이벤트/기획전<span>(5)</span></a></li>
-                            <li data-label="스토리"><a href="/html/UTS/SERF9006.html" data-category-id="story" data-search-url="/lg5-common/data-ajax/search/search_story.json">스토리<span>(18)</span></a></li>
-                            <li data-label="케어용품/소모품"><a href="/html/UTS/SERF9007.html" data-category-id="additional" data-search-url="/lg5-common/data-ajax/search/search_additional.json">케어용품/소모품<span>(32)</span></a></li>
-                            <li data-label="센터/매장"><a href="/html/UTS/SERF9015.html" data-category-id="shop" data-search-url="/lg5-common/data-ajax/search/search_shop.json">센터/매장<span>(2)</span></a></li>
-                            <li data-label="고객지원"><a href="/html/UTS/SERF9008.html" data-category-id="customer" data-search-url="/lg5-common/data-ajax/search/search_customer.json">고객지원<span>(28)</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- 210218 수정 [추천 큐레이션, 스마트 필터 추가, 바로가기 영역 수정] -->
-                <!-- 추천 큐레이션 -->
-                <div class="recommended-curation" style="display: none;">
-                    <div class="inner">
-                        <h2 class="title">추천 큐레이션</h2>
-                        <div class="ui_smooth_scrolltab">
-                            <div class="ui_smooth_tab">
-                                <ul class="curation-list">
-                                    <li><a href="#" class="curation"><span>재택근무를 위한 대화면 노트북</span></a></li>
-                                    <li><a href="#" class="curation"><span>학생에게 추천 가성비 갑 노트북</span></a></li>
-                                    <li><a href="#" class="curation"><span>학생에게 추천 가성비 갑 노트북</span></a></li>
-                                    <li><a href="#" class="curation"><span>학생에게 추천 가성비 갑 노트북</span></a></li>
-                                    <li><a href="#" class="curation"><span>재택근무를 위한 대화면 노트북</span></a></li>
-                                </ul>
-                            </div>
-                            <div class="scroll-controls ui_smooth_controls">
-                                <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
-                                <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 추천 큐레이션 -->
-                <!-- 스마트 필터 -->
-                <div class="smart-filter" style="display: none;" >
-                    <div class="inner">
-                        <h2 class="title">스마트 필터</h2>
-                        <div class="filter-list">
-                            <!-- Default - li 3줄만 보여짐 -->
-                            <!-- 필터 항목 선택 시 .selected 추가  -->
-                            <ul class="default selected">
-                                <li class="row">
-                                    <div class="label">사이즈</div>
-                                    <div class="content">
-                                        <div class="fold-box">
-                                            <div class="ui_smooth_scrolltab">
-                                                <div class="ui_smooth_tab">
-                                                    <div class="chk-group">
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-size1" name="size">
-                                                            <label for="chk-size1">14인치</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-size2" name="size">
-                                                            <label for="chk-size2">15인치</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-size3" name="size">
-                                                            <label for="chk-size3">16인치</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-size4" name="size">
-                                                            <label for="chk-size4">17인치</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="row">
-                                    <div class="label">프로세스</div>
-                                    <div class="content">
-                                        <!-- .btn-fold 클릭 시 .unfold 추가 -->
-                                        <div class="fold-box">
-                                            <div class="ui_smooth_scrolltab">
-                                                <div class="ui_smooth_tab">
-                                                    <div class="chk-group">
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-process1" name="process">
-                                                            <label for="chk-process1">인텔 11세대 타이거레이크 i7</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-process2" name="process" checked>
-                                                            <label for="chk-process2">인텔 10세대 타이거레이크 i7 </label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-process3" name="process" checked>
-                                                            <label for="chk-process3">인텔 10세대 타이거레이크 i5</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-process4" name="process">
-                                                            <label for="chk-process4">인텔 10세대 타이거레이크 i5</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-process5" name="process">
-                                                            <label for="chk-process5">인텔 9세대 타이거레이크 i7</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-process6" name="process">
-                                                            <label for="chk-process6">인텔 9세대 타이거레이크 i5</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-process7" name="process">
-                                                            <label for="chk-process7">세부 필터 항목명</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-process8" name="process">
-                                                            <label for="chk-process8">인텔 9세대 타이거레이크 i7</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="row">
-                                    <div class="label">저장장치</div>
-                                    <div class="content">
-                                        <div class="fold-box">
-                                            <div class="ui_smooth_scrolltab">
-                                                <div class="ui_smooth_tab">
-                                                    <div class="chk-group">
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-storage1" name="storage" checked>
-                                                            <label for="chk-storage1">SSD 1TB</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-storage2" name="storage">
-                                                            <label for="chk-storage2">SSD 512GB</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-storage3" name="storage">
-                                                            <label for="chk-storage3">SSD 25</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="row">
-                                    <div class="label">메모리 용량</div>
-                                    <div class="content">
-                                        <div class="fold-box">
-                                            <div class="ui_smooth_scrolltab">
-                                                <div class="ui_smooth_tab">
-                                                    <div class="chk-group">
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-memory1" name="memory">
-                                                            <label for="chk-memory1">LPDDR4x16GB</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-memory2" name="memory" checked>
-                                                            <label for="chk-memory2">LPDDR4x32GB</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="row">
-                                    <div class="label">부가기능</div>
-                                    <div class="content">
-                                        <div class="fold-box">
-                                            <div class="ui_smooth_scrolltab">
-                                                <div class="ui_smooth_tab">
-                                                    <div class="chk-group">
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-added1" name="added">
-                                                            <label for="chk-added1">터치펜</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-added2" name="added">
-                                                            <label for="chk-added2">터치고속충전</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-added3" name="added">
-                                                            <label for="chk-added3">키보드라이트</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="row">
-                                    <div class="label">영상출력</div>
-                                    <div class="content">
-                                        <div class="fold-box">
-                                            <div class="ui_smooth_scrolltab">
-                                                <div class="ui_smooth_tab">
-                                                    <div class="chk-group">
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-output1" name="output">
-                                                            <label for="chk-output1">miniHDMI</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-output2" name="output">
-                                                            <label for="chk-output2">WiDi(무선연결)</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-output3" name="output">
-                                                            <label for="chk-output3">다중모니터연결(2개)</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-output4" name="output">
-                                                            <label for="chk-output4">HDMI</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-output5" name="output">
-                                                            <label for="chk-output5">다중모니터연결(3개)</label>
-                                                        </div>
-                                                        <div class="chk-wrap">
-                                                            <input type="checkbox" id="chk-output6" name="output">
-                                                            <label for="chk-output6">HDMI(2.0)</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="button" class="btn-fold"><span class="blind">항목 더보기</span></button>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- 클릭 시 .fold 추가, toggle text - 필터 더보기 / 필터 접기 -->
-                        <button type="button" class="btn-moreview block"><span>필터 더보기</span></button>
-
-                        <!-- 스마트 필터 선택한 항목 표시 -->
-                        <div class="filter-result" style="display:none">
-                            <div class="ui_smooth_scrolltab">
-                                <div class="ui_smooth_tab">
-                                    <ul class="rounded-list">
-                                        <li>
-                                            <div class="rounded">
-                                                <span class="text">SSD 1TB</span>
-                                                <a href="#" class="btn-delete"><span class="blind">선택한 항목 삭제</span></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="rounded">
-                                                <span class="text">LPDDR4x32GB</span>
-                                                <a href="#" class="btn-delete"><span class="blind">선택한 항목 삭제</span></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="rounded">
-                                                <span class="text">인텔 10세대 타이거레이크 i7</span>
-                                                <a href="#" class="btn-delete"><span class="blind">선택한 항목 삭제</span></a>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="rounded">
-                                                <span class="text">인텔 10세대 타이거레이크 i5</span>
-                                                <a href="#" class="btn-delete"><span class="blind">선택한 항목 삭제</span></a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <button type="button" class="btn-reset"><span>초기화</span></button>
-                        </div>
-                        <!-- 스마트 필터 선택한 항목 표시 -->
-                    </div>
-                </div>
-                <!-- 스마트 필터 -->
-                <!-- 바로가기 -->
-                <div class="search-result-category">
-                    <div class="inner">
-                        <h3 class="title">바로가기</h3>
-                        <div class="ui_smooth_scrolltab">
-                            <div class="ui_smooth_tab">
-                                <ul class="rounded-list">
-                                    <li><a href="#" class="rounded"><span class="text">제품&gt;에어컨/에어케어</span></a></li>
-                                    <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV</span></a></li>
-                                    <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
-                                    <li><a href="#" class="rounded"><span class="text">고객지원&gt;경로&gt;출장서비스예약</span></a></li>
-                                    <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
-                                    <li><a href="#" class="rounded"><span class="text">고객지원&gt;경로&gt;출장서비스예약</span></a></li>
-                                    <li><a href="#" class="rounded"><span class="text">제품&gt;TV/AV&gt;OLED TV</span></a></li>
-                                    <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV&gt;OLED TV</span></a></li>
-                                    <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV&gt;OLED TV</span></a></li>
-                                    <li><a href="#" class="rounded"><span class="text">케어솔루션&gt;TV/AV</span></a></li>
-                                </ul>
-                            </div>
-                            <div class="scroll-controls ui_smooth_controls">
-                                <button type="button" class="btn-arrow prev ui_smooth_prev"><span class="blind">이전</span></button>
-                                <button type="button" class="btn-arrow next ui_smooth_next"><span class="blind">다음</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- // 바로가기 -->
-                <!-- // 210218 수정 [추천 큐레이션, 스마트 필터 추가, 바로가기 영역 수정] -->
-                <!-- 210218 수정 [이미지 변경, br 태그 위치 수정] -->
-                <!-- 210413 수정 [피시, 모바일 이미지 분리] -->
-                <div class="search-banner">
-                    <a href="#n">
-                        <img src="/lg5-common/images/UTS/@sample-banner.jpg" alt="" class="pc-only">
-                        <img src="/lg5-common/images/UTS/@sample-banner-m.jpg" alt="" class="mo-only">
-                        <div class="text-area">
-                            <strong class="title">새출발을 위한 혼수 지원,<br>2020 올 뉴 웨딩 페스타</strong>
-                            <span class="sub-copy">2020 올 뉴 웨딩 페스타 행사 모델<br>동시 구매 시, 최대 250만원 상당 혜택!</span>
-                        </div>
-                    </a>
-                </div>
-                <!-- // 210413 수정 [피시, 모바일 이미지 분리] -->
-                <!-- // 210218 수정 [이미지 변경, br 태그 위치 수정] -->
-
-
                 <div class="cont-wrap">
                     <div class="search-result-wrap all">
 
@@ -365,376 +39,377 @@
                                     <div class="sort-list">
                                         <!-- 검색 영역 -->
                                         @@include('./common/modules/search.html', {
-                                            "value" : "노크온 매직스페이스",
+                                            "value" : "",
                                         })
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- 검색 결과 없음 -->
                         <div class="search-not-result">
                             <div class="no-data">
                                 <p>
-                                    <span><em>&ldquo;XLQL&rdquo;</em>에 대한 검색 결과가 없습니다</span> <!-- 검색 결과가 없는 경우 -->
-                                    <!-- BTOCSITE-12682 검색 > 검색어 미 입력시 검색결과 내 안내 문구 노출 -->
-                                    <span class="txt-none">입력된 검색어가 없습니다</span> <!-- 검색어 미입력 상태의 경우 -->
-                                    <!-- //BTOCSITE-12682 검색 > 검색어 미 입력시 검색결과 내 안내 문구 노출 -->
-                                    다시 한번 확인해주세요.
+                                    <span class="search_word_area">
+                                        <span class="search_word">
+                                            "
+                                            <span class="word_area">일이삼사오육칠팔구십일이삼사오육칠일이삼사오육칠팔구십일이삼사오육칠</span>
+                                            "
+                                            <em>검색결과가 없습니다.</em>
+                                        </span>
+                                    </span>
+                                    <span class="search_word_msg"><em>다시 한번 확인해 주세요.</em></span><!-- 검색어 결과 없음-대체 검색어 없음 -->
+                                    <span class="search_word_msg"><em>냉장고</em> 결과를 찾으셨나요?</span><!-- 대체 키워드를 추천하는 경우 -->
+                                    <span class="search_word_msg"><em>검색어를 입력해주세요</em></span><!-- 검색어 미 입력 시 검색결과 없음 -->
+                                    <a href="#n" class="search_word_link">검색결과로 이동</a><!-- 대체 키워드를 추천하는 경우 -->
                                 </p>
                             </div>
                         </div>
+                        <!-- // 검색 결과 없음 -->
 
-                        <div class="result-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">제품/케어솔루션</h2>
-                            </div>
-                            <div class="list-wrap">
-                                <ul class="result-list product-list">
-                                    @@loop('./common/modules/result-list.html', [
-                                        {
-                                            "itemClass" : "",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "flags" : ["미리미리 페스타", "으뜸효율 10%", "베스트", "신제품"],
-                                            "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                            "sku" : "5203FI3754D",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "hashtag" : ["가전", "여름가전"],
-                                            "careflag" : true,
-                                            "specInfo" : true,
-                                            "priceInfo" : true,
-                                            "priceSales" : true,
-                                            "priceRental" : true
-                                        }, {
-                                            "itemClass" : "discontinued",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "flags" : ["베스트", "신제품"],
-                                            "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                            "sku" : "5203FI3754D",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "hashtag" : ["가전", "여름가전"],
-                                            "careflag" : true,
-                                            "specInfo" : true
-                                        }, {
-                                            "itemClass" : "",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "flags" : ["베스트", "신제품"],
-                                            "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                            "sku" : "5203FI3754D",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "hashtag" : ["가전", "여름가전"],
-                                            "careflag" : true,
-                                            "priceInfo" : true,
-                                            "priceRental" : true
-                                        }, {
-                                            "itemClass" : "",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "flags" : ["베스트", "신제품"],
-                                            "tit" : "LG DIOS <span class='search-word'>노크온 매직스페이스</span> LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                            "sku" : "5203FI3754D",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "hashtag" : ["가전", "여름가전"],
-                                            "careflag" : true,
-                                            "priceInfo" : true,
-                                            "priceSales" : true
-                                        }
-                                    ])
+                        <!-- 고객 피드백 -->
+                        <div class="feedback-box-wrap">
+                            <div class="fb_title">고객 피드백</div>
+                            <div class="fb_msg">어떤 검색결과를 찾고 계셨나요?</div>
+                            <div class="select-list-wrap w-auto">
+                                <ul class="ui_radio_visible">
+                                    <li>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo01-1" name="rdo01" checked>
+                                            <label for="rdo01-1">제품</label>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo01-2" name="rdo01">
+                                            <label for="rdo01-2">소모품</label>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo01-3" name="rdo01">
+                                            <label for="rdo01-3">AS신청</label>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="rdo-wrap">
+                                            <input type="radio" id="rdo01-4" name="rdo01">
+                                            <label for="rdo01-4">문제해결방법</label>
+                                        </span>
+                                    </li>
                                 </ul>
                             </div>
-                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                            <div class="btn-area">
-                                <a href="#product" class="btn-link btn-moreview"><span>제품 더보기</span></a>
-                            </div>
-                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                        </div> <!-- // 제품-->
-
-                        <div class="result-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">이벤트/기획전</h2>
-                            </div>
-                            <div class="list-wrap">
-                                <ul class="result-list event-list">
-                                    @@loop('./common/modules/result-list.html', [
-                                        {
-                                            "itemLink" : true,
-                                            "itemClass" : "item-type2",
-                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
-                                            "flagEnd" : true,
-                                            "flags" : ["매장", "구매혜택", "TV", "프로젝터"],
-                                            "tit" : "2020 NEW <span class='search-word'>올레드</span>와 함께하는 홈라이프",
-                                            "date" : "2020.08.01 ~ 2020.11.30"
-                                        } , {
-                                            "itemLink" : true,
-                                            "itemClass" : "item-type2",
-                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
-                                            "tit" : "2020 NEW 올레드와 함께하는 홈라이프",
-                                            "date" : "2020.08.01 ~ 2020.11.30"
-                                        }
-                                    ])
-                                </ul>
-                            </div>
-                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                            <div class="btn-area">
-                                <a href="#event" class="btn-link btn-moreview"><span>이벤트/기획전 더보기</span></a>
-                            </div>
-                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                        </div> <!-- // 이벤트 기획전-->
-
-                        <div class="result-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">스토리</h2>
-                            </div>
-                            <div class="list-wrap">
-                                <ul class="result-list story-list">
-                                    @@loop('./common/modules/result-list.html', [
-                                        {
-                                            "itemLink" : true,
-                                            "itemClass" : "item-type2",
-                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
-                                            "playbtn" : true,
-                                            "flags" : ["비하인드 스토리"],
-                                            "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결 LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결 LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
-                                            "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. ",
-                                            "hashtag" : ["가전", "여름가전"],
-                                            "date" : "2020.08.01"
-                                        }, {
-                                            "itemLink" : true,
-                                            "itemClass" : "item-type2",
-                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
-                                            "flags" : ["비하인드 스토리"],
-                                            "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
-                                            "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. ",
-                                            "hashtag" : ["가전", "여름가전"],
-                                            "date" : "2020.08.01"
-                                        }
-                                    ])
-                                </ul>
-                            </div>
-                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                            <div class="btn-area">
-                                <a href="#story" class="btn-link btn-moreview"><span>스토리 더보기</span></a>
-                            </div>
-                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                        </div> <!-- // 스토리-->
-
-                        <div class="result-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">케어용품/소모품</h2>
-                            </div>
-                            <div class="list-wrap">
-                                <ul class="result-list care-list">
-                                    @@loop('./common/modules/result-list.html', [
-                                        {
-                                            "itemLink" : true,
-                                            "itemClass" : "discontinued",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "tit" : "브러쉬 Brush Assembly, Filter",
-                                            "sku" : "5203FI3754D",
-                                            "model" : "적용모델 : RH8SA.AKOR,RH8SDW.AKOR,RH8WA.AKOR,RH8WDW.AKOR,RH9SA1W.AKOR,RH9SAR.AKOR,RH9SAW.AKOR,RH9SG.AKOR,RH9SG1.AKOR,RH9SGA.AKOR,RH9SGB.AKOR,RH9SGR.AKOR,RH9SI.AKOR,RH9SI1.AKOR,RH9SIA.AKOR,RH9WA.AKOR,RH9WA1W.AKOR,RH9WAW.AKOR,RH9WG.AKOR,RH9WG1.AKOR,RH9WGA.AKOR,RH9WGAR.AKOR,RH9WI.AKOR,RH9WI1.AKOR,RH9WIA.AKOR,RH9WIB.AKOR,S3BER.AKOR,S3BER1.AKOR,S3BF.AKOR,S3BF1.AKOR,S3BFB.AKOR,S3BFR.AKOR,S3BOF.AKOR,S3DFB.AKOR,S3GOF.AKOR,S3HFB.AKOR,S3IERB.AKOR,S3KF.AKOR,S3MF.AKOR,S3MFB.AKOR,S3MFC.AKOR,S3MFC1.AKOR,S3NF.AKOR,S3RDL.AKOR,S3RER.AKOR,S3RF.AKOR,S3TF.AKOR,S3WER.AKOR,S3WER1.AKOR,S3WF.AKOR,S3WFH.AKOR,S3WFS.AKOR,S5BB.AKOR,S5BB1.AKOR,S5BBR.AKOR,S5BBU.AKOR,S5BFO.AKOR,S5BOC.AKOR,S5GFO.AKOR,S5GOC.AKOR,S5MB.AKOR,S5MB1.AKOR,S5MB2.AKOR,S5MBA.AKOR,S5MBAU.AKOR,S5MBC.AKOR,S5MBR.AKOR,S5MBS.AKOR,S5MBU.AKOR,S5MPC.AKOR"
-                                        }, {
-                                            "itemLink" : true,
-                                            "itemClass" : "",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "tit" : "브러쉬 Brush Assembly, Filter",
-                                            "sku" : "5203FI3754D",
-                                            "model" : "적용모델 : H-62HSGAKOR 외",
-                                            "priceInfo" : true,
-                                            "priceRental" : true
-                                        }, {
-                                            "itemLink" : true,
-                                            "itemClass" : "",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "tit" : "브러쉬 Brush Assembly, Filter",
-                                            "sku" : "5203FI3754D",
-                                            "model" : "적용모델 : H-62HSGAKOR 외",
-                                            "priceInfo" : true,
-                                            "priceSales" : true
-                                        }
-                                    ])
-                                </ul>
-                            </div>
-                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                            <div class="btn-area">
-                                <a href="#additional" class="btn-link btn-moreview"><span>케어용품/소모품 더보기</span></a>
-                            </div>
-                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                        </div> <!-- // 케어용품, 소모품-->
-
-                        <div class="result-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">센터/매장</h2>
-                            </div>
-                            <div class="list-wrap">
-                                <ul class="result-list shop-list">
-                                    @@loop('./common/modules/result-list.html', [
-                                        {
-                                            "itemClass" : "",
-                                            "flagsTy2" : "<!-- 210226 수정 [.blue 클래스 변경] --><span class='flag blue'>센터</span>",
-                                            "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
-                                            "shopInfo" : true,
-                                            "shopTime" : true,
-                                            "state" : "원활",
-                                            "stateClass" : "skyblue",
-                                            "btnA" : ["길찾기","방문 예약 신청"]
-                                        },{
-                                            "itemClass" : "",
-                                            "flagsTy2" : "<!-- 210226 수정 [.blue 클래스 변경] --><span class='flag blue'>매장</span><span class='flag'>NEW</span><span class='flag'>이벤트</span>",
-                                            "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
-                                            "shopInfo" : true,
-                                            "shopTime" : true,
-                                            "state" : "보통",
-                                            "stateClass" : "olive",
-                                            "btnA" : ["길찾기","방문 예약 신청"]
-                                        },{
-                                            "itemClass" : "",
-                                            "flagsTy2" : "<!-- 210226 수정 [.blue 클래스 변경] --><span class='flag blue'>센터</span>",
-                                            "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
-                                            "shopInfo" : true,
-                                            "shopTime" : true,
-                                            "state" : "혼잡",
-                                            "stateClass" : "red",
-                                            "btnA" : ["길찾기","방문 예약 신청"]
-                                        },{
-                                            "itemClass" : "",
-                                            "flagsTy2" : "<!-- 210226 수정 [.blue 클래스 변경] --><span class='flag blue'>센터</span>",
-                                            "tit" : "<span class='search-word'>홍대</span>입구역 서비스센터",
-                                            "shopInfo" : true,
-                                            "shopTime" : true,
-                                            "btnA" : ["길찾기","방문 예약 신청"]
-                                        }
-                                    ])
-                                </ul>
-                            </div>
-                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                            <div class="btn-area">
-                                <a href="#shop" class="btn-link btn-moreview"><span>센터/매장 더보기</span></a>
-                            </div>
-                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                        </div> <!-- // 센터, 매장-->
-
-                        <div class="result-list-wrap">
-                            <div class="list-head">
-                                <h2 class="title">고객지원</h2>
-                            </div>
-                            <div class="list-wrap">
-                                <ul class="result-list support-list">
-                                    @@loop('./common/modules/result-list.html', [
-                                        {
-                                            "itemLink" : true,
-                                            "itemClass" : "",
-                                            "img" : "/lg5-common/images/noimage.png",
-                                            "tit" : "LG XPION A50PH XPION A50PH",
-                                            "sku" : "LG 올레드 AI ThinQ",
-                                            "InfoText" : ["제품사용설명서", "드라이버/소프트웨어", "제품문제해결"]
-
-                                        }, {
-                                            "itemLink" : true,
-                                            "itemClass" : "",
-                                            "img" : "/lg5-common/images/dummy/@img-cs.jpg",
-                                            "tit" : "LG XPION A50PH XPION A50PH",
-                                            "sku" : "LG 올레드 AI ThinQ",
-                                            "InfoText" : ["제품사용설명서", "드라이버/소프트웨어", "제품문제해결"]
-
-                                        }, {
-                                            "itemClass" : "",
-                                            "flags" : ["제품사용설명서"],
-                                            "tit" : "HTML 사용설명서",
-                                            "cs" : true,
-                                            "InfoText" : ["2020.11.03", "한글"],
-                                            "btnB" : ["ZIP", "HTML"]
-                                        }, {
-                                            "itemClass" : "",
-                                            "flags" : ["드라이버/소프트웨어"],
-                                            "tit" : "[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램",
-                                            "cs" : true,
-                                            "InfoText" : ["2020.11.03", "ver 7.7PHV1", "통합 드라이버 설치 프로그램"],
-                                            "btnB" : ["다운로드 1118.4MB"]
-
-                                        }, {
-                                            "itemClass" : "",
-                                            "itemLink" : true,
-                                            "flags" : ["제품문제해결"],
-                                            "tit" : "Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
-                                            "cs" : true,
-                                            "InfoText" : ["2020.11.03", "조회수 5,692"],
-                                            "videoB" : true
-
-                                        }
-                                    ])
-                                </ul>
-                            </div>
-                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
-                            <div class="btn-area">
-                                <a href="#customer" class="btn-link btn-moreview"><span>고객지원 더보기</span></a>
-                            </div>
-                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
+                            <a href="#n" class="search-btn fix black">보내기</a>
                         </div>
+                        <!-- // 고객 피드백 -->
 
-                        <div class="result-list-wrap list-no-data">
+                        <div class="result-list-wrap">
                             <div class="list-head">
                                 <h2 class="title">이런 제품 어떠세요?</h2>
                             </div>
                             <div class="list-wrap">
                                 <ul class="result-list product-list">
-                                    @@loop('./common/modules/result-list.html', [
-                                        {
-                                            "itemClass" : "",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "flags" : ["미리미리 페스타", "으뜸효율 10%", "베스트", "신제품"],
-                                            "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                            "sku" : "5203FI3754D",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "hashtag" : ["가전", "여름가전"],
-                                            "careflag" : true,
-                                            "priceInfo" : true,
-                                            "priceSales" : true,
-                                            "priceRental" : true
-                                        }, {
-                                            "itemClass" : "discontinued",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "flags" : ["베스트", "신제품"],
-                                            "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                            "sku" : "5203FI3754D",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "hashtag" : ["가전", "여름가전"],
-                                            "careflag" : true
-                                        }, {
-                                            "itemClass" : "",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "flags" : ["베스트", "신제품"],
-                                            "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                            "sku" : "5203FI3754D",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "hashtag" : ["가전", "여름가전"],
-                                            "careflag" : true,
-                                            "priceInfo" : true,
-                                            "priceRental" : true
-                                        }, {
-                                            "itemClass" : "",
-                                            "img" : "/lg5-common/images/dummy/@sample-2-240x240.jpg",
-                                            "flags" : ["베스트", "신제품"],
-                                            "tit" : "LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스 LG DIOS 노크온 매직스페이스",
-                                            "sku" : "5203FI3754D",
-                                            "review" : true,
-                                            "isReview" : true,
-                                            "hashtag" : ["가전", "여름가전"],
-                                            "careflag" : true,
-                                            "priceInfo" : true,
-                                            "priceSales" : true
-                                        }
-                                    ])
+                                    <li>
+                                        <div class="item ">
+                                            <div class="result-thumb">
+                                                <a href="#n">
+                                                    <img src="/lg5-common/images/dummy/@sample-2-240x240.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="result-info">
+                                                <div class="info-text">
+                                                    <div class="detail-wrap">
+                                                        <div class="result-tit">
+                                                            <span>LG 올레드 evo 오브제컬렉션LG 올레드 evo 오브제컬렉션LG 올레드 evo 오브제컬렉션LG 올레드 evo 오브제컬렉션</span>
+                                                        </div>
+                                                        <div class="result-detail">
+                                                            <div class="sku">5203FI3754D</div>
+                                                            <div class="review-info">
+                                                                <a href="#">
+                                                                    <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                                                                    <div class="average-rating"><span class="blind">평점</span>42</div>
+                                                                    <div class="review-count"><span class="blind">리뷰 수</span>(36)</div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="shop-lab pickup">매장픽업</div>
+                                                            <div class="shop-lab dpsale">진열상품세일</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="info-price">
+                                                    <a href="#">
+                                                        <!-- S: 렌탈 -->
+                                                        <!-- <div class="price-info rental">
+                                                            <span class="price"><em>월</em> 40,900<em>원</em></span>
+                                                            <span class="month">60<em>개월</em></span>
+                                                        </div> -->
+                                                        <!-- E: 렌탈 -->
+                                                        <div class="price-info sales">
+                                                            <div class="salerate">
+                                                                <span class="rate">30<em>%</em></span>
+                                                            </div>
+                                                            <div class="price-in">
+                                                                <span class="price">5,200,000<em>원</em></span>
+                                                            </div>
+                                                            <div class="original">
+                                                                <em class="blind">원가</em>
+                                                                <span class="price">5,600,000<em>원</em></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="price-benefit">
+                                                            <div class="billsale">롯데/신한 청구할인 5%</div>
+                                                            <div class="interest">무이자 12개월</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="result-tabs">
+                                                <!--S: 모바일 경우 디폴트 : 모바일만 노출 -->
+                                                <div class="cnt_mo_default">
+                                                    <span class="cnt_mo_txt">61.2m² / 헤파필터(h3) / 72W / 헤파필터(h3) / 72W / 헤파필터(h3) / 72W / 헤파필터(h3) / 72W / 헤파필터(h3) / 72W</span>
+                                                    <div class="tab_mo_mask"></div><!-- 모바일만 노출 -->
+                                                    <a href="#n" class="cnt_mo_open">상세내용보기</a>
+                                                </div>
+                                                <!--E: 모바일 경우 디폴트 : 모바일만 노출 -->
+                                                <!--S: 탭 -->
+                                                <div class="tabs-wrap border-type ui_tab">
+                                                    <ul class="tabs">
+                                                        <li class="on"><a href="#tab1">스펙<em class="blind">선택됨</em></a></li>
+                                                        <li><a href="#tab2">소모품</a></li>
+                                                        <li><a href="#tab3">리뷰</a></li>
+                                                        <li><a href="#tab4">렌탈</a></li>
+                                                        <li><a href="#tab5">고객지원</a></li>
+                                                        <li><a href="#tab6">매장/견적</a></li>
+                                                    </ul>
+                                                    <div class="tab_mo_mask"></div><!-- 모바일만 노출 -->
+                                                    <a href="#n" class="tab_mo_close">상세내용닫기</a><!-- 모바일만 노출 -->
+                                                </div>
+                                                <!--E: 탭 -->
+                                                <!--S: 탭-내용 -->
+                                                <div class="tabs-contant">
+                                                    <!--S: 탭-스펙 -->
+                                                    <div id="tab1">
+                                                        <div class="cnt-wrap type-tbl">
+                                                            <div class="cnt_area">
+                                                                <dl>
+                                                                    <dt>사용면적</dt>
+                                                                    <dd>61.2m²</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>필터</dt>
+                                                                    <dd>헤파필터(h3)</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>소비전력</dt>
+                                                                    <dd>72W</dd>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="btn_area">
+                                                                <a href="#n" class="btn search-btn fix black">제품상세보기</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--E: 탭-스펙 -->
+                                                    <!--S: 탭-소모품 -->
+                                                    <div id="tab2">
+                                                        <div class="cnt-wrap type-lst">
+                                                            <div class="cnt_area supplies">
+                                                                <ul>
+                                                                    <li>
+                                                                        <img src="/lg5-common/images/dummy/@sample-240x240.jpg" alt="토탈케어 플러스 H13 필터 (렌탈용)">
+                                                                        <span class="supplies_prod">
+                                                                            <span class="info_area">
+                                                                                <span class="name">토탈케어 플러스 H13 필터 (렌탈용)</span>
+                                                                                <span class="model">LPH01</span>
+                                                                            </span>
+                                                                            <span class="pay_area">
+                                                                                <span class="orig_pay">46,000<em>원</em></span>
+                                                                                <span class="sale_pay">36,000<em>원</em></span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <img src="/lg5-common/images/dummy/@sample-240x240.jpg" alt="무빙휠 2단용">
+                                                                        <span class="supplies_prod">
+                                                                            <span class="info_area">
+                                                                                <span class="name">무빙휠 2단용</span>
+                                                                                <span class="model">LPH01</span>
+                                                                            </span>
+                                                                            <span class="pay_area">
+                                                                                <span class="orig_pay">46,000<em>원</em></span>
+                                                                                <span class="sale_pay">36,000<em>원</em></span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="btn_area">
+                                                                <button type="button" data-href="#layerSuppliesMore" data-control="modal" class="btn search-btn fix black">관련 소모품 전체보기</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--E: 탭-소모품 -->
+                                                    <!--S: 탭-리뷰 -->
+                                                    <div id="tab3">
+                                                        <div class="cnt-wrap type-lst">
+                                                            <div class="cnt_area review">
+                                                                <ul>
+                                                                    <li>
+                                                                        <span class="name">고*정님 리뷰</span>
+                                                                        <span class="mark">
+                                                                            <span class="star on"></span>
+                                                                            <span class="star on"></span>
+                                                                            <span class="star on"></span>
+                                                                            <span class="star half"></span>
+                                                                            <span class="star off"></span>
+                                                                        </span>
+                                                                        <span class="cnt"><p>20평 사무실인데 30평짜리 공기청정기360도 알파를 구매했습니다.
+                                                                        </p></span>
+                                                                    </li>
+                                                                    <li>
+                                                                        <span class="name">스***브님 리뷰</span>
+                                                                        <span class="mark">
+                                                                            <span class="star on"></span>
+                                                                            <span class="star half"></span>
+                                                                            <span class="star off"></span>
+                                                                            <span class="star off"></span>
+                                                                            <span class="star off"></span>
+                                                                        </span>
+                                                                        <span class="cnt"><p>20평 사무실인데 30평짜리 공기청정기360도 알파를 구매했습니다. 진짜 확실히 공기질이 좋아졌네요20평 사무실인데 30평짜리 공기청정기360도 알파를 구매했습니다. 진짜 확실히 공기질이 좋아졌네요20평 사무실인데 30평짜리 공기청정기360도 알파를 구매했습니다. 진짜 확실히 공기질이 좋아졌네요20평 사무실인데 30평짜리 공기청정기360도 알파를 구매했습니다. 진짜 확실히 공기질이 좋아졌네요20평 사무실인데 30평짜리 공기청정기360도 알파를 구매했습니다. 진짜 확실히 공기질이 좋아졌네요</p></span>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--E: 탭-리뷰 -->
+                                                    <!--S: 탭-렌탈 -->
+                                                    <div id="tab4">
+                                                        <div class="cnt-wrap type-tbl">
+                                                            <div class="cnt_area">
+                                                                <dl>
+                                                                    <dt>계약기간</dt>
+                                                                    <dd>6년</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>의무사용기간</dt>
+                                                                    <dd>6년</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>방문주기</dt>
+                                                                    <dd>1년/3개월</dd>
+                                                                </dl>
+                                                                <dl>
+                                                                    <dt>월 렌탈가격</dt>
+                                                                    <dd>36,900원</dd>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="btn_area">
+                                                                <button type="button" data-href="#bbbb" data-control="modal" class="btn search-btn fix black">렌탈 신청하기</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--E: 탭-렌탈 -->
+                                                    <!--S: 탭-고객지원 -->
+                                                    <div id="tab5">
+                                                        <!-- S: 단일제품 -->
+                                                        <div class="cnt-wrap type-tbl">
+                                                            <div class="cnt_area support">
+                                                                <ul>
+                                                                    <li>
+                                                                        <button type="button" data-href="#layerPdfMore" data-control="modal" class="pdf">사용설명서<span>(PDF)</span></button>
+                                                                    </li>
+                                                                    <li>
+                                                                        <button type="button" data-href="#layerHtmlMore" data-control="modal" class="html">사용설명서<span>(HTML)</span></button>
+                                                                    </li>
+                                                                    <li>
+                                                                        <button type="button" data-href="#layerSwMore" data-control="modal" class="sw">드라이버<span>(S/W)</span></button>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="btn_area">
+                                                                <a href="#n" class="btn search-btn fix black">제품 서비스 페이지 이동</a>
+                                                            </div>
+                                                        </div>
+                                                        <!-- E: 단일제품 -->
+                                                        <!-- S: 묶음제품 -->
+                                                        <div class="cnt-wrap type-lst">
+                                                            <div class="cnt_area support">
+                                                                <ul>
+                                                                    <li>
+                                                                        <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="LG 퓨리케어 360˚ 공기청정기 알파">
+                                                                        <div class="support_prod">
+                                                                            <span class="name">LG 퓨리케어 360˚ 공기청정기 알파</span>
+                                                                            <span class="model">AS201NNFA</span>
+                                                                        </div>
+                                                                        <ul class="support_file">
+                                                                            <li>
+                                                                                <button type="button" data-href="#layerPdfMore" data-control="modal" class="pdf">사용설명서<span>(PDF)</span></button>
+                                                                            </li>
+                                                                            <li>
+                                                                                <button type="button" data-href="#layerHtmlMore" data-control="modal" class="html">사용설명서<span>(HTML)</span></button>
+                                                                            </li>
+                                                                            <li>
+                                                                                <button type="button" data-href="#layerSwMore" data-control="modal" class="sw">드라이버<span>(S/W)</span></button>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li>
+                                                                        <img src="/lg5-common/images/dummy/@img-product5.jpg" alt="LG 퓨리케어 360˚ 공기청정기 알파">
+                                                                        <div class="support_prod">
+                                                                            <span class="name">LG 퓨리케어 360˚ 공기청정기 알파LG 퓨리케어 360˚ 공기청정기 알파LG 퓨리케어 360˚ 공기청정기 알파</span>
+                                                                            <span class="model">AS201NNFA</span>
+                                                                        </div>
+                                                                        <ul class="support_file">
+                                                                            <li>
+                                                                                <button type="button" data-href="#layerPdfMore" data-control="modal" class="pdf">사용설명서<span>(PDF)</span></button>
+                                                                            </li>
+                                                                            <li>
+                                                                                <button type="button" data-href="#layerHtmlMore" data-control="modal" class="html">사용설명서<span>(HTML)</span></button>
+                                                                            </li>
+                                                                            <li>
+                                                                                <button type="button" data-href="#layerSwMore" data-control="modal" class="sw">드라이버<span>(S/W)</span></button>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="btn_area">
+                                                                <button type="button" data-href="#aaaaa" data-control="modal" class="btn search-btn fix black">제품 서비스 페이지 이동</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- E: 묶음제품 -->
+                                                    </div>
+                                                    <!--E: 탭-고객지원 -->
+                                                    <!--S: 탭-매장/견적 -->
+                                                    <div id="tab6">
+                                                        <div class="cnt-wrap type-lst">
+                                                            <div class="cnt_area shop">
+                                                                <ul>
+                                                                    <li><a href="#n" class="reserve">매장상담예약</a></li>
+                                                                    <li><a href="#n" class="search">전시매장찾기</a></li>
+                                                                    <li><a href="#n" class="estimate">온라인견적받기</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--E: 탭-매장/견적 -->
+                                                </div>
+                                                <!--E: 탭-내용 -->
+                                            </div>
+                                        </div>
+                                        <div class="compare_check">
+                                            <span class="chk-wrap">
+                                                <input type="checkbox" id="compare_chk01" name="compare_chk1" checked="">
+                                                <label for="compare_chk01">비교하기</label>
+                                            </span>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
+                            <div class="btn-area">
+                                <a href="#product" class="btn-link btn-moreview"><span>제품 더보기</span></a>
+                            </div>
                         </div>
-
-
-                        <!-- // 고객지원-->
                     </div>
                 </div>
                 <!-- // 검색 결과 영역 -->
@@ -742,7 +417,32 @@
             <!-- // 통합검색 -->
         </div>
 
-        @@include('./common/footer.html')
+    @@include('./common/footer.html')
     </div>
+
+    <!-- S: 소모품 전체보기 -->
+    @@include('./common/popup/SERF9002_pop1.html', {
+        popupID: 'layerSuppliesMore'
+    })
+    <!-- E: 소모품 전체보기 -->
+
+    <!-- S: 제품사용설명서(PDF) 전체보기 -->
+    @@include('./common/popup/SERF9002_pop2.html', {
+        popupID: 'layerPdfMore'
+    })
+    <!-- E: 제품사용설명서(PDF) 전체보기 -->
+
+    <!-- S: 제품사용설명서(HTML) 전체보기 -->
+    @@include('./common/popup/SERF9002_pop3.html', {
+        popupID: 'layerHtmlMore'
+    })
+    <!-- E: 제품사용설명서(HTML) 전체보기 -->
+
+    <!-- S: 제품사용설명서(S/W) 전체보기 -->
+    @@include('./common/popup/SERF9002_pop4.html', {
+        popupID: 'layerSwMore'
+    })
+    <!-- E: 제품사용설명서(S/W) 전체보기 -->
+
 </body>
 </html>
