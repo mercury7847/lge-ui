@@ -2,17 +2,17 @@
   "use strict";
 
   // prettier-ignore
-  var reservationItem = '<li class="{{#if cancel_flag}}li_cancel{{/if}}">' +
+  var reservationItem = '<li class="{{#if cancelFlag}}li_cancel{{/if}}">' +
     '<div class="li_tit">' +
-        '<div class="tit_txt{{#if _customerCancel}} customer{{/if}}">' +
+        '<div class="tit_txt">' +
           '{{_title}} {{_method}} 예약</div>' +
-        '{{#if (!_today && !_isOverTime) && !cancel_flag}}<a href="#n" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
+        '{{#if (!_today && !_isOverTime) && !cancelFlag}}<a href="#n" data-id="{{counselEventNo}}" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
     '</div>' +
     '<dl class="li_page">' +
         '<dt>신청페이지</dt>' +
-        '<dd>{{main_title}}' +
+        '<dd>{{mainTitle}}' +
           '{{#if _type == "0"}}' +
-            '<a href="{{counsel_event_url}}" target="_blank" class="linkbtn">상세페이지이동</a>' +
+            '<a href="{{counselEventUrl}}" target="_blank" class="linkbtn">상세페이지이동</a>' +
           '{{/if}}' +
         '</dd>' +
     '</dl>' +
@@ -29,8 +29,8 @@
                 '<a href="#n" class="linkbtn product" data-prd-id="{{_prdId}}">제품정보팝업호출</a>' +
               '{{/if}}' +
             '</dd>' +
-            '{{#if visit_cycle}}<dt>방문주기</dt>' +
-            '<dd>{{visit_cycle}}</dd>{{/if}}' +
+            '{{#if visitCycle}}<dt>방문주기</dt>' +
+            '<dd>{{visitCycle}}</dd>{{/if}}' +
         '</dl>' +
       '{{#else}}' +
         '<dl>' +
@@ -46,7 +46,7 @@
       '{{/if}}' +
         '<dl>' +
             '<dt>{{_loc}}매장</dt>' +
-            '<dd>{{request_orgcode_name}}' + 
+            '<dd>{{requestOrgcodeName}}' + 
             '{{#if _storeId}}<a href="#n" data-url="/support/store-finder-{{_storeId}}" class="linkbtn store">매장상세정보이동</a>{{/if}}' +
             '</dd>' +
             '<dt>예약일시</dt>' +
@@ -56,7 +56,7 @@
             '<dt>신청자</dt>' +
             '<dd>{{_name}}</dd>' +
             '<dt>휴대폰번호</dt>' +
-            '<dd>{{visitor_telno}}</dd>' +
+            '<dd>{{visitorTelno}}</dd>' +
         '</dl>' +
     '</div>' +
   '</li>';
@@ -80,6 +80,7 @@
     window.LGEAPPHostName === "localhost" ? "https://www.lge.co.kr" : "";
 
   // var SESSION_TAB_INDEX = "bestshop_counsel_tabindex"; // hash 활성화로 변경하여 사용 안함
+  var SYSTEM_DOWN_TIME_PLAN = "SYSTEM_DOWN_TIME_PLAN"; // 서버 점검
 
   var module = {
     variable: {
@@ -259,7 +260,7 @@
               "예약을 취소하시겠습니까?</h6>",
             {
               ok: function () {
-                this.callCheckLogin();
+                this.callCheckLogin(target);
                 //console.log("ok");
               }.bind(this),
               cancel: function () {
@@ -320,8 +321,8 @@
     error: function (result) {
       var errorMsg = "";
 
-      if (result.status === "SYSTEM_DOWN_PLAN") {
-        errorMsg = result.message;
+      if (result.message === "SYSTEM_DOWN_TIME_PLAN") {
+        errorMsg = result.downTimeStart + " ~ " + result.downTimeEnd;
       }
 
       this.el.$error.show().find(".msg_annex > dd").html(errorMsg);
@@ -342,7 +343,10 @@
         ajaxUrl,
         {},
         function (result) {
-          if (result.data.success === "N") {
+          if (
+            result.data.success === "N" &&
+            result.message === SYSTEM_DOWN_TIME_PLAN
+          ) {
             this.error(result);
             return;
           }
@@ -360,9 +364,10 @@
     /**
      * 예약 취소 요청
      */
-    callCancel: function () {
+    callCancel: function (opener) {
+      var id = opener ? opener.data("id") : null;
       var ajaxUrl = this.el.$container.data("reservation-cancel");
-      var postData = { counsel_event_no: "" };
+      var postData = { counselRequestId: id };
 
       lgkorUI.showLoading();
 
@@ -370,10 +375,10 @@
         ajaxUrl,
         postData,
         function (result) {
-          if (result.data.success === "N") {
+          /* if (result.data.success === "N") {
             lgkorUI.alert(result.message);
             return;
-          }
+          } */
 
           if (result.data.cancel_yn == "N") {
             lgkorUI.alert(result.data.cancel_message);
@@ -387,7 +392,7 @@
     /**
      * 예약 취소 요청 전 로그인 체크
      */
-    callCheckLogin: function () {
+    callCheckLogin: function (opener) {
       var ajaxUrl = $("header").data("login-info");
 
       if (!ajaxUrl) {
@@ -401,7 +406,7 @@
           if (!result.data.isLogin) {
             location.href = linkHost + "/sso/api/emp/Login";
           } else {
-            this.callCancel();
+            this.callCancel(opener);
           }
         }.bind(this)
       );
@@ -417,18 +422,18 @@
       listData.forEach(
         function (data) {
           if (
-            data.hasOwnProperty("store_visit_date_time") &&
-            data.hasOwnProperty("request_date")
+            data.hasOwnProperty("storeVisitDateTime") &&
+            data.hasOwnProperty("requestDate")
           ) {
             // 예약일
-            var visitDateData = data.store_visit_date_time;
+            var visitDateData = data.storeVisitDateTime;
             var visitDateStr = visitDateData.replace(
               this.variable.dateRegex,
               "$1"
             );
 
             // 등록일
-            var regDateData = data.request_date;
+            var regDateData = data.requestDate.replace(/\./g, "-");
             var regDateStr = regDateData.replace(this.variable.dateRegex, "$1");
 
             // 유효성 체크
@@ -449,7 +454,7 @@
                 hours
               );
 
-              // "store_visit_date_time" 바인딩 format 수정
+              // "storeVisitDateTime" 바인딩 format 수정
               data._visitDate = vcui.date.format(
                 visitDate,
                 "yyyy년 MM월 dd일, hh시"
@@ -504,7 +509,7 @@
         function (label, idx) {
           var group =
             listData.filter(function (item) {
-              return item.cousel_event_type === label;
+              return item.counselEventType === label;
             }) || [];
 
           if (group.length) {
@@ -543,7 +548,7 @@
       listData = listData.filter(
         function (item) {
           return (
-            item.cousel_event_type ===
+            item.counselEventType ===
             this.variable.tabLabelKeys[this.variable.tabActIndex]
           );
         }.bind(this)
@@ -570,28 +575,28 @@
       item._type = parseInt(this.variable.tabActIndex);
 
       // 매장 코드
-      if (item.hasOwnProperty("store_url")) {
+      if (item.hasOwnProperty("storeUrl")) {
         item._storeId = null;
 
         var stRegex = /.+\/detail-(\w+)/i;
-        if (item.store_url.match(stRegex)) {
-          item._storeId = item.store_url.replace(stRegex, "$1");
+        if (item.storeUrl.match(stRegex)) {
+          item._storeId = item.storeUrl.replace(stRegex, "$1");
         }
       }
 
       // 신청자
-      if (item.hasOwnProperty("visitor_name")) {
-        item._name = this.middleMaskingText(item.visitor_name);
+      if (item.hasOwnProperty("visitorName")) {
+        item._name = this.middleMaskingText(item.visitorName);
       }
 
       // 상담제품
-      if (item.hasOwnProperty("request_category")) {
+      if (item.hasOwnProperty("requestCategory")) {
         item._prdId = null;
         item._category = null;
 
         // 방문/화상 상담탭 && 공백 없는 '문자,문자' 인 경우
-        if (item._type !== 1 && item.request_category.match(/\,/g)) {
-          var categorys = item.request_category.split(",").map(function (item) {
+        if (item._type !== 1 && item.requestCategory.match(/\,/g)) {
+          var categorys = item.requestCategory.split(",").map(function (item) {
             return item.trim();
           });
 
@@ -613,25 +618,20 @@
         } else {
           // 케어십
           var prdRegex = /.+\((.+)\)/i;
-          if (item.request_category.match(prdRegex)) {
-            item._prdId = item.request_category.replace(prdRegex, "$1");
+          if (item.requestCategory.match(prdRegex)) {
+            item._prdId = item.requestCategory.replace(prdRegex, "$1");
           }
 
-          item._category = item.request_category;
+          item._category = item.requestCategory;
         }
       }
 
       // 각 탭 마크업 특수
-      if (item.hasOwnProperty("cousel_event_type")) {
+      if (item.hasOwnProperty("counselEventType")) {
         item._method = item._type !== 2 ? "상담" : "구매";
         item._loc = item._type !== 2 ? "상담" : "예약";
         item._title =
           item._type === 0 ? "" : this.variable.tabLabelKeys[item._type];
-      }
-
-      // 고객취소 | 매장취소
-      if (item.hasOwnProperty("cancel_flag")) {
-        item._customerCancel = item.cancel_flag === "고객취소";
       }
 
       this.el.$listContainer.append(vcui.template(reservationItem, item));
