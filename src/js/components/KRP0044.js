@@ -36,7 +36,7 @@
             self.$section = $('.KRP0044');
             self.modelId = self.$section.data('modelId');
             self.$list = self.$section.find('ul.story-box');
-            self.$pagination = self.$section.find('.pagination').vcPagination({scrollTarget:'noUse'});
+            self.$pagination = self.$section.find('.pagination').vcPagination({scrollTop:'noUse'});
             self.requestData({"modelId":self.modelId, 'page': 1});
         },
 
