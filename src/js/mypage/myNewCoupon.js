@@ -101,6 +101,9 @@
     var coupon = {
         variable: {
             listData: [],
+            // lgeListData:[],
+            // bestShopPrdListData:[],
+            // bestShopVisitListData:[],
             visibleCount: 12,
             tabActIndex: 0,
             subTabActIndex: 1, //todo> subtab 생성 시 0으로 변경
@@ -427,91 +430,72 @@
                 tabCouponCnt0 = this.el.$contents.data("coupon-list-url");
                 tabCouponCnt1 = this.el.$contents.data("bestshop-visit-coupon-list-url");
             }
+            var dataUrl = this.el.$contents.data();
 
-            //활성화 탭 데이터 호출
-            if (ajaxUrl) {
-                lgkorUI.requestAjaxDataPost(
-                    ajaxUrl,
-                    {},
-                    function (result) {
-                        lgkorUI.hideLoading();
+            $.each(dataUrl, function (idx, val) {
+                if (ajaxUrl && ajaxUrl === val) {
+                    lgkorUI.requestAjaxDataPost(
+                        val,
+                        {},
+                        function (result) {
+                            lgkorUI.hideLoading();
 
-                        if (result.status.toUpperCase() === "ERROR") {
-                            this.el.$couponWrap.hide();
-                            this.el.$couponNoData.hide();
-                            this.el.$errorCoupon.show();
+                            if (result.status.toUpperCase() === "ERROR") {
+                                this.el.$couponWrap.hide();
+                                this.el.$couponNoData.hide();
+                                this.el.$errorCoupon.show();
 
-                            if (result.downTime) {
-                                $(".coupon-error-cont dd").text(result.downTime + " ~ " + result.openTime);
+                                if (result.downTime) {
+                                    $(".coupon-error-cont dd").text(result.downTime + " ~ " + result.openTime);
+                                }
+                                return;
                             }
-                            return;
-                        }
 
-                        if (result.status.toUpperCase() === "SUCCESS") {
-                            this.el.$couponWrap.show();
-                            this.el.$errorCoupon.hide();
+                            if (result.status.toUpperCase() === "SUCCESS") {
+                                this.el.$couponWrap.show();
+                                this.el.$errorCoupon.hide();
 
-                            var keyValue = Object.keys(result.data);
-                            $.each(keyValue, function (idx, val) {
-                                oSelf.variable.listData[val] = result.data[val];
-                            });
+                                var keyValue = Object.keys(result.data);
+                                $.each(keyValue, function (idx, val) {
+                                    oSelf.variable.listData[val] = result.data[val];
+                                });
 
-                            this.renderContents();
-                        }
-                    }.bind(this),
-                    true
-                );
-            }
+                                this.renderContents();
+                            }
+                        }.bind(oSelf),
+                        true
+                    );
+                }
 
-            //탭1 > 게시글 수 출력
-            if (tabCouponCnt0) {
-                lgkorUI.requestAjaxDataPost(
-                    tabCouponCnt0,
-                    {},
-                    function (result) {
-                        if (result.status.toUpperCase() === "ERROR") {
-                            this.el.$tab.find('li:not(".on") a .count span').text("0");
-                        }
+                if (tabCouponCnt0 === val || tabCouponCnt1 === val) {
+                    lgkorUI.requestAjaxDataPost(
+                        val,
+                        {},
+                        function (result) {
+                            if (result.status.toUpperCase() === "ERROR") {
+                                this.el.$tab.find('li:not(".on") a .count span').text("0");
+                            }
 
-                        if (result.status.toUpperCase() === "SUCCESS") {
-                            var onListCnt;
-                            var keyValue = Object.keys(result.data);
-                            $.each(keyValue, function (idx, val) {
-                                if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
-                                    onListCnt = val;
+                            if (result.status.toUpperCase() === "SUCCESS") {
+                                var keyListCnt;
+                                var keyValue = Object.keys(result.data);
+                                $.each(keyValue, function (idx, val) {
+                                    if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
+                                        keyListCnt = val;
+                                    }
+                                });
+
+                                if (tabCouponCnt0 === val) {
+                                    this.el.$tab.find("li a .count span").eq(0).text(result.data[keyListCnt]);
+                                } else {
+                                    this.el.$tab.find("li a .count span").eq(1).text(result.data[keyListCnt]);
                                 }
-                            });
-                            this.el.$tab.find("li a .count span").eq(0).text(result.data[onListCnt]);
-                        }
-                    }.bind(this),
-                    true
-                );
-            }
-
-            //탭2 > 게시글 수 출력
-            if (tabCouponCnt1) {
-                lgkorUI.requestAjaxDataPost(
-                    tabCouponCnt1,
-                    {},
-                    function (result) {
-                        if (result.status.toUpperCase() === "ERROR") {
-                            this.el.$tab.find('li:not(".on") a .count span').text("0");
-                        }
-
-                        if (result.status.toUpperCase() === "SUCCESS") {
-                            var onListCnt;
-                            var keyValue = Object.keys(result.data);
-                            $.each(keyValue, function (idx, val) {
-                                if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
-                                    onListCnt = val;
-                                }
-                            });
-                            this.el.$tab.find("li a .count span").eq(1).text(result.data[onListCnt]);
-                        }
-                    }.bind(this),
-                    true
-                );
-            }
+                            }
+                        }.bind(oSelf),
+                        true
+                    );
+                }
+            });
         },
         renderContents: function () {
             var type;
