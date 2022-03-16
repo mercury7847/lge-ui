@@ -13,6 +13,12 @@
 .search-btn.black{
     background-color: #222;
     color: #fff;
+    &:hover {
+        background-color: #222;
+    }
+    &:active {
+        background-color: #222;
+    }
 }
 .feedback-box-wrap{
     position: relative;
@@ -57,6 +63,21 @@
                     @include mobile {
                         font-size: 14px;
                         line-height: 24px;
+                    }
+                    &::after {
+                        background-image: url("/lg5-common/images/icons/btn-radio-off-24-black.svg");
+                    }
+                }
+                input {
+                    &:checked + label {
+                        &::after {
+                            background-image: url("/lg5-common/images/icons/btn-radio-on-24-black.svg");
+                        }
+                    }
+                    &:disabled + label {
+                        &::after {
+                            background-image: url("/lg5-common/images/icons/btn-radio-disabled-24-black.svg");
+                        }
                     }
                 }
             }
@@ -104,20 +125,33 @@
         max-width: (832px + 80px);
         margin: 0 auto;
         padding: 180px 40px;
+        @include mobile {
+            max-width: 100%;
+            padding: 42px 16px 16px 16px;
+        }
         .morelist_tit {
             @include font(24px,32px);
             font-weight: 500;
             margin-bottom: 24px;
+            @include mobile {
+                @include font(18px,24px);
+                margin-bottom: 16px;
+            }
             .prod_name {
                 font-weight: 700;
+                margin-right: 4px;
             }
             .list_count {
                 font-weight: 400;
                 color: #da0f47;
+                margin-left: 4px;
             }
         }
         .list-sorting {
             padding-bottom: 16px;
+            @include mobile {
+                padding:0 0 12px 0;
+            }
         }
         .morelist_wrap {
             li {
@@ -127,6 +161,9 @@
                 box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
                 &:first-child {
                     margin-top: 0;
+                }
+                @include mobile {
+                    padding: 20px 14px;
                 }
 
             }
@@ -138,6 +175,11 @@
                         top: 16px;
                         left: 32px;
                         width: 116px;
+                        @include mobile {
+                            width: 88px;
+                            top: 20p;
+                            left: 16px;
+                        }
                     }
                     .smore_cnt {
                         position: relative;
@@ -145,40 +187,171 @@
                         display: block;
                         min-height: 116px;
                         padding-left: 154px;
+                        @include mobile {
+                            min-height: 88px;
+                            padding-left: 112px;
+                        }
                         .smore_prod {
                             display: block;
                             margin-top: 16px;
+                            @include mobile {
+                                margin-top: 0;
+                            }
                             .cata {
                                 display: block;
                                 @include font(14px,20px);
+                                @include mobile {
+                                    @include font(10px,15px);
+                                }
                             }
                             .name {
                                 display: block;
                                 @include font(18px,26px);
                                 font-weight: 700;
+                                @include textEllipsisClamp(2);
+                                @include mobile {
+                                    @include font(13px,19px);
+                                }
                             }
                             .model {
                                 display: block;
                                 margin-top: 8px;
                                 @include font(12px,18px);
                                 color: #666;
+                                @include mobile {
+                                    margin-top: 0;
+                                    @include font(10px,15px);
+                                }
                             }
                         }
                         .smore_pay {
-                            overflow: hidden;
-                            position: absolute;
-                            bottom: 16px;
-                            right: 38px;
+                            // overflow: hidden;
+                            // position: absolute;
+                            // bottom: 16px;
+                            // right: 38px;
+                            display: block;
+                            margin-bottom: 16px;
+                            text-align: right;
+                            @include mobile {
+                                text-align: left;
+                                margin: 12px 0 0 0;
+                            }
                             .sale {
-                                float: left;
+                                display: inline-block;
+                                vertical-align: middle;
                                 @include font(16px,24px);
                                 font-weight: 700;
+                                @include mobile {
+                                    @include font(14px,20px);
+                                }
                             }
                             .orig {
-                                float: left;
-                                margin-left: 8px;
-                                @include font(12px,24px);
+                                display: inline-block;
+                                vertical-align: bottom;
+                                margin-left: 6px;
+                                @include font(12px,18px);
                                 color: #666;
+                                text-decoration: line-through;
+                                @include mobile {
+                                    @include font(10px,15px);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.support {
+                margin-top: 40px;
+                @include mobile {
+                    margin-top: 28px;
+                }
+                li {
+                    position: relative;
+                    padding: 32px;
+                    @include mobile {
+                        padding: 16px;
+                    }
+                    .sumore_tit {
+                        @include font(18px,26px);
+                        font-weight: 700;
+                        @include textEllipsis;
+                        @include mobile {
+                            @include font(14px,20px);
+                            padding: 0 4px;
+                        }
+                    }
+                    .sumore_cnt {
+                        @include font(18px,26px);
+                        @include textEllipsisClamp(2);
+                        @include mobile {
+                            @include font(14px,20px);
+                            padding: 0 4px;
+                        }
+                    }
+                    .sumore_cata {
+                        @include font(16px,24px);
+                        color: #666;
+                        @include textEllipsisClamp(2);
+                        @include mobile {
+                            @include font(11px,16px);
+                            padding: 0 4px;
+                        }
+                    }
+                    .sumore_info {
+                        margin: 26px 0 10px;
+                        overflow: hidden;
+                        @include font(14px,20px);
+                        color: #666;
+                        @include mobile {
+                            @include font(10px,15px);
+                            margin: 16px 0 8px;
+                        }
+                        &.sw {
+                            margin: 42px 0 10px;
+                            @include mobile {
+                                margin: 18px 0 8px;
+                            }
+                        }
+                        .info_text{
+                            float: left;
+                        }
+                        .info_date{
+                            float: left;
+                            position: relative;
+                            margin-left: 8px;
+                            padding-left: 9px;
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top:7px;
+                                left: 0;
+                                width: 1px;
+                                height: 8px;
+                                background-color: #ddd;
+                            }
+                        }
+                    }
+                    .link_area {
+                        position: absolute;
+                        bottom: 32px;
+                        right: 32px;
+                        display: flex;
+                        @include mobile {
+                            position: static;
+                        }
+                        a {
+                            width: 180px;
+                            text-align: center;
+                            @include font(14px,38px);
+                            border-radius: 40px;
+                            border: solid 1px #222;
+                            & + a {
+                                margin-left: 8px;
+                            }
+                            @include mobile {
+                                width: 100%;
+                                @include font(11px,42px);
+                                border-radius: 8px;
                             }
                         }
                     }
@@ -198,7 +371,8 @@
             right: 48px;
         }
         @include mobile {
-            top: 150%;
+            top: 6px;
+            right: 16px;
         }
         &::before {
             content: none;

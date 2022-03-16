@@ -380,7 +380,7 @@
                                 display: block;
                             }
                             &.support {
-                                ul{
+                                ul {
                                     overflow: hidden;
                                     @include mobile {
                                         display: flex;
@@ -400,12 +400,13 @@
                                                 margin-right: 0;
                                             }
                                         }
-                                        a{
+                                        button {
                                             display: block;
                                             padding-left: 26px;
                                             @include font(12px,24px);
                                             background: no-repeat 0 center/24px;
                                             @include mobile {
+                                                width: 100%;
                                                 padding: 32px 0 8px 0;
                                                 @include font(11px,16px);
                                                 text-align: center;
@@ -566,6 +567,7 @@
                                         }
                                     }
                                     .cnt {
+                                        display: block;
                                         padding: 0 114px 0 153px;
                                         p {
                                             font-size: 14px;
@@ -574,7 +576,6 @@
                                             @include textEllipsisClamp(2);
                                         }
                                         @include mobile {
-                                            display: block;
                                             clear: both;
                                             padding: 8px 0 0 0;
                                             p {
@@ -751,12 +752,13 @@
                                                     margin-right: 0;
                                                 }
                                             }
-                                            a{
+                                            button{
                                                 display: block;
                                                 padding-left: 26px;
                                                 @include font(12px,24px);
                                                 background: no-repeat 0 center/24px;
                                                 @include mobile {
+                                                    width: 100%;
                                                     padding: 32px 0 8px 0;
                                                     @include font(11px,16px);
                                                     text-align: center;
