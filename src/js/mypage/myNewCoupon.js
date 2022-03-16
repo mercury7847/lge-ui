@@ -274,7 +274,7 @@
                 var desc =
                     '<span class="input-wrap error">' +
                     '<input type="text" class="comm-code" placeholder="확인 코드를 입력해주세요." title="확인 코드를 입력해주세요." maxlength="9" data-min-length="8" data-max-length="9" data-required="true">' +
-                    '<p class="err-msg">확인 코드가 올바르지 않습니다.</p>' +
+                    '<p class="err-msg" style="display:none">확인 코드가 올바르지 않습니다.</p>' +
                     "</span>";
 
                 lgkorUI.confirm(desc, obj);
@@ -350,7 +350,7 @@
             this.setProperty();
             this.setStyle();
 
-            this.requestCouponInquiry();
+            this.requestCouponList();
 
             this.bindEvents();
         },
@@ -362,9 +362,12 @@
             this.el.$tab.find("li a > .blind").remove();
             this.el.$tab.find("li.on a .count").after('<em class="blind">선택됨</em>');
 
+            //사용 가능 쿠폰 초기 값 셋팅
+            this.el.$contents.find(".ui_selectbox").vcSelectbox("value", "on", true);
+
             //탭 변경 시 데이터 새로 고침
             this.variable.tabActIndex = $tab.index();
-            this.requestCouponInquiry();
+            this.requestCouponList();
 
             //todo> subtab 생성
             // TAB = this.getTabName($tab.index());
@@ -379,7 +382,7 @@
 
             //탭 변경 시 데이터 새로 고침
             this.variable.subTabActIndex = $subTab.index();
-            this.requestCouponInquiry();
+            this.requestCouponList();
         },
         getTabName: function (idx) {
             var oSelf = this;
@@ -401,7 +404,7 @@
         /**
          * coupon API 요청
          */
-        requestCouponInquiry: function () {
+        requestCouponList: function () {
             var oSelf = this;
             var ajaxUrl;
             var ajaxUrlList;
@@ -443,7 +446,7 @@
                             oSelf.variable.listData[val] = result.data[val];
                         });
 
-                        this.renderPage();
+                        this.renderContents();
                     }
                 }.bind(this),
                 true
@@ -473,7 +476,7 @@
                 true
             );
         },
-        renderPage: function () {
+        renderContents: function () {
             var type;
             var selOptIdx = this.el.$contents.find(".ui_selectbox").find("option:selected").index();
 
