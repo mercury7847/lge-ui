@@ -107,8 +107,8 @@ if ('scrollRestoration' in history) {
                     '</a>' +
                 '</div>' +
                 '<div class="result-detail"><div class="info-btm">' +
-                    '<span class="text">{{date}}</span>' +
-                    '{{#each item in hash}}<span class="text">{{item}}</span>{{/each}}' +
+                    '{{#if date}}<span class="text">{{date}}</span>{{/if}}' +
+                    '{{#each item in hash}}{{#if item.indexOf("조회수") === -1}}<span class="text">{{item}}</span>{{/if}}{{/each}}' +
                 '</div></div>' +
             '</div>' +
             '{{#if linkItem}}<div class="btn-area">' +
@@ -718,7 +718,20 @@ if ('scrollRestoration' in history) {
                     var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
-                    //검색내 검색어 세팅
+                    // 구매가능 렌탈가능 버튼 노출 상태
+                    if(data.availableforpurchaseyn === 'Y') {
+                        $('[name="availableforpurchase"]').closest('.sort-check-area').addClass('active');
+                    } else {
+                        $('[name="availableforpurchase"]').closest('.sort-check-area').removeClass('active');
+                    }
+
+                    if(data.availableforrentalyn === 'Y') {
+                        $('[name="availableforrental"]').closest('.sort-check-area').addClass('active');
+                    } else {
+                        $('[name="availableforrental"]').closest('.sort-check-area').removeClass('active');
+                    }
+                    
+                    //결과내 검색어 세팅
                     if(self.$listSorting.find('div.search-inner input').length > 0) {
                         self.$listSorting.find('div.search-inner input').attr('data-searchvalue', param.searchIn).val(param.searchIn);
                     }
@@ -812,7 +825,7 @@ if ('scrollRestoration' in history) {
                             } else {
                                 item.isVideo = !item.isVideo?false:true;
                                 item.linkItem = !item.linkItem ? [] : item.linkItem;
-                                item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                                item.date = item.type === "manual" || item.type === "driver" ? vcui.date.format(item.date,'yyyy.MM.dd') : null;
                                 $list_ul.append(vcui.template(customerDownloadItemTemplate, item));
                             }
                         });
@@ -930,9 +943,14 @@ if ('scrollRestoration' in history) {
                         self.$contWrap.removeClass('w-filter');
                         self.$layFilter.hide();
                         self.$btnFilter.hide();
-                        //
+
                         //정렬 셀렉트 박스
                         self.$listSorting.find('.sort-select-wrap').hide();
+
+                        //결과내 검색어 세팅
+                        if(self.$listSorting.find('div.search-inner input').length > 0) {
+                            self.$listSorting.find('div.search-inner input').closest('.sort-search-area').hide();
+                        }
                     } else {
                         //self.$tab.parents('.search-tabs-wrap').show();
                         //self.$tab.vcSmoothScroll('refresh');

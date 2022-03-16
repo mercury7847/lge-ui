@@ -903,6 +903,26 @@ $carousel_play_btn : 24px; // BTOCSITE-8039 2022-02-09
                                     &.bg-lightgray {
                                         background-color: #f4f4f4;
                                     }
+                                    &.bg-black {
+                                        background-color: #000;
+                                        .disclaimer-txtArea {
+                                            p {
+                                                color: #fff;
+                                            }
+                                            .bullet-list {
+                                                li {
+                                                    color: #fff;
+                                                }
+                                            }
+                                            .dropInfo_closeBtn {
+                                                border-color: #fff !important;
+                                                color: #fff !important;
+                                                &::after {
+                                                    background-image: url('/lg5-common/images/icons/btn-arr-24x24-white2.svg');
+                                                }
+                                            }
+                                        }
+                                    }
                                     .disclaimer-txtArea {
                                         padding: 0 80px;
                                         @include mobile {

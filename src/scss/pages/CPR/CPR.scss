@@ -732,6 +732,8 @@
                                                 a{
                                                     font-size:14px;
                                                     line-height:26px;
+                                                    white-space:normal; //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
+                                                    word-break:keep-all; //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
                                                 }
                                             }
                                         }

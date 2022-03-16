@@ -79,6 +79,9 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
                     });
                 }
             });
+
+            // LGECOMVIO-192 베스트샵 마이페이지_인테리어상담신청
+            self._urlBranch();
         },
 
         _getLoginInfo: function(){
@@ -931,6 +934,20 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             $('.sub-renew-dimmed').on('click',function(){
                 if($(this).is(':visible')){
                     $('.mobile-nav-wrap.is-depth > a.nav-item').trigger('click');
+                }
+            })
+        },
+
+        // LGECOMVIO-192 베스트샵 마이페이지_인테리어상담신청
+        _urlBranch: function(){
+            var self = this;
+            self.$el.find('.nav-wrap .nav a').each(function(idx, item){
+                if(item.dataset.pcUrl && item.dataset.mobileUrl) {
+                    if(!vcui.detect.isMobile) {
+                        item.setAttribute("href", item.dataset.pcUrl);
+                    } else {
+                        item.setAttribute("href", item.dataset.mobileUrl);
+                    }
                 }
             })
         }

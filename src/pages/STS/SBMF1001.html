@@ -28,12 +28,26 @@
                     <div class="stanbyme-list">
                         <div class="tabs-wrap border-type left ui_tab">
                             <ul class="tabs">
-                                <li class="on"><a href="#prod1">문의사항<em class="blind">선택됨</em></a></li>
-                                <li><a href="#prod2">리뷰</a></li>
+                                <li><a href="#prod1">리뷰</a></li>
+                                <li class="on"><a href="#prod2">Q&A<em class="blind">선택됨</em></a></li>
                             </ul>
                         </div>
+                        <!-- 리뷰 -->
+                        <div id="prod1" class="tab-content" style="display: none;">
+                            <div class="component-inner">
+                                <!-- BTOCSITE-6436 스탠바이비 클럽 내 이벤트 배너 삽입 요청 // BTOCSITE-8829 스바미클럽 이벤트 배너 수정 요청 // BTOCSITE-10695 스탠바이미 이벤트 배너 교체 -->
+                                <!-- <div class="stm-event-banner">
+                                    <a href="/benefits/event/detail-EV00002149" class="img-banner">
+                                        <img src="/kr/story/images/img-stm-event-banner.png" alt="스탠바이미 포토 상품 이벤트 참여하기" class="pc-only">
+                                        <img src="/kr/story/images/img-stm-event-banner-m.png" alt="스탠바이미 포토 상품 이벤트 참여하기" class="mo-only">
+                                    </a>
+                                </div> -->
+                                <!-- //BTOCSITE-6436 스탠바이비 클럽 내 이벤트 배너 삽입 요청 // //BTOCSITE-8829 스바미클럽 이벤트 배너 수정 요청 // //BTOCSITE-10695 스탠바이미 이벤트 배너 교체 -->
+                            </div>
+                        </div>
+                        <!-- //리뷰 -->
                         <!-- 문의사항 -->
-                        <div id="prod1" class="tab-content" data-ajax="/lg5-common/data-ajax/store/retrieveStanbyMeListAjax.json">
+                        <div id="prod2" class="tab-content" data-ajax="/lg5-common/data-ajax/store/retrieveStanbyMeListAjax.json">
                             <div class="tit-sbm">
                                 <p class="tit">스탠바이미 클럽</p>
                                 <div class="sbm-qna">
@@ -180,20 +194,6 @@
                             </div>
                         </div>
                         <!-- //문의사항 -->
-                        <!-- 리뷰 -->
-                        <div id="prod2" class="tab-content">
-                            <div class="component-inner">
-                                <!-- BTOCSITE-6436 스탠바이비 클럽 내 이벤트 배너 삽입 요청 // BTOCSITE-8829 스바미클럽 이벤트 배너 수정 요청 // BTOCSITE-10695 스탠바이미 이벤트 배너 교체 -->
-                                <div class="stm-event-banner">
-                                    <a href="/benefits/event/detail-EV00002149" class="img-banner">
-                                        <img src="/kr/story/images/img-stm-event-banner.png" alt="스탠바이미 포토 상품 이벤트 참여하기" class="pc-only">
-                                        <img src="/kr/story/images/img-stm-event-banner-m.png" alt="스탠바이미 포토 상품 이벤트 참여하기" class="mo-only">
-                                    </a>
-                                </div>
-                                <!-- //BTOCSITE-6436 스탠바이비 클럽 내 이벤트 배너 삽입 요청 // //BTOCSITE-8829 스바미클럽 이벤트 배너 수정 요청 // //BTOCSITE-10695 스탠바이미 이벤트 배너 교체 -->
-                            </div>
-                        </div>
-                        <!-- //리뷰 -->
                     </div>
                     <!-- .inner e  -->
                 </div>

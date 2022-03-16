@@ -279,8 +279,8 @@ if ('scrollRestoration' in history) {
                     '</a>' +
                 '</div>' +
                 '<div class="result-detail"><div class="info-btm">' +
-                    '<span class="text">{{date}}</span>' +
-                    '{{#each item in hash}}<span class="text">{{item}}</span>{{/each}}' +
+                    '{{#if date}}<span class="text">{{date}}</span>{{/if}}' +
+                    '{{#each item in hash}}{{#if item.indexOf("조회수") === -1}}<span class="text">{{item}}</span>{{/if}}{{/each}}' +
                 '</div></div>' +
             '</div>' +
             '{{#if linkItem}}<div class="btn-area">' +
@@ -1198,7 +1198,7 @@ if ('scrollRestoration' in history) {
                             } else {
                                 item.isVideo = !item.isVideo?false:true;
                                 item.linkItem = !item.linkItem ? [] : item.linkItem;
-                                item.date = vcui.date.format(item.date,'yyyy.MM.dd');
+                                item.date = item.type === "manual" || item.type === "driver" ? vcui.date.format(item.date,'yyyy.MM.dd') : null;
                                 $list_ul.append(vcui.template(customerDownloadItemTemplate, item));
                             }
                         });

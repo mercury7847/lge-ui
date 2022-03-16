@@ -208,11 +208,15 @@
                 speed: 150
             });
 
+            /* BTOCSITE-13364 브랜드관 히어로 배너 영역 수정 */
             var $thinqSlideNum = self.$heroSlider.find('.slide-conts');
             var $thinqSlideLength = self.$heroSlider.find('.custom-indi-wrap');
+            var $txtInfoEtc = self.$heroSlider.find('.text-info-etc');
             if($thinqSlideNum.length === 1) {
                 $thinqSlideLength.hide();
+                $txtInfoEtc.addClass('solo');
             }
+            /* //BTOCSITE-13364 브랜드관 히어로 배너 영역 수정 */
         },
         magazinSlider: function(){
             var self = this;

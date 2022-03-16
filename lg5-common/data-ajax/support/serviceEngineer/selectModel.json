@@ -43,6 +43,10 @@
             {
                 "name": "소음/진동",
                 "value": "WRAST000743"
+            },
+            {
+                "name": "세척서비스",
+                "value": "SRAST000542"
             }
         ],
         "warrantValue": "1",

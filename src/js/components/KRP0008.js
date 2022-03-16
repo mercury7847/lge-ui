@@ -81,7 +81,15 @@
                 // AR 체험하기 APP 호출시 실행
                 var modelId = lgkorUI.getParameterByName('openAR');
                 if( isApp() && modelId) {
-                    // lgkorUI.openAR(modelId);
+                    if(location.host !== "wwwdev50.lge.co.kr"){
+                        lgkorUI.openAR(modelId);
+
+                        var url = lgkorUI.parseUrl(location.href);
+                        var params = url.searchParams.getAll();
+                        delete params.openAR;
+                            params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
+                        window.history.replaceState('', '', url.pathname + params)
+                    }
                 }
 
                 // 20211014 BTOCSITE-6768 사전예약 버튼클릭 시 로그인 체크
@@ -990,9 +998,9 @@
                     }
                 });
 
-                $(window).on('appNotInstall', function(e){
-                    $('#arPlayPop').vcModal({opener: e.currentTarget});
-                });
+                // $(window).on('appNotInstall', function(e){
+                //     $('#arPlayPop').vcModal({opener: e.currentTarget});
+                // });
             },
 
             bindSideEvents: function() {
@@ -1544,16 +1552,16 @@
                             $tbody.empty();
 
                         var list = {};
-                        for(var i=1;i<=self.selectRentalInfoData.contractTerm;i++ ) {
+                        for(var i=1;i<=self.selectCareshipInfoData.contractTerm;i++ ) {
                             // 20210923 BTOCSITE-4441 렌탈제품 PDP 내 신규요금제 출시 배너에 대한 문구 수정 요청
-                            if(self.selectRentalInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
+                            if(self.selectCareshipInfoData.hasOwnProperty('years'+i+'TotAmt') ) {
                                 list[i] = {};
                                 list[i].price = vcui.number.addComma(popupData[i].price) +  "원";
                                 list[i].free = (popupData[i].free.length > 0) ?  popupData[i].free.join(",") + " 무상할인" : "";
                             } else {
                                 // 요금제는 세팅 되구 데이터 안들어오는경우 처리
                                 list[i] = {};
-                                list[i].price = vcui.number.addComma(popupData[i-1].price) +  "원";
+                                list[i].price = vcui.number.addComma(popupData[Object.keys(popupData).length-2].price) +  "원";
                                 list[i].free =  "";
                             }
                         }
@@ -1645,7 +1653,7 @@
                             } else {
                                  // 요금제는 세팅 되구 데이터 안들어오는경우 처리
                                 list[i] = {};
-                                list[i].price = vcui.number.addComma(popupData[i-1].price) +  "원";
+                                list[i].price = vcui.number.addComma(popupData[Object.keys(popupData).length-2].price) +  "원";
                                 list[i].free =  "";
                             }
                         }

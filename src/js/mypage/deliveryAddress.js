@@ -90,7 +90,10 @@
                     if( value.replace(/\s|　/gi, '') == 0) {
                         this.errorMsg = "이름을 입력해주세요.";
                         return false;
-                    } else if(!valTest.test(value)){
+                    } else if(value.length > this.maxLength) {
+                        this.errorMsg = "최대 "+this.maxLength+"자까지 입력 가능합니다.";
+                        return false;
+                    }else if(!valTest.test(value)){
                         //BTOCSITE-5938-79 - 특수문자 validation 추가
                         this.errorMsg = "이름은 한글 또는 영문으로만 입력해주세요.";
                         return false;

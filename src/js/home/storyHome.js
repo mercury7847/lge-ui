@@ -227,23 +227,16 @@
 
             var section = $(this).closest('.story-section');
             var page = section.data("page");
+            var selectTags = section.find('.subscribe-wrap').is(":visible") ? {
+                mode: 'search',
+                tagCode: section.find('.subscribe-wrap .subscription-btn').data().code,
+                tagName: section.find('.subscribe-wrap .subscription-btn').data().name
+            }:undefined; // BTOCSITE-9974
 
             if(section.hasClass('user_story')){
-                if(page == 1){
-                    userHeight = $context.find('#content').find('.user_story > .inner > .flexbox-wrap').height();
-                }
-                loadStoryList('user_story', page+1, "UserStory");
+                loadStoryList('user_story', page+1, "UserStory", selectTags); // BTOCSITE-9974
             } else{
-                if(page == 1){
-                    newsHeight = $context.find('#content').find('.new_story > .inner > .flexbox-wrap').height();
-                }
-                // s : BTOCSITE-9974
-                loadStoryList('new_story', page+1, 'NewStory', section.find('.subscribe-wrap').is(":visible") ? {
-                    mode: section.find('.subscribe-wrap .subscription-btn').data().mode,
-                    tagCode: section.find('.subscribe-wrap .subscription-btn').data().code,
-                    tagName: section.find('.subscribe-wrap .subscription-btn').data().name
-                }:undefined);
-                // e : BTOCSITE-9974
+                loadStoryList('new_story', page+1, 'NewStory', selectTags); // BTOCSITE-9974
             }
         }).on('click', '.subscribe-wrap button.btn-close', function(e){
             e.preventDefault();
@@ -411,7 +404,6 @@
             if(IS_LOGIN == "Y"){
                 loadStoryList('user_story', 1, "UserStory", selectTags);
                 loadStoryList('new_story', 1, 'NewStory');
-                if(selectTags.mode == "remove") loadStoryList('user_story', 1, "UserStory"); // BTOCSITE-9974
             } else{
                 location.href = LOGIN_URL;
             }
@@ -456,7 +448,7 @@
             type: type,
             selectTags: selectTag ? selectTag : ""
         }
-        console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
+        // console.log("### loadStoryList ###", STORY_LIST_URL, sendata)
         // var sendUrl = sectioname == "user_story" ? STORY_LIST_URL : "/lg5-common/data-ajax/home/storyList_new.json";
         // lgkorUI.requestAjaxData(sendUrl, sendata, function(result){
 
@@ -464,12 +456,18 @@
         //20210924 BTOCSITE-5933 메인홈 Request 수정 요청
         if(STORY_LIST_URL){
             lgkorUI.requestAjaxData(STORY_LIST_URL, sendata, function(result){
-                console.log("######", result, sendata)
                 if(result.data.loginUrl){
                     location.href = result.data.loginUrl;
-
                     return;
                 }
+                
+                // s : BTOCSITE-9974
+                if(sendata.selectTags !== '' && (sendata.selectTags.mode == 'add' || sendata.selectTags.mode == 'remove') ) {
+                    loadStoryList('user_story', 1, 'UserStory');
+                    loadStoryList('new_story', 1, 'NewStory');
+                    return;
+                }
+                // e : BTOCSITE-9974
 
                 var sectionItem = $('.' + sectioname)
                 var page = parseInt(result.param.pagination.page);
@@ -494,7 +492,7 @@
                     sectionItem.find('.inner h2.title').hide();
 
                     var stickyTag = vcui.template(stickyTagTemplate, result.data.selectTags);
-                    sectionItem.prepend(stickyTag);
+                    if(page == 1) sectionItem.prepend(stickyTag);
 
                     // sectionItem.find('.ui_sticky').vcSticky({stickyContainer:sectionItem});
                     $context.find('.user_story').find('.story-title-area').hide();

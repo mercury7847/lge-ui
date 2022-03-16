@@ -518,7 +518,7 @@
     // 방문 알리미
     @import "ACCF7030";
 
-    // 영수증 등록
+    // 영수증 등록 // BTOCSITE-12307 
     @import "ACCF7037";
 
     // 나의 글 보기
@@ -535,9 +535,10 @@
 
     // 상담 예약 조회 // 2022.02.23 LGECOMVIO-143
     @import "ACCF8000";
-
+    
+    // LGECOMVIO-141(2022.03.04)
     // 쿠폰(베스트샵)
-    @import "ACCF7510"; //20220224 LGECOMVIO-195
+    @import "ACCF7096";
 
 
     &.orderAndDelivery {
@@ -1866,6 +1867,19 @@
                     top: 0;
                     margin: 0 6px 0 4px;
                 }
+            }
+        }
+
+        .delivery-message {
+            display:block;
+            margin-top:4px;
+            font-size:16px;
+            line-height:24px;
+            color:#666;
+            word-break: keep-all;
+
+            @include mobile {
+                font-size:14px;
             }
         }
     }

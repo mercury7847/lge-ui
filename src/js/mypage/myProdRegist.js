@@ -33,13 +33,15 @@
                             '<a {{#if modelStatusCode !== "SUSPENDED"}} href="{{modelUrlPath}}" {{/if}}>'+
                                 '<span class="blind">영문모델명</span>{{enModelName}} {{#if enModelName !== factoryModel }}[{{factoryModel}}]{{/if}}'+
                             '</a>'+
-                            '<div class="tooltip-wrap">'+
-                            '    <button class="tooltip-icon ui_tooltip-target" >자세히 보기</button>'+
-                            '    <div class="tooltip-box">'+
-                            '        <p>{{#raw myProductModelGuide}}</p>'+
-                            '        <button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
-                            '    </div>'+
-                            '</div>'+
+                            '{{#if enModelName !== factoryModel }}'+
+                                '<div class="tooltip-wrap">'+
+                                '    <button class="tooltip-icon ui_tooltip-target" >자세히 보기</button>'+
+                                '    <div class="tooltip-box">'+
+                                '        <p>{{#raw myProductModelGuide}}</p>'+
+                                '        <button type="button" class="btn-close"><span class="blind">닫기</span></button>'+
+                                '    </div>'+
+                                '</div>'+
+                            '{{/if}}'+
                         '</div>' +
                     '{{#else}}' + 
                         '<div class="e-name">'+
@@ -559,7 +561,7 @@
                     $('body').vcLazyLoaderSwitch('reload',self.$packageModal);
                 } else {
                     self.$downloadPopup.data('modelId', data.modelId);
-                    self.$downloadPopup.attr('modelCode', data.modelCode);
+                    self.$downloadPopup.data('modelCode', data.modelCode);
                     self.$downloadSearch.val("");
                     self.$downloadSearch.data('search',null);
                     self.requestDownloadData({"page":1}, true, true);
@@ -1383,7 +1385,7 @@
 
         requsetOSData:function(param) {
             var self = this;
-            var ajaxUrl = self.$downloadPopup.attr('data-os-url');
+            var ajaxUrl = self.$downloadPopup.data('osUrl');
             lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                 var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
                 var selectedIndex = 0;
@@ -1412,7 +1414,7 @@
             var self = this;
 
             if(!self.osList) {
-                var ajaxUrl = self.$downloadPopup.attr('data-os-url');
+                var ajaxUrl = self.$downloadPopup.data('osUrl');
                 self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
@@ -1440,11 +1442,11 @@
                     self.$downloadSearch.val(param.search);
                 }
 
-                var _id = self.$downloadPopup.attr('data-model-id');
+                var _id = self.$downloadPopup.data('modelId');
                 if(_id) {
                     param.id = _id;
                 }
-                var sku = self.$downloadPopup.attr('data-model-code');
+                var sku = self.$downloadPopup.data('modelCode');
                 if(sku) {
                     param.sku = sku;
                 }
@@ -1452,7 +1454,7 @@
                 //OS 또 갱신
                 self.requsetOSData(param);
 
-                var ajaxUrl = self.$downloadPopup.attr('data-list-url');
+                var ajaxUrl = self.$downloadPopup.data('listUrl');
 
                 self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {

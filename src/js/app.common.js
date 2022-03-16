@@ -1,5 +1,5 @@
 var LGEAPPHostName = window.location.hostname;
-var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount, LGEAPPsetQrCode; // LGEAPPsetQrCode 추가 BTOCSITE-4086
+var LGEAPPsetArBarcode, LGEAPPreturnArBarcode, LGEcomfirmAPPInstall, LGEquickMenuPosCover, LGEquickMenuPosPush, LGEAPPcomfirmAPPOpen, LGEAPPalarmCount, LGEAPPsetQrCode, receiptCodeDirectReturn, receiptCodeDirectInput; // LGEAPPsetQrCode 추가 BTOCSITE-4086
 var LGEAPPclickCNT = 0;
 
 /*
@@ -251,6 +251,29 @@ var appInit = function() {
                 // BTOCSITE-4086 210924 - E
             }
         }
+
+        // s : BTOCSITE-12307
+        receiptCodeDirectReturn = function(barcode) {
+            if (barcode != null && barcode != "" && barcode != undefined) {
+                var setBarcode = barcode.split('/').join('');
+                if(chkSerialNum(setBarcode)) {
+                    var getBarcode = ($('#categorySelect').val() == 'EMRT') ? setBarcode.slice(0,16):setBarcode.slice(0,22);
+                    $('#receiptCodeInputWrap').find('.err-block').hide().find('.err-msg').text("")
+                    $("#inputReceipt").val(getBarcode);
+                    $('#receiptCodeInputWrap').show();
+                    $('#inquiryButton').focus();
+                } else {
+                    $('#receiptCodeInputWrap').find('.err-block').show().find('.err-msg').text("바코드 형식이 잘못되었습니다.")
+                    $('#receiptCodeInputWrap').show();
+                }
+            }
+        }
+
+        receiptCodeDirectInput = function() {
+            $('#receiptCodeInputWrap').show();
+            $('#inputReceipt').val('').focus();
+        }
+        // e : BTOCSITE-12307
 
         // URL 형식 체크[정규식] - BTOCSITE-4086 210923 QR용
         function isURL(barcode) {
