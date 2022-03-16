@@ -1,0 +1,9 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(6 8)" fill="none" fill-rule="evenodd">
+        <path d="M44 0a8 8 0 0 1 8 8v16a8 8 0 0 1-8 8v6l-6-6h-6a8 8 0 0 1-7.6 7.99L24 40H14l-6 6v-6a8 8 0 0 1-7.99-7.6L0 32V16a8 8 0 0 1 7.6-7.99L8 8h4a8 8 0 0 1 8-8h24z" stroke="#030303" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M44 0a8 8 0 0 1 8 8v16a8 8 0 0 1-8 8v6l-6-6H20a8 8 0 0 1-8-8V8a8 8 0 0 1 8-8h24z" stroke="#030303" stroke-width="2" stroke-linejoin="round"/>
+        <circle fill="#DA0F47" transform="matrix(1 0 0 -1 0 32)" cx="24" cy="16" r="2"/>
+        <circle fill="#DA0F47" transform="matrix(1 0 0 -1 0 32)" cx="32" cy="16" r="2"/>
+        <circle fill="#DA0F47" transform="matrix(1 0 0 -1 0 32)" cx="40" cy="16" r="2"/>
+    </g>
+</svg>
