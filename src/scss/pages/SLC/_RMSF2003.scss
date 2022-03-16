@@ -1599,13 +1599,16 @@ br.pc-only {
                     margin-left:0px;
                     font-size: $font-small;
                     line-height: 24px;
-                    color: $color-gray-5;
+                    color: $color-gray-5;                   
                 }
                 &.type2{
                     dt {
                         display: block;
                         margin-bottom:0px;
                         color: inherit;
+                        .small-text {
+                            @include font-small;
+                        }                    
                     }
                     dd {
                         display: block;
