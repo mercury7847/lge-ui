@@ -121,6 +121,14 @@ $(function () {
     function sendaddressInfo(){
         var validate = addressInfoValidation.validate();
         var url = $('#popup-event-13447').data('ajax');
+        // console.log('url', url)
+
+        var userNm = $('#popup-event-13447').find('#userName').val();
+        var phoneNo = $('#popup-event-13447').find('#userName').val();
+        var zipCd = $('#popup-event-13447').find('#zipCode').val();
+        var userAdd = $('#popup-event-13447').find('#userAddress').val();
+        var detailAdd = $('#popup-event-13447').find('#detailAddress').val();
+
 
         var param = {
             agree: $('input[name=agreechk]:checked').val(),
@@ -130,10 +138,22 @@ $(function () {
             userAddress: $('#userAddress').val(),
             detailAddress: $('#detailAddress').val()
         };
+        // console.log('validate : ', validate.success)
         
         if(validate.success){
-            lgkorUI.requestAjaxData(url, param, function(result) {
-                if(result.status == 'success'){
+            
+            lgkorUI.requestAjaxDataPost(url, param, function(result) {
+
+                // console.log('status : ', result.data.success )
+                
+                if(result.data.success == 'Y'){
+                    lgkorUI.alert("", {
+                        title: result.data.message,
+                        ok: function(){
+                            window.open('', '_self', '').close();
+                        }
+                    })
+                }else{
                     lgkorUI.alert("", {
                         title: result.data.message,
                         ok: function(){
@@ -141,7 +161,8 @@ $(function () {
                         }
                     })
                 }
-            })                
+
+            })                 
         }
         
     }
