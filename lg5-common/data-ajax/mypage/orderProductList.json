@@ -874,7 +874,7 @@
           {
             "categoryLevel1":"HC",
             "buyCnt":"1",
-            "buyAmt":"784000",
+            "buyAmt":"-",
             "categoryLevel4":"HCWCASAC",
             "categoryLevel3":"HCWCAS",
             "categoryLevel2":"HCWC",
@@ -883,7 +883,7 @@
             "categoryName":"헬스케어 > 건강관리",
             "modelDisplayName":"LG 퓨리케어 360˚ 공기청정기",
             "deliveryStatus": false,
-            "deliveryStatusText":"매장 문의 필요",
+            "deliveryStatusText":"주문취소",
             "ordSysOrdNo":""
           }
         ]

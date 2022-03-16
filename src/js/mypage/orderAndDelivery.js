@@ -159,7 +159,7 @@
                         '<div class="col col1-2">'+
                             '<div class="payment-price">'+
                                 '<p class="price">'+
-                                    '<span class="blind">구매가격</span>{{listData.buyAmt}}원'+
+                                    '<span class="blind">구매가격</span>{{listData.buyAmt}}{{#if listData.buyAmt !== "-"}}원{{/if}}'+
                                 '</p>'+
                             '</div>'+
                         '</div>'+
