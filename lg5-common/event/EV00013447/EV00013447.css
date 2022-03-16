@@ -1,0 +1,17 @@
+#popup-event-13447.win-popup-wrap .info-req {
+    margin: -40px 0 48px;
+    font-size: 14px;
+    line-height: 24px;
+}
+#popup-event-13447.win-popup-wrap .info-req.type2 {
+    margin-bottom: -32px;
+}
+#popup-event-13447.win-popup-wrap .info-req:before {
+    content: '*';
+    display: inline-block;
+    margin-right: 2px;
+    color: #da0f47;
+}
+#popup-event-13447.win-popup-wrap .academy-pop .agree-input {
+    margin-top: 0;
+}
