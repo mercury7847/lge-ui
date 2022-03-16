@@ -1,16 +1,12 @@
 (function() {
-
-   
     var inquiryListTemplate =
-        '<div class="box{{#if activeTabFlag == "BESTSHOP"}} box-type-2{{/if}}" data-id="{{dataID}}">'+
+        '<div class="box" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
                 '<ul class="infos">'+
-                    '{{#if activeTabFlag == "BESTSHOP"}}<li class="type-m"><p class="store-name">{{storeName}}</p></li>{{/if}}'+
                     '<li>{{dateTitle}}<em>{{orderDate}}</em></li>'+
                     '<li>{{orderNumberTitle}}<em>{{groupNumber}}</em></li>'+
                 '</ul>'+
                 '<p class="totals">총 {{orderTotal}}건</p>'+
-                '{{#if activeTabFlag == "BESTSHOP"}}<p class="store-name type-pc">{{storeName}}</p>{{/if}}'+
             '</div>'+
             '<div class="tbl-layout sizeType3">'+
                 '<div class="thead" aria-hidden="true">'+
@@ -21,7 +17,6 @@
                 '<div class="tbody">'+
                 '</div>'+
             '</div>'+
-            '{{#if activeTabFlag !== "BESTSHOP"}}' +
             '<div class="btn-link-area">'+
                 '{{#if orderCancelAbleYn == "Y"}}'+
                 '<a href="#n" class="btn-link orderCancel-btn">취소신청</a>'+
@@ -33,10 +28,32 @@
                 '<a href="#n" class="btn-link detailView-btn">주문/배송 상세보기</a>'+
             '</div>'+
             '{{/if}}'+
-            '{{/if}}'+
         '</div>';
 
-    var careInquiryListTemplate = 
+
+    var bestShopInquiryListTemplate =
+        '<div class="box box-type-2" data-id="{{dataID}}">'+
+            '<div class="info-wrap">'+
+                '<ul class="infos">'+
+                    '<li class="type-m"><p class="store-name">{{store}}</p></li>'+
+                    '<li>{{dateTitle}}<em>{{buyDt}}</em></li>'+
+                    '<li>{{orderNumberTitle}}<em>{{ordNo}}</em></li>'+
+                '</ul>'+
+                '<p class="totals">총 {{ordCnt}}건</p>'+
+                '<p class="store-name type-pc">{{store}}</p>'+
+            '</div>'+
+            '<div class="tbl-layout sizeType3">'+
+                '<div class="thead" aria-hidden="true">'+
+                    '<span class="th col1">제품정보</span>'+
+                    '<span class="th col2">결제금액</span>'+
+                    '<span class="th col3">진행상태</span>'+
+                '</div>'+
+                '<div class="tbody">'+
+                '</div>'+
+            '</div>'+
+        '</div>';
+
+    var careInquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
                 '<ul class="infos">'+
@@ -66,7 +83,6 @@
             '</div>'+
             '{{/if}}'+
         '</div>';
-        
 
         var prodListTemplate = 
             '<div class="row {{disabled}}">'+
@@ -74,11 +90,9 @@
                     '<div class="col col1">'+
                         '<span class="blind">제품정보</span>'+
                         '<div class="product-info">'+
-                            '{{#if listData.activeTabFlag !== "BESTSHOP"}}' +
                             '<div class="thumb">'+
                                 '<a {{#if listData.productPDPurl && listData.productPDPurl.length > 0}}href="{{listData.productPDPurl}}"{{/if}}><img onError="lgkorUI.addImgErrorEvent(this);" src="{{listData.productImage}}" alt="{{listData.productNameKR}}"></a>'+
                             '</div>'+
-                            '{{/if}}'+
                             '<div class="infos">'+
                                 '{{#if listData.productFlag}}<div class="flag-wrap"><span class="flag">{{listData.productFlag}}</span></div>{{/if}}'+
                                 '<p class="name"><a {{#if listData.productPDPurl && listData.productPDPurl.length > 0}}href="{{listData.productPDPurl}}"{{/if}}><span class="blind">제품명</span>{{#raw listData.productNameKR}}</a></p>'+
@@ -114,7 +128,7 @@
                             '{{#if isBtnSet && listData.statusButtonList && listData.statusButtonList.length > 0}}'+
                             '<div class="state-btns">'+
                                 '{{#each status in listData.statusButtonList}}'+
-                                '<a href="#n" class="btn size border stateInner-btn" {{#if status.className == "bestShopDeliveryInquiry"}}data-related-order-number="{{listData.orderStatus.relatedOrderNumber}}"{{/if}} data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
+                                '<a href="#n" class="btn size border stateInner-btn" data-type="{{status.className}}"><span>{{status.buttonName}}</span></a>'+
                                 '{{/each}}'+
                             '</div>'+
                             '{{/if}}'+
@@ -128,7 +142,39 @@
                 '</span>'+
                 '{{/if}}'+
             '</div>';
-        
+
+            var bestShopProdListTemplate =
+                '<div class="row {{disabled}}">'+
+                    '<div class="col-table" data-prod-id="{{listData.prodID}}">'+
+                        '<div class="col col1">'+
+                            '<span class="blind">제품정보</span>'+
+                            '<div class="product-info">'+
+                                '<div class="infos">'+
+                                    '<p class="name"><span class="blind">제품명</span>{{#if listData.modelDisplayName}}{{listData.modelDisplayName}}{{#else}}{{listData.categoryName}}{{/if}}</p>'+
+                                    '<p class="e-name"><span class="blind">영문제품번호</span>{{listData.modelCd}}</p>'+
+                                    '{{#if listData.buyCnt}}<p class="count">수량 : {{listData.buyCnt}}</p>{{/if}}'+
+                                '</div>'+
+                            '</div>'+
+                         '</div>'+
+                        '<div class="col col1-2">'+
+                            '<div class="payment-price">'+
+                                '<p class="price">'+
+                                    '<span class="blind">구매가격</span>{{listData.buyAmt}}{{#if listData.buyAmt !== "-"}}원{{/if}}'+
+                                '</p>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="col col2">'+
+                            '<div class="state-box">'+
+                            '{{#if !listData.deliveryStatus}}<p class="tit "><span class="blind">진행상태</span>{{listData.deliveryStatusText}}</p>{{/if}}' +
+                            '{{#if listData.deliveryStatus && listData.ordSysOrdNo}}'+
+                                '<div class="state-btns">'+
+                                    '<a href="#n" class="btn size border stateInner-btn" data-related-order-number="{{listData.ordSysOrdNo}}" data-type="bestShopDeliveryInquiry"><span>배송조회</span></a>'+
+                                '</div>'+
+                            '{{/if}}'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+             '</div>';
 
             var careProdListTemplate = 
                 '<div class="row {{disabled}}">'+
@@ -258,12 +304,12 @@
         '<li><dl><dt>배송주소</dt><dd>{{postcode}} {{maskingAddress}}</dd></dl></li>' +
         '<li><dl><dt>휴대폰</dt><dd>{{maskingTelephone}}</dd></dl></li>' +
         '<li><dl><dt>연락처</dt><dd>{{maskingTelephonenumber}}</dd></dl></li>' +
-        '{{#if activeTabFlag !== "BESTSHOP"}}<li><dl><dt>배송시 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>{{/if}}' +
+        '<li><dl><dt>배송시 요청사항</dt><dd>{{shippingNoteTxt}}</dd></dl></li>' +
         '{{#if isBeforeVisit && instpectionVisit}}<li><dl><dt>사전 방문 신청</dt><dd>신청</dd></dl></li>{{/if}}' +
         //'{{#if recyclingPickup}}<li><dl><dt>폐가전 수거</dt><dd>수거신청</dd></dl></li>{{/if}}';
         // '{{#if isBeforeVisit}}<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>{{/if}}' +
-        '{{#if activeTabFlag !== "BESTSHOP"}}<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>{{/if}}'+
-        '{{#if activeTabFlag == "BESTSHOP"}}<li><dl><dt>구매지점</dt><dd>{{storeName}}</dd></dl></li>{{/if}}';
+        '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>'+
+        '<li><dl><dt>구매지점</dt><dd>{{storeName}}</dd></dl></li>';
 
     var careShippingListTemplate = '<li><dl><dt>성명</dt><dd>{{maskingName}}</dd></dl></li>' +
         '<li><dl><dt>인수자 휴대폰</dt><dd>{{maskingTelephone}}</dd></dl></li>' +
@@ -279,14 +325,12 @@
 
     var paymentListTemplate = 
         '{{#set method = paymentMethodName}}' +
-        '{{#if activeTabFlag !== "BESTSHOP"}}'+
         '<li><dl><dt>결제 수단</dt><dd>{{#if method}}<span>{{method}}</span>{{/if}}'+
         '{{#if receiptUrl}}<a href="{{receiptUrl}}" target="_blank" class="btn-link receiptList-btn">영수증 발급 내역</a>{{/if}}'+
         '</dd></dl></li>'+        
         '<li><dl><dt>주문 금액</dt><dd>{{orderPrice}}원</dd></dl></li>'+        
         '<li><dl><dt>할인 금액</dt><dd>{{discountPrice}}원</dd></dl></li>'+        
         '<li><dl><dt>멤버십포인트</dt><dd>{{memberShipPoint}}원</dd></dl></li>'+
-        '{{/if}}'+
         '<li><dl><dt>총 결제 금액</dt><dd><em>{{totalPrice}}원</em></dd></dl></li>';
 
     var carePaymentListTemplate = 
@@ -381,13 +425,11 @@
     '<div class="delivery-step">'+
         '<div class="delivery-text active">'+
             '<strong class="delivery-status">'+
-            '{{#if deliveryStatus == 1}}주문완료{{/if}}'+
-            '{{#if deliveryStatus == 2 || deliveryStatus == 3}}배송준비중{{/if}}'+
-            '{{#if deliveryStatus == 4}}배송중{{/if}}'+
-            '{{#if deliveryStatus == 5}}배송완료{{/if}}'+
+            '{{deliveryStatus}}'+
             '</strong>'+
             '{{#if deliveryStatusDate}}<p class="delivery-date">{{deliveryStatusDate}}</p>{{/if}}'+
-            '{{#if deliveryDriver.name}}<span class="delivery-name">배송기사 {{deliveryDriver.name}} <em class="bar">{{deliveryDriver.phoneNumber}}</em></span>{{/if}}'+
+            '{{#if deliveryDriverInfo}}<span class="delivery-name">배송기사 {{deliveryDriverName}} {{#if deliveryDriverPhoneNumber}}<em class="bar">{{deliveryDriverPhoneNumber}}</em></span>{{/if}}{{/if}}'+
+            '{{#if !deliveryDriverInfo}}<span class="delivery-message">{{deliveryDriverMessage}}</span>{{/if}}'+
         '</div>'+
     '</div>'+
     '<div class="delivery-step">'+
@@ -516,6 +558,22 @@
 
             case 2:
                 return TAB_FLAG_CARE;
+                break;
+        }
+    }
+
+    var getTemplate = function(target, type){
+        switch (target) {
+            case TAB_FLAG_ORDER:
+                return type == 'inquiry' ? inquiryListTemplate : prodListTemplate;
+                break;
+
+            case TAB_FLAG_ORDER_BESTSHOP:
+                return type == 'inquiry' ? bestShopInquiryListTemplate : bestShopProdListTemplate;
+                break;
+
+            case TAB_FLAG_CARE:
+                return type == 'inquiry' ? careInquiryListTemplate : careProdListTemplate;
                 break;
         }
     }
@@ -870,6 +928,14 @@
         $('#popup-cancel, #popup-takeback').on('click', ".ui_modal_close", function(e){
             $(this).closest('article').find('.count em').html('0');
         });
+
+
+        // 모니터링 548 : 페이지 이탈시 앱에 모달 처리 알림
+        if(isApp() && vcui.detect.isIOS) {
+            $(window).on('unload',function(){
+                lgkorUI.appIsLayerPopup(false);
+            })
+        }
     }
 
     function sendDetailPage(dataID){
@@ -1202,11 +1268,11 @@
 
                         //BTOCSITE-11351 [GA360] 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 : 구분값 네이밍 수정요청
                         function modelTypeCheck(model){
-                            if(model.indexOf('일반')) {
+                            if(model.indexOf('일반') > -1) {
                                 return '일반제품';
-                            }else if(model.indexOf('소모품')){
+                            }else if(model.indexOf('소모품') > -1){
                                 return '소모품';
-                            }else if(model.indexOf('케어솔루션')){
+                            }else if(model.indexOf('케어솔루션') > -1){
                                 return '케어솔루션';
                             }else {
                                 return '';
@@ -1253,6 +1319,7 @@
                                     }
                                 }
                             }
+                            console.log("pushDataEvent", JSON.stringify(pushDataEvent));
                             dataLayer.push(pushDataEvent);
 
                         } else {
@@ -1294,6 +1361,7 @@
                                 }
             
                             }
+                            console.log("pushDataEvent", JSON.stringify(pushDataEvent));
                             dataLayer.push(pushDataEvent);
                         }
                         /* BTOCSITE-11351 구매/청약 취소 시점 내 Refund 데이터레이어 푸시 : 여러 제품 이였을때 수정*/
@@ -1469,9 +1537,9 @@
             if(start == 0) $('.inquiry-list-wrap').empty();            
 
             for(var idx=start;idx<end;idx++){
-                var template = TAB_FLAG == TAB_FLAG_CARE ? careInquiryListTemplate : inquiryListTemplate;
+                //var template = TAB_FLAG == TAB_FLAG_CARE ? careInquiryListTemplate : inquiryListTemplate;
+                var template = getTemplate(TAB_FLAG, 'inquiry');
                 list[idx].isDetailViewBtn
-                list[idx].activeTabFlag = TAB_FLAG;
 
                 var templateList = $(vcui.template(template, list[idx])).get(0);
                 $('.inquiry-list-wrap').append(templateList);
@@ -1480,14 +1548,13 @@
                     var prodlist = list[idx].productList[cdx];
                     var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
                     prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
-                    template = TAB_FLAG == TAB_FLAG_CARE ? careProdListTemplate : prodListTemplate;
+                    //template = TAB_FLAG == TAB_FLAG_CARE ? careProdListTemplate : prodListTemplate;
+                    template = getTemplate(TAB_FLAG, 'product');
 
                     prodlist.specList = vcui.array.filter(prodlist.specList, function(item){
                         var chk = item != null && item != "null" && item != undefined && item != "" ? true : false;
                         return chk;
                     });
-
-                    prodlist.activeTabFlag = TAB_FLAG;
 
                     $(templateList).find('.tbody').append(vcui.template(template, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:isMonthlyPrice, isBtnSet:true, isQuantity:true}));
                 }
@@ -1529,8 +1596,6 @@
 
             for(var idx=start;idx<end;idx++){
 
-                RECORD_LIST[idx].activeTabFlag = TAB_FLAG;
-
                 var templateList = $(vcui.template(inquiryListTemplate, RECORD_LIST[idx])).get(0);
 
                 $('.inquiry-list-wrap').append(templateList);
@@ -1542,7 +1607,6 @@
                         return chk;
                     });
 
-                    prodlist.activeTabFlag = TAB_FLAG;
                     $(templateList).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:false, isBtnSet:true, isQuantity:true}));
                 }
             }
@@ -1812,18 +1876,12 @@
 
                         list[idx].dateTitle = "주문일";
                         list[idx].orderNumberTitle = "주문번호";
-                        list[idx].groupNumber = list[idx].orderNumber;
 
                         var chk = 0;
                         for(cdx in list[idx].productList){
                             list[idx].productList[cdx]["prodID"] = cdx;
-                            list[idx].productList[cdx]["addCommaProdPrice"] = vcui.number.addComma(list[idx].productList[cdx]["rowTotal"]);
-
-                            if(list[idx].productList[cdx].orderCancelAbleYn == "Y") chk++;
+                            list[idx].productList[cdx]["buyAmt"] = vcui.number.addComma(list[idx].productList[cdx]["buyAmt"]);
                         }
-
-                        if(chk > 0) list[idx].orderCancelAbleYn = "Y";
-                        else list[idx].orderCancelAbleYn = "N";
 
                         BESTSHOP_LIST.push(list[idx]);
                     }
@@ -2377,14 +2435,19 @@
         var cnt = leng ? "(" + leng + ")" : "";
         $('.lnb-contents .tabs-wrap .tabs > li:nth-child(1) .count').text(cnt);
 
-        leng = BESTSHOP_LIST.length;
-        cnt = leng ? "(" + leng + ")" : "";
-        $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text(cnt);
+        if($('.lnb-contents .tabs-wrap .tabs > li').length == 3) {
+            leng = BESTSHOP_LIST.length;
+            cnt = leng ? "(" + leng + ")" : "";
+            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text(cnt);
 
-        leng = CARE_LIST.length;
-        cnt = leng ? "(" + leng + ")" : "";
-        $('.lnb-contents .tabs-wrap .tabs > li:nth-child(3) .count').text(cnt);
-
+            leng = CARE_LIST.length;
+            cnt = leng ? "(" + leng + ")" : "";
+            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(3) .count').text(cnt);
+        } else {
+            leng = CARE_LIST.length;
+            cnt = leng ? "(" + leng + ")" : "";
+            $('.lnb-contents .tabs-wrap .tabs > li:nth-child(2) .count').text(cnt);
+        }
 
         /* BTOCSITE-98 add */
         if (vcui.detect.isIOS){
@@ -2403,8 +2466,6 @@
             var leng = shippingData ? Object.keys(shippingData).length : 0;
             if(leng){
                 template = PAGE_TYPE == PAGE_TYPE_CAREDETAIL ? careShippingListTemplate : shippingListTemplate;
-
-                shippingData.activeTabFlag = TAB_FLAG;
 
                 if(!shippingData.installPlaceNm) shippingData.installPlaceNm = "";
                 if(!shippingData.instReqDate) shippingData.instReqDate = "";
@@ -2434,8 +2495,6 @@
                 else template = paymentListTemplate;
 
                 console.log("paymentData:",paymentData)
-
-                paymentData.activeTabFlag = TAB_FLAG;
 
                 $listBox.show().find('ul').html(vcui.template(template, paymentData));
             } else{
@@ -2877,8 +2936,6 @@
                 return chk;
             });
 
-            listdata.activeTabFlag = TAB_FLAG;
-
             var disabled = listdata.itemCancelAbleYn == "N" ? "disabled" : "";
             prodListWrap.append(vcui.template(prodListTemplate, {listData:listdata, disabled:disabled, isCheck:isCheck, isBtnSet:false, isQuantity:true}));
         }
@@ -3096,7 +3153,6 @@
             var years1TotAmt = prodlist.years1TotAmt ? prodlist.years1TotAmt : "0";
             prodlist.addCommaMonthlyPrice = vcui.number.addComma(years1TotAmt);
 
-            prodlist.activeTabFlag = TAB_FLAG;
             $(header).find('.tbody').append(vcui.template(prodListTemplate, {listData:prodlist, disabled:"", isCheck:false, isMonthlyPrice:false, isBtnSet:false, isQuantity:isQuantity}));
         }
         

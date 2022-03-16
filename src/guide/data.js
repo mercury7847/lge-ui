@@ -387,8 +387,8 @@ var res = {
 					"배송지 주소 관리 팝업" : ["/html/MYC/ACCF7009_popup.html","","검수완료"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","검수완료"],
 					"쿠폰 상세보기 팝업" : ["/html/MYC/ACCF7018_popup.html","","검수완료"],
-					"쿠폰(베스트샵)" : ["/html/MYC/ACCF7510.html","",""],
-					"쿠폰(베스트샵) 상세보기 팝업" : ["/html/MYC/ACCF7510_popup.html","",""],
+					"쿠폰(2022)" : ["/html/MYC/ACCF7096.html","",""],
+					"쿠폰(2022) 상세보기 팝업" : ["/html/MYC/ACCF7096_popup.html","",""]
 				},
 				"케어솔루션" : {
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],
@@ -441,6 +441,7 @@ var res = {
 					"상담 예약 조회(방문상담/화상상담)" : ["/html/MYC/ACCF8000.html","","진행중"],
 					"상담 예약 조회(케어십 상담)" : ["/html/MYC/ACCF8010.html","","진행중"],
 					"상담 예약 조회(소모품 구매 예약)" : ["/html/MYC/ACCF8020.html","","진행중"],
+					"상담 예약 조회(에러 및 안내)" : ["/html/MYC/ACCF8030.html","","진행중"],
 					"상담 예약 조회 팝업" : ["/html/MYC/ACCF8000_popup.html","","진행중"]
 				}
 			},

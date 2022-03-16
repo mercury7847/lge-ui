@@ -230,8 +230,11 @@
                     var data = result.data,
                         param = result.param;
                     
+                        
                     self.$cont.vcSearchModel('updateSummary', {
-                        product: [model.categoryNm, model.subCategoryNm, model.modelCode],
+                        // BTOCSITE-11168 제품문제 해결 - 모델명 선택 절차 제외 요청
+                        // product: [model.categoryNm, model.subCategoryNm, model.modelCode],
+                        product: [model.categoryNm, model.subCategoryNm],
                         reset: 'product'
                     });
 

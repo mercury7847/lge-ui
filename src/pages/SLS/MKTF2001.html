@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko">
     <!-- 210330 스키티챗JS 추가 -->
-    <!-- BTOCSITE-12758 - 스토어 홈 css 추가(운영 싱크) -->
     @@include('./common/head.html', {
         pageCSS: [
-            "PRS/PRS",
-            "SLS/SLS"
+            "PRS/PRS", "STS/STS", "SLS/SLS"
         ],
         pageJS: [
             "home/caresolutionHome", "components/KRP0005"
@@ -24,11 +22,13 @@
     <!-- //210311_H1추가 -->
 
     <main class="container">
+        <!-- contents -->
         <div class="contents caresolution home">
             <div class="sub-main">
                 @@include('./SLS/partials/MKTF2001_CONTENT.html')
             </div>       
         </div>
+        <!-- // contents -->
     </main>
 
     @@include('./common/footer.html')

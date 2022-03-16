@@ -1,12 +1,12 @@
 {
   "data": {
     "orderDate": "2022.01.04",
-    "deliveryStatus": 4,
+    "deliveryStatus": "배송중",
     "deliveryStatusDate": "2020.02.22 도착 예정",
-    "deliveryDriver": {
-      "name": "박*은",
-      "phoneNumber": "010-****-1234"
-    }
+    "deliveryDriverInfo": true,
+    "deliveryDriverName": "박*은",
+    "deliveryDriverPhoneNumber": "010-****-1234",
+    "deliveryDriverMessage": "자세한 정보는 배송 알림톡 또는 문자를 통해 확인해주세요"
   },
   "message": "",
   "status": "success"

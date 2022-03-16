@@ -987,10 +987,7 @@ vcui.define('ui/smoothScroll', ['jquery', 'vcui'], function ($, core) {
             //var rf = this.$wrapper[0].offsetHeight;           // Force reflow
             var self = this;
             var opts = self.options;
-            // BTOCSITE-2117 모바일 웹/앱 GNB 개선 : 화면에 탭 그려진 후 호출
-            setTimeout(function() {
-                self.update();
-            }, 500);
+            self.update();
 
             // if(opts.startX || opts.startY){
             //     self.scrollTo(opts.startX? opts.startX : 0, opts.startY? opts.startY : 0);

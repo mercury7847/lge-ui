@@ -1,0 +1,7 @@
+{
+    "status":"success",
+    "data": {
+        "success": "N",
+        "message":"이미 이벤트에 참여하였습니다."
+    }
+}

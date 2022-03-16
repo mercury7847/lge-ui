@@ -1416,10 +1416,12 @@
                         /* //20210602 BTOCSITE-495 추가 */
                         .select-info {
                             .select-text {
+                                top:12px; //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
+                                transform:translateY(0); //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
+                                word-break:keep-all; //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
                                 font-weight: 700;
                             }
-                        }
-                            
+                        }                            
                     }
                     /* 20210607 스펙선택 추가 */
                     &.Spec {
@@ -1711,29 +1713,38 @@
             }
 
             .select-wrap {
+                /* BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */ 
                 .ui-selectbox-wrap {
                     .ui-select-button {
-                        padding: 11px 40px 11px 15px;
+                        padding: 11px 40px 11px 80px;
                         text-align: right;
                         @include mobile {
-                            padding: 10px 48px 10px 15px;
+                            padding: 10px 45px 10px 70px;
                         }
                         .ui-select-text {
+                            top:12px;
+                            transform:translateY(0);
+                            white-space:normal;
+                            word-break:keep-all;
                             @include font-small;
+                        }
+                        .ico{
+                            top:15px;
+                            margin-top:0;
                         }
                     }
                     .ui-selectbox-list {
                         z-index: 6;
+                        top:auto;
                         ul li a {
                             padding: 12px 40px 12px 15px;
                             @include font-small;
                             text-align: right;
-                        }
-                        @include mobile {
-                            top: 44px;
+                            white-space:normal;
                         }
                     }
                 }
+                /* //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 */ 
                 .select-button {
                     display: block;
                     position: relative;

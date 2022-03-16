@@ -1,0 +1,8 @@
+{
+  "status": "success",
+  "message": null,
+  "data": {
+    "cancel_yn": "Y",
+    "cancel_message": ""
+  }
+}

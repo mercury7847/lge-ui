@@ -297,20 +297,8 @@
         $("body").removeClass("scroll-lock");
       }
 
-      /*
-            console.log('close',self.ignoreOverflow,self.bodyOvewflow);
-            if(self.ignoreOverflow) {
-                if(self.bodyOvewflow) {
-                    $('html, body').css({
-                        overflow:self.bodyOvewflow
-                    });
-                } else {
-                    $('html, body').css({
-                        overflow:"visible"
-                    });
-                }
-            }
-            */
+      // 모니터링 592 : 검색 레이어 닫힐때 오류 수정
+      $("body").scrollTop(0);
     },
 
     //검색어창에 입력후 검색

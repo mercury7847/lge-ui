@@ -62,10 +62,13 @@ $(function() {
         // --> 20210730 BTOCSITE-2596 스토어 > PC 히어로 배너 재생 버튼 동작 안함 오류
 
         /* 20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
+        /* BTOCSITE-13364 브랜드관 히어로 배너 영역 수정 */
         var $sigSlideNum = $sigMain.find('.slide-conts');
         var $sigSlideLength = $sigMain.find('.custom-indi-wrap')
+        var $txtInfoEtc = $sigMain.find('.text-info-etc');
         if($sigSlideNum.length === 1) {
             $sigSlideLength.hide();
+            $txtInfoEtc.addClass('solo');
         }
         /* //20210629 BTOCSITE-1519 : 히어로배너 구조 변경 */
 

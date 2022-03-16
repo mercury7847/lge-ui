@@ -5,15 +5,15 @@
         "category":[
             {
                 "title":"이마트",
-                "value":"emart"
+                "value":"EMRT"
             },
             {
                 "title":"홈플러스",
-                "value":"homeplus"
+                "value":"HPT"
             }
         ],
         "area":{
-            "emart":[
+            "EMRT":[
                 {
                     "title":"서울",
                     "value":"area0001"
@@ -69,20 +69,6 @@
                 {
                     "title":"월평점",
                     "value":"branch0009"
-                }
-            ],
-            "homeplus":[
-                {
-                    "title":"홈플러스서울",
-                    "value":"hp0001"
-                },
-                {
-                    "title":"홈플러스부산",
-                    "value":"hp0002"
-                },
-                {
-                    "title":"홈플러스대전",
-                    "value":"hp0003"
                 }
             ]
         }

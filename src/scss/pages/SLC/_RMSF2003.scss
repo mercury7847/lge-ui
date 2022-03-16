@@ -1492,3 +1492,137 @@ br.pc-only {
         }
     }
 }
+
+// BTOCSITE-13244 케어플래너 PLP 스펙 노출 및 문구 수정 START
+// 20220316 module-type-wrap style 추가
+.prd-list-wrap .inner {
+    &.module-type-wrap  {
+        display: flex;
+        flex-wrap: wrap;
+        .prd-care-vertical {
+            height: 100% !important;
+            max-height: inherit !important;
+            @include pc {
+                padding-bottom: 170px;
+            }
+            .code {
+                display: inline-block;
+                max-width: 100%;                    
+                font-size: $font-small;
+                line-height: 24px;
+                vertical-align: top;
+                margin-top: 0;
+                @include mobile {
+                    line-height: 22px;
+                }
+                + .review-info {margin-left:6px;}
+            }
+            .review-info {
+                display: inline-block;                
+                font-size: 0;
+                vertical-align: top;
+                .star,
+                .average-rating,
+                .review-count {
+                    display: inline-block;
+                    font-size: $font-small;
+                    line-height: 24px;
+                    @include mobile {
+                        line-height: 22px;
+                    }
+                }
+                .star {
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 2px;
+                    background: url("/lg5-common/images/icons/icon-star-off-20.svg") no-repeat 0 0;
+                    vertical-align: -5px;
+                    &.is-review {
+                        background-image: url("/lg5-common/images/icons/icon-star-on-20.svg");
+                    }
+                }
+            }
+            .spec-info {
+                margin: 6px 0 12px;
+                font-size: $font-small;
+                line-height: 14px;
+                color: #000;
+                li {
+                    margin-top: 6px;
+                    font-size:13px;
+                    line-height:13px;
+                    @include pc {
+                        @include textClipClamp(1);
+                    }
+                    .care-n {
+                        font-size: 13px;
+                        line-height: 13px;
+                        position: relative;
+                        top: -1px;
+                    }
+                    .redcare-option {
+                        margin-left: 10px;
+                        margin-top: 6px;
+                        font-size:13px;
+                        line-height:13px;
+                        color: #DA0F47;
+                    }
+                }
+                @include mobile {
+                    margin: 8px 0;
+                    li {
+                        display: inline-block;
+                        margin-top: 0;
+                        font-size: 14px;
+                        line-height: 22px;
+                        &:after {
+                            display: inline-block;
+                            width: 1px;
+                            height: 10px;
+                            margin: 0 6px;
+                            background-color: $color-border;
+                            content: '';
+                        }
+                        &:last-child:after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .info-wrap .price-wrap {                        
+                .text {
+                    display: block;
+                    margin-bottom: 7px;
+                }
+                .small-text {
+                    display:inline-block;
+                    margin-left:0px;
+                    font-size: $font-small;
+                    line-height: 24px;
+                    color: $color-gray-5;
+                }
+                &.type2{
+                    dt {
+                        display: block;
+                        margin-bottom:0px;
+                        color: inherit;
+                    }
+                    dd {
+                        display: block;
+                        text-align: left;
+                    }
+                }
+            }
+        }                
+    }
+}
+.contents.caresolution .prd-list-wrap .inner {
+    &.module-type-wrap  {
+        .prd-care-vertical {
+            @include pc {
+                padding-bottom: 140px;
+            }
+        }
+    }
+}
+// BTOCSITE-13244 케어플래너 PLP 스펙 노출 및 문구 수정 END

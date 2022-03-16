@@ -43,7 +43,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber > 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">{{cardDiscountName}}</span>{{/if}}' +
+                '{{#if (obsSellingPriceNumber >= 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">{{cardDiscountName}}</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -253,9 +253,15 @@
                 // AR 체험하기 APP 호출시 실행
                 var modelId = lgkorUI.getParameterByName('openAR');
                 if( isApp() && modelId) {
+                    if(location.host !== "wwwdev50.lge.co.kr"){
+                        lgkorUI.openAR(modelId);
 
-                    console.log("openar");
-                    lgkorUI.openAR(modelId);
+                        var url = lgkorUI.parseUrl(location.href);
+                        var params = url.searchParams.getAll();
+                        delete params.openAR;
+                            params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
+                        window.history.replaceState('', '', url.pathname + params)
+                    }
                 }
 
                 //더보기 버튼 체크
@@ -587,9 +593,9 @@
                     }
                 });
 
-                $(window).on('appNotInstall', function(e){
-                    $('#arPlayPop').vcModal();
-                });
+                // $(window).on('appNotInstall', function(e){
+                //     $('#arPlayPop').vcModal();
+                // });
 
                 //모바일 카테고리 풀다운메뉴
                 self.$cateFulldown.on('click', function(e){

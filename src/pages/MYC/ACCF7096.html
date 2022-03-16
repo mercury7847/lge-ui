@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYC/MYC"],
+        pageJS: ["mypage/myNewCoupon"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "쿠폰"
+            })
+            <!-- mypage -->
+            <div class="contents mypage">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect1" : [
+                                { "on": "", "page": "주문/배송 조회" },
+                                { "on": "", "page": "배송지 주소 관리" },
+                                { "on": "on", "page": "쿠폰" }
+                            ]
+                        })
+                        <!-- <div class="lnb-contents" data-coupon-list-url="/lg5-common/data-ajax/mypage/shopping/couponList.json"></div> LGE.COM 쿠폰참조용 -->
+                        <!-- LGECOMVIO-141 : 베스트샵 쿠폰 신규 콘텐츠 영역(2022.02.24) -->
+                        <div class="lnb-contents"
+                            data-coupon-list-url="/lg5-common/data-ajax/mypage/shopping/couponList.json"
+                            data-bestshop-visit-coupon-list-url="/lg5-common/data-ajax/mypage/shopping/storeVisitCouponList.json"
+                        ><!-- LGECOMVIO-141 : data-coupon-list-url="LGE.COM 데이터 연결 url"  data-bestshop-visit-coupon-list-url="베스트샵>매장방문혜택쿠폰 데이터 연결url" (2022.03.14)-->
+                            <div class="coupon-tabs">
+                                <div class="tabs-wrap btn-type left">
+                                    <ul class="tabs">
+                                        <li><a href="#">LGE.COM <span class="count"><i class="offscreen">사용가능 쿠폰</i><span>0</span></span></a></li><!-- LGECOMVIO-141 : 사용가능 쿠폰 글자 i 태그로 변경(2022.03.16) -->
+                                        <li><a href="#">베스트샵 <span class="count"><i class="offscreen">사용가능 쿠폰</i><span>0</span></span></a></li><!-- LGECOMVIO-141 : 사용가능 쿠폰 글자 i 태그로 변경(2022.03.16) -->
+                                    </ul>
+                                </div>
+                                <div class="tabs-wrap bar-type ui_tab left" style="display: none;">
+                                    <ul class="tabs">
+                                        <li><a href="#">매장 제품 할인 쿠폰 <span class="count"><i class="offscreen">사용가능 쿠폰</i><span>0</span></span></a></li><!-- LGECOMVIO-141 : 사용가능 쿠폰 글자 i 태그로 변경(2022.03.16) -->
+                                        <li><a href="#">매장 방문 혜택 쿠폰 <span class="count"><i class="offscreen">사용가능 쿠폰</i><span>0</span></span></a></li><!-- LGECOMVIO-141 : 사용가능 쿠폰 글자 i 태그로 변경(2022.03.16) -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-contents">
+                                <!-- 스크립트 처리 예정 -->
+                                <div class="list-sorting">
+                                    <div class="sort-area">
+                                        <div class="sort-list">
+                                            <div class="sort-select-wrap">
+                                                <select class="ui_selectbox" id="select1" title="정렬 기준 선택">
+                                                    <option value="on" selected>사용가능 쿠폰</option><!-- LGECOMVIO-141 : option value 추가 (2022.03.16) -->
+                                                    <option value="end">종료된 쿠폰</option><!-- LGECOMVIO-141 : option value 추가 (2022.03.16) -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- //스크립트 처리 예정 -->
+                                <div class="coupon-list-wrap mybestshop">
+                                    <div class="coupon-lists">
+                                        <!-- 화면 UI 보기용 -->
+                                        <ul></ul>
+                                        <!-- //화면 UI 보기용 -->
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-moreview block"><span>더보기</span></button>
+                                <!-- nodata -->
+                                <div class="no-data">
+                                    <p>사용 할 수 있는 쿠폰이 없습니다.</p>
+                                </div>
+                                <!-- // nodata -->
+                                <!-- LGECOMVIO-141 : 점검 및 시스템 장애(2022.03.07 쿠폰 공통 추가) -->
+                                <div class="coupon-error-cont" style="display: none;">
+                                    <p class="tit">이용에 불편을 <br class="m-br">드려 죄송합니다.<small>요청하신 페이지가 정상적으로  <br class="m-br">처리되지 않았습니다.</small></p>
+                                    <p class="desc">
+                                        <span>해당 요청 사항 처리 중 점검 및 <br class="m-br">일시적인 장애 등의 이유로 <br>페이지가 정상적으로 서비스 되지 않았습니다.</span>
+                                    </p>
+                                    <dl>
+                                        <dt>시스템 점검 시간</dt>
+                                        <dd>2022.03.01 15:55 ~ 2022.03.01 15:59</dd>
+                                    </dl>
+                                </div>
+                                <!-- //LGECOMVIO-141 : 점검 및 시스템 장애(2022.03.07 쿠폰 공통  추가) -->
+                            </div>
+                        </div>
+                        <!-- //LGECOMVIO-141 : 베스트샵 쿠폰 신규 콘텐츠 영역(2022.02.24) -->
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        <article id="couponPopup" class="popup-wrap small">
+        </article>
+
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

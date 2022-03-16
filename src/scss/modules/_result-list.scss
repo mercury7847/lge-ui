@@ -1449,21 +1449,28 @@
             }
         }
         .info-btm {
+            .text {
+                display: inline-block;
+                margin-right: 6px;
+                padding-right: 6px;
+                font-size: 14px;
+                line-height: 21px;
+            }
             @include mobile {
                 margin-top: 6px;
-                .text {
-                    display: inline-block;
-                    margin-right: 6px;
-                    padding-right: 6px;
-                    font-size: 13px;
-                    line-height: 21px;
-                    &:not(:last-child):before {
-                        display: inline-block;
-                    }
-                }
+                font-size: 13px;
             }
         }
         .sku + .info-btm {
+            .text {
+                margin-right:0;
+                padding-right:0;
+                &:not(:last-child):after {
+                    content: ' \2758';
+                    display: inline-block;
+                    margin: 0 5px;
+                }
+            }
             @include mobile {
                 margin-top: 12px;
             }

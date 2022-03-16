@@ -77,7 +77,7 @@ $(window).ready(function(){
 					$(this).get(0).pause();
 				}
 			});
-			carouselStop(target)
+			if($(target).data('autoplay')) carouselStop(target) // BTOCSITE-12804
 		}
 
 		//자동재생 반복 횟수 체크 후 정지  -BTOCSITE-8039
@@ -114,13 +114,23 @@ $(window).ready(function(){
 			return $('<button type="button" class="' + buttonClass + '" />').html(buttonInnerEl);
 		} 
 		
-		//슬라이드가 화면 중앙인지 아닌지를 체크하여 해당 이벤트 실행 -BTOCSITE-8039
+		//슬라이드가 화면 중앙인지 아닌지를 체크하여 해당 이벤트 실행 -BTOCSITE-8039 (BTOCSITE-12804)
+		var observerOption = {
+            root: null,
+            threshold: []
+        }
+        for (var i=0; i<=1.0; i+= 0.01) {
+            observerOption.threshold.push(i);
+        }
 		var io = new IntersectionObserver(function(entries, observer) {
 			entries.forEach(function(entry) {
-				if($(entry.target).data('autoplay')) (entry.isIntersecting) ? sectionEnterEvent(entry.target) : sectionLeaveEvent(entry.target);
-				else sectionLeaveEvent(entry.target);
+				if (entry.intersectionRatio > 0.7) {
+					sectionEnterEvent(entry.target)
+                } else {
+					sectionLeaveEvent(entry.target)
+                }
 			});                            
-		}, {root: null, threshold: 0.5});
+		}, observerOption);
 		
 		$('.KRC0032').find(".ui_carousel_slider").each(function(cdx, slide){
 			var $slide 			= $(this),
@@ -215,9 +225,7 @@ $(window).ready(function(){
 				$slider.vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
 			});	
 
-			if( autoPlay ) {
-				io.observe(slide);
-			}
+			io.observe(slide); // BTOCSITE-12804
 			$(slide).on('click', '.indi-wrap .ui_carousel_play', function() {
 				$(this).blur();
 				setVideoProgressbar($(this).parents('.ui_carousel_slider'), $(this).hasClass('stop'))
