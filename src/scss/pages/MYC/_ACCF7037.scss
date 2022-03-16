@@ -82,7 +82,7 @@
 		.btn:focus { border-color: #da0f47; color: #da0f47; outline: 0;}
 		.box {display: none;}
 		@include pc {
-			.box + .box {
+			.box:not(.app) + .box {
 				margin-top: 32px;
 			}
 		}
