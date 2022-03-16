@@ -52,12 +52,12 @@
         '<div class="coupon-box bshop {{_clName}} {{_status}}">'+
             '<div class="coupon-cont">'+
                 '<div class="top">'+
-                    '<p class="name">{{cpn_sale_amt}}</p>'+
+                    '<p class="name">{{cpnEventName}}</p>'+
                 '</div>'+
-                '<p class="desc">{{cpn_main_title}}</p>'+
+                '<p class="desc">{{cpnMainTitle}}</p>'+
                 '<div class="bottom">'+
-                    '<p>유효기간 : {{cpn_from_date}}~{{cpn_to_date}}</p>'+
-                    '<p>{{#if _clName !== "shop-benefit"}}대상모델 : {{cpn_goods_model}}{{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcode_name}}{{/if}}</p>'+
+                    '<p>유효기간 : {{cpnFromDate}}~{{cpnToDate}}</p>'+
+                    '<p>{{#if _clName !== "shop-benefit"}}대상모델 : {{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcodeName}}{{/if}}</p>'+
                 '</div>'+
                 '<a href="#" class="btn-link-text" title="자세히보기"><span>자세히보기</span></a>'+
                 '{{#if _status==="disabled"}}<div class="end-flags">사용완료</div>{{/if}}'+
@@ -88,7 +88,7 @@
         '</section>'+
         '<footer class="pop-footer center">'+
             '<div class="btn-group">'+
-                '<button type="button" class="btn pink"><span>매니저 확인</span></button>'+
+                '<button type="button" class="btn pink confirmManage"><span>매니저 확인</span></button>'+
             '</div>'+
         '</footer>'+
         '<button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>';
@@ -197,7 +197,7 @@
             this.el.$couponPopup.on("click", "div.btn-group button", $.proxy(this.handler.clickBtnGroup, this));
 
             //쿠폰 팝업 > 매니저 확인 버튼 클릭 시 팝업 호출
-            this.el.$couponPopup.on("click", ".btn.pink", $.proxy(this.handler.clickBtnCheckManage, this));
+            this.el.$couponPopup.on("click", ".confirmManage", $.proxy(this.handler.clickBtnCheckManage, this));
 
             //셀렉트 박스 변경 시 > 사용가능쿠폰/ 종료된 쿠폰 조회
             this.el.$contents.find(".ui_selectbox").vcSelectbox().on("change", $.proxy(this.handler.changeSelCoupon, this));
@@ -234,7 +234,11 @@
             },
             clickSubTabMenu: function (e) {
                 e.preventDefault();
-                this.changeSubTabMenu(e);
+                var $subTab = $(e.currentTarget).parent();
+
+                //탭 변경 시 데이터 새로 고침
+                this.variable.subTabActIndex = $subTab.index();
+                this.requestCouponList();
             },
             clickCoupon: function (e) {
                 e.preventDefault();
@@ -307,6 +311,9 @@
             },
             changeSelCoupon: function (e) {
                 var oSelf = this;
+                if (this.variable.selOptVal === $(e.currentTarget).vcSelectbox("value")) {
+                    return;
+                }
                 this.variable.selOptVal = $(e.currentTarget).vcSelectbox("value");
 
                 var page;
@@ -331,12 +338,6 @@
                     }
                 }
                 this.setCouponList(key);
-
-                if (page > 0) {
-                    for (var i = 1; i <= page; i++) {
-                        oSelf.addCouponList(key, i);
-                    }
-                }
             },
             keyupCodeCoupon: function (e) {
                 var inputVal = $(e.currentTarget).val();
