@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["MYS/MYS"],
+        pageJS: ["mypage/myPageHome"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "마이페이지"
+            })
+            <!-- mypage -->
+            <!--<div class="contents mypage mypage-main" 
+                data-member-info="/lg5-common/data-ajax/mypage/mypageMemberInfo.json"
+                data-mypage-info="/lg5-common/data-ajax/mypage/mypageInfo.json"
+            > as-is 참조용 -->
+
+            <!-- LGECOMVIO-30 : 마이페이지 홈 1차 개선 영역(2022.03.16) -->
+            <div class="contents mypage mypage-main-new">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html')
+
+                        <div class="lnb-contents">
+
+                            <!-- 정보관리 -->
+                            <div class="my-account">
+                                <div class="my-text">
+                                    <a href="#">
+                                        <span class="name"><em>김엘지</em>님</span>
+                                    </a>
+                                </div>
+                                <ul class="my-info">
+                                    <li>
+                                        <a href="#" class="point">
+                                            <strong class="title">멤버십 포인트</strong>
+                                            <span class="count"><em>12,365,000</em>P</span>
+                                            <!--<span class="join"><em>멤버십가입</em></span>-->
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="coupon">
+                                            <strong class="title">쿠폰</strong>
+                                            <span class="count"><em>5</em>장</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="myprod">
+                                            <strong class="title">보유제품</strong>
+                                            <span class="count"><em>2</em>개</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="my-quick">
+                                    <a href="#" class="btn-icon prod-wish"><em class="blind">찜한 제품</em></a>
+                                    <a href="#" class="btn-icon prod-hist"><em class="blind">최근 본 제품</em></a>
+                                    <a href="#" class="btn-icon prod-setup"><em class="blind">환경 설정</em></a>
+                                </div>
+                            </div>
+                            <!-- //정보관리 -->
+
+                            <!-- 커뮤니케이션 -->
+                            <!-- 
+                                ① .myact-cont에 서비스구분 class(추가)
+                                ② .status에 상태 class(추가)
+
+                                ① 주문/배송/청약 조회(.order)
+                                ② 주문접수(.prod-01), 결제완료(.prod-02), 배송준비중(.prod-03), 배송중(.prod-04), 배송완료(.prod-05), 청약완료(.care-01), 계약완료(.care-02)
+                                
+                                ① 방문 일정/예약(.visit)
+                                ② 다음 방문 서비스(.reservation)
+
+                                ① 칭찬/개선/제안 조회(.voc)
+                                ② 접수(.receipt), 답변중(.progress), 답변 완료(.completion), 답변 대기(.ready)
+
+                                ① 서비스 상담/예약 조회(.svc)
+                                ② 접수(.receipt), 답변중(.progress), 답변 완료(.completion), 
+                                  방문예정(.visit-ready), 처리중(.svc-progress), 처리완료(.svc-completion), 상담예정(.counselling-ready)
+                            -->
+                            <div class="my-section">
+                                <h3 class="title">나의 활동 내역<em class="count">(20)</em></h3>
+                                <ul class="my-activity-list">
+                                    <li>
+                                        <div class="myact-cont order"><!-- case : add class -->
+                                            <em class="status prod-01">주문접수</em><!-- status : add class -->
+                                            <div class="prod-info">
+                                                <span class="cate">케어솔루션</span>
+                                                <span class="prod">LG DIOS 식기세척기 스팀</span>
+                                                <span class="model">DUB22MAR</span>
+                                            </div>
+                                            <a href="#" class="btn-myact"><i class="blind">바로가기</i></a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="myact-cont visit">
+                                            <em class="status reservation">방문 일정/예약</em>
+                                            <div class="prod-info">
+                                                <span class="cate">렌탈/케어 관리</span>
+                                                <span class="prod date">방문 예정일 : 2022.04.04</span>
+                                                <span class="model">식기세척기 (16201525)</span>
+                                            </div>
+                                            <a href="#" class="btn-myact"><i class="blind">바로가기</i></a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="myact-cont voc">
+                                            <em class="status receipt">주문 접수</em>
+                                            <div class="prod-info">
+                                                <span class="cate">매장 상담 예약</span>
+                                                <span class="prod">LG DIOS 식기세척기 스팀</span>
+                                                <span class="model">DUB22MAR</span>
+                                            </div>
+                                            <a href="#" class="btn-myact"><i class="blind">바로가기</i></a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="myact-cont svc">
+                                            <em class="status receipt">주문 접수</em>
+                                            <div class="prod-info">
+                                                <span class="cate">일반 제품</span>
+                                                <span class="prod">LG 올레드 TV(스텐드형)</span>
+                                                <span class="model">DUB22MAR</span>
+                                            </div>
+                                            <a href="#" class="btn-myact"><i class="blind">바로가기</i></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="list-more">
+                                    <button type="button" class="btn-myact-more">전체보기</button>
+                                </div>
+                            </div>
+                            <!-- //커뮤니케이션 -->
+
+                            <!-- 마이베스트샵 -->
+                            <div class="my-section">
+                                <h3 class="title">마이 베스트샵</h3>
+                                <div class="my-beshop-list">
+                                    <div class="list-item">
+                                        <a href="#" class="btn-mybeshop counsel">매장 상담 예약 조회</a>
+                                    </div>
+                                    <div class="list-item mo-only">
+                                        <a href="#" class="btn-mybeshop pickup">픽업 <br>예약 조회</a>
+                                        <a href="#" class="btn-mybeshop Refur">전시상품 <br>예약 조회</a>
+                                        <a href="#" class="btn-mybeshop online">온라인 <br>견적 조회</a>
+                                    </div>
+                                    <div class="list-item">
+                                        <a href="#" class="btn-mybeshop favor">단골매장 <br class="mo-br">등록/수정</a>
+                                        <a href="#" class="btn-mybeshop coupon">베스트샵 <br class="mo-br">쿠폰 확인</a>
+                                        <a href="#" class="btn-mybeshop benefit">베스트샵 <br class="mo-br">사은품 신청</a>
+                                        <a href="#" class="btn-mybeshop interior">인테리어 <br class="mo-br">상담 신청</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //마이베스트샵 -->
+
+                            <!-- 찜한, 최근본 -->
+                            <div class="my-section-wrap">
+                                <div class="my-section">
+                                    <h3 class="title"><a href="#">찜한 제품<em class="count">(8)</em></a></h3>
+                                    <div class="my-prod-box">
+                                        <ul class="my-prod-list">
+                                            @@loop('./common/modules/product-list-item-loop.html', [
+                                                {
+                                                    "itemClass": "",
+                                                    "nonSku": true,
+                                                    "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                                    "price": true,
+                                                    "originalPrice": true
+                                                },{
+                                                    "itemClass": "",
+                                                    "nonSku": true,
+                                                    "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                                    "price": true,
+                                                    "originalPrice": true
+                                                }
+                                            ])
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="my-section">
+                                    <h3 class="title"><a href="#">최근 본 제품<em class="count">(12)</em></a></h3>
+                                    <div class="my-prod-box">
+                                        <ul class="my-prod-list">
+                                            @@loop('./common/modules/product-list-item-loop.html', [
+                                                {
+                                                    "itemClass": "",
+                                                    "nonSku": true,
+                                                    "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                                                    "price": true,
+                                                    "originalPrice": true
+                                                }
+                                            ])
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //찜한, 최근본 -->
+
+                            <!-- 제품 추천 -->
+                            <div class="my-section">
+                                <h3 class="title">이 제품 어때요?</h3>
+                                
+                                <div class="recommend-product slide-wrap ui_carousel_slider">
+                                    <div class="indi-wrap">
+                                        <ul class="indi-conts ui_carousel_dots">
+                                            <li><button type="button" class="btn-indi"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                                        </ul>
+                                    </div>
+                                    <div class="slide-content ui_carousel_list">
+                                        <div class="slide-track ui_carousel_track">
+                                            <!-- as-is : product-item-loop.html(참조) -->
+                                            @@loop('./common/modules/prod-new-item-loop.html', [
+                                                {
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "LG TROMM ThinQ",
+                                                    "views-count" : "14,3999"
+                                                },{
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "LG DIOS 노크온 매직스페이스",
+                                                    "views-count" : "14,3999"
+                                                },{
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄",
+                                                    "views-count" : "14,3999"
+                                                },{
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "제품명 노출 영역 최대2줄 제품명 노출 영역 최대2줄",
+                                                    "views-count" : "14,3999"
+                                                },{
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "LG DIOS 노크온 매직스페이스",
+                                                    "views-count" : "14,3999"
+                                                },{
+                                                    "carousel": true,
+                                                    "image": "/lg5-common/images/dummy/@img-product.jpg",
+                                                    "name": "LG DIOS 노크온 매직스페이스",
+                                                    "views-count" : "14,3999"
+                                                }
+                                            ])
+                                        </div>
+                                    </div>
+                                    <div class="slide-controls">
+                                        <button type="button" class="btn-arrow prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                        <button type="button" class="btn-arrow next ui_carousel_next"><span class="blind">다음</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //제품 추천 -->
+
+                            <!-- 마이페이지 메인 - 하단 메뉴보기(MO) -->
+                            <div class="my-navi-section mo-only">
+                                <ul class="mypage-menu">
+                                    <li>
+                                        <span class="my-dep1">쇼핑 관리</span>
+                                        <ul class="myp-sub">
+                                            <li><a href="#n" class="my-dep2">주문/배송/청약 조회</a></li>
+                                            <li><a href="#n" class="my-dep2">배송지 주소</a></li>
+                                            <li><a href="#n" class="my-dep2">쿠폰</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="my-dep1">렌탈/케어 관리</span>
+                                        <ul class="myp-sub">
+                                            <li><a href="#n" class="my-dep2">계약 현황 조회</a></li>
+                                            <li><a href="#n" class="my-dep2">납부 내역 조회</a></li>
+                                            <li><a href="#n" class="my-dep2">방문 일정 예약</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="my-dep1">마이 베스트샵</span>
+                                        <ul class="myp-sub">
+                                            <li><a href="#n" class="my-dep2">단골매장 등록/수정</a></li>
+                                            <li><a href="#n" class="my-dep2">베스트샵 쿠폰</a></li>
+                                            <li><a href="#n" class="my-dep2">매장 상담 예약 조회</a></li>
+                                            <li><a href="#n" class="my-dep2">픽업 예약 조회</a></li>
+                                            <li><a href="#n" class="my-dep2">전시 상품 예약 조회</a></li>
+                                            <li><a href="#n" class="my-dep2">온라인 견적 조회</a></li>
+                                            <li><a href="#n" class="my-dep2">베스트샵 사은품 신청</a></li>
+                                            <li><a href="#n" class="my-dep2" target="_blank" title="새창열림">인테리어 상담 신청</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="my-dep1">보유 제품</span>
+                                        <ul class="myp-sub">
+                                            <li><a href="#n" class="my-dep2">보유 제품 등록</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="my-dep1">고객지원 관리</span>
+                                        <ul class="myp-sub">
+                                            <li><a href="#n" class="my-dep2">칭찬/개선/제안 조회</a></li>
+                                            <li><a href="#n" class="my-dep2">서비스 상담/예약 조회</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="my-dep1">활동/리뷰</span>
+                                        <ul class="myp-sub">
+                                            <li><a href="#n" class="my-dep2">찜한 제품</a></li>
+                                            <li><a href="#n" class="my-dep2">최근 본 제품</a></li>
+                                            <li><a href="#n" class="my-dep2">재입고 알림</a></li>
+                                            <li><a href="#n" class="my-dep2">상품 리뷰</a></li>
+                                            <li><a href="#n" class="my-dep2">참여 이벤트</a></li>
+                                            <li><a href="#n" class="my-dep2">스토리 구독</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="my-dep1">멤버십 관리</span>
+                                        <ul class="myp-sub">
+                                            <li><a href="#n" class="my-dep2">멤버십 가입 정보</a></li>
+                                            <li><a href="#n" class="my-dep2">멤버십 포인트 조회</a></li>
+                                            <li><a href="#n" class="my-dep2">영수증 등록</a></li>
+                                            <li><a href="#n" class="my-dep2">무상서비스 제품 조회</a></li>
+                                            <li><a href="#n" class="my-dep2">멤버십 포인트 선물</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="my-dep1">회원 정보 관리</span>
+                                        <ul class="myp-sub">
+                                            <li><a href="#n" class="my-dep2">회원 정보 수정</a></li>
+                                            <li><a href="#n" class="my-dep2">환경설정</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- //마이페이지 메인 - 하단 메뉴보기(MO) -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //LGECOMVIO-30 : 마이페이지 홈 1차 개선 영역(2022.03.16) -->
+            <!-- // mypage -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+    <script>
+        $(function() {
+            vcui.require(['ui/carousel'], function () {
+                $('.recommend-product.ui_carousel_slider').vcCarousel({
+                    infinite: false,
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                    responsive: [
+                        {
+                            breakpoint: 1280,
+                            settings: {
+                                slidesToShow: 4,
+                                slidesToScroll: 4
+
+                            }
+                        },{
+                            breakpoint: 1024,
+                            settings: {
+                                //variableWidth: true,
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+</body>
+</html>

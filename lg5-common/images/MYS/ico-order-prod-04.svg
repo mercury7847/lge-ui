@@ -1,0 +1,10 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <g transform="matrix(-1 0 0 1 61 11)" stroke-width="2" fill="none" fill-rule="evenodd">
+        <path d="M45.92 11h9.36c.95 0 1.72.77 1.72 1.72V24H44.2V12.72c0-.95.77-1.72 1.72-1.72zM21.72 0h20.56C43.23 0 44 .77 44 1.72V24H20V1.72C20 .77 20.77 0 21.72 0z" stroke="#DA0F47"/>
+        <path d="M28 0h8v10.2a.8.8 0 0 1-.8.8h-6.4a.8.8 0 0 1-.8-.8V0z" stroke="#DA0F47"/>
+        <path d="M20 14v22l-3 .001V36a5 5 0 0 0-10 0h0-7v-7.28C0 27.77.77 27 1.72 27H4l6-13h10z" stroke="#000" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle stroke="#000" cx="12" cy="36" r="5"/>
+        <path d="M57 24v10.28c0 .95-.77 1.72-1.72 1.72H49a5 5 0 0 0-10 0H20V24h37z" stroke="#000"/>
+        <circle stroke="#000" cx="44" cy="36" r="5"/>
+    </g>
+</svg>
