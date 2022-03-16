@@ -122,14 +122,7 @@ $(function () {
         var validate = addressInfoValidation.validate();
         var url = $('#popup-event-13447').data('ajax');
         // console.log('url', url)
-
-        var userNm = $('#popup-event-13447').find('#userName').val();
-        var phoneNo = $('#popup-event-13447').find('#userName').val();
-        var zipCd = $('#popup-event-13447').find('#zipCode').val();
-        var userAdd = $('#popup-event-13447').find('#userAddress').val();
-        var detailAdd = $('#popup-event-13447').find('#detailAddress').val();
-
-
+        
         var param = {
             agree: $('input[name=agreechk]:checked').val(),
             userName: $('#name').val(),
