@@ -54,9 +54,9 @@
             self.$subTopicList = self.$subTopicWrap.find('.rdo-list');
             self.$solutionsBanner = self.$cont.find('#solutionBanner');
             self.$solutionsPopup = $('#solutionsPopup');
-            self.$calendarWrap = self.$cont.find('.calendar-area');
-            self.$calendarDate = self.$calendarWrap.find('.date-wrap');
-            self.$calendarTime = self.$calendarWrap.find('.time-wrap');
+            // self.$calendarWrap = self.$cont.find('.calendar-area');
+            // self.$calendarDate = self.$calendarWrap.find('.date-wrap');
+            // self.$calendarTime = self.$calendarWrap.find('.time-wrap');
 
             self.$authPopup = $('#certificationPopup');
 
@@ -102,16 +102,16 @@
                     validate : function(value){
                         return validatePhone(value);
                     } 
-                },
-                date: {
-                    required: true,
-                    msgTarget: '.err-msg',
-                    errorMsg: '날짜를 선택해주세요.'
-                },
-                time: {
-                    required: true,
-                    msgTarget: '.err-msg',
-                    errorMsg: '시간을 선택해주세요.'
+                // },
+                // date: {
+                //     required: true,
+                //     msgTarget: '.err-msg',
+                //     errorMsg: '날짜를 선택해주세요.'
+                // },
+                // time: {
+                //     required: true,
+                //     msgTarget: '.err-msg',
+                //     errorMsg: '시간을 선택해주세요.'
                 }
             };
 
@@ -157,8 +157,8 @@
 
                 self.bindEvent();
 
-                self.$calendarDate.calendar({inputTarget:'#date'});
-                self.$calendarTime.timeCalendar({inputTarget:'#time'});
+                // self.$calendarDate.calendar({inputTarget:'#date'});
+                // self.$calendarTime.timeCalendar({inputTarget:'#time'});
                 self.$cont.vcSearchModel(); 
             });
         },
@@ -177,7 +177,7 @@
 
                 self.setWarranty(data);
                 self.setTopic(data);
-                self.setCalendar(data);
+                // self.setCalendar(data);
                 
                 self.nextInputStep();
 
@@ -323,6 +323,11 @@
 
             var url = self.$submitForm.data('ajax');
             var param = validation.getAllValues();
+            param = $.extend(param, {
+                privcyCheck: $('#privcyCheck').val(),
+                sensitiveCheck: $('#sensitiveCheck').val()
+            });
+            // console.log('휴대전화인증 : ', param)
 
             lgkorUI.showLoading();
             lgkorUI.requestAjaxData(url, param, function(result) {
@@ -363,8 +368,8 @@
             }
 
             validation.reset();
-            self.$calendarDate.calendar('reset');
-            self.$calendarTime.timeCalendar('reset');
+            // self.$calendarDate.calendar('reset');
+            // self.$calendarTime.timeCalendar('reset');
             self.$cont.find('.ui_all_checkbox').vcCheckboxAllChecker('setAllNoneChecked');
             self.$cont.find('.ui_textcontrol').trigger('textcounter:change', { textLength: 0 });
         },
@@ -450,15 +455,15 @@
             });
 
             // 날짜 선택
-            self.$calendarDate.on('dateselected', function() {
-                validation.validate(['date']);
-                self.requestTime();
-            });
+            // self.$calendarDate.on('dateselected', function() {
+            //     validation.validate(['date']);
+            //     self.requestTime();
+            // });
 
             // 날짜 선택
-            self.$calendarTime.on('timeselected', function() {
-                validation.validate(['time']);
-            });
+            // self.$calendarTime.on('timeselected', function() {
+            //     validation.validate(['time']);
+            // });
 
             // 신청 완료
             self.$completeBtns.find('.btn-confirm').on('click', function() {
