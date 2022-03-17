@@ -41,7 +41,7 @@
         '		{{#if specList.length > 0}}'+
         '		<ul class="spec-info">'+
         '        {{#each item in specList}}'+
-        '			<li>{{item.spec_text}}</li>'+      
+        '			<li>{{item.specText}}</li>'+      
         '        {{/each}}'+
         '		</ul>'+
         '		{{/if}}'+
