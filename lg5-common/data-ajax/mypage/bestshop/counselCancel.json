@@ -1,8 +1,4 @@
 {
   "status": "success",
-  "message": null,
-  "data": {
-    "cancel_yn": "Y",
-    "cancel_message": ""
-  }
+  "message": "정상적으로 처리되었습니다."
 }

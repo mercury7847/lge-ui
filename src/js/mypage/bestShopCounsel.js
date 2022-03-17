@@ -81,6 +81,7 @@
 
   // var SESSION_TAB_INDEX = "bestshop_counsel_tabindex"; // hash 활성화로 변경하여 사용 안함
   var SYSTEM_DOWN_TIME_PLAN = "SYSTEM_DOWN_TIME_PLAN"; // 서버 점검
+  var NOT_LOG_IN = "NOT_LOG_IN"; //
 
   var module = {
     variable: {
@@ -103,7 +104,7 @@
       $error: null, // 에러 문구
       $notice: null, // 유의사항 항목
 
-      $popCancelAlert: null, // 취소 불가 팝업
+      $popCancelTodayAlert: null, // 취소 불가 팝업
       $popCancelConfirm: null, // 취소 컨펌 팝업
       $popCancelComplete: null, // 취소 완료 팝업
       $popProduct: null, // 제품 팝업
@@ -116,7 +117,7 @@
       error: ".cv_error",
       notice: ".cv_note",
 
-      popCancelAlert: "#laypop2",
+      popCancelTodayAlert: "#laypop2",
       popCancelConfirm: "#laypop1",
       popCancelComplete: "#popup1",
       popProduct: "#popup2",
@@ -131,7 +132,7 @@
       this.el.$error = container.find(this.selector.error);
       this.el.$notice = container.find(this.selector.notice);
 
-      this.el.$popCancelAlert = $(this.selector.popCancelAlert);
+      this.el.$popCancelTodayAlert = $(this.selector.popCancelTodayAlert);
       this.el.$popCancelConfirm = $(this.selector.popCancelConfirm);
       this.el.$popCancelComplete = $(this.selector.popCancelComplete);
       this.el.$popProduct = $(this.selector.popProduct);
@@ -235,7 +236,7 @@
         if (revDate && this.getIsToday(revDate)) {
           // 당일 예약 불가
 
-          this.el.$popCancelAlert.vcModal({ opener: target });
+          this.el.$popCancelTodayAlert.vcModal({ opener: target });
 
           /* lgkorUI.alert(
             "<h6>예약일 당일에는 취소가 불가 합니다.</h6>",
@@ -260,7 +261,8 @@
               "예약을 취소하시겠습니까?</h6>",
             {
               ok: function () {
-                this.callCheckLogin(target);
+                // this.callCheckLogin(target);
+                this.callCancel(target);
                 //console.log("ok");
               }.bind(this),
               cancel: function () {
@@ -375,13 +377,24 @@
         ajaxUrl,
         postData,
         function (result) {
-          /* if (result.data.success === "N") {
-            lgkorUI.alert(result.message);
-            return;
-          } */
-
-          if (result.data.cancel_yn == "N") {
-            lgkorUI.alert(result.data.cancel_message);
+          var status = result.status.toLocaleLowerCase();
+          if (status === "error") {
+            if (result.message === NOT_LOG_IN) {
+              location.href = linkHost + "/sso/api/emp/Login";
+            } else {
+              lgkorUI.alert("취소 신청이 정상적으로 처리되지 않았습니다.", {
+                ok: function () {
+                  location.reload();
+                },
+              });
+            }
+          } else if (status === "fail02") {
+            // 이미 취소된 처리
+            lgkorUI.alert(result.message, {
+              ok: function () {
+                location.reload();
+              },
+            });
           } else {
             this.cancelComplete();
           }
@@ -392,7 +405,7 @@
     /**
      * 예약 취소 요청 전 로그인 체크
      */
-    callCheckLogin: function (opener) {
+    /* callCheckLogin: function (opener) {
       var ajaxUrl = $("header").data("login-info");
 
       if (!ajaxUrl) {
@@ -410,7 +423,7 @@
           }
         }.bind(this)
       );
-    },
+    }, */
     /**
      * 리스트 정렬
      */
