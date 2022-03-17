@@ -67,7 +67,7 @@
     '</li>';
 
     // prettier-ignore
-    var storeCouponPopupTemplate = '<header class="pop-header" data-json="{{jsonString}}">'+
+    var storeCouponPopupTemplate = '<header class="pop-header" data-cpnEventNo="{{cpnEventNo}}">'+
             '<h1 class="tit"><span>매장 방문 혜택 쿠폰</span></h1>'+
         '</header>'+
         '<section class="pop-conts common-pop mypage mybestshop">'+
@@ -303,7 +303,7 @@
                     title: "쿠폰을 사용 하시겠습니까?",
                     cancelBtnName: "취소",
                     okBtnName: "사용하기",
-                    ok: $.proxy(oSelf.checkLogin, oSelf),
+                    ok: $.proxy(oSelf.requestUseCoupon, oSelf),
                 });
 
                 var desc =
@@ -361,10 +361,10 @@
                 var match = reg_exp.exec(inputVal);
                 if (match == undefined) {
                     $(e.currentTarget).siblings(".err-msg").css("visibility", "visible");
-                    $(e.currentTarget).closest(".lay-wrap").find(".btn").prop("disabled", true);
+                    $(e.currentTarget).closest(".lay-wrap").find(".btn").eq(1).prop("disabled", true);
                 } else {
                     $(e.currentTarget).siblings(".err-msg").css("visibility", "hidden");
-                    $(e.currentTarget).closest(".lay-wrap").find(".btn").prop("disabled", false);
+                    $(e.currentTarget).closest(".lay-wrap").find(".btn").eq(1).prop("disabled", false);
                 }
             },
             keydownCodeCoupon: function (e) {
@@ -447,12 +447,20 @@
                             lgkorUI.hideLoading();
 
                             if (result.status.toUpperCase() === "ERROR") {
+                                //로그인 풀릴 경우 > 로그인 화면으로 이동
+                                if (result.message.toUpperCase() === "NOT_LOG_IN") {
+                                    this.goLogin();
+                                    return;
+                                }
+
                                 this.el.$couponWrap.hide();
                                 this.el.$couponNoData.hide();
+                                this.el.$couponMore.hide();
                                 this.el.$errorCoupon.show();
 
-                                if (result.downTime) {
-                                    $(".coupon-error-cont dd").text(result.downTime + " ~ " + result.openTime);
+                                //시스템 정기 점검 일 경우
+                                if (result.downTimeStart) {
+                                    $(".coupon-error-cont dd").text(result.downTimeStart + " ~ " + result.downTimeEnd);
                                 }
                                 return;
                             }
@@ -479,6 +487,13 @@
                         {},
                         function (result) {
                             if (result.status.toUpperCase() === "ERROR") {
+                                //로그인 풀릴 경우
+                                if (result.message.toUpperCase() === "NOT_LOG_IN") {
+                                    //로그인 화면으로 이동
+                                    this.goLogin();
+                                    return;
+                                }
+
                                 this.el.$tab.find('li:not(".on") a .count span').text("0");
                             }
 
@@ -508,7 +523,7 @@
          */
         requestUseCoupon: function () {
             var postData = {};
-            postData.cpnEventNo = $("#couponPopup header").data("json")["cpn_event_no"];
+            postData.cpnEventNo = $("#couponPopup header").attr("data-cpnEventNo");
             postData.empNo = $(".comm-code").val();
             var desc = "<span class='blind'>message :: </span>";
 
@@ -524,6 +539,18 @@
                 postData,
                 function (result) {
                     var obj = { title: "" };
+                    if (result.status.toUpperCase() === "ERROR") {
+                        //로그인 풀릴 경우 > 로그인 화면으로 이동
+                        if (result.message.toUpperCase() === "NOT_LOG_IN") {
+                            this.goLogin();
+                            return;
+                        }
+
+                        obj = $.extend(obj, { title: "쿠폰이 정상적으로 사용되지 않았습니다." });
+                        lgkorUI.alert(desc, obj);
+                        return;
+                    }
+
                     if (result.status.toUpperCase() === "SUCCESS") {
                         obj = $.extend(obj, { title: "쿠폰 사용이 완료되었습니다." });
                     } else if (result.status.toUpperCase() === "FAIL01") {
@@ -533,10 +560,6 @@
                     } else if (result.status.toUpperCase() === "FAIL03") {
                         obj = $.extend(obj, { title: "쿠폰이 정상적으로 사용되지 않았습니다." });
                         desc = "<span class='blind'>message ::" + result.message + "</span>";
-                    }
-
-                    if (result.status.toUpperCase() === "ERROR") {
-                        obj = $.extend(obj, { title: "쿠폰이 정상적으로 사용되지 않았습니다." });
                     }
                     lgkorUI.alert(desc, obj);
 
@@ -666,24 +689,6 @@
                 $("html, body").stop().animate({ scrollTop: listbottom }, 420);
             }
         },
-        checkLogin: function () {
-            var ajaxUrl = $("header").data("login-info");
-            if (!ajaxUrl) {
-                return;
-            }
-
-            lgkorUI.requestAjaxDataPost(
-                ajaxUrl,
-                {},
-                function (result) {
-                    if (!result.data.isLogin) {
-                        location.href = linkHost + "/sso/api/emp/Login";
-                    } else {
-                        this.requestUseCoupon();
-                    }
-                }.bind(this)
-            );
-        },
         urlParam: function (name) {
             var results = new RegExp("[?&]" + name + "=([^&#]*)").exec(window.location.href);
             if (results == null) {
@@ -691,6 +696,9 @@
             } else {
                 return decodeURI(results[1]) || 0;
             }
+        },
+        goLogin: function () {
+            location.href = linkHost + "/sso/api/emp/Login?state=" + encodeURIComponent(location.href.replace(location.origin, ""));
         },
     };
 
