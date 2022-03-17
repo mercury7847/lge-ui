@@ -67,7 +67,7 @@
     '</li>';
 
     // prettier-ignore
-    var storeCouponPopupTemplate = '<header class="pop-header" data-json="{{jsonString}}" data-coupon-update-url="/lg5-common/data-ajax/mypage/shopping/updateCoupon.json">'+
+    var storeCouponPopupTemplate = '<header class="pop-header" data-json="{{jsonString}}">'+
             '<h1 class="tit"><span>매장 방문 혜택 쿠폰</span></h1>'+
         '</header>'+
         '<section class="pop-conts common-pop mypage mybestshop">'+
@@ -313,6 +313,8 @@
                     "</span>";
 
                 lgkorUI.confirm(desc, obj);
+
+                $(".laypop .btn").eq(1).prop("disabled", true);
             },
             changeSelCoupon: function (e) {
                 var oSelf = this;
@@ -506,11 +508,17 @@
          */
         requestUseCoupon: function () {
             var postData = {};
-            postData.empNo = $("#couponPopup header").data("json")["cpn_event_no"];
-            postData.cpnEventNo = $(".comm-code").val();
+            postData.cpnEventNo = $("#couponPopup header").data("json")["cpn_event_no"];
+            postData.empNo = $(".comm-code").val();
             var desc = "<span class='blind'>message :: </span>";
 
-            var ajaxUrl = $("#couponPopup header").data("coupon-update-url");
+            var ajaxUrl;
+            if (document.URL.indexOf("ACCF7096.html") >= 0) {
+                ajaxUrl = "/lg5-common/data-ajax/mypage/shopping/updateCoupon.json";
+            } else {
+                ajaxUrl = "/my-page/ajax/bestshop/updateCoupon";
+            }
+
             lgkorUI.requestAjaxDataPost(
                 ajaxUrl,
                 postData,
@@ -518,7 +526,6 @@
                     var obj = { title: "" };
                     if (result.status.toUpperCase() === "SUCCESS") {
                         obj = $.extend(obj, { title: "쿠폰 사용이 완료되었습니다." });
-                        $("#couponPopup .btn-close").trigger("click");
                     } else if (result.status.toUpperCase() === "FAIL01") {
                         obj = $.extend(obj, { title: "쿠폰 사용기간이 지났습니다." });
                     } else if (result.status.toUpperCase() === "FAIL02") {
@@ -532,6 +539,10 @@
                         obj = $.extend(obj, { title: "쿠폰이 정상적으로 사용되지 않았습니다." });
                     }
                     lgkorUI.alert(desc, obj);
+
+                    if (result.status.toUpperCase() === "SUCCESS") {
+                        $("#couponPopup .btn-close").trigger("click");
+                    }
                 }.bind(this),
                 true
             );
