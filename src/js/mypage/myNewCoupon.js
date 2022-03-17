@@ -57,9 +57,9 @@
                 '<p class="desc">{{cpnMainTitle}}</p>'+
                 '<div class="bottom">'+
                     '<p>유효기간 : {{cpnFromDate}}~{{cpnToDate}}</p>'+
-                    '<p>{{#if _clName !== "shop-benefit"}}대상모델 : {{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcodeName}}{{/if}}</p>'+
+                    '<p>{{#if _clName !== "shop-benefit"}}대상모델 : {{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcode_name1}}{{/if}}</p>'+
                 '</div>'+
-                '<a href="#" class="btn-link-text" title="자세히보기"><span>자세히보기</span></a>'+
+                '<a href="#" class="btn-link-text" title="사용하기"><span>사용하기</span></a>'+
                 '{{#if _status==="disabled"}}<div class="end-flags">사용완료</div>{{/if}}'+
             '</div>'+
             '<span class="coupon-bg" aria-hidden="true"><em>BEST SHOP</em></span>'+
@@ -67,7 +67,7 @@
     '</li>';
 
     // prettier-ignore
-    var storeCouponPopupTemplate = '<header class="pop-header">'+
+    var storeCouponPopupTemplate = '<header class="pop-header" data-json="{{jsonString}}">'+
             '<h1 class="tit"><span>매장 방문 혜택 쿠폰</span></h1>'+
         '</header>'+
         '<section class="pop-conts common-pop mypage mybestshop">'+
@@ -77,7 +77,7 @@
             '</div>'+
             '<div class="coupon-info-model">'+
                 '<p class="sub-tit">대상매장</p>'+
-                '<div class="sub-cont">{{orgcodeName}}</div>'+
+                '<div class="sub-cont">{{orgcode_name2}}</div>'+
             '</div>'+
             '<ul class="bullet-list">'+
                 '<li class="b-txt">본 쿠폰은 LG전자 베스트샵 매장에서만 사용할 수 있습니다.</li>'+
@@ -97,10 +97,14 @@
     var TAB_LGE = "LGE";
     var TAB_BESTSHOP_PRD = "BESTSHOP_PRD";
     var TAB_BESTSHOP_VISIT = "BESTSHOP_VISIT";
+    var linkHost = window.LGEAPPHostName === "localhost" ? "https://www.lge.co.kr" : "";
 
     var coupon = {
         variable: {
             listData: [],
+            // lgeListData:[],
+            // bestShopPrdListData:[],
+            // bestShopVisitListData:[],
             visibleCount: 12,
             tabActIndex: 0,
             subTabActIndex: 1, //todo> subtab 생성 시 0으로 변경
@@ -251,6 +255,7 @@
                 } else if (TAB === TAB_BESTSHOP_VISIT) {
                     template = storeCouponPopupTemplate;
                 }
+                obj.jsonString = JSON.stringify(obj);
                 this.el.$couponPopup.html(vcui.template(template, obj));
                 this.el.$couponPopup.vcModal({ opener: $(this) });
             },
@@ -292,22 +297,24 @@
             },
             clickBtnCheckManage: function (e) {
                 e.preventDefault();
-
+                var oSelf = this;
                 var obj = { title: "", cancelBtnName: "", okBtnName: "", ok: function () {} };
                 obj = $.extend(obj, {
                     title: "쿠폰을 사용 하시겠습니까?",
                     cancelBtnName: "취소",
                     okBtnName: "사용하기",
-                    ok: this.checkUseCoupon,
+                    ok: $.proxy(oSelf.checkLogin, oSelf),
                 });
 
                 var desc =
                     '<span class="input-wrap error">' +
                     '<input type="text" class="comm-code" placeholder="확인 코드를 입력해주세요." title="확인 코드를 입력해주세요." maxlength="9" data-min-length="8" data-max-length="9" data-required="true">' +
-                    '<p class="err-msg" style="display:none">확인 코드가 올바르지 않습니다.</p>' +
+                    '<p class="err-msg" style="visibility:hidden">확인 코드가 올바르지 않습니다.</p>' +
                     "</span>";
 
                 lgkorUI.confirm(desc, obj);
+
+                $(".laypop .btn").eq(1).prop("disabled", true);
             },
             changeSelCoupon: function (e) {
                 var oSelf = this;
@@ -353,9 +360,11 @@
                 var reg_exp = new RegExp("^[a-zA-Z][a-zA-Z0-9]{7,8}$");
                 var match = reg_exp.exec(inputVal);
                 if (match == undefined) {
-                    $(e.currentTarget).siblings(".err-msg").show();
+                    $(e.currentTarget).siblings(".err-msg").css("visibility", "visible");
+                    $(e.currentTarget).closest(".lay-wrap").find(".btn").prop("disabled", true);
                 } else {
-                    $(e.currentTarget).siblings(".err-msg").hide();
+                    $(e.currentTarget).siblings(".err-msg").css("visibility", "hidden");
+                    $(e.currentTarget).closest(".lay-wrap").find(".btn").prop("disabled", false);
                 }
             },
             keydownCodeCoupon: function (e) {
@@ -427,91 +436,116 @@
                 tabCouponCnt0 = this.el.$contents.data("coupon-list-url");
                 tabCouponCnt1 = this.el.$contents.data("bestshop-visit-coupon-list-url");
             }
+            var dataUrl = this.el.$contents.data();
 
-            //활성화 탭 데이터 호출
-            if (ajaxUrl) {
-                lgkorUI.requestAjaxDataPost(
-                    ajaxUrl,
-                    {},
-                    function (result) {
-                        lgkorUI.hideLoading();
+            $.each(dataUrl, function (idx, val) {
+                if (ajaxUrl && ajaxUrl === val) {
+                    lgkorUI.requestAjaxDataPost(
+                        val,
+                        {},
+                        function (result) {
+                            lgkorUI.hideLoading();
 
-                        if (result.status.toUpperCase() === "ERROR") {
-                            this.el.$couponWrap.hide();
-                            this.el.$couponNoData.hide();
-                            this.el.$errorCoupon.show();
+                            if (result.status.toUpperCase() === "ERROR") {
+                                this.el.$couponWrap.hide();
+                                this.el.$couponNoData.hide();
+                                this.el.$errorCoupon.show();
 
-                            if (result.downTime) {
-                                $(".coupon-error-cont dd").text(result.downTime + " ~ " + result.openTime);
+                                if (result.downTime) {
+                                    $(".coupon-error-cont dd").text(result.downTime + " ~ " + result.openTime);
+                                }
+                                return;
                             }
-                            return;
-                        }
 
-                        if (result.status.toUpperCase() === "SUCCESS") {
-                            this.el.$couponWrap.show();
-                            this.el.$errorCoupon.hide();
+                            if (result.status.toUpperCase() === "SUCCESS") {
+                                this.el.$couponWrap.show();
+                                this.el.$errorCoupon.hide();
 
-                            var keyValue = Object.keys(result.data);
-                            $.each(keyValue, function (idx, val) {
-                                oSelf.variable.listData[val] = result.data[val];
-                            });
+                                var keyValue = Object.keys(result.data);
+                                $.each(keyValue, function (idx, val) {
+                                    oSelf.variable.listData[val] = result.data[val];
+                                });
 
-                            this.renderContents();
-                        }
-                    }.bind(this),
-                    true
-                );
-            }
+                                this.renderContents();
+                            }
+                        }.bind(oSelf),
+                        true
+                    );
+                }
 
-            //탭1 > 게시글 수 출력
-            if (tabCouponCnt0) {
-                lgkorUI.requestAjaxDataPost(
-                    tabCouponCnt0,
-                    {},
-                    function (result) {
-                        if (result.status.toUpperCase() === "ERROR") {
-                            this.el.$tab.find('li:not(".on") a .count span').text("0");
-                        }
+                if (tabCouponCnt0 === val || tabCouponCnt1 === val) {
+                    lgkorUI.requestAjaxDataPost(
+                        val,
+                        {},
+                        function (result) {
+                            if (result.status.toUpperCase() === "ERROR") {
+                                this.el.$tab.find('li:not(".on") a .count span').text("0");
+                            }
 
-                        if (result.status.toUpperCase() === "SUCCESS") {
-                            var onListCnt;
-                            var keyValue = Object.keys(result.data);
-                            $.each(keyValue, function (idx, val) {
-                                if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
-                                    onListCnt = val;
+                            if (result.status.toUpperCase() === "SUCCESS") {
+                                var keyListCnt;
+                                var keyValue = Object.keys(result.data);
+                                $.each(keyValue, function (idx, val) {
+                                    if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
+                                        keyListCnt = val;
+                                    }
+                                });
+
+                                if (tabCouponCnt0 === val) {
+                                    this.el.$tab.find("li a .count span").eq(0).text(result.data[keyListCnt]);
+                                } else {
+                                    this.el.$tab.find("li a .count span").eq(1).text(result.data[keyListCnt]);
                                 }
-                            });
-                            this.el.$tab.find("li a .count span").eq(0).text(result.data[onListCnt]);
-                        }
-                    }.bind(this),
-                    true
-                );
+                            }
+                        }.bind(oSelf),
+                        true
+                    );
+                }
+            });
+        },
+        /**
+         * coupon 사용 API 요청
+         */
+        requestUseCoupon: function () {
+            var postData = {};
+            postData.cpnEventNo = $("#couponPopup header").data("json")["cpn_event_no"];
+            postData.empNo = $(".comm-code").val();
+            var desc = "<span class='blind'>message :: </span>";
+
+            var ajaxUrl;
+            if (document.URL.indexOf("ACCF7096.html") >= 0) {
+                ajaxUrl = "/lg5-common/data-ajax/mypage/shopping/updateCoupon.json";
+            } else {
+                ajaxUrl = "/my-page/ajax/bestshop/updateCoupon";
             }
 
-            //탭2 > 게시글 수 출력
-            if (tabCouponCnt1) {
-                lgkorUI.requestAjaxDataPost(
-                    tabCouponCnt1,
-                    {},
-                    function (result) {
-                        if (result.status.toUpperCase() === "ERROR") {
-                            this.el.$tab.find('li:not(".on") a .count span').text("0");
-                        }
+            lgkorUI.requestAjaxDataPost(
+                ajaxUrl,
+                postData,
+                function (result) {
+                    var obj = { title: "" };
+                    if (result.status.toUpperCase() === "SUCCESS") {
+                        obj = $.extend(obj, { title: "쿠폰 사용이 완료되었습니다." });
+                    } else if (result.status.toUpperCase() === "FAIL01") {
+                        obj = $.extend(obj, { title: "쿠폰 사용기간이 지났습니다." });
+                    } else if (result.status.toUpperCase() === "FAIL02") {
+                        obj = $.extend(obj, { title: "이미 사용한 쿠폰입니다." });
+                    } else if (result.status.toUpperCase() === "FAIL03") {
+                        obj = $.extend(obj, { title: "쿠폰이 정상적으로 사용되지 않았습니다." });
+                        desc = "<span class='blind'>message ::" + result.message + "</span>";
+                    }
 
-                        if (result.status.toUpperCase() === "SUCCESS") {
-                            var onListCnt;
-                            var keyValue = Object.keys(result.data);
-                            $.each(keyValue, function (idx, val) {
-                                if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
-                                    onListCnt = val;
-                                }
-                            });
-                            this.el.$tab.find("li a .count span").eq(1).text(result.data[onListCnt]);
-                        }
-                    }.bind(this),
-                    true
-                );
-            }
+                    if (result.status.toUpperCase() === "ERROR") {
+                        obj = $.extend(obj, { title: "쿠폰이 정상적으로 사용되지 않았습니다." });
+                    }
+                    lgkorUI.alert(desc, obj);
+
+                    if (result.status.toUpperCase() === "SUCCESS") {
+                        $("#couponPopup .btn-close").trigger("click");
+                    }
+                }.bind(this),
+                true
+            );
         },
         renderContents: function () {
             var type;
@@ -632,10 +666,23 @@
                 $("html, body").stop().animate({ scrollTop: listbottom }, 420);
             }
         },
-        checkUseCoupon: function () {
-            var obj = { title: "" };
-            obj = $.extend(obj, { title: "쿠폰 사용이 완료되었습니다." }); // 쿠폰 사용기간이 지났습니다., 이미 사용한 쿠폰입니다.
-            lgkorUI.alert("", obj);
+        checkLogin: function () {
+            var ajaxUrl = $("header").data("login-info");
+            if (!ajaxUrl) {
+                return;
+            }
+
+            lgkorUI.requestAjaxDataPost(
+                ajaxUrl,
+                {},
+                function (result) {
+                    if (!result.data.isLogin) {
+                        location.href = linkHost + "/sso/api/emp/Login";
+                    } else {
+                        this.requestUseCoupon();
+                    }
+                }.bind(this)
+            );
         },
         urlParam: function (name) {
             var results = new RegExp("[?&]" + name + "=([^&#]*)").exec(window.location.href);
