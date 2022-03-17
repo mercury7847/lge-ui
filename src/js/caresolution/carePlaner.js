@@ -28,7 +28,6 @@
         '               <p class="tit"><span class="blind">제품 디스플레이 네임</span>{{#raw userFriendlyName}}</p>'+
         '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
         '           <p class="code"><span class="blind">제품 코드</span>{{modelName}}</p>'+
-        '       </div>'+
         '		{{#if reviewsCount > 0}}'+
         '		<div class="review-info">'+
         '			<a href="{{modelUrlPath}}">'+
@@ -38,6 +37,7 @@
         '			</a>'+
         '		</div>'+
         '		{{/if}}'+
+        '       </div>'+
         '		{{#if specList.length > 0}}'+
         '		<ul class="spec-info">'+
         '        {{#each item in specList}}'+
