@@ -11,8 +11,8 @@
 	   "cpnToDate":"2022.03.31",
 	   "cpn_goods_model":"65ART90EKPAA.AEDE/65ART90EKPAB/65ART90EKPAC",
 	   "cpn_sale_amt":"50,000원",
-	   "orgcode_name1": "강남본점",
-	   "orgcode_name2": "강남본점",                               
+	   "orgcodeName1": "강남본점",
+	   "orgcodeName2": "강남본점",                               
 	   "unify_id":"5a0b6f19cd01492c8711425175884bfc" 
 	  },
 	  {
@@ -25,8 +25,8 @@
 	   "cpnToDate":"2022.03.31",
 	   "cpn_goods_model":"65ART90EKPAA/65ART90EKPAB",
 	   "cpn_sale_amt":"50,000원",
-	   "orgcode_name1": "강남본점",
-       "orgcode_name2": "강남본점",
+	   "orgcodeName1": "강남본점",
+       "orgcodeName2": "강남본점",
 	   "unify_id":"5a0b6f19cd01492c8711425175884bfc" 
 	  }
 	 ],
@@ -42,8 +42,8 @@
 	   "cpnToDate":"2022.03.31",
 	   "cpn_goods_model":"65ART90EKPAA/65ART90EKPAB/65ART90EKPAC",
 	   "cpn_sale_amt":"50,000원",
-	   "orgcode_name1": "롯데 잠실점 외",
-       "orgcode_name2": "롯데 잠실점,송파점",
+	   "orgcodeName1": "롯데 잠실점 외",
+       "orgcodeName2": "롯데 잠실점,송파점",
 	   "unify_id":"5a0b6f19cd01492c8711425175884bfc" 
 	  },
 	  {
@@ -56,8 +56,8 @@
 	   "cpnToDate":"2022.03.31",
 	   "cpn_goods_model":"65ART90EKPAA/65ART90EKPAB/65ART90EKPAC",
 	   "cpn_sale_amt":"50,000원",
-	   "orgcode_name1": "롯데 잠실점 외",
-       "orgcode_name2": "롯데 잠실점,송파점",
+	   "orgcodeName1": "롯데 잠실점 외",
+       "orgcodeName2": "롯데 잠실점,송파점",
 	   "unify_id":"5a0b6f19cd01492c8711425175884bfc" 
 	  }
 	 ],
