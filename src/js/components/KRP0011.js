@@ -88,7 +88,7 @@
                 //스펙 비교하기 버튼
                 self.$compareModelIds = "";
                 //BTOCSITE-12856 start
-                if(self.$tabList.length == 0 && Object.keys(dataList).length){
+                if(self.$tabList.length == 0 && Object.keys(dataList).length > 0){
                 	 var $compareId = [];
                      var careType ='C';
                      $compareId.push(dataList.productInfo.modelId+'|'+careType); //스펙비교하기에 모델명 추가
