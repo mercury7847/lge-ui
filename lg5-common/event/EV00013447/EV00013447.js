@@ -149,9 +149,6 @@ $(function () {
                 }else{
                     lgkorUI.alert("", {
                         title: result.data.message,
-                        ok: function(){
-                            window.open('', '_self', '').close();
-                        }
                     })
                 }
 
