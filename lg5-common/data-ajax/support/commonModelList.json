@@ -5,14 +5,22 @@
         "listData": [
             {
                 "modelCode": "",
+                "categoryNm": "",
+                "subCategoryNm": "",
+                "category": "",
+                "subCategory": "",
+                "productCode": ""
+            }, 
+            {
+                "modelCode": "SH-R157SBM",
                 "categoryNm": "에어컨",
-                "subCategoryNm": "시스템 에어컨",
-                "category": "1019",
-                "subCategory": "CT50019259",
+                "subCategoryNm": "업소용 에어컨",
+                "category": "CT50019183",
+                "subCategory": "CT50019244",
                 "productCode": "CRA"
             }, 
             {
-                "modelCode": "LGP810SPEAK",
+                "modelCode": "RPUQ0253S2R",
                 "categoryNm": "에어컨",
                 "subCategoryNm": "시스템 에어컨",
                 "category": "CT50019183",
@@ -25,6 +33,14 @@
                 "subCategoryNm": "창문형/이동식",
                 "category": "CT50019183",
                 "subCategory": "CT50019229",
+                "productCode": "WRA"
+            },
+            {
+                "modelCode": "SQ06ACJCBJ",
+                "categoryNm": "에어컨",
+                "subCategoryNm": "벽걸이형",
+                "category": "CT50019183",
+                "subCategory": "CT50019214",
                 "productCode": "WRA"
             },
             {
