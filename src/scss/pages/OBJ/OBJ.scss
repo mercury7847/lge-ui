@@ -1644,6 +1644,27 @@ html {
                 width: 90px;
                 padding: 0;
             }
+            // BTOCSITE-13471 오브제컬렉션 브랜드관 키비 등록 요청
+            &.txt-objdios{
+                width:504px;
+                height:49px;
+                .img-mobile{
+                    display:none;
+                    img{
+                        width:100%;
+                    }
+                }
+                @include mobile{
+                    width:160px;
+                    height:16px;
+                    .img-mobile{
+                        display:block;
+                    }
+                    .img-pc{
+                        display:none;
+                    }
+                }
+            }
         }
     }
     .text-info-etc{
