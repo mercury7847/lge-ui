@@ -261,7 +261,7 @@
               "예약을 취소하시겠습니까?</h6>",
             {
               ok: function () {
-                // this.callCheckLogin(target);
+                // this.callCheckLogin();
                 this.callCancel(target);
                 //console.log("ok");
               }.bind(this),
@@ -345,11 +345,13 @@
         ajaxUrl,
         {},
         function (result) {
-          if (
-            result.data.success === "N" &&
-            result.message === SYSTEM_DOWN_TIME_PLAN
-          ) {
-            this.error(result);
+          if (result.status === "error") {
+            if (result.message === SYSTEM_DOWN_TIME_PLAN) {
+              this.error(result);
+            } else if (result.message === NOT_LOG_IN) {
+              this.goLogin();
+            }
+
             return;
           }
 
@@ -378,9 +380,10 @@
         postData,
         function (result) {
           var status = result.status.toLocaleLowerCase();
+
           if (status === "error") {
             if (result.message === NOT_LOG_IN) {
-              location.href = linkHost + "/sso/api/emp/Login";
+              this.goLogin();
             } else {
               lgkorUI.alert("취소 신청이 정상적으로 처리되지 않았습니다.", {
                 ok: function () {
@@ -403,9 +406,9 @@
       );
     },
     /**
-     * 예약 취소 요청 전 로그인 체크
+     * 로그인 체크
      */
-    /* callCheckLogin: function (opener) {
+    /* callCheckLogin: function (callback) {
       var ajaxUrl = $("header").data("login-info");
 
       if (!ajaxUrl) {
@@ -417,9 +420,9 @@
         {},
         function (result) {
           if (!result.data.isLogin) {
-            location.href = linkHost + "/sso/api/emp/Login";
+            this.goLogin();
           } else {
-            this.callCancel(opener);
+            if (callback) callback();
           }
         }.bind(this)
       );
@@ -793,6 +796,12 @@
             ", scrollbars=yes, location=no, menubar=no, status=no, toolbar=no"
         );
       }
+    },
+    goLogin: function () {
+      location.href =
+        linkHost +
+        "/sso/api/emp/Login?state=" +
+        encodeURIComponent(location.href.replace(location.origin, ""));
     },
   };
 
