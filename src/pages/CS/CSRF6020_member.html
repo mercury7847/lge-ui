@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko" data-login="Y">
+@@include('./common/head.html', {
+    "pageCSS": [
+        "support/support",
+        "support/reservation"
+    ]
+})
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <!-- 2021.03.17 class="progress-wrap" 리스트 class 추가 -->
+            @@include('./common/modules/page-header.html', {
+                'pageTitle': '영상 상담 예약',
+                'pageDesc': '영상으로 고장 증상을 정확하게 판별하여 빠르게 해결해 드립니다.',
+                'pageBtn' : [
+                    { 'btn' : '요금 및 보증 기간 안내 ', 'attr': 'data-href="#ratesWarrantyGuidePopup" data-control="modal"' }
+                ],
+                'progressArr': [
+                    { 'progress' : '제품 선택', 'on':'on'},
+                    { 'progress' : '예약 내용 입력', 'on':'on'},
+                    { 'progress' : '예약 완료', 'on':''}
+                ]
+            })
+            <!-- //2021.03.17 class="progress-wrap" 리스트 class 추가 -->
+            <div class="contents support video-consulting">
+                
+                <!-- 2021.01.18 Static 영역 추가 -->
+                <div class="accordion-wrap ui_accordion border-type directCall-wrap" data-single-open="true">
+                    <ul>
+                        <li class="lists">
+                            <div class="head">
+                                <a href="#n" class="accord-btn ui_accord_toggle" data-open-text="열기" data-close-text="닫기">
+                                    <span class="subtitle"><strong>영상상담이란 무엇일까요?</strong></span>
+                                    <span class="blind ui_accord_text">열기</span>
+                                </a>
+                            </div>
+                            <div class="accord-cont no-bg-type ui_accord_content">
+                                <!-- 2021.02.03 마크업 변경 -->
+                                <p class="consulting-info-tit">고장 증상을 설명하기 어려웠거나, 보다 정확한 상황 설명이 필요한 적이 있으신가요?</p>
+                                <p class="consulting-info-desc">스마트폰을 사용하시는 고객님께 <em class="color-3">영상상담 서비스</em>를 추천 드립니다! 영상상담 서비스로 <em class="color-3">편리</em>하게 <em class="color-3">상담</em>해보세요!</p>
+                                <div class="consulting-info">
+                                    <div class="consulting-keyword">
+                                        <div class="item">
+                                            <strong class="title">정확한 판단</strong>
+                                            <p class="text">문제 상황을 상담사에게 영상으로 전달</p>
+                                        </div>
+                                        <div class="item">
+                                            <strong class="title">실시간 처리</strong>
+                                            <p class="text">간단한 문제는 전문 상담사와 바로 처리</p>
+                                        </div>
+                                        <div class="item">
+                                            <strong class="title">수월한 의사소통</strong>
+                                            <p class="text">복잡한 현장을 영상상담으로 중계</p>
+                                        </div>
+                                    </div>
+                                    <ol class="step-list">
+                                        <li>
+                                            <span>영상상담 예약</span>
+                                        </li>
+                                        <li>
+                                            <span>상담사 전화</span>
+                                        </li>
+                                        <li>
+                                            <span>영상상담 접속</span>
+                                        </li>
+                                        <li>
+                                            <span>영상상담 진행</span>
+                                        </li>
+                                        <li>
+                                            <!-- 2021.03.15 줄바꿈 처리 -->
+                                            <span>문제<br>해결</span>
+                                        </li>
+                                    </ol>
+                                    <!-- 2021.03.15. 리스트 항목 수정 -->
+                                    @@include('./common/modules/bullet-list.html', {
+                                        "topBorder" : true,
+                                        "bulletTxt" : [
+                                            "예약한 시간에 상담사가 전화로 연락드리고, 영상상담을 접속할 수 있는 사이트 URL을 문자로 송부 드립니다.",
+                                            "문자는 1544-7777로 발송되며, 카메라 접속 등의 동의를 하셔야 합니다. (단, 일부 web 브라우저의 버전이 낮을 경우 서비스에 제한이 있을 수 있습니다.)"
+                                        ]
+                                    })
+                                    <!-- //2021.03.15. 리스트 항목 수정 -->
+                                </div>
+                                <!-- 2021.02.03 마크업 변경 -->
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 2021.01.18 Static 영역 추가 -->
+                
+                <!-- 선택 제품 플로팅바 -->
+                @@include('./common/support/selected-model-bar.html')
+
+                <!-- 회원 - 제품 없을 시 -->
+                @@include('./common/support/select-my-model.html', {
+                    "noItem": true
+                })
+
+                <!-- 회원 - 보유제품 펼침 -->
+                @@include('./common/support/select-my-model.html')
+
+                <div class="cont-wrap">
+                    <form action="/html/CS/CSRF6022.html" method="post" id="submitForm" data-ajax="/lg5-common/data-ajax/support/videoConsulting.json" novalidate>
+                        <div class="step-area">
+                            <input type="hidden" name="categoryNm" id="categoryNm" value="">
+                            <input type="hidden" name="subCategoryNm" id="subCategoryNm" value="">
+                            <input type="hidden" name="category" id="category" value="">
+                            <input type="hidden" name="subCategory" id="subCategory" value="">
+                            <input type="hidden" name="modelCode" id="modelCode" value="">
+                            <input type="hidden" name="productCode" id="productCode" value="">
+                            <input type="hidden" name="acptNo" id="acptNo" value="">
+                            <input type="hidden" name="serviceType" id="serviceType" value="E">
+                            <input type="hidden" name="pageCode" id="pageCode" value="pageCode">
+
+                            <!-- 제품 선택 -->
+                            <div class="step-box active" id="stepModel">
+                                <!-- 제품 카테고리 선택 -->
+                                @@include('./common/support/select-model.html', {
+                                    "category": [
+                                        { "name": "모바일", "code": "1018", "imgSrc": "/lg5-common/images/CS/img-category01.jpg", "imgAlt": "모바일 카테고리 썸네일" },
+                                        { "name": "TV/프로젝터", "code": "1005", "imgSrc": "/lg5-common/images/CS/img-category02.jpg", "imgAlt": "TV/프로젝터 카테고리 썸네일" },
+                                        { "name": "IT/모니터", "code": "P1011", "imgSrc": "/lg5-common/images/CS/img-category03.jpg", "imgAlt": "IT/모니터 카테고리 썸네일" },
+                                        { "name": "에어컨", "code": "1019", "imgSrc": "/lg5-common/images/CS/img-category04.jpg", "imgAlt": "에어컨 카테고리 썸네일" },
+                                        { "name": "냉장/냉동고", "code": "1025", "imgSrc": "/lg5-common/images/CS/img-category05.jpg", "imgAlt": "냉장/냉동고 카테고리 썸네일" },
+                                        { "name": "세탁기/스타일러", "code": "1020", "imgSrc": "/lg5-common/images/CS/img-category06.jpg", "imgAlt": "세탁기/스타일러 카테고리 썸네일" },
+                                        { "name": "청소기", "code": "1023", "imgSrc": "/lg5-common/images/CS/img-category07.jpg", "imgAlt": "청소기 카테고리 썸네일" },
+                                        { "name": "조리/세척기기", "code": "P1030", "imgSrc": "/lg5-common/images/CS/img-category08.jpg", "imgAlt": "조리/세척기기 카테고리 썸네일" },
+                                        { "name": "건강/소형기기", "code": "P1024", "imgSrc": "/lg5-common/images/CS/img-category09.jpg", "imgAlt": "건강/소형기기 카테고리 썸네일" },
+                                        { "name": "AV/음향기기", "code": "P1009", "imgSrc": "/lg5-common/images/CS/img-category10.jpg", "imgAlt": "AV/음향기기 카테고리 썸네일" },
+                                        { "name": "기타", "code": "P9999", "imgSrc": "/lg5-common/images/CS/img-category11.jpg", "imgAlt": "기타 카테고리 썸네일" },
+                                        { "name": "B2B", "code": "P1134", "imgSrc": "/lg5-common/images/CS/img-category12.jpg", "imgAlt": "B2B 카테고리 썸네일" }
+                                    ]
+                                })
+                            </div>
+                            <!-- // 제품 선택 -->
+
+                            <!-- 예약 내용 입력 -->
+                            <div class="step-box" id="stepInput">
+                                <div class="form-infos first-type">
+                                    <p class="req" aria-disabled="true">필수 입력 항목</p>
+                                </div>
+
+                                <div class="section">
+                                    <div class="tit-wrap">
+                                        <h2 class="tit">제품 추가정보</h2>
+                                    </div>
+                                    <div class="section-box">
+                                        <h3 class="sub-tit">구매정보 선택</h3>
+                                        <div class="form-wrap">
+                                            <div class="forms type4">
+                                                <div class="tit">
+                                                    <p class="label">구입 시기</p>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="rdo-list-wrap">
+                                                        <ul class="rdo-list">
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="buyingdate" id="buyingdate01" value="0">
+                                                                    <label for="buyingdate01">1개월 이내</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="buyingdate" id="buyingdate02" value="1">
+                                                                    <label for="buyingdate02">1년 이내</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="buyingdate" id="buyingdate03" value="2">
+                                                                    <label for="buyingdate03">1년~2년 이내</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="buyingdate" id="buyingdate04" value="3">
+                                                                    <label for="buyingdate04">2년 이상</label>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="rdo-wrap">
+                                                                    <input type="radio" name="buyingdate" id="buyingdate05" value="4">
+                                                                    <label for="buyingdate05">기억 안남</label>
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="section-box" id="topicBox">
+                                        <h3 class="sub-tit req">고장증상 선택</h3>
+                                        <div class="rdo-list-wrap btn-type" id="topicList" data-ajax="/lg5-common/data-ajax/support/subTopicOption_reserve.json">
+                                            <ul class="rdo-list">
+                                                <!-- <li>
+                                                    <span class="rdo-wrap btn-type3">
+                                                        <input type="radio" name="topic" id="topic01" value="NTB10005000" data-error-msg="정확한 제품증상을 선택해주세요." data-required="true" required>
+                                                        <label for="topic01"><span>부품/소모품</span></label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap btn-type3">
+                                                        <input type="radio" name="topic" id="topic02" value="NTB10005001">
+                                                        <label for="topic02"><span>건조</span></label>
+                                                    </span>
+                                                </li> -->
+                                            </ul>
+                                            <p class="err-msg topic-msg"></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="section-box" id="subTopicBox" style="display:none;">
+                                        <h3 class="sub-tit req">세부증상 선택</h3>
+                                        <div class="rdo-list-wrap w-auto" id="subTopicList" data-ajax="/lg5-common/data-ajax/support/solutionCheck.json">
+                                            <ul class="rdo-list">
+                                                <!-- <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" name="subTopic" id="subTopic01" value="SS000001" data-error-msg="정확한 세부증상을 선택해주세요." data-required="true" required>
+                                                        <label for="subTopic01">전기요금 문의</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="rdo-wrap">
+                                                        <input type="radio" name="subTopic" id="subTopic02" value="SS000002">
+                                                        <label for="subTopic02">제품 구입/행사 문의</label>
+                                                    </span>
+                                                </li> -->
+                                            </ul>
+                                            <p class="err-msg sub-topic-msg"></p>
+                                        </div>
+
+                                        <div class="banner-wrap" id="solutionBanner" style="display:none;">
+                                            <div class="banner">  
+                                                <div class="cont">
+                                                    <p class="tit">제품 문제해결 방법을 확인해보세요!</p>
+                                                    <p class="desc">선택하신 증상은 제품 문제해결 방법을 통해서 해결이 가능합니다.</p>
+                                                </div>  
+                                                <button type="button" class="btn-link" data-href="#solutionsPopup">제품 문제해결 방법 확인하기</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="section-box">
+                                        <div class="form-wrap">
+                                            <div class="forms">
+                                                <div class="tit">
+                                                    <label for="content">전달사항</label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="text-form">   
+                                                        <div class="input-wrap">
+                                                            <textarea class="ui_textcontrol" name="content" id="content" placeholder="개인정보 보호를 위해 내용 입력란에 고객님의 주민등록번호, 휴대폰번호와 같은 개인정보를 입력하지 마시기 바랍니다." maxlength="100" data-limit="100" data-count-target="#txt-count1"></textarea>
+                                                            <span id="txt-count1" class="inner-text"><em>0</em> / 100자</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="section">
+                                    <div class="tit-wrap">
+                                        <h2 class="tit">예약자 정보 입력</h2>
+                                    </div>
+                                    <div class="section-box">
+                                        <div class="form-wrap">
+                                            <div class="forms">
+                                                <div class="tit">
+                                                    <label for="userNm" class="req">이름<span class="blind">필수입력</span></label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="input-wrap">
+                                                        <!-- 2021.02.10 input 수정 -->
+                                                        <input type="text" name="userNm" id="userNm" placeholder="이름 입력" maxlength="30" data-format="koreng" data-error-msg="이름을 입력해주세요" data-pattern-msg="이름은 한글 또는 영문으로만 입력해주세요." data-required="true" required>
+                                                    </div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="forms">
+                                                <div class="tit">
+                                                    <label for="phoneNo" class="req">휴대폰번호<span class="blind">필수입력</span></label>
+                                                </div>
+                                                <div class="conts">
+                                                    <div class="input-wrap">
+                                                        <!-- 2021.02.10 type number로 수정 -->
+                                                        <input type="number" name="phoneNo" id="phoneNo" placeholder="휴대폰 번호 입력" minlength="10" maxlength="11" data-error-msg="정확한 휴대전화 번호를 입력해주세요"  data-pattern-msg="정확한 휴대전화 번호를 입력해주세요" data-required="true" required>
+                                                    </div>
+                                                    <div class="btm-more err-block">
+                                                        <p class="err-msg"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="section">
+                                    <div class="tit-wrap">
+                                        <h2 class="tit">희망일시 선택</h2>
+                                    </div>
+                                    <div class="section-box">
+                                        @@include('./common/support/desired-date.html')
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // 예약 내용 입력 -->
+
+                            @@include('./common/modules/bullet-list.html', {
+                                "topBorder" : true,
+                                "bulletTxt" : [
+                                    "비로그인으로 예약을 접수하실 경우, 휴대전화 인증 후에 예약이 완료됩니다.",
+                                    "입력하신 정보가 정확하지 않을 경우 서비스가 취소 또는 지연될 수 있습니다.",
+                                    "담당 전문 상담사가 먼저 상담 중인 고객의 응대가 끝나지 않을 경우 선택하신 예약시간보다  전화가 다소 늦어질 수 있습니다."
+                                ]
+                            })
+
+                            <div class="btn-group center">
+                                <button type="button" class="btn gray btn-cancel"><span>취소</span></a>
+                                <button type="button" class="btn btn-confirm">예약</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+             
+        @@include('./common/support/quick-menu.html')
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- 유금 및 보증기간 팝업 -->
+    @@include('./CS/modal/rates-warranty-guide-popup.html')
+
+    <!-- 제품 해결 팝업 -->
+    @@include('./CS/modal/solutions-popup.html')
+
+    <!-- 취소 팝업 -->
+    <article id="canclePopup" class="lay-wrap">
+        <section class="lay-conts">
+            <h6>취소 하시겠습니까?</h6>
+        </section>
+        <div class="btn-wrap laypop">
+            <button type="button" class="btn gray ui_modal_close"><span>취소</span></button>
+            <a href="#" class="btn"><span>확인</span></a>
+        </div>
+    </article>
+
+    <!-- toast-meassage -->
+    @@include('./common/modules/toast-message.html', {
+        "messageArr": [
+            {"message" : "예약가능한 제품이 아닙니다."}
+        ]
+    })
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/reservation/signLanguage.min.js"></script>
+</body>
+</html> 
