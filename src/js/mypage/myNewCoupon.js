@@ -57,7 +57,7 @@
                 '<p class="desc">{{cpnMainTitle}}</p>'+
                 '<div class="bottom">'+
                     '<p>유효기간 : {{cpnFromDate}}~{{cpnToDate}}</p>'+
-                    '<p>{{#if _clName !== "shop-benefit"}}대상모델 : {{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcode_name1}}{{/if}}</p>'+
+                    '<p>{{#if _clName !== "shop-benefit"}}대상모델 : {{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcodeName1}}{{/if}}</p>'+
                 '</div>'+
                 '<a href="#" class="btn-link-text" title="사용하기"><span>사용하기</span></a>'+
                 '{{#if _status==="disabled"}}<div class="end-flags">사용완료</div>{{/if}}'+
@@ -77,7 +77,7 @@
             '</div>'+
             '<div class="coupon-info-model">'+
                 '<p class="sub-tit">대상매장</p>'+
-                '<div class="sub-cont">{{orgcode_name2}}</div>'+
+                '<div class="sub-cont">{{orgcodeName2}}</div>'+
             '</div>'+
             '<ul class="bullet-list">'+
                 '<li class="b-txt">본 쿠폰은 LG전자 베스트샵 매장에서만 사용할 수 있습니다.</li>'+
