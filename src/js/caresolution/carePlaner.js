@@ -11,6 +11,7 @@
     // .module-type4 : 케어십_용역제품 모듈
     // 20210720 BTOCSITE-2537 케어솔루션 > 금융리스 상품 판매, 자가관리 상품판매를 위한 개발
     // 20220125 BTOCSITE-9177 RAC 관련 서비스 타입 추가 요청
+    // 20220316 BTOCSITE-13244 케어플래너 PLP 스펙 노출 및 문구 수정 건
     var _listItemTemplate =
         '<li class="item">'+
         '   <div class="prd-care-vertical {{moduleType}}" data-index="{{index}}">'+
@@ -28,6 +29,22 @@
         '           {{#if moduleType == "module-type1" || moduleType == "module-type2"}}</a>{{/if}}'+
         '           <p class="code"><span class="blind">제품 코드</span>{{modelName}}</p>'+
         '       </div>'+
+        '		{{#if reviewsCount > 0}}'+
+        '		<div class="review-info">'+
+        '			<a href="{{modelUrlPath}}">'+
+        '   		<div class="star is-review"><span class="blind">리뷰있음</span></div>'+
+        '    		<div class="average-rating"><span class="blind">평점</span>{{reviewsScore}}</div>'+
+        '    		<div class="review-count"><span class="blind">리뷰 수</span>({{reviewsCount}})</div>'+
+        '			</a>'+
+        '		</div>'+
+        '		{{/if}}'+
+        '		{{#if specList.length > 0}}'+
+        '		<ul class="spec-info">'+
+        '        {{#each item in specList}}'+
+        '			<li>{{item.spec_text}}</li>'+      
+        '        {{/each}}'+
+        '		</ul>'+
+        '		{{/if}}'+
         '       <div class="info-wrap">'+
         '       {{#if moduleType == "module-type4"}}'+
         '           <p class="code-txt">{{modelDescription}}</p>'+
@@ -142,6 +159,7 @@
         '           </div>'+
         '       {{/if}}'+
         '           <div class="price-wrap">'+
+        '				<em class="text">이용 요금 <span class="small-text">(1년차 월 요금 기준)</span></em>'+
         '               <div class="total-price">'+
         '                   <p class="price">월 {{monthlyPrice}}원</p>'+
         '                   <button type="button" class="btn border putItemBtn"><span>담기</span></button>'+
@@ -220,7 +238,7 @@
     var putItemPriceTemplate = 
         '<div class="total-info">'+
             '<dl>'+
-                '<dt>이용 요금</dt>'+
+                '<dt>이용 요금 (1년차 월 요금 기준)</dt>'+
                 '<dd>{{totalPrice}}</dd>'+
             '</dl>'+
             '<dl>'+
