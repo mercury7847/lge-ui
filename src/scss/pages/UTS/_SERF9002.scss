@@ -21,90 +21,96 @@
     }
 }
 .feedback-box-wrap{
-    position: relative;
-    margin-bottom: 70px;
-    padding: 32px;
-    border-radius: 16px;
-    box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-    background-color: #fff;
+    margin: 40px 0 70px 0;
+    padding: 0 40px;
     @include mobile {
-        padding: 20px 16px 16px 16px;
-        margin-bottom: 40px;
+        padding: 0 20px;
+        margin:0 0 40px 0;
     }
-    .fb_title{
-        font-size: 14px;
-        line-height: 20px;
-        color: #666;
+    .feedback-box {
+        position: relative;
+        padding: 32px;
+        border-radius: 16px;
+        box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+        background-color: #fff;
         @include mobile {
-            font-size: 12px;
-            line-height: 17px;
+            padding: 20px 16px 16px 16px;
         }
-    }
-    .fb_msg{
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 26px;
-        @include mobile {
-            font-size: 16px;
-            line-height: 22px;
+        .fb_title{
+            font-size: 14px;
+            line-height: 20px;
+            color: #666;
+            @include mobile {
+                font-size: 12px;
+                line-height: 17px;
+            }
         }
-    }
-    .select-list-wrap{
-        margin: 24px 0 8px 0;
-        @include mobile {
-            margin: 20px 0 36px 0;
+        .fb_msg{
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 26px;
+            @include mobile {
+                font-size: 16px;
+                line-height: 22px;
+            }
         }
-        li{
-            padding:0 48px 0 0;
-            .rdo-wrap{
-                input + label{
-                    font-size: 12px;
-                    line-height: 24px;
-                    @include mobile {
-                        font-size: 14px;
+        .select-list-wrap{
+            margin: 24px 0 8px 0;
+            @include mobile {
+                margin: 20px 0 36px 0;
+            }
+            li{
+                padding:0 48px 0 0;
+                .rdo-wrap{
+                    input + label{
+                        font-size: 12px;
                         line-height: 24px;
-                    }
-                    &::after {
-                        background-image: url("/lg5-common/images/icons/btn-radio-off-24-black.svg");
-                    }
-                }
-                input {
-                    &:checked + label {
+                        @include mobile {
+                            font-size: 14px;
+                            line-height: 24px;
+                        }
                         &::after {
-                            background-image: url("/lg5-common/images/icons/btn-radio-on-24-black.svg");
+                            background-image: url("/lg5-common/images/icons/btn-radio-off-24-black.svg");
                         }
                     }
-                    &:disabled + label {
-                        &::after {
-                            background-image: url("/lg5-common/images/icons/btn-radio-disabled-24-black.svg");
+                    input {
+                        &:checked + label {
+                            &::after {
+                                background-image: url("/lg5-common/images/icons/btn-radio-on-24-black.svg");
+                            }
+                        }
+                        &:disabled + label {
+                            &::after {
+                                background-image: url("/lg5-common/images/icons/btn-radio-disabled-24-black.svg");
+                            }
+                        }
+                    }
+                }
+            }
+            &.w-auto {
+                > ul{
+                    margin: 0;
+                    li{
+                        @include mobile {
+                            width: 50%;
                         }
                     }
                 }
             }
         }
-        &.w-auto {
-            > ul{
-                margin: 0;
-                li{
-                    @include mobile {
-                        width: 50%;
-                    }
-                }
+        .search-btn{
+            position: absolute;
+            bottom: 32px;
+            right: 32px;
+            @include mobile {
+                width: 100%;
+                display: block;
+                position: static;
+                height: 44px;
+                border-radius: 8px;
+                font-size: 13px;
+                line-height: 44px;
             }
-        }
-    }
-    .search-btn{
-        position: absolute;
-        bottom: 32px;
-        right: 32px;
-        @include mobile {
-            width: 100%;
-            display: block;
-            position: static;
-            height: 44px;
-            border-radius: 8px;
-            font-size: 13px;
-            line-height: 44px;
         }
     }
 }
