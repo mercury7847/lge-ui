@@ -126,7 +126,9 @@ $(window).ready(function(){
 			entries.forEach(function(entry) {
 				if (entry.intersectionRatio > 0.7) {
 					sectionEnterEvent(entry.target)
-                } else {
+                }else if (entry.intersectionRatio == 0) {
+					$(entry.target).find('.ui_carousel_current .animation-area video').currentTime = 0;
+				}else {
 					sectionLeaveEvent(entry.target)
                 }
 			});                            

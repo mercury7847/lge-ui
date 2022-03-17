@@ -615,6 +615,7 @@
 		&.bg-#{$bg} {
             .component[class*=bg-] {
                 background-color:transparent !important;
+                video {background-color: transparent !important;} // BTOCSITE-12804
             }
             
 			@if $bg == lightgray {
