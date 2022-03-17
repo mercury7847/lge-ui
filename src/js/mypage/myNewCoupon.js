@@ -102,9 +102,6 @@
     var coupon = {
         variable: {
             listData: [],
-            // lgeListData:[],
-            // bestShopPrdListData:[],
-            // bestShopVisitListData:[],
             visibleCount: 12,
             tabActIndex: 0,
             subTabActIndex: 1, //todo> subtab 생성 시 0으로 변경
@@ -261,33 +258,27 @@
             },
             clickBtnMoreView: function (e) {
                 var page;
-                var key;
-
                 TAB = this.getTabName(this.variable.tabActIndex);
 
                 if (TAB === TAB_LGE) {
                     if (this.variable.selOptVal === "on") {
-                        key = "onListData";
                         this.variable.lgeOnPage = this.variable.lgeOnPage + 1;
                         page = this.variable.lgeOnPage;
                     } else {
-                        key = "endListData";
                         this.variable.lgeOffPage = this.variable.lgeOffPage + 1;
                         page = this.variable.lgeOffPage;
                     }
                 } else if (TAB === TAB_BESTSHOP_VISIT) {
                     if (this.variable.selOptVal === "on") {
-                        key = "storeVisitOnList";
                         this.variable.bestShopVisitOnPage = this.variable.bestShopVisitOnPage + 1;
                         page = this.variable.bestShopVisitOnPage;
                     } else {
-                        key = "storeVisitOffList";
                         this.variable.bestShopVisitOffPage = this.variable.bestShopVisitOffPage + 1;
                         page = this.variable.bestShopVisitOffPage;
                     }
                 }
 
-                this.addCouponList(key, page);
+                this.addCouponList(page);
             },
             clickBtnGroup: function (e) {
                 var url = $(e.currentTarget).attr("data-coupon-url");
@@ -317,34 +308,11 @@
                 $(".laypop .btn").eq(1).prop("disabled", true);
             },
             changeSelCoupon: function (e) {
-                var oSelf = this;
                 if (this.variable.selOptVal === $(e.currentTarget).vcSelectbox("value")) {
                     return;
                 }
                 this.variable.selOptVal = $(e.currentTarget).vcSelectbox("value");
-
-                var page;
-                this.el.$couponList.empty();
-                TAB = this.getTabName(this.variable.tabActIndex);
-
-                if (TAB === TAB_LGE) {
-                    if (this.variable.selOptVal === "on") {
-                        key = "onListData";
-                        page = this.variable.lgeOnPage;
-                    } else {
-                        key = "endListData";
-                        page = this.variable.lgeOffPage;
-                    }
-                } else if (TAB === TAB_BESTSHOP_VISIT) {
-                    if (this.variable.selOptVal === "on") {
-                        key = "storeVisitOnList";
-                        page = this.variable.bestShopVisitOnPage;
-                    } else {
-                        key = "storeVisitOffList";
-                        page = this.variable.bestShopVisitOffPage;
-                    }
-                }
-                this.setCouponList(key);
+                this.setCouponList();
             },
             keyupCodeCoupon: function (e) {
                 var inputVal = $(e.currentTarget).val();
@@ -440,6 +408,7 @@
 
             $.each(dataUrl, function (idx, val) {
                 if (ajaxUrl && ajaxUrl === val) {
+                    lgkorUI.showLoading();
                     lgkorUI.requestAjaxDataPost(
                         val,
                         {},
@@ -470,8 +439,23 @@
                                 this.el.$errorCoupon.hide();
 
                                 var keyValue = Object.keys(result.data);
+                                var aDataList;
                                 $.each(keyValue, function (idx, val) {
-                                    oSelf.variable.listData[val] = result.data[val];
+                                    aDataList = result.data[val];
+                                    if (val.toUpperCase().indexOf("ONLIST") >= 0 && typeof aDataList === "object") {
+                                        oSelf.variable.listData["on"] = aDataList;
+                                    }
+
+                                    if (
+                                        (val.toUpperCase().indexOf("OFFLIST") >= 0 || val.toUpperCase().indexOf("ENDLIST") >= 0) &&
+                                        typeof aDataList === "object"
+                                    ) {
+                                        oSelf.variable.listData["end"] = aDataList;
+                                    }
+
+                                    if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
+                                        oSelf.variable.listData["onListCnt"] = aDataList;
+                                    }
                                 });
 
                                 this.renderContents();
@@ -571,36 +555,30 @@
             );
         },
         renderContents: function () {
-            var type;
-
             // 게시글 수 출력
             TAB = this.getTabName(this.variable.tabActIndex);
             if (TAB === TAB_LGE) {
-                if (this.variable.selOptVal === "on") {
-                    type = "onListData";
-                } else {
-                    type = "endListData";
-                }
-                this.el.$tab.find(">ul>li").eq(0).find(".count span").text(this.variable.listData["onListData"].length);
+                this.el.$tab.find(">ul>li").eq(0).find(".count span").text(this.variable.listData["onListCnt"]);
             } else if (TAB === TAB_BESTSHOP_VISIT) {
-                if (this.variable.selOptVal === "on") {
-                    type = "storeVisitOnList";
-                } else {
-                    type = "storeVisitOffList";
-                }
-
-                this.el.$tab.find(">ul>li").eq(1).find(".count span").text(this.variable.listData["storeVisitOnListCount"]);
+                this.el.$tab.find(">ul>li").eq(1).find(".count span").text(this.variable.listData["onListCnt"]);
             }
 
             this.el.$couponMore.hide();
-            this.setCouponList(type);
+            this.setCouponList();
         },
-        setCouponList: function (key) {
+        setCouponList: function () {
             var oSelf = this;
             var targetList = this.el.$couponList;
             var noData = this.el.$couponNoData;
-            targetList.empty();
-            var count = this.variable.listData[key].length;
+
+            var oDataList;
+            if (this.variable.selOptVal === "on") {
+                oDataList = this.variable.listData["on"];
+            } else {
+                oDataList = this.variable.listData["end"];
+            }
+
+            var count = oDataList.length;
 
             TAB = this.getTabName(this.variable.tabActIndex);
 
@@ -618,48 +596,54 @@
                 }
             }
 
+            targetList.empty();
             if (count > 0) {
                 noData.hide();
                 targetList.show();
 
                 for (var i = 0; i <= page; i++) {
-                    oSelf.addCouponList(key, i);
+                    oSelf.addCouponList(i);
                 }
             } else {
+                if (this.variable.selOptVal === "on") {
+                    noData.find("p").text("사용 할 수 있는 쿠폰이 없습니다.");
+                } else {
+                    noData.find("p").text("종료된 쿠폰이 없습니다.");
+                }
                 noData.show();
                 targetList.hide();
                 this.el.$couponMore.hide();
             }
         },
-        addCouponList: function (key, page) {
-            var oSelf = this;
-
+        addCouponList: function (page) {
             var listbottom = this.el.$couponList.offset().top + this.el.$couponList.height();
-            var totalList = this.variable.listData[key].length;
             var start = page * this.variable.visibleCount;
             var end = start + this.variable.visibleCount;
 
             var template;
+            var _status;
+            var _clName;
 
+            var oDataList;
+            if (this.variable.selOptVal === "on") {
+                oDataList = this.variable.listData["on"];
+            } else {
+                oDataList = this.variable.listData["end"];
+            }
+
+            var totalList = oDataList.length;
             TAB = this.getTabName(this.variable.tabActIndex);
             if (TAB === TAB_LGE) {
                 template = couponItemTemplate;
             } else if (TAB === TAB_BESTSHOP_VISIT) {
                 template = storeCouponItemTemplate;
-            }
-
-            var _status;
-            var _clName;
-            if (key.indexOf("storeVisit") >= 0) {
                 _clName = "shop-benefit";
-            } else {
-                _clName = "";
-            }
 
-            if (key.indexOf("OffList") >= 0) {
-                _status = "disabled";
-            } else {
-                _status = "";
+                if (this.variable.selOptVal === "on") {
+                    _status = "";
+                } else {
+                    _status = "disabled";
+                }
             }
 
             if (end > totalList) {
@@ -667,18 +651,19 @@
             }
 
             for (var i = start; i < end; i++) {
-                var item = oSelf.variable.listData[key][i];
-                item.startDate = !item.startDate ? null : vcui.date.format(item.startDate, "yyyy.MM.dd");
-                item.endDate = !item.endDate ? null : vcui.date.format(item.endDate, "yyyy.MM.dd");
-                item.jsonString = JSON.stringify(item);
+                var item = oDataList[i];
+                if (item) {
+                    item.startDate = !item.startDate ? null : vcui.date.format(item.startDate, "yyyy.MM.dd");
+                    item.endDate = !item.endDate ? null : vcui.date.format(item.endDate, "yyyy.MM.dd");
+                    item.jsonString = JSON.stringify(item);
 
-                if (TAB === TAB_BESTSHOP_VISIT) {
-                    item._clName = _clName;
-                    item._status = _status;
+                    if (TAB === TAB_BESTSHOP_VISIT) {
+                        item._clName = _clName;
+                        item._status = _status;
+                    }
+                    this.el.$couponList.append(vcui.template(template, item));
                 }
-                this.el.$couponList.append(vcui.template(template, item));
             }
-
             if (end >= totalList) {
                 this.el.$couponMore.hide();
             } else {
