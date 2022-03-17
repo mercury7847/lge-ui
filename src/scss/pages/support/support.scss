@@ -656,6 +656,121 @@ label img {
             }
         }
     }
+    
+    .consulting-keyword-2 {
+        margin-bottom: 32px;
+        .item {
+            flex:1;
+            &:not(:last-of-type) {
+                margin-bottom: 24px;
+            }
+            dt {
+                border-radius: 8px;
+                color:#fff;
+                text-align:center;
+                background-image:linear-gradient(to right, #a58bee, #f86791);
+                .title {
+                    font-weight:$font-weight-bold;
+                }
+            }
+            dd {
+                .text {
+                    font-weight:$font-weight-medium;
+                    padding-left: 11px;
+                    text-indent: -11px;
+                    &::before {
+                        content: ' ';
+                        display: inline-block;
+                        width: 3px;
+                        height: 3px;
+                        margin-top: 11px;
+                        margin-right: 8px;
+                        border-radius: 50%;
+                        background: #000;
+                        vertical-align: top;
+                    }
+                    .arr {
+                        top: -1px;
+                        position: relative;
+                        vertical-align: middle;
+                        display: inline-block;
+                        width: 16px;
+                        height: 16px;
+                        background: url(/lg5-common/images/icons/btn-arr-16-black.svg) no-repeat;
+                    }
+               } 
+                .aster {
+                    display: block;
+                    font-weight:$font-weight-medium;
+                    padding-left: 17px;
+                    text-indent: -17px;
+               } 
+            }
+        }
+        .service-time {
+            font-weight:$font-weight-medium;
+            text-align: center;
+        }
+
+        @include pc {
+            .item {
+                display:flex;
+                justify-content: flex-start;
+                dt {
+                    min-width: 293px;
+                    max-height: 69px;
+                    padding: 20px 0;
+                    .title {
+                        line-height: 30px;
+                        font-size: 20px;
+                    }
+                }
+                dd {
+                    margin-left: 26px;
+                    .text {
+                        line-height: 23px;
+                        font-size: 15px;
+                    }
+                    .aster {
+                        line-height: 24px;
+                        font-size: 14px;
+                    }
+                }
+            }
+            .service-time {
+                line-height:24px;
+                font-size:16px;
+                margin: 34px 0 32px;
+            }
+        }
+        @include mobile {
+            .item {
+                dt {
+                    padding:16px 0;
+                    .title {
+                        line-height: 23px;
+                        font-size: 15px;
+                    }
+                }
+                dd {
+                    margin-top: 9px;
+                    .text {
+                        line-height: 21px;
+                        font-size: 13px;
+                    }
+                    .aster {
+                        line-height: 21px;
+                        font-size: 12px;
+                    }
+                }
+            }
+            .service-time {
+                line-height: 21px;
+                font-size: 12px;
+                margin: 16px 0 32px;
+            }
+        }
+    }
 
     .step-list {
         display: flex;
