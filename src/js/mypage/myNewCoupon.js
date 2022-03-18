@@ -208,6 +208,11 @@
             $(document).on("keydown.codeCoupon", ".comm-code", $.proxy(this.handler.keydownCodeCoupon, this));
         },
         handler: {
+            /**
+             * @callback clickTabMenu
+             * @param {*} e
+             * @return {myCallback} [탭 메뉴 클릭 시 api 호출]
+             */
             clickTabMenu: function (e) {
                 e.preventDefault();
                 var $tab = $(e.currentTarget).parent();
@@ -241,6 +246,11 @@
                 this.variable.subTabActIndex = $subTab.index();
                 this.requestCouponList();
             },
+            /**
+             * @callback clickCoupon
+             * @param {*} e
+             * @return {myCallback} [쿠폰 클릭 시 상세 팝업 호출]
+             */
             clickCoupon: function (e) {
                 e.preventDefault();
                 var $li = $(e.currentTarget).closest("li");
@@ -256,6 +266,11 @@
                 this.el.$couponPopup.html(vcui.template(template, obj));
                 this.el.$couponPopup.vcModal({ opener: $(this) });
             },
+            /**
+             * @callback clickBtnMoreView
+             * @param {*} e
+             * @return {myCallback} [더 보기 클릭 시 리스트 컨텐츠 추가]
+             */
             clickBtnMoreView: function (e) {
                 var page;
                 TAB = this.getTabName(this.variable.tabActIndex);
@@ -286,6 +301,11 @@
                     location.href = url;
                 }
             },
+            /**
+             * @callback clickBtnCheckManage
+             * @param {*} e
+             * @return {myCallback} [매장방문혜택 쿠폰 팝업 > 매니저 확인 버튼 클릭 > 쿠폰 사용 팝업 활성화]
+             */
             clickBtnCheckManage: function (e) {
                 e.preventDefault();
                 var oSelf = this;
@@ -307,6 +327,11 @@
 
                 $(".laypop .btn").eq(1).prop("disabled", true);
             },
+            /**
+             * @callback changeSelCoupon
+             * @param {*} e
+             * @return {myCallback} [셀렉트 박스 변경 시 > 사용가능쿠폰/ 종료된 쿠폰 조회]
+             */
             changeSelCoupon: function (e) {
                 if (this.variable.selOptVal === $(e.currentTarget).vcSelectbox("value")) {
                     return;
@@ -314,6 +339,11 @@
                 this.variable.selOptVal = $(e.currentTarget).vcSelectbox("value");
                 this.setCouponList();
             },
+            /**
+             * @callback keyupCodeCoupon
+             * @param {*} e
+             * @return {myCallback} [매장방문혜택 쿠폰 팝업 > 매니저확인 팝업 확인코드 입력 시> 영문, 숫자만 입력 가능]
+             */
             keyupCodeCoupon: function (e) {
                 var inputVal = $(e.currentTarget).val();
                 if (inputVal.length === 1) {
@@ -335,6 +365,11 @@
                     $(e.currentTarget).closest(".lay-wrap").find(".btn").eq(1).prop("disabled", false);
                 }
             },
+            /**
+             * @callback keyupCodeCoupon
+             * @param {*} e
+             * @return {myCallback} [매장방문혜택 쿠폰 팝업 > 매니저확인 팝업 확인코드 입력 시> 영문, 숫자만 입력 가능]
+             */
             keydownCodeCoupon: function (e) {
                 var inputVal = $(e.currentTarget).val();
                 if (inputVal.length === 1) {
@@ -366,6 +401,12 @@
             this.variable.subTabActIndex = $subTab.index();
             this.requestCouponList();
         },
+        /**
+         * @method getTabName
+         * @memberof
+         * @param {*} idx
+         * @return {myCallback}  [활성화된 탭 이름 리턴]
+         */
         getTabName: function (idx) {
             var oSelf = this;
 
@@ -384,7 +425,9 @@
             }
         },
         /**
-         * coupon API 요청
+         * @method requestCouponList
+         * @memberof
+         * @return {myCallback}  [coupon list API 요청]
          */
         requestCouponList: function () {
             var oSelf = this;
@@ -431,15 +474,18 @@
                                 var $listCnt;
                                 TAB = this.getTabName(this.variable.tabActIndex);
                                 if (TAB === TAB_LGE) {
-                                    $listCnt = this.el.$tab.find(">ul>li").eq(0).find(".count span");
+                                    $listCnt = this.el.$tab.find(".count span").eq(0);
                                 } else if (TAB === TAB_BESTSHOP_VISIT) {
-                                    $listCnt = this.el.$tab.find(">ul>li").eq(1).find(".count span");
+                                    $listCnt = this.el.$tab.find(".count span").eq(1);
                                 }
                                 $listCnt.text("");
 
                                 //시스템 정기 점검 일 경우
                                 if (result.downTimeStart) {
+                                    $(".coupon-error-cont dl").show();
                                     $(".coupon-error-cont dd").text(result.downTimeStart + " ~ " + result.downTimeEnd);
+                                } else {
+                                    $(".coupon-error-cont dl").hide();
                                 }
                                 return;
                             }
@@ -513,7 +559,9 @@
             });
         },
         /**
-         * coupon 사용 API 요청
+         * @method requestUseCoupon
+         * @memberof
+         * @return {myCallback}  [coupon update API 요청]
          */
         requestUseCoupon: function () {
             var postData = {};
@@ -564,20 +612,29 @@
                 true
             );
         },
+        /**
+         * @method renderContents
+         * @memberof
+         * @return {myCallback}  [list > 게시글 수 출력, 데이터 리스트 출력]
+         */
         renderContents: function () {
             // 게시글 수 출력
             var $listCnt;
             TAB = this.getTabName(this.variable.tabActIndex);
             if (TAB === TAB_LGE) {
-                $listCnt = this.el.$tab.find(">ul>li").eq(0).find(".count span");
+                $listCnt = this.el.$tab.find(".count span").eq(0);
             } else if (TAB === TAB_BESTSHOP_VISIT) {
-                $listCnt = this.el.$tab.find(">ul>li").eq(1).find(".count span");
+                $listCnt = this.el.$tab.find(".count span").eq(1);
             }
             $listCnt.text(this.variable.listData["onListCnt"]);
 
-            this.el.$couponMore.hide();
             this.setCouponList();
         },
+        /**
+         * @method setCouponList
+         * @memberof
+         * @return {myCallback}  [list > 데이터 리스트 출력]
+         */
         setCouponList: function () {
             var oSelf = this;
             var targetList = this.el.$couponList;
@@ -631,6 +688,11 @@
                 this.el.$couponMore.hide();
             }
         },
+        /**
+         * @method addCouponList
+         * @memberof
+         * @return {myCallback}  [list > 데이터 상세 쿠폰 컴포넌트 출력]
+         */
         addCouponList: function (page) {
             var listbottom = this.el.$couponList.offset().top + this.el.$couponList.height();
             var start = page * this.variable.visibleCount;
@@ -692,6 +754,12 @@
                 $("html, body").stop().animate({ scrollTop: listbottom }, 420);
             }
         },
+        /**
+         * @method urlParam
+         * @param {*} name
+         * @memberof
+         * @return {myCallback}  [도메인 파라미터에 name 값 있는지 체크]
+         */
         urlParam: function (name) {
             var results = new RegExp("[?&]" + name + "=([^&#]*)").exec(window.location.href);
             if (results == null) {
@@ -700,6 +768,11 @@
                 return decodeURI(results[1]) || 0;
             }
         },
+        /**
+         * @method goLogin
+         * @memberof
+         * @return {myCallback}  [로그인 페이지로 이동]
+         */
         goLogin: function () {
             location.href = linkHost + "/sso/api/emp/Login?state=" + encodeURIComponent(location.href.replace(location.origin, ""));
         },
