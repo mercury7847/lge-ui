@@ -214,7 +214,6 @@
              * @return {myCallback} [탭 메뉴 클릭 시 api 호출]
              */
             clickTabMenu: function (e) {
-                e.preventDefault();
                 var $tab = $(e.currentTarget).parent();
                 $tab.siblings("li.on").removeClass("on");
                 $tab.addClass("on");
@@ -533,8 +532,8 @@
                                     this.goLogin();
                                     return;
                                 }
-
-                                this.el.$tab.find('li:not(".on") a .count span').text("0");
+                                // 게시글 수 출력
+                                this.el.$tab.find('li:not(".on") a .count span').text("");
                             }
 
                             if (result.status.toUpperCase() === "SUCCESS") {
