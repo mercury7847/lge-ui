@@ -214,6 +214,8 @@
              * @return {myCallback} [탭 메뉴 클릭 시 api 호출]
              */
             clickTabMenu: function (e) {
+                e.preventDefault();
+
                 var $tab = $(e.currentTarget).parent();
                 $tab.siblings("li.on").removeClass("on");
                 $tab.addClass("on");
@@ -227,6 +229,15 @@
 
                 //탭 변경 시 데이터 새로 고침
                 this.variable.tabActIndex = $tab.index();
+
+                //url 파라미터 변경
+                var url = lgkorUI.parseUrl(location.href);
+                if (this.variable.tabActIndex === 0) {
+                    window.history.replaceState("", "", url.pathname);
+                } else {
+                    window.history.replaceState("", "", "?tab=bestshop&store_coupon=visit");
+                }
+
                 this.requestCouponList();
 
                 //todo> subtab 생성
