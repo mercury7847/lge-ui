@@ -17,7 +17,7 @@
         "visitorName": "홍길일",
         "visitorTelno": "010-****-1231",
         "cancelFlag": "",
-        "visitCycle": "",
+        "selectVisitCycleId": "",
         "requestDate": "2022-02-01",
         "counselEventUrl": "https://bestshopdev.lge.co.kr/reserve/CE10002006",
         "storeUrl": "https://bestshopdev.lge.co.kr/shop/detail-ST00004125"
@@ -34,7 +34,7 @@
         "visitorName": "홍길이",
         "visitorTelno": "010-****-1232",
         "cancelFlag": "",
-        "visitCycle": "2개월/1회",
+        "selectVisitCycleId": "2",
         "requestDate": "2022-02-01",
         "counselEventUrl": "https://bestshopdev.lge.co.kr/reserve/CE10002006",
         "storeUrl": "https://bestshopdev.lge.co.kr/shop/detail-ST00004125"
@@ -51,7 +51,7 @@
         "visitorName": "홍길삼",
         "visitorTelno": "010-****-1233",
         "cancelFlag": "",
-        "visitCycle": "",
+        "selectVisitCycleId": "",
         "requestDate": "2022-02-15",
         "counselEventUrl": "https://bestshopdev.lge.co.kr/reserve/CE10002006",
         "storeUrl": "https://bestshopdev.lge.co.kr/shop/detail-ST00004125"
@@ -68,7 +68,7 @@
         "visitorName": "홍길사",
         "visitorTelno": "010-****-1234",
         "cancelFlag": "Y",
-        "visitCycle": "",
+        "selectVisitCycleId": "",
         "requestDate": "2022-02-28",
         "counselEventUrl": "https://bestshopdev.lge.co.kr/reserve/CE10002006",
         "storeUrl": "https://bestshopdev.lge.co.kr/shop/detail-ST00004125"
@@ -85,7 +85,7 @@
         "visitorName": "홍길오",
         "visitorTelno": "010-****-1234",
         "cancelFlag": "",
-        "visitCycle": "",
+        "selectVisitCycleId": "",
         "requestDate": "2022-02-15",
         "counselEventUrl": "https://bestshopdev.lge.co.kr/reserve/CE10002006",
         "storeUrl": "https://bestshopdev.lge.co.kr/shop/detail-ST00004125"

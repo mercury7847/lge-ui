@@ -29,8 +29,8 @@
                 '<a href="#n" class="linkbtn product" data-prd-id="{{_prdId}}">제품정보팝업호출</a>' +
               '{{/if}}' +
             '</dd>' +
-            '{{#if visitCycle}}<dt>방문주기</dt>' +
-            '<dd>{{visitCycle}}</dd>{{/if}}' +
+            '{{#if selectVisitCycleId}}<dt>방문주기</dt>' +
+            '<dd>{{selectVisitCycleId}}개월/1회</dd>{{/if}}' +
         '</dl>' +
       '{{#else}}' +
         '<dl>' +
@@ -69,7 +69,7 @@
     '<p class="prd_model">{{modelName}}</p>' + 
     '<dl class="prd_visit">' + 
       '<dt>방문주기</dt>' + 
-      '<dd>{{selectVisitCycleID}}개월</dd>' + 
+      '<dd>{{selectVisitCycleId}}개월</dd>' + 
     '</dl>' + 
     '<dl class="prd_pay">' + 
       '<dt>이용요금</dt>' + 
