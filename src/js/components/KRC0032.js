@@ -115,24 +115,36 @@ $(window).ready(function(){
 		} 
 		
 		//슬라이드가 화면 중앙인지 아닌지를 체크하여 해당 이벤트 실행 -BTOCSITE-8039 (BTOCSITE-12804)
-		var observerOption = {
-            root: null,
-            threshold: []
-        }
-        for (var i=0; i<=1.0; i+= 0.01) {
-            observerOption.threshold.push(i);
-        }
-		var io = new IntersectionObserver(function(entries, observer) {
-			entries.forEach(function(entry) {
-				if (entry.intersectionRatio > 0.7) {
-					sectionEnterEvent(entry.target)
-                }else if (entry.intersectionRatio == 0) {
-					$(entry.target).find('.ui_carousel_current .animation-area video').currentTime = 0;
-				}else {
-					sectionLeaveEvent(entry.target)
-                }
-			});                            
-		}, observerOption);
+		if(vcui.detect.isIE) { 
+			var observerOption = {
+				root: null,
+				threshold: []
+			}
+			for (var i=0; i<=1.0; i+= 0.01) {
+				observerOption.threshold.push(i);
+			}
+			var io = new IntersectionObserver(function(entries, observer) {
+				entries.forEach(function(entry) {
+					if (entry.intersectionRatio > 0.7) {
+						sectionEnterEvent(entry.target)
+					}else if (entry.intersectionRatio == 0) {
+						$(entry.target).find('.ui_carousel_current .animation-area video').currentTime = 0;
+					}else {
+						sectionLeaveEvent(entry.target)
+					}
+				});                            
+			}, observerOption);
+		} else {
+			var io = new IntersectionObserver(function(entries, observer) {
+				entries.forEach(function(entry){
+					if( entry.isIntersecting ) {
+						sectionEnterEvent(entry.target)
+					} else {
+						sectionLeaveEvent(entry.target)
+					}
+				});                            
+			}, {root: null, threshold: 0.5})
+		}
 		
 		$('.KRC0032').find(".ui_carousel_slider").each(function(cdx, slide){
 			var $slide 			= $(this),
