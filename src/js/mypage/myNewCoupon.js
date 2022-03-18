@@ -545,10 +545,17 @@
                                     }
                                 });
 
+                                // 게시글 수 출력
+                                var $listCnt;
                                 if (tabCouponCnt0 === val) {
-                                    this.el.$tab.find("li a .count span").eq(0).text(result.data[keyListCnt]);
+                                    $listCnt = this.el.$tab.find("li a .count span").eq(0);
                                 } else {
-                                    this.el.$tab.find("li a .count span").eq(1).text(result.data[keyListCnt]);
+                                    $listCnt = this.el.$tab.find("li a .count span").eq(1);
+                                }
+                                if (result.data[keyListCnt] > 0) {
+                                    $listCnt.text(result.data[keyListCnt]);
+                                } else {
+                                    $listCnt.text("");
                                 }
                             }
                         }.bind(oSelf),
@@ -625,7 +632,11 @@
             } else if (TAB === TAB_BESTSHOP_VISIT) {
                 $listCnt = this.el.$tab.find(".count span").eq(1);
             }
-            $listCnt.text(this.variable.listData["onListCnt"]);
+            if (this.variable.listData["onListCnt"] > 0) {
+                $listCnt.text(this.variable.listData["onListCnt"]);
+            } else {
+                $listCnt.text("");
+            }
 
             this.setCouponList();
         },
