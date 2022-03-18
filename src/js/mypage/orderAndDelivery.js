@@ -159,7 +159,7 @@
                         '<div class="col col1-2">'+
                             '<div class="payment-price">'+
                                 '<p class="price">'+
-                                    '<span class="blind">구매가격</span>{{listData.buyAmt}}{{#if listData.buyAmt !== "-"}}원{{/if}}'+
+                                    '<span class="blind">구매가격</span>{{listData.buyAmt}}원'+
                                 '</p>'+
                             '</div>'+
                         '</div>'+
@@ -168,7 +168,7 @@
                             '{{#if !listData.deliveryStatus}}<p class="tit "><span class="blind">진행상태</span>{{listData.deliveryStatusText}}</p>{{/if}}' +
                             '{{#if listData.deliveryStatus && listData.ordSysOrdNo}}'+
                                 '<div class="state-btns">'+
-                                    '<a href="#n" class="btn size border stateInner-btn" data-related-order-number="{{listData.ordSysOrdNo}}" data-type="bestShopDeliveryInquiry"><span>배송조회</span></a>'+
+                                    '<a href="#n" class="btn size border stateInner-btn" data-ord-no="{{listData.ordSysOrdNo}}" data-type="bestShopDeliveryInquiry"><span>배송조회</span></a>'+
                                 '</div>'+
                             '{{/if}}'+
                         '</div>'+
@@ -425,17 +425,19 @@
     '<div class="delivery-step">'+
         '<div class="delivery-text active">'+
             '<strong class="delivery-status">'+
-            '{{deliveryStatus}}'+
+            '{{ordStatusTypeNm}}'+
             '</strong>'+
-            '{{#if deliveryStatusDate}}<p class="delivery-date">{{deliveryStatusDate}}</p>{{/if}}'+
-            '{{#if deliveryDriverInfo}}<span class="delivery-name">배송기사 {{deliveryDriverName}} {{#if deliveryDriverPhoneNumber}}<em class="bar">{{deliveryDriverPhoneNumber}}</em></span>{{/if}}{{/if}}'+
-            '{{#if !deliveryDriverInfo}}<span class="delivery-message">{{deliveryDriverMessage}}</span>{{/if}}'+
+            '{{#if delivWishYmd}}<p class="delivery-date">{{delivWishYmd}} 배송 예정</p>{{/if}}'+
+            '{{#if dueYmd}}<p class="delivery-date">{{dueYmd}} 도착 예정</p>{{/if}}'+
+            '{{#if receiveYmd}}<p class="delivery-date">{{receiveYmd}}</p>{{/if}}'+
+            //'{{#if !delivMsg}}<span class="delivery-name">배송기사 {{deliveryDriverName}} {{#if deliveryDriverPhoneNumber}}<em class="bar">{{deliveryDriverPhoneNumber}}</em></span>{{/if}}{{/if}}'+
+            '{{#if delivMsg}}<span class="delivery-message">{{delivMsg}}</span>{{/if}}'+
         '</div>'+
     '</div>'+
     '<div class="delivery-step">'+
         '<div class="delivery-text">'+
             '<strong class="delivery-status">주문일</strong>'+
-            '<p class="delivery-date">{{orderDate}}</p>'+
+            '<p class="delivery-date">{{ordYmd}}</p>'+
         '</div>'+
     '</div>';
 
@@ -725,7 +727,7 @@
                     setDeliveryInquiry(dataID, prodID);
                     break;
                 case "bestShopDeliveryInquiry":
-                    setBestShopDeliveryInquiry($(this).data("relatedOrderNumber"));
+                    setBestShopDeliveryInquiry($(this).data("ordNo"));
                     break;
 
                 case "deliveryRequest":
@@ -1438,12 +1440,19 @@
     }
     
     // LGECOMVIO-114 베스트샵 배송조회 추가
-    function setBestShopDeliveryInquiry(number){
+    function setBestShopDeliveryInquiry(ordNo){
         var sendata = {
-            relatedOrderNumber: number
+            ordSysOrdNo: ordNo
         }
 
         lgkorUI.requestAjaxDataFailCheck(BESTSHOP_DELIVERY_URL, sendata, function(result){
+            var listData = result.data;
+
+            listData.delivWishYmd = listData.delivWishYmd ? listData.delivWishYmd : "";
+            listData.dueYmd = listData.dueYmd ? listData.dueYmd : "";
+            listData.receiveYmd = listData.receiveYmd ? listData.receiveYmd : "";
+            listData.delivMsg = listData.delivMsg ? listData.delivMsg : "";
+
             $('#popup-bestshop-delivery').find('.delivery-data').hide();
             $('#popup-bestshop-delivery').find('.delivery-info').empty();
             $('#popup-bestshop-delivery').find('.delivery-info').html(vcui.template(bestShopDeliveryInfoTemplate, result.data));
