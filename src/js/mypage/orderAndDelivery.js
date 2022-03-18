@@ -1448,14 +1448,14 @@
         lgkorUI.requestAjaxDataFailCheck(BESTSHOP_DELIVERY_URL, sendata, function(result){
             var listData = result.data;
 
-            listData.delivWishYmd = listData.delivWishYmd ? listData.delivWishYmd : "";
-            listData.dueYmd = listData.dueYmd ? listData.dueYmd : "";
-            listData.receiveYmd = listData.receiveYmd ? listData.receiveYmd : "";
-            listData.delivMsg = listData.delivMsg ? listData.delivMsg : "";
+            listData.delivWishYmd = listData.delivWishYmd ? listData.delivWishYmd : ""; // 배송 예정일
+            listData.dueYmd = listData.dueYmd ? listData.dueYmd : ""; // 도착 예정일
+            listData.receiveYmd = listData.receiveYmd ? listData.receiveYmd : ""; // 도착 완료일
+            listData.delivMsg = listData.delivMsg ? listData.delivMsg : ""; // 배송 알림톡 확인 권유 문구
 
             $('#popup-bestshop-delivery').find('.delivery-data').hide();
             $('#popup-bestshop-delivery').find('.delivery-info').empty();
-            $('#popup-bestshop-delivery').find('.delivery-info').html(vcui.template(bestShopDeliveryInfoTemplate, result.data));
+            $('#popup-bestshop-delivery').find('.delivery-info').html(vcui.template(bestShopDeliveryInfoTemplate, listData));
             $('#popup-bestshop-delivery').vcModal('show');
         });
     }
