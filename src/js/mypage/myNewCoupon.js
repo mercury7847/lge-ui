@@ -427,6 +427,16 @@
                                 this.el.$couponMore.hide();
                                 this.el.$errorCoupon.show();
 
+                                // 게시글 수 출력
+                                var $listCnt;
+                                TAB = this.getTabName(this.variable.tabActIndex);
+                                if (TAB === TAB_LGE) {
+                                    $listCnt = this.el.$tab.find(">ul>li").eq(0).find(".count span");
+                                } else if (TAB === TAB_BESTSHOP_VISIT) {
+                                    $listCnt = this.el.$tab.find(">ul>li").eq(1).find(".count span");
+                                }
+                                $listCnt.text("");
+
                                 //시스템 정기 점검 일 경우
                                 if (result.downTimeStart) {
                                     $(".coupon-error-cont dd").text(result.downTimeStart + " ~ " + result.downTimeEnd);
@@ -556,12 +566,14 @@
         },
         renderContents: function () {
             // 게시글 수 출력
+            var $listCnt;
             TAB = this.getTabName(this.variable.tabActIndex);
             if (TAB === TAB_LGE) {
-                this.el.$tab.find(">ul>li").eq(0).find(".count span").text(this.variable.listData["onListCnt"]);
+                $listCnt = this.el.$tab.find(">ul>li").eq(0).find(".count span");
             } else if (TAB === TAB_BESTSHOP_VISIT) {
-                this.el.$tab.find(">ul>li").eq(1).find(".count span").text(this.variable.listData["onListCnt"]);
+                $listCnt = this.el.$tab.find(">ul>li").eq(1).find(".count span");
             }
+            $listCnt.text(this.variable.listData["onListCnt"]);
 
             this.el.$couponMore.hide();
             this.setCouponList();
@@ -576,6 +588,10 @@
                 oDataList = this.variable.listData["on"];
             } else {
                 oDataList = this.variable.listData["end"];
+            }
+
+            if (oDataList === undefined) {
+                return;
             }
 
             var count = oDataList.length;
@@ -652,6 +668,8 @@
 
             for (var i = start; i < end; i++) {
                 var item = oDataList[i];
+                delete item["unifyId"];
+
                 if (item) {
                     item.startDate = !item.startDate ? null : vcui.date.format(item.startDate, "yyyy.MM.dd");
                     item.endDate = !item.endDate ? null : vcui.date.format(item.endDate, "yyyy.MM.dd");
