@@ -615,9 +615,14 @@
 		&.bg-#{$bg} {
             .component[class*=bg-] {
                 background-color:transparent !important;
+                // s : BTOCSITE-12804
                 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-                    video {background-color: transparent !important;} // BTOCSITE-12804
+                    .animation-box {
+                        overflow: hidden;
+                        video {background-color: transparent !important;}
+                    }
                 }
+                // e : BTOCSITE-12804
             }
             
 			@if $bg == lightgray {
