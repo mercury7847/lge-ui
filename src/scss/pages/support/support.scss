@@ -658,7 +658,7 @@ label img {
     }
     
     .consulting-keyword-2 {
-        margin-bottom: 32px;
+        
         .item {
             flex:1;
             &:not(:last-of-type) {
@@ -713,6 +713,7 @@ label img {
         }
 
         @include pc {
+            margin: 0 -10px 32px -10px;
             .item {
                 display:flex;
                 justify-content: flex-start;
@@ -744,6 +745,7 @@ label img {
             }
         }
         @include mobile {
+            margin: 0 0 32px 0;
             .item {
                 dt {
                     padding:16px 0;
