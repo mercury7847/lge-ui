@@ -430,7 +430,7 @@
             '{{#if delivWishYmd}}<p class="delivery-date">{{delivWishYmd}} 배송 예정</p>{{/if}}'+
             '{{#if dueYmd}}<p class="delivery-date">{{dueYmd}} 도착 예정</p>{{/if}}'+
             '{{#if receiveYmd}}<p class="delivery-date">{{receiveYmd}}</p>{{/if}}'+
-            //'{{#if !delivMsg}}<span class="delivery-name">배송기사 {{deliveryDriverName}} {{#if deliveryDriverPhoneNumber}}<em class="bar">{{deliveryDriverPhoneNumber}}</em></span>{{/if}}{{/if}}'+
+            '{{#if DriverNm}}<span class="delivery-name">배송기사 {{DriverNm}} {{#if DriverPcsNo}}<em class="bar">{{DriverPcsNo}}</em></span>{{/if}}{{/if}}'+
             '{{#if delivMsg}}<span class="delivery-message">{{delivMsg}}</span>{{/if}}'+
         '</div>'+
     '</div>'+
@@ -1452,6 +1452,8 @@
             listData.dueYmd = listData.dueYmd ? listData.dueYmd : ""; // 도착 예정일
             listData.receiveYmd = listData.receiveYmd ? listData.receiveYmd : ""; // 도착 완료일
             listData.delivMsg = listData.delivMsg ? listData.delivMsg : ""; // 배송 알림톡 확인 권유 문구
+            listData.DriverNm = listData.DriverNm ? listData.DriverNm : ""; // 배송 기사명
+            listData.DriverPcsNo = listData.DriverPcsNo ? listData.DriverPcsNo : ""; // 배송 기사 연락처
 
             $('#popup-bestshop-delivery').find('.delivery-data').hide();
             $('#popup-bestshop-delivery').find('.delivery-info').empty();
