@@ -2583,4 +2583,96 @@ html {
 }
 
 
+/*LGECOMVIO-20 네비게이션 개선*/
+@include mobile {
+    .mobile-nav-button + .header-bottom.header-new {
+        width: 100%;
+        padding-top: 0;
+
+       .login-mobile {
+            z-index: 1;
+            position: fixed;
+            width: 100%;
+            padding:11px 40px 0 0;
+            border-bottom: none;
+            background:#ff0000;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        .nav-item:after {
+            display: none;
+        }
+
+
+
+       .super-category {
+           display: flex;
+           flex-wrap: wrap;
+           background: #f4f4f4;
+
+           &-item {
+               background: #fff;
+           }
+
+           .super-category-list {
+               flex: 1 1 50%;
+
+               .nav-category-wrap {
+                   width: 200%;
+                   background: transparent;
+               }
+
+               &:nth-child(even) {
+                   .nav-category-wrap{
+                       margin-left: -100%;
+                   }
+               }
+           }
+
+           .nav-category-layer {
+               display: block;
+           }
+       }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
