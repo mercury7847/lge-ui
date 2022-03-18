@@ -60,7 +60,7 @@
                     '<p>{{#if _clName !== "shop-benefit"}}대상모델 : {{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcodeName1}}{{/if}}</p>'+
                 '</div>'+
                 '<a href="#" class="btn-link-text" title="사용하기"><span>사용하기</span></a>'+
-                '{{#if _status==="disabled"}}<div class="end-flags">사용완료</div>{{/if}}'+
+                '{{#if _status==="disabled"}}<div class="end-flags">{{_txtEndFlag}}</div>{{/if}}'+
             '</div>'+
             '<span class="coupon-bg" aria-hidden="true"><em>BEST SHOP</em></span>'+
         '</div>'+
@@ -701,7 +701,7 @@
             var template;
             var _status;
             var _clName;
-
+            var _txtEndFlag;
             var oDataList;
             if (this.variable.selOptVal === "on") {
                 oDataList = this.variable.listData["on"];
@@ -740,6 +740,15 @@
                     if (TAB === TAB_BESTSHOP_VISIT) {
                         item._clName = _clName;
                         item._status = _status;
+                        item._txtEndFlag = "";
+
+                        if (item.cpnStatus === "F") {
+                            item._txtEndFlag = "조기마감";
+                        } else if (item.cpnStatus === "Y") {
+                            item._txtEndFlag = "사용완료";
+                        } else if (item.cpnStatus === "N") {
+                            item._txtEndFlag = "기간만료";
+                        }
                     }
                     this.el.$couponList.append(vcui.template(template, item));
                 }
