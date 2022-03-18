@@ -486,6 +486,10 @@
                                 } else {
                                     $(".coupon-error-cont dl").hide();
                                 }
+
+                                //초기화
+                                this.variable.listData = [];
+
                                 return;
                             }
 
@@ -742,26 +746,24 @@
                 var item = oDataList[i];
                 delete item["unifyId"];
 
-                if (item) {
-                    item.startDate = !item.startDate ? null : vcui.date.format(item.startDate, "yyyy.MM.dd");
-                    item.endDate = !item.endDate ? null : vcui.date.format(item.endDate, "yyyy.MM.dd");
-                    item.jsonString = JSON.stringify(item);
+                item.startDate = !item.startDate ? null : vcui.date.format(item.startDate, "yyyy.MM.dd");
+                item.endDate = !item.endDate ? null : vcui.date.format(item.endDate, "yyyy.MM.dd");
+                item.jsonString = JSON.stringify(item);
 
-                    if (TAB === TAB_BESTSHOP_VISIT) {
-                        item._clName = _clName;
-                        item._status = _status;
-                        item._txtEndFlag = "";
+                if (TAB === TAB_BESTSHOP_VISIT) {
+                    item._clName = _clName;
+                    item._status = _status;
+                    item._txtEndFlag = "";
 
-                        if (item.cpnStatus === "F") {
-                            item._txtEndFlag = "조기마감";
-                        } else if (item.cpnStatus === "Y") {
-                            item._txtEndFlag = "사용완료";
-                        } else if (item.cpnStatus === "N") {
-                            item._txtEndFlag = "기간만료";
-                        }
+                    if (item.cpnStatus === "F") {
+                        item._txtEndFlag = "조기마감";
+                    } else if (item.cpnStatus === "Y") {
+                        item._txtEndFlag = "사용완료";
+                    } else if (item.cpnStatus === "N") {
+                        item._txtEndFlag = "기간만료";
                     }
-                    this.el.$couponList.append(vcui.template(template, item));
                 }
+                this.el.$couponList.append(vcui.template(template, item));
             }
             if (end >= totalList) {
                 this.el.$couponMore.hide();
