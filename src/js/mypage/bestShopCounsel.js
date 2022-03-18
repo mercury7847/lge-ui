@@ -105,9 +105,9 @@
       $notice: null, // 유의사항 항목
 
       $popCancelTodayAlert: null, // 취소 불가 팝업
-      $popCancelConfirm: null, // 취소 컨펌 팝업
       $popCancelComplete: null, // 취소 완료 팝업
       $popProduct: null, // 제품 팝업
+      // $popCancelConfirm: null, // 취소 컨펌 팝업
     },
     selector: {
       tabContainer: ".tabs-wrap",
@@ -118,9 +118,9 @@
       notice: ".cv_note",
 
       popCancelTodayAlert: "#laypop2",
-      popCancelConfirm: "#laypop1",
       popCancelComplete: "#popup1",
       popProduct: "#popup2",
+      // popCancelConfirm: "#laypop1",
     },
     setProperty: function () {
       var container = this.el.$container;
@@ -133,9 +133,9 @@
       this.el.$notice = container.find(this.selector.notice);
 
       this.el.$popCancelTodayAlert = $(this.selector.popCancelTodayAlert);
-      this.el.$popCancelConfirm = $(this.selector.popCancelConfirm);
       this.el.$popCancelComplete = $(this.selector.popCancelComplete);
       this.el.$popProduct = $(this.selector.popProduct);
+      // this.el.$popCancelConfirm = $(this.selector.popCancelConfirm);
 
       this.variable.store = window.sessionStorage;
     },
@@ -606,39 +606,58 @@
       }
 
       // 상담제품
-      if (item.hasOwnProperty("requestCategory")) {
+      if (
+        item.hasOwnProperty("requestCategory") ||
+        item.hasOwnProperty("modelDisplayName")
+      ) {
         item._prdId = null;
         item._category = null;
 
-        // 방문/화상 상담탭 && 공백 없는 '문자,문자' 인 경우
-        if (item._type !== 1 && item.requestCategory.match(/\,/g)) {
-          var categorys = item.requestCategory.split(",").map(function (item) {
-            return item.trim();
-          });
+        var categorys;
 
-          if (!item._type) {
-            // 방문상담/화상상담
+        if (item._type === 0) {
+          // 방문상담/화상상담
+          if (
+            item.hasOwnProperty("requestCategory") &&
+            item.requestCategory.match(/\,/g)
+          ) {
+            categorys = item.requestCategory.split(",").map(function (item) {
+              return item.trim();
+            });
+
             item._category =
               categorys[0] + " 외 " + (categorys.length - 1) + "개";
-          } else {
-            // 소모품
-            item._category = categorys.map(function (item) {
-              return item
-                .replace(/\>/g, ",")
-                .split(",")
-                .map(function (label) {
-                  return label.trim();
-                });
-            });
           }
         } else {
-          // 케어십
-          var prdRegex = /.+\((.+)\)/i;
-          if (item.requestCategory.match(prdRegex)) {
-            item._prdId = item.requestCategory.replace(prdRegex, "$1");
-          }
+          if (item.hasOwnProperty("modelDisplayName")) {
+            if (item._type === 1) {
+              // 케어십
+              var prdRegex = /.+\((.+)\)/i;
+              if (item.modelDisplayName.match(prdRegex)) {
+                item._prdId = item.modelDisplayName.replace(prdRegex, "$1");
+              }
 
-          item._category = item.requestCategory;
+              item._category = item.modelDisplayName;
+            } else {
+              // 소모품
+              if (item.modelDisplayName.match(/\,/g)) {
+                categorys = item.modelDisplayName
+                  .split(",")
+                  .map(function (item) {
+                    return item.trim();
+                  });
+
+                item._category = categorys.map(function (item) {
+                  return item
+                    .replace(/\>/g, ",")
+                    .split(",")
+                    .map(function (label) {
+                      return label.trim();
+                    });
+                });
+              }
+            }
+          }
         }
       }
 
