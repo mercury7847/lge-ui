@@ -626,8 +626,13 @@
                     }
                     lgkorUI.alert(desc, obj);
 
-                    if (result.status.toUpperCase() === "SUCCESS") {
+                    if (
+                        result.status.toUpperCase() === "SUCCESS" ||
+                        result.status.toUpperCase() === "FAIL01" ||
+                        result.status.toUpperCase() === "FAIL02"
+                    ) {
                         $("#couponPopup .btn-close").trigger("click");
+                        this.requestCouponList();
                     }
                 }.bind(this),
                 true
