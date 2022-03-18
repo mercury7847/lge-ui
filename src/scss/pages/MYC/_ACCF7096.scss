@@ -233,6 +233,9 @@
   }
   ~ .tab-contents {
     margin-top:44px;
+    .sort-select-wrap select{
+      width: 0;
+    }
     .list-sorting + .coupon-list-wrap{
       margin-top:10px;
     }

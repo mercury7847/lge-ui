@@ -466,14 +466,13 @@
                         val,
                         {},
                         function (result) {
-                            lgkorUI.hideLoading();
-
                             if (result.status.toUpperCase() === "ERROR") {
                                 //로그인 풀릴 경우 > 로그인 화면으로 이동
                                 if (result.message.toUpperCase() === "NOT_LOG_IN") {
                                     this.goLogin();
                                     return;
                                 }
+                                lgkorUI.hideLoading();
 
                                 this.el.$couponWrap.hide();
                                 this.el.$couponNoData.hide();
@@ -505,6 +504,7 @@
                             }
 
                             if (result.status.toUpperCase() === "SUCCESS") {
+                                lgkorUI.hideLoading();
                                 this.el.$couponWrap.show();
                                 this.el.$errorCoupon.hide();
 
@@ -626,8 +626,13 @@
                     }
                     lgkorUI.alert(desc, obj);
 
-                    if (result.status.toUpperCase() === "SUCCESS") {
+                    if (
+                        result.status.toUpperCase() === "SUCCESS" ||
+                        result.status.toUpperCase() === "FAIL01" ||
+                        result.status.toUpperCase() === "FAIL02"
+                    ) {
                         $("#couponPopup .btn-close").trigger("click");
+                        this.requestCouponList();
                     }
                 }.bind(this),
                 true
