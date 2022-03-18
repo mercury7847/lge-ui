@@ -486,6 +486,10 @@
                                 } else {
                                     $(".coupon-error-cont dl").hide();
                                 }
+
+                                //초기화
+                                this.variable.listData = [];
+
                                 return;
                             }
 
