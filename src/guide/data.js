@@ -219,23 +219,24 @@ var res = {
 			"공통(UTS)" : {
 				"통합검색" : {
 					"검색중" : ["/html/UTS/SERF9001.html","","진행중"],
-					"검색결과 없음 2.0" : ["/html/UTS/SERF9002_nodata.html","","진행중"],
-					"검색결과 있음 2.0" : ["/html/UTS/SERF9002.html","","진행중"],
-					"검색결과 있음 2.0" : {
-						"결과있음" : ["/html/UTS/SERF9002.html","","진행중"],
-						"결과있음" : ["/html/UTS/SERF9002.html","","진행중"],
-						"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수완료"],
-						"제품/케어솔루션_결과없음" : ["/html/UTS/SERF9003_nodata.html","","진행중"],
-						"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
-						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
-						"이벤트/기획전_결과없음" : ["/html/UTS/SERF9005_nodata.html","","진행중"],
-						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
-						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
-						"케어용품/소모품_결과없음" : ["/html/UTS/SERF9007_nodata.html","","진행중"],
-						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
-						"센터/매장" : ["/html/UTS/SERF9015.html","","검수완료"],
-					},
-					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
+					"검색결과 없음" : ["/html/UTS/SERF9002_nodata.html","","진행중"],
+					"검색결과 서비스" : ["/html/UTS/SERF9002_service.html","","진행중"],
+					"검색결과 있음" : ["/html/UTS/SERF9002.html","","진행중"]
+					// "검색결과 있음" : {
+					// 	"결과있음" : ["/html/UTS/SERF9002.html","","진행중"],
+					// 	"결과있음" : ["/html/UTS/SERF9002.html","","진행중"],
+					// 	"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수완료"],
+					// 	"제품/케어솔루션_결과없음" : ["/html/UTS/SERF9003_nodata.html","","진행중"],
+					// 	"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
+					// 	"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
+					// 	"이벤트/기획전_결과없음" : ["/html/UTS/SERF9005_nodata.html","","진행중"],
+					// 	"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
+					// 	"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
+					// 	"케어용품/소모품_결과없음" : ["/html/UTS/SERF9007_nodata.html","","진행중"],
+					// 	"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
+					// 	"센터/매장" : ["/html/UTS/SERF9015.html","","검수완료"],
+					// },
+					// "검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
 				"Footer" : {
 					// "개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
