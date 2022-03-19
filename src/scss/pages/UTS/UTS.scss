@@ -1686,7 +1686,14 @@
                 padding: 0 16px;
             }
         }
+        &.insort {
+            position: static;
+            height: auto;
+            padding-bottom: 30px;
+            box-shadow: none;
+        }
     }
+
 }
 
 

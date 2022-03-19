@@ -1,0 +1,40 @@
+<svg width="58" height="58" viewBox="0 0 58 58" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-10.6%" y="-6.7%" width="121.2%" height="121.2%" filterUnits="objectBoundingBox" id="i0jbob6u4a">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" in="shadowBlurOuter1"/>
+        </filter>
+        <filter x="-6.1%" y="-4.5%" width="113.4%" height="118.2%" filterUnits="objectBoundingBox" id="hczq88btoc">
+            <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0" in="shadowBlurOuter1"/>
+        </filter>
+        <filter x="-6.3%" y="-6.7%" width="112.7%" height="126.7%" filterUnits="objectBoundingBox" id="ro0333wufe">
+            <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0" in="shadowBlurOuter1"/>
+        </filter>
+        <text id="qq5spglqcd" font-family="NotoSansKR-Bold, Noto Sans KR" font-size="15.294" font-weight="bold" letter-spacing="-.994" fill="#FFF">
+            <tspan x="9.941" y="26.411">NEW</tspan>
+        </text>
+        <text id="b3i77jjjlf" font-family="NotoSansKR-Bold, Noto Sans KR" font-size="10.706" font-weight="bold" letter-spacing=".451" fill="#FFF">
+            <tspan x="10.706" y="36.471">콘텐츠</tspan>
+        </text>
+        <circle id="psc9gb4l8b" cx="26" cy="26" r="26"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(3 1)">
+            <use fill="#000" filter="url(#i0jbob6u4a)" xlink:href="#psc9gb4l8b"/>
+            <use fill="#EC008B" xlink:href="#psc9gb4l8b"/>
+        </g>
+        <g fill="#FFF" transform="translate(3 1)">
+            <use filter="url(#hczq88btoc)" xlink:href="#qq5spglqcd"/>
+            <use xlink:href="#qq5spglqcd"/>
+        </g>
+        <g fill="#FFF" transform="translate(3 1)">
+            <use filter="url(#ro0333wufe)" xlink:href="#b3i77jjjlf"/>
+            <use xlink:href="#b3i77jjjlf"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["UTS/UTS"],
+        pageJS: ["search/curation","search/filterLayer","search/search_product"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <!-- search -->
+            <div class="contents search" data-search-value="" data-search-force=false
+                data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json"
+                data-search-url="/lg5-common/data-ajax/search/searchInput.json"
+                data-basic-url="http://schapi.lgekrdev.lge.co.kr:3100/searchgnb/populartag"
+                data-log-url="/search/searchrecord.lgajax"
+            >
+                <!-- 검색 영역 -->
+                @@include('./common/modules/search.html', {
+                    "placeholder" : "검색어를 입력해주세요.(예:제품명)",
+                    "value" : "",
+                    "title" : "검색어 입력",
+                    "related" : true,
+                    "layer" : true,
+                    "similar" : true
+                })
+                <!-- // 검색 영역 -->
+
+                <!-- 서비스 검색 -->
+                <!-- TYPE1 -->
+                <div class="result_service type1">
+                    <div class="service_info">
+                        <div class="service_title">칭찬합니다</div>
+                        <div class="service_content">칭찬이나 고마운 마음을 전달하실 수 있습니다.</div>
+                        <div class="service_link">
+                            <a href="#n"><span>이동</span></a>
+                        </div>
+                    </div>
+                    <div class="service_chatbot">
+                        <div class="chatbot_txt">도움이 더 필요하세요?<br>LGE.COM 상담 챗이 도와드릴게요!</div>
+                        <div class="chatbot_box">
+                            <a href="#n" class="box_customer">
+                                <span class="box_tit">사용중인 제품에 문의가 있으세요?</span>
+                                <span class="box_cnt">제품고장증상 확인, 이전설치예약, 출장예약 등 안내</span>
+                                <span class="box_link">고객 지원 상담</span>
+                            </a>
+                            <a href="#n" class="box_purchase">
+                                <span class="box_tit">제품 구매를 고민 중이세요?</span>
+                                <span class="box_cnt">제품정보, 렌탈(케어솔루션), 이벤트/특가전 안내</span>
+                                <span class="box_link">제품 구매 상담</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- // TYPE1 -->
+                <!-- TYPE2 -->
+                <div class="result_service type2">
+                    <div class="service_info">
+                        <div class="service_title">이전 설치/철거</div>
+                        <div class="service_content">제품 이전 설치/철거 서비스는 전문업체인 (주)엘엑스판토스에서 예약이 가능합니다.</div>
+                        <div class="service_link">
+                            <a href="#n"><span>이동</span></a>
+                        </div>
+                    </div>
+                    <div class="service_chatbot">
+                        <div class="chatbot_txt">도움이 더 필요하세요?<br>LGE.COM 상담 챗이 도와드릴게요!</div>
+                        <div class="chatbot_box">
+                            <a href="#n" class="box_customer">
+                                <span class="box_tit">사용중인 제품에 문의가 있으세요?</span>
+                                <span class="box_cnt">제품고장증상 확인, 이전설치예약, 출장예약 등 안내</span>
+                                <span class="box_link">고객 지원 상담</span>
+                            </a>
+                            <a href="#n" class="box_purchase">
+                                <span class="box_tit">제품 구매를 고민 중이세요?</span>
+                                <span class="box_cnt">제품정보, 렌탈(케어솔루션), 이벤트/특가전 안내</span>
+                                <span class="box_link">제품 구매 상담</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- // TYPE2 -->
+                <!-- TYPE3 -->
+                <div class="result_service type3">
+                    <div class="service_info">
+                        <div class="service_title">채용 공고</div>
+                        <div class="service_content">LG 채용 사이트로 이동합니다.</div>
+                        <div class="service_link">
+                            <a href="#n" class="outlink"><span>이동</span></a>
+                        </div>
+                    </div>
+                    <div class="service_chatbot">
+                        <div class="chatbot_txt">도움이 더 필요하세요?<br>LGE.COM 상담 챗이 도와드릴게요!</div>
+                        <div class="chatbot_box">
+                            <a href="#n" class="box_customer">
+                                <span class="box_tit">사용중인 제품에 문의가 있으세요?</span>
+                                <span class="box_cnt">제품고장증상 확인, 이전설치예약, 출장예약 등 안내</span>
+                                <span class="box_link">고객 지원 상담</span>
+                            </a>
+                            <a href="#n" class="box_purchase">
+                                <span class="box_tit">제품 구매를 고민 중이세요?</span>
+                                <span class="box_cnt">제품정보, 렌탈(케어솔루션), 이벤트/특가전 안내</span>
+                                <span class="box_link">제품 구매 상담</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- // TYPE3 -->
+                <!-- TYPE4 -->
+                <div class="result_service type4">
+                    <div class="service_chatbot">
+                        <div class="chatbot_txt">안녕하세요.<br>LGE.COM 상담 챗입니다.</div>
+                        <div class="chatbot_box">
+                            <a href="#n" class="box_purchase">
+                                <span class="box_tit">제품 구매를 고민 중이세요?</span>
+                                <span class="box_cnt">제품정보, 렌탈(케어솔루션), 이벤트/특가전 안내</span>
+                                <span class="box_link">제품 구매 상담</span>
+                            </a>
+                            <a href="#n" class="box_customer">
+                                <span class="box_tit">사용중인 제품에 문의가 있으세요?</span>
+                                <span class="box_cnt">제품고장증상 확인, 이전설치예약, 출장예약 등 안내</span>
+                                <span class="box_link">고객 지원 상담</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- // TYPE4 -->
+                <!-- // 서비스 검색 -->
+
+                <!-- 검색 결과 없음 -->
+                    <!-- 생략 : SERF9002 참조 -->
+                <!-- // 검색 결과 없음 -->
+
+                <!-- 고객 피드백 -->
+                    <!-- 생략 : SERF9002 참조 -->
+                <!-- // 고객 피드백 -->
+
+                <!-- 검색 결과 영역 -->
+                <div class="cont-wrap">
+                    <!-- 생략 : SERF9002 참조 -->
+                </div>
+                <!-- // 검색 결과 영역 -->
+            </div>
+            <!-- // 통합검색 -->
+        </div>
+
+    @@include('./common/footer.html')
+    </div>
+
+    <!-- S: 소모품 전체보기 -->
+    @@include('./common/popup/SERF9002_pop1.html', {
+        popupID: 'layerSuppliesMore'
+    })
+    <!-- E: 소모품 전체보기 -->
+
+    <!-- S: 제품사용설명서(PDF) 전체보기 -->
+    @@include('./common/popup/SERF9002_pop2.html', {
+        popupID: 'layerPdfMore'
+    })
+    <!-- E: 제품사용설명서(PDF) 전체보기 -->
+
+    <!-- S: 제품사용설명서(HTML) 전체보기 -->
+    @@include('./common/popup/SERF9002_pop3.html', {
+        popupID: 'layerHtmlMore'
+    })
+    <!-- E: 제품사용설명서(HTML) 전체보기 -->
+
+    <!-- S: 제품사용설명서(S/W) 전체보기 -->
+    @@include('./common/popup/SERF9002_pop4.html', {
+        popupID: 'layerSwMore'
+    })
+    <!-- E: 제품사용설명서(S/W) 전체보기 -->
+
+</body>
+</html>
