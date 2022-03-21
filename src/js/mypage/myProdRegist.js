@@ -560,11 +560,12 @@
                     self.$packageModal.empty().append(vcui.template(packageModalTmpl,item)).vcModal();
                     $('body').vcLazyLoaderSwitch('reload',self.$packageModal);
                 } else {
+                    self.osList = null;
                     self.$downloadPopup.data('modelId', data.modelId);
                     self.$downloadPopup.data('modelCode', data.modelCode);
                     self.$downloadSearch.val("");
                     self.$downloadSearch.data('search',null);
-                    self.requestDownloadData({"page":1}, true, true);
+                    self.requestDownloadData({"page":1}, true);
                 }
             });
 
@@ -915,7 +916,7 @@
                 if(search) {
                     param.search = search;
                 }
-                self.requestDownloadData(param, false, false);
+                self.requestDownloadData(param, false);
             });
             
             //다운로드팝업 페이지
@@ -929,7 +930,7 @@
                 if(search) {
                     param.search = search;
                 }
-                self.requestDownloadData(param, false, false);
+                self.requestDownloadData(param, false);
             });
            
             //다운로드 파일 상세 보기
@@ -983,7 +984,7 @@
                 if(os) {
                     param.os = os;
                 }
-                self.requestDownloadData(param, false, false);
+                self.requestDownloadData(param, false);
             });
 
             self.$downloadDetailPage.on('click','footer button', function(e){
@@ -1383,13 +1384,12 @@
             });
         },
 
-        requsetOSData:function(param) {
+        requsetOSData:function(param,openDownloadPopup) {
             var self = this;
             var ajaxUrl = self.$downloadPopup.data('osUrl');
-            lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-                var selectedOSValue = self.$selectOS.vcSelectbox('selectedOption').value;
-                var selectedIndex = 0;
+            var optionsTmpl = '<option value="{{code}}" {{#if selected }} selected="selected"{{/if}}>{{codeName}}</option>';
 
+            lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                 var data = result.data;
                 self.$selectOS.empty();
                 var arr = data instanceof Array ? data : [];
@@ -1399,64 +1399,44 @@
                 } else {
                     self.$selectOS.prop('disabled', false);
                 }
+
+                var tmpl = ''
                 arr.forEach(function(item, index){
-                    if(selectedOSValue == item.code) {
-                        selectedIndex = index;
-                    }
-                    self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
+                    item.selected =  item.code == "전체" || item.code == "없음" ? true: false;
+                    tmpl += vcui.template(optionsTmpl, item)
                 });
+
+                self.$selectOS.append(tmpl);
                 self.$selectOS.vcSelectbox('update');
-                self.$selectOS.vcSelectbox('selectedIndex',selectedIndex,false);
+                self.requestDownloadData(param, openDownloadPopup);
+                self.hideLoading();
+            }, null, null, null, null, true, function(err){
+                self.hideLoading(true);
             });
         },
 
-        requestDownloadData: function(param, selectOSUpdate, openDownloadPopup) {
+        requestDownloadData: function(param, openDownloadPopup) {
             var self = this;
+            self.showLoading();
+            if(param.search) {
+                self.$downloadSearch.val(param.search);
+            }
+
+            var _id = self.$downloadPopup.data('modelId');
+            if(_id) {
+                param.id = _id;
+            }
+            var sku = self.$downloadPopup.data('modelCode');
+            if(sku) {
+                param.sku = sku;
+            }
+
 
             if(!self.osList) {
-                var ajaxUrl = self.$downloadPopup.data('osUrl');
-                self.showLoading();
-                lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
-                    var data = result.data;
-                    self.$selectOS.empty();
-                    var arr = data instanceof Array ? data : [];
-                    self.osList = arr;
-                    if(arr.length < 2) {
-                        self.$selectOS.prop('disabled', true);
-                    } else {
-                        self.$selectOS.prop('disabled', false);
-                    }
-                    arr.forEach(function(item, index){
-                        self.$selectOS.append('<option value="' + item.code +'">' + item.codeName + '</option>');
-                    });
-                    self.$selectOS.vcSelectbox('update');
-                    self.$selectOS.vcSelectbox('selectedIndex',0,false);
-
-                    self.requestDownloadData(param, selectOSUpdate, openDownloadPopup);
-                    self.hideLoading();
-                }, null, null, null, null, true, function(err){
-                    self.hideLoading(true);
-                });
+                // OS 정보 
+                self.requsetOSData(param,openDownloadPopup);
             } else {
-                if(param.search) {
-                    self.$downloadSearch.val(param.search);
-                }
-
-                var _id = self.$downloadPopup.data('modelId');
-                if(_id) {
-                    param.id = _id;
-                }
-                var sku = self.$downloadPopup.data('modelCode');
-                if(sku) {
-                    param.sku = sku;
-                }
-
-                //OS 또 갱신
-                self.requsetOSData(param);
-
                 var ajaxUrl = self.$downloadPopup.data('listUrl');
-
-                self.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, param, function(result) {
                     var data = result.data;
                     var param = result.param;
