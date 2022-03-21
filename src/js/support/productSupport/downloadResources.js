@@ -710,6 +710,39 @@
                 $this.data('fileUrl', '');
                 $this.find('#userEmail').val('');
             });
+
+            // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정 - 모델명 확인 이미지확대 선택 시 팝업
+            var $imgView = $('.btn-img-view');
+            $('#select2').on('change', function(){
+    
+                // 이미지가 없는 경우 no-img 삭제
+                if(!(lgkorUI.NO_IMAGE_MODEL_NAME != $img.attr('src'))) {
+                    $imgView.find('img').removeClass('no-img');
+                }
+            })
+            
+            // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정 - 모델명 확인 이미지확대 선택 시 팝업
+            $imgView.on('click', function(e) {
+                e.preventDefault();
+            
+                if($(this).find('img').hasClass('no-img')) return;
+    
+                var domain=location.origin;
+                var agent = navigator.userAgent;
+                var imgUrl=domain + $(this).attr('href');
+                var imgAlt = $(this).find('img').attr('alt');
+                if(!vcui.detect.isMobileDevice){
+                    window.open(imgUrl, '', '');
+                    return
+                }
+
+                var $zoomPopup = $('#imgZoomPopup');
+                var $zoomImg = $('#imgZoomPopup img');
+                $zoomImg.attr('src', imgUrl);
+                $zoomImg.attr('alt', imgAlt);
+                $zoomPopup.vcModal('open');
+            })
+    
         }
     }
 
