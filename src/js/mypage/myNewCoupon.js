@@ -462,17 +462,21 @@
             $.each(dataUrl, function (idx, val) {
                 if (ajaxUrl && ajaxUrl === val) {
                     lgkorUI.showLoading();
+
+                    //초기화
+                    oSelf.variable.listData = [];
+
                     lgkorUI.requestAjaxDataPost(
                         val,
                         {},
                         function (result) {
+                            lgkorUI.hideLoading();
                             if (result.status.toUpperCase() === "ERROR") {
                                 //로그인 풀릴 경우 > 로그인 화면으로 이동
                                 if (result.message.toUpperCase() === "NOT_LOG_IN") {
                                     this.goLogin();
                                     return;
                                 }
-                                lgkorUI.hideLoading();
 
                                 this.el.$couponWrap.hide();
                                 this.el.$couponNoData.hide();
@@ -497,14 +501,10 @@
                                     $(".coupon-error-cont dl").hide();
                                 }
 
-                                //초기화
-                                this.variable.listData = [];
-
                                 return;
                             }
 
                             if (result.status.toUpperCase() === "SUCCESS") {
-                                lgkorUI.hideLoading();
                                 this.el.$couponWrap.show();
                                 this.el.$errorCoupon.hide();
 
@@ -531,6 +531,7 @@
                                 this.renderContents();
                             }
                         }.bind(oSelf),
+                        true,
                         true
                     );
                 }
@@ -574,6 +575,7 @@
                                 }
                             }
                         }.bind(oSelf),
+                        true,
                         true
                     );
                 }
