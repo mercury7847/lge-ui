@@ -857,7 +857,7 @@ $carousel_play_btn : 24px; // BTOCSITE-8039 2022-02-09
         .usp-banner-wrap {
             /* BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건 */
             &.disc-open{
-                .indi-wrap, .controls-wrap{
+                .indi-wrap, .controls-wrap, .carousel-box .video-link{
                     z-index:-1;
                 }
             }
