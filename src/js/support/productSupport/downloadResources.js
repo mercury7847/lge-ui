@@ -711,7 +711,7 @@
                 $this.find('#userEmail').val('');
             });
 
-            // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정 - 모델명 확인 이미지확대 선택 시 팝업
+            // BTOCSITE-13601 모델명 확인 방법 > 이미지 확대 추가
             var $imgView = $('.btn-img-view');
             $('#select2').on('change', function(){
     
@@ -721,7 +721,7 @@
                 }
             })
 
-            // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정 - 모델명 확인 이미지확대 선택 시 팝업
+            // BTOCSITE-13601 모델명 확인 방법 > 이미지 확대 추가
             $imgView.on('click', function(e) {
                 e.preventDefault();
             
