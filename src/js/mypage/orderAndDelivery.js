@@ -165,7 +165,7 @@
                         '</div>'+
                         '<div class="col col2">'+
                             '<div class="state-box">'+
-                            '{{#if !listData.deliveryStatus}}<p class="tit "><span class="blind">진행상태</span>{{listData.deliveryStatusText}}</p>{{/if}}' +
+                            '{{#if !listData.deliveryStatus}}<p class="tit"><span class="blind">진행상태</span>{{listData.deliveryStatusText}}</p>{{/if}}' +
                             '{{#if listData.deliveryStatus && listData.ordSysOrdNo}}'+
                                 '<div class="state-btns">'+
                                     '<a href="#n" class="btn size border stateInner-btn" data-ord-no="{{listData.ordSysOrdNo}}" data-type="bestShopDeliveryInquiry"><span>배송조회</span></a>'+
@@ -1434,7 +1434,7 @@
     // LGECOMVIO-114 베스트샵 배송조회 추가
     function setBestShopDeliveryInquiry(ordNo){
         var sendata = {
-            ordSysOrdNo: ordNo
+            htlsOrgNo: ordNo
         }
 
         lgkorUI.requestAjaxDataFailCheck(BESTSHOP_DELIVERY_URL, sendata, function(result){
