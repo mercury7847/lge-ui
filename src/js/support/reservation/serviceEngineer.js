@@ -119,6 +119,8 @@
             /* //BTOCSITE-BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
 
             self.$authPopup = $('#certificationPopup');
+            // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+            self.warrantyGuide = $('#ratesWarrantyGuidePopup');
 
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
             self.isOneView = 'N';
@@ -1118,6 +1120,15 @@
                         location.href = _href; 
                     }
                 })
+            });
+            
+            // 요금 및 보증 기간 안내
+            self.warrantyGuide.on('modalhide', function(){
+                var $this = $(this);
+                var $tab = $this.find('.ui_tab');
+                
+                // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+                $tab.vcTab("select", 0);
             });
         }
     }

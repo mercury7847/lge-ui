@@ -59,7 +59,9 @@
             self.$calendarTime = self.$calendarWrap.find('.time-wrap');
 
             self.$authPopup = $('#certificationPopup');
-
+            // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+            self.warrantyGuide = $('#ratesWarrantyGuidePopup');
+            
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
 
             self.$cont.find('#route').val(detect.isMobile ? 'WWW2' : 'WWWW1');
@@ -457,6 +459,15 @@
                 authManager.confirm(this, function(success, result) {
                     success && self.requestComplete();
                 });
+            });
+
+            // 요금 및 보증 기간 안내
+            self.warrantyGuide.on('modalhide', function(){
+                var $this = $(this);
+                var $tab = $this.find('.ui_tab');
+                
+                // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+                $tab.vcTab("select", 0);
             });
         }
     }
