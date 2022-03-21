@@ -930,14 +930,6 @@
         $('#popup-cancel, #popup-takeback').on('click', ".ui_modal_close", function(e){
             $(this).closest('article').find('.count em').html('0');
         });
-
-
-        // 모니터링 548 : 페이지 이탈시 앱에 모달 처리 알림
-        if(isApp() && vcui.detect.isIOS) {
-            $(window).on('unload',function(){
-                lgkorUI.appIsLayerPopup(false);
-            })
-        }
     }
 
     function sendDetailPage(dataID){
