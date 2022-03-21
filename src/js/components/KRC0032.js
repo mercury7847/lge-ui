@@ -221,7 +221,12 @@ $(window).ready(function(){
 				prevVideoPause(slide);
 				prevYoutubeBoxClose(slide, prev);
 				autoStateChange(slide, prev, next)
-			
+
+				// BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건
+				if( $('.dropContent').hasClass('on') ){
+					$('.dropContent').removeClass('on') 
+					infoDisclaimer.parents('.usp-banner-wrap').removeClass('disc-open');
+				}			
 			})
 			.on('carouselafterchange', function(e, slide, currentSlide){
 				var $slider = $(slide.$slider);
