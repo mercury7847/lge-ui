@@ -209,7 +209,8 @@ gulp.task("scripts", () => {
         "jsCompile:home",
         "jsCompile:objet",
         "jsCompile:lls",
-        "jsCompile:company"
+        "jsCompile:company",
+        "jsCompile:category-home"
     ]);
 });
 gulp.task("jsCompile", () => gulp
@@ -390,6 +391,16 @@ gulp.task("jsCompile:company", () => gulp
 		.pipe(gulp.dest(dist + sourceFolder + "/js/company/"))
 );
 
+/* 카테고리 홈 추가 2022-03-21 */
+gulp.task("jsCompile:category-home", () => gulp
+    .src(src + "/js/category-home/**/*")
+    .pipe(sourcemaps.init())
+    .pipe(gulpif(["*.js", "!*.min.js"], uglify()))
+    .pipe(gulpif(["*.js", "!*.min.js"], rename({ suffix: ".min" })))
+    .pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dist + sourceFolder + "/js/category-home/"))
+);
+
 // fonts, images
 gulp.task("static", () => {
     gulp.start(["static:data-ajax", "static:fonts", "static:images", "static:template", "static:videos", "static:pcsvc", "static:temp_OBJ", "static:event", "static:front"]);
@@ -479,6 +490,7 @@ gulp.task("watch", ["browser-sync"], () => {
     gulp.watch(src + "/js/objet/**", ["jsCompile:objet"]).on('change', browserSync.reload);
     gulp.watch(src + "/js/lls/**", ["jsCompile:lls"]).on('change', browserSync.reload); // lls 추가 2021-08-04
     gulp.watch(src + "/js/company/**", ["jsCompile:company"]).on('change', browserSync.reload);	// 회사소개 추가 2021-07-26
+    gulp.watch(src + "/js/category-home/**", ["jsCompile:category-home"]).on('change', browserSync.reload);	// 카테고리 홈 추가 2022-03-21
 
     //static
     gulp.watch("./lg5-common/data-ajax/**", ["static:data-ajax"]).on('change', browserSync.reload);
