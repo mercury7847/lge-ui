@@ -736,7 +736,8 @@
                     return
                 }
 
-                var popTitle = $('#select2 option:selected').text();
+                var currOption = $('#select2 option:selected');
+                var popTitle = currOption.hasClass('placeholder') ? '모델명 확인 방법' : currOption.text();
                 var $zoomPopup = $('#imgZoomPopup');
                 var $zoomImg = $('#imgZoomPopup img');
                 $zoomImg.attr('src', imgUrl);
