@@ -271,6 +271,7 @@ $(window).ready(function(){
 				if(titleAttr = mybtnAttr) {
 				    //console.log("111");
 				    $(item).find('.dropContent').addClass('on');
+					infoDisclaimer.parents('.usp-banner-wrap').addClass('disc-open'); // BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건
 				    //$(this).hide();
 				}
 			});
@@ -281,6 +282,7 @@ $(window).ready(function(){
 			    if(titleAttr = mybtnAttr) {
 			        //console.log("111");
 			        $(item).find('.dropContent').removeClass('on');
+					infoDisclaimer.parents('.usp-banner-wrap').removeClass('disc-open'); // BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건
 			        //$(item).find('.drop-info .dropInfo_openBtn').show();
 			    }
 			});

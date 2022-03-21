@@ -855,6 +855,13 @@ $carousel_play_btn : 24px; // BTOCSITE-8039 2022-02-09
     /* BTOCSITE-9207 : 디스클라이머 컴포넌트 수정 */
     .KRC0032 {
         .usp-banner-wrap {
+            /* BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건 */
+            &.disc-open{
+                .indi-wrap, .controls-wrap{
+                    z-index:-1;
+                }
+            }
+            /* //BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건 */
             .ui_carousel_list {
                 // @include mobile {
                 //     height: auto !important;
