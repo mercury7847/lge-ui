@@ -716,11 +716,11 @@
             $('#select2').on('change', function(){
     
                 // 이미지가 없는 경우 no-img 삭제
-                if(!(lgkorUI.NO_IMAGE_MODEL_NAME != $img.attr('src'))) {
+                if(!(lgkorUI.NO_IMAGE_MODEL_NAME != $imgView.find('img').attr('src'))) {
                     $imgView.find('img').removeClass('no-img');
                 }
             })
-            
+
             // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정 - 모델명 확인 이미지확대 선택 시 팝업
             $imgView.on('click', function(e) {
                 e.preventDefault();
@@ -736,10 +736,13 @@
                     return
                 }
 
+                var popTitle = $('#select2 option:selected').text();
                 var $zoomPopup = $('#imgZoomPopup');
                 var $zoomImg = $('#imgZoomPopup img');
                 $zoomImg.attr('src', imgUrl);
                 $zoomImg.attr('alt', imgAlt);
+
+                $zoomPopup.find('.tit').html('<span>'+popTitle+'</span>');
                 $zoomPopup.vcModal('open');
             })
     
