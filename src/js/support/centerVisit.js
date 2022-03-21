@@ -720,6 +720,15 @@
                     }
                 })
             });
+
+            // 요금 및 보증 기간 안내
+            self.warrantyGuide.on('modalhide', function(){
+                var $this = $(this);
+                var $tab = $this.find('.ui_tab');
+                
+                // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+                $tab.vcTab("select", 0);
+            });
         },
         reset: function() {
             var self = this;

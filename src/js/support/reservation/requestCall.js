@@ -45,6 +45,8 @@
 
             self.$stepTerms = self.$cont.find('#stepTerms');
             self.$stepModel = self.$cont.find('#stepModel');
+            // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+            self.warrantyGuide = $('#ratesWarrantyGuidePopup');
 
             self.$stepInput = self.$cont.find('#stepInput');
             self.$topicBox = self.$cont.find('#topicBox');
@@ -513,6 +515,15 @@
                     success && self.requestComplete();
                 });
             });
+
+            // 요금 및 보증 기간 안내
+            self.warrantyGuide.on('modalhide', function(){
+                var $this = $(this);
+                var $tab = $this.find('.ui_tab');
+                
+                // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+                $tab.vcTab("select", 0);
+            })
         }
     }
 
