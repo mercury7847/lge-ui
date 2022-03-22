@@ -533,7 +533,7 @@
                 if(!(lgkorUI.NO_IMAGE_MODEL_NAME != $imgView.find('img').attr('src'))) {
                     $imgView.find('img').removeClass('no-img');
                 }
-            })
+            });
 
             // BTOCSITE-13601 모델명 확인 방법 > 이미지 확대 추가
             $imgView.on('click', function(e) {
@@ -559,7 +559,7 @@
 
                 $zoomPopup.find('.tit').html('<span>'+popTitle+'</span>');
                 $zoomPopup.vcModal('open');
-            })
+            });
         }
     }
 
