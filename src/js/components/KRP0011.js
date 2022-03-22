@@ -87,8 +87,9 @@
 
                 //스펙 비교하기 버튼
                 self.$compareModelIds = "";
-                //BTOCSITE-12856 start
-                if(self.$tabList.length == 0 && Object.keys(dataList).length > 0){
+              //BTOCSITE-13540 start특정 오류로 인해 주석 처리 
+                //BTOCSITE-12856 start 
+             /*   if(self.$tabList.length == 0 && Object.keys(dataList).length > 0){
                 	 var $compareId = [];
                      var careType ='C';
                      $compareId.push(dataList.productInfo.modelId+'|'+careType); //스펙비교하기에 모델명 추가
@@ -99,8 +100,9 @@
                      //스펙비교하기 버튼에 모델명 교체
                      self.$compareModelIds = $compareId.join(","); 
                      self.$section.find(".bottom-area button").attr('data-model-ids', self.$compareModelIds);
-                }
+                }*/
                 //BTOCSITE-12856 END
+                //BTOCSITE-13540 END
             },
             setPath: function(){
                 var self = this;
