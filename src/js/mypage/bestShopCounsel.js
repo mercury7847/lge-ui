@@ -4,8 +4,7 @@
   // prettier-ignore
   var reservationItem = '<li class="{{#if cancelFlag}}li_cancel{{/if}}">' +
     '<div class="li_tit">' +
-        '<div class="tit_txt">' +
-          '{{#if _type == "0"}} {{_title}} {{#else}} {{_title}} {{_method}} 예약{{/if}}</div>' +
+        '<div class="tit_txt">{{_title}}</div>' +
         '{{#if (!_today && !_isOverTime) && !cancelFlag}}<a href="#n" data-id="{{counselEventNo}}" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
     '</div>' +
     '<dl class="li_page">' +
@@ -525,10 +524,12 @@
         function (label, idx) {
           var group =
             listData.filter(function (item) {
-              // 케어십, 소모품 제외 모두 1번째탭 그룹
-              return idx === 0
-                ? !item.counselEventType.match(/(소모품|케어십)/)
-                : item.counselEventType === label;
+              if (item.hasOwnProperty("counselEventType")) {
+                // 케어십, 소모품 제외 모두 1번째탭 그룹 예외처리
+                return idx === 0
+                  ? !item.counselEventType.match(/(소모품|케어십)/)
+                  : !item.counselEventType.indexOf(label);
+              }
             }) || [];
 
           if (group.length) {
@@ -564,19 +565,21 @@
       var start = this.el.$listContainer.children().length;
 
       // 탭 활성화에 맞게 리스트 filter
-      listData = listData.filter(
-        function (item) {
-          // 케어십, 소모품 제외 모두 1번째탭 그룹
-          if (this.variable.tabActIndex === 0) {
-            return !item.counselEventType.match(/(소모품|케어십)/);
-          } else {
-            return (
-              item.counselEventType ===
-              this.variable.tabLabelKeys[this.variable.tabActIndex]
-            );
-          }
-        }.bind(this)
-      );
+      listData =
+        listData.filter(
+          function (item) {
+            if (item.hasOwnProperty("counselEventType")) {
+              // 케어십, 소모품 제외 모두 1번째탭 그룹 예외처리
+              if (this.variable.tabActIndex === 0) {
+                return !item.counselEventType.match(/(소모품|케어십)/);
+              } else {
+                return !item.counselEventType.indexOf(
+                  this.variable.tabLabelKeys[this.variable.tabActIndex]
+                );
+              }
+            }
+          }.bind(this)
+        ) || [];
 
       // 탭 활성화에 맞는 리스트 기반으로 노출
       if (listData.length > 0) {
@@ -673,10 +676,7 @@
       if (item.hasOwnProperty("counselEventType")) {
         item._method = item._type !== 2 ? "상담" : "구매";
         item._loc = item._type !== 2 ? "상담" : "예약";
-        item._title =
-          item._type === 0 // 케어십, 소모품 제외하고 타이틀 그대로 노출
-            ? item.counselEventType
-            : this.variable.tabLabelKeys[item._type];
+        item._title = item.counselEventType;
       }
 
       this.el.$listContainer.append(vcui.template(reservationItem, item));

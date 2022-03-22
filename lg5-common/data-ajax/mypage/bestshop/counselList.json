@@ -25,7 +25,7 @@
       {
         "counselRequestId": "1000000001",
         "counselEventNo": "CE10000002",
-        "counselEventType": "케어십",
+        "counselEventType": "케어십 상담 예약",
         "mainTitle": "케어십 상담 예약",
         "requestOrgcodeName": "서초본점",
         "requestOrgcode": "ST00004125",
@@ -76,7 +76,7 @@
       {
         "counselRequestId": "1000000001",
         "counselEventNo": "CE10000005",
-        "counselEventType": "소모품",
+        "counselEventType": "소모품 구매 예약",
         "mainTitle": "소모품 구매 예약",
         "requestOrgcodeName": "양주옥정점",
         "requestOrgcode": "ST00004125",
