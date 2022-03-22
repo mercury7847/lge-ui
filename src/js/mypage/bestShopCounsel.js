@@ -650,8 +650,8 @@
           item._category = item.modelDisplayName.trim() + cnt;
         } else {
           // 소모품
-          if (item.requestCategory.match(/\,/g)) {
-            categorys = item.requestCategory.split(",").map(function (item) {
+          if (item.modelDisplayName.match(/\,/g)) {
+            categorys = item.modelDisplayName.split(",").map(function (item) {
               return item.trim();
             });
 
@@ -730,8 +730,6 @@
 
       // 팝업 오픈 완료 콜백
       if (productData.length) {
-        console.log(this.el.$popProduct);
-
         this.el.$popProduct
           .off("modalshow")
           .on("modalshow", this.createProduct.bind(this, productData[0]));
