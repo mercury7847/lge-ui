@@ -79,19 +79,17 @@
         var KRP0008 = {
             init: function() {
                 // AR 체험하기 APP 호출시 실행
-                var modelId = lgkorUI.getParameterByName('openAR');
+                var url = lgkorUI.parseUrl(location.href);
+                var params = url.searchParams.getAll();
 
-
-                alert("id : "+modelId+" isapp : "+isApp())
-                if( isApp() && modelId) {
-                    lgkorUI.openAR(modelId);
-
-                    var url = lgkorUI.parseUrl(location.href);
-                    var params = url.searchParams.getAll();
+                alert("HREF "+location.href)
+                alert("id : "+params.openAR+" isapp : "+isApp())
+                if( isApp() && params.openAR) {
+                    lgkorUI.openAR(params.openAR);
                     delete params.openAR;
-                        params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
-                    window.history.replaceState('', '', url.pathname + params)
+                    window.history.replaceState('', '', url.pathname + (Object.keys(params).length > 0 ? '?'+$.param(params) : ''))
                 }
+
 
                 // 20211014 BTOCSITE-6768 사전예약 버튼클릭 시 로그인 체크
                 loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
