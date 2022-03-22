@@ -1442,7 +1442,7 @@
     // LGECOMVIO-114 베스트샵 배송조회 추가
     function setBestShopDeliveryInquiry(ordNo){
         var sendata = {
-            htlsOrgNo: ordNo
+            htlsOrdNo: ordNo
         }
 
         lgkorUI.requestAjaxDataFailCheck(BESTSHOP_DELIVERY_URL, sendata, function(result){
