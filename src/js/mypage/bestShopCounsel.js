@@ -2,11 +2,10 @@
   "use strict";
 
   // prettier-ignore
-  var reservationItem = '<li class="{{#if cancelFlag}}li_cancel{{/if}}">' +
+  var reservationItem = '<li class="{{#if cancelFlag === "Y"}}li_cancel{{/if}}">' +
     '<div class="li_tit">' +
-        '<div class="tit_txt">' +
-          '{{_title}} {{_method}} 예약</div>' +
-        '{{#if (!_today && !_isOverTime) && !cancelFlag}}<a href="#n" data-id="{{counselEventNo}}" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
+        '<div class="tit_txt">{{_title}}</div>' +
+        '{{#if (!_today && !_isOverTime) && cancelFlag !== "Y"}}<a href="#n" data-id="{{counselEventNo}}" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
     '</div>' +
     '<dl class="li_page">' +
         '<dt>신청페이지</dt>' +
@@ -63,9 +62,9 @@
 
   // prettier-ignore
   var productItem = '<div class="prd_img">' +
-      '<img src="{{_img}}" alt="{{userFriendlyName}}">' + 
+      '<img data-src="{{_img}}" alt="{{modelDisplayName}}">' + 
     '</div>' + 
-    '<p class="prd_name">{{userFriendlyName}}</p>' + 
+    '<p class="prd_name">{{modelDisplayName}}</p>' + 
     '<p class="prd_model">{{modelName}}</p>' + 
     '<dl class="prd_visit">' + 
       '<dt>방문주기</dt>' + 
@@ -87,7 +86,7 @@
     variable: {
       store: null,
       tabActIndex: 0, // 탭 활성화 index
-      tabLabelKeys: ["매장상담", "케어십", "소모품"], // 탭별 json 데이터 filter 를 위한
+      tabLabelKeys: ["", "케어십", "소모품"], // 탭별 json 데이터 filter 를 위한
       listData: [], // json 데이터 담을 팝업
       showListLen: 0, // 리스트 노출된 갯수
       showListCount: 13, // 리스트 더보기 시 추가 노출할 갯수
@@ -208,8 +207,7 @@
       clickProduct: function (e) {
         e.preventDefault();
 
-        var prdId = $(e.currentTarget).data("prd-id");
-
+        var prdId = $(e.currentTarget).data("prd-id"); // modelName
         this.openProduct({ target: e.currentTarget, id: prdId });
       },
       /**
@@ -353,6 +351,12 @@
             }
 
             return;
+          } else {
+            // 베스트샵 회원이 아닌 경우
+            if (result.bestshopYn === "N") {
+              this.goBestShopSignUp();
+              return;
+            }
           }
 
           this.variable.listData = result.data.counselOrderList || [];
@@ -525,7 +529,12 @@
         function (label, idx) {
           var group =
             listData.filter(function (item) {
-              return item.counselEventType === label;
+              if (item.hasOwnProperty("counselEventType")) {
+                // 케어십, 소모품 제외 모두 1번째탭 그룹 예외처리
+                return idx === 0
+                  ? !item.counselEventType.match(/(소모품|케어십)/)
+                  : !item.counselEventType.indexOf(label);
+              }
             }) || [];
 
           if (group.length) {
@@ -561,14 +570,21 @@
       var start = this.el.$listContainer.children().length;
 
       // 탭 활성화에 맞게 리스트 filter
-      listData = listData.filter(
-        function (item) {
-          return (
-            item.counselEventType ===
-            this.variable.tabLabelKeys[this.variable.tabActIndex]
-          );
-        }.bind(this)
-      );
+      listData =
+        listData.filter(
+          function (item) {
+            if (item.hasOwnProperty("counselEventType")) {
+              // 케어십, 소모품 제외 모두 1번째탭 그룹 예외처리
+              if (this.variable.tabActIndex === 0) {
+                return !item.counselEventType.match(/(소모품|케어십)/);
+              } else {
+                return !item.counselEventType.indexOf(
+                  this.variable.tabLabelKeys[this.variable.tabActIndex]
+                );
+              }
+            }
+          }.bind(this)
+        ) || [];
 
       // 탭 활성화에 맞는 리스트 기반으로 노출
       if (listData.length > 0) {
@@ -613,50 +629,49 @@
         item._prdId = null;
         item._category = null;
 
-        var categorys;
+        var categorys = [];
 
-        if (item._type === 0) {
+        if (item._type !== 2) {
           // 방문상담/화상상담
-          if (
-            item.hasOwnProperty("requestCategory") &&
-            item.requestCategory.match(/\,/g)
-          ) {
+          if (item.requestCategory.match(/\,/g)) {
+            categorys = item.requestCategory.split(",").map(function (item) {
+              return item.trim();
+            });
+          }
+
+          // 외 n개 혹은 1개인 경우 첫번째 제품
+          var cnt = "";
+          if (categorys.length) {
+            if (categorys.length === 1) {
+              cnt = categorys[0];
+            } else {
+              cnt = categorys[0] + " 외 " + categorys.length + "개";
+            }
+          }
+
+          // 케어십 (상품코드)
+          if (item.hasOwnProperty("modelName")) {
+            if (item.modelName.length && item._type === 1) {
+              item._prdId = item.modelName;
+            }
+          }
+
+          item._category = item.modelDisplayName.trim() + cnt;
+        } else {
+          // 소모품
+          if (item.requestCategory.match(/\,/g)) {
             categorys = item.requestCategory.split(",").map(function (item) {
               return item.trim();
             });
 
-            item._category =
-              categorys[0] + " 외 " + (categorys.length - 1) + "개";
-          }
-        } else {
-          if (item.hasOwnProperty("modelDisplayName")) {
-            if (item._type === 1) {
-              // 케어십
-              var prdRegex = /.+\((.+)\)/i;
-              if (item.modelDisplayName.match(prdRegex)) {
-                item._prdId = item.modelDisplayName.replace(prdRegex, "$1");
-              }
-
-              item._category = item.modelDisplayName;
-            } else {
-              // 소모품
-              if (item.modelDisplayName.match(/\,/g)) {
-                categorys = item.modelDisplayName
-                  .split(",")
-                  .map(function (item) {
-                    return item.trim();
-                  });
-
-                item._category = categorys.map(function (item) {
-                  return item
-                    .replace(/\>/g, ",")
-                    .split(",")
-                    .map(function (label) {
-                      return label.trim();
-                    });
+            item._category = categorys.map(function (item) {
+              return item
+                .replace(/\>/g, ",")
+                .split(",")
+                .map(function (label) {
+                  return label.trim();
                 });
-              }
-            }
+            });
           }
         }
       }
@@ -665,8 +680,7 @@
       if (item.hasOwnProperty("counselEventType")) {
         item._method = item._type !== 2 ? "상담" : "구매";
         item._loc = item._type !== 2 ? "상담" : "예약";
-        item._title =
-          item._type === 0 ? "" : this.variable.tabLabelKeys[item._type];
+        item._title = item.counselEventType;
       }
 
       this.el.$listContainer.append(vcui.template(reservationItem, item));
@@ -717,7 +731,7 @@
     openProduct: function (data) {
       var target = data.target;
       var id = data.id;
-      var ajaxUrl = this.el.$container.data("reservation-product-info");
+      /* var ajaxUrl = this.el.$container.data("reservation-product-info");
 
       lgkorUI.requestAjaxDataPost(
         ajaxUrl,
@@ -729,7 +743,19 @@
           this.el.$popProduct.vcModal({ opener: target });
         }.bind(this),
         true
-      );
+      ); */
+
+      var productData = this.variable.listData.filter(function (item) {
+        return item.modelName === id;
+      });
+
+      if (productData.length) {
+        this.el.$popProduct
+          .off("modalshow")
+          .on("modalshow", this.createProduct.bind(this, productData[0]));
+
+        this.el.$popProduct.vcModal({ opener: target });
+      }
     },
     /**
      * 제품 정보 내부 마크업 생성
@@ -738,7 +764,7 @@
     createProduct: function (item) {
       // 이미지
       if (item.hasOwnProperty("modelImg")) {
-        item._img = linkHost + item.modelImg;
+        item._img = item.modelImg;
       }
 
       // 월 이용요
@@ -749,6 +775,8 @@
       this.el.$popProduct
         .find(".consult_view-prdpop")
         .html(vcui.template(productItem, item));
+
+      this.el.$popProduct.vcLazyLoader();
     },
     /**
      * 문자 중앙 마스킹
@@ -817,6 +845,12 @@
       }
     },
     goLogin: function () {
+      location.href =
+        linkHost +
+        "/sso/api/emp/Login?state=" +
+        encodeURIComponent(location.href.replace(location.origin, ""));
+    },
+    goBestShopSignUp: function () {
       location.href =
         linkHost +
         "/sso/api/emp/Login?state=" +
