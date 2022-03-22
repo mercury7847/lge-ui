@@ -80,6 +80,9 @@
             init: function() {
                 // AR 체험하기 APP 호출시 실행
                 var modelId = lgkorUI.getParameterByName('openAR');
+
+
+                alert("id : "+modelId+" isapp : "+isApp())
                 if( isApp() && modelId) {
                     lgkorUI.openAR(modelId);
 
