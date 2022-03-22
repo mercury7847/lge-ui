@@ -81,9 +81,6 @@
                 // AR 체험하기 APP 호출시 실행
                 var url = lgkorUI.parseUrl(location.href);
                 var params = url.searchParams.getAll();
-
-                alert("HREF "+location.href)
-                alert("id : "+params.openAR+" isapp : "+isApp())
                 if( isApp() && params.openAR) {
                     lgkorUI.openAR(params.openAR);
                     delete params.openAR;

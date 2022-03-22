@@ -251,15 +251,12 @@
                 self.bindEvents();
 
                 // AR 체험하기 APP 호출시 실행
-                var modelId = lgkorUI.getParameterByName('openAR');
-                if( isApp() && modelId) {
-                    lgkorUI.openAR(modelId);
-
-                    var url = lgkorUI.parseUrl(location.href);
-                    var params = url.searchParams.getAll();
+                var url = lgkorUI.parseUrl(location.href);
+                var params = url.searchParams.getAll();
+                if( isApp() && params.openAR) {
+                    lgkorUI.openAR(params.openAR);
                     delete params.openAR;
-                        params = Object.keys(params).length > 0 ? '?'+$.param(params) : '';
-                    window.history.replaceState('', '', url.pathname + params)
+                    window.history.replaceState('', '', url.pathname + (Object.keys(params).length > 0 ? '?'+$.param(params) : ''))
                 }
 
                 //더보기 버튼 체크

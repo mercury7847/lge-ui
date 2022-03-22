@@ -2548,9 +2548,6 @@ var goAppUrl = function(path) {
                     var url =  lgkorUI.parseUrl(location.href);
                     var param = url.searchParams.getAll();
                         param.openAR = modelId;
-
-
-                        alert(url.origin+url.pathname+'?'+$.param(param))
                     goAppUrl(url.origin+url.pathname+'?'+$.param(param));
                     return true;
                 } else {
