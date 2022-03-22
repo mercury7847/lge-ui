@@ -2542,10 +2542,15 @@ var goAppUrl = function(path) {
                 }
                 return true;
             }else{
+                alert("id : "+modelId+' device : '+vcui.detect.isMobile)
+
                 if(modelId && vcui.detect.isMobile) {
                     var url =  lgkorUI.parseUrl(location.href);
                     var param = url.searchParams.getAll();
                         param.openAR = modelId;
+
+
+                        alert(url.origin+url.pathname+'?'+$.param(param))
                     goAppUrl(url.origin+url.pathname+'?'+$.param(param));
                     return true;
                 } else {
