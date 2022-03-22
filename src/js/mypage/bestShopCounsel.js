@@ -5,7 +5,7 @@
   var reservationItem = '<li class="{{#if cancelFlag === "Y"}}li_cancel{{/if}}">' +
     '<div class="li_tit">' +
         '<div class="tit_txt">{{_title}}</div>' +
-        '{{#if (!_today && !_isOverTime) && cancelFlag !== "Y"}}<a href="#n" data-id="{{counselEventNo}}" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
+        '{{#if (!_today && !_isOverTime) && cancelFlag !== "Y"}}<a href="#n" data-id="{{counselRequestId}}" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
     '</div>' +
     '<dl class="li_page">' +
         '<dt>신청페이지</dt>' +
@@ -24,7 +24,7 @@
         '<dl>' +
             '<dt>상담제품</dt>' +
             '<dd>{{_category}}' +
-              '{{#if _type == "1" && _prdId}}' +
+              '{{#if _prdId}}' +
                 '<a href="#n" class="linkbtn product" data-prd-id="{{_prdId}}">제품정보팝업호출</a>' +
               '{{/if}}' +
             '</dd>' +
@@ -62,7 +62,7 @@
 
   // prettier-ignore
   var productItem = '<div class="prd_img">' +
-      '<img data-src="{{_img}}" alt="{{modelDisplayName}}">' + 
+      '<img class="lazyload" data-src="{{_img}}" alt="{{modelDisplayName}}">' + 
     '</div>' + 
     '<p class="prd_name">{{modelDisplayName}}</p>' + 
     '<p class="prd_model">{{modelName}}</p>' + 
@@ -86,7 +86,7 @@
     variable: {
       store: null,
       tabActIndex: 0, // 탭 활성화 index
-      tabLabelKeys: ["", "케어십", "소모품"], // 탭별 json 데이터 filter 를 위한
+      tabLabelKeys: ["V", "C", "D"], // 탭별 json 데이터 filter 를 위한
       listData: [], // json 데이터 담을 팝업
       showListLen: 0, // 리스트 노출된 갯수
       showListCount: 13, // 리스트 더보기 시 추가 노출할 갯수
@@ -373,7 +373,7 @@
      * 예약 취소 요청
      */
     callCancel: function (opener) {
-      var id = opener ? opener.data("id") : null;
+      var id = opener ? opener.data("id") : null; // counselRequestId
       var ajaxUrl = this.el.$container.data("reservation-cancel");
       var postData = { counselRequestId: id };
 
@@ -529,11 +529,8 @@
         function (label, idx) {
           var group =
             listData.filter(function (item) {
-              if (item.hasOwnProperty("counselEventType")) {
-                // 케어십, 소모품 제외 모두 1번째탭 그룹 예외처리
-                return idx === 0
-                  ? !item.counselEventType.match(/(소모품|케어십)/)
-                  : !item.counselEventType.indexOf(label);
+              if (item.hasOwnProperty("counselEventTypeCode")) {
+                return item.counselEventTypeCode === label;
               }
             }) || [];
 
@@ -573,15 +570,11 @@
       listData =
         listData.filter(
           function (item) {
-            if (item.hasOwnProperty("counselEventType")) {
-              // 케어십, 소모품 제외 모두 1번째탭 그룹 예외처리
-              if (this.variable.tabActIndex === 0) {
-                return !item.counselEventType.match(/(소모품|케어십)/);
-              } else {
-                return !item.counselEventType.indexOf(
-                  this.variable.tabLabelKeys[this.variable.tabActIndex]
-                );
-              }
+            if (item.hasOwnProperty("counselEventTypeCode")) {
+              return (
+                item.counselEventTypeCode ===
+                this.variable.tabLabelKeys[this.variable.tabActIndex]
+              );
             }
           }.bind(this)
         ) || [];
@@ -650,17 +643,15 @@
           }
 
           // 케어십 (상품코드)
-          if (item.hasOwnProperty("modelName")) {
-            if (item.modelName.length && item._type === 1) {
-              item._prdId = item.modelName;
-            }
+          if (item.hasOwnProperty("modelName") && item._type === 1) {
+            item._prdId = item.modelName;
           }
 
           item._category = item.modelDisplayName.trim() + cnt;
         } else {
           // 소모품
-          if (item.requestCategory.match(/\,/g)) {
-            categorys = item.requestCategory.split(",").map(function (item) {
+          if (item.modelDisplayName.match(/\,/g)) {
+            categorys = item.modelDisplayName.split(",").map(function (item) {
               return item.trim();
             });
 
@@ -731,28 +722,24 @@
     openProduct: function (data) {
       var target = data.target;
       var id = data.id;
-      /* var ajaxUrl = this.el.$container.data("reservation-product-info");
 
-      lgkorUI.requestAjaxDataPost(
-        ajaxUrl,
-        { modelName: id },
-        function (result) {
-          this.el.$popProduct
-            .off("modalshow")
-            .on("modalshow", this.createProduct.bind(this, result.data));
-          this.el.$popProduct.vcModal({ opener: target });
-        }.bind(this),
-        true
-      ); */
-
+      // 제품 데이터 찾기
       var productData = this.variable.listData.filter(function (item) {
         return item.modelName === id;
       });
 
+      // 팝업 오픈 완료 콜백
       if (productData.length) {
         this.el.$popProduct
           .off("modalshow")
           .on("modalshow", this.createProduct.bind(this, productData[0]));
+
+        this.el.$popProduct.off("modalhide").on(
+          "modalhide",
+          function () {
+            this.el.$popProduct.vcLazyload("destroy");
+          }.bind(this)
+        );
 
         this.el.$popProduct.vcModal({ opener: target });
       }
@@ -767,7 +754,7 @@
         item._img = item.modelImg;
       }
 
-      // 월 이용요
+      // 월 이용료
       if (item.hasOwnProperty("monthlyPrice")) {
         item._price = vcui.number.addComma(item.monthlyPrice);
       }
@@ -776,7 +763,7 @@
         .find(".consult_view-prdpop")
         .html(vcui.template(productItem, item));
 
-      this.el.$popProduct.vcLazyLoader();
+      this.el.$popProduct.vcLazyload();
     },
     /**
      * 문자 중앙 마스킹
@@ -858,7 +845,9 @@
     },
   };
 
-  $(document).ready(function () {
-    module.init(".consult_view-wrap");
+  vcui.require(["ui/lazyload"], function () {
+    $(document).ready(function () {
+      module.init(".consult_view-wrap");
+    });
   });
 })();
