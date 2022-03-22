@@ -3,53 +3,94 @@
         {
             "storyList": [
                 {
-                    "storyId": "ST00024023",
-                    "storyType": "tips",
-                    "storyTypeNm": "가전꿀팁",
+                    "storyId": "ST00072000",
+                    "storyType": "life_style",
+                    "storyTypeNm": "라이프스타일",
                     "storyNewsGubun": null,
-                    "storyTitle": "크래프트 아이스 쿨팁",
-                    "storyUrl": "/story/useful-tip/lg-objet-collection-refrigerators-ice-cooltip-a",
-                    "storyMainThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/storyThumbnail/",
-                    "storyMainThumbnailServerName": "johnlegend (640x800)[20211208_123904][20211214_110537].jpg",
-                    "storyMainThumbnailAltText": "크래프트 아이스 쿨팁",
+                    "storyTitle": "틔운과 함께하는 반려식물생활",
+                    "storyUrl": "/story/lifestyle/plant-interior-lifestyle",
+                    "storyMainThumbnailPath": "/kr/upload/admin/storyThumbnail/",
+                    "storyMainThumbnailServerName": "02_틔운01_썸네일_뱃지X[20211223_170628].png",
+                    "storyMainThumbnailAltText": "LG틔운으로 라이프 스타일을 틔우다",
                     "storyListThumbnailUrl": null,
-                    "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/storyThumbnail/",
-                    "storyListThumbnailServerName": "johnlegend (240x180)[20211208_123904][20211214_110537].jpg",
-                    "storyListThumbnailAltText": "크래프트 아이스 쿨팁",
+                    "storyListThumbnailPath": "/kr/upload/admin/storyThumbnail/",
+                    "storyListThumbnailServerName": "03_240x180[20211102_085845].png",
+                    "storyListThumbnailAltText": "LG틔운으로 라이프 스타일을 틔우다",
                     "storyPdpThumbnailPath": "",
                     "storyPdpThumbnailServerName": "",
                     "storyPdpThumbnailAltText": "",
                     "storyMovieUrl": "",
                     "videoType": "",
-                    "storyOrder": "0",
-                    "storyDesc": "모히또/투톤주스 레시피",
-                    "lastUpdateDate": "2021.12.15",
-                    "baseDate": "2021.04.11",
+                    "storyOrder": "17",
+                    "storyDesc": "식물생활가전 틔운이 반려식물을 보살펴 줄거에요. 식물생활가전 LG 틔운과 함께 나의 공간을 초록빛으로 채워보세요. ",
+                    "lastUpdateDate": "2022.03.15",
+                    "baseDate": "2021.10.29",
                     "yearBaseDate": "2021",
                     "categoryList": [
                         {
-                            "subCategory": "냉장고",
-                            "superCategoryId": "CT50019002",
-                            "superCategory": "LG Objet Collection",
-                            "subCategoryId": "CT50022005",
-                            "category": "LG 오브제컬렉션",
-                            "categoryId": "CT50020191"
-                        },
-                        {
                             "subCategory": null,
-                            "superCategoryId": "CT50000174",
-                            "superCategory": "주방가전",
+                            "superCategoryId": "CT50000100",
+                            "superCategory": "생활가전",
                             "subCategoryId": "",
-                            "category": "식기세척기",
-                            "categoryId": "CT50000181"
+                            "category": "식물생활가전",
+                            "categoryId": "CT50064001"
                         }
                     ],
                     "tagUrlPath": null,
                     "tagList": [
                         {
                             "orderNo": "",
-                            "tagId": "TD00009040",
-                            "tagName": "홈쿡"
+                            "tagId": "TD00009048",
+                            "tagName": "인테리어"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009074",
+                            "tagName": "스마트홈"
+                        }
+                    ],
+                    "modelList": []
+                },
+                {
+                    "storyId": "ST00074000",
+                    "storyType": "life_style",
+                    "storyTypeNm": "라이프스타일",
+                    "storyNewsGubun": null,
+                    "storyTitle": "생기를 불어넣어 줄 틔운 라이프 ",
+                    "storyUrl": "/story/lifestyle/tiiun-lifestyle",
+                    "storyMainThumbnailPath": "/kr/upload/admin/storyThumbnail/",
+                    "storyMainThumbnailServerName": "04_LGE_Story_틔운_썸네일 이미지_뱃지x_v.1.0_(211123)[20211123_163327].png",
+                    "storyMainThumbnailAltText": "싱그러운 틔운 라이프",
+                    "storyListThumbnailUrl": null,
+                    "storyListThumbnailPath": "/kr/upload/admin/storyThumbnail/",
+                    "storyListThumbnailServerName": "05_틔운02_썸네일_240x180[20211123_180025].png",
+                    "storyListThumbnailAltText": "싱그러운 틔운 라이프",
+                    "storyPdpThumbnailPath": "",
+                    "storyPdpThumbnailServerName": "",
+                    "storyPdpThumbnailAltText": "",
+                    "storyMovieUrl": "",
+                    "videoType": "",
+                    "storyOrder": "100",
+                    "storyDesc": "틔운이 피워내는 씨앗 패키지로 다양한 라이프 스타일을 경험해보세요. 반려식물을 키우는 즐거움에 빠지실 거예요. 여러분의 집안에 향기와 소소한 즐거움으로 채워보세요.",
+                    "lastUpdateDate": "2022.03.15",
+                    "baseDate": "2021.11.24",
+                    "yearBaseDate": "2021",
+                    "categoryList": [
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000100",
+                            "superCategory": "생활가전",
+                            "subCategoryId": "",
+                            "category": "식물생활가전",
+                            "categoryId": "CT50064001"
+                        }
+                    ],
+                    "tagUrlPath": null,
+                    "tagList": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009045",
+                            "tagName": "건강"
                         },
                         {
                             "orderNo": "",
@@ -60,53 +101,45 @@
                     "modelList": []
                 },
                 {
-                    "storyId": "ST00024024",
+                    "storyId": "ST00091000",
                     "storyType": "tips",
                     "storyTypeNm": "가전꿀팁",
                     "storyNewsGubun": null,
-                    "storyTitle": "각얼음&조각얼음 쿨팁",
-                    "storyUrl": "/story/useful-tip/lg-objet-collection-refrigerators-ice-cooltip-b",
-                    "storyMainThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/storyThumbnail/",
-                    "storyMainThumbnailServerName": "썸네일_메인[20211208_094821][20211214_104438].jpg",
-                    "storyMainThumbnailAltText": "각얼음&조각얼음 쿨팁",
+                    "storyTitle": "참 쉬운 식물생활<br>틔운으로 시작하세요",
+                    "storyUrl": "/story/useful-tip/tiiunhowto",
+                    "storyMainThumbnailPath": "/kr/upload/admin/storyThumbnail/",
+                    "storyMainThumbnailServerName": "tiiunhowto (640x800)[20220127_112459].jpg",
+                    "storyMainThumbnailAltText": "참 쉬운 식물생활 틔운으로 시작하세요",
                     "storyListThumbnailUrl": null,
-                    "storyListThumbnailPath": "https://wwwdev50.lge.co.kr/kr/upload/admin/storyThumbnail/",
-                    "storyListThumbnailServerName": "썸네일_리스트[20211208_094821][20211214_104438].jpg",
-                    "storyListThumbnailAltText": "각얼음&조각얼음 쿨팁",
+                    "storyListThumbnailPath": "/kr/upload/admin/storyThumbnail/",
+                    "storyListThumbnailServerName": "tiiunhowto (240x180)[20220110_150547].jpg",
+                    "storyListThumbnailAltText": "참 쉬운 식물생활 틔운으로 시작하세요",
                     "storyPdpThumbnailPath": "",
                     "storyPdpThumbnailServerName": "",
                     "storyPdpThumbnailAltText": "",
                     "storyMovieUrl": "",
                     "videoType": "",
-                    "storyOrder": "0",
-                    "storyDesc": "드립커피/베지샐러드 레시피",
-                    "lastUpdateDate": "2021.12.15",
-                    "baseDate": "2021.07.26",
-                    "yearBaseDate": "2021",
+                    "storyOrder": "14",
+                    "storyDesc": "참 쉬운 식물키우기 LG틔운, 거실 안에 가드닝을 해보세요",
+                    "lastUpdateDate": "2022.03.15",
+                    "baseDate": null,
+                    "yearBaseDate": null,
                     "categoryList": [
                         {
-                            "subCategory": "냉장고",
-                            "superCategoryId": "CT50019002",
-                            "superCategory": "LG Objet Collection",
-                            "subCategoryId": "CT50022005",
-                            "category": "LG 오브제컬렉션",
-                            "categoryId": "CT50020191"
-                        },
-                        {
                             "subCategory": null,
-                            "superCategoryId": "CT50000174",
-                            "superCategory": "주방가전",
+                            "superCategoryId": "CT50000100",
+                            "superCategory": "생활가전",
                             "subCategoryId": "",
-                            "category": "식기세척기",
-                            "categoryId": "CT50000181"
+                            "category": "식물생활가전",
+                            "categoryId": "CT50064001"
                         }
                     ],
                     "tagUrlPath": null,
                     "tagList": [
                         {
                             "orderNo": "",
-                            "tagId": "TD00009040",
-                            "tagName": "홈쿡"
+                            "tagId": "TD00009048",
+                            "tagName": "인테리어"
                         },
                         {
                             "orderNo": "",
@@ -115,12 +148,61 @@
                         }
                     ],
                     "modelList": []
+                },
+                {
+                    "storyId": "ST00103000",
+                    "storyType": "esay_use",
+                    "storyTypeNm": "사용가이드",
+                    "storyNewsGubun": null,
+                    "storyTitle": "참 쉬운 틔운미니 사용법",
+                    "storyUrl": "/story/user-guide/tiiunmini-basicguide",
+                    "storyMainThumbnailPath": "/kr/upload/admin/storyThumbnail/",
+                    "storyMainThumbnailServerName": "tiiunmini-basicguide (640x800)[20220303_125226].jpg",
+                    "storyMainThumbnailAltText": "참 쉬운 틔운 미니 사용법",
+                    "storyListThumbnailUrl": null,
+                    "storyListThumbnailPath": "/kr/upload/admin/storyThumbnail/",
+                    "storyListThumbnailServerName": "tiiunmini-basicguide (266x200)[20220303_125226].jpg",
+                    "storyListThumbnailAltText": "참 쉬운 틔운 미니 사용법",
+                    "storyPdpThumbnailPath": "",
+                    "storyPdpThumbnailServerName": "",
+                    "storyPdpThumbnailAltText": "",
+                    "storyMovieUrl": "",
+                    "videoType": "",
+                    "storyOrder": "4",
+                    "storyDesc": "틔운미니 사용 전 꼭 알아야할 사항 확인하기",
+                    "lastUpdateDate": "2022.03.15",
+                    "baseDate": null,
+                    "yearBaseDate": null,
+                    "categoryList": [
+                        {
+                            "subCategory": null,
+                            "superCategoryId": "CT50000100",
+                            "superCategory": "생활가전",
+                            "subCategoryId": "",
+                            "category": "식물생활가전",
+                            "categoryId": "CT50064001"
+                        }
+                    ],
+                    "tagUrlPath": null,
+                    "tagList": [
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00009057",
+                            "tagName": "미니멀"
+                        },
+                        {
+                            "orderNo": "",
+                            "tagId": "TD00011001",
+                            "tagName": "가전테리어"
+                        }
+                    ],
+                    "modelList": []
                 }
             ],
-            "storyListTotalCount": 2,
+            "storyListTotalCount": 5,
             "pagination": {
                 "page": "1",
-                "totalCount": 1,
+                "totalCount": 2,
                 "visibleCount": 5
             }
         }

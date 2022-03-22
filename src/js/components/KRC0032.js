@@ -77,7 +77,7 @@ $(window).ready(function(){
 					$(this).get(0).pause();
 				}
 			});
-			carouselStop(target)
+			if($(target).data('autoplay')) carouselStop(target) // BTOCSITE-12804
 		}
 
 		//자동재생 반복 횟수 체크 후 정지  -BTOCSITE-8039
@@ -114,13 +114,37 @@ $(window).ready(function(){
 			return $('<button type="button" class="' + buttonClass + '" />').html(buttonInnerEl);
 		} 
 		
-		//슬라이드가 화면 중앙인지 아닌지를 체크하여 해당 이벤트 실행 -BTOCSITE-8039
-		var io = new IntersectionObserver(function(entries, observer) {
-			entries.forEach(function(entry) {
-				if($(entry.target).data('autoplay')) (entry.isIntersecting) ? sectionEnterEvent(entry.target) : sectionLeaveEvent(entry.target);
-				else sectionLeaveEvent(entry.target);
-			});                            
-		}, {root: null, threshold: 0.5});
+		//슬라이드가 화면 중앙인지 아닌지를 체크하여 해당 이벤트 실행 -BTOCSITE-8039 (BTOCSITE-12804)
+		if(vcui.detect.isIE) { 
+			var observerOption = {
+				root: null,
+				threshold: []
+			}
+			for (var i=0; i<=1.0; i+= 0.01) {
+				observerOption.threshold.push(i);
+			}
+			var io = new IntersectionObserver(function(entries, observer) {
+				entries.forEach(function(entry) {
+					if (entry.intersectionRatio > 0.7) {
+						sectionEnterEvent(entry.target)
+					}else if (entry.intersectionRatio == 0) {
+						$(entry.target).find('.ui_carousel_current .animation-area video').currentTime = 0;
+					}else {
+						sectionLeaveEvent(entry.target)
+					}
+				});                            
+			}, observerOption);
+		} else {
+			var io = new IntersectionObserver(function(entries, observer) {
+				entries.forEach(function(entry){
+					if( entry.isIntersecting ) {
+						sectionEnterEvent(entry.target)
+					} else {
+						sectionLeaveEvent(entry.target)
+					}
+				});                            
+			}, {root: null, threshold: 0.5})
+		}
 		
 		$('.KRC0032').find(".ui_carousel_slider").each(function(cdx, slide){
 			var $slide 			= $(this),
@@ -197,7 +221,12 @@ $(window).ready(function(){
 				prevVideoPause(slide);
 				prevYoutubeBoxClose(slide, prev);
 				autoStateChange(slide, prev, next)
-			
+
+				// BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건
+				if( $('.dropContent').hasClass('on') ){
+					$('.dropContent').removeClass('on') 
+					infoDisclaimer.parents('.usp-banner-wrap').removeClass('disc-open');
+				}			
 			})
 			.on('carouselafterchange', function(e, slide, currentSlide){
 				var $slider = $(slide.$slider);
@@ -215,9 +244,7 @@ $(window).ready(function(){
 				$slider.vcCarousel('setOption', 'autoplaySpeed', autoSpeed)
 			});	
 
-			if( autoPlay ) {
-				io.observe(slide);
-			}
+			io.observe(slide); // BTOCSITE-12804
 			$(slide).on('click', '.indi-wrap .ui_carousel_play', function() {
 				$(this).blur();
 				setVideoProgressbar($(this).parents('.ui_carousel_slider'), $(this).hasClass('stop'))
@@ -249,6 +276,7 @@ $(window).ready(function(){
 				if(titleAttr = mybtnAttr) {
 				    //console.log("111");
 				    $(item).find('.dropContent').addClass('on');
+					infoDisclaimer.parents('.usp-banner-wrap').addClass('disc-open'); // BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건
 				    //$(this).hide();
 				}
 			});
@@ -259,6 +287,7 @@ $(window).ready(function(){
 			    if(titleAttr = mybtnAttr) {
 			        //console.log("111");
 			        $(item).find('.dropContent').removeClass('on');
+					infoDisclaimer.parents('.usp-banner-wrap').removeClass('disc-open'); // BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건
 			        //$(item).find('.drop-info .dropInfo_openBtn').show();
 			    }
 			});

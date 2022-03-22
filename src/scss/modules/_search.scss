@@ -58,21 +58,19 @@
 
             input.txt {
                 width: 100%;
-                height: 64px;
-                // margin: 0 52px 0 0;
-                padding: 16px 16px 16px 32px;
-                // border-bottom: 2px solid $color-default;
-                border-radius: 40px;
+                height: 62px;
+                padding: 0 78px 0 0;
+                border-bottom: 2px solid $color-default;
                 //border-radius: 28px;
-                background-color: #f4f5f7;
+                background-color: #fff;
                 //box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
-                font-weight: 400;
-                @include font(24px,32px);
+                font-weight: 700;
+                @include font(24px,34px);
 
                 &::-webkit-input-placeholder,
                 &::-moz-placeholder,
                 &:-ms-input-placeholder {
-                    color: $color-gray-4;
+                    color: $color-gray-1;
                 }
 
                 &::-ms-clear,
@@ -90,25 +88,25 @@
 
                 &:focus {
                     outline: none;
-                    // border-bottom: 2px solid transparent;
-                    // background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(119deg, #9c86e7 0%, #de64a0 100%) border-box;
+                    border-bottom: 2px solid transparent;
+                    background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(119deg, #9c86e7 0%, #de64a0 100%) border-box;
                 }
             }
 
             .btn-delete {
                 position: absolute;
                 top: 50%;
-                right: 16px;
-                width: 32px;
-                height: 32px;
-                margin-top: -16px;
-                background: url('/lg5-common/images/icons/btn-clear-32.svg') no-repeat 0 0;
+                right: 44px;
+                width: 24px;
+                height: 24px;
+                margin-top: -12px;
+                background: url('/lg5-common/images/icons/btn-clear-24.svg') no-repeat 0 0;
             }
 
             .btn-search {
                 position: absolute;
                 top: 50%;
-                right: -48px;
+                right: 0;
                 transform: translateY(-50%);
                 width: 38px;
                 height: 100%;
@@ -139,20 +137,15 @@
                     height: 46px;
                     padding-right: 22px;
                     font-weight: 500;
-                    @include font(15px,22px);
+                    @include font(20px,28px);
                 }
                 .btn-delete {
-                    right: 12px;
-                    width: 24px;
-                    height: 24px;
-                    margin-top: -12px;
-                    background-size: 100%;
+                    right: 40px;
                 }
                 .btn-search {
                     width: 32px;
-                    right: -44px;
                     &::after {
-                        margin-left: 0;
+                        margin-left: 8px;
                         width: 24px;
                         height: 24px;
                         background-size: 100%;
@@ -179,7 +172,7 @@
     position: relative;
     max-width: 678px;
     height: 42px;
-    margin: 16px auto;
+    margin: 12px auto 16px;
     padding-right: 26px;
     text-align: center;
     overflow: hidden;
@@ -187,7 +180,7 @@
     .inner {
         position: relative;
         display: inline-block;
-        padding-left: 60px;
+        padding-left: 81px;
 
         @include mobile {
             padding-left: 32px;
@@ -198,19 +191,10 @@
 
     .title {
         position: absolute;
+        top: 8px;
         left: 0;
-        padding-right: 16px;
         font-weight: 700;
         @include font-small;
-        &::after {
-            content: "";
-            position: absolute;
-            top:calc(50% - 5px);
-            right: 0;
-            width: 1px;
-            height: 10px;
-            background-color: #ddd;
-        }
     }
 
     .keyword-list {
@@ -222,7 +206,7 @@
 
         li {
             display: inline-block;
-            margin: 0 16px 16px 0;
+            margin: 0 8px 8px 0;
 
 
             &:nth-last-child(1) {
@@ -233,14 +217,17 @@
                 display:inline-block;
                 // @include font-small;
                 font-size: 14px;
-                line-height:20px;
-                color: #666;
-                margin:1px;
+                line-height:21px;
 
-                // &:hover {
-                //     margin:0;
-                //     border: solid 2px #da0f47;
-                // }
+                padding:8px 14px;
+                margin:1px;
+                border-radius: 8px;
+                border: solid 1px #ddd;
+
+                &:hover {
+                    margin:0;
+                    border: solid 2px #da0f47;
+                }
             }
         }
     }
@@ -279,16 +266,15 @@
 .search-input-layer {
     display: none;
     position: absolute;
-    top: 78px;
+    top: 62px;
     right: 0;
     left: 0;
     z-index: 10;
-    padding: 24px 32px;
-    border-radius: 16px;
-    // border: 2px solid transparent;
-    background-color: #fff;
-    // background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(119deg, #9c86e7 0%, #de64a0 100%) border-box;
-    box-shadow: 2px 4px 12px 0 rgba(0, 0, 0, 0.14);
+    padding: 32px 32px 56px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(119deg, #9c86e7 0%, #de64a0 100%) border-box;
+    box-shadow: 2px 8px 12px 0 rgba(202, 111, 183, 0.13);
 
     .btn-close {
         position: absolute;
@@ -311,45 +297,28 @@
         @include font-medium;
         text-align: center;
     }
-    .auto-complete {
-        // li {padding-left: 0 !important;}
-
-    }
 
     .search-keyword-area {
-        // display: table;
-        // table-layout: fixed;
+        display: table;
+        table-layout: fixed;
         width: 100%;
-        padding: 16px 0;
 
         .recent-keyword,
         .popular-keyword {
-            // display: table-cell;
-            width: 100%;
+            display: table-cell;
+            width: 50%;
         }
 
         .recent-keyword {
-            margin-bottom: 40px;
-            padding: 0 !important;
-            border-bottom: 0;
+            padding-right: 32px;
         }
         .popular-keyword {
-            margin-bottom: 40px;
-            .title{
-                margin-bottom: 24px;
-            }
-        }
-        .symptom-keyword {
-            padding-top: 24px;
-            border-top: 1px solid #ddd;
-            .title{
-                margin-bottom: 24px;
-            }
+            padding-left: 32px;
         }
 
         .title {
             display: block;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             font-weight: 700;
             font-size: $font-medium;
             line-height: 30px;
@@ -364,6 +333,12 @@
         }
         .search-keyword-area {
             //display: block;
+
+            .recent-keyword,
+            .popular-keyword {
+                //display: block;
+                //width: 100%;
+            }
 
             .popular-keyword {
                 //margin-top: 32px;
@@ -389,11 +364,6 @@
         li {
             margin-top: 4px;
             padding: 4px 12px;
-            background: url('/lg5-common/images/icons/btn-autocomplete-26.svg') no-repeat right 22px center/26px;
-            @include mobile {
-                background-size: 16px;
-                background-position: right 12px center;
-            }
 
             &:first-child {
                 margin-top: 0;

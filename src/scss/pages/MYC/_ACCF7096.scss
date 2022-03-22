@@ -233,6 +233,9 @@
   }
   ~ .tab-contents {
     margin-top:44px;
+    .sort-select-wrap select{
+      width: 0;
+    }
     .list-sorting + .coupon-list-wrap{
       margin-top:10px;
     }
@@ -392,4 +395,14 @@
       }
     }
   }
+}
+.offscreen{
+	position: absolute;
+	z-index: -10;
+	width: 0 !important;
+	height: 0 !important;
+	overflow: hidden !important;
+	font-size: medium;
+	line-height: normal;
+	word-break: break-all;
 }

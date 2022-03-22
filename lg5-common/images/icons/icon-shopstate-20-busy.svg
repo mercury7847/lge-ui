@@ -1,0 +1,17 @@
+<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <path d="M0 0h20v20H0z"/>
+        <g transform="translate(9 6)" fill="#A50024" stroke="#FFF">
+            <circle cx="5" cy="3" r="2.5"/>
+            <path d="M10 11a5 5 0 1 0-10 0"/>
+        </g>
+        <g transform="translate(1 6)" fill="#A50024" stroke="#FFF">
+            <circle cx="5" cy="3" r="2.5"/>
+            <path d="M10 11a5 5 0 1 0-10 0"/>
+        </g>
+        <g transform="translate(5 5)" fill="#A50024" stroke="#FFF" stroke-width=".5">
+            <circle cx="5" cy="3" r="2.75"/>
+            <path d="M10 12c0-3.314-2.239-6-5-6s-5 2.686-5 6"/>
+        </g>
+    </g>
+</svg>

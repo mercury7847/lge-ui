@@ -30,7 +30,7 @@
         transform:translateZ(0);
         z-index:9000;
         //background:#fff;
-        background: transparent;        
+        background: transparent;
         overflow: hidden;
         &.open{
             display:block;
@@ -91,7 +91,7 @@
             top:0;
             right:-100%;
             transition: right .5s;
-            //width:100%;            
+            //width:100%;
             width:260px;
             height:100%;
             overflow-y:auto;
@@ -146,7 +146,7 @@
         //}
     }
 
-    .plp-filter-wrap {        
+    .plp-filter-wrap {
 
         @media screen and (max-width: 1024px) {
             //padding:40px 20px 115px;
@@ -204,7 +204,7 @@
                             background-size: 24px 24px;
                         }
                     }
-                } 
+                }
             }
         }
         .list-acco-sorting{
@@ -234,7 +234,7 @@
                             border-bottom:0px;
                         }
                     }
-                    
+
                     .head {
                         position:relative;
                         /*
@@ -260,18 +260,18 @@
                                 background-size: cover;
                                 transition: all .3s;
                                 @media screen and (max-width: 1024px) {
-                                    //top:30px;                                    
+                                    //top:30px;
                                     top:34px; /* BTOCSITE-2161 */
-                                    right:0;                                    
+                                    right:0;
                                 }
                             }
                         }
-                        
+
                         .tit {
                             display:block;
                             padding:24px 0;
                             color:#000;
-                            @include font-small;                            
+                            @include font-small;
                             font-weight:$font-weight-bold;
                             word-break:break-all;
                             span {
@@ -375,7 +375,7 @@
                             }
                         }
                     }
-                    
+
                 }
             }
 
@@ -395,7 +395,7 @@
                align-items: center;
                justify-content: space-between;
                width: 100%;
-               min-height: 72px; 
+               min-height: 72px;
                padding: 24px 16px 24px 20px;
                background-color: #f4f4f4;
                border-radius: 8px;
@@ -447,7 +447,7 @@
                                 background: url('/lg5-common/images/icons/btn-arrow-right-white-20.svg') no-repeat;
 
                             }
-                            
+
                         }
                     }
                 }
@@ -567,7 +567,7 @@
                     border-width: 0 1.5px 0px 0;
                     transform: rotate(-45deg);
                 }*/
-            }          
+            }
         }
     }
 }
@@ -628,7 +628,7 @@
             //    background-color: #ec455a;
             //    content: '';
             //}
-        } 
+        }
     }
 }
 
@@ -656,7 +656,7 @@
     }
 }
 @media screen and (max-width: 1024px) {
-    
+
     .lay-filter .plp-filter-wrap .filter-top {
         display: flex;
         flex-wrap: wrap;
@@ -679,7 +679,7 @@
                  border-radius: 17px;
                  background-color: #f4f4f4;
                  .inp-txt {
-                    width: 100%; 
+                    width: 100%;
                     background-color: #f4f4f4;
                     font-size: 14px;
                     line-height: 24px;
@@ -694,8 +694,8 @@
                     height: 20px;
                     background: url('/lg5-common/images/icons/icon-search-20.svg');
                 }
-            }   
-        } 
+            }
+        }
     }
 }
 

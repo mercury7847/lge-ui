@@ -8,6 +8,12 @@
         <button type="button" data-href="#laypop1" data-control="modal" class="btn pink"><span>상담예약취소 선택 시(취소가능건)</span></button><br><br>
         <button type="button" data-href="#laypop2" data-control="modal" class="btn pink"><span>상담예약취소 선택 시(예약당일건)</span></button><br><br>
         <button type="button" data-href="#popup1" data-control="modal" class="btn pink"><span>상담예약취소 완료</span></button><br><br>
+        <!-- S: 20220316 항목추가 -->
+        <button type="button" data-href="#laypop3" data-control="modal" class="btn pink"><span>상담예약취소 실패</span></button><br><br>
+        <!-- E: 20220316 항목추가 -->
+        <!-- S: 20220317 항목추가 -->
+        <button type="button" data-href="#laypop4" data-control="modal" class="btn pink"><span>이미 상담예약취소된 경우</span></button><br><br>
+        <!-- E: 20220317 항목추가 -->
         <button type="button" data-href="#popup2" data-control="modal" class="btn pink"><span>제품 정보</span></button><br><br>
     </div>
 
@@ -37,6 +43,26 @@
         popupID: 'popup1'
     })
     <!-- 상담예약취소 완료 -->
+
+    <!-- 상담예약취소 실패 : 20220316 항목추가 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop3",
+        "msgOnly" : true,
+        "msg" : "취소 신청이 정상적으로 처리되지 않았습니다.",
+        "twobtn" : false,
+        "btnTxt" : "확인"
+    })
+    <!-- 상담예약취소 실패 : 20220316 항목추가 -->
+
+    <!-- 이미 상담예약취소된 경우  : 20220317 항목추가 -->
+    @@include('./common/modules/alert-modal.html', {
+        "popId" : "laypop4",
+        "msgOnly" : true,
+        "msg" : "이미 취소 처리된 상담입니다.",
+        "twobtn" : false,
+        "btnTxt" : "확인"
+    })
+    <!-- 이미 상담예약취소된 경우 : 20220317 항목추가 -->
 
     <!-- 제품 정보 -->
     @@include('./common/popup/ACCF8000_pop2.html', {

@@ -218,21 +218,25 @@ var res = {
 		"Page" : {
 			"공통(UTS)" : {
 				"통합검색" : {
-					"검색중" : ["/html/UTS/SERF9001.html","","검수완료"],
-					"검색결과 있음" : {
-						"전체" : ["/html/UTS/SERF9002.html","","검수완료"],
-						"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수완료"],
-						"제품/케어솔루션_결과없음" : ["/html/UTS/SERF9003_nodata.html","","진행중"],
-						// "케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
-						"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
-						"이벤트/기획전_결과없음" : ["/html/UTS/SERF9005_nodata.html","","진행중"],
-						"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
-						"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
-						"케어용품/소모품_결과없음" : ["/html/UTS/SERF9007_nodata.html","","진행중"],
-						"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
-						"센터/매장" : ["/html/UTS/SERF9015.html","","검수완료"],
-					},
-					"검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
+					"검색중" : ["/html/UTS/SERF9001.html","","진행중"],
+					"검색결과 없음" : ["/html/UTS/SERF9002_nodata.html","","진행중"],
+					"검색결과 서비스" : ["/html/UTS/SERF9002_service.html","","진행중"],
+					"검색결과 있음" : ["/html/UTS/SERF9002.html","","진행중"]
+					// "검색결과 있음" : {
+					// 	"결과있음" : ["/html/UTS/SERF9002.html","","진행중"],
+					// 	"결과있음" : ["/html/UTS/SERF9002.html","","진행중"],
+					// 	"제품/케어솔루션" : ["/html/UTS/SERF9003.html","","검수완료"],
+					// 	"제품/케어솔루션_결과없음" : ["/html/UTS/SERF9003_nodata.html","","진행중"],
+					// 	"케어솔루션" : ["/html/UTS/SERF9004.html","","검수완료"],
+					// 	"이벤트/기획전" : ["/html/UTS/SERF9005.html","","검수완료"],
+					// 	"이벤트/기획전_결과없음" : ["/html/UTS/SERF9005_nodata.html","","진행중"],
+					// 	"스토리" : ["/html/UTS/SERF9006.html","","검수완료"],
+					// 	"케어용품/소모품" : ["/html/UTS/SERF9007.html","","검수완료"],
+					// 	"케어용품/소모품_결과없음" : ["/html/UTS/SERF9007_nodata.html","","진행중"],
+					// 	"고객지원" : ["/html/UTS/SERF9008.html","","검수완료"],
+					// 	"센터/매장" : ["/html/UTS/SERF9015.html","","검수완료"],
+					// },
+					// "검색결과 없음" : ["/html/UTS/SERF9009.html","","검수완료"]
 				},
 				"Footer" : {
 					// "개인정보취급방침" : ["/html/UTS/COMF2000.html","","진행중"],
@@ -371,7 +375,8 @@ var res = {
 				}
 			},
 			"마이페이지(MYS)" : {
-				"홈(서브메인)" : ["/html/MYS/ACCF7001.html","",""]
+				"홈(서브메인)" : ["/html/MYS/ACCF7001.html","","검수완료"],
+				"홈(2022)" : ["/html/MYS/ACCF7001_new.html","",""]
 			},
 			"마이페이지(MYC)" : {
 				"쇼핑 관리" : {
@@ -387,8 +392,8 @@ var res = {
 					"배송지 주소 관리 팝업" : ["/html/MYC/ACCF7009_popup.html","","검수완료"],
 					"쿠폰" : ["/html/MYC/ACCF7018.html","","검수완료"],
 					"쿠폰 상세보기 팝업" : ["/html/MYC/ACCF7018_popup.html","","검수완료"],
-					"쿠폰(베스트샵)" : ["/html/MYC/ACCF7096.html","",""],
-					"쿠폰(베스트샵) 상세보기 팝업" : ["/html/MYC/ACCF7096_popup.html","",""]
+					"쿠폰(2022)" : ["/html/MYC/ACCF7096.html","",""],
+					"쿠폰(2022) 상세보기 팝업" : ["/html/MYC/ACCF7096_popup.html","",""]
 				},
 				"케어솔루션" : {
 					"계약현황" : ["/html/MYC/ACCF7025.html","","검수완료"],

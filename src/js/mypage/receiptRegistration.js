@@ -143,6 +143,7 @@
 
                     self.$areaSelect.vcSelectbox('selectedIndex',0,false);
                     self.$branchSelect.vcSelectbox('selectedIndex',0,false);
+                    self.validation.validate();
                 });
 
                 self.$areaSelect.on('change', function(e){
@@ -209,6 +210,7 @@
                             } else {
                                 void android.openBarcodeScannerForReceipt("receiptCodeDirectReturn");
                             }
+                            self.$formWrap.find('.err-block').hide().find('.err-msg').text("")
                         } else {
                             self.validation.validate();
                         }

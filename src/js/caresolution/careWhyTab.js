@@ -124,7 +124,7 @@
         '       {{/if}}'+
         '       <div class="price-wrap type2">'+
         '           <dl>'+
-        '               <dt>이용 요금</dt>'+
+        '               <dt>이용 요금 <span class="small-text">(1년차 월 요금 기준)</span></dt>'+
         '               <dd>월 {{monthlyPrice}}원</dd>'+
         '           </dl>'+
         '       </div>'+

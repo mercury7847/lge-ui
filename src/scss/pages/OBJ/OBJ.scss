@@ -1644,6 +1644,27 @@ html {
                 width: 90px;
                 padding: 0;
             }
+            // BTOCSITE-13471 오브제컬렉션 브랜드관 키비 등록 요청
+            &.txt-objdios{
+                width:504px;
+                height:49px;
+                .img-mobile{
+                    display:none;
+                    img{
+                        width:100%;
+                    }
+                }
+                @include mobile{
+                    width:160px;
+                    height:16px;
+                    .img-mobile{
+                        display:block;
+                    }
+                    .img-pc{
+                        display:none;
+                    }
+                }
+            }
         }
     }
     .text-info-etc{
@@ -1677,6 +1698,23 @@ html {
             display: inline-block;
             
         }
+        /* BTOCSITE-13364 브랜드관 히어로 배너 영역 수정 */
+        &.solo{
+            right:0;
+            bottom:20px;
+            padding-right:15px;
+            @media screen and (max-width: 1475px){
+                padding-right:9px;
+            }
+            @include mobile {
+                left:0;
+                bottom:10px;
+                padding-right:0;
+                justify-content:center;
+                text-align:center;
+            }
+        }
+        // /* /BTOCSITE-13364 브랜드관 히어로 배너 영역 수정 */
     }
 }
 // BTOCSITE-4251 : 브랜드관 히어로 배너- 컴포넌트로 교체 (carousel)

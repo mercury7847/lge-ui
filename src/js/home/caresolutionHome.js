@@ -290,7 +290,7 @@
             self.$tabs =         this.$el.find('>.tabs');
             self.$tabContent =   $context.find('.care-recommended .ui_product_carousel_slider');
 
-            self.$el.on('tabbeforechange tabchange tabinit', function(e, data){
+            self.$el.off('tabbeforechange tabchange tabinit').on('tabbeforechange tabchange tabinit', function(e, data){
                 //탭 이벤트 분기
                 switch(e.type) {
                     case "tabinit" :
@@ -307,7 +307,7 @@
             // 탭 클릭시 인덱스를 세션스토리지에 기록
             var store = window.sessionStorage;
             var session_name = 'care_cecommended_tabindex';
-            self.$tabs.find('a').on('click', function () {
+            self.$tabs.find('a').off('click').on('click', function () {
                 var idx = $(this).parent().index();
                 store.setItem(session_name, idx);
             });
@@ -331,7 +331,7 @@
                 var touchFlag = true;
                 var touchFlagTid = 0;
         
-                self.$tabContent.on('touchstart', function(e){
+                self.$tabContent.off('touchstart').on('touchstart', function(e){
                     self.startX = e.changedTouches[0].clientX;
                     self.startY = e.changedTouches[0].clientY;
                     self.endX = 0;
@@ -339,7 +339,7 @@
                 });
 
 
-                self.$tabContent.on('touchend', function(e){
+                self.$tabContent.off('touchend').on('touchend', function(e){
                     self.endX = e.changedTouches[0].clientX;
                     self.endY = e.changedTouches[0].clientY;
     
