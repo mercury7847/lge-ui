@@ -7,8 +7,8 @@ var isApp = function(){
 *  @path : 랜딩할 경로
 */
 var goAppUrl = function(path) {
-    var weblink = path ? path : location.href;    
-    location.href =  'https://lgeapp.page.link/?link='+weblink+'&apn=kr.co.lge.android&isi=1561079401&ibi=kr.co.lge.ios'; // 앱실행 
+    var weblink = decodeURIComponent(path ? path : location.href);    
+    location.href =  'https://lgeapp.page.link/?link='+encodeURIComponent(weblink)+'&apn=kr.co.lge.android&isi=1561079401&ibi=kr.co.lge.ios'; // 앱실행 
 }
 
 // 메인 성능 개선 - jquery passive event 적용
@@ -2544,7 +2544,9 @@ var goAppUrl = function(path) {
             }else{
                 if(modelId && vcui.detect.isMobile) {
                     var url =  lgkorUI.parseUrl(location.href);
-                    goAppUrl(url.origin+url.pathname+((url.search) ?  '?'+url.search+'&openAR='+modelId : '?openAR='+modelId ));
+                    var param = url.searchParams.getAll();
+                        param.openAR = modelId;
+                    goAppUrl(url.origin+url.pathname+'?'+$.param(param));
                     return true;
                 } else {
                     return false;
