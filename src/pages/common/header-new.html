@@ -120,8 +120,6 @@
                 </div>
             </div>
 
-
-
             <div class="nav-wrap">
                 <div class="nav-inner">
 
@@ -1428,10 +1426,10 @@
 
 
                 <!-- BTOCSITE-7335 : mobile nav 추가-->
-                <ul class="nav mo-nav">
+                <ul class="nav mo-nav" data-single-open="false" data-open-index="all">
                     <li>
                         <!-- BTOCSITE-10664 GNB "제품" 명칭 > "제품/소모품"으로 변경 및  GNB 메뉴 순서 변경 건  -->
-                        <a href="/store" class="nav-item" data-super-category-item="제품/소모품 홈">제품/소모품</a>
+                        <a href="/store" class="nav-item" data-super-category-item="제품/소모품 홈">aa제품/소모품</a>
                         <div class="nav-category-container">
                             <!-- BTOCSITE-7335 스토어홈 > 제품홈 명칭변경 -->
 <!--                            <div class="category-home"><a href="/store" class="super-category-item">제품 홈</a></div>-->
@@ -1444,6 +1442,7 @@
                                                 <div class="category-box">
                                                     <div class="column">
                                                         <ul class="category">
+                                                            <li><a href="#" class="category-item" data-contents="전체">전체</a></li>
                                                             <li>
                                                                 <a href="/tvs" class="category-item" data-contents="TV/AV-TV">TV</a>
                                                                 <ul class="sub-category">
@@ -1454,17 +1453,15 @@
                                                                     <li><a href="/tvs?subCateId=CT50029007">라이프스타일 스크린</a></li>
                                                                 </ul>
                                                             </li>
-                                                            <li><a href="/projectors" class="category-item" data-contents="TV/AV-프로젝터">프로젝터</a>
+                                                            <li>
+                                                                <a href="/projectors" class="category-item" data-contents="TV/AV-프로젝터">프로젝터</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/projectors?subCateId=CT50000035">초단초점</a></li>
                                                                     <li><a href="/projectors?subCateId=CT50000034">투사형</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="/home-audio" class="category-item" data-contents="TV/AV-AV">AV</a>
+                                                            <li>
+                                                                <a href="/home-audio" class="category-item" data-contents="TV/AV-AV">AV</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/home-audio?subCateId=CT50000041">사운드바</a></li>
                                                                     <li><a href="/home-audio?subCateId=CT50000040">무선 스피커</a></li>
@@ -1472,17 +1469,18 @@
                                                                     <li><a href="/home-audio?subCateId=CT50000037">오디오/플레이어</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="/care-accessories/tv?main=Y" class="category-item" data-contents="TV/AV-케어용품/소모품">케어용품/소모품</a>
+                                                            <li><a href="#" class="category-item" data-contents="상업용 디스플레이">상업용 디스플레이</a></li>
+                                                            <li>
+                                                                <a href="/care-accessories/tv?main=Y" class="category-item" data-contents="TV/AV-케어용품/소모품">케어용품/소모품</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/care-accessories/tv">TV</a></li>
                                                                     <li><a href="/care-accessories/projector-minibeam-etc">프로젝터</a></li>
                                                                 </ul>
                                                             </li>
                                                         </ul>
+                                                    </div>
+
+                                                    <div class="column">
                                                         <div class="category-hashtag">
                                                             <ul>
                                                                 <li><a href="/search/result?search=%23%EA%B0%A4%EB%9F%AC%EB%A6%AC%EB%94%94%EC%9E%90%EC%9D%B8" class="tag-item" data-contents="TV/AV-갤러리디자인">#갤러리디자인</a></li>
@@ -1491,7 +1489,6 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -1515,10 +1512,6 @@
                                                             <li>
                                                                 <a href="/all-in-one-pc-and-desktop" class="category-item" data-contents="IT-일체형/데스크톱">일체형/데스크톱</a>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/monitors" class="category-item" data-contents="IT-모니터">모니터</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/monitors?subCateId=CT50000059">울트라기어 게이밍모니터</a></li>
@@ -1529,10 +1522,6 @@
                                                                     <li><a href="/monitors?subCateId=CT50000061">IPTV 모니터</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/care-accessories/laptop?main=Y" class="category-item" data-contents="IT-케어용품/소모품">케어용품/소모품</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/care-accessories/laptop">노트북</a></li>
@@ -1542,6 +1531,9 @@
                                                                 </ul>
                                                             </li>
                                                         </ul>
+                                                    </div>
+
+                                                    <div class="column">
                                                         <div class="category-hashtag">
                                                             <ul>
                                                                 <li><a href="/search/result?search=%23%EA%B2%8C%EC%9E%84" class="tag-item" data-contents="IT-게임">#게임</a></li>
@@ -1549,7 +1541,6 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -1580,10 +1571,6 @@
                                                                     <li><a href="/kimchi-refrigerators?subCateId=CT50000075">프리스타일</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/electric-ranges" class="category-item" data-contents="주방가전-전기레인지">전기레인지</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/electric-ranges?subCateId=CT50000077">인덕션</a></li>
@@ -1600,10 +1587,6 @@
                                                                     <li><a href="/water-purifiers?subCateId=CT50000097">정수전용</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/lg-homebrew" class="category-item" data-contents="주방가전-맥주제조기">맥주제조기</a></li>
                                                             <li><a href="/kr/business/product/builtin" class="category-item" target="_blank" title="새창열림" data-contents="주방가전-빌트인가전">빌트인가전</a></li>
                                                             <li><a href="/kr/business/signaturekitchen/signaturekitchenMain.do" class="category-item" target="_blank" title="새창열림" data-contents="주방가전-시그니처 키친 스위트">시그니처 키친 스위트</a></li>
@@ -1617,6 +1600,9 @@
                                                                 </ul>
                                                             </li>
                                                         </ul>
+                                                    </div>
+
+                                                    <div class="column">
                                                         <div class="category-hashtag">
                                                             <ul>
                                                                 <li><a href="/search/result?search=%23%EA%B2%B0%ED%98%BC" class="tag-item" data-contents="주방가전-결혼">#결혼</a></li>
@@ -1624,7 +1610,6 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -1648,10 +1633,6 @@
                                                                 </ul>
                                                             </li>
                                                             <li><a href="/dryers" class="category-item" data-contents="생활가전-의류건조기">의류건조기</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/lg-styler" class="category-item" data-contents="생활가전-스타일러">스타일러</a></li>
                                                             <li><a href="/vacuum-cleaners" class="category-item" data-contents="생활가전-청소기">청소기</a>
                                                                 <ul class="sub-category">
@@ -1662,10 +1643,6 @@
                                                                     <li><a href="/vacuum-cleaners?subCateId=CT50000113">싸이킹</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/massage-chairs" class="category-item" data-contents="생활가전-안마의자">안마의자</a></li>
                                                             <li><a href="/care-accessories/front-load-washer" class="category-item" data-contents="생활가전-케어용품/소모품">케어용품/소모품</a>
                                                                 <ul class="sub-category">
@@ -1676,6 +1653,9 @@
                                                                 </ul>
                                                             </li>
                                                         </ul>
+                                                    </div>
+
+                                                    <div class="column">
                                                         <div class="category-hashtag">
                                                             <ul>
                                                                 <li><a href="/search/result?search=%23%EC%B9%BC+%EC%A3%BC%EB%A6%84" class="tag-item" data-contents="생활가전-칼 주름">#칼 주름</a>
@@ -1685,7 +1665,6 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -1693,7 +1672,7 @@
                                 </li>
                                 <li class="super-category-list active on">
                                     <a href="#" class="super-category-item">에어컨/에어케어</a>
-                                    <div class="nav-category-layer" style="display: block;">
+                                    <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory5">
                                                 <div class="category-box">
@@ -1715,10 +1694,6 @@
                                                                     <li><a href="/system-air-conditioners?subCateId=CT50045002">상업용 천장형 </a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/air-purifier" class="category-item" data-contents="에어컨/에어케어-공기청정기">공기청정기</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/air-purifier?subCateId=CT50000144">공기청정기</a></li>
@@ -1729,10 +1704,6 @@
                                                             <li><a href="/dehumidifiers-and-humidifiers" class="category-item" data-contents="에어컨/에어케어-제습/가습기">제습/가습기</a>
                                                             </li>
                                                             <li><a href="/ceiling-fan" class="category-item" data-contents="에어컨/에어케어-실링팬">실링팬</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/care-accessories/floor-standing-cooler" class="category-item" data-contents="에어컨/에어케어-케어용품/소모품">케어용품/소모품</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/care-accessories/floor-standing-cooler">에어컨</a></li>
@@ -1740,6 +1711,9 @@
                                                                 </ul>
                                                             </li>
                                                         </ul>
+                                                    </div>
+
+                                                    <div class="column">
                                                         <div class="category-hashtag">
                                                             <ul>
                                                                 <li><a href="/search/result?search=%23%EB%AF%B8%EC%84%B8%EB%A8%BC%EC%A7%80" class="tag-item" data-contents="에어컨/에어케어-미세먼지">#미세먼지</a></li>
@@ -1747,7 +1721,6 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -1770,10 +1743,6 @@
                                                                 </ul>
                                                             </li>
                                                             <li><a href="/feature-phones" class="category-item" data-contents="모바일-피처폰">피처폰</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/care-accessories/smartphone?main=Y" class="category-item" data-contents="모바일-케어용품/소모품">케어용품/소모품</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/care-accessories/smartphone?main=Y">스마트폰</a></li>
@@ -1781,6 +1750,7 @@
                                                             </li>
                                                         </ul>
                                                     </div>
+
                                                     <div class="column">
                                                         <div class="category-related">
                                                             <ul>
@@ -1796,7 +1766,6 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -1820,10 +1789,6 @@
                                                                     <li><a href="/beauty-devices?subCateId=CT50000169">클렌징 기기</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/medical-devices" class="category-item" data-contents="뷰티/의료기기-의료기기">의료기기</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/medical-devices?subCateId=CT50019005">메디헤어</a></li>
@@ -1846,7 +1811,6 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -1863,15 +1827,10 @@
                                                             <li><a href="/signature?subCateId=CT50022018" class="category-item" data-contents="LG SIGNATURE-올레드 TV">올레드 TV</a></li>
                                                             <li><a href="/signature?subCateId=CT50022019" class="category-item" data-contents="LG SIGNATURE-냉장고">냉장고</a></li>
                                                             <li><a href="/signature?subCateId=CT50022020" class="category-item" data-contents="LG SIGNATURE-세탁기">세탁기</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/signature?subCateId=CT50022021" class="category-item" data-contents="LG SIGNATURE-에어컨">에어컨</a></li>
                                                             <li><a href="/signature?subCateId=CT50022022" class="category-item" data-contents="LG SIGNATURE-가습 공기청정기">가습 공기청정기</a></li>
                                                         </ul>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -1890,20 +1849,11 @@
                                                             <li><a href="/object-collection?subCateId=CT50022007" class="category-item" data-contents="LG Objet Collection-김치냉장고">김치냉장고</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022011" class="category-item" data-contents="LG Objet Collection-식기세척기">식기세척기</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022010" class="category-item" data-contents="LG Objet Collection-광파오븐">광파오븐</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/object-collection?subCateId=CT50022014" class="category-item" data-contents="LG Objet Collection-정수기">정수기</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022008" class="category-item" data-contents="LG Objet Collection-워시타워">워시타워</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022009" class="category-item" data-contents="LG Objet Collection-스타일러">스타일러</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022016" class="category-item" data-contents="LG Objet Collection-청소기">청소기</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022015" class="category-item" data-contents="LG Objet Collection-에어컨">에어컨</a></li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li>
                                                                 <a href="/care-accessories/water-ionizer?main=Y" class="category-item" data-contents="케어용품/소모품-이온수기/정수기">이온수기/정수기</a>
                                                                 <ul class="sub-category">
@@ -1934,7 +1884,6 @@
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory10">
-
                                                 <div class="category-box">
                                                     <div class="column">
                                                         <ul class="category">
@@ -1964,11 +1913,6 @@
                                                                     <li><a href="/care-accessories/puricare-mask">퓨리케어 마스크</a></li>
                                                                 </ul>
                                                             </li>
-
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li>
                                                                 <a href="/care-accessories/top-load-washer?main=Y" class="category-item" data-contents="케어용품/소모품-세탁기">세탁기</a>
                                                                 <ul class="sub-category">
@@ -1993,10 +1937,6 @@
                                                                 </ul>
                                                             </li>
                                                             <li><a href="/care-accessories/laserjet-inkjet-printer-printer" class="category-item" data-contents="케어용품/소모품-프린터">프린터</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li>
                                                                 <a href="/care-accessories/pra-l?main=Y" class="category-item" data-contents="케어용품/소모품-뷰티/의료기기">뷰티/의료기기</a>
                                                                 <ul class="sub-category">
@@ -2017,10 +1957,6 @@
                                                                     <li><a href="/care-accessories/freezer">냉동고</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li>
                                                                 <a href="/care-accessories/water-ionizer?main=Y" class="category-item" data-contents="케어용품/소모품-이온수기/정수기">이온수기/정수기</a>
                                                                 <ul class="sub-category">
@@ -2080,10 +2016,6 @@
                                                         <li><a href="#">사용가이드</a></li>
                                                     </ul>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
                                                 <li>
                                                     <span class="category-item btn_open">리뷰</span>
                                                     <ul class="sub-category">

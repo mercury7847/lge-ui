@@ -2600,40 +2600,83 @@ html {
             &:before {
                 display: none;
             }
+       }
+
+        .nav > li {
+            border-top: 0;
         }
 
-        .nav-item:after {
-            display: none;
+       .nav-item {
+           margin: 0 16px;
+           padding: 15.5px 0 7.5px 4px;
+           border-bottom: 1px solid #ddd;
+           font-size: 14px;
+           line-height: 17px;
+
+            &:after {
+                display: none;
+            }
+       }
+
+       .nav-category-container {
+            display: block;
+            li.on .super-category-item{
+                border-bottom: 1px solid #000;
+                &:after {
+                    background-image: url("/lg5-common/images/icons/btn-minus-21.svg");
+                }
+            }
+
+            .super-category {
+                display: flex;
+                flex-wrap: wrap;
+                background: #f4f4f4;
+                margin: 0 16px;
+
+                &-item {
+                    padding: 14px 0 14px 4px;
+                    background: #fff;
+                    font-size: 12px;
+                    &:after {
+                        top: calc(50% - 10.5px);
+                        right: 4px;
+                        width: 21px;
+                        height: 21px;
+                        background: url("/lg5-common/images/icons/btn-plus-21.svg") no-repeat 0 0;
+                        background-size: 21px 21px;
+                    }
+                }
+
+                &-list {
+                    flex: 1 1 50%;
+                    max-width: 50%;
+
+                    .nav-category-wrap {
+                        width: 200%;
+                        padding: 0;
+                        background: transparent;
+                    }
+
+                    &:nth-child(even) {
+                        .nav-category-wrap{
+                            margin-left: -100%;
+                        }
+                    }
+                }
+
+                .nav-category-layer {
+                    display: block;
+                }
+            }
         }
 
-
-
-       .super-category {
+       .category {
            display: flex;
            flex-wrap: wrap;
-           background: #f4f4f4;
 
-           &-item {
-               background: #fff;
-           }
-
-           .super-category-list {
+           li {
                flex: 1 1 50%;
-
-               .nav-category-wrap {
-                   width: 200%;
-                   background: transparent;
-               }
-
-               &:nth-child(even) {
-                   .nav-category-wrap{
-                       margin-left: -100%;
-                   }
-               }
-           }
-
-           .nav-category-layer {
-               display: block;
+               max-width: 50%;
            }
        }
     }
