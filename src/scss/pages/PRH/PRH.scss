@@ -160,27 +160,22 @@
                         margin-left: 0;
                     }
                     > a {
-                        padding: 0 0 8px;
+                        padding: 0 0 19px;
                         @include font-large;
                         @include mobile {
-                            padding-bottom: 6px;
+                            padding-bottom: 15px;
                         }
                     }
                     &.on {
-                        >a:after {
+                        > a:after {
                             position: absolute;
                             left: 0;
                             bottom: -2px;
                             width: 100%;
-                            height: 2px;
+                            height: 5px;
+                            border-radius: 5px 5px 0 0;
                             background-color: $color-default;
                             content: '';
-                            @include mobile {
-                                left: -50%;
-                                width: 200%;
-                                height: 3px;
-                                transform: scale(0.5);
-                            }
                         }
                     }
                 }
