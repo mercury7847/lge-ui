@@ -5,7 +5,7 @@
   var reservationItem = '<li class="{{#if cancelFlag}}li_cancel{{/if}}">' +
     '<div class="li_tit">' +
         '<div class="tit_txt">' +
-          '{{_title}} {{_method}} 예약</div>' +
+          '{{#if _type == "0"}} {{_title}} {{#else}} {{_title}} {{_method}} 예약{{/if}}</div>' +
         '{{#if (!_today && !_isOverTime) && !cancelFlag}}<a href="#n" data-id="{{counselEventNo}}" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
     '</div>' +
     '<dl class="li_page">' +
@@ -87,7 +87,7 @@
     variable: {
       store: null,
       tabActIndex: 0, // 탭 활성화 index
-      tabLabelKeys: ["매장상담", "케어십", "소모품"], // 탭별 json 데이터 filter 를 위한
+      tabLabelKeys: ["", "케어십", "소모품"], // 탭별 json 데이터 filter 를 위한
       listData: [], // json 데이터 담을 팝업
       showListLen: 0, // 리스트 노출된 갯수
       showListCount: 13, // 리스트 더보기 시 추가 노출할 갯수
@@ -525,7 +525,10 @@
         function (label, idx) {
           var group =
             listData.filter(function (item) {
-              return item.counselEventType === label;
+              // 케어십, 소모품 제외 모두 1번째탭 그룹
+              return idx === 0
+                ? !item.counselEventType.match(/(소모품|케어십)/)
+                : item.counselEventType === label;
             }) || [];
 
           if (group.length) {
@@ -563,10 +566,15 @@
       // 탭 활성화에 맞게 리스트 filter
       listData = listData.filter(
         function (item) {
-          return (
-            item.counselEventType ===
-            this.variable.tabLabelKeys[this.variable.tabActIndex]
-          );
+          // 케어십, 소모품 제외 모두 1번째탭 그룹
+          if (this.variable.tabActIndex === 0) {
+            return !item.counselEventType.match(/(소모품|케어십)/);
+          } else {
+            return (
+              item.counselEventType ===
+              this.variable.tabLabelKeys[this.variable.tabActIndex]
+            );
+          }
         }.bind(this)
       );
 
@@ -666,7 +674,9 @@
         item._method = item._type !== 2 ? "상담" : "구매";
         item._loc = item._type !== 2 ? "상담" : "예약";
         item._title =
-          item._type === 0 ? "" : this.variable.tabLabelKeys[item._type];
+          item._type === 0 // 케어십, 소모품 제외하고 타이틀 그대로 노출
+            ? item.counselEventType
+            : this.variable.tabLabelKeys[item._type];
       }
 
       this.el.$listContainer.append(vcui.template(reservationItem, item));
