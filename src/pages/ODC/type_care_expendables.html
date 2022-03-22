@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["ODC/ODC"],
+        pageJS: ["category-home/index"]
+    })
+<body>
+    <div class="wrap subRenewWrap">
+        @@include('./common/header.html', {
+            "mobileCase": "subDepth",
+            "is-depth": "is-depth",
+            "hasTitle": "hasTitle",
+            "subCategory": "subCategory",
+            "titleName": "TV"
+        })
+
+        <div class="container">
+            <!-- ODCC0001 -->
+            <div class="odc-hero">
+                <div class="odc-hero__list ui_carousel_list">
+                    <ul class="odc-hero__track ui_carousel_track">
+                        <li class="odc-hero__slide ui_carousel_slide">
+                            <a href="/care-solutions/why">
+                                <div class="odc-hero__image">
+                                    <img alt=""
+                                         src="/lg5-common/images/ODC/visual-1.jpg"
+                                         data-pc-src="/lg5-common/images/ODC/visual-1.jpg"
+                                         data-m-src="/lg5-common/images/ODC/m-visual-1.jpg"
+                                    >
+                                </div>
+                                <div class="odc-hero__info">
+                                    <div class="odc-hero__box odc-hero__box--black">
+                                        <p class="odc-hero__title">
+                                            LG OLED TV 특별 기획전
+                                        </p>
+                                        <p class="odc-hero__subtitle">
+                                            최대 300만원 캐시백<br>
+                                            당신을 위한 특별한 혜택
+                                        </p>
+                                        <p class="odc-hero__link">바로가기</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="odc-hero__slide ui_carousel_slide">
+                            <a href="/care-solutions/why">
+                                <div class="odc-hero__image">
+                                    <img alt=""
+                                         src="/lg5-common/images/ODC/visual-1.jpg"
+                                         data-pc-src="/lg5-common/images/ODC/visual-1.jpg"
+                                         data-m-src="/lg5-common/images/ODC/m-visual-1.jpg"
+                                    >
+                                </div>
+                                <div class="odc-hero__info">
+                                    <div class="odc-hero__box odc-hero__box--black">
+                                        <p class="odc-hero__title">
+                                            나만을 위한 프라이빗 스크린
+                                        </p>
+                                        <p class="odc-hero__subtitle">
+                                            당신을 위한 특별한 스크린
+                                        </p>
+                                        <p class="odc-hero__link">바로가기</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="odc-hero__indicator">
+                    <div class="odc-hero__controls">
+                        <div class="odc-hero__inner">
+                            <button type="button" class="odc-hero__prev ui_carousel_prev">이전</button>
+                            <span class="odc-hero__paging"><strong class="odc-hero__current"></strong><em class="odc-hero__count"></em></span>
+                            <button type="button" class="odc-hero__next ui_carousel_next">다음</button>
+                        </div>
+                    </div>
+                    <button type="button" class="odc-hero__play ui_carousel_play play">
+                        <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+                    </button>
+                </div>
+            </div>
+            <!-- // ODCC0001 -->
+        </div>
+        
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>

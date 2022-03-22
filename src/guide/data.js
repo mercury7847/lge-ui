@@ -490,8 +490,9 @@ var res = {
 			// "페이지1" : ["./html/gr/M.GR-5L.html","","개발전달후수정"],
 			// "페이지2" : ["./html/gr/M.GR-6L.html","","검수요청"],
 			// "페이지3" : ["./html/gr/M.GR-7.html","","검수완료"]
-			"카테고리 메인(ODC)" : {
-				"1Depth 카테고리 메인" : ["/html/ODC/index.html","","진행중"],
+			"1depth 카테고리 홈(ODC)" : {
+				"제품" : ["/html/ODC/type_product.html","",""],
+				"케어용품&소모품" : ["/html/ODC/type_care_expendables.html","",""]
 			}
 		},
 		"Contents" : {

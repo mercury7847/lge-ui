@@ -3,340 +3,392 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+// ODCC0001 : 상단 hero 배너
 .odc-hero {
+  position: relative;
+
   &__track {
     overflow: hidden;
-    height:640px;
+    height: 640px;
     @include mobile{
-      height:370px;
+      height: 342px;
     }
   }
 
   &__slide {
-    position:relative;
-    height:640px;
+    position: relative;
+    height: 640px;
     @include mobile{
-      height:370px;
+      height: 342px;
     }
-    .slide-img {
-      overflow:hidden;
-      position: relative;
-      width:100%;
-      height:100%;
-      img, video {
-        position:absolute;
-        top:0;
-        left:50%;
-        transform:translateX(-50%);
-        width: auto;
+  }
+
+  &__image {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+      height: auto;
+      min-width: 100%;
+      min-height: 100%;
+      max-width: none;
+
+      @media screen and (min-width:1920px) {
+        width: 100%;
         height: auto;
-        min-width: 100%;
-        min-height: 100%;
-        max-width:none;
-        @media screen and (min-width:1920px) {
-          width:100%;
-          height:auto;
-          top:50%;
-          left:0;
-          transform:translateY(-50%);
-        }
-        @include mobile {
-          width:100%;
-          height:auto;
-          top:50%;
-          left:0;
-          transform:translateY(-50%);
-        }
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
       }
-      video{
-        @include mobile {
-          width:auto;
-          height:100%;
-          top:0;
-          left:50%;
-          transform:translate(-50%, 0);
-        }
-      }
-    }
-    .bg {
-      background-size: cover;
-      &.pc{
-        display:inline-block;
-      }
-      &.mobile{
-        display:none;
-      }
+
       @include mobile {
-        height: 100%;
-        padding-bottom: 0;
-        &.pc{
-          display:none;
-        }
-        &.mobile{
-          display:inline-block;
-        }
-      }
-    }
-    .slide-info-area {
-      top:100px;
-      left:0;
-      bottom:120px;
-      max-width:1614px;
-      margin:0 auto;
-      padding: 0 40px;
-      transform:translateX(0);
-      @include mobile {
-        top:32px;
-        right:20px;
-        bottom:102px;
-        left:20px;
-        padding: 0;
-      }
-      .boxs {
-        display:inline-block;
-        &.fc-black {
-          color:#000;
-        }
-        &.fc-white {
-          color:#fff;
-        }
-        .txt {
-          color:inherit;
-          font-size:52px;
-          font-weight:700;
-          line-height:62px;
-          @include mobile{
-            position:relative;
-            font-size:27px;
-            line-height:34px;
-          }
-        }
-        .small {
-          margin-top:16px;
-          font-size:24px;
-          line-height:32px;
-          @include mobile{
-            margin-top:7px;
-            font-size:16px;
-            line-height:22px;
-          }
-        }
-      }
-    }
-    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-      .slide-info-area {
-        width:100%;
-      }
-    }
-    .link {
-      position:absolute;
-      right:0;
-      bottom:0;
-      padding-right:60px;
-      color:#fff;
-      font-size:52px;
-      font-weight:700;
-      line-height:70px;
-      text-align:right;
-      @include mobile{
-        padding-right:22px;
-        font-size:16px;
-        line-height:24px;
-      }
-      &:after {
-        content:' ';
-        position:absolute;
-        right:0;
-        bottom:8px;
-        width:56px;
-        height:56px;
-        background:url('/lg5-common/images/PRS/btn-arrow-right-56.svg') no-repeat 0 0;
-        @include mobile{
-          bottom:2px;
-          width:20px;
-          height:20px;
-          background-size:20px;
-        }
-      }
-      &.fc-black {
-        color:#000;
-        &:after {
-          background-image:url('/lg5-common/images/PRS/btn-arrow-right-56-black.svg');
-        }
-      }
-      &.fc-white {
-        color:#fff;
+        width: 100%;
+        height: auto;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
       }
     }
   }
+
+  &__info {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 120px;
+    max-width: 1614px;
+    margin: 0 auto;
+    padding: 0 40px;
+    transform: translateX(0);
+    @include mobile {
+      top: 48px;
+      bottom: 102px;
+      left: 20px;
+      padding: 0;
+    }
+  }
+
+  &__box {
+    display:inline-block;
+    &--black {
+      color: #000;
+    }
+    &--white {
+      color: #fff;
+    }
+  }
+
+  &__title {
+    color: inherit;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 62px;
+    @include mobile{
+      position: relative;
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 16px;
+    font-size: 24px;
+    line-height: 32px;
+    @include mobile{
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 19px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    margin-top: 32px;
+    font-size: 22px;
+    line-height: 22px;
+    @include mobile {
+      margin-top: 16px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+    &:after {
+      content: "";
+      display: inline-block;
+      @include pc {
+        width: 22px;
+        height: 22px;
+        margin-left: 4px;
+        vertical-align: -3px;
+        background: url('/lg5-common/images/ODC/icon-arrow-right-black.svg') no-repeat right top;
+        background-size: 21px 21px;
+      }
+      @include mobile {
+        vertical-align: -2px;
+        margin-left: 2px;
+        width: 12px;
+        height: 12px;
+        background: url('/lg5-common/images/ODC/icon-arrow-right-black.svg') no-repeat right top;
+        background-size: 11px 11px;
+      }
+    }
+  }
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    &__info {
+      width:100%;
+    }
+  }
+
   &__indicator {
-    display:none;
-    bottom:24px;
-    left:0;
-    right:0;
-    max-width:1380px;
-    margin:0 auto;
+    position: absolute;
+    display: none;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    max-width: 1380px;
+    margin: 0 auto;
     @include mobile{
       bottom: 20px;
       right: 16px;
       left: 16px;
       max-width: none;
     }
-    .custom-indis {
-      max-width: (1380px + 30px);
+  }
+
+  &__controls {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: 54px;
+    transform: translateX(0);
+    max-width: 1380px;
+    margin: 0 auto;
+    @media screen and (max-width: (1460px + 30px)) {
+      right: 69px;
+    }
+    @include mobile{
+      right: 34px;
+    }
+  }
+
+  &__inner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    height: 46px;
+    border-radius: 26px;
+    background: rgba(0, 0, 0, 0.35);
+    text-align: center;
+    @include mobile{
+      width: 84px;
+      height: 26px;
+      border-radius: 13px;
+    }
+  }
+
+  &__paging {
+    padding: 0 4px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 42px;
+    @include mobile{
+      font-size: 12px;
+      line-height: 23px;
+    }
+  }
+
+  &__count {
+    color: #d6d6d6;
+    &:before{
+      content: '/';
+      margin: 0 8px;
+      color: #fff;
+    }
+  }
+
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 9px;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    @include mobile {
+      top: 3px;
+      width: 16px;
+      height: 16px;
+    }
+    &:before{
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      box-shadow: none;
       @include mobile{
-        margin: 0 -5px;
-      }
-      .indis {
-        width: 100%;
-        table-layout: fixed;
-        li {
-          width: auto;
-          padding: 0 15px;
-          @include mobile{
-            padding: 0 5px;
-          }
-          &.on {
-            width: auto;
-          }
-        }
+        width: 16px;
+        height: 16px;
       }
     }
-    .slide-controls {
-      position:relative;
-      top:auto;
-      left:auto;
-      right:54px;
-      transform:translateX(0);
-      max-width:1380px;
-      margin:0 auto;
-      @media screen and (max-width: (1460px + 30px)) {
-        right:69px;
-      }
+  }
+
+  &__prev {
+    left: 16px;
+    @include mobile{
+      left: 6px;
+    }
+    &:before{
+      background-image: url(/lg5-common/images/icons/btn-arr-24x24-lt.svg);
       @include mobile{
-        right:34px;
-      }
-      .controls{
-        position:absolute;
-        bottom:0;
-        right:0;
-        width:150px;
-        height:46px;
-        border-radius:26px;
-        background:rgba(0, 0, 0, 0.35);
-        @include mobile{
-          width:84px;
-          height:26px;
-          border-radius:13px;
-        }
-      }
-      .btn-arrow {
-        position:absolute;
-        top:9px;
-        padding:0;
-        width:24px;
-        height:24px;
-        @include mobile{
-          top:3px;
-          width:16px;
-          height:16px;
-        }
-        &:before{
-          content:'';
-          display:block;
-          width:24px;
-          height:24px;
-          box-shadow:none;
-          @include mobile{
-            width:16px;
-            height:16px;
-          }
-        }
-        &.ico-prev {
-          left:16px;
-          @include mobile{
-            left:6px;
-          }
-          &:before{
-            background-image: url(/lg5-common/images/icons/btn-arr-24x24-lt.svg);
-            @include mobile{
-              background-size:16px 16px;
-            }
-          }
-        }
-        &.ico-next {
-          right:16px;
-          @include mobile{
-            right:6px;
-          }
-          &:before{
-            background-image: url(/lg5-common/images/icons/btn-arr-24x24-rt.svg);
-            @include mobile{
-              background-size:16px 16px;
-            }
-          }
-        }
-      }
-      .slide-page{
-        padding:0 4px;
-        color:#fff;
-        font-size:16px;
-        line-height:42px;
-        @include mobile{
-          font-size:12px;
-          line-height:23px;
-        }
-        .count{
-          color:#d6d6d6;
-          &:before{
-            content:'/';
-            margin:0 8px;
-            color:#fff;
-          }
-        }
+        background-size: 16px 16px;
       }
     }
-    .indi-control {
-      display: block !important;
-      position: absolute;
-      bottom:0;
-      right:0;
-      margin-right:0;
-      width:46px;
-      height:46px;
+  }
+  &__next {
+    right: 16px;
+    @include mobile{
+      right: 6px;
+    }
+    &:before{
+      background-image: url(/lg5-common/images/icons/btn-arr-24x24-rt.svg);
       @include mobile{
-        width:26px;
-        height:26px;
+        background-size: 16px 16px;
       }
+    }
+  }
+
+  &__play {
+    display: block !important;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 0;
+    width: 46px;
+    height: 46px;
+    @include mobile{
+      width: 26px;
+      height: 26px;
+    }
+    &:before{
+      content: "";
+      display: block;
+      width: 46px;
+      height: 46px;
+      @include mobile{
+        width: 26px;
+        height: 26px;
+      }
+    }
+    &.play{
       &:before{
-        width:46px;
-        height:46px;
+        background: url(/lg5-common/images/icons/btn-carousel-46-play.svg) no-repeat 0 0;
         @include mobile{
-          width:26px;
-          height:26px;
+          background-size: 26px 26px;
         }
       }
-      &.play{
-        &:before{
-          background: url(/lg5-common/images/icons/btn-carousel-46-play.svg) no-repeat 0 0;
-          @include mobile{
-            background-size:26px 26px;
-          }
+    }
+    &.stop{
+      &:before{
+        background: url(/lg5-common/images/icons/btn-carousel-46-pause.svg) no-repeat 0 0;
+        @include mobile{
+          background-size: 26px 26px;
         }
       }
-      &.stop{
-        &:before{
-          background: url(/lg5-common/images/icons/btn-carousel-46-pause.svg) no-repeat 0 0;
-          @include mobile{
-            background-size:26px 26px;
-          }
-        }
+    }
+    @media screen and (max-width: (1460px + 30px)) {
+      right: 15px;
+      margin-right: 0;
+      @include mobile {
+        right: 0;
       }
-      @media screen and (max-width: (1460px + 30px)) {
-        right: 15px;
-        margin-right: 0;
-        @include mobile {
-          right: 0;
+    }
+  }
+}
+
+// ODCC0002 : 2depth 카테고리
+.odc-2depth-category {
+  $root : &;
+  @include mobile() {
+    display: block;
+    border-bottom: 10px solid #f4f4f4;
+  }
+
+  &__inner {
+    @include mobile() {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+  }
+
+  &__item {
+    color: #666;
+    font-weight: 500;
+
+    @include mobile () {
+      display: block;
+      padding: 10px 0;
+      border-top: 1px solid #f4f4f4;
+      &:first-child + & {
+        border-top: 0;
+      }
+      &:nth-child(odd) {
+        border-right: 1px solid #f4f4f4;
+      }
+      &:nth-child(n+7) {
+        display: none;
+      }
+
+      @at-root .is-active &:nth-child(n+7) {
+        display: block;
+      }
+
+      font-size: 13px;
+      line-height: 19px;
+      text-align: center;
+    }
+  }
+
+  &__more {
+    display: none;
+    width: 100%;
+    padding: 10px 0;
+    border-top: 1px solid #f4f4f4;
+    text-align: center;
+    color: #000;
+    font-size: 13px;
+    line-height: 19px;
+
+    span {
+      position: relative;
+      padding-right: 20px;
+      &:after {
+        content: "";
+        position: absolute;
+        transition: ;
+        top: 3px;
+        right: 0;
+        width: 16px;
+        height: 16px;
+        background-image: url('/lg5-common/images/ODC/icon-arrow-down-black.svg');
+        background-size: 15px 15px;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+      }
+    }
+
+    &.is-active {
+      span {
+        &:after {
+          top: 2px;
+          transform: rotate(180deg);
         }
       }
     }
