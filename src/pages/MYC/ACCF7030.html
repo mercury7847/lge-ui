@@ -92,10 +92,10 @@
                                                             </div>
                                                         </div>
                                                         <div class="svc-lists">
-                                                            <p>이전 방문 서비스 상세 내역</p>
+                                                            <p>이전 방문 서비스</p> <!-- BTOCSITE-13244 : text 수정 -->
                                                             <div class="svc-wrap">
                                                                 <ul class="svc-details">
-                                                                    <li>정수기(12341234)</li>
+                                                                    <li><a href="#popupServiceDetail" data-control="modal" class="btn-link"><span>정수기(12341234)</span></a></li> <!-- BTOCSITE-13244 : button 추가 -->
                                                                     <li>정수기(12341234)</li>
                                                                     <li>공기청정기(12341234)</li>
                                                                     <li>건조기(12341234)</li>
@@ -129,7 +129,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="svc-lists">
-                                                            <p>다음 방문 서비스 상세 내역</p>
+                                                            <p>다음 방문 서비스</p> <!-- BTOCSITE-13244 : text 수정 -->
                                                             <div class="svc-wrap">
                                                                 <ul class="svc-details">
                                                                     <li>정수기(12341234)</li>
@@ -171,7 +171,7 @@
                                                             <p class="end-alert">계약 만료 예정입니다.</p>
                                                         </div>
                                                         <div class="svc-lists">
-                                                            <p>이후 방문 서비스 상세 내역</p>
+                                                            <p>이후 방문 서비스</p> <!-- BTOCSITE-13244 : text 수정 -->
                                                             <div class="svc-wrap">
                                                                 <ul class="svc-details">
                                                                     <li>정수기(12341234)</li>
@@ -510,6 +510,109 @@
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
     <!-- // 방문일정 변경요청 popup -->
+
+
+    <!-- BTOCSITE-13244 : 팝업추가 //-->
+    <!-- 방문 서비스 상세 popup //-->
+    <article id="popupServiceDetail" class="popup-wrap full mypage popupServiceDetail">
+        <header class="pop-header">
+            <h1 class="tit"><span>방문 서비스 상세</span></h1>
+        </header>
+        <section class="pop-conts no-footer">            
+            <div class="service-detail-wrap">
+
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">제품명(제품코드) 렌탈/케어</h2>
+                    <p class="h2-tit-sub">027년 03월 22일까지 계약(1회 / 3개월)</h2>
+                </div>
+                <div class="manager-info-wrap">
+                    <div class="manager-info-box">
+                        <div class="left-box">
+                            <div class="manager-info">
+                                <div class="img-wrap">
+                                    <div class="img"><img src="/lg5-common/images/icons/icon-login-48.svg" alt="아이콘"></div>
+                                </div>
+                                <div class="txt-wrap">
+                                    <span class="name"><span class="blind">이름</span>이엘지 매니저</span>
+                                    <span class="phone"><span class="blind">매니저 휴대폰</span>(010-1000-0000)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-box">
+                            <div class="info-list">
+                                <dl>
+                                    <dt>회차정보</dt>
+                                    <dd>5회차 <span class="fc_point">방문예정</span></dd>
+                                </dl>
+                                <dl>
+                                    <dt>방문일정</dt>
+                                    <dd>2022년 3월 22일 15:47</dd>
+                                </dl>
+                                <dl>
+                                    <dt>필터교체</dt>
+                                    <dd>O (교체필터명)</dd>
+                                </dl>                          
+                            </div>
+                        </div>
+                    </div> <!--// .manager-info-box -->
+                </div> <!--// .manager-info-wrap -->
+
+                <div class="tit-wrap">
+                    <h2 class="h2-tit">회차별 방문내역</h2>
+                </div>
+                <div class="result-wrap">
+                    <div class="tb_row board-type">
+                        <table>
+                            <caption>회차별 방문내역 회차, 진행상태, 방문일정, 매니저정보, 필터교체여부</caption>
+                            <colgroup>
+                                <col style="width: 100px">
+                                <col>
+                                <col style="width: 120px">
+                                <col style="width: 180px">
+                                <col style="width: 120px">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">회차</th>
+                                    <th scope="col">진행상태</th>
+                                    <th scope="col">방문일정</th>
+                                    <th scope="col">매니저정보</th>
+                                    <th scope="col">필터교체</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>6회</td>
+                                    <td>방문완료</td>
+                                    <td>2022.03.08</td>
+                                    <td>홍길동<br>(010-1000-0000)</td>
+                                    <td>O</td>
+                                </tr>
+                                <tr>
+                                    <td>5회</td>
+                                    <td>방문연기<br>미방문 사유</td>
+                                    <td>2022.03.08</td>
+                                    <td>홍길동<br>(010-1000-0000)</td>
+                                    <td>X</td>
+                                </tr>
+                                <tr class="empty-row" style="display:none">
+                                    <td colspan="5">
+                                        <div class="no-data">
+                                            <p>내역이 없습니다.</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!--// .result-wrap -->
+            </div> <!--// .service-detail-wrap -->
+            
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!--// 방문 서비스 상세 popup -->
+    <!--// BTOCSITE-13244 : 팝업추가 -->
 
 </body>
 </html>
