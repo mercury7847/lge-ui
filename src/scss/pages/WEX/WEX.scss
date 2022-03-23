@@ -1,0 +1,140 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.pc-only {
+    display:block;
+    @include mobile {
+        display:none;
+    }
+}
+.mo-only {
+    display:none;
+    @include mobile {
+        display:block;
+    }
+}
+
+
+// 웨딩기획전 매장 상담 요청
+.contents.shop-counseling {
+    max-width: 1380px;
+    margin: 0 auto;
+    .counseling_head {
+        height: 500px;
+        margin-top: -16px;
+        padding-top: 120px;
+        background: url('/lg5-common/images/WEX/wex_head_bg.png') no-repeat center bottom/auto 500px;
+        text-align: center;
+        @include mobile {
+            height: 316px;
+            margin-top: 0;
+            padding-top: 70px;
+            background-size: auto 316px;
+        }
+        .head_tit {
+            @include font(36px,50px);
+            font-weight: 700;
+            color: #fff;
+            em {
+                display: inline-block;
+                background-color: #da0f47;
+                line-height: 45px;
+                @include mobile {
+                    line-height: 25px;
+                }
+            }
+            @include mobile {
+                @include font(21px,30px);
+            }
+        }
+        .head_cnt {
+            margin-top: 27px;
+            @include font(18px,28px);
+            color: #fff;
+            @include mobile {
+                margin-top: 14px;
+                @include font(13px,20px);
+            }
+        }
+        .counseling_tab {
+            margin-top: 70px;
+            @include mobile {
+                margin-top: 38px;
+            }
+            .tabs {
+                overflow: initial;
+                li {
+                    padding: 0;
+                    border: 2px solid #fff;
+                    border-radius: 8px;
+                    background:rgba(0,0,0,.6) ;
+                    text-align: center;
+                    & + li {
+                        margin-left: 12px;
+                    }
+                    a {
+                        padding: 23px 60px 23px 106px;
+                        background: no-repeat left 50px center/48px;
+                        @include font(18px,26px);
+                        font-weight: 700;
+                        color: #fff;
+                        @include mobile {
+                            padding: 18px 34px 18px 70px;
+                            @include font(14px,23px);
+                            background: no-repeat left 25px center/40px;
+                        }
+                    }
+                    &.visit {
+                        a {
+                            background-image: url('/lg5-common/images/icons/ico_wex_visit_48_off.svg');
+                        }
+                    }
+                    &.phone {
+                        a {
+                            background-image: url('/lg5-common/images/icons/ico_wex_phone_48_off.svg');
+                        }
+                    }
+                    &.on {
+                        position: relative;
+                        background:#fff;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            bottom: -53px;
+                            left: calc(50% - 25px);
+                            width: 50px;
+                            height: 25px;
+                            background: url('/lg5-common/images/icons/ico_wex_tab_50x25_arr.svg') no-repeat center/100%;
+                            @include mobile {
+                                bottom: -33px;
+                                left: calc(50% - 22.5px);
+                                width: 45px;
+                                height: 22.5px;
+                            }
+                        }
+                        a {
+                            color: #000;
+                        }
+                        &.visit {
+                            a {
+                                background-image: url('/lg5-common/images/icons/ico_wex_visit_48_on.svg');
+                            }
+                        }
+                        &.phone {
+                            a {
+                                background-image: url('/lg5-common/images/icons/ico_wex_phone_48_on.svg');
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .counseling_iframe {
+        width:100%;
+        height: 27px;00px;
+        border: 0;
+    }
+}

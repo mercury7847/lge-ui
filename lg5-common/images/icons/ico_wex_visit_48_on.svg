@@ -1,0 +1,11 @@
+<svg id="img_CareBenefit4_64_on" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <rect id="Rectangle" width="48" height="48" fill="none"/>
+  <g id="ic" transform="translate(6 5.25)">
+    <circle id="Oval" cx="5" cy="5" r="5" transform="translate(8 -0.25)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path" d="M9.6,0A9.6,9.6,0,0,0,0,9.6H19.2A9.6,9.6,0,0,0,9.6,0Z" transform="translate(3.6 9.75)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Rectangle-2" data-name="Rectangle" d="M0,0H33a0,0,0,0,1,0,0V10.2A1.8,1.8,0,0,1,31.2,12H1.8A1.8,1.8,0,0,1,0,10.2V0A0,0,0,0,1,0,0Z" transform="translate(2 23.75)" fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Rectangle-3" data-name="Rectangle" d="M2.5,0h12A2.5,2.5,0,0,1,17,2.5V12a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V2.5A2.5,2.5,0,0,1,2.5,0Z" transform="translate(15 7.75)" fill="#fff" stroke="#da0f47" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <rect id="Rectangle-4" data-name="Rectangle" width="35" height="4" rx="2" transform="translate(0 19.75)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <circle id="Oval-2" data-name="Oval" cx="2.4" cy="2.4" r="2.4" transform="translate(20.7 11.55)" fill="none" stroke="#da0f47" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>
