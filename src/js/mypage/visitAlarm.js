@@ -110,6 +110,10 @@
                 self.$timeTableWrap = self.$popupChangeVisitDate.find('div.timetable-wrap:eq(0)');
                 self.$timeTableWrapFirst = self.$popupChangeVisitDate.find('div.timetable-wrap:eq(1)');
                 self.$timeTableWrapNoData = self.$popupChangeVisitDate.find('div.timetable-wrap:eq(2)');
+                
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+                self.$myVisitSchedule = self.$contents.find('div.my-visit-schedule'); // 방문일정영역
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 END
             },
 
             bindEvents: function() {
@@ -183,7 +187,20 @@
                 self.$list.on('click', '.svc-details li', function(e){
                 	console.log("svc-details li click!");
                 	console.log(">>>>>>>" + $(this).attr('data-cont-line-seq'));
+                	console.log(">>>>>>>" + self.$myVisitSchedule.attr('data-detail-list-url'));
                 	
+                	var ajaxUrl = self.$myVisitSchedule.attr('data-detail-list-url');
+                	
+                	var param = {
+                			contLineSeq : $(this).attr('data-cont-line-seq')
+                	}
+                	
+                	lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                		var data = result.data;
+                		
+                		console.log(data);
+                		console.log(data.status);
+                	});
                 });
                 // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 END
             },
