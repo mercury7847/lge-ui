@@ -1,56 +1,116 @@
-$(function(){
-    // ODCC0001 : 상단 hero 배너
-    var heroBanner = function () {
-        var heroList = $('.odc-hero .odc-hero__slide');
-        var heroListAct = heroList.siblings('.ui_carousel_current').index() || 1;
-        var heroListLens = heroList.length;
-        var custom = $('.odc-hero__indicator');
-        var slideCurrent = custom.find('.odc-hero__current');
-        var slideCount = custom.find('.odc-hero__count');
+var odc = {
+    /**
+     * 최초 실행 시 필요한 변수 정의 및 이벤트 함수 실행
+     */
+    init: function () {
+       var self = this;
 
-        if(heroListLens > 1) {
-            custom.show();
-            slideCurrent.text(heroListAct);
-            slideCount.text(heroListLens - 2);
-        }
-    }
+       self.heroBannerCarousel();
+       self.heroBannerSetting()
 
-    $('.odc-hero').vcCarousel({
-        autoplay: true,
-        autoplaySpeed: 5000,
-        infinite: true,
-        pauseOnHover: false,
-        pauseOnFocus: false,
-        swipeToSlide: true,
-        dotsSelector: '.ui_wideslider_dots',
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        variableWidth: false,
-        touchThreshold: 100,
-        cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
-        speed: 150
-    }).on('carouselafterchange', function(e, slide){
-        heroBanner();
-    })
+       self.showRoomCarousel();
 
-    heroBanner();
+       self.allView();
+       self.bindEvent();
+    },
 
-    // ODCC0002 : 2depth 카테고리
-    var $category2depth = $(".odc-2depth-category__inner");
-    var $category2depthMore = $(".odc-2depth-category__more");
+    /**
+     * 이벤트 관련
+     */
+    bindEvent: function () {
 
-    if($category2depth.find('a').length > 6){
-        $category2depthMore.show();
-        $category2depthMore.on('click', function(){
-            if($(this).hasClass('is-active')){
-                $category2depth.removeClass('is-active');
-                $(this).removeClass('is-active');
-                $(this).find('span').text('전체보기');
-            } else {
-                $category2depth.addClass('is-active');
-                $(this).addClass('is-active');
-                $(this).find('span').text('전체닫기');
+    },
+
+    /**
+     * 공통 : 전체보기
+     */
+    allView: function() {
+        var self = this;
+
+        var $allViewTarget = $('[data-all-view]');
+        var $allViewButton = $('.odc-all-view');
+
+        $allViewTarget.each(function(){
+            var item = $($(this).data('allViewItem'));
+            var limit = $(this).data('allViewLimit');
+            if(item.length > limit){
+                $(this).find($allViewButton).show();
             }
         })
+
+        $allViewButton.on('click', function(){
+            if($(this).hasClass('is-active')){
+                $($(this).data('allViewTarget')).removeClass('is-active');
+                $(this).removeClass('is-active');
+                $(this).find('.odc-all-view__text').text('전체보기');
+            } else {
+                $($(this).data('allViewTarget')).addClass('is-active');
+                $(this).addClass('is-active');
+                $(this).find('.odc-all-view__text').text('전체닫기');
+            }
+        })
+    },
+
+    /**
+     * ODCC0001 : 상단 hero 배너
+     */
+    heroBannerSetting: function () {
+        var self = this;
+        var $slide = $('.odc-hero .odc-hero__slide');
+        var $indicator = $('.odc-hero__indicator');
+        var $slideCurrent = $indicator.find('.odc-hero__current');
+        var $totalCount = $indicator.find('.odc-hero__count');
+        var currentIndex = $slide.siblings('.ui_carousel_current').index() || 1;
+
+        if($slide.length > 1) {
+            $indicator.show();
+            $slideCurrent.text(currentIndex);
+            $totalCount.text($slide.length-2);
+        }
+    },
+
+    heroBannerCarousel: function() {
+        var self = this;
+
+        $('.odc-hero').vcCarousel({
+            autoplay: true,
+            autoplaySpeed: 5000,
+            infinite: true,
+            pauseOnHover: false,
+            pauseOnFocus: false,
+            swipeToSlide: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            touchThreshold: 100,
+            cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+            speed: 150
+        }).on('carouselafterchange', function(e, slide){
+            self.heroBannerSetting();
+        })
+    },
+
+    showRoomCarousel: function() {
+        var self = this;
+
+        if($('.odc-show-room__body').length) {
+            $('.odc-show-room__body').vcCarousel({
+                infinite: true,
+                pauseOnHover: false,
+                pauseOnFocus: false,
+                swipeToSlide: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                touchThreshold: 100,
+                cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
+                speed: 150
+            }).on('carouselafterchange', function (e, slide) {
+                //self.heroBannerSetting();
+            })
+        }
     }
+}
+
+$(function(){
+    odc.init();
 });

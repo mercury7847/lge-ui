@@ -3,6 +3,42 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+// 공통
+// 1. 전체보기
+.odc-all-view {
+  display: none;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  color: #000;
+  font-size: 13px;
+  line-height: 19px;
+
+  &__text {
+    position: relative;
+    padding-right: 20px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      background-image: url('/lg5-common/images/ODC/icon-arrow-down-black.svg');
+      background-size: 15px 15px;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+
+      @at-root .is-active & {
+        top: 2px;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+
+}
+
 // ODCC0001 : 상단 hero 배너
 .odc-hero {
   position: relative;
@@ -201,7 +237,7 @@
     line-height: 42px;
     @include mobile{
       font-size: 12px;
-      line-height: 23px;
+      line-height: 24px;
     }
   }
 
@@ -223,7 +259,7 @@
     height: 24px;
     overflow: hidden;
     @include mobile {
-      top: 3px;
+      top: 4px;
       width: 16px;
       height: 16px;
     }
@@ -356,41 +392,135 @@
     }
   }
 
-  &__more {
-    display: none;
-    width: 100%;
-    padding: 10px 0;
+  .odc-all-view {
     border-top: 1px solid #f4f4f4;
-    text-align: center;
+  }
+}
+
+.odc-show-room {
+  padding: 0 16px;
+  margin: 48px 0 12px;
+
+  &__head {
+
+  }
+
+  &__title {
     color: #000;
-    font-size: 13px;
-    line-height: 19px;
-
-    span {
-      position: relative;
-      padding-right: 20px;
-      &:after {
-        content: "";
-        position: absolute;
-        transition: ;
-        top: 3px;
-        right: 0;
-        width: 16px;
-        height: 16px;
-        background-image: url('/lg5-common/images/ODC/icon-arrow-down-black.svg');
-        background-size: 15px 15px;
-        background-repeat: no-repeat;
-        background-position: 0 0;
-      }
+    font-weight: bold;
+    @include mobile {
+      font-size: 18px;
+      line-height: 24px;
     }
+  }
 
-    &.is-active {
-      span {
-        &:after {
-          top: 2px;
-          transform: rotate(180deg);
-        }
-      }
+  &__subtitle {
+    color: #666;
+    @include mobile {
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 19px;
     }
+  }
+
+  &__body {
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    border-radius: 8px;
+    height: 91.112vw
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__image {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__mark {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 5.556vw;
+    height: 5.556vw;
+    background-image: url('/lg5-common/images/ODC/icon-dot.svg');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 100%;
+
+    @at-root .is-active & {
+      background-image: url('/lg5-common/images/ODC/icon-dot-active.svg');
+    }
+  }
+
+  &__product {
+    display: none;
+    position: absolute;
+    width: calc(100% - 24px);
+    left: 12px;
+    bottom: 12px;
+    padding: 12px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    @at-root .is-active & {
+      display: block;
+    }
+  }
+
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/lg5-common/images/ODC/icon-arrow-right-round.svg');
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 100% 100%;
+      z-index: 1;
+    }
+  }
+
+  &__prev {
+    left: 6px;
+    &:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__next {
+    right: 6px;
+  }
+
+  &__paging {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    min-width: 40px;
+    padding: 0 10px;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 10px;
+    height: 23px;
+    line-height: 23px;
+    z-index: 1;
+  }
+
+  &__current {
+    font-weight: bold;
   }
 }
