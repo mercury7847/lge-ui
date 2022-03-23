@@ -286,7 +286,11 @@
       this.bind();
 
       // 탭 초기화 완료 후 list ajax 호출
-      this.el.$tabContainer.on("tabinit", this.initedTab.bind(this));
+      if (this.el.$tabContainer.vcTab("instance").moduleName) {
+        this.initedTab();
+      } else {
+        this.el.$tabContainer.on("tabinit", this.initedTab.bind(this));
+      }
 
       this.inited = this.el.$container !== null;
 
@@ -294,10 +298,8 @@
     },
     /**
      * 탭 초기화 완료
-     * @param {Event} e
-     * @param {Object} data 탭 상태 정보
      */
-    initedTab: function (e, data) {
+    initedTab: function () {
       // index 세션 존재 시 활성화 변경 (클릭 리스너 등록 전 선행)
       /* if (this.variable.store.getItem(SESSION_TAB_INDEX)) {
         this.variable.tabActIndex =
