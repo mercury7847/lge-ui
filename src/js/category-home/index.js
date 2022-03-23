@@ -6,11 +6,11 @@ var odc = {
        var self = this;
 
        self.heroBannerCarousel();
-       self.heroBannerSetting()
-
        self.showRoomCarousel();
+       self.showRoomMark();
 
        self.allView();
+
        self.bindEvent();
     },
 
@@ -27,12 +27,13 @@ var odc = {
     allView: function() {
         var self = this;
 
-        var $allViewTarget = $('[data-all-view]');
+        var $allView = $('[data-all-view]');
         var $allViewButton = $('.odc-all-view');
 
-        $allViewTarget.each(function(){
+        $allView.each(function(){
             var item = $($(this).data('allViewItem'));
             var limit = $(this).data('allViewLimit');
+
             if(item.length > limit){
                 $(this).find($allViewButton).show();
             }
@@ -55,11 +56,10 @@ var odc = {
      * ODCC0001 : 상단 hero 배너
      */
     heroBannerSetting: function () {
-        var self = this;
         var $slide = $('.odc-hero .odc-hero__slide');
         var $indicator = $('.odc-hero__indicator');
-        var $slideCurrent = $indicator.find('.odc-hero__current');
-        var $totalCount = $indicator.find('.odc-hero__count');
+        var $slideCurrent = $('.odc-hero__current');
+        var $totalCount = $('.odc-hero__total');
         var currentIndex = $slide.siblings('.ui_carousel_current').index() || 1;
 
         if($slide.length > 1) {
@@ -87,13 +87,32 @@ var odc = {
         }).on('carouselafterchange', function(e, slide){
             self.heroBannerSetting();
         })
+
+        self.heroBannerSetting();
+    },
+
+    /**
+     * ODCC0003 : show room type 1
+     */
+    showRoomSetting: function () {
+        var $slide = $('.odc-show-room-type1__slide');
+        var $indicator = $('.odc-show-room-type1__indicator');
+        var $slideCurrent = $('.odc-show-room-type1__current');
+        var $totalCount = $('.odc-show-room-type1__total');
+        var currentIndex = $slide.siblings('.ui_carousel_current').index() || 1;
+
+        if($slide.length > 1) {
+            $indicator.show();
+            $slideCurrent.text(currentIndex);
+            $totalCount.text($slide.length-2);
+        }
     },
 
     showRoomCarousel: function() {
         var self = this;
 
-        if($('.odc-show-room__body').length) {
-            $('.odc-show-room__body').vcCarousel({
+        if($('.odc-show-room-type1__body').length) {
+            $('.odc-show-room-type1__body').vcCarousel({
                 infinite: true,
                 pauseOnHover: false,
                 pauseOnFocus: false,
@@ -105,9 +124,20 @@ var odc = {
                 cssEase: 'cubic-bezier(0.33, 1, 0.68, 1)',
                 speed: 150
             }).on('carouselafterchange', function (e, slide) {
-                //self.heroBannerSetting();
+                self.showRoomSetting();
             })
+
+            self.showRoomSetting();
         }
+    },
+
+    showRoomMark: function() {
+        var self = this;
+
+        $('.odc-show-room-type1__mark').on('mouseenter', function(){
+            $(this).closest('.odc-show-room-type1__item').find('.odc-show-room-type1__display').removeClass('is-active');
+            $(this).closest('.odc-show-room-type1__display').addClass('is-active');
+        })
     }
 }
 
