@@ -308,8 +308,7 @@
         '{{#if isBeforeVisit && instpectionVisit}}<li><dl><dt>사전 방문 신청</dt><dd>신청</dd></dl></li>{{/if}}' +
         //'{{#if recyclingPickup}}<li><dl><dt>폐가전 수거</dt><dd>수거신청</dd></dl></li>{{/if}}';
         // '{{#if isBeforeVisit}}<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>{{/if}}' +
-        '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>'+
-        '<li><dl><dt>구매지점</dt><dd>{{storeName}}</dd></dl></li>';
+        '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
 
     var careShippingListTemplate = '<li><dl><dt>성명</dt><dd>{{maskingName}}</dd></dl></li>' +
         '<li><dl><dt>인수자 휴대폰</dt><dd>{{maskingTelephone}}</dd></dl></li>' +
@@ -933,7 +932,7 @@
     }
 
     function sendDetailPage(dataID){
-        var listdata = getTabData(TAB_FLAG);
+        var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : TAB_FLAG == TAB_FLAG_CARE ? CARE_LIST : RECORD_LIST;
         var prodlist = listdata[dataID].productList;
 
         var orderNumbers = [];
@@ -1424,7 +1423,7 @@
     }
 
     function setDeliveryInquiry(dataID, prodID){
-        var listData = getTabData(TAB_FLAG)
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
 
         var orderStatus = listData[dataID].productList[prodID].orderStatus;
         
@@ -1455,7 +1454,7 @@
     }
 
     function setDeliveryRequest(dataID, prodID){
-        var listData = getTabData(TAB_FLAG)
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
 
         var productNameEN = listData[dataID].productList[prodID].productNameEN.split(".")[0];
 
@@ -1476,7 +1475,7 @@
     }
 
     function setProductReview(dataID, prodID){
-        var listData = getTabData(TAB_FLAG)
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
 
         var url = listData[dataID].productList[prodID].productPDPurl;
         if(url && url.length > 0) {
@@ -1953,7 +1952,7 @@
                     if(Object.keys(data.payment).length){
                         var orderReceiptAbleYn;
                         if(TAB_FLAG == TAB_FLAG_RECORD) orderReceiptAbleYn = "N";
-                        else orderReceiptAbleYn = getTabData(TAB_FLAG)[0].orderReceiptAbleYn
+                        else orderReceiptAbleYn = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].orderReceiptAbleYn : data.careListData[0].orderReceiptAbleYn;
 
                         PAYMENT_DATA = resetPaymentData(data.payment, orderReceiptAbleYn);
                     }
@@ -2369,7 +2368,7 @@
     function savePaymentInfoOk(){
         var chk = paymentInfoValidation();
         if(chk){
-            var listData = getTabData(TAB_FLAG)[0];
+            var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
 
             var sendata = {
                 confirmType: sendPaymentMethod,
@@ -2483,7 +2482,7 @@
         //결제정보
         $listBox = wrap.find('.inner-box.payment');
         if($listBox.length > 0) {
-            var listData = getTabData(TAB_FLAG)[0];
+            var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
             
             leng = paymentData ? Object.keys(paymentData).length : 0;
             
@@ -2547,7 +2546,7 @@
 
     //청약 주문상세 팝업
     function openOrderInfoPop(dataId, prodId, opener){
-        var listData = getTabData(TAB_FLAG);
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var productList = listData[dataId].productList[prodId];
         var shipping;
 
@@ -2567,7 +2566,7 @@
 
     //주문접수...
     function setOrderRequest(dataId, prodId){
-        var listData = getTabData(TAB_FLAG)[dataId];
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[dataId] : CARE_LIST[dataId];
         // var productList = vcui.array.map(listData.productList, function(item, idx){
         //     return{
         //         orderedQuantity: item.orderedQuantity,
@@ -2655,7 +2654,7 @@
 
     //취소/반품 신청을 위한 데이터 요정...후 팝업 열기
     function getPopOrderData(dataId, calltype, opener){
-        var listData = getTabData(TAB_FLAG);
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var memInfos = lgkorUI.getHiddenInputData();
         var orderNumber = listData[dataId].orderNumber;
         var requestNo = listData[dataId].requestNo;
@@ -2803,7 +2802,7 @@
 
                 var prodId = popup.data('prodId');
 
-                var listData = getTabData(TAB_FLAG);
+                var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
                 productList = vcui.array.filter(productList, function(item, idx){
                     return item.modelID == listData[dataId].productList[prodId].modelID;
                 });
@@ -2982,7 +2981,7 @@
     function setCancelTakebackData(popname, prodlist, matchIds){
         var popup = $('#'+popname);
 
-        var listData = getTabData(TAB_FLAG);
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var dataId = popup.data('dataId');    
         
         var orderNumber = listData[dataId].orderNumber;
@@ -3143,7 +3142,7 @@
 
     //영수증 발급내역...
     function setReceiptListPop(opener){
-        var listData = getTabData(TAB_FLAG);
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var method = PAYMENT_DATA.transType == METHOD_CARD ? "카드영수증" : "현금영수증";
         if(PAYMENT_DATA.transType == METHOD_BANK && listData[0].cashReceiptAbleYn != "Y") method = "";
         var header = $(vcui.template(receiptHeaderTemplate, {receiptUrl:PAYMENT_DATA.receiptUrl, method:method})).get(0);
@@ -3163,7 +3162,7 @@
     }
     //거래 영수증 팝업...
     function setSalesReceiotPop(opener){
-        var listData = getTabData(TAB_FLAG)[0];
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
 
         receiptdata = {};
         receiptdata.orderNumber = listData.groupNumber;
@@ -3188,8 +3187,8 @@
         //리스트에서는 상품 이미지에서만 체크..go pdp
         //상세보기 둘다 체크후..go pdp
         //리스트에서는 네임은 상세로...go detail
-        
-        var listData = getTabData(TAB_FLAG);
+
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var sendata = {
             "sku": listData[dataId].productList[prodId].productNameEN,
             contDtlType: listData[dataId].productList[prodId].contDtlType,
