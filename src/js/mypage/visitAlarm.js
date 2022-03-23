@@ -178,6 +178,14 @@
                     self.$popupChangeVisitDate.vcModal();
                     */
                 });
+                
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+                self.$list.on('click', '.svc-details li', function(e){
+                	console.log("svc-details li click!");
+                	console.log(">>>>>>>" + $(this).attr('data-cont-line-seq'));
+                	
+                });
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 END
             },
 
             bindPopupEvents: function() {
