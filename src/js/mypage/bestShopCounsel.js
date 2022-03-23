@@ -286,7 +286,7 @@
       this.bind();
 
       // 탭 초기화 완료 후 list ajax 호출
-      if (this.el.$tabContainer.vcTab("instance").moduleName) {
+      if (this.el.$tabContainer.attr("ui-modules")) {
         this.initedTab();
       } else {
         this.el.$tabContainer.on("tabinit", this.initedTab.bind(this));
