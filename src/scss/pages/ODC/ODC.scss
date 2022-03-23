@@ -442,6 +442,8 @@
   }
 
   &__image {
+    overflow: hidden;
+    height: 91.112vw;
     img {
       width: 100%;
       height: auto;
@@ -479,7 +481,7 @@
     position: absolute;
     width: calc(100% - 24px);
     left: 12px;
-    bottom: 12px;
+    bottom: 3.3334vw;
     padding: 10px 20px 12px;
     background-color: #fff;
     border-radius: 8px;
