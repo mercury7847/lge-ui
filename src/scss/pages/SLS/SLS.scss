@@ -65,6 +65,13 @@ br.pc {
         margin-bottom: 32px;
         @include mobile {
             margin-bottom: 20px;
+            .tabs{
+                >li{
+                    >a{
+                        border-width:1.5px;           
+                    }
+                }
+            }
         }
     }
     &.care-recommended {
@@ -108,7 +115,7 @@ br.pc {
                             line-height:36px;
                             border:1px solid transparent;
                             @include mobile{
-                                padding:0 15px;
+                                padding:0 10px;
                                 height:32px;
                                 font-size:14px;
                                 line-height:30px;
@@ -510,7 +517,6 @@ br.pc {
         }
     }
 }
-
 // BTOCSITE-12758 LNB, Submain UI/UX개선 및 신규페이지 생성 건
 // 케어솔루션 카테고리
 .care-category {

@@ -1201,7 +1201,7 @@
 }
 
 // BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
-.popup-wrap {
+.popup-wrap:not(.small) {
     .pop-conts {
         @include mobile {
             height:calc(100vh - 122px);
@@ -1210,17 +1210,19 @@
             padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
         }
     }
-}
 
-.pop-footer {
-    @include mobile {
-        position:fixed;
-        width:100%;
-        bottom: 0;
-        bottom: env(safe-area-inset-bottom);
-        bottom: constant(safe-area-inset-bottom);
+    .pop-footer {
+        @include mobile {
+            position:fixed;
+            width:100%;
+            left: 0;
+            bottom: 0;
+            bottom: env(safe-area-inset-bottom);
+            bottom: constant(safe-area-inset-bottom);
+        }
     }
 }
+
 
 /* 20210624 납부내역 : 팝업*/
 #popup-paymentHistory {
@@ -1702,6 +1704,198 @@
     //border:1px solid $color-border;
 }
 
+
+
+// LGECOMVIO - 114 베스트샵 배송조회 팝업
+#popup-bestshop-delivery {
+    .pop-conts {
+        overflow-y: hidden;
+    }
+    .delivery-info {
+        .delivery-step {
+            padding:0 0 0 23px;
+
+            @include mobile {
+                padding-left: 13px;
+            }
+
+            &:last-child {
+                .delivery-text:before {
+                    width:0;
+                }
+                .delivery-text {
+                    padding-bottom:0;
+                }
+            }
+
+        }
+        .delivery-text {
+            position:relative;
+            padding:0 0 44px 41px;
+
+            @include mobile {
+                padding: 0 0 38px 22px;
+            }
+
+            &:before {
+                display:block;
+                content:"";
+                position:absolute;
+                top:32px;
+                bottom:0;
+                left:-2px;
+                width:1px;
+                background:#ddd;
+            }
+
+            .delivery-status {
+                position:relative;
+                display:block;
+                font-size:18px;
+
+                @include mobile {
+                    font-size:15px;
+                }
+
+                &:before {
+                    display:block;
+                    content:"";
+                    position:absolute;
+                    top:-1px;
+                    left:-59px;
+                    width:32px;
+                    height:32px;
+                    background:#fff;
+                    border-radius:50%;
+                }
+                &:after {
+                    display:block;
+                    content:"";
+                    position:absolute;
+                    top:8px;
+                    left:-49px;
+                    width:14px;
+                    height:14px;
+                    border:1px solid #DA0F47;
+                    border-radius:50%;
+                    background:#fff;
+
+                    @include mobile {
+                        width: 11px;
+                        height: 11px;
+                        top: 9px;
+                        left: -29px;
+                    }
+                }
+            }
+            &.active {
+                &:before {
+                    top:41px;
+
+                    @include mobile {
+                        top: 35px;
+                    }
+                }
+
+                .delivery-status {
+                    &:before {
+                        display:block;
+                        content:"";
+                        position:absolute;
+                        top:-2px;
+                        left:-60px;
+                        width:36px;
+                        height:36px;
+                        background:#fbe7ec;
+                        border-radius:50%;
+
+                        @include mobile {
+                            width: 26px;
+                            height: 26px;
+                            top: 1px;
+                            left: -36px;
+                        }
+                    }
+                    &:after {
+                        top:9px;
+                        border:none;
+                        background:#DA0F47;
+                        @include mobile {
+                            top: 8.5px;
+                            left: -28.5px;
+                            width: 11px;
+                            height: 11px;
+                        }
+                    }
+                }
+            }
+        }
+        .delivery-status {
+            font-size:18px;
+            line-height:28px;
+        }
+        .delivery-date {
+            margin-top:4px;
+            font-size:16px;
+            font-weight:500;
+            @include mobile {
+                font-size:14px;
+            }
+        }
+        .delivery-name {
+            display:block;
+            margin-top:4px;
+            font-size:16px;
+            line-height:24px;
+            color:#666;
+
+            @include mobile {
+                font-size:14px;
+            }
+
+            .bar:before {
+                display:inline-block;
+                content:"";
+                position:relative;
+                top:-1px;
+                width:1px;
+                height:10px;
+                background:#ddd;
+                margin:0 7px 0 6px;
+
+                @include mobile {
+                    top: 0;
+                    margin: 0 6px 0 4px;
+                }
+            }
+        }
+
+        .delivery-message {
+            display:block;
+            margin-top:4px;
+            font-size:16px;
+            line-height:24px;
+            color:#666;
+            word-break: keep-all;
+
+            @include mobile {
+                font-size:14px;
+            }
+        }
+    }
+    .delivery-data {
+        width:100%;
+        padding:40px 0;
+        border-radius:8px;
+        background:#F4F4F4;
+        text-align:center;
+
+        @include mobile {
+            padding:25px 0;
+            font-size:14px;
+        }
+    }
+}
 // BTOCSITE-5938-17 s
 @include mobile {
     #registMyProductPopup{
@@ -1921,201 +2115,188 @@
     #registMyProductPopup.popup-wrap .pop-footer {padding:32px}
 }
 
-// LGECOMVIO - 114 베스트샵 배송조회 팝업
-#popup-bestshop-delivery {
+
+//BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+.popupServiceDetail {
     .pop-conts {
-        overflow-y: hidden;
-        height: auto;
-        max-height: 100%;
+        padding-top: 20px;
     }
-
-    .pop-footer {
-        position: static;
+    .fc_point {
+        color: #ec455a;
     }
-
-    .delivery-info {
-        .delivery-step {
-            padding:0 0 0 23px;
-
+    .service-detail-wrap {
+        .tit-wrap {
+            margin: 30px 0 16px;
+            .h2-tit {
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 26px;
+            }
+            .h2-tit-sub {
+                font-size: 14px;
+                line-height: 22px;
+            }            
             @include mobile {
-                padding-left: 13px;
-            }
-
-            &:last-child {
-                .delivery-text:before {
-                    width:0;
+                margin-top: 25px;
+                .h2-tit {
+                    font-size: 14px;
+                    line-height: 22px;
                 }
-                .delivery-text {
-                    padding-bottom:0;
-                }
+                .h2-tit-sub {                    
+                    font-size: 12px;
+                    line-height: 20px;
+                }                
+            }            
+            &:first-child {
+                margin-top: 0px;
             }
-
         }
-        .delivery-text {
-            position:relative;
-            padding:0 0 44px 41px;
-
+        .manager-info-wrap {
+            padding: 24px 32px 32px;
+            border-radius:8px;
+            background:#f4f4f4;
             @include mobile {
-                padding: 0 0 38px 22px;
+                padding:32px 20px;
             }
-
-            &:before {
-                display:block;
-                content:"";
-                position:absolute;
-                top:32px;
-                bottom:0;
-                left:-2px;
-                width:1px;
-                background:#ddd;
-            }
-
-            .delivery-status {
-                position:relative;
-                display:block;
-                font-size:18px;
-
+            .manager-info-box {
+                display:table;
+                table-layout:fixed;
+                width:100%;
+                margin-top:24px;
+                padding:0 40px 24px;
                 @include mobile {
-                    font-size:15px;
-                }
-
-                &:before {
                     display:block;
-                    content:"";
-                    position:absolute;
-                    top:-1px;
-                    left:-59px;
-                    width:32px;
-                    height:32px;
-                    background:#fff;
-                    border-radius:50%;
-                }
-                &:after {
-                    display:block;
-                    content:"";
-                    position:absolute;
-                    top:8px;
-                    left:-49px;
-                    width:14px;
-                    height:14px;
-                    border:1px solid #DA0F47;
-                    border-radius:50%;
-                    background:#fff;
-
+                    margin:0;
+                    padding:0 16px 100px;
+                }    
+                .left-box {
+                    display:table-cell;
+                    vertical-align:top;
+                    width:45%;
                     @include mobile {
-                        width: 11px;
-                        height: 11px;
-                        top: 9px;
-                        left: -29px;
-                    }
-                }
-            }
-            &.active {
-                &:before {
-                    top:41px;
-
-                    @include mobile {
-                        top: 35px;
-                    }
-                }
-
-                .delivery-status {
-                    &:before {
                         display:block;
-                        content:"";
-                        position:absolute;
-                        top:-2px;
-                        left:-60px;
-                        width:36px;
-                        height:36px;
-                        background:#fbe7ec;
-                        border-radius:50%;
-
-                        @include mobile {
-                            width: 26px;
-                            height: 26px;
-                            top: 1px;
-                            left: -36px;
+                        width:100%;
+                    }        
+                    .manager-info {                        
+                        display:table;
+                        table-layout:fixed;
+                        width:100%;
+                        text-align:left;
+                        .img-wrap {
+                            width:48px;
+                            height:48px;
+                            @include mobile {
+                                width:30px;
+                                height:30px;
+                                overflow:hidden;
+                            }
+                            img {                                
+                                width:100%;
+                                height:100%;
+                            }
+                        }
+                        .txt-wrap {
+                            display:table-cell;
+                            width:100%;
+                            padding-left:60px;
+                            vertical-align:middle;
+                            @include mobile {
+                                padding-left:45px;
+                            }
+                            .name {
+                                display:block;
+                                @include font-large-2;
+                                font-weight:$font-weight-bold;
+                                @include mobile {
+                                    @include font-large;
+                                    vertical-align: middle;
+                                }
+                            }
+                            .area {
+                                display:block;
+                                @include font-small;
+                                font-weight: $font-weight-medium;
+                                @include mobile {
+                                    display: inline-block;
+                                    padding-left: 4px;
+                                    vertical-align: middle;
+                                }
+                            }
+                            .txt {
+                                margin-top:16px;
+                                @include font-small;
+                                font-weight: $font-weight-medium;
+                                color: $color-gray-1;
+                                @include mobile {
+                                    margin-top:10px;
+                                }
+                            }
+                            div {
+                                margin-top:16px;
+                                color:#666;
+                                font-size:14px;
+                                line-height:24px;
+                            }
                         }
                     }
-                    &:after {
-                        top:9px;
-                        border:none;
-                        background:#DA0F47;
+                }    
+                .right-box {
+                    display:table-cell;
+                    width:100%;
+                    padding-left:72px;
+                    vertical-align:top;
+                    border-left:1px solid #ddd;
+                    @include mobile {
+                        display:block;
+                        padding:45px 0 0 0;
+                    }
+                    .info-list {
+                        margin-bottom:64px;
                         @include mobile {
-                            top: 8.5px;
-                            left: -28.5px;
-                            width: 11px;
-                            height: 11px;
+                            margin-bottom:40px;
+                            &.photo {
+                                .slide-controls {
+                                    display: none;
+                                }
+                            }
+                        }
+                        .info-tit-wrap {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                        dl {
+                            display: flex;
+                            padding-top:10px;
+                            @include mobile {
+                                padding-top:7px;
+                            }
+                            dt {
+                                width: 90px;
+                                color:#000;
+                                font-weight:bold;
+                                @include font-medium;
+                                @include mobile {
+                                    width: 80px;
+                                }
+                            }
+                            dd {
+                                flex: 1;
+                                padding-left: 5px;
+                                color:#111;
+                                @include font-medium;
+                                @include mobile {
+                                    padding-left: 0px;
+                                }                    
+                            }
+                        }
+                        &:first-child{
+                            padding-top: 0;
                         }
                     }
                 }
             }
-        }
-        .delivery-status {
-            font-size:18px;
-            line-height:28px;
-        }
-        .delivery-date {
-            margin-top:4px;
-            font-size:16px;
-            font-weight:500;
-            @include mobile {
-                font-size:14px;
-            }
-        }
-        .delivery-name {
-            display:block;
-            margin-top:4px;
-            font-size:16px;
-            line-height:24px;
-            color:#666;
-
-            @include mobile {
-                font-size:14px;
-            }
-
-            .bar:before {
-                display:inline-block;
-                content:"";
-                position:relative;
-                top:-1px;
-                width:1px;
-                height:10px;
-                background:#ddd;
-                margin:0 7px 0 6px;
-
-                @include mobile {
-                    top: 0;
-                    margin: 0 6px 0 4px;
-                }
-            }
-        }
-
-        .delivery-message {
-            display:block;
-            margin-top:4px;
-            font-size:16px;
-            line-height:24px;
-            color:#666;
-            word-break: keep-all;
-
-            @include mobile {
-                font-size:14px;
-            }
-        }
-    }
-
-    .delivery-data {
-        width:100%;
-        padding:40px 0;
-        border-radius:8px;
-        background:#F4F4F4;
-        text-align:center;
-
-        @include mobile {
-            padding:25px 0;
-            font-size:14px;
         }
     }
 }
+//BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 END
