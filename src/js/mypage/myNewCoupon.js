@@ -68,11 +68,11 @@
 
     // prettier-ignore
     var storeCouponPopupTemplate = '<header class="pop-header" data-cpnEventNo="{{cpnEventNo}}">'+
-            '<h1 class="tit"><span>매장 방문 혜택 쿠폰</span></h1>'+
+            '<h1 class="tit"><span>{{cpnEventName}}</span></h1>'+
         '</header>'+
         '<section class="pop-conts common-pop mypage mybestshop">'+
             '<div class="coupon-info-moreview">'+
-                '<strong class="title-info">{{cpnEventName}}</strong>'+
+                '<strong class="title-info">{{cpnMainTitle}}</strong>'+
                 '<p class="period-info">유효기간 : {{cpnFromDate}}~{{cpnToDate}}</p>'+
             '</div>'+
             '<div class="coupon-info-model">'+
@@ -147,26 +147,36 @@
             this.el.$errorCoupon = $(this.selector.errorCoupon);
         },
         setStyle: function () {
-            if (this.urlParam("tab") && this.urlParam("tab") === "bestshop" && this.urlParam("store_coupon") === "visit") {
+            // if (this.urlParam("tab") && this.urlParam("tab") === "bestshop" && this.urlParam("store_coupon") === "visit") {
+            //     //베스트샵 > 매장 방문 혜택 쿠폰
+            //     this.variable.tabActIndex = 1;
+            //     this.variable.subTabActIndex = 1;
+            //     this.el.$tab.find(">ul>li").eq(1).addClass("on");
+
+            //     //todo> subtab 생성
+            //     // this.el.$subTab.show();
+            //     // this.el.$subTab.find(">ul>li").eq(1).addClass("on");
+            // } else if (this.urlParam("tab") && this.urlParam("tab") === "bestshop") {
+            //     //베스트샵 > 매장 제품 할인 쿠폰
+            //     this.variable.tabActIndex = 1;
+            //     this.variable.subTabActIndex = 0;
+            //     this.el.$tab.find(">ul>li").eq(1).addClass("on");
+
+            //     //todo> subtab 생성
+            //     // this.el.$subTab.show();
+            //     // this.el.$subTab.find(">ul>li").eq(0).addClass("on");
+            // } else {
+            //     //베스트샵 > 매장 제품 할인 쿠폰
+            //     this.variable.tabActIndex = 0;
+            //     this.el.$tab.find(">ul>li").eq(0).addClass("on");
+            // }
+
+            if (this.urlParam("tab") && this.urlParam("tab") === "bestshop") {
                 //베스트샵 > 매장 방문 혜택 쿠폰
                 this.variable.tabActIndex = 1;
-                this.variable.subTabActIndex = 1;
                 this.el.$tab.find(">ul>li").eq(1).addClass("on");
-
-                //todo> subtab 생성
-                // this.el.$subTab.show();
-                // this.el.$subTab.find(">ul>li").eq(1).addClass("on");
-            } else if (this.urlParam("tab") && this.urlParam("tab") === "bestshop") {
-                //베스트샵 > 매장 제품 할인 쿠폰
-                this.variable.tabActIndex = 1;
-                this.variable.subTabActIndex = 0;
-                this.el.$tab.find(">ul>li").eq(1).addClass("on");
-
-                //todo> subtab 생성
-                // this.el.$subTab.show();
-                // this.el.$subTab.find(">ul>li").eq(0).addClass("on");
             } else {
-                //베스트샵 > 매장 제품 할인 쿠폰
+                //LGE.COM 쿠폰
                 this.variable.tabActIndex = 0;
                 this.el.$tab.find(">ul>li").eq(0).addClass("on");
             }
@@ -302,8 +312,7 @@
                         page = this.variable.bestShopVisitOffPage;
                     }
                 }
-
-                this.addCouponList(page);
+                this.addCouponList(page, "click");
             },
             clickBtnGroup: function (e) {
                 var url = $(e.currentTarget).attr("data-coupon-url");
@@ -403,13 +412,6 @@
             this.requestCouponList();
 
             this.bindEvents();
-        },
-        changeSubTabMenu: function (e) {
-            var $subTab = $(e.currentTarget).parent();
-
-            //탭 변경 시 데이터 새로 고침
-            this.variable.subTabActIndex = $subTab.index();
-            this.requestCouponList();
         },
         /**
          * @method getTabName
@@ -723,9 +725,10 @@
         /**
          * @method addCouponList
          * @memberof
+         * @param {page, type}  [page: 출력 페이지, type: 더보기 버튼 클릭 할때만 값 설정]
          * @return {myCallback}  [list > 데이터 상세 쿠폰 컴포넌트 출력]
          */
-        addCouponList: function (page) {
+        addCouponList: function (page, type) {
             var listbottom = this.el.$couponList.offset().top + this.el.$couponList.height();
             var start = page * this.variable.visibleCount;
             var end = start + this.variable.visibleCount;
@@ -789,7 +792,8 @@
                 this.el.$couponMore.show();
             }
 
-            if (page > 0) {
+            //type: 더보기 버튼 클릭 할때만 값 설정
+            if (page > 0 && type) {
                 $("html, body").stop().animate({ scrollTop: listbottom }, 420);
             }
         },
