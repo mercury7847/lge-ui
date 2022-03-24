@@ -185,14 +185,17 @@
                 
                 // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
                 self.$list.on('click', '.svc-details li', function(e){
+                	var $this = $(this);
                 	console.log("svc-details li click!");
-                	console.log(">>>>>>>" + $(this).attr('data-cont-line-seq'));
+                	console.log(">>>>>>>" + $this.attr('data-cont-line-seq')); // 계약번호
+                	console.log(">>>>>>>" + $this.attr('data-visit-times')); // 방문회차
+                	console.log(">>>>>>>" + $this.parent().attr('data-scheduled-to-visit-flag')); // 방문예정구분
                 	console.log(">>>>>>>" + self.$myVisitSchedule.attr('data-detail-list-url'));
                 	
                 	var ajaxUrl = self.$myVisitSchedule.attr('data-detail-list-url');
                 	
                 	var param = {
-                			contLineSeq : $(this).attr('data-cont-line-seq')
+                			contLineSeq : $this.attr('data-cont-line-seq')
                 	}
                 	
                 	lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
