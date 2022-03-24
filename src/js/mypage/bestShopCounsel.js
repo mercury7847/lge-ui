@@ -624,32 +624,36 @@
         item._prdId = null;
         item._category = null;
 
-        var categorys = [];
-
         if (item._type !== 2) {
-          // 방문상담/화상상담
-          if (item.requestCategory.match(/\,/g)) {
-            categorys = item.requestCategory.split(",").map(function (item) {
-              return item.trim();
-            });
-          }
-
-          // 외 n개 혹은 1개인 경우 첫번째 제품
-          var cnt = "";
-          if (categorys.length) {
-            if (categorys.length === 1) {
-              cnt = categorys[0];
-            } else {
-              cnt = categorys[0] + " 외 " + categorys.length + "개";
-            }
-          }
-
-          // 케어십 (상품코드)
           if (item.hasOwnProperty("modelName") && item._type === 1) {
+            // 케어십 (상품코드)
             item._prdId = item.modelName;
-          }
 
-          item._category = item.modelDisplayName.trim() + cnt;
+            item._category = item.modelDisplayName.trim();
+          } else {
+            var categorys = [];
+
+            // 방문상담/화상상담
+            if (item.requestCategory.match(/\,/g)) {
+              categorys = item.requestCategory.split(",").map(function (prd) {
+                return prd.trim();
+              });
+            } else {
+              categorys = [item.requestCategory.trim()];
+            }
+
+            // 외 n개 혹은 1개인 경우 첫번째 제품
+            var models = "";
+            if (categorys.length) {
+              if (categorys.length === 1) {
+                models = categorys[0];
+              } else {
+                models = categorys[0] + " 외 " + categorys.length + "개";
+              }
+            }
+
+            item._category = models;
+          }
         } else {
           // 소모품
           if (item.modelDisplayName.match(/\,/g)) {
