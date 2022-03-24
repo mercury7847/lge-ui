@@ -598,7 +598,7 @@
             if (document.URL.indexOf("ACCF7096.html") >= 0) {
                 ajaxUrl = "/lg5-common/data-ajax/mypage/shopping/updateCoupon.json";
             } else {
-                ajaxUrl = "/my-page/ajax/bestshop/updateCoupon";
+                ajaxUrl = "/my-page/ajax/coupon/updateBestShopCoupon";
             }
 
             lgkorUI.requestAjaxDataPost(
