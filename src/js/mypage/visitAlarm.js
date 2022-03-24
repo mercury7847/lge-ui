@@ -195,14 +195,16 @@
                 	var ajaxUrl = self.$myVisitSchedule.attr('data-detail-list-url');
                 	
                 	var param = {
-                			contLineSeq : $this.attr('data-cont-line-seq')
+                			contLineSeq : $this.attr('data-cont-line-seq'),
+                			visitTimes : $this.attr('data-visit-times')
                 	}
                 	
                 	lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                		
                 		var data = result.data;
                 		
                 		console.log(data);
-                		console.log(data.status);
+                		console.log(result.status);
                 	});
                 });
                 // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 END
