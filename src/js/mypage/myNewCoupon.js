@@ -625,6 +625,9 @@
                     } else if (result.status.toUpperCase() === "FAIL02") {
                         obj = $.extend(obj, { title: "이미 사용한 쿠폰입니다." });
                     } else if (result.status.toUpperCase() === "FAIL03") {
+                        obj = $.extend(obj, { title: "조기 마감된 쿠폰입니다." });
+                    } else if (result.status.toUpperCase() === "FAIL04") {
+                        //ERROR
                         obj = $.extend(obj, { title: "쿠폰이 정상적으로 사용되지 않았습니다." });
                         desc = "<span class='blind'>message ::" + result.message + "</span>";
                     }
@@ -633,7 +636,8 @@
                     if (
                         result.status.toUpperCase() === "SUCCESS" ||
                         result.status.toUpperCase() === "FAIL01" ||
-                        result.status.toUpperCase() === "FAIL02"
+                        result.status.toUpperCase() === "FAIL02" ||
+                        result.status.toUpperCase() === "FAIL03"
                     ) {
                         $("#couponPopup .btn-close").trigger("click");
                         this.requestCouponList();
