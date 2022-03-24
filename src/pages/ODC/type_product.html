@@ -16,292 +16,475 @@
 
         <div class="container">
 
-            <!-- ODCC0001 : 상단 hero 배너 -->
-            <section class="odc-hero">
+            <!-- category home -->
+            <div class="odc-content">
 
-                <div class="odc-hero__list ui_carousel_list">
+                <!-- ODCC0001 : 상단 hero 배너 -->
+                <section class="odc-hero">
 
-                    <div class="odc-hero__track ui_carousel_track">
+                    <div class="odc-hero__list ui_carousel_list">
 
-                        <div class="odc-hero__slide ui_carousel_slide">
-                            <a href="#">
-                                <div class="odc-hero__image">
-                                    <img alt=""
-                                         src="/lg5-common/images/ODC/visual-1.jpg"
-                                         data-pc-src="/lg5-common/images/ODC/visual-1.jpg"
-                                         data-m-src="/lg5-common/images/ODC/m-visual-1.jpg"
-                                    >
-                                </div>
-                                <div class="odc-hero__info">
-                                    <div class="odc-hero__box odc-hero__box--black">
-                                        <p class="odc-hero__title">
-                                            LG OLED TV 특별 기획전
-                                        </p>
-                                        <p class="odc-hero__subtitle">
-                                            최대 300만원 캐시백<br>
-                                            당신을 위한 특별한 혜택
-                                        </p>
-                                        <p class="odc-hero__link">바로가기</p>
+                        <div class="odc-hero__track ui_carousel_track">
+
+                            <div class="odc-hero__slide ui_carousel_slide">
+                                <a href="#">
+                                    <div class="odc-hero__image">
+                                        <img alt=""
+                                             src="/lg5-common/images/ODC/visual-1.jpg"
+                                             data-pc-src="/lg5-common/images/ODC/visual-1.jpg"
+                                             data-m-src="/lg5-common/images/ODC/m-visual-1.jpg"
+                                        >
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="odc-hero__slide ui_carousel_slide">
-                            <a href="#">
-                                <div class="odc-hero__image">
-                                    <img alt=""
-                                         src="/lg5-common/images/ODC/visual-1.jpg"
-                                         data-pc-src="/lg5-common/images/ODC/visual-1.jpg"
-                                         data-m-src="/lg5-common/images/ODC/m-visual-1.jpg"
-                                    >
-                                </div>
-                                <div class="odc-hero__info">
-                                    <div class="odc-hero__box odc-hero__box--black">
-                                        <p class="odc-hero__title">
-                                            나만을 위한 프라이빗 스크린
-                                        </p>
-                                        <p class="odc-hero__subtitle">
-                                            당신을 위한 특별한 스크린
-                                        </p>
-                                        <p class="odc-hero__link">바로가기</p>
+                                    <div class="odc-hero__info">
+                                        <div class="odc-hero__box odc-hero__box--black">
+                                            <p class="odc-hero__title">
+                                                LG OLED TV 특별 기획전
+                                            </p>
+                                            <p class="odc-hero__subtitle">
+                                                최대 300만원 캐시백<br>
+                                                당신을 위한 특별한 혜택
+                                            </p>
+                                            <p class="odc-hero__link">바로가기</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="odc-hero__indicator">
-
-                    <div class="odc-hero__controls">
-                        <div class="odc-hero__inner">
-                            <button type="button" class="odc-hero__prev ui_carousel_prev"><span class="blind">이전</span></button>
-                            <span class="odc-hero__paging"><strong class="odc-hero__current"></strong><em class="odc-hero__total"></em></span>
-                            <button type="button" class="odc-hero__next ui_carousel_next"><span class="blind">다음</span></button>
-                        </div>
-                    </div>
-
-                    <button type="button" class="odc-hero__play ui_carousel_play play">
-                        <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
-                    </button>
-
-                </div>
-
-            </section>
-            <!-- // ODCC0001 : 상단 hero 배너 -->
-
-            <!-- ODCC0002 : 2depth 카테고리 -->
-            <section class="odc-2depth-category" data-all-view="true" data-all-view-item=".odc-2depth-category__item" data-all-view-limit="6">
-                <div class="odc-2depth-category__inner">
-                    <a href="#" class="odc-2depth-category__item">TV</a>
-                    <a href="#" class="odc-2depth-category__item">프로젝터</a>
-                    <a href="#" class="odc-2depth-category__item">상업용 디스플레이</a>
-                    <a href="#" class="odc-2depth-category__item">케어용품/소모품</a>
-                    <a href="#" class="odc-2depth-category__item">TV</a>
-                    <a href="#" class="odc-2depth-category__item">프로젝터</a>
-                    <a href="#" class="odc-2depth-category__item">상업용 디스플레이</a>
-                    <a href="#" class="odc-2depth-category__item">케어용품/소모품</a>
-                </div>
-                <button type="button" class="odc-all-view" data-all-view-target=".odc-2depth-category__inner"><span class="odc-all-view__text">전체보기</span></button>
-            </section>
-            <!-- // ODCC0002 : 2depth 카테고리 -->
-
-            <!-- ODCC0003 : 쇼룸 type 1 -->
-            <section class="odc-show-room-type1">
-
-                <div class="odc-show-room-type1__head">
-                    <p class="odc-show-room-type1__title">당신이 꿈꾸는 멋진 거실</p>
-                    <p class="odc-show-room-type1__subtitle">공간에 자연스럽게 녹아드는 슬림한 패널과 베젤</p>
-                </div>
-
-                <div class="odc-show-room-type1__body">
-
-                    <div class="odc-show-room-type1__indicator">
-                        <button type="button" class="odc-show-room-type1__prev ui_carousel_prev"><span class="blind">이전</span></button>
-                        <span class="odc-show-room-type1__paging"><strong class="odc-show-room-type1__current"></strong><em class="odc-show-room-type1__total"></em></span>
-                        <button type="button" class="odc-show-room-type1__next ui_carousel_next"><span class="blind">다음</span></button>
-                    </div>
-
-                    <div class="odc-show-room-type1__list ui_carousel_list">
-
-                        <div class="odc-show-room-type1__track ui_carousel_track">
-
-                            <div class="odc-show-room-type1__slide ui_carousel_slide">
-
-                                <div class="odc-show-room-type1__item">
-
-                                    <div class="odc-show-room-type1__image">
-                                        <img src="/lg5-common/images/ODC/img-odcc0003-1.jpg">
-                                    </div>
-
-                                    <!-- mark 1 -->
-                                    <div class="odc-show-room-type1__display is-active"><!-- 최초에 주력 제품 1개 활성화 -->
-
-                                        <button type="button" class="odc-show-room-type1__mark" style="top: 50%; left: 40%">
-                                            <span class="blind">LG SIGNATURE OLED R</span>
-                                        </button>
-
-                                        <a href="#" class="odc-show-room-type1__product">
-
-                                            <div class="odc-show-room-type1__row">
-                                                <span class="odc-show-room-type1__hashtag">거실</span>
-                                                <span class="odc-show-room-type1__hashtag">여름</span>
-                                            </div>
-
-                                            <p class="odc-show-room-type1__name">LG SIGNATURE OLED R</p>
-                                            <p class="odc-show-room-type1__model">OLED65RXKNA</p>
-                                            <p class="odc-show-room-type1__price">47,000,000원</p>
-
-                                        </a>
-
-                                    </div>
-                                    <!-- // mark 1 -->
-
-                                    <!-- mark 2 -->
-                                    <div class="odc-show-room-type1__display">
-
-                                        <button type="button" class="odc-show-room-type1__mark" style="top: 35%; left: 73%">
-                                            <span class="blind">LG SIGNATURE OLED R 2</span>
-                                        </button>
-
-                                        <a href="#" class="odc-show-room-type1__product">
-
-                                            <div class="odc-show-room-type1__row">
-                                                <span class="odc-show-room-type1__hashtag">거실</span>
-                                            </div>
-
-                                            <p class="odc-show-room-type1__name">LG SIGNATURE OLED R 2</p>
-                                            <p class="odc-show-room-type1__model">OLED65RXKNA</p>
-                                            <p class="odc-show-room-type1__price">87,000,000원</p>
-
-                                        </a>
-
-                                    </div>
-                                    <!-- // mark 2 -->
-
-                                </div>
-
+                                </a>
                             </div>
 
-                            <div class="odc-show-room-type1__slide ui_carousel_slide">
-
-                                <div class="odc-show-room-type1__item">
-
-                                    <div class="odc-show-room-type1__image">
-                                        <img src="/lg5-common/images/ODC/img-odcc0003-2.jpg">
+                            <div class="odc-hero__slide ui_carousel_slide">
+                                <a href="#">
+                                    <div class="odc-hero__image">
+                                        <img alt=""
+                                             src="/lg5-common/images/ODC/visual-1.jpg"
+                                             data-pc-src="/lg5-common/images/ODC/visual-1.jpg"
+                                             data-m-src="/lg5-common/images/ODC/m-visual-1.jpg"
+                                        >
                                     </div>
-
-                                    <!-- mark 1 -->
-                                    <div class="odc-show-room-type1__display is-active"><!-- 최초에 주력 제품 1개 활성화 -->
-
-                                        <button type="button" class="odc-show-room-type1__mark" style="top: 50%; left: 34%">
-                                            <span class="blind">LG SIGNATURE OLED 8K (벽걸이형)</span>
-                                        </button>
-
-                                        <a href="#" class="odc-show-room-type1__product">
-
-                                            <div class="odc-show-room-type1__row">
-                                                <span class="odc-show-room-type1__hashtag">거실</span>
-                                                <span class="odc-show-room-type1__hashtag">여름</span>
-                                            </div>
-
-                                            <p class="odc-show-room-type1__name">LG SIGNATURE OLED 8K (벽걸이형)</p>
-                                            <p class="odc-show-room-type1__model">OLED77Z1KNA</p>
-                                            <p class="odc-show-room-type1__price">26,000,000원</p>
-
-                                        </a>
-
+                                    <div class="odc-hero__info">
+                                        <div class="odc-hero__box odc-hero__box--black">
+                                            <p class="odc-hero__title">
+                                                나만을 위한 프라이빗 스크린
+                                            </p>
+                                            <p class="odc-hero__subtitle">
+                                                당신을 위한 특별한 스크린
+                                            </p>
+                                            <p class="odc-hero__link">바로가기</p>
+                                        </div>
                                     </div>
-                                    <!-- // mark 1 -->
-
-                                </div>
-
+                                </a>
                             </div>
 
                         </div>
 
                     </div>
 
-                </div>
+                    <div class="odc-hero__indicator">
 
-            </section>
-            <!-- // ODCC0003 : 쇼룸 type 1 -->
-
-            <!-- ODCC0004 : 쇼룸 type 2 하나 이상일 경우 -->
-            <section class="odc-show-room-type2">
-
-                <div class="odc-show-room-type2__head">
-                    <p class="odc-show-room-type2__title">공간, 시네마가 되다</p>
-                    <p class="odc-show-room-type2__subtitle">공간을 가득 채우는 시네마 4K</p>
-                </div>
-
-                <div class="odc-show-room-type2__body">
-
-                    <div class="odc-show-room-type2__list">
-
-                        <div class="odc-show-room-type2__item">
-                            <div class="odc-show-room-type2__image">
-                                <img src="/lg5-common/images/ODC/img-odcc0004-1.jpg">
-                            </div>
-                            <div class="odc-show-room-type2__info">
-                                <p class="odc-show-room-type2__name">LG프로빔 Laser 4K (상업용)</p>
-                                <p class="odc-show-room-type2__model">SGU523P</p>
-                                <p class="odc-show-room-type2__price">3,696,500원</p>
+                        <div class="odc-hero__controls">
+                            <div class="odc-hero__inner">
+                                <button type="button" class="odc-hero__prev ui_carousel_prev"><span class="blind">이전</span></button>
+                                <span class="odc-hero__paging"><strong class="odc-hero__current"></strong><em class="odc-hero__total"></em></span>
+                                <button type="button" class="odc-hero__next ui_carousel_next"><span class="blind">다음</span></button>
                             </div>
                         </div>
 
-                        <div class="odc-show-room-type2__item">
-                            <div class="odc-show-room-type2__image">
-                                <img src="/lg5-common/images/ODC/img-odcc0004-1.jpg">
+                        <button type="button" class="odc-hero__play ui_carousel_play play">
+                            <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+                        </button>
+
+                    </div>
+
+                </section>
+                <!-- // ODCC0001 : 상단 hero 배너 -->
+
+                <!-- ODCC0002 : 2depth 카테고리 -->
+                <section class="odc-sub-category" data-all-view="true" data-all-view-item=".odc-sub-category__item" data-all-view-limit="6">
+                    <div class="odc-sub-category__inner">
+                        <a href="#" class="odc-sub-category__item">TV</a>
+                        <a href="#" class="odc-sub-category__item">프로젝터</a>
+                        <a href="#" class="odc-sub-category__item">상업용 디스플레이</a>
+                        <a href="#" class="odc-sub-category__item">케어용품/소모품</a>
+                        <a href="#" class="odc-sub-category__item">TV</a>
+                        <a href="#" class="odc-sub-category__item">프로젝터</a>
+                        <a href="#" class="odc-sub-category__item">상업용 디스플레이</a>
+                        <a href="#" class="odc-sub-category__item">케어용품/소모품</a>
+                    </div>
+                    <button type="button" class="odc-all-view" data-all-view-target=".odc-sub-category__inner"><span class="odc-all-view__text">전체보기</span></button>
+                </section>
+                <!-- // ODCC0002 : 2depth 카테고리 -->
+
+                <!-- ODCC0003 : 쇼룸 type 1 -->
+                <section class="odc-show-room-type1">
+
+                    <div class="odc-show-room-type1__head">
+                        <p class="odc-show-room-type1__title">당신이 꿈꾸는 멋진 거실</p>
+                        <p class="odc-show-room-type1__subtitle">공간에 자연스럽게 녹아드는 슬림한 패널과 베젤</p>
+                    </div>
+
+                    <div class="odc-show-room-type1__body">
+
+                        <div class="odc-show-room-type1__indicator">
+                            <button type="button" class="odc-show-room-type1__prev ui_carousel_prev"><span class="blind">이전</span></button>
+                            <span class="odc-show-room-type1__paging"><strong class="odc-show-room-type1__current"></strong><em class="odc-show-room-type1__total"></em></span>
+                            <button type="button" class="odc-show-room-type1__next ui_carousel_next"><span class="blind">다음</span></button>
+                        </div>
+
+                        <div class="odc-show-room-type1__list ui_carousel_list">
+
+                            <div class="odc-show-room-type1__track ui_carousel_track">
+
+                                <div class="odc-show-room-type1__slide ui_carousel_slide">
+
+                                    <div class="odc-show-room-type1__item">
+
+                                        <div class="odc-show-room-type1__image">
+                                            <img src="/lg5-common/images/ODC/img-odcc0003-1.jpg">
+                                        </div>
+
+                                        <!-- mark 1 -->
+                                        <div class="odc-show-room-type1__display is-active"><!-- 최초에 주력 제품 1개 활성화 -->
+
+                                            <button type="button" class="odc-show-room-type1__mark" style="top: 50%; left: 40%">
+                                                <span class="blind">LG SIGNATURE OLED R</span>
+                                            </button>
+
+                                            <a href="#" class="odc-show-room-type1__product">
+
+                                                <div class="odc-show-room-type1__row">
+                                                    <span class="odc-show-room-type1__hashtag">거실</span>
+                                                    <span class="odc-show-room-type1__hashtag">여름</span>
+                                                </div>
+
+                                                <p class="odc-show-room-type1__name">LG SIGNATURE OLED R</p>
+                                                <p class="odc-show-room-type1__model">OLED65RXKNA</p>
+                                                <p class="odc-show-room-type1__price">47,000,000원</p>
+
+                                            </a>
+
+                                        </div>
+                                        <!-- // mark 1 -->
+
+                                        <!-- mark 2 -->
+                                        <div class="odc-show-room-type1__display">
+
+                                            <button type="button" class="odc-show-room-type1__mark" style="top: 35%; left: 73%">
+                                                <span class="blind">LG SIGNATURE OLED R 2</span>
+                                            </button>
+
+                                            <a href="#" class="odc-show-room-type1__product">
+
+                                                <div class="odc-show-room-type1__row">
+                                                    <span class="odc-show-room-type1__hashtag">거실</span>
+                                                </div>
+
+                                                <p class="odc-show-room-type1__name">LG SIGNATURE OLED R 2</p>
+                                                <p class="odc-show-room-type1__model">OLED65RXKNA</p>
+                                                <p class="odc-show-room-type1__price">87,000,000원</p>
+
+                                            </a>
+
+                                        </div>
+                                        <!-- // mark 2 -->
+
+                                    </div>
+
+                                </div>
+
+                                <div class="odc-show-room-type1__slide ui_carousel_slide">
+
+                                    <div class="odc-show-room-type1__item">
+
+                                        <div class="odc-show-room-type1__image">
+                                            <img src="/lg5-common/images/ODC/img-odcc0003-2.jpg">
+                                        </div>
+
+                                        <!-- mark 1 -->
+                                        <div class="odc-show-room-type1__display is-active"><!-- 최초에 주력 제품 1개 활성화 -->
+
+                                            <button type="button" class="odc-show-room-type1__mark" style="top: 50%; left: 34%">
+                                                <span class="blind">LG SIGNATURE OLED 8K (벽걸이형)</span>
+                                            </button>
+
+                                            <a href="#" class="odc-show-room-type1__product">
+
+                                                <div class="odc-show-room-type1__row">
+                                                    <span class="odc-show-room-type1__hashtag">거실</span>
+                                                    <span class="odc-show-room-type1__hashtag">여름</span>
+                                                </div>
+
+                                                <p class="odc-show-room-type1__name">LG SIGNATURE OLED 8K (벽걸이형)</p>
+                                                <p class="odc-show-room-type1__model">OLED77Z1KNA</p>
+                                                <p class="odc-show-room-type1__price">26,000,000원</p>
+
+                                            </a>
+
+                                        </div>
+                                        <!-- // mark 1 -->
+
+                                    </div>
+
+                                </div>
+
                             </div>
-                            <div class="odc-show-room-type2__info">
-                                <p class="odc-show-room-type2__name">LG 시네빔 Laser 4K</p>
-                                <p class="odc-show-room-type2__model">HU715QW</p>
-                                <p class="odc-show-room-type2__price">3,696,500원</p>
-                            </div>
+
                         </div>
 
                     </div>
 
-                </div>
+                </section>
+                <!-- // ODCC0003 : 쇼룸 type 1 -->
 
-            </section>
-            <!-- // ODCC0004 : 쇼룸 type 2 하나 이상일 경우 -->
+                <!-- ODCC0004 : 쇼룸 type 2 하나 이상일 경우 -->
+                <section class="odc-show-room-type2">
 
-            <!-- ODCC0004 : 쇼룸 type 2 하나일 경우 -->
-            <section class="odc-show-room-type2">
+                    <div class="odc-show-room-type2__head">
+                        <p class="odc-show-room-type2__title">공간, 시네마가 되다</p>
+                        <p class="odc-show-room-type2__subtitle">공간을 가득 채우는 시네마 4K</p>
+                    </div>
 
-                <div class="odc-show-room-type2__head">
-                    <p class="odc-show-room-type2__title">공간, 시네마가 되다</p>
-                    <p class="odc-show-room-type2__subtitle">공간을 가득 채우는 시네마 4K</p>
-                </div>
+                    <div class="odc-show-room-type2__body">
 
-                <div class="odc-show-room-type2__body">
+                        <div class="odc-show-room-type2__list">
 
-                    <div class="odc-show-room-type2__list">
-
-                        <div class="odc-show-room-type2__item">
-                            <div class="odc-show-room-type2__image">
-                                <img src="/lg5-common/images/ODC/img-odcc0004-2.jpg">
+                            <div class="odc-show-room-type2__item">
+                                <div class="odc-show-room-type2__image">
+                                    <img src="/lg5-common/images/ODC/img-odcc0004-1.jpg">
+                                </div>
+                                <div class="odc-show-room-type2__info">
+                                    <p class="odc-show-room-type2__name">LG프로빔 Laser 4K (상업용)</p>
+                                    <p class="odc-show-room-type2__model">SGU523P</p>
+                                    <p class="odc-show-room-type2__price">3,696,500원</p>
+                                </div>
                             </div>
-                            <div class="odc-show-room-type2__info">
-                                <p class="odc-show-room-type2__name">LG프로빔 Laser 4K (상업용)</p>
-                                <p class="odc-show-room-type2__model">SGU523P</p>
-                                <p class="odc-show-room-type2__price">3,696,500원</p>
+
+                            <div class="odc-show-room-type2__item">
+                                <div class="odc-show-room-type2__image">
+                                    <img src="/lg5-common/images/ODC/img-odcc0004-1.jpg">
+                                </div>
+                                <div class="odc-show-room-type2__info">
+                                    <p class="odc-show-room-type2__name">LG 시네빔 Laser 4K</p>
+                                    <p class="odc-show-room-type2__model">HU715QW</p>
+                                    <p class="odc-show-room-type2__price">3,696,500원</p>
+                                </div>
                             </div>
+
                         </div>
 
                     </div>
 
-                </div>
+                </section>
+                <!-- // ODCC0004 : 쇼룸 type 2 하나 이상일 경우 -->
 
-            </section>
-            <!-- // ODCC0004 : 쇼룸 type 2 하나일 경우 -->
+                <!-- ODCC0004 : 쇼룸 type 2 하나일 경우 -->
+                <section class="odc-show-room-type2">
+
+                    <div class="odc-show-room-type2__head">
+                        <p class="odc-show-room-type2__title">공간, 시네마가 되다</p>
+                        <p class="odc-show-room-type2__subtitle">공간을 가득 채우는 시네마 4K</p>
+                    </div>
+
+                    <div class="odc-show-room-type2__body">
+
+                        <div class="odc-show-room-type2__list">
+
+                            <div class="odc-show-room-type2__item">
+                                <div class="odc-show-room-type2__image">
+                                    <img src="/lg5-common/images/ODC/img-odcc0004-2.jpg">
+                                </div>
+                                <div class="odc-show-room-type2__info">
+                                    <p class="odc-show-room-type2__name">LG프로빔 Laser 4K (상업용)</p>
+                                    <p class="odc-show-room-type2__model">SGU523P</p>
+                                    <p class="odc-show-room-type2__price">3,696,500원</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+                <!-- // ODCC0004 : 쇼룸 type 2 하나일 경우 -->
+
+                <!-- ODCC0005 : 제품 추천 탭, 스펙형 -->
+                <section class="odc-recommend-tab">
+
+                    <div class="odc-recommend-tab__head">
+                        <p class="odc-recommend-tab__title">"우리집에 맞는 올레드 TV 크기는?"</p>
+                        <p class="odc-recommend-tab__subtitle">사이즈별로 추천 드려요!</p>
+                    </div>
+
+                    <div class="odc-recommend-tab__body">
+
+                        <div class="odc-recommend-tab__list">
+
+                            <div class="odc-recommend-tab__inner">
+
+                                <button type="button" class="odc-recommend-tab__button is-active"><span>125-151 cm</span></button>
+                                <button type="button" class="odc-recommend-tab__button"><span>152~176 cm</span></button>
+                                <button type="button" class="odc-recommend-tab__button"><span>177 cm 이상</span></button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="odc-recommend-tab__panel is-active">
+
+                            <div class="odc-recommend-tab__product">
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-1.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 evo (벽걸이형)</p>
+                                        <p class="odc-recommend-tab__model">OLED65G1KNA</p>
+                                        <p class="odc-recommend-tab__price">4,197,300원</p>
+                                    </div>
+                                </div>
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-2.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 TV (스탠드형)</p>
+                                        <p class="odc-recommend-tab__model">OLED65C1QNB</p>
+                                        <p class="odc-recommend-tab__price">3,005,300원</p>
+                                    </div>
+                                </div>
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-1.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 evo (벽걸이형)</p>
+                                        <p class="odc-recommend-tab__model">OLED65G1KNA</p>
+                                        <p class="odc-recommend-tab__price">4,197,300원</p>
+                                    </div>
+                                </div>
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-2.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 TV (스탠드형)</p>
+                                        <p class="odc-recommend-tab__model">OLED65C1QNB</p>
+                                        <p class="odc-recommend-tab__price">3,005,300원</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="odc-more">
+                                <a href="#" class="odc-more__link">더보기</a>
+                            </div>
+
+                        </div>
+
+                        <div class="odc-recommend-tab__panel">
+
+                            <div class="odc-recommend-tab__product">
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-1.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드</p>
+                                        <p class="odc-recommend-tab__model">OLED65G1KNA</p>
+                                        <p class="odc-recommend-tab__price">4,197,300원</p>
+                                    </div>
+                                </div>
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-2.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 TV (스탠드형)</p>
+                                        <p class="odc-recommend-tab__model">OLED65C1QNB</p>
+                                        <p class="odc-recommend-tab__price">3,005,300원</p>
+                                    </div>
+                                </div>
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-1.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 evo (벽걸이형)</p>
+                                        <p class="odc-recommend-tab__model">OLED65G1KNA</p>
+                                        <p class="odc-recommend-tab__price">4,197,300원</p>
+                                    </div>
+                                </div>
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-2.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 TV (스탠드형)</p>
+                                        <p class="odc-recommend-tab__model">OLED65C1QNB</p>
+                                        <p class="odc-recommend-tab__price">3,005,300원</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="odc-more">
+                                <a href="#" class="odc-more__link">더보기</a>
+                            </div>
+
+                        </div>
+
+                        <div class="odc-recommend-tab__panel">
+
+                            <div class="odc-recommend-tab__product">
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-1.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 evo</p>
+                                        <p class="odc-recommend-tab__model">OLED65G1KNA</p>
+                                        <p class="odc-recommend-tab__price">4,197,300원</p>
+                                    </div>
+                                </div>
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-2.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 TV (스탠드형)</p>
+                                        <p class="odc-recommend-tab__model">OLED65C1QNB</p>
+                                        <p class="odc-recommend-tab__price">3,005,300원</p>
+                                    </div>
+                                </div>
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-1.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 evo (벽걸이형)</p>
+                                        <p class="odc-recommend-tab__model">OLED65G1KNA</p>
+                                        <p class="odc-recommend-tab__price">4,197,300원</p>
+                                    </div>
+                                </div>
+
+                                <div class="odc-recommend-tab__item">
+                                    <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0005-2.jpg"></div>
+                                    <div class="odc-recommend-tab__info">
+                                        <p class="odc-recommend-tab__name">LG 올레드 TV (스탠드형)</p>
+                                        <p class="odc-recommend-tab__model">OLED65C1QNB</p>
+                                        <p class="odc-recommend-tab__price">3,005,300원</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="odc-more">
+                                <a href="#" class="odc-more__link">더보기</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+                <!-- // ODCC0005 : 제품 추천 탭, 스펙형 -->
+
+                <!-- ODCC0006 : 제품 추천 목록, 전시형 -->
+                <section class="odc-recommend-list">
+                </section>
+                <!-- // ODCC0006 : 제품 추천 목록, 전시형 -->
+
+            </div>
+            <!-- // category home -->
+
         </div>
-        
+
         @@include('./common/footer.html')
     </div>
 </body>

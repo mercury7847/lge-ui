@@ -3,6 +3,9 @@
 @import "../../utilities/variables";
 @import "../../utilities/mixins";
 
+.odc-content {
+  padding-bottom: 60px;
+}
 // 공통
 // 1. 전체보기
 .odc-all-view {
@@ -37,6 +40,23 @@
   }
 
 
+}
+
+// 2. 더보기
+.odc-more {
+  text-align: right;
+  &__link {
+    display: inline-block;
+    color: #666;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    padding-right: 14px;
+    background-image: url('/lg5-common/images/ODC/icon-arrow-right-gray.svg');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 11px 11px;
+  }
 }
 
 // ODCC0001 : 상단 hero 배너
@@ -350,8 +370,13 @@
 }
 
 // ODCC0002 : 2depth 카테고리
-.odc-2depth-category {
+.odc-sub-category {
   $root : &;
+
+  & + section[class*='odc'] {
+    margin-top: 48px;
+  }
+
   @include mobile() {
     display: block;
     border-bottom: 10px solid #f4f4f4;
@@ -400,7 +425,7 @@
 // ODCC0003 : show room type 1
 .odc-show-room-type1 {
   padding: 0 16px;
-  margin: 48px 0 12px;
+  margin-top: 60px;
   &__head {
     padding: 0 4px;
   }
@@ -608,8 +633,7 @@
 // ODCC0004 : show room type 2
 .odc-show-room-type2 {
   $root : &;
-
-  margin: 48px 0 12px;
+  margin-top: 60px;
 
   &__head {
     padding: 0 20px;
@@ -711,5 +735,152 @@
     font-size: 12px;
     font-weight: 500;
     line-height: 17px;
+  }
+}
+
+// ODCC0005 : 제품 추천 탭, 스펙형
+.odc-recommend-tab {
+  margin-top: 60px;
+
+  &__head {
+    padding: 0 20px;
+  }
+
+  &__title {
+    color: #000;
+    font-weight: bold;
+    @include mobile {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  &__subtitle {
+    color: #666;
+    @include mobile {
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 19px;
+    }
+  }
+
+  &__list {
+    margin-top: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  &__inner {
+    display: flex;
+    padding: 0 16px;
+
+    &:after {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      flex: none;
+    }
+  }
+
+  &__button {
+    flex: none;
+    height: 24px;
+    padding: 0 10px;
+    line-height: 24px;
+    background-color: rgba(221, 221, 221, 0.3);
+    border-radius: 12px;
+    color: #666;
+    font-size: 11px;
+
+    & + & {
+      margin-left: 4px;
+    }
+
+    &.is-active {
+      color: #fff;
+      background-color: #008182;
+    }
+  }
+
+  &__product {
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  &__panel {
+    display: none;
+    margin-top: 20px;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  &__item {
+    &:nth-child(n+3) {
+      margin-top: 8px;
+    }
+
+    &:nth-child(even) {
+      margin-left: 6px;
+    }
+
+    &:nth-child(odd) {
+      margin-right: 6px;
+    }
+  }
+
+  &__info {
+    padding: 12px;
+  }
+
+  &__image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 100px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.03);
+      border-radius: 8px;
+    }
+
+    img {
+      width: 90px;
+      height: 90px;
+    }
+  }
+
+  &__name {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 17px;
+  }
+
+  &__model {
+    margin-top: 1px;
+    font-size: 10px;
+    line-height: 15px;
+    color: #666;
+  }
+
+  &__price {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  .odc-more {
+    padding: 0 16px;
   }
 }
