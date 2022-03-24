@@ -112,6 +112,7 @@
         }
         .my-text {
             margin-bottom:32px;
+            padding-top:3px;
             border-bottom:2px solid $color-default;
             @include mobile {
                 margin:0 4px 15px;
@@ -1026,6 +1027,28 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+}
+
+// 마이페이지 > LNB (LGECOMVIO-30)
+.mypage .lnb-wrap .lnb.lnb-new .mypage-lnb {
+    > li:nth-child(n+2){
+        margin-top:22px;
+    }
+    .myp-sub {
+        margin-top:6px;
+        > li {
+            margin:0;
+            padding:4px 0;
+            a {
+                color:$color-default;
+                font-weight:$font-weight-regular;
+                line-height:1.43;
+                &[target=_blank]:after{
+                    display:none;
                 }
             }
         }

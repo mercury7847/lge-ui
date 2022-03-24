@@ -22,7 +22,8 @@
             <div class="contents mypage mypage-main-new">
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
-                        @@include('./common/modules/mypage-lnb.html')
+                        <!-- @@include('./common/modules/mypage-lnb.html') as-is 참조용 -->
+                        @@include('./common/modules/mypage-lnb_new.html')
 
                         <div class="lnb-contents">
 
@@ -67,21 +68,21 @@
                                 ① .myact-cont에 서비스구분 class(추가)
                                 ② .status에 상태 class(추가)
 
-                                ① 주문/배송/청약 조회(.order) 마이베스트샵??
+                                ① 주문/배송/청약 조회 + 마이베스트샵(.order)
                                 ② 주문접수(.prod-01), 결제완료(.prod-02), 배송준비중(.prod-03), 배송중(.prod-04), 배송완료(.prod-05), 청약완료(.care-01), 계약완료(.care-02)
                                 
-                                ① 방문 일정/예약(.visit)
-                                ② 다음 방문 서비스(.reservation)
+                                ① 렌탈/케어 관리(.visit)
+                                ② 방문 일정/예약(.reservation)
 
                                 ① 칭찬/개선/제안 조회(.voc)
-                                ② 접수(.receipt), 답변중(.progress), 답변 완료(.completion), 답변 대기(.ready)
+                                ② 접수(.receipt), 답변중(.progress), 답변완료(.completion), 답변대기(.ready)
 
                                 ① 서비스 상담/예약 조회(.svc)
-                                ② 접수(.receipt), 답변중(.progress), 답변 완료(.completion), 
+                                ② 접수(.receipt), 답변중(.progress), 답변완료(.completion), 
                                   방문예정(.visit-ready), 처리중(.svc-progress), 처리완료(.svc-completion), 상담예정(.counselling-ready)
                             -->
                             <div class="my-section">
-                                <h3 class="title">나의 활동내역</h3>
+                                <h3 class="title">나의 활동 내역</h3>
                                 <div class="my-act-group">
                                     <p class="sub-title">주문/배송/청약 조회 <em class="count">3</em></p>
                                     <ul class="my-activity-list">
@@ -98,7 +99,7 @@
                                         </li>
                                         <li>
                                             <div class="myact-cont order">
-                                                <em class="status prod-01">주문 접수</em>
+                                                <em class="status prod-01">주문접수</em>
                                                 <div class="prod-info">
                                                     <span class="cate">매장 상담 예약</span>
                                                     <span class="prod">LG DIOS 식기세척기 스팀</span>
@@ -167,7 +168,7 @@
                                                 <em class="status receipt">접수</em><!-- status : add class -->
                                                 <div class="prod-info">
                                                     <span class="cate">이메일 상담</span>
-                                                    <span class="prod">LG DIOS 식기세척기 스팀</span>
+                                                    <span class="prod">제품/소모품 &gt; 주방가전 &gt; 식기세척기</span>
                                                     <span class="model">DUB22MAR</span>
                                                 </div>
                                                 <a href="#" class="btn-myact"><i class="blind">바로가기</i></a>
@@ -215,7 +216,7 @@
                                             ])
                                         </ul>
                                         <div class="no-data">
-                                            <span>최근 본 제품이 없습니다.</span>
+                                            <span>찜한 제품이 없습니다.</span>
                                         </div>
                                     </div>
                                 </div>
