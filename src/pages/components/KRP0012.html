@@ -28,6 +28,14 @@
             "install_method": "",
             "ct_id": "CT50029007"
         };
+        $(document).ready(function(){
+            window.cremaAsyncInit = function () {
+                if(typeof crema !== 'undefined') {
+                    crema.init(cremaid , cremaname);
+                }
+            };
+            window.cremaAsyncInit();
+        });
     </script>
 <body>
     <div class="wrap">
