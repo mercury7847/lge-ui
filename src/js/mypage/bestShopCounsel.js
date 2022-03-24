@@ -660,16 +660,18 @@
             categorys = item.modelDisplayName.split(",").map(function (item) {
               return item.trim();
             });
-
-            item._category = categorys.map(function (item) {
-              return item
-                .replace(/\>/g, ",")
-                .split(",")
-                .map(function (label) {
-                  return label.trim();
-                });
-            });
+          } else {
+            categorys = [item.modelDisplayName.trim()];
           }
+
+          item._category = categorys.map(function (prd) {
+            return prd
+              .replace(/\>/g, ",")
+              .split(",")
+              .map(function (label) {
+                return label.trim();
+              });
+          });
         }
       }
 
