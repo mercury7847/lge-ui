@@ -1,0 +1,705 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+.mypage.cp-main {
+    .cp-tabs {margin-top:-3px;
+        .tabs-wrap {
+            &.btn-type .tabs > li {
+                &:nth-child(n+2) {margin-left:40px}
+                > a {
+                    padding:8px 0 5px;
+                    font-weight:$font-weight-medium;
+                }
+            }
+            @include mobile {margin:0 -16px;
+                &.btn-type .tabs > li {padding:0;
+                    &:nth-child(n+2) {margin-left:20px}
+                    > a {
+                        padding:1px 0;
+                        font-size:15px;
+                    }
+                }
+            }
+        }
+        ~ .tab-contentsWrap .tabs-wrap {margin-top:4px;
+            &.bar-type .tabs {
+                > li.on a {
+                    text-decoration:underline;
+                }
+            }
+            @include mobile {margin-top:15px;
+                &.bar-type .tabs {
+                    padding:0;
+                    > li a {
+                        font-size:14px;
+                    }
+                }
+            }
+        }
+    }
+    .btn-cp-add {
+        margin:-3px 0 -29px;
+        text-align:right;
+        @include mobile {
+            margin:-26px 0 -8px;
+        }
+    }
+    .cp-list-wrap {margin-top:53px;
+        @include mobile {
+            margin-top:24px;
+        }
+        .cp-lists {overflow:hidden;
+            > ul {
+                margin:-32px -9px 0;
+                font-size:0;
+                @media screen and (max-width:1024px) {
+                    margin:0;
+                }
+                .lists {
+                    display:inline-block;
+                    width:calc(100% / 3);
+                    margin-top:32px;
+                    padding:0 9px;
+                    vertical-align:top;
+                    @media screen and (max-width:1284px) {
+                        width:50%;
+                    }
+                    @media screen and (max-width:1024px) {
+                        display:block;
+                        width:100%;
+                        margin-top:12px;
+                        padding:0;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                    }
+                }
+            }
+        }
+        @each $type in lge-before, lge-after, best-store, best-benefit, partner-before, partner-after {
+            $color:transparent;
+            $s-color:transparent;
+            $bg-color:transparent;
+            $text:'coupon';
+            @if $type == lge-before {
+                $color:$color-primary;
+                $s-color:$color;
+                $bg-color:#fbe6ec;
+                $text:'LGE.COM';
+            } @else if $type == lge-after {
+                $color:$color-primary;
+                $s-color:$color-white;
+                $bg-color:$color;
+                $text:'LGE.COM';
+            } @else if $type == best-store {
+                $color:#6b2fd4;
+                $s-color:$color-white;
+                $bg-color:#6b2fd4;
+                $text:'베스트샵';
+            } @else if $type == best-benefit {
+                $color:#6b2fd4;
+                $s-color:$color-white;
+                $bg-color:#6b2fd4;
+                $text:'베스트샵';
+            } @else if $type == partner-before {
+                $color:$color-default;
+                $s-color:$color;
+                $bg-color:#e5e5e5;
+                $text:'제휴';
+            } @else if $type == partner-after {
+                $color:$color-default;
+                $s-color:$color-white;
+                $bg-color:$color;
+                $text:'제휴';
+            }
+            .cp-box.#{$type} {
+                position:relative;
+                display:block;
+                overflow:hidden;
+                .cp-cont {
+                    position:relative;
+                    padding:20px 91px 18px 29px;
+                    border:1px solid $color-border;
+                    border-radius:8px;
+                    @include mobile {
+                        padding:20px 84px 19px 19px;
+                        border-radius:5px;
+                    }
+                    &:before {
+                        content:'#{$text}';
+                        position:absolute;
+                        top:28px;
+                        right:91px;
+                        min-width:80px;
+                        padding:.3em 1em;
+                        color:#{$s-color};
+                        font-size:12px;
+                        line-height:1.4;
+                        text-align:center;
+                        background-color:#{$bg-color};
+                        border-radius:4px;
+                        @if $type == lge-before {
+                            font-weight:$font-weight-bold;
+                        }
+                        @if $type == partner-before {
+                            font-weight:$font-weight-bold;
+                        }
+                        @include mobile {
+                            right:85px;
+                            min-width:75px;
+                            font-size:11px;
+                            border-radius:2px;
+                        }
+                    }
+                    .title {
+                        overflow:hidden;
+                        display:block;
+                        margin-right:80px;
+                        color:#{$color};
+                        font-weight:$font-weight-bold;
+                        font-size:28px;
+                        line-height:1.43;
+                        @include mobile {
+                            font-size:24px;
+                        }
+                        @if $type == best-benefit {
+                            margin:6px 0 9px;
+                            font-size:20px;
+                            @include mobile {
+                                margin:5px 0 11px;
+                                font-size:18px;
+                            }
+                        }
+                        > .unit {
+                            padding-left:2px;
+                            font-style:normal;
+                            font-weight:$font-weight-medium;
+                            font-size:20px;
+                            line-height:1.45;
+                            @include mobile {
+                                font-size:16px;
+                            }
+                        }
+                    }
+                    .description {
+                        min-height:32px;
+                        margin-top:4px;
+                        color:$color-default;
+                        font-weight:$font-weight-medium;
+                        font-size:16px;
+                        line-height:1.39;
+                        @include textEllipsisClamp(2);
+                        @include mobile {
+                            min-height:24px;
+                            margin-top:8px;
+                            font-size:14px;
+                        }
+                    }
+                    .info {
+                        margin-top:8px;
+                        > p {
+                            color:#666;
+                            font-size:14px;
+                            line-height:1.43;
+                            @include mobile {
+                                font-size:12px;
+                            }
+                            &:nth-child(n+2) {
+                                margin-top:3px;
+                                @include mobile {
+                                    font-size:12px;
+                                }
+                            }
+                        }
+                    }
+                    .cp-code {
+                        margin-top:16px;
+                        font-size:14px;
+                        line-height:20px;
+                        &:before {
+                            content:'쿠폰코드 : '
+                        }
+                        @include mobile {
+                            font-size:13px;
+                        }
+                    }
+                    .btn-link-text {
+                        position:relative;
+                        display:inline-block;
+                        margin-top:14px;
+                        margin-bottom:-1px;
+                        padding-right:18px;
+                        color:$color-default;
+                        font-size:14px;
+                        line-height:1.75;
+                        text-decoration:underline;
+                        text-underline-position:under;
+                        &:after{
+                            content:'';
+                            position:absolute;
+                            right:0;
+                            top:calc(50% + 1px);
+                            transform:translateY(-50%);
+                            width:15px;
+                            height:15px;
+                            background:url(/lg5-common/images/icons/btn-arr-16-black.svg) center no-repeat;
+                            background-size:14px;
+                        }
+                    }
+                    /**/
+                    ~ .cp-open-view{
+                        display:none;
+                        @include mobile {
+                            display:block;
+                        }
+                        .text {
+                            position:relative;
+                            display:inline-block;
+                            margin-top:9px;
+                            margin-bottom:-3px;
+                            padding-right:24px;
+                            color:$color-default;
+                            font-size:14px;
+                            line-height:1.75;
+                            &:after{
+                                content:'';
+                                position:absolute;
+                                right:0;
+                                top:50%;
+                                transform:translateY(-50%) rotate(90deg);
+                                width:15px;
+                                height:15px;
+                                background:url(/lg5-common/images/icons/btn-arr-16-black.svg) center no-repeat;
+                                background-size:14px;
+                            }
+                        }
+                        .cp-cont-view {
+                            margin:20px -84px -19px -19px;
+                            padding:24px 20px;
+                            background:#f4f4f4;
+                            border-radius:0 0 8px 8px;
+                            .sub-tit {
+                                font-size:13px;
+                                line-height:1.57;
+                                &:nth-child(n+2) {
+                                    display:inline-block;
+                                    margin-top:15px;
+                                }
+                            }
+                            .sub-cont {
+                                margin-top:2px;
+                                font-size:13px;
+                                line-height:1.62;
+                                .scroll-box{
+                                    overflow-y:auto;
+                                    max-height:166px;
+                                    margin-top:7px;
+                                    padding:16px 16px 16px 24px;
+                                    font-size:14px;
+                                    line-height:1.43;
+                                    background:#fff;
+                                    border:1px solid $color-border;
+                                    border-radius:8px;
+                                }
+                            }
+                        }
+                    }
+                    /**/
+                    ~ .cp-btn {
+                        position:absolute;
+                        top:20px;
+                        right:0;
+                        bottom:20px;
+                        width:73px;
+                        background-image:linear-gradient($color-gray-4 33%, rgba(255, 255, 255, 0) 0%);
+                        background-position:left;
+                        background-size:2px 8px;
+                        background-repeat:repeat-y;
+                        border-radius:0 8px 8px 0;
+                        @include mobile {
+                            width:64px;
+                            background-size:1px 5px;
+                        }
+                        > button {
+                            display:inline-block;
+                            width:100%;
+                            height:100%;
+                            background:no-repeat 50% 50%/32px;
+                            @include mobile {
+                                background-size:24px;  
+                            }
+                            &.download {
+                                em{
+                                    position:absolute;
+                                    z-index:-10;
+                                    width:0;
+                                    height:0;
+                                    overflow:hidden;
+                                    font-weight:$font-weight-medium;
+                                    font-size:14px;
+                                    line-height:1.43;
+                                    word-break:break-all;
+                                    @include mobile {
+                                        font-size:12px;
+                                    }
+                                }
+                                @if $type == lge-before {
+                                    background-image:url(/lg5-common/images/OBS/ic_download_blk.svg);
+                                    &[disabled] {
+                                        background-image:url(/lg5-common/images/OBS/ic_download_disabled.svg);
+                                    }
+                                } @else if $type == lge-after {
+                                    background-image:url(/lg5-common/images/OBS/ic_download_chk-red.svg);
+                                    &[disabled] {
+                                        background-image:none;
+                                        > em {
+                                            position:static;
+                                            width:initial;
+                                            height:initial;
+                                            color:$color-gray-4;
+                                        }
+                                    }
+                                } @else if $type == best-store {
+                                    background-image:url(/lg5-common/images/OBS/ic_download_chk-pur.svg);
+                                    &[disabled] {
+                                        background-image:none;
+                                        > em {
+                                            position:static;
+                                            width:initial;
+                                            height:initial;
+                                            color:$color-gray-4;
+                                        }
+                                    }
+                                } @else if $type == best-benefit {
+                                    background-image:url(/lg5-common/images/OBS/ic_download_chk-pur.svg);
+                                    &[disabled] {
+                                        background-image:none;
+                                        > em {
+                                            position:static;
+                                            width:initial;
+                                            height:initial;
+                                            color:$color-gray-4;
+                                        }
+                                    }
+                                } @else if $type == partner-before {
+                                    background-image:url(/lg5-common/images/OBS/ic_download_blk.svg);
+                                    &[disabled] {
+                                        background-image:url(/lg5-common/images/OBS/ic_download_disabled.svg);
+                                    }
+                                } @else if $type == partner-after {
+                                    background-image:url(/lg5-common/images/OBS/ic_download_chk-blk.svg);
+                                    &[disabled] {
+                                        background-image:none;
+                                        > em {
+                                            position:static;
+                                            width:initial;
+                                            height:initial;
+                                            color:$color-gray-4;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &:after {
+                            content:'';
+                            display:inline-block;
+                            width:8px;
+                            position:absolute;
+                            top:0;
+                            bottom:0;
+                            background-image:radial-gradient(circle at right, $color-white 20%, #ddd 25%, transparent 30%);
+                            background-position:right;
+                            right:0;
+                            background-size:18px 22px;
+                        }
+                    }
+                }
+                &.disabled {
+                    > .cp-cont {
+                        * {
+                            color:$color-gray-4 !important;
+                        }
+                        &:before {
+                            color:$color-white !important;
+                            background-color:#ddd !important;
+                        }
+                        .btn-link-text:after {
+                            opacity:.5;
+                        }
+                    }
+                    &.lge-before > .cp-cont:before {
+                        color:#aaa !important;
+                        background-color:rgba(221,221,221,.3) !important;
+                    }
+                    &.partner-before > .cp-cont:before {
+                        color:#aaa !important;
+                        background-color:rgba(221,221,221,.3) !important;
+                    }
+                }
+            }
+        }
+        .btn-area {
+            padding:32px 0;
+            text-align:center;
+            @include mobile {
+                padding:16px 0;
+                .btn.cp-more {
+                    padding:9px 23px;
+                    font-size:14px;
+                }
+            }
+        }
+    }
+    //쿠폰(점검및오류)
+    .cp-error-cont {
+        padding:80px 0;
+        text-align:center;
+        br.m-br {
+            display:none;
+        }
+        @include mobile {
+            padding:22px 14px;
+            br.m-br {
+                display:block;
+            }
+        }
+        .tit {
+        font-weight:$font-weight-bold;
+        font-size:40px;
+        line-height:56px;
+        @include mobile {
+            font-size:27px;
+            line-height:38px;
+        }
+        small {
+            display:block;
+            margin-top:13px;
+            font-weight:$font-weight-bold;
+            @include font-large;
+            @include mobile {
+                margin-top:9px;
+                }
+            }
+        }
+        .desc {
+            margin-top:40px;
+            @include font-large;
+            span {
+                display:inline-block;
+                vertical-align:top;
+            }
+            @include mobile {
+                margin-top:24px;
+            }
+        }
+        dl {
+            display:block;
+            margin-top:22px;
+            @include mobile {
+            margin-top:18px;
+        }
+        dt {
+            display:inline-block;
+            font-weight:$font-weight-bold;
+            @include font-large;
+            vertical-align:top;
+        }
+        dd {
+            display:inline-block;
+            margin-left:9px;
+            color:$color-primary;
+            font-weight:$font-weight-bold;
+            @include font-large;
+            @include mobile {
+                display:block;
+                margin-top:4px;
+                margin-left:2px;
+                }
+            }
+        }
+    }
+    // mypage lnb layout
+    .lnb-wrap {
+        @include clearfix;
+        .lnb {
+            float:left;
+            width:16%;
+            padding-right:24px;
+            border-radius:4px;
+            background:$color-white;
+            @include mobile {
+                display:none;
+            }
+            .mypage-lnb {
+                > li {
+                    margin-top:24px;
+                    &:first-child {
+                        margin-top:0;
+                    }
+
+                }
+                a, span {
+                    display:inline-block;
+                    color:#767676;
+                    @include font-small;
+                    font-weight:$font-weight-medium;
+                    &.my-dep1 {
+                        color:$color-default;
+                        font-weight:$font-weight-bold;
+                    }
+                    &.on {
+                        text-decoration:underline;
+                    }
+                }
+                .myp-sub {
+                    margin-top:8px;
+                    li {
+                        margin-top:2px;
+                        &:first-child {
+                            margin-top:0;
+                        }
+                        a {
+                            &[target=_blank] {
+                                &::after {
+                                    content:' ';
+                                    display:inline-block;
+                                    width:16px;
+                                    height:16px;
+                                    margin-left:4px;
+                                    margin-top:-4px;
+                                    vertical-align:middle;
+                                    background:url("/lg5-common/images/icons/icon-blank-arr3.svg") no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .lnb-contents {
+            float:right;
+            width:84%;
+            max-width:1146px;
+            @include mobile {
+                float:none;
+                width:auto;
+                padding:0 16px;
+            }
+            .filters {
+                margin:24px 0;
+                @include mobile {
+                    margin:0;
+                }
+                &.type2 {
+                    margin-top:0;
+                }
+            }
+            > .btn-group {
+                margin-top:80px;
+                @include mobile {
+                    margin-top:32px;
+                }
+            }
+        }
+    }
+}
+
+//쿠폰상세(layer)
+@at-root {
+    .cp-pop.pop-conts {
+        padding-top:12px !important;
+        .cp-cont-info {
+            &.best-store.tit {
+                color:#6b2fd4;
+            }
+            &.best-benefit .tit {
+                margin-top:8px;
+                color:#6b2fd4;
+                font-size:32px;
+                line-height:1.25;
+            }
+            &.partner.tit {
+                color:#000;
+            }
+            .tit {
+                display:block;
+                color:#da0f47;
+                font-weight:$font-weight-bold;
+                font-size:56px;
+                line-height:1.44;
+                .unit {
+                    padding-left:5px;
+                    font-style:normal;
+                    font-size:24px;
+                    line-height:1.46;
+                }
+            }
+            .desc {
+                display:block;
+                margin-top:3px;
+                font-size:20px;
+                line-height:1.6;
+            }
+            .graybox{
+                margin-top:22px;
+                padding:24px 20px;
+                background:rgba(221,221,221,.3);
+                border-radius: 8px;
+                .sub-tit {
+                    font-size:16px;
+                    line-height:1.57;
+                    &:nth-child(n+2) {
+                        display:inline-block;
+                        margin-top:15px;
+                    }
+                }
+                .sub-cont {
+                    margin-top:2px;
+                    font-size:16px;
+                    line-height:1.62;
+                    .scroll-box{
+                        overflow-y:auto;
+                        max-height:166px;
+                        margin-top:7px;
+                        padding:16px 16px 16px 24px;
+                        font-size:14px;
+                        line-height:1.43;
+                        background:#fff;
+                        border:1px solid $color-border;
+                        border-radius:8px;
+                    }
+                }
+            }
+            .btn-area {margin-top:32px;
+                text-align:center;
+                .btn-text {
+                    font-weight:$font-weight-regular;
+                    text-decoration:underline;
+                    &[target=_blank]:after {
+                        content:'';
+                        display:inline-block;
+                        width:16px;
+                        height:16px;
+                        margin-left:5px;
+                        margin-top:-3px;
+                        vertical-align:middle;
+                        background:url("/lg5-common/images/icons/btn-outlink-16.svg") no-repeat 50% 50%/14px;
+                    }
+                }
+            }
+            ~ .bullet-list {margin-top:32px}
+        }
+        .input-wrap {
+          width:100%;
+          margin-top:22px;
+          input.comm-code {
+            width:100%;
+            font-size:16px;
+            line-height:1.625;
+          }
+        .err-msg {margin-top:8px}
+        }
+    }
+}

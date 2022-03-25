@@ -1,0 +1,10 @@
+<svg id="ic_download_MO_48" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect id="Rectangle" width="32" height="32" fill="none"/>
+  <g id="ic" transform="translate(5.333 8)">
+    <path id="Rectangle-2" data-name="Rectangle" d="M21.333,0V4A1.333,1.333,0,0,1,20,5.333H1.333A1.333,1.333,0,0,1,0,4V0" transform="translate(0 10.667)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <g id="Group" transform="translate(6)">
+      <path id="Line" d="M1,0V10.667" transform="translate(3.667 0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Arrow" d="M4,0,0,4.667,4,9.333" transform="translate(0 11.333) rotate(-90)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

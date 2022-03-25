@@ -1,0 +1,9 @@
+<svg id="ic__download_check_24" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="ic_check_24">
+    <rect id="Rectangle" width="32" height="32" fill="none"/>
+    <g id="ic" transform="translate(10.547 8.679)">
+      <path id="Path" d="M0,4.141l4.254,4.18L12.481,0" transform="translate(0 0)" fill="none" stroke="#da0f47" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+    <path id="Rectangle-2" data-name="Rectangle" d="M21.333,0V4A1.333,1.333,0,0,1,20,5.333H1.333A1.333,1.333,0,0,1,0,4V0" transform="translate(5.334 18.667)" fill="none" stroke="#da0f47" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

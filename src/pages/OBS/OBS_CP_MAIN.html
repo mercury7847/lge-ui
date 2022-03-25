@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["OBS/OBS"]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            @@include('./common/modules/page-header.html', {
+                "pageTitle": "쿠폰"
+            })
+            <!-- mypage -->
+            <div class="contents mypage cp-main">
+                <div class="cont-wrap">
+                    <div class="lnb-wrap">
+                        @@include('./common/modules/mypage-lnb.html', {
+                            "sect1" : [
+                                { "on": "", "page": "주문/배송 조회" },
+                                { "on": "", "page": "배송지 주소 관리" },
+                                { "on": "on", "page": "쿠폰" }
+                            ]
+                        })
+                        <!-- LGECOMVIO-34 : 쿠폰 시스템 도입(OBS) -->
+                        <div class="lnb-contents">
+                            <div class="cp-tabs">
+                                <div class="tabs-wrap btn-type ui_tab left">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#cp-lge">LGE.COM <span class="count"><i class="blind">사용가능 쿠폰</i>9</span></a></li>
+                                        <li><a href="#cp-best">베스트샵 <span class="count"><i class="blind">사용가능 쿠폰</i>9</span></a></li>
+                                        <li><a href="#cp-partner">제휴 <span class="count"><i class="blind">사용가능 쿠폰</i>9</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="cp-lge" class="tab-contentsWrap">
+                                <div class="tabs-wrap bar-type ui_tab left">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#cp-lge-before">다운로드 <span class="count">9</span></a></li>
+                                        <li><a href="#cp-lge-after">사용가능 <span class="count">9</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="btn-cp-add">
+                                    <button type="button" class="btn border size"><span>쿠폰등록</span></button>
+                                </div>
+                                <div id="cp-lge-before" class="tab-contents">
+                                    <div class="cp-list-wrap">
+                                        <div class="cp-lists">
+                                            <ul>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-before"><!-- .lge-before : 다운로드 가능 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000<i class="unit">원</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-open-view">
+                                                            <a href="#n" class="text">상세정보</a>
+                                                            <div class="cp-cont-view" style="display:block;">
+                                                                <strong class="sub-tit">유효기간</strong>
+                                                                <div class="sub-cont">2022년 1월 1일 10:00 부터 <br>2022년 1월 30일 23:59 까지</div>
+                                                                <strong class="sub-tit">할인조건</strong>
+                                                                <div class="sub-cont">5,000원 이상 구매 시 최대 100,000원 할인</div>
+                                                                <strong class="sub-tit">대상 카테고리</strong>
+                                                                <div class="sub-cont">TV &gt; 올레드 TV  <br>일부모델은 적용대상에서 제외될 수 있습니다.</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div>                                                    
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-before">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-before">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-before">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000<i class="unit">원</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div>                                                    
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-before">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-before">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-before disabled"><!-- .disabled : 다운로드 불가 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>종료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-before disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>종료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-before disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>종료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-area">
+                                            <button type="button" class="btn border cp-more"><span>기간만료/사용완료 쿠폰보기</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="cp-lge-after" class="tab-contents">
+                                    <div class="cp-list-wrap">
+                                        <div class="cp-lists">
+                                            <ul>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-after"><!-- .lge-after : 사용가능 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000<i class="unit">원</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div>                                                    
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-after">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-after">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-after">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000<i class="unit">원</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div>                                                    
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-after">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-after">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-after disabled"><!-- .disabled : 다운로드 불가 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>사용<br>완료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-after disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>기간<br>만료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box lge-after disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>사용<br>완료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-area">
+                                            <button type="button" class="btn border cp-more"><span>기간만료/사용완료 쿠폰보기</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="cp-best" class="tab-contentsWrap">
+                                <div class="tabs-wrap bar-type ui_tab left">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#cp-best-store">매장 제품 할인 쿠폰 <span class="count">6</span></a></li>
+                                        <li><a href="#cp-best-benefit">매장 방문 혜택 쿠폰 <span class="count">6</span></a></li>
+                                    </ul>
+                                </div>
+                                <div id="cp-best-store" class="tab-contents">
+                                    <div class="cp-list-wrap">
+                                        <div class="cp-lists">
+                                            <ul>
+                                                <li class="lists">
+                                                    <div class="cp-box best-store"><!-- .best-store : 매장제품할인쿠폰 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000<i class="unit">원</i></em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상모델 : 65ART90EKPE 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div>                                                    
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-store">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상모델 : 65ART90EKPE 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-store">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상모델 : 65ART90EKPE 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-store">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상모델 : 65ART90EKPE 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-store">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상모델 : 65ART90EKPE 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-store">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상모델 : 65ART90EKPE 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-store disabled"><!-- .disabled : 사용불가 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상모델 : 65ART90EKPE 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>사용<br>완료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-store disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상모델 : 65ART90EKPE 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>사용<br>완료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-store disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">3<i class="unit">%</i></em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상모델 : 65ART90EKPE 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>기간<br>만료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-area">
+                                            <button type="button" class="btn border cp-more"><span>기간만료/사용완료 쿠폰보기</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="cp-best-benefit" class="tab-contents">
+                                    <div class="cp-list-wrap">
+                                        <div class="cp-lists">
+                                            <ul>
+                                                <li class="lists">
+                                                    <div class="cp-box best-benefit"><!-- .best-benefit : 매장방문혜택쿠폰 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">매장방문혜택쿠폰</em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상매장 : 강남본점 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div>                                                    
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-benefit">
+                                                        <div class="cp-cont">
+                                                            <em class="title">매장방문혜택쿠폰</em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상매장 : 강남본점 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-benefit">
+                                                        <div class="cp-cont">
+                                                            <em class="title">매장방문혜택쿠폰</em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상매장 : 강남본점 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-benefit">
+                                                        <div class="cp-cont">
+                                                            <em class="title">매장방문혜택쿠폰</em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상매장 : 강남본점 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-benefit">
+                                                        <div class="cp-cont">
+                                                            <em class="title">매장방문혜택쿠폰</em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상매장 : 강남본점 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-benefit">
+                                                        <div class="cp-cont">
+                                                            <em class="title">매장방문혜택쿠폰</em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상매장 : 강남본점 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-benefit disabled"><!-- .disabled : 사용불가 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">매장방문혜택쿠폰</em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상매장 : 강남본점 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>사용<br>완료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-benefit disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">매장방문혜택쿠폰</em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상매장 : 강남본점 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>사용<br>완료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box best-benefit disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">매장방문혜택쿠폰</em>
+                                                            <p class="description">LG Pra.L 인텐시브 멀티케어 타임딜</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                                <p>대상매장 : 강남본점 등</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>기간<br>만료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-area">
+                                            <button type="button" class="btn border cp-more"><span>기간만료/사용완료 쿠폰보기</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="cp-partner" class="tab-contentsWrap">
+                                <div class="tabs-wrap bar-type ui_tab left">
+                                    <ul class="tabs">
+                                        <li class="on"><a href="#cp-partner-before">다운로드 <span class="count">9</span></a></li>
+                                        <li><a href="#cp-partner-after">사용가능 <span class="count">9</span></a></li>
+                                    </ul>
+                                </div>
+                                <div id="cp-partner-before" class="tab-contents">
+                                    <div class="cp-list-wrap">
+                                        <div class="cp-lists">
+                                            <ul>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-before"><!-- .partner-before : 다운로드 가능 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div>                                                    
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-before">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-before">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-before">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-before">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-before">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>다운로드</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-before disabled"><!-- .disabled : 사용불가 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>사용<br>완료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-before disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>사용<br>완료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-before disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>기간<br>만료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-area">
+                                            <button type="button" class="btn border cp-more"><span>기간만료/사용완료 쿠폰보기</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="cp-partner-after" class="tab-contents">
+                                    <div class="cp-list-wrap">
+                                        <div class="cp-lists">
+                                            <ul>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-after"><!-- .partner-after : 사용가능 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <p class="cp-code">QW34 - GBH6 - VBNM - 3456</p>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div>                                                    
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-after">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <p class="cp-code">QW34 - GBH6 - VBNM - 3456</p>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-after">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <p class="cp-code">QW34 - GBH6 - VBNM - 3456</p>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-after">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <p class="cp-code">QW34 - GBH6 - VBNM - 3456</p>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-after">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <p class="cp-code">QW34 - GBH6 - VBNM - 3456</p>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-after">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료(5일전)</p>
+                                                            </div>
+                                                            <p class="cp-code">QW34 - GBH6 - VBNM - 3456</p>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download"><em>사용하기</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-after disabled"><!-- .disabled : 사용불가 -->
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료</p>
+                                                            </div>
+                                                            <p class="cp-code">QW34 - GBH6 - VBNM - 3456</p>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>사용<br>완료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-after disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료</p>
+                                                            </div>
+                                                            <p class="cp-code">QW34 - GBH6 - VBNM - 3456</p>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>사용<br>완료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                                <li class="lists">
+                                                    <div class="cp-box partner-after disabled">
+                                                        <div class="cp-cont">
+                                                            <em class="title">50,000</em>
+                                                            <p class="description">신학기 으쌰으쌰 새내기 프로젝트! LG GRAM 100,000원 할인 쿠폰</p>
+                                                            <div class="info">
+                                                                <p>2022년 1월 30일 종료</p>
+                                                            </div>
+                                                            <p class="cp-code">QW34 - GBH6 - VBNM - 3456</p>
+                                                            <a href="#" class="btn-link-text" title="자세히보기"><span>상세정보</span></a>
+                                                        </div>
+                                                        <div class="cp-btn">
+                                                            <button type="button" class="download" disabled><em>기간<br>만료</em></button>
+                                                        </div> 
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-area">
+                                            <button type="button" class="btn border cp-more"><span>기간만료/사용완료 쿠폰보기</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- nodata -->
+                            <div class="no-data" style="display:none">
+                                <p>사용 가능 쿠폰이 없습니다.</p>
+                            </div>
+                            <!-- // nodata -->
+                            <!-- 점검 및 시스템 장애 -->
+                            <div class="cp-error-cont" style="display:none">
+                                <p class="tit">이용에 불편을 <br class="m-br">드려 죄송합니다.<small>요청하신 페이지가 정상적으로  <br class="m-br">처리되지 않았습니다.</small></p>
+                                <p class="desc">
+                                    <span>해당 요청 사항 처리 중 점검 및 <br class="m-br">일시적인 장애 등의 이유로 <br>페이지가 정상적으로 서비스 되지 않았습니다.</span>
+                                </p>
+                                <dl>
+                                    <dt>시스템 점검 시간</dt>
+                                    <dd>2022.03.01 15:55 ~ 2022.03.01 15:59</dd>
+                                </dl>
+                            </div>
+                            <!-- 점검 및 시스템 장애 -->
+                        </div>
+                        <!-- LGECOMVIO-34 : 쿠폰 시스템 도입(OBS) -->
+                    </div>
+                </div>
+            </div>
+            <!-- // mypage -->
+        </div>
+        
+        <article id="couponPopup" class="popup-wrap small">
+        </article>
+
+        @@include('./common/footer.html')
+    </div>
+</body>
+</html>
