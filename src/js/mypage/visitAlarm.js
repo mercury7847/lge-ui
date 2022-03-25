@@ -184,7 +184,7 @@
                     */
                 });
                 
-             // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
                 self.$list.on('click', '.svc-details li', function(e){
                 	
                 	e.preventDefault();
