@@ -184,7 +184,7 @@
                     */
                 });
                 
-             // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
                 self.$list.on('click', '.svc-details li', function(e){
                 	
                 	e.preventDefault();
@@ -221,7 +221,7 @@
                     		var $visitShedule			= self.$popupServiceDetail.find('.visit-schedule');				// 방문일정
                     		var $filterReplacementYn	= self.$popupServiceDetail.find('.filter-replacement-yn');		// 필터교체 여부
                     		
-                    		var productInfo =  contInfo.CATEGORY_NM_KOR + "(" + contInfo.MODEL_CD + ")";
+                    		var productInfo =  contInfo.CATEGORY_NM_KOR;
                     		var contractExpirationDate	= contInfo.CONT_END_DATE.substr(0,4) + "년"
                     									+ contInfo.CONT_END_DATE.substr(4,2) + "월"
                     									+ contInfo.CONT_END_DATE.substr(6,2) + "일까지 계약"
@@ -246,7 +246,7 @@
                     		var $historyOfVisits	= self.$popupServiceDetail.find('.history-of-visits');	// 회차별방문내역
                     		var visitTimes			= "";	// 회차
                     		var progressVal			= "";	// 진행상태
-                    		var visitShedule		= "";	// 방문일정
+                    		var visitShedule		= "-";	// 방문일정
                     		var managerInfo			= "-";	// 매니저정보
                     		var filterReplacementYn	= "X";	// 필터교체여부
                     		
@@ -254,9 +254,15 @@
                     			data.scheduleList.forEach(function(scheduleInfoTemp){
                         			
                         			visitTimes = scheduleInfoTemp.VISIT_TIMES;
-                        			progressVal = scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != "" ?
-                        							"방문완료" : "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")"; // VISIT_DATE(=매니저방문일)
-                        			visitShedule = vcui.date.format(scheduleInfoTemp.VISIT_CONFM_DATE, "yyyy.mm.dd");
+                        			
+                        			progressVal	=	scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != ""
+                        				 			? "방문완료"  
+                        							:	scheduleInfoTemp.NOT_VISIT_REASON_NM != undefined && scheduleInfoTemp.NOT_VISIT_REASON_NM != ""  
+                        								? "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")" 
+                        								: "방문연기"; // VISIT_DATE(=매니저방문일)
+                        			if (scheduleInfoTemp.VISIT_CONFM_DATE != undefined && scheduleInfoTemp.VISIT_CONFM_DATE != "") {
+                        				visitShedule = vcui.date.format(scheduleInfoTemp.VISIT_CONFM_DATE, "yyyy.mm.dd");
+                        			}
                         			
                         			if (scheduleInfoTemp.VISIT_USER_NM != undefined && scheduleInfoTemp.VISIT_USER_NM != "") {
                         				managerInfo = scheduleInfoTemp.VISIT_USER_NM 
@@ -285,7 +291,7 @@
                 	                        + '<td>' + filterReplacementYn + '</td>' +
                                         '</tr>';
                         			
-                        			html.appendTo($historyOfVisits);
+                        			$historyOfVisits.appendTo(html);
                         		})
                     		} else {
                     			$historyOfVisits.find('.empty-row').css("display", "");
