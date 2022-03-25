@@ -186,14 +186,10 @@
                 
              // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
                 self.$list.on('click', '.svc-details li', function(e){
+                	
                 	e.preventDefault();
+                	
                 	var $this = $(this);
-                	
-                	console.log(">>>>>>>" + $this.attr('data-cont-line-seq')); // 계약번호
-                	console.log(">>>>>>>" + $this.attr('data-visit-times')); // 방문회차
-                	console.log(">>>>>>>" + $this.parent().attr('data-scheduled-to-visit-flag')); // 방문예정구분
-                	console.log(">>>>>>>" + self.$myVisitSchedule.attr('data-detail-list-url'));
-                	
                 	var ajaxUrl = self.$myVisitSchedule.attr('data-detail-list-url');
                 	
                 	var param = {
@@ -203,12 +199,61 @@
                 	
                 	lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 		
-                		self.$popupServiceDetail.vcModal();
-                		
-                		var data = result.data;
-                		
-                		console.log(data);
-                		console.log(result.status);
+                		if (result.status == "success") {
+                			var data = result.data;
+                    		
+                    		// 상세정보
+                    		var $productInfo			= self.$popupServiceDetail.find('.product-info');				// 제품명(제품코드)
+                    		var $contractExpirationDate	= self.$popupServiceDetail.find('.contract-expiration-date');	// 계약만료일
+                    		var $managerName			= self.$popupServiceDetail.find('.manager-info .name');			// 매니저 이름
+                    		var $managerPhone			= self.$popupServiceDetail.find('.manager-info .phone');		// 매니저 연락처
+                    		var $timesInfo				= self.$popupServiceDetail.find('.times-info');					// 회차
+                    		var $visitShedule			= self.$popupServiceDetail.find('.visit-schedule');				// 방문일정
+                    		var $filterReplacementYn	= self.$popupServiceDetail.find('.filter-replacement-yn');		// 필터교체 여부
+
+                    		// 회차별방문내역
+                    		var $historyOfVisits	= self.$popupServiceDetail.find('.history-of-visits');	// 회차별방문내역
+                    		var visitTimes			= "";	// 회차
+                    		var progressVal			= "";	// 진행상태
+                    		var visitShedule		= "";	// 방문일정
+                    		var managerInfo			= "";	// 매니저정보
+                    		var filterReplacementYn	= "";	// 필터교체여부
+                    		
+                    		if ( data.scheduleList.size() > 0 ) {
+                    			data.scheduleList.forEach(function(scheduleInfoTemp){
+                        			
+                        			visitTimes = scheduleInfoTemp.VISIT_TIMES;
+                        			progressVal = scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != "" ?
+                        							"방문완료" : "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")"; // VISIT_DATE(=매니저방문일)
+                        			visitShedule = vcui.date.format(scheduleInfoTemp.VISIT_CONFM_DATE, "yyyy.mm.dd");
+                        			managerInfo = scheduleInfoTemp.VISIT_USER_NM + "<br>" 
+                        						+ "(" 
+                        						+ scheduleInfoTemp.VISIT_USER_TEL_NO.substr(0, 3) 
+                        						+ scheduleInfoTemp.VISIT_USER_TEL_NO.substr(3, 4) 
+                        						+ scheduleInfoTemp.VISIT_USER_TEL_NO.substr(7, 4) 
+                        						+ ")";
+                        			filterReplacementYn = scheduleInfoTemp.FILTER_CNT > 0 ? "O" : "X";
+                        			
+                        			var html = 
+                                		'<tr>'
+                	                        + '<td class="board-tit">' + visitTimes + '회</td>'
+                	                        + '<td>' + progressVal + '</td>'
+                	                        + '<td>' + visitShedule + '</td>'
+                	                        + '<td>' + managerInfo + '</td>'
+                	                        + '<td>' + filterReplacementYn + '</td>' +
+                                        '</tr>';
+                        			
+                        			$historyOfVisits.appendTo(html);
+                        		})
+                    		} else {
+                    			$historyOfVisits.find('.empty-row').css("display", "");
+                    		}
+                    		
+                    		self.$popupServiceDetail.vcModal();
+                    		
+                    		console.log(data);
+                    		console.log(result.status);
+                		}
                 	});
                 });
                 // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 END
