@@ -1,11 +1,11 @@
 {
   "data": [
-    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송중", "dueYmd": "2020.02.22"},
-    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송준비중", "delivWishYmd": "2020.02.22"},
-    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송완료", "receiveYmd": "2020.02.22"},
-    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송중", "dueYmd": "2020.02.22"},
-    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송준비중", "delivWishYmd": "2020.02.22"},
-    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송완료", "receiveYmd": "2020.02.22"}
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 중", "dueYmd": "2020.02.22"},
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 준비 중", "delivWishYmd": "2020.02.22"},
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 완료", "receiveYmd": "2020.02.22"},
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 중", "dueYmd": "2020.02.22"},
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 준비 중", "delivWishYmd": "2020.02.22"},
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 완료", "receiveYmd": "2020.02.22"}
   ],
   "message": "",
   "status": "success"

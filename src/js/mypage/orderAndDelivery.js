@@ -1439,27 +1439,24 @@
                 return;
             }
 
-            // listData.delivWishYmd = listData.delivWishYmd ? listData.delivWishYmd : ""; // 배송 예정일
-            // listData.dueYmd = listData.dueYmd ? listData.dueYmd : ""; // 도착 예정일
-            // listData.receiveYmd = listData.receiveYmd ? listData.receiveYmd : ""; // 도착 완료일
-
             $('#popup-bestshop-delivery').find('.delivery-data').hide();
             $('#popup-bestshop-delivery').find('.delivery-info').empty();
 
-            listData.forEach(function(data){
+            listData.forEach(function(data) {
+                // 도착 예정일 (배송중일 떄)
                 if(data.dueYmd){
-                    data.ordStatusTypeDate = data.dueYmd + ' 도착 예정';
+                    data.ordStatusTypeDate = data.dueYmd + ' 도착예정';
                 }
 
-                if(data.delivWishYmd){
-                    data.ordStatusTypeDate = data.delivWishYmd + ' 배송 예정';
+                // 배송 예정일 (배송 준비중 일때)
+                if(data.delivWishYmd) {
+                    data.ordStatusTypeDate = data.delivWishYmd + ' 배송예정';
                 }
 
-                if(data.receiveYmd){
+                // 도착 완료일 (배송완료 일때)
+                if(data.receiveYmd) {
                     data.ordStatusTypeDate = data.receiveYmd;
                 }
-
-                console.log(data);
             })
 
             $('#popup-bestshop-delivery').find('.delivery-info').html(vcui.template(bestShopDeliveryInfoTemplate, {listDataArray:listData}));
