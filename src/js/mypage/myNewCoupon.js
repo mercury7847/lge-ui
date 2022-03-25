@@ -681,6 +681,25 @@
                 $listCnt.text("");
             }
 
+            //종료일 기준 오름차순 정렬
+            if (TAB === TAB_BESTSHOP_VISIT) {
+                //사용 가능 쿠폰 > 종료일 오름 차순
+                this.variable.listData["on"].forEach(function (data) {
+                    data._sort = vcui.date.parse(data.cpnToDate).getTime();
+                });
+                this.variable.listData["on"].sort(function (a, b) {
+                    return a._sort - b._sort;
+                });
+
+                //종료된 쿠폰 > 종료일 오름 차순
+                this.variable.listData["end"].forEach(function (data) {
+                    data._sort = vcui.date.parse(data.cpnToDate).getTime();
+                });
+                this.variable.listData["end"].sort(function (a, b) {
+                    return a._sort - b._sort;
+                });
+            }
+
             this.setCouponList();
         },
         /**
