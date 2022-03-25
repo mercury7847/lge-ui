@@ -310,7 +310,8 @@
 
                 self.$keywordWrap.search({
                     template: {
-                        autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.shopID}}" class="btn-detail" title="새창 열림">{{item.shopName}}</a></li>{{/each}}</ul>',
+                        // BTOCSITE-13833 센터방문예약 > 방문할 센터 찾기, 선택 기능 수정 요청
+                        autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.shopID}}" class="btn-detail" title="{{item.shopName}}">{{item.shopName}}</a></li>{{/each}}</ul>',
                     }
                 });
             });
