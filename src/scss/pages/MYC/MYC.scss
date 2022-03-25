@@ -1201,7 +1201,7 @@
 }
 
 // BTOCSITE-5938-232 모바일 팝업 하단 IOS 잘림 현상 수정
-.popup-wrap:not(.small) {
+.popup-wrap {
     .pop-conts {
         @include mobile {
             height:calc(100vh - 122px);
@@ -1210,16 +1210,16 @@
             padding-bottom: calc(constant(safe-area-inset-bottom) + 174px);
         }
     }
+}
 
-    .pop-footer {
-        @include mobile {
-            position:fixed;
-            width:100%;
-            left: 0;
-            bottom: 0;
-            bottom: env(safe-area-inset-bottom);
-            bottom: constant(safe-area-inset-bottom);
-        }
+.pop-footer {
+    @include mobile {
+        position:fixed;
+        width:100%;
+        left: 0;
+        bottom: 0;
+        bottom: env(safe-area-inset-bottom);
+        bottom: constant(safe-area-inset-bottom);
     }
 }
 
@@ -1710,192 +1710,108 @@
 #popup-bestshop-delivery {
     .pop-conts {
         overflow-y: hidden;
-    }
-    .delivery-info {
-        .delivery-step {
-            padding:0 0 0 23px;
+        height: auto;
+        max-height: 100%;
+        padding-top: 43px;
 
-            @include mobile {
-                padding-left: 13px;
-            }
-
-            &:last-child {
-                .delivery-text:before {
-                    width:0;
-                }
-                .delivery-text {
-                    padding-bottom:0;
-                }
-            }
-
-        }
-        .delivery-text {
-            position:relative;
-            padding:0 0 44px 41px;
-
-            @include mobile {
-                padding: 0 0 38px 22px;
-            }
-
-            &:before {
-                display:block;
-                content:"";
-                position:absolute;
-                top:32px;
-                bottom:0;
-                left:-2px;
-                width:1px;
-                background:#ddd;
-            }
-
-            .delivery-status {
-                position:relative;
-                display:block;
-                font-size:18px;
-
-                @include mobile {
-                    font-size:15px;
-                }
-
-                &:before {
-                    display:block;
-                    content:"";
-                    position:absolute;
-                    top:-1px;
-                    left:-59px;
-                    width:32px;
-                    height:32px;
-                    background:#fff;
-                    border-radius:50%;
-                }
-                &:after {
-                    display:block;
-                    content:"";
-                    position:absolute;
-                    top:8px;
-                    left:-49px;
-                    width:14px;
-                    height:14px;
-                    border:1px solid #DA0F47;
-                    border-radius:50%;
-                    background:#fff;
-
-                    @include mobile {
-                        width: 11px;
-                        height: 11px;
-                        top: 9px;
-                        left: -29px;
-                    }
-                }
-            }
-            &.active {
-                &:before {
-                    top:41px;
-
-                    @include mobile {
-                        top: 35px;
-                    }
-                }
-
-                .delivery-status {
-                    &:before {
-                        display:block;
-                        content:"";
-                        position:absolute;
-                        top:-2px;
-                        left:-60px;
-                        width:36px;
-                        height:36px;
-                        background:#fbe7ec;
-                        border-radius:50%;
-
-                        @include mobile {
-                            width: 26px;
-                            height: 26px;
-                            top: 1px;
-                            left: -36px;
-                        }
-                    }
-                    &:after {
-                        top:9px;
-                        border:none;
-                        background:#DA0F47;
-                        @include mobile {
-                            top: 8.5px;
-                            left: -28.5px;
-                            width: 11px;
-                            height: 11px;
-                        }
-                    }
-                }
-            }
-        }
-        .delivery-status {
-            font-size:18px;
-            line-height:28px;
-        }
-        .delivery-date {
-            margin-top:4px;
-            font-size:16px;
-            font-weight:500;
-            @include mobile {
-                font-size:14px;
-            }
-        }
-        .delivery-name {
-            display:block;
-            margin-top:4px;
-            font-size:16px;
-            line-height:24px;
-            color:#666;
-
-            @include mobile {
-                font-size:14px;
-            }
-
-            .bar:before {
-                display:inline-block;
-                content:"";
-                position:relative;
-                top:-1px;
-                width:1px;
-                height:10px;
-                background:#ddd;
-                margin:0 7px 0 6px;
-
-                @include mobile {
-                    top: 0;
-                    margin: 0 6px 0 4px;
-                }
-            }
-        }
-
-        .delivery-message {
-            display:block;
-            margin-top:4px;
-            font-size:16px;
-            line-height:24px;
-            color:#666;
-            word-break: keep-all;
-
-            @include mobile {
-                font-size:14px;
-            }
+        @include mobile {
+            padding-top: 38px;
         }
     }
+
+    .pop-footer {
+        position: static;
+    }
+    .delivery-info-list {
+        min-height: 176px;
+        max-height: 268px;
+        overflow-y: auto;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #ddd;
+
+        @include mobile {
+            min-height: 88px;
+            border-width: 1px;
+        }
+    }
+
+    .delivery-text {
+        position: relative;
+        padding-left: 10px;
+        &:after {
+            content: '';
+            overflow: hidden;
+            position: absolute;
+            top: 13px;
+            left: 0;
+            width: 4px;
+            height: 4px;
+            border-radius: 4px;
+            background-color: #000;
+
+            @include mobile {
+                top: 13px;
+                width: 3px;
+                height: 3px;
+                border-radius: 3px;
+            }
+        }
+
+        & + .delivery-text {
+            margin-top: 17px;
+        }
+    }
+
+    .delivery-name {
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: bold;
+        @include mobile {
+            font-size:15px;
+        }
+    }
+
+    .delivery-status {
+        margin-top: 4px;
+        font-size: 16px;
+        color: #666;
+
+        @include mobile {
+            font-size:14px;
+        }
+    }
+
+    .delivery-message {
+        display:block;
+        margin-top:20px;
+        font-size:14px;
+        line-height:24px;
+        color:#666;
+        word-break: keep-all;
+
+        @include mobile {
+            width: 210px;
+            margin: 18px auto 0;
+            text-align: center;
+            font-size: 13px;
+            line-height: 20px;
+        }
+    }
+
     .delivery-data {
         width:100%;
-        padding:40px 0;
+        padding:75px 0;
         border-radius:8px;
-        background:#F4F4F4;
+        background:#f4f4f4;
         text-align:center;
 
         @include mobile {
-            padding:25px 0;
+            padding:33px 0;
             font-size:14px;
         }
     }
 }
+
 // BTOCSITE-5938-17 s
 @include mobile {
     #registMyProductPopup{
