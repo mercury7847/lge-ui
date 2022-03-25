@@ -200,6 +200,9 @@
                 	
                 	lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 		
+                		console.log(data);
+                		console.log(result.status);
+                		
                 		if (result.status == "success") {
                 			var data = result.data;
                 			var contInfo = data.contInfo;
@@ -224,11 +227,17 @@
                     		var managerPhone = "(" + scheduleInfo.VISIT_USER_HP_NO + ")";
                     		var timesInfo = scheduleInfo.VISIT_TIMES + "회차" ;
                     		var visitYn = (scheduledToVisitFlag == "before") ? "방문완료" : "방문예정";
-                    		var filterReplacementYn	= scheduleInfo.FILTER_CNT > 0 
-                    								? "O(" + scheduleInfo.FILTER_NAME + ")" : "X";
+                    		var visitShedule = scheduleInfo.VISIT_CONFM_DATE;
+                    		var filterReplacementYn	= scheduleInfo.FILTER_CNT > 0 ? "O(" + scheduleInfo.FILTER_NAME + ")" : "X";
                     		
                     		$productInfo.text(productInfo);
-                    		
+                    		$contractExpirationDate.text(contractExpirationDate);
+                    		$managerName.text(managerName);
+                    		$managerPhone.text(managerPhone);
+                    		$timesInfo.text(timesInfo);
+                    		$visitYn.text(visitYn);
+                    		$visitShedule.text(visitShedule);
+                    		$filterReplacementYn.text(filterReplacementYn);
                     		
                     		// 회차별방문내역
                     		var $historyOfVisits	= self.$popupServiceDetail.find('.history-of-visits');	// 회차별방문내역
@@ -269,9 +278,6 @@
                     		}
                     		
                     		self.$popupServiceDetail.vcModal();
-                    		
-                    		console.log(data);
-                    		console.log(result.status);
                 		}
                 	});
                 });
