@@ -1445,12 +1445,12 @@
             listData.forEach(function(data) {
                 // 도착 예정일 (배송중일 떄)
                 if(data.dueYmd){
-                    data.ordStatusTypeDate = data.dueYmd + ' 도착예정';
+                    data.ordStatusTypeDate = data.dueYmd + ' 도착 예정';
                 }
 
                 // 배송 예정일 (배송 준비중 일때)
                 if(data.delivWishYmd) {
-                    data.ordStatusTypeDate = data.delivWishYmd + ' 배송예정';
+                    data.ordStatusTypeDate = data.delivWishYmd + ' 배송 예정';
                 }
 
                 // 도착 완료일 (배송완료 일때)
