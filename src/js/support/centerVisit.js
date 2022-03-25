@@ -423,9 +423,13 @@
                 });
             });
             self.$keywordWrap.on('autocompleteClick', function(e, el) {
-                var id = $(el).attr("href").replace("#", "");
-                var windowHeight = $(window).innerHeight();
-                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+                // BTOCSITE-13833 센터방문예약 > 방문할 센터 찾기, 선택 기능 수정 요청
+                // var id = $(el).attr("href").replace("#", "");
+                // var windowHeight = $(window).innerHeight();
+                // window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+                self._setSearch();
+                self.$address1.val($(el).text());            
+                self.$keywordWrap.removeClass('on');
             });
             $('.center-result-wrap table').on('click', '.btn-detail', function(){
                 var id = $(this).attr("href").replace("#", "");
