@@ -112,6 +112,7 @@
                 self.$timeTableWrapNoData = self.$popupChangeVisitDate.find('div.timetable-wrap:eq(2)');
                 
                 // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+                self.$popupServiceDetail = $('#popupServiceDetail'); // 방문상세내역팝업
                 self.$myVisitSchedule = self.$contents.find('div.my-visit-schedule'); // 방문일정영역
                 // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 END
             },
@@ -185,6 +186,7 @@
                 
              // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
                 self.$list.on('click', '.svc-details li', function(e){
+                	e.preventDefault();
                 	var $this = $(this);
                 	 
                 	console.log(">>>>>>>" + $this.attr('data-cont-line-seq')); // 계약번호
@@ -200,6 +202,8 @@
                 	}
                 	
                 	lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                		
+                		self.$popupServiceDetail.vcModal();
                 		
                 		var data = result.data;
                 		
