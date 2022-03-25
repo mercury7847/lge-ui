@@ -221,7 +221,7 @@
                     		var $visitShedule			= self.$popupServiceDetail.find('.visit-schedule');				// 방문일정
                     		var $filterReplacementYn	= self.$popupServiceDetail.find('.filter-replacement-yn');		// 필터교체 여부
                     		
-                    		var productInfo =  contInfo.CATEGORY_NM_KOR;
+                    		var productInfo =  contInfo.CATEGORY_NM_KOR + "(" + contInfo.MODEL_CD + ")";
                     		var contractExpirationDate	= contInfo.CONT_END_DATE.substr(0,4) + "년"
                     									+ contInfo.CONT_END_DATE.substr(4,2) + "월"
                     									+ contInfo.CONT_END_DATE.substr(6,2) + "일까지 계약"
@@ -285,7 +285,7 @@
                 	                        + '<td>' + filterReplacementYn + '</td>' +
                                         '</tr>';
                         			
-                        			$historyOfVisits.appendTo(html);
+                        			html.appendTo($historyOfVisits);
                         		})
                     		} else {
                     			$historyOfVisits.find('.empty-row').css("display", "");
