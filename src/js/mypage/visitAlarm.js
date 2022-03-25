@@ -246,7 +246,7 @@
                     		var $historyOfVisits	= self.$popupServiceDetail.find('.history-of-visits');	// 회차별방문내역
                     		var visitTimes			= "";	// 회차
                     		var progressVal			= "";	// 진행상태
-                    		var visitShedule		= "";	// 방문일정
+                    		var visitShedule		= "-";	// 방문일정
                     		var managerInfo			= "-";	// 매니저정보
                     		var filterReplacementYn	= "X";	// 필터교체여부
                     		
@@ -254,9 +254,15 @@
                     			data.scheduleList.forEach(function(scheduleInfoTemp){
                         			
                         			visitTimes = scheduleInfoTemp.VISIT_TIMES;
-                        			progressVal = scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != "" ?
-                        							"방문완료" : "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")"; // VISIT_DATE(=매니저방문일)
-                        			visitShedule = vcui.date.format(scheduleInfoTemp.VISIT_CONFM_DATE, "yyyy.mm.dd");
+                        			
+                        			progressVal	=	scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != ""
+                        				 			? "방문완료"  
+                        							:	scheduleInfoTemp.NOT_VISIT_REASON_NM != undefined && scheduleInfoTemp.NOT_VISIT_REASON_NM != ""  
+                        								? "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")" 
+                        								: "방문연기"; // VISIT_DATE(=매니저방문일)
+                        			if (scheduleInfoTemp.VISIT_CONFM_DATE != undefined && scheduleInfoTemp.VISIT_CONFM_DATE != "") {
+                        				visitShedule = vcui.date.format(scheduleInfoTemp.VISIT_CONFM_DATE, "yyyy.mm.dd");
+                        			}
                         			
                         			if (scheduleInfoTemp.VISIT_USER_NM != undefined && scheduleInfoTemp.VISIT_USER_NM != "") {
                         				managerInfo = scheduleInfoTemp.VISIT_USER_NM 
