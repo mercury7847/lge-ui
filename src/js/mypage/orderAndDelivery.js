@@ -168,7 +168,7 @@
                             '{{#if !listData.deliveryStatus}}<p class="tit"><span class="blind">진행상태</span>{{listData.deliveryStatusText}}</p>{{/if}}' +
                             '{{#if listData.deliveryStatus && listData.ordSysOrdNo}}'+
                                 '<div class="state-btns">'+
-                                    '<a href="#n" class="btn size border stateInner-btn" data-ord-no="{{listData.ordSysOrdNo}}" data-type="bestShopDeliveryInquiry"><span>배송조회</span></a>'+
+                                    '<a href="#n" class="btn size border stateInner-btn" data-ord-no="{{listData.gerpOrdNo}}" data-type="bestShopDeliveryInquiry"><span>배송조회</span></a>'+
                                 '</div>'+
                             '{{/if}}'+
                         '</div>'+
@@ -422,21 +422,15 @@
 
     var bestShopDeliveryInfoTemplate =
     '<div class="delivery-step">'+
-        '<div class="delivery-text active">'+
-            '<strong class="delivery-status">'+
-            '{{ordStatusTypeNm}}'+
-            '</strong>'+
-            '{{#if delivWishYmd}}<p class="delivery-date">{{delivWishYmd}} 배송 예정</p>{{/if}}'+
-            '{{#if dueYmd}}<p class="delivery-date">{{dueYmd}} 도착 예정</p>{{/if}}'+
-            '{{#if receiveYmd}}<p class="delivery-date">{{receiveYmd}}</p>{{/if}}'+
-            '{{#if DriverNm}}<span class="delivery-name">배송기사 {{DriverNm}} {{#if DriverPcsNo}}<em class="bar">{{DriverPcsNo}}</em></span>{{/if}}{{/if}}'+
-            '{{#if delivMsg}}<span class="delivery-message">{{delivMsg}}</span>{{/if}}'+
-        '</div>'+
-    '</div>'+
-    '<div class="delivery-step">'+
-        '<div class="delivery-text">'+
-            '<strong class="delivery-status">주문일</strong>'+
-            '<p class="delivery-date">{{ordYmd}}</p>'+
+        '<div class="delivery-info-list">'+
+            '{{#each list in listDataArray}}'+
+            '<div class="delivery-text">'+
+                '<strong class="delivery-name">{{list.modelCd}}</strong>'+
+                '<p class="delivery-status">'+
+                '{{list.ordStatusTypeNm}}{{#if list.ordStatusTypeDate}} ({{list.ordStatusTypeDate}}){{/if}}'+
+                '</p>'+
+            '</div>'+
+            '{{/each}}'+
         '</div>'+
     '</div>';
 
@@ -447,7 +441,7 @@
     var ORDER_SAILS_URL;
     var ORDER_REQUEST_URL;
     var ORDER_BENEFIT_URL;
-
+0
 
     var PAYMENT_METHOD_CONFIRM;
     var INFO_MODIFY_CONFIRM;
@@ -1433,22 +1427,39 @@
     // LGECOMVIO-114 베스트샵 배송조회 추가
     function setBestShopDeliveryInquiry(ordNo){
         var sendata = {
-            htlsOrdNo: ordNo
+            gerpOrdNo: ordNo
         }
 
-        lgkorUI.requestAjaxDataFailCheck(BESTSHOP_DELIVERY_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(BESTSHOP_DELIVERY_URL, sendata, function(result){
             var listData = result.data;
-
-            listData.delivWishYmd = listData.delivWishYmd ? listData.delivWishYmd : ""; // 배송 예정일
-            listData.dueYmd = listData.dueYmd ? listData.dueYmd : ""; // 도착 예정일
-            listData.receiveYmd = listData.receiveYmd ? listData.receiveYmd : ""; // 도착 완료일
-            listData.delivMsg = listData.delivMsg ? listData.delivMsg : ""; // 배송 알림톡 확인 권유 문구
-            listData.DriverNm = listData.DriverNm ? listData.DriverNm : ""; // 배송 기사명
-            listData.DriverPcsNo = listData.DriverPcsNo ? listData.DriverPcsNo : ""; // 배송 기사 연락처
+            if(result.status == 'fail') {
+                $('#popup-bestshop-delivery').find('.delivery-info').hide();
+                $('#popup-bestshop-delivery').find('.delivery-data').show();
+                $('#popup-bestshop-delivery').vcModal('show');
+                return;
+            }
 
             $('#popup-bestshop-delivery').find('.delivery-data').hide();
             $('#popup-bestshop-delivery').find('.delivery-info').empty();
-            $('#popup-bestshop-delivery').find('.delivery-info').html(vcui.template(bestShopDeliveryInfoTemplate, listData));
+
+            listData.forEach(function(data) {
+                // 도착 예정일 (배송중일 떄)
+                if(data.dueYmd){
+                    data.ordStatusTypeDate = data.dueYmd + ' 도착 예정';
+                }
+
+                // 배송 예정일 (배송 준비중 일때)
+                if(data.delivWishYmd) {
+                    data.ordStatusTypeDate = data.delivWishYmd + ' 배송 예정';
+                }
+
+                // 도착 완료일 (배송완료 일때)
+                if(data.receiveYmd) {
+                    data.ordStatusTypeDate = data.receiveYmd;
+                }
+            })
+
+            $('#popup-bestshop-delivery').find('.delivery-info').html(vcui.template(bestShopDeliveryInfoTemplate, {listDataArray:listData}));
             $('#popup-bestshop-delivery').vcModal('show');
         });
     }
