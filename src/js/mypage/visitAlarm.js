@@ -195,18 +195,21 @@
                 	
                 	var param = {
                 			contLineSeq : $this.attr('data-cont-line-seq'),
-                			visitTimes : $this.attr('data-visit-times')
+                			visitTimes : $this.attr('data-visit-times'),
+                			scheduledToVisitFlag : scheduledToVisitFlag
                 	}
                 	
                 	lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
                 		
-                		console.log(data);
                 		console.log(result.status);
                 		
                 		if (result.status == "success") {
+							
                 			var data = result.data;
                 			var contInfo = data.contInfo;
                     		var scheduleInfo = data.scheduleInfo;
+                    		
+                    		console.log(data);
                     		
                     		// 상세정보
                     		var $productInfo			= self.$popupServiceDetail.find('.product-info');				// 제품명(제품코드)
@@ -244,8 +247,8 @@
                     		var visitTimes			= "";	// 회차
                     		var progressVal			= "";	// 진행상태
                     		var visitShedule		= "";	// 방문일정
-                    		var managerInfo			= "";	// 매니저정보
-                    		var filterReplacementYn	= "";	// 필터교체여부
+                    		var managerInfo			= "-";	// 매니저정보
+                    		var filterReplacementYn	= "X";	// 필터교체여부
                     		
                     		if ( data.scheduleList.length > 0 ) {
                     			data.scheduleList.forEach(function(scheduleInfoTemp){
@@ -254,13 +257,24 @@
                         			progressVal = scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != "" ?
                         							"방문완료" : "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")"; // VISIT_DATE(=매니저방문일)
                         			visitShedule = vcui.date.format(scheduleInfoTemp.VISIT_CONFM_DATE, "yyyy.mm.dd");
-                        			managerInfo = scheduleInfoTemp.VISIT_USER_NM + "<br>" 
-                        						+ "(" 
-                        						+ scheduleInfoTemp.VISIT_USER_TEL_NO.substr(0, 3) 
-                        						+ scheduleInfoTemp.VISIT_USER_TEL_NO.substr(3, 4) 
-                        						+ scheduleInfoTemp.VISIT_USER_TEL_NO.substr(7, 4) 
-                        						+ ")";
-                        			filterReplacementYn = scheduleInfoTemp.FILTER_CNT > 0 ? "O" : "X";
+                        			
+                        			if (scheduleInfoTemp.VISIT_USER_NM != undefined && scheduleInfoTemp.VISIT_USER_NM != "") {
+                        				managerInfo = scheduleInfoTemp.VISIT_USER_NM 
+                        			}
+                        			
+                        			if (scheduleInfoTemp.VISIT_USER_HP_NO != undefined && scheduleInfoTemp.VISIT_USER_HP_NO != "") {
+                        				managerInfo = managerInfo
+                        							+ "<br>"
+                        							+ "(" 
+			                        				+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(0, 3) 
+			                        				+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(3, 4) 
+			                        				+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(7, 4) 
+			                        				+ ")";
+                        			}
+                        			
+                        			if (scheduleInfoTemp.FILTER_CNT != undefined && scheduleInfoTemp.FILTER_CNT != "") {
+                        				filterReplacementYn = scheduleInfoTemp.FILTER_CNT > 0 ? "O" : "X";
+                        			}
                         			
                         			var html = 
                                 		'<tr>'
