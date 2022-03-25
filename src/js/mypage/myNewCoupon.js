@@ -112,6 +112,7 @@
             bestShopVisitOnPage: 0, //베스트샵 > 매장 방문 할인 쿠폰 > 사용 가능 리스트 페이지
             bestShopVisitOffPage: 0, //베스트샵 > 매장 방문 할인 쿠폰 > 종료 쿠폰 리스트 페이지
             selOptVal: "on", //셀렉트 박스 옵션 값 설정
+            isLoadAjax: false,
         },
         el: {
             $contents: null,
@@ -226,6 +227,10 @@
             clickTabMenu: function (e) {
                 e.preventDefault();
 
+                if (this.variable.isLoadAjax) {
+                    return;
+                }
+
                 var $tab = $(e.currentTarget).parent();
                 $tab.siblings("li.on").removeClass("on");
                 $tab.addClass("on");
@@ -259,6 +264,10 @@
                 // }
             },
             clickSubTabMenu: function (e) {
+                if (this.variable.isLoadAjax) {
+                    return;
+                }
+
                 e.preventDefault();
                 var $subTab = $(e.currentTarget).parent();
 
@@ -453,14 +462,13 @@
             } else if (TAB === TAB_BESTSHOP_VISIT) {
                 ajaxUrl = this.el.$contents.data("bestshop-visit-coupon-list-url");
                 tabCouponCnt0 = this.el.$contents.data("coupon-list-url");
-            } else {
-                this.el.$couponList.empty();
-                this.el.$couponMore.hide();
-                tabCouponCnt0 = this.el.$contents.data("coupon-list-url");
-                tabCouponCnt1 = this.el.$contents.data("bestshop-visit-coupon-list-url");
             }
-            var dataUrl = this.el.$contents.data();
 
+            this.variable.isLoadAjax = true;
+            var loadAjaxCnt = 0;
+            var totLoadAjaxCnt = 2;
+
+            var dataUrl = this.el.$contents.data();
             $.each(dataUrl, function (idx, val) {
                 if (ajaxUrl && ajaxUrl === val) {
                     lgkorUI.showLoading();
@@ -473,6 +481,11 @@
                         {},
                         function (result) {
                             lgkorUI.hideLoading();
+                            loadAjaxCnt++;
+                            if (totLoadAjaxCnt === loadAjaxCnt) {
+                                this.variable.isLoadAjax = false;
+                            }
+
                             if (result.status.toUpperCase() === "ERROR") {
                                 //로그인 풀릴 경우 > 로그인 화면으로 이동
                                 if (result.message.toUpperCase() === "NOT_LOG_IN") {
@@ -536,13 +549,15 @@
                         true,
                         true
                     );
-                }
-
-                if (tabCouponCnt0 === val || tabCouponCnt1 === val) {
+                } else {
                     lgkorUI.requestAjaxDataPost(
                         val,
                         {},
                         function (result) {
+                            loadAjaxCnt++;
+                            if (totLoadAjaxCnt === loadAjaxCnt) {
+                                this.variable.isLoadAjax = false;
+                            }
                             if (result.status.toUpperCase() === "ERROR") {
                                 //로그인 풀릴 경우
                                 if (result.message.toUpperCase() === "NOT_LOG_IN") {
