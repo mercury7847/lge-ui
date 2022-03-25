@@ -691,9 +691,16 @@
                     return a._sort - b._sort;
                 });
 
-                //종료된 쿠폰 > 종료일 오름 차순
+                //종료된 쿠폰 > 현재 날짜와 가까운 순으로 정렬
+                var now = new Date();
+                var year = now.getFullYear();
+                var month = now.getMonth();
+                var day = now.getDate();
+                var nowDate = new Date(year, month, day).getTime();
+
                 this.variable.listData["end"].forEach(function (data) {
-                    data._sort = vcui.date.parse(data.cpnToDate).getTime();
+                    endDate = vcui.date.parse(data.cpnToDate).getTime();
+                    data._sort = Math.abs(nowDate - endDate);
                 });
                 this.variable.listData["end"].sort(function (a, b) {
                     return a._sort - b._sort;
