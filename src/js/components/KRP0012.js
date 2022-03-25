@@ -49,7 +49,7 @@
         reviewWrite: function() {
             var $section = $('.KRP0012');
             var ajaxUrl = '/mkt/api/product/retrieveProductRegisterInfo';
-            if(location.hostname == 'localhost' || location.port == '3010') ajaxUrl = '/lg5-common/data-ajax/pdp/pdp_status.json';
+            if(location.pathname == '/html/components/KRP0012.html') ajaxUrl = '/lg5-common/data-ajax/pdp/pdp_status.json';
             var options = {
                 isMobile: vcui.detect.isMobile,
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
