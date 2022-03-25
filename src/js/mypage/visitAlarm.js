@@ -291,7 +291,7 @@
                 	                        + '<td>' + filterReplacementYn + '</td>' +
                                         '</tr>';
                         			
-                        			$historyOfVisits.appendTo(html);
+                        			html.appendTo($historyOfVisits);
                         		})
                     		} else {
                     			$historyOfVisits.find('.empty-row').css("display", "");
