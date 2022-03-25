@@ -190,6 +190,7 @@
                 	e.preventDefault();
                 	
                 	var $this = $(this);
+                	var scheduledToVisitFlag = $this.attr('data-scheduled-to-visit-flag');
                 	var ajaxUrl = self.$myVisitSchedule.attr('data-detail-list-url');
                 	
                 	var param = {
@@ -201,16 +202,34 @@
                 		
                 		if (result.status == "success") {
                 			var data = result.data;
+                			var contInfo = data.contInfo;
+                    		var scheduleInfo = data.scheduleInfo;
                     		
                     		// 상세정보
                     		var $productInfo			= self.$popupServiceDetail.find('.product-info');				// 제품명(제품코드)
                     		var $contractExpirationDate	= self.$popupServiceDetail.find('.contract-expiration-date');	// 계약만료일
-                    		var $managerName			= self.$popupServiceDetail.find('.manager-info .name');			// 매니저 이름
-                    		var $managerPhone			= self.$popupServiceDetail.find('.manager-info .phone');		// 매니저 연락처
+                    		var $managerName			= self.$popupServiceDetail.find('.manager-name');				// 매니저 이름
+                    		var $managerPhone			= self.$popupServiceDetail.find('.manager-phone');				// 매니저 연락처
                     		var $timesInfo				= self.$popupServiceDetail.find('.times-info');					// 회차
+                    		var $visitYn				= self.$popupServiceDetail.find('.info-list .fc_point');		// 방문예정/방문완료
                     		var $visitShedule			= self.$popupServiceDetail.find('.visit-schedule');				// 방문일정
                     		var $filterReplacementYn	= self.$popupServiceDetail.find('.filter-replacement-yn');		// 필터교체 여부
-
+                    		
+                    		var productInfo =  contInfo.CATEGORY_NM_KOR;
+                    		var contractExpirationDate	= contInfo.CONT_END_DATE.substr(0,4) + "년"
+                    									+ contInfo.CONT_END_DATE.substr(4,2) + "월"
+                    									+ contInfo.CONT_END_DATE.substr(6,2) + "일까지 계약"
+                    									+ "(1회 / "+ contInfo.VISIT_CYCLE +"개월)"; 
+                    		var managerName = scheduleInfo.VISIT_USER_NM + "매니저";
+                    		var managerPhone = "(" + scheduleInfo.VISIT_USER_HP_NO + ")";
+                    		var timesInfo = scheduleInfo.VISIT_TIMES + "회차" ;
+                    		var visitYn = (scheduledToVisitFlag == "before") ? "방문완료" : "방문예정";
+                    		var filterReplacementYn	= scheduleInfo.FILTER_CNT > 0 
+                    								? "O(" + scheduleInfo.FILTER_NAME + ")" : "X";
+                    		
+                    		$productInfo.text(productInfo);
+                    		
+                    		
                     		// 회차별방문내역
                     		var $historyOfVisits	= self.$popupServiceDetail.find('.history-of-visits');	// 회차별방문내역
                     		var visitTimes			= "";	// 회차
@@ -219,7 +238,7 @@
                     		var managerInfo			= "";	// 매니저정보
                     		var filterReplacementYn	= "";	// 필터교체여부
                     		
-                    		if ( data.scheduleList.size() > 0 ) {
+                    		if ( data.scheduleList.length > 0 ) {
                     			data.scheduleList.forEach(function(scheduleInfoTemp){
                         			
                         			visitTimes = scheduleInfoTemp.VISIT_TIMES;
