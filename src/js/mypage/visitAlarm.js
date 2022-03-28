@@ -281,8 +281,7 @@
                         				
                         				// 매니저 방문완료시 VISIT_DATE 값이 존재
                         				var visitDate = scheduleInfoTemp.VISIT_DATE ? scheduleInfoTemp.VISIT_DATE : scheduleInfoTemp.VISIT_CONFM_DATE;
-                        				visitDate = visitDate.replace("-", "").substr(0, 8);
-                        				visitShedule = vcui.date.format(visitDate, "yyyy.mm.dd");
+                        				visitShedule = visitDate.replace("-", ".").substr(0, 10);
                         			}
                         			
                         			if (scheduleInfoTemp.VISIT_USER_NM != undefined && scheduleInfoTemp.VISIT_USER_NM != "") {
