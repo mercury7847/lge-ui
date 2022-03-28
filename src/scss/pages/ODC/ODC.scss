@@ -1439,7 +1439,7 @@ section[class*='odc'] {
     display: flex;
     overflow: hidden;
     padding: 20px;
-    height: 36.112vw;
+    height: 110px;
     border-radius: 8px;
     justify-content: center;
     flex-direction: column;
@@ -1469,6 +1469,14 @@ section[class*='odc'] {
     color: #fff;
   }
 
+  &__logo {
+    margin-bottom: 4px;
+    img {
+      width: auto;
+      height: 13px;
+    }
+  }
+
   &__title {
     font-weight: bold;
     font-size: 16px;
@@ -1476,9 +1484,16 @@ section[class*='odc'] {
   }
 
   &__text {
-    margin-top: 2px;
-    font-size: 13px;
-    line-height: 19px;
+    display: inline-block;
+    margin-top: 4px;
+    padding-right: 12px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+    background-image: url('/lg5-common/images/ODC/icon-arrow-right-white.svg');
+    background-position: right 4px;
+    background-repeat: no-repeat;
+    background-size: 9px 9px;
   }
 }
 
@@ -1578,7 +1593,7 @@ section[class*='odc'] {
 
     @at-root .odc-banner__item--white & {
       background-image: url('/lg5-common/images/ODC/icon-arrow-right-white.svg');
-      backkground-size: 9px 9px;
+      background-size: 9px 9px;
     }
   }
 }
