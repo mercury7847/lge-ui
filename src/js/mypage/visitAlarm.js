@@ -266,7 +266,6 @@
                     		var html 				= "";
                     		
                     		if ( data.scheduleList.length > 0 ) {
-                    			
                     			data.scheduleList.forEach(function(scheduleInfoTemp){
                         			
                         			visitTimes = scheduleInfoTemp.VISIT_TIMES;
