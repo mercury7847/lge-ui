@@ -861,7 +861,8 @@
             "modelDisplayName":"LG 휘센 제습기",
             "deliveryStatus": false,
             "deliveryStatusText":"매장 문의 필요",
-            "ordSysOrdNo":""
+            "gerpOrdNo": "",
+            "ordSysOrdNo": ""
           }
         ]
       },
@@ -874,7 +875,7 @@
           {
             "categoryLevel1":"HC",
             "buyCnt":"1",
-            "buyAmt":"784000",
+            "buyAmt":"-280000",
             "categoryLevel4":"HCWCASAC",
             "categoryLevel3":"HCWCAS",
             "categoryLevel2":"HCWC",
@@ -883,7 +884,8 @@
             "categoryName":"헬스케어 > 건강관리",
             "modelDisplayName":"LG 퓨리케어 360˚ 공기청정기",
             "deliveryStatus": false,
-            "deliveryStatusText":"매장 문의 필요",
+            "deliveryStatusText":"주문취소",
+            "gerpOrdNo": "",
             "ordSysOrdNo":""
           }
         ]
@@ -906,6 +908,7 @@
             "categoryName":"OS제품 > 외부매입상품",
             "modelDisplayName":"쿠쿠 6인용 IH압력",
             "deliveryStatus":false,
+            "gerpOrdNo": "",
             "ordSysOrdNo":""
           }
         ]
@@ -929,6 +932,7 @@
             "modelDisplayName":"전기식 건조기 (인버터 히트펌프)",
             "deliveryStatus":true,
             "deliveryStatusText":"배송조회",
+            "gerpOrdNo": "1081686088",
             "ordSysOrdNo":"SO2146829580-2-2-97151317"
           },
           {
@@ -944,6 +948,7 @@
             "modelDisplayName":"LG 꼬망스 미니세탁기",
             "deliveryStatus":true,
             "deliveryStatusText":"배송조회",
+            "gerpOrdNo": "1081686088",
             "ordSysOrdNo":"SO2146829580-2-1-97151316"
           },
           {
@@ -959,6 +964,7 @@
             "modelDisplayName":"LG DIOS V8700 더블매직스페이스",
             "deliveryStatus": false,
             "deliveryStatusText":"매장 문의 필요",
+            "gerpOrdNo": "1081686088",
             "ordSysOrdNo":"SO2146829580-1-97151314"
           },
           {
@@ -974,6 +980,7 @@
             "modelDisplayName":"LG 통돌이 세탁기 (블랙라벨 플러스)",
             "deliveryStatus": false,
             "deliveryStatusText":"",
+            "gerpOrdNo": "1081686088",
             "ordSysOrdNo":"SO2146829580-1-97151314"
           }
         ]

@@ -119,6 +119,8 @@
             /* //BTOCSITE-BTOCSITE-7660 고객지원 - 출장/내방/예약변경 시 SE 사진 비노출 요청 */
 
             self.$authPopup = $('#certificationPopup');
+            // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+            self.warrantyGuide = $('#ratesWarrantyGuidePopup');
 
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
             self.isOneView = 'N';
@@ -762,23 +764,23 @@
                 // 20210610 세척서비스 증상 선택시 팝업 띄움
                 var topicName = $(this).data('topicName');
                 
-                // BTOCSITE-6144 세척서비스 중지 팝업 다시 원래대로 원복
+                // BTOCSITE-6144 세척서비스 중지 팝업 다시 원래대로 원복 : 시스템, 업소용 에어컨는 예외 추가
                 // BTOCSITE-13336 출장 서비스 예약 > 고장증상 '세척서비스' 예약 가능하게 기능 수정 요청
-                // var alertMsg = '가전 <strong class="point">세척 서비스</strong>는 <strong>콜센터 [1544-7777]로</strong><br>전화 주시거나, <strong>전화상담 예약</strong>을 하시면<br>전문 상담사 상담 후 접수를 도와 드리겠습니다.<br><br>전화 상담 예약을 안내해 드릴까요?';                
-                // if( topicName === "세척서비스" ){
-                //     lgkorUI.confirm(alertMsg,{
-                //         typeClass:'type2',
-                //         title:'',
-                //         okBtnName: '네',
-                //         cancelBtnName: '아니요',
-                //         ok: function() {
-                //             location.href = "/support/request-call-reservation";
-                //         },
-                //         cancel: function() {
-                //             $(currentTopic).prop('checked', false); //BTOCSITE_6554
-                //         }
-                //     });
-                // }
+                var alertMsg = '가전 <strong class="point">세척 서비스</strong>는 <strong>콜센터 [1544-7777]로</strong><br>전화 주시거나, <strong>전화상담 예약</strong>을 하시면<br>전문 상담사 상담 후 접수를 도와 드리겠습니다.<br><br>전화 상담 예약을 안내해 드릴까요?';                
+                if( topicName === "세척서비스" && ($('#subCategory').val() == 'CT50019244' || $('#subCategory').val() == 'CT50019259')){
+                    lgkorUI.confirm(alertMsg,{
+                        typeClass:'type2',
+                        title:'',
+                        okBtnName: '네',
+                        cancelBtnName: '아니요',
+                        ok: function() {
+                            location.href = "/support/request-call-reservation";
+                        },
+                        cancel: function() {
+                            $(currentTopic).prop('checked', false); //BTOCSITE_6554
+                        }
+                    });
+                }
                 
                 /* BTOCSITE-3411 add :: 세척 서비스 팝업 얼렛으로 변경 */
                 // var alertMsg = '<p>일시적으로 가전 <strong class="point">세척 서비스</strong> 제공을 중지합니다.<br>서비스 안정화 이후 다시 진행될 예정이오니 양해 바랍니다.</p>';
@@ -1118,6 +1120,51 @@
                         location.href = _href; 
                     }
                 })
+            });
+            
+            // 요금 및 보증 기간 안내
+            self.warrantyGuide.on('modalhide', function(){
+                var $this = $(this);
+                var $tab = $this.find('.ui_tab');
+                
+                // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+                $tab.vcTab("select", 0);
+            });
+
+            // BTOCSITE-13601 모델명 확인 방법 > 이미지 확대 추가
+            var $imgView = $('.btn-img-view');
+            $('#select2').on('change', function(){
+    
+                // 이미지가 없는 경우 no-img 삭제
+                if(!(lgkorUI.NO_IMAGE_MODEL_NAME != $imgView.find('img').attr('src'))) {
+                    $imgView.find('img').removeClass('no-img');
+                }
+            });
+
+            // BTOCSITE-13601 모델명 확인 방법 > 이미지 확대 추가
+            $imgView.on('click', function(e) {
+                e.preventDefault();
+            
+                if($(this).find('img').hasClass('no-img')) return;
+    
+                var domain=location.origin;
+                var agent = navigator.userAgent;
+                var imgUrl=domain + $(this).attr('href');
+                var imgAlt = $(this).find('img').attr('alt');
+                if(!vcui.detect.isMobileDevice){
+                    window.open(imgUrl, '', '');
+                    return
+                }
+
+                var currOption = $('#select2 option:selected');
+                var popTitle = currOption.hasClass('placeholder') ? '모델명 확인 방법' : currOption.text();
+                var $zoomPopup = $('#imgZoomPopup');
+                var $zoomImg = $('#imgZoomPopup img');
+                $zoomImg.attr('src', imgUrl);
+                $zoomImg.attr('alt', imgAlt);
+
+                $zoomPopup.find('.tit').html('<span>'+popTitle+'</span>');
+                $zoomPopup.vcModal('open');
             });
         }
     }

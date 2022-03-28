@@ -2,17 +2,16 @@
   "use strict";
 
   // prettier-ignore
-  var reservationItem = '<li class="{{#if cancel_flag}}li_cancel{{/if}}">' +
+  var reservationItem = '<li class="{{#if cancelFlag === "Y"}}li_cancel{{/if}}">' +
     '<div class="li_tit">' +
-        '<div class="tit_txt{{#if _customerCancel}} customer{{/if}}">' +
-          '{{_title}} {{_method}} 예약</div>' +
-        '{{#if (!_today && !_isOverTime) && !cancel_flag}}<a href="#n" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
+        '<div class="tit_txt">{{_title}}</div>' +
+        '{{#if (!_today && !_isOverTime) && cancelFlag !== "Y"}}<a href="#n" data-id="{{counselRequestId}}" class="tit_link">{{_method}}예약취소</a>{{/if}}' +
     '</div>' +
     '<dl class="li_page">' +
         '<dt>신청페이지</dt>' +
-        '<dd>{{main_title}}' +
+        '<dd>{{mainTitle}}' +
           '{{#if _type == "0"}}' +
-            '<a href="{{_reservationPage}}" class="linkbtn">상세페이지이동</a>' +
+            '<a href="{{counselEventUrl}}" target="_blank" class="linkbtn">상세페이지이동</a>' +
           '{{/if}}' +
         '</dd>' +
     '</dl>' +
@@ -24,39 +23,31 @@
       '{{#if _type != "2"}}' +
         '<dl>' +
             '<dt>상담제품</dt>' +
-            '<dd>{{_category}}' +
-              '{{#if _type == "1"}}' +
+            '<dd>{{#raw _category}}' +
+              '{{#if _prdId}}' +
                 '<a href="#n" class="linkbtn product" data-prd-id="{{_prdId}}">제품정보팝업호출</a>' +
               '{{/if}}' +
             '</dd>' +
-            '{{#if visit_cycle}}<dt>방문주기</dt>' +
-            '<dd>{{visit_cycle}}</dd>{{/if}}' +
+            '{{#if selectVisitCycleId}}<dt>방문주기</dt>' +
+            '<dd>{{selectVisitCycleId}}개월/1회</dd>{{/if}}' +
         '</dl>' +
       '{{#else}}' +
         '<dl>' +
           '<dt>구매예약제품</dt>' +
           '<dd>' +
-            '<div class="li_categ">' +
-              '<span>프라엘</span>' +
-              '<span class="gap"></span>' +
-              '<span>딥클렌징</span>' +
-          '</div>' +
-          '<div class="li_categ">' +
-              '<span>주방가전</span>' +
-              '<span class="gap"></span>' +
-              '<span>광파오븐/전자레인지</span>' +
-          '</div>' +
-          '<div class="li_categ">' +
-              '<span>에어컨/에어케어</span>' +
-              '<span class="gap"></span>' +
-              '<span>휴대용 공기청정기</span>' +
-          '</div>' +
+            '{{#each item in _category}} <div class="li_categ">' +
+              '{{#each cate in item}}<span>{{#raw cate}}' + 
+                '{{#if $index!=0}} <span class="gap"></span> {{/if}}</span>' +
+              '{{/each}}' +
+            '</div> {{/each}}' +
           '</dd>' +
         '</dl>' +
       '{{/if}}' +
         '<dl>' +
             '<dt>{{_loc}}매장</dt>' +
-            '<dd>{{request_orgcode_name}}<a href="#n" data-url="/support/store-finder-{{_storeId}}" class="linkbtn store">매장상세정보이동</a></dd>' +
+            '<dd>{{requestOrgcodeName}}' + 
+            '{{#if _storeId}}<a href="#n" data-url="/support/store-finder-{{_storeId}}" class="linkbtn store">매장상세정보이동</a>{{/if}}' +
+            '</dd>' +
             '<dt>예약일시</dt>' +
             '<dd>{{_visitDate}}</dd>' +
         '</dl>' +
@@ -64,20 +55,20 @@
             '<dt>신청자</dt>' +
             '<dd>{{_name}}</dd>' +
             '<dt>휴대폰번호</dt>' +
-            '<dd>{{visitor_telno}}</dd>' +
+            '<dd>{{visitorTelno}}</dd>' +
         '</dl>' +
     '</div>' +
   '</li>';
 
   // prettier-ignore
   var productItem = '<div class="prd_img">' +
-      '<img src="{{_img}}" alt="{{userFriendlyName}}">' + 
+      '<img class="lazyload" data-src="{{_img}}" alt="{{_alt}}">' + 
     '</div>' + 
-    '<p class="prd_name">{{userFriendlyName}}</p>' + 
+    '<p class="prd_name">{{#raw _category}}</p>' + 
     '<p class="prd_model">{{modelName}}</p>' + 
     '<dl class="prd_visit">' + 
       '<dt>방문주기</dt>' + 
-      '<dd>{{selectVisitCycleID}}개월</dd>' + 
+      '<dd>{{selectVisitCycleId}}개월</dd>' + 
     '</dl>' + 
     '<dl class="prd_pay">' + 
       '<dt>이용요금</dt>' + 
@@ -88,16 +79,19 @@
     window.LGEAPPHostName === "localhost" ? "https://www.lge.co.kr" : "";
 
   // var SESSION_TAB_INDEX = "bestshop_counsel_tabindex"; // hash 활성화로 변경하여 사용 안함
+  var SYSTEM_DOWN_TIME_PLAN = "SYSTEM_DOWN_TIME_PLAN"; // 서버 점검
+  var NOT_LOG_IN = "NOT_LOG_IN"; //
 
   var module = {
     variable: {
       store: null,
       tabActIndex: 0, // 탭 활성화 index
-      tabLabelKeys: ["매장상담", "케어십", "소모품"], // 탭별 json 데이터 filter 를 위한
+      tabLabelKeys: ["V", "C", "D"], // 탭별 json 데이터 filter 를 위한
       listData: [], // json 데이터 담을 팝업
       showListLen: 0, // 리스트 노출된 갯수
       showListCount: 13, // 리스트 더보기 시 추가 노출할 갯수
       dateRegex: /^(\d{4}-\d{2}-\d{2}).+/, // yyyy-mm-dd 형만 추출
+      removeTagRegex: /<[^>]*>/g, // 제품명 html 태그 제거 정규식
       revType: null, // 상담 | 예약
     },
     el: {
@@ -110,10 +104,10 @@
       $error: null, // 에러 문구
       $notice: null, // 유의사항 항목
 
-      $popCancelAlert: null, // 취소 불가 팝업
-      $popCancelConfirm: null, // 취소 컨펌 팝업
+      $popCancelTodayAlert: null, // 취소 불가 팝업
       $popCancelComplete: null, // 취소 완료 팝업
       $popProduct: null, // 제품 팝업
+      // $popCancelConfirm: null, // 취소 컨펌 팝업
     },
     selector: {
       tabContainer: ".tabs-wrap",
@@ -123,10 +117,10 @@
       error: ".cv_error",
       notice: ".cv_note",
 
-      popCancelAlert: "#laypop2",
-      popCancelConfirm: "#laypop1",
+      popCancelTodayAlert: "#laypop2",
       popCancelComplete: "#popup1",
       popProduct: "#popup2",
+      // popCancelConfirm: "#laypop1",
     },
     setProperty: function () {
       var container = this.el.$container;
@@ -138,10 +132,10 @@
       this.el.$error = container.find(this.selector.error);
       this.el.$notice = container.find(this.selector.notice);
 
-      this.el.$popCancelAlert = $(this.selector.popCancelAlert);
-      this.el.$popCancelConfirm = $(this.selector.popCancelConfirm);
+      this.el.$popCancelTodayAlert = $(this.selector.popCancelTodayAlert);
       this.el.$popCancelComplete = $(this.selector.popCancelComplete);
       this.el.$popProduct = $(this.selector.popProduct);
+      // this.el.$popCancelConfirm = $(this.selector.popCancelConfirm);
 
       this.variable.store = window.sessionStorage;
     },
@@ -214,8 +208,7 @@
       clickProduct: function (e) {
         e.preventDefault();
 
-        var prdId = $(e.currentTarget).data("prd-id");
-
+        var prdId = $(e.currentTarget).data("prd-id"); // modelName
         this.openProduct({ target: e.currentTarget, id: prdId });
       },
       /**
@@ -242,7 +235,7 @@
         if (revDate && this.getIsToday(revDate)) {
           // 당일 예약 불가
 
-          this.el.$popCancelAlert.vcModal({ opener: target });
+          this.el.$popCancelTodayAlert.vcModal({ opener: target });
 
           /* lgkorUI.alert(
             "<h6>예약일 당일에는 취소가 불가 합니다.</h6>",
@@ -267,7 +260,8 @@
               "예약을 취소하시겠습니까?</h6>",
             {
               ok: function () {
-                this.callCheckLogin();
+                // this.callCheckLogin();
+                this.callCancel(target);
                 //console.log("ok");
               }.bind(this),
               cancel: function () {
@@ -293,7 +287,11 @@
       this.bind();
 
       // 탭 초기화 완료 후 list ajax 호출
-      this.el.$tabContainer.on("tabinit", this.initedTab.bind(this));
+      if (this.el.$tabContainer.attr("ui-modules")) {
+        this.initedTab();
+      } else {
+        this.el.$tabContainer.on("tabinit", this.initedTab.bind(this));
+      }
 
       this.inited = this.el.$container !== null;
 
@@ -301,10 +299,8 @@
     },
     /**
      * 탭 초기화 완료
-     * @param {Event} e
-     * @param {Object} data 탭 상태 정보
      */
-    initedTab: function (e, data) {
+    initedTab: function () {
       // index 세션 존재 시 활성화 변경 (클릭 리스너 등록 전 선행)
       /* if (this.variable.store.getItem(SESSION_TAB_INDEX)) {
         this.variable.tabActIndex =
@@ -328,8 +324,8 @@
     error: function (result) {
       var errorMsg = "";
 
-      if (result.status === "SYSTEM_DOWN_PLAN") {
-        errorMsg = result.message;
+      if (result.message === "SYSTEM_DOWN_TIME_PLAN") {
+        errorMsg = result.downTimeStart + " ~ " + result.downTimeEnd;
       }
 
       this.el.$error.show().find(".msg_annex > dd").html(errorMsg);
@@ -350,9 +346,20 @@
         ajaxUrl,
         {},
         function (result) {
-          if (result.data.success === "N") {
-            this.error(result);
+          if (result.status === "error") {
+            if (result.message === SYSTEM_DOWN_TIME_PLAN) {
+              this.error(result);
+            } else if (result.message === NOT_LOG_IN) {
+              this.goLogin();
+            }
+
             return;
+          } else {
+            // 베스트샵 회원이 아닌 경우
+            if (result.bestshopYn === "N") {
+              this.goBestShopSignUp();
+              return;
+            }
           }
 
           this.variable.listData = result.data.counselOrderList || [];
@@ -368,9 +375,10 @@
     /**
      * 예약 취소 요청
      */
-    callCancel: function () {
+    callCancel: function (opener) {
+      var id = opener ? opener.data("id") : null; // counselRequestId
       var ajaxUrl = this.el.$container.data("reservation-cancel");
-      var postData = { counsel_event_no: "" };
+      var postData = { counselRequestId: id };
 
       lgkorUI.showLoading();
 
@@ -378,13 +386,25 @@
         ajaxUrl,
         postData,
         function (result) {
-          if (result.data.success === "N") {
-            lgkorUI.alert(result.message);
-            return;
-          }
+          var status = result.status.toLocaleLowerCase();
 
-          if (result.data.cancel_yn == "N") {
-            lgkorUI.alert(result.data.cancel_message);
+          if (status === "error") {
+            if (result.message === NOT_LOG_IN) {
+              this.goLogin();
+            } else {
+              lgkorUI.alert("취소 신청이 정상적으로 처리되지 않았습니다.", {
+                ok: function () {
+                  location.reload();
+                },
+              });
+            }
+          } else if (status === "fail02") {
+            // 이미 취소된 처리
+            lgkorUI.alert(result.message, {
+              ok: function () {
+                location.reload();
+              },
+            });
           } else {
             this.cancelComplete();
           }
@@ -393,9 +413,9 @@
       );
     },
     /**
-     * 예약 취소 요청 전 로그인 체크
+     * 로그인 체크
      */
-    callCheckLogin: function () {
+    /* callCheckLogin: function (callback) {
       var ajaxUrl = $("header").data("login-info");
 
       if (!ajaxUrl) {
@@ -407,13 +427,13 @@
         {},
         function (result) {
           if (!result.data.isLogin) {
-            location.href = linkHost + "/sso/api/emp/Login";
+            this.goLogin();
           } else {
-            this.callCancel();
+            if (callback) callback();
           }
         }.bind(this)
       );
-    },
+    }, */
     /**
      * 리스트 정렬
      */
@@ -424,21 +444,19 @@
 
       listData.forEach(
         function (data) {
-          var keys = vcui.object.keys(data) || [];
-
           if (
-            vcui.array.has(keys, "store_visit_date_time") &&
-            vcui.array.has(keys, "request_date")
+            data.hasOwnProperty("storeVisitDateTime") &&
+            data.hasOwnProperty("requestDate")
           ) {
             // 예약일
-            var visitDateData = data.store_visit_date_time;
+            var visitDateData = data.storeVisitDateTime;
             var visitDateStr = visitDateData.replace(
               this.variable.dateRegex,
               "$1"
             );
 
             // 등록일
-            var regDateData = data.request_date.replace(/\./g, "-");
+            var regDateData = data.requestDate.replace(/\./g, "-");
             var regDateStr = regDateData.replace(this.variable.dateRegex, "$1");
 
             // 유효성 체크
@@ -459,7 +477,7 @@
                 hours
               );
 
-              // "store_visit_date_time" 바인딩 format 수정
+              // "storeVisitDateTime" 바인딩 format 수정
               data._visitDate = vcui.date.format(
                 visitDate,
                 "yyyy년 MM월 dd일, hh시"
@@ -513,8 +531,10 @@
       this.variable.tabLabelKeys.forEach(
         function (label, idx) {
           var group =
-            vcui.array.filter(listData, function (item) {
-              return item.cousel_event_type === label;
+            listData.filter(function (item) {
+              if (item.hasOwnProperty("counselEventTypeCode")) {
+                return item.counselEventTypeCode === label;
+              }
             }) || [];
 
           if (group.length) {
@@ -550,15 +570,17 @@
       var start = this.el.$listContainer.children().length;
 
       // 탭 활성화에 맞게 리스트 filter
-      listData = vcui.array.filter(
-        listData,
-        function (item) {
-          return (
-            item.cousel_event_type ===
-            this.variable.tabLabelKeys[this.variable.tabActIndex]
-          );
-        }.bind(this)
-      );
+      listData =
+        listData.filter(
+          function (item) {
+            if (item.hasOwnProperty("counselEventTypeCode")) {
+              return (
+                item.counselEventTypeCode ===
+                this.variable.tabLabelKeys[this.variable.tabActIndex]
+              );
+            }
+          }.bind(this)
+        ) || [];
 
       // 탭 활성화에 맞는 리스트 기반으로 노출
       if (listData.length > 0) {
@@ -576,66 +598,91 @@
      * @param {Object} item 예약 정보 데이터 1건
      */
     addItem: function (item) {
-      var keys = vcui.object.keys(item) || [];
       item = $.extend({}, item);
 
       item._type = parseInt(this.variable.tabActIndex);
 
-      // 신청페이지
-      /* item._reservationPage =
-        linkHost +
-        "/support/visit-store-reservation?orgCode=" +
-        item.request_orgcode; */
-      if (vcui.array.has(keys, "counsel_event_url")) {
-        item._reservationPage = linkHost + item.counsel_event_url;
-      }
-
       // 매장 코드
-      if (vcui.array.has(keys, "store_url")) {
-        var stRegex = /.+\?STID=(\w+)/i;
-        if (item.store_url.match(stRegex)) {
-          item._storeId = item.store_url.replace(stRegex, "$1");
+      if (item.hasOwnProperty("storeUrl")) {
+        item._storeId = null;
+
+        var stRegex = /.+\/detail-(\w+)/i;
+        if (item.storeUrl.match(stRegex)) {
+          item._storeId = item.storeUrl.replace(stRegex, "$1");
         }
       }
 
       // 신청자
-      if (vcui.array.has(keys, "visitor_name")) {
-        // item._name = this.middleMaskingText(item.visitor_name);
-        item._name = item.visitor_name;
+      if (item.hasOwnProperty("visitorName")) {
+        item._name = this.middleMaskingText(item.visitorName);
       }
 
       // 상담제품
-      if (vcui.array.has(keys, "request_category")) {
-        // 방문/화상 상담탭 && 공백 없는 '문자/문자' 인 경우
-        if (!item._type && item.request_category.match(/[^\s]\/[^\s]/g)) {
-          var categorys = item.request_category.split("/");
+      if (
+        item.hasOwnProperty("requestCategory") ||
+        item.hasOwnProperty("modelDisplayName")
+      ) {
+        item._prdId = null;
+        item._category = null;
 
-          item._category =
-            categorys[0] + " 외 " + (categorys.length - 1) + "개";
-        } else {
-          if (item._type === 1) {
-            // 케어십
-            var prdRegex = /.+\((.+)\)/i;
-            if (item.request_category.match(prdRegex)) {
-              item._prdId = item.request_category.replace(prdRegex, "$1");
+        if (item._type !== 2) {
+          if (item.hasOwnProperty("modelName") && item._type === 1) {
+            // 케어십 (상품코드)
+            item._prdId = item.modelName;
+
+            item._category = item.modelDisplayName.trim();
+          } else {
+            var categorys = [];
+
+            // 방문상담/화상상담
+            if (item.requestCategory.match(/\,/g)) {
+              categorys = item.requestCategory.split(",").map(function (prd) {
+                return prd.trim();
+              });
+            } else {
+              categorys = [item.requestCategory.trim()];
             }
+
+            // 외 n개 혹은 1개인 경우 첫번째 제품
+            var models = "";
+            if (categorys.length) {
+              if (categorys.length === 1) {
+                models = categorys[0];
+              } else {
+                models = categorys[0] + " 외 " + categorys.length + "개";
+              }
+            }
+
+            item._category = models;
+          }
+        } else {
+          // 소모품
+          if (item.modelDisplayName.match(/\,/g)) {
+            categorys = item.modelDisplayName.split(",").map(function (item) {
+              return item.trim();
+            });
+          } else {
+            categorys = [item.modelDisplayName.trim()];
           }
 
-          item._category = item.request_category;
+          item._category = categorys
+            .map(function (prd) {
+              return prd
+                .replace(/\>/g, ",")
+                .split(",")
+                .map(function (label) {
+                  return label.trim();
+                });
+            })
+            .slice(0, 3);
         }
       }
 
       // 각 탭 마크업 특수
-      if (vcui.array.has(keys, "cousel_event_type")) {
+      if (item.hasOwnProperty("counselEventType")) {
         item._method = item._type !== 2 ? "상담" : "구매";
         item._loc = item._type !== 2 ? "상담" : "예약";
-        item._title =
-          item._type === 0 ? "" : this.variable.tabLabelKeys[item._type];
-      }
-
-      // 고객취소 | 매장취소
-      if (vcui.array.has(keys, "cancel_flag")) {
-        item._customerCancel = item.cancel_flag === "고객취소";
+        item._title = item.counselEventType;
       }
 
       this.el.$listContainer.append(vcui.template(reservationItem, item));
@@ -686,40 +733,54 @@
     openProduct: function (data) {
       var target = data.target;
       var id = data.id;
-      var ajaxUrl = this.el.$container.data("reservation-product-info");
 
-      lgkorUI.requestAjaxDataPost(
-        ajaxUrl,
-        { modelName: id },
-        function (result) {
-          this.el.$popProduct
-            .off("modalshow")
-            .on("modalshow", this.createProduct.bind(this, result.data));
-          this.el.$popProduct.vcModal({ opener: target });
-        }.bind(this),
-        true
-      );
+      // 제품 데이터 찾기
+      var productData = this.variable.listData.filter(function (item) {
+        return item.modelName === id;
+      });
+
+      // 팝업 오픈 완료 콜백
+      if (productData.length) {
+        this.el.$popProduct
+          .off("modalshow")
+          .on("modalshow", this.createProduct.bind(this, productData[0]));
+
+        this.el.$popProduct.off("modalhide").on(
+          "modalhide",
+          function () {
+            this.el.$popProduct.vcLazyload("destroy");
+          }.bind(this)
+        );
+
+        this.el.$popProduct.vcModal({ opener: target });
+      }
     },
     /**
      * 제품 정보 내부 마크업 생성
      * @param {Object} item 제품 json 데이터
      */
     createProduct: function (item) {
-      var keys = vcui.object.keys(item) || {};
-
       // 이미지
-      if (vcui.array.has(keys, "modelImg")) {
-        item._img = linkHost + item.modelImg;
+      if (item.hasOwnProperty("modelImg")) {
+        item._img = item.modelImg;
       }
 
-      // 월 이용요
-      if (vcui.array.has(keys, "monthlyPrice")) {
+      // 월 이용료
+      if (item.hasOwnProperty("monthlyPrice")) {
         item._price = vcui.number.addComma(item.monthlyPrice);
+      }
+
+      // 제품명
+      if (item.hasOwnProperty("modelDisplayName")) {
+        item._category = item.modelDisplayName.trim();
+        item._alt = item._category.replace(this.variable.removeTagRegex, " ");
       }
 
       this.el.$popProduct
         .find(".consult_view-prdpop")
         .html(vcui.template(productItem, item));
+
+      this.el.$popProduct.vcLazyload();
     },
     /**
      * 문자 중앙 마스킹
@@ -787,9 +848,23 @@
         );
       }
     },
+    goLogin: function () {
+      location.href =
+        linkHost +
+        "/sso/api/emp/Login?state=" +
+        encodeURIComponent(location.href.replace(location.origin, ""));
+    },
+    goBestShopSignUp: function () {
+      location.href =
+        linkHost +
+        "/sso/api/emp/Login?state=" +
+        encodeURIComponent(location.href.replace(location.origin, ""));
+    },
   };
 
-  $(document).ready(function () {
-    module.init(".consult_view-wrap");
+  vcui.require(["ui/lazyload"], function () {
+    $(document).ready(function () {
+      module.init(".consult_view-wrap");
+    });
   });
 })();

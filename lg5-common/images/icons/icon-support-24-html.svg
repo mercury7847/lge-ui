@@ -1,0 +1,14 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <path opacity=".795" d="M0 0h24v24H0z"/>
+        <g transform="translate(2.625 5.125)">
+            <rect stroke="#000" stroke-width=".625" fill="#FFF" x=".313" y=".313" width="18.125" height="13.125" rx=".625"/>
+            <rect fill="#000" x="2.188" y="1.563" width="1.25" height="1.25" rx=".625"/>
+            <rect fill="#000" x="4.063" y="1.563" width="1.25" height="1.25" rx=".625"/>
+            <rect fill="#000" x="5.938" y="1.563" width="1.25" height="1.25" rx=".625"/>
+            <text font-family="NotoSansKR-Bold, Noto Sans KR" font-size="5" font-weight="bold" fill="#000">
+                                <tspan x="2.188" y="12.25">HTML</tspan>
+                            </text>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,1056 @@
+// 마이페이지 메인(2022)
+.mypage.mypage-main-new {
+    .mo-only {
+        @include pc {
+            display:none;
+        }
+    }    
+    .my-section {
+        padding-top:80px;
+        @include mobile {
+            padding:32px 0 0;
+        }
+        .title {
+            margin-bottom:32px;
+            font-weight:$font-weight-bold;
+            font-size:$font-large-2;
+            line-height:1.33;
+            @include mobile {
+                margin:0 4px 12px;
+                font-size:$font-medium;
+            }
+        }
+        .title-group .title{display:inline-block;
+            + .tooltip-wrap {margin-left:12px;
+                .info-desc {
+                    display:inline-block;
+                    color:$color-gray-1;
+                    font-size:$font-small;
+                    ~ .tooltip-icon {
+                        display:inline-block;
+                        width:18px;
+                        height:18px;
+                        vertical-align:middle;
+                        opacity:.7;
+                    }
+                    ~ .tooltip-box {
+                        padding-right:65px;
+                        dl {
+                            dt {
+                                font-weight:$font-weight-bold;
+                                font-size:$font-small;
+                                line-height: 1.43;
+                            }
+                            dd {
+                                padding-top:2px;
+                                color:$color-gray-1;
+                                font-size:$font-x-small;
+                                line-height: 1.5;
+                            }
+                            + p {
+                                margin-top:12px;
+                                font-weight:$font-weight-medium;
+                                line-height:1.43;
+                            }
+                        }
+                    }
+                }
+                .btn-close {
+                    top:16px;
+                    right:16px;
+                }
+            }
+        }
+    }
+    .my-section-wrap{
+        display:flex;
+        flex-flow:row wrap;
+        margin:80px -12px -12px;
+        .my-section{
+            width:50%;
+            padding:12px;
+            @include tablet {
+                flex:0 1 100%;
+            }
+            .title a{
+                display:inline-block;
+                font-weight:$font-weight-bold;
+                font-size:$font-large-2;
+                line-height:1.33;
+                @include mobile {
+                    font-size:$font-medium;
+                }
+                &:after{
+                    content:'';
+                    display:inline-block;
+                    width:16px;
+                    height:16px;
+                    margin-left:13px;
+                    border:solid $color-default;
+                    border-width:0 0 2px 2px;
+                    transform:rotate(225deg);
+                }
+            }
+        }
+        @include mobile {
+            display:none;
+        }
+        @include mobile {
+            display:none;
+            + .my-section {
+                display:none;
+            }
+        }
+    }
+    
+    //나의 정보
+    .my-account {
+        position:relative;
+        margin-bottom:40px;
+        @include mobile {
+            margin-bottom:8px;
+        }
+        .my-text {
+            margin-bottom:32px;
+            padding-top:3px;
+            border-bottom:2px solid $color-default;
+            @include mobile {
+                margin:0 4px 15px;
+                border-bottom:0;
+            }
+            > a {
+                display:inline-block;
+                padding-bottom:22px;
+                font-weight:$font-weight-medium;
+                font-size:$font-medium;
+                line-height:24px;
+                vertical-align:top;
+                text-decoration:none;
+                @include mobile {
+                    padding-bottom:0;
+                }
+                .name {
+                    font-weight:$font-weight-bold;
+                    font-size:28px;
+                    line-height:1.29;
+                    letter-spacing:-.5px;
+                    @include mobile {
+                        font-size:$font-medium;
+                        &:after {
+                            content:'';
+                            display:inline-block;
+                            width:8px;
+                            height:8px;
+                            margin:0 0 3px 6px;
+                            border:solid $color-default;
+                            border-width:0 0 1px 1px;
+                            transform:rotate(225deg);
+                        }
+                    }
+                }
+                &:after {
+                    content:'회원 정보 수정';
+                    display:inline-block;
+                    margin:3px 0 0 14px;
+                    padding:.1em .9em .2em;
+                    color:$color-gray-1;
+                    font-weight:$font-weight-medium;
+                    font-size:$font-medium;
+                    line-height:1.5;
+                    vertical-align:top;
+                    background:$color-white;
+                    border-radius:22px;
+                    border:solid 1.5px rgba(221,221,221,.5);
+                    -webkit-background-clip:padding-box;
+                    background-clip:padding-box;
+                    @include mobile {
+                        overflow:hidden;
+                        position:absolute;
+                        width:1px;
+                        height:1px;
+                        padding:0;
+                        clip:rect(0, 0, 0, 0);
+                        white-space:nowrap;
+                    }
+                }
+            }
+        }
+        .my-info {
+            display:flex;
+            @include mobile {
+                margin-left:4px;
+            }
+            > li {
+                position:relative;
+                display:inline-block;
+                width:23.4%;
+                ~ li {margin-left:2.1%}
+                @include mobile {
+                    ~ li {margin-left:8px}
+                }
+                &:first-child {
+                    width:auto;
+                    margin-right:auto;
+                }
+                a {
+                    display:flex;
+                    flex-flow:column;
+                    height:100%;
+                    border-radius:8px;
+                    @include mobile {
+                        border-radius:4px;
+                    }
+                    &.point {
+                        justify-content:center;
+                        .title{
+                            padding-top:9px;
+                            color:$color-gray-4;
+                            font-weight:$font-weight-medium;
+                            font-size:$font-large;
+                            line-height:1.44;
+                            @include mobile {
+                                padding-top:0;
+                                font-size:11px;
+                            }
+                        }
+                        .count {
+                            padding-top:8px;
+                            font-weight:$font-weight-bold;
+                            font-size:$font-large-6;
+                            line-height:1.17;
+                            > .unit {
+                                padding-left:8px;
+                                font-style:normal;
+                                font-size:36px;
+                                vertical-align:3px;
+                            }
+                            &:before {
+                                display:none;
+                            }
+                            @include mobile {
+                                font-size:$font-large-1;
+                                > .unit {
+                                    padding-left:0;
+                                    font-size:$font-large-1;
+                                    vertical-align:0;
+                                }
+                                &:after {
+                                    content:'';
+                                    display:inline-block;
+                                    width:8px;
+                                    height:8px;
+                                    border:solid $color-default;
+                                    border-width:0 0 1px 1px;
+                                    transform:rotate(225deg);                                    
+                                    @include mobile {
+                                        margin:0 0 4px 4px;
+                                    }
+                                }
+                            }
+                        }
+                        .join {
+                            padding-top:8px;
+                            font-weight:$font-weight-bold;
+                            font-size:48px;
+                            line-height:1.17;
+                            @include mobile {
+                                padding-top:4px;
+                                font-size:$font-large-1;
+                                line-height:26px;
+                                &:after {
+                                    content:'';
+                                    display:inline-block;
+                                    width:8px;
+                                    height:8px;
+                                    border:solid $color-default;
+                                    border-width:0 0 1px 1px;
+                                    transform:rotate(225deg);                                    
+                                    @include mobile {
+                                        margin:0 0 4px 4px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.coupon, &.myprod {
+                        padding:1em 1.7vw;
+                        background:$color-white;
+                        border:solid 1px #ff9e9e;
+                        @include mobile {
+                            padding:10px 9px 9px 8px;
+                        }
+                        .title {
+                            font-weight:$font-weight-regular;
+                            font-size:$font-large;
+                            line-height:1.44;
+                            @include mobile {
+                                font-size:10px;
+                            }
+                        }
+                        .count {
+                            display:inline-flex;
+                            align-items:center;
+                            padding-top:6px;
+                            font-weight:$font-weight-bold;
+                            font-size:$font-large-5;
+                            line-height:1.2;
+                            @include mobile {
+                                padding-top:7px;
+                                padding-right:0;
+                                font-size:$font-x-small;
+                                line-height:1;
+                            }
+                            > .unit {
+                                padding:8px 0 0 2px;
+                                font-style:normal;
+                                font-weight:$font-weight-medium;
+                                font-size:$font-large-2;
+                                line-height:1.33;
+                                @include mobile {
+                                    padding:0 0 0 1px;
+                                    font-size:$font-x-small;
+                                    line-height:1;
+                                }
+                            }
+                            &:before {
+                                content:'';
+                                width:40px;
+                                height:40px;
+                                margin-top:2px;
+                                margin-left:-2%;
+                                margin-right:auto;
+                                background:no-repeat 0 100%/100%;
+                                @include tablet {
+                                    width:32px;
+                                    height:32px;
+                                }
+                                @include mobile {
+                                    width:20px;
+                                    height:20px;
+                                }
+                            }
+                        }
+                    }
+                    &.coupon .count:before {background-image:url('/lg5-common/images/MYS/ico-mycoupon.svg')}
+                    &.myprod .count:before {background-image:url('/lg5-common/images/MYS/ico-myprod.svg')}
+                }
+            }
+        }
+
+        .my-quick {
+            position:absolute;
+            top:3px;
+            right:0;
+            @include mobile {
+                top:0;
+                right:4px;
+            }
+            .btn-icon {
+                display:inline-block;
+                width:32px;
+                height:32px;
+                background:no-repeat 50% 50%/100%;
+                ~ .btn-icon{margin-left:28px}
+                @include mobile {
+                    width:24px;
+                    height:24px;
+                    ~ .btn-icon{margin-left:20px}
+                }
+                &.prod{
+                    &-wish{background-image:url('/lg5-common/images/MYS/ico-wish.svg')}
+                    &-hist{background-image:url('/lg5-common/images/MYS/ico-recent.svg')}
+                    &-setup{
+                        display:none;
+                        background-image:url('/lg5-common/images/MYS/ico-setup.svg');
+                        @include mobile {
+                            display:inline-block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 나의 활동내역
+    .my-act-group {
+        position:relative;
+        padding-top:64px;
+        &:first-of-type {padding-top:7px}
+        &:last-of-type {padding-bottom:41px}
+        @include mobile {
+            padding-top:58px;
+            &:last-of-type {padding-bottom:53px}
+        }
+        .sub-title {
+            margin-bottom:16px;
+            font-size:22px;
+            line-height:1.36;
+            @include mobile {
+                margin-bottom:12px;
+                padding-left:4px;
+                font-size:$font-small;
+            }
+            .count {
+                font-weight:$font-weight-bold;
+                font-size:22px;
+                line-height:1.36;
+                @include mobile {
+                    font-size:$font-small;
+                }
+            }
+        }
+        .list-more {
+            position:absolute;
+            bottom:-29px;
+            right:0;
+            z-index:10;
+            .btn-link {
+                text-decoration:none;
+                @include mobile {
+                    color:$color-gray-1;
+                    font-size:$font-x-small;
+                }
+            }
+            @include mobile {
+                bottom:-36px;
+                .btn-link:after {
+                    background-size:12px;
+                }
+            }
+        }
+    }
+    .my-activity-list {
+        display:flex;
+        flex-flow:row wrap;
+        margin:-12px;
+        li{
+            width:50%;
+            padding:12px;
+            .myact-cont {
+                position:relative;
+                min-height:144px;
+                padding:32px 20px 32px calc(96px + 12.75%);
+                border-radius:8px;
+                background:#f9f9f9;
+                .status {
+                    display:inline-block;
+                    font-weight:$font-weight-bold;
+                    font-size:$font-large-1;
+                    line-height:1.4;
+                    @include textEllipsis;
+                    &:before {
+                        content:'';
+                        position:absolute;
+                        top:24px;
+                        left:8.5%;
+                        display:inline-block;
+                        width:96px;
+                        height:96px;
+                        background:$color-white no-repeat 50% 50%/50%;
+                        border-radius:50%;
+                    }
+                }
+                &.voc > .status {margin-top:10px}
+                .prod-info {
+                    .cate {
+                        position:absolute;
+                        top:20px;
+                        right:20px; 
+                        display:inline-block;
+                        padding:.3em .9em;
+                        color:$color-gray-1;
+                        font-weight:$font-weight-medium;
+                        font-size:$font-medium;
+                        line-height:1.5;
+                        background:$color-white;
+                        border-radius:22px;
+                        border:solid 1.5px rgba(221,221,221,.5);
+                        -webkit-background-clip:padding-box;
+                        background-clip:padding-box;
+                    }
+                    .prod {
+                        display:block;
+                        padding-top:5px;
+                        font-weight:$font-weight-medium;
+                        font-size:$font-medium;
+                        line-height:1.5;
+                        color:$color-gray-1;
+                        @include textEllipsis;
+                        &.date{
+                            padding-top:0;
+                            padding-bottom:6px;
+                            color:#da0f47;
+                        }
+                    }
+                    .model {
+                        display:block;
+                        padding-top:2px;
+                        font-weight:$font-weight-medium;
+                        font-size:$font-small;
+                        line-height:1.43;
+                        color:$color-gray-4;
+                        @include textEllipsis;
+                    }
+                }
+                .btn-myact {
+                    position:absolute;
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                    z-index:0;
+                }
+                &.order {
+                    .status {
+                        &.prod {
+                            &-01:before {background-image:url(/lg5-common/images/MYS/ico-order-prod-01.svg)}
+                            &-02:before {background-image:url(/lg5-common/images/MYS/ico-order-prod-02.svg)}
+                            &-03:before {background-image:url(/lg5-common/images/MYS/ico-order-prod-03.svg)}
+                            &-04:before {background-image:url(/lg5-common/images/MYS/ico-order-prod-04.svg)}
+                            &-05:before {background-image:url(/lg5-common/images/MYS/ico-order-prod-05.svg)}
+                        }
+                        &.care {
+                            &-01:before {background-image:url(/lg5-common/images/MYS/ico-order-care-01.svg)}
+                            &-02:before {background-image:url(/lg5-common/images/MYS/ico-order-care-02.svg)}
+                        }
+                    }
+                }
+                &.visit {
+                    .status {
+                        &.reservation:before {background-image:url(/lg5-common/images/MYS/ico-visit-reservation.svg)}
+                    }
+                }
+                &.voc {
+                    .status {
+                        &.receipt:before {background-image:url(/lg5-common/images/MYS/ico-status-receipt.svg)}
+                        &.progress:before {background-image:url(/lg5-common/images/MYS/ico-status-progress.svg)}
+                        &.completion:before {background-image:url(/lg5-common/images/MYS/ico-status-completion.svg)}
+                        &.ready:before {background-image:url(/lg5-common/images/MYS/ico-status-ready.svg)}
+                    }
+                }
+                &.svc {
+                    .status {
+                        &.receipt:before {background-image:url(/lg5-common/images/MYS/ico-status-receipt.svg)}
+                        &.progress:before {background-image:url(/lg5-common/images/MYS/ico-status-progress.svg)}
+                        &.completion:before {background-image:url(/lg5-common/images/MYS/ico-status-completion.svg)}
+                        &.visit-ready:before {background-image:url(/lg5-common/images/MYS/ico-svc-visit-ready.svg)}
+                        &.svc-progress:before {background-image:url(/lg5-common/images/MYS/ico-svc-progress.svg)}
+                        &.svc-completion:before {background-image:url(/lg5-common/images/MYS/ico-svc-completion.svg)}
+                        &.counselling-ready:before {background-image:url(/lg5-common/images/MYS/ico-svc-counselling-ready.svg)}
+                    }
+                }
+            }
+            @include tablet {
+                flex:0 1 100%;
+                .myact-cont {
+                    padding:28px 128px 28px 168px;
+                    .status{
+                        &:before{
+                            left:48px;
+                        }
+                    }
+                }
+            }
+            @include mobile {
+                flex-flow:column;
+                margin-bottom:-16px;
+                .myact-cont {
+                    min-height:80px;
+                    padding:12px 44px 12px 88px;
+                    .status{
+                        margin-top:3px;
+                        font-size:13px;
+                        &:before{
+                            top:10px;
+                            left:12px;
+                            width:60px;
+                            height:60px;
+                            background:$color-white no-repeat 50% 50%/32px;
+                        }
+                    }
+                    .prod-info {
+                        .cate {
+                            top:12px;
+                            right:12px;
+                            padding:4px 7px 4px;
+                            font-size:11px;
+                            line-height:1;
+                        }
+                        .prod {
+                            padding-top:3px;
+                            font-size:11px;
+                            &.date{
+                                padding-bottom:3px;
+                            }
+                        }
+                        .model {
+                            padding-top:0;
+                            font-size:10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 마이 베스트샵
+    .my-beshop-list {
+        display:flex;
+        flex-flow:row;
+        margin:-12px -12px -24px;
+        @include tablet {
+            flex-flow:column;
+        }
+        @include mobile {
+            flex-flow:row wrap;
+            margin:0;
+        }
+        .mo-br {
+            display:none;
+            @include mobile {
+                display:inline-block;
+            }
+        }
+        .list-item {
+            margin:12px;
+            font-size:0;
+            border-radius:8px;
+            box-shadow:1px 1px 13px -3px rgba(0, 0, 0, .14);
+            .btn-mybeshop {   
+                position:relative;         
+                display:inline-block;
+                width:100%;
+                height:100%;
+            }
+            &:nth-of-type(1) {
+                width:40.5%;
+                .btn-mybeshop {
+                    padding:2.9em 2em;
+                    color:$color-default;
+                    font-weight:$font-weight-bold;
+                    font-size:$font-large-1;
+                    line-height:1.4;
+                    &:after {
+                        content:'';
+                        display:inline-block;
+                        position:absolute;
+                        right:0;
+                        bottom:0;
+                        width:33%;
+                        height:86%;
+                        margin-right:30px;
+                        background:url(/lg5-common/images/MYS/img-mybestshop-svc@2x.png) no-repeat 100% 100%/contain;
+                    }
+                }                
+                @include tablet {width:100%}
+                @include mobile {
+                    width:100%;
+                    margin:0;
+                    .btn-mybeshop {
+                        padding:2.6em 1.5em;
+                        font-size:$font-small;
+                        background-size:100px;
+                    }
+                }
+            }
+            &:nth-of-type(2) {
+                position:relative;
+                width:40.5%;
+                .btn-mybeshop {
+                    width:50%;
+                    padding:1.88em 1em;
+                    color:$color-default;
+                    font-weight:$font-weight-medium;
+                    font-size:$font-medium;
+                    line-height:1.5;
+                    text-align:center;
+                    &:before{
+                        content:'';
+                        display:block;
+                        width:48px;
+                        height:48px;
+                        margin:0 auto 12px;                  
+                        background:no-repeat 50% 50%/contain;
+                        @include tablet {
+                            display:block;
+                        }
+                        @include mobile {
+                            display:block;
+                        }
+                    }
+                    &.favor:before{
+                        background-image:url(/lg5-common/images/MYS/ico-mybestshop-04.svg);
+                    }
+                    &.coupon:before{
+                        background-image:url(/lg5-common/images/MYS/ico-mybestshop-05.svg);
+                    }
+                }
+                &:after {
+                    content:'';
+                    position:absolute;
+                    top:33%;
+                    left:50%;
+                    display:inline-block;
+                    width:1px;
+                    height:33%;
+                    background:#ddd;
+                }
+                @include tablet {width:100%}
+                @include mobile {
+                    width:69%;
+                    margin:12px 0 0 0;
+                    border-radius:0;
+                    box-shadow:none;
+                    .btn-mybeshop {
+                        width:calc(50% - 12px);
+                        margin:0 12px 0 0;
+                        padding:12px;
+                        font-size:10px;
+                        line-height:1.4;
+                        border-radius:8px;
+                        box-shadow:1px 1px 13px -3px rgba(0, 0, 0, .14);
+                        &:before {
+                            width:24px;
+                            margin:0 auto 6px;
+                            height:24px;
+                        }
+                    }
+                    &:after {
+                        display:none;
+                    }
+                }
+            }
+            &:nth-of-type(3) {
+                overflow:hidden;
+                width:19%;
+                box-shadow:none;
+                .btn-mybeshop {
+                    padding:1.5em 2em;
+                    color:$color-default;
+                    font-weight:$font-weight-medium;
+                    font-size:$font-large-1;
+                    line-height:1.5;
+                    text-align:left;
+                    &.interior {
+                        background:#f9f9f9;
+                        &:after {
+                            content:'';
+                            display:inline-block;
+                            position:absolute;
+                            right:0;
+                            bottom:0;
+                            width:32px;
+                            height:32px;
+                            margin:30px;
+                            background:url(/lg5-common/images/MYS/ico-mybestshop-outlink.svg) no-repeat 50% 50%/contain;
+                        }
+                    }
+                }
+                @include tablet {width:100%;
+                    .ta-no-br{
+                        display:none;
+                    }
+                }
+                @include mobile {
+                    width:31%;
+                    margin:12px 0 0;
+                    .ta-no-br{
+                        display:inline-block;
+                    }
+                    .btn-mybeshop {
+                        padding:12px;
+                        font-size:11px;
+                        line-height:1.4;
+                        &.interior:after {
+                            width:16px;
+                            height:16px;
+                            margin:16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    //찜한, 최근본
+    .my-prod-box {
+        padding:32px 24px;
+        background:$color-white;
+        border-radius:8px;
+        box-shadow:1px 1px 13px -3px rgba(0, 0, 0, .14);
+        @include tablet {
+            min-height:inherit;
+        }
+        .my-prod-list {
+            min-height:305px;
+            > li {
+                ~ li{
+                    margin-top:8px;
+                    padding-top:8px;
+                    border-top:1px solid $color-border;
+                }
+                .item {
+                    position:relative;
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:center;
+                    width:100%;
+                    height:100%;
+                    min-height:144px;
+                    padding:12px 0 12px 120px;
+                    .product-image {
+                        position:absolute;
+                        top:12px;
+                        left:0;
+                        width:120px;
+                        > a {
+                            display:block;
+                            text-align:center;
+                            img {
+                                width:100%;
+                                max-width:250px;
+                            }
+                        }
+                    }
+                    .product-contents{
+                        position:relative;
+                        padding:0 0 16px 16px;
+                        .product-info {
+                            .product-name {
+                                a {
+                                    display:inline-block;
+                                    width:100%;
+                                    color:#000;
+                                    font-weight:$font-weight-bold;
+                                    font-size:$font-large-1;
+                                    line-height:1.4;
+                                    @include textEllipsis;
+                                }
+                            }
+                            .sku {
+                                padding-top:2px;
+                                color:$color-gray-1;
+                                font-weight:$font-weight-medium;
+                                font-size:$font-medium;
+                                line-height:1.63;
+                            }
+                        }
+                    }
+                    @include mobile {
+                        display:table;
+                        padding:0;
+                        .product-image {
+                            display:table-cell;
+                            width:100px;
+                            min-height:100px;
+                            vertical-align:middle;
+                        }
+                        .product-info {
+                            padding-top:0;
+                            padding-left:16px;
+                            .product-name {
+                                max-height:44px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .no-data{
+            padding:145px 0;
+            color:$color-gray-4;
+        }
+    }
+
+    // 제품 추천
+    .recommend-product {
+        margin:-13px -12px 0;
+        .indi-wrap {
+            bottom:-26px;
+            li {
+                .btn-indi{
+                    width:18px;
+                    height:18px;
+                    &:before {
+                        width:10px;
+                        height:10px;
+                        background-color:#d8d8d8;
+                    }
+                }
+                &.on .btn-indi{
+                    width:18px;
+                    height:18px;
+                    &:before {
+                        width:10px;
+                        height:10px;
+                        background-color:#000;
+                    }
+                }
+            }
+        }
+        .slide-controls .btn-arrow {
+            &.prev {
+                left:-58px;
+                @media screen and (max-width:1536px) {
+                    left:-15px;
+                }
+            }
+            &.next {
+                right:-58px;
+                @media screen and (max-width:1536px) {
+                    right:-15px;
+                }
+            }
+        }
+        .slide-track {
+            display:flex;
+            flex-wrap:wrap;
+            counter-reset:listCounter;
+        }
+        .slide-conts {
+            padding:12px;
+            &:before{
+                counter-increment:listCounter;
+                content:counter(listCounter);
+                display:inline-block;
+                position:absolute;
+                top:12px;
+                left:12px;
+                z-index:10;
+                width:36px;
+                height:36px;
+                color:$color-gray-1;
+                font:$font-weight-medium 18px/2 Arial;
+                text-align:center;
+                background:#f0f0f0;
+            }
+            &:nth-of-type(-n+3) {
+                &:before {
+                    color:$color-white;
+                    background:#e81953;
+                }
+            }
+        }
+        .item-box {
+            position:relative;
+            height:100%;
+            padding:32px 24px;
+            border-radius:8px;
+            background-color:$color-white;
+            box-shadow:1px 1px 13px -3px rgba(0, 0, 0, .14);
+        }
+        .product-image {
+            padding-top:18px;
+            a {
+                display:block;
+                text-align:center;
+                img {
+                    width:100%;
+                    max-width:150px;
+                }
+            }
+        }
+        .product-info {
+            .product-name {
+                margin-top:12px;
+                a {
+                    font-weight:700;
+                    font-size:15px;
+                    line-height:1.6;
+                    @include textClipClamp(2);
+                }
+            }
+            .sku {
+                display:block;
+                margin-top:8px;
+                font-size:$font-small;
+                line-height:1.43;
+            }
+            .views-count {
+                display:inline-block;
+                position:absolute;
+                top:16px;
+                right:16px;
+                color:$color-gray-4;
+                font-size:$font-x-small;
+                line-height: 1.5;
+                &:before{
+                    content:'조회수';
+                    display:inline-block;
+                    padding-right:4px;
+                }
+            }
+        }
+    }
+    
+    // Main Bottom Menu
+    @include mobile {
+        .my-navi-section {
+            margin:0 -16px;
+            display:block;
+            width:calc(100% + 32px);
+            padding:32px 0 0;
+            &:before {
+                content:'';
+                display:block;
+                width:100%;
+                height:10px;
+                background:$color-bg;
+            }
+            .mypage-menu {
+                padding-top:6px;
+                > li {
+                    margin-top:28px;
+                    .my-dep1{
+                        display:block;
+                        margin:0 16px;
+                        padding:12px 4px 9px;
+                        color:$color-default;
+                        font-weight:$font-weight-bold;
+                        font-size:$font-small;
+                        line-height:17px;
+                        border-bottom:1px solid $color-border;
+                    }
+                    .myp-sub {
+                        display:flex;
+                        flex-flow:row wrap;
+                        margin-top:2px;
+                        li {
+                            width:50%;
+                            a {
+                                display:block;
+                                padding:14px 4px 11px 20px;
+                                font-weight:$font-weight-regular;
+                                font-size:$font-x-small;
+                                line-height:20px;
+                                color:$color-default;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 마이페이지 > LNB (LGECOMVIO-30)
+.mypage .lnb-wrap .lnb.lnb-new .mypage-lnb {
+    > li:nth-child(n+2){
+        margin-top:22px;
+    }
+    .myp-sub {
+        margin-top:6px;
+        > li {
+            margin:0;
+            padding:4px 0;
+            a {
+                color:$color-default;
+                font-weight:$font-weight-regular;
+                line-height:1.43;
+                &[target=_blank]:after{
+                    display:none;
+                }
+            }
+        }
+    }
+}

@@ -361,9 +361,33 @@
 					width: 100%;
 					z-index: 1;
                 }
+				/* BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건 */
                 &.bg-lightgray {
                     background-color: #f4f4f4;
+					.dropInfo_closeBtn {
+                        border-color: #000 !important;
+                        color: #000 !important;
+                    }
                 }
+				&.bg-black {
+                    background-color: #000;
+					p {
+						color: #fff;
+					}
+                    .bullet-list {
+                        li {
+                            color: #fff;
+                        }
+                    }
+                    .dropInfo_closeBtn {
+                        border-color: #fff !important;
+                        color: #fff !important;
+                        &::after {
+                            background-image: url('/lg5-common/images/icons/btn-arr-24x24-white2.svg');
+                        }
+                    }
+                }
+				/* //BTOCSITE-13395 25번 컴포넌트 디스클라이머 숨김처리 기능관련 건 */
                 p {
                     color: #000;
                     line-height: 24px;

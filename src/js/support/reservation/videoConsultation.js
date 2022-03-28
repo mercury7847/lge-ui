@@ -59,6 +59,8 @@
             self.$calendarTime = self.$calendarWrap.find('.time-wrap');
 
             self.$authPopup = $('#certificationPopup');
+            // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+            self.warrantyGuide = $('#ratesWarrantyGuidePopup');
 
             self.resultUrl = self.$searchModelWrap.data('resultUrl');
             self.$cont.find('#route').val(detect.isMobile ? 'WWW2' : 'WWWW1');
@@ -488,6 +490,51 @@
                 authManager.confirm(this, function(success, result) {
                     success && self.requestComplete();
                 });
+            });
+
+            // 요금 및 보증 기간 안내
+            self.warrantyGuide.on('modalhide', function(){
+                var $this = $(this);
+                var $tab = $this.find('.ui_tab');
+                
+                // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+                $tab.vcTab("select", 0);
+            });
+
+            // BTOCSITE-13601 모델명 확인 방법 > 이미지 확대 추가
+            var $imgView = $('.btn-img-view');
+            $('#select2').on('change', function(){
+    
+                // 이미지가 없는 경우 no-img 삭제
+                if(!(lgkorUI.NO_IMAGE_MODEL_NAME != $imgView.find('img').attr('src'))) {
+                    $imgView.find('img').removeClass('no-img');
+                }
+            });
+
+            // BTOCSITE-13601 모델명 확인 방법 > 이미지 확대 추가
+            $imgView.on('click', function(e) {
+                e.preventDefault();
+            
+                if($(this).find('img').hasClass('no-img')) return;
+    
+                var domain=location.origin;
+                var agent = navigator.userAgent;
+                var imgUrl=domain + $(this).attr('href');
+                var imgAlt = $(this).find('img').attr('alt');
+                if(!vcui.detect.isMobileDevice){
+                    window.open(imgUrl, '', '');
+                    return
+                }
+
+                var currOption = $('#select2 option:selected');
+                var popTitle = currOption.hasClass('placeholder') ? '모델명 확인 방법' : currOption.text();
+                var $zoomPopup = $('#imgZoomPopup');
+                var $zoomImg = $('#imgZoomPopup img');
+                $zoomImg.attr('src', imgUrl);
+                $zoomImg.attr('alt', imgAlt);
+
+                $zoomPopup.find('.tit').html('<span>'+popTitle+'</span>');
+                $zoomPopup.vcModal('open');
             });
         }
     }

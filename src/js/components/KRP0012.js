@@ -27,7 +27,7 @@
                 if(isMobile){
                     $contWrap.append('<style>.crema-product-reviews > iframe { max-width: 100% !important; }</style><div class="crema-product-reviews" data-widget-id="' + "26" + '" data-product-code="' + productcode + '"></div>');
                 } else {
-                    $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '"></div>');
+                    $contWrap.append('<div class="crema-product-reviews KRP0012-crema-review" data-product-code="' + productcode + '"></div>');
                 }
 
                 //상품 소셜 위젯
@@ -49,7 +49,7 @@
         reviewWrite: function() {
             var $section = $('.KRP0012');
             var ajaxUrl = '/mkt/api/product/retrieveProductRegisterInfo';
-            if(location.hostname == 'localhost' || location.port == '3010') ajaxUrl = '/lg5-common/data-ajax/pdp/pdp_status.json';
+            if(location.pathname == '/html/components/KRP0012.html') ajaxUrl = '/lg5-common/data-ajax/pdp/pdp_status.json';
             var options = {
                 isMobile: vcui.detect.isMobile,
                 loginFlag : digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? true : false,
@@ -69,15 +69,41 @@
                 modelId: (digitalData.productInfo)? digitalData.productInfo.model_id:null,
                 unifyId: (digitalData.userInfo)? digitalData.userInfo.unifyId:null,
             };
+            var chkIE = false;
+            var mutationObserver = new MutationObserver(function(entries) {
+                entries.forEach(function(entry){
+                    var id = crema.popup !== undefined ? crema.popup.iframe_id:'crema-review-popup';
+                    if(vcui.detect.isIE) {
+                        if($(entry.target).is('#'+id)) {
+                            chkIE = true;
+                        }
+                        if(chkIE && !$('#'+id).is(':visible')) {
+                            console.log('....chkIE')
+                            chkIE = false;
+                            $('.KRP0012-crema-review').find('iframe').attr('src', $('.KRP0012-crema-review').find('iframe').attr('src'))
+                        }
+                    }else {
+                        if(entry.removedNodes.length > 0) {
+                            $(entry.removedNodes).each(function() {
+                                if($(this).is('#'+id)) {
+                                    // console.log('remove', crema)
+                                    crema.message_handler.reload_all(crema.iframe_manager.iframes);
+                                }
+                            })
+                        }
+                    }
+				});
+            }); 
             lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
                 var data = result.data[0];
+                var appendTarget = $section.find('.review-info-text').size()>0 ? $section.find('.review-info-text'): $section.find('.review-wrap');
                 options.orderStatus = (options.loginFlag && lgkorUI.stringToBool(data.isregistered)) ? true:false;
                 options.ownStatus = lgkorUI.stringToBool(data.isregistered);
                 options.isProduct = lgkorUI.stringToBool(data.isproduct);
-                console.log(options, sendata)
-                $section.find('.review-info-text').append('<span style="padding: 0 3px;font-size:6px;background-color:#ff746a;color: #fff">STAGING: '+options.loginFlag+' / '+options.ownStatus+'/'+sendata.modelName+'/'+sendata.modelId+'<a href="/html/components/KRP0012.html">test url</a><a href="https://sreview1.cre.ma/lge.co.kr/mobile/reviews/new?close_url=https%3A%2F%2Fwwwdev50.lge.co.kr%2Ftvs%2Foled88zxkna%23pdp_review&product_code=OLED88ZXKNA&review_source=mobile_my_orders&app=0&device=mobile&secure_username=V292147c59acedc6e6bce4a638cb4007c3c8eb0de709484d17b102a51ab0b046b627424c38a031ce562903d8e3e038ddec&secure_user_name=V2cb54ba54b131b5ee6f38c12c31960aaa&secure_device_token=HNsfm0BNzgPnfC80">test2 url</a></span>')
-                $section.find('.review-info-text').before(vcui.template(options.cremaReviewTemplate, options));
+                appendTarget.before(vcui.template(options.cremaReviewTemplate, options));
                 lgkorUI.cremaReload();
+
+                mutationObserver.observe($('body')[0], { attributes: true, childList: true, subtree: true });
             },"POST", null, null, null, null, function(request){
                 var err = (request == undefined) ? 'undefined' : request.status;
                 console.log("ERROR : " + err);

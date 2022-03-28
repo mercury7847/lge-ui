@@ -1,13 +1,12 @@
 {
-  "data": {
-    "orderDate": "2022.01.04",
-    "deliveryStatus": 4,
-    "deliveryStatusDate": "2020.02.22 도착 예정",
-    "deliveryDriver": {
-      "name": "박*은",
-      "phoneNumber": "010-****-1234"
-    }
-  },
+  "data": [
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 중", "dueYmd": "2020.02.22"},
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 준비 중", "delivWishYmd": "2020.02.22"},
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 완료", "receiveYmd": "2020.02.22"},
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 중", "dueYmd": "2020.02.22"},
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 준비 중", "delivWishYmd": "2020.02.22"},
+    {"modelCd": "W822GBB462.AKOR","ordStatusTypeNm": "배송 완료", "receiveYmd": "2020.02.22"}
+  ],
   "message": "",
   "status": "success"
 }

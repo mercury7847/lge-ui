@@ -240,7 +240,7 @@ gulp.task("jsCompile:components", () => gulp
 gulp.task("jsCompile:support", () => gulp
     .src(src + "/js/support/**/*")
     .pipe(sourcemaps.init())
-    .pipe(gulpif(["**/*.js", "**/!*.min.js"], uglify()))
+    // .pipe(gulpif(["**/*.js", "**/!*.min.js"], uglify()))
     .pipe(gulpif(["**/*.js", "**/!*.min.js"], rename({ suffix: ".min" })))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(dist + sourceFolder + "/js/support/"))

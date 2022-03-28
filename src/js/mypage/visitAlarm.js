@@ -12,8 +12,8 @@
                 '</div>' +
             '</div>' +
             '<div class="svc-lists"><p>{{#if type=="prev"}}이전{{#elsif type=="next"}}다음{{#else}}이후{{/if}} 방문 서비스 상세 내역</p>' +
-                '<div class="svc-wrap"><ul class="svc-details">' +
-                    '{{#each item in serviceList}}<li>{{item.name}}({{item.sku}}){{#if item.desc}} - {{item.desc}}{{/if}}</li>{{/each}}' +
+                '<div class="svc-wrap"><ul class="svc-details" data-scheduled-to-visit-flag="{{#if type=="prev"}}previous{{#elsif type=="next"}}next{{#else}}after{{/if}}">' +
+                    '{{#each item in serviceList}}<li data-visit-times="{{item.visitTimes}}" data-cont-line-seq="{{item.sku}}"><a href="#n" class="btn-link">{{item.name}}({{item.sku}}){{#if item.desc}} - {{item.desc}}{{/if}}</a></li>{{/each}}' +
                 '</ul></div>' +
                 '{{#if serviceList.length > 5}}<div class="more-view-wrap" aria-hidden="true">' +
                     '<span class="more-view-btn">더보기</span>' +
@@ -110,6 +110,11 @@
                 self.$timeTableWrap = self.$popupChangeVisitDate.find('div.timetable-wrap:eq(0)');
                 self.$timeTableWrapFirst = self.$popupChangeVisitDate.find('div.timetable-wrap:eq(1)');
                 self.$timeTableWrapNoData = self.$popupChangeVisitDate.find('div.timetable-wrap:eq(2)');
+                
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+                self.$popupServiceDetail = $('#popupServiceDetail'); // 방문상세내역팝업
+                self.$myVisitSchedule = self.$contents.find('div.my-visit-schedule'); // 방문일정영역
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 END
             },
 
             bindEvents: function() {
@@ -178,6 +183,166 @@
                     self.$popupChangeVisitDate.vcModal();
                     */
                 });
+                
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+                self.$list.on('click', '.svc-details li', function(e){
+                	
+                	e.preventDefault();
+                	
+                	var $this = $(this);
+                	var scheduledToVisitFlag = $this.parent().attr('data-scheduled-to-visit-flag'); // 이전/다음/이후 방문
+                	var ajaxUrl = self.$myVisitSchedule.attr('data-detail-list-url');
+                	
+                	var param = {
+                		contLineSeq : $this.attr('data-cont-line-seq'),
+                		visitTimes : $this.attr('data-visit-times'),
+                		scheduledToVisitFlag : scheduledToVisitFlag
+                	}
+                	
+                	lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
+                		
+                		console.log(result.status);
+                		
+                		if (result.status == "success") {
+							
+                			var data = result.data;
+                			var contInfo = data.contInfo;
+                    		var scheduleInfo = data.scheduleInfo;
+                    		
+                    		console.log(data);
+                    		
+                    		// 상세정보 SET
+                    		var $productInfo			= self.$popupServiceDetail.find('.product-info');				// 제품명(제품코드)
+                    		var $contractExpirationDate	= self.$popupServiceDetail.find('.contract-expiration-date');	// 계약만료일
+                    		var $managerName			= self.$popupServiceDetail.find('.manager-name');				// 매니저 이름
+                    		var $managerPhone			= self.$popupServiceDetail.find('.manager-phone');				// 매니저 연락처
+                    		var $timesInfo				= self.$popupServiceDetail.find('.times-info');					// 회차
+                    		var $visitYn				= self.$popupServiceDetail.find('.info-list .fc_point');		// 방문예정/방문완료
+                    		var $visitShedule			= self.$popupServiceDetail.find('.visit-schedule');				// 방문일정
+                    		var $filterReplacementYn	= self.$popupServiceDetail.find('.filter-replacement-yn');		// 필터교체 여부
+                    		
+                    		var modelCode = "-";
+                    		if (contInfo.MODEL_CD != undefined && contInfo.MODEL_CD != "") {
+                    			modelCode = contInfo.MODEL_CD.indexOf(".") !== -1 ? contInfo.MODEL_CD.substr(0, contInfo.MODEL_CD.indexOf(".")) : contInfo.MODEL_CD; 
+                    		}
+                    		var productInfo =  contInfo.CATEGORY_NM_KOR + "(" + modelCode + ") 렌탈/케어";
+                    		var contractExpirationDate	= contInfo.CONT_END_DATE.substr(0,4) + "년 "
+                    									+ contInfo.CONT_END_DATE.substr(4,2) + "월 "
+                    									+ contInfo.CONT_END_DATE.substr(6,2) + "일까지 계약"
+                    									+ "(1회 / "+ contInfo.VISIT_CYCLE +"개월)"; 
+                    		var managerName = scheduleInfo.VISIT_USER_NM + " 매니저";
+                    		var visitUserHpNo = scheduleInfo.VISIT_USER_HP_NO ? 
+                    				scheduleInfo.VISIT_USER_HP_NO.substr(0, 3) + "-" + 
+                    				scheduleInfo.VISIT_USER_HP_NO.substr(3, 4) + "-" + 
+                    				scheduleInfo.VISIT_USER_HP_NO.substr(7, 4) : "-";
+                    		var managerPhone = "(" + visitUserHpNo + ")";
+                    		var timesInfo = scheduleInfo.VISIT_TIMES + "회차" ;
+                    		var visitYn = (scheduledToVisitFlag == "previous") ? "방문완료" : "방문예정";
+                    		var visitSheduleDtl = "-";
+                    		if (scheduleInfo.VISIT_CONFM_DATE != undefined && scheduleInfo.VISIT_CONFM_DATE != "") {
+                    			var visitSheduleTemp = scheduleInfo.VISIT_CONFM_DATE.replace(/(\s*)/g, ""); // 공백제거 
+                        		visitSheduleTemp = visitSheduleTemp.replaceAll("-", "");
+                        		
+                        		visitSheduleDtl = visitSheduleTemp.substr(0, 4) + "년 "
+                        						+ visitSheduleTemp.substr(4, 2) + "월 "
+                        						+ visitSheduleTemp.substr(6, 2) + "일 "
+                        						+ visitSheduleTemp.substr(8, 5);
+                    		}
+                    		
+                    		var filterReplacementYn	= scheduleInfo.FILTER_NAME.length > 0 ? "O(" + scheduleInfo.FILTER_NAME.toString() + ")" : "X";
+                    		
+                    		$productInfo.text(productInfo);
+                    		$contractExpirationDate.text(contractExpirationDate);
+                    		$managerName.text(managerName);
+                    		$managerPhone.text(managerPhone);
+                    		$timesInfo.text(timesInfo);
+                    		$visitYn.text(visitYn);
+                    		$visitShedule.text(visitSheduleDtl);
+                    		$filterReplacementYn.text(filterReplacementYn);
+                    		
+                    		// 회차별방문내역 SET
+                    		var $historyOfVisits	= self.$popupServiceDetail.find('.history-of-visits');	// 회차별방문내역
+                    		var visitTimes			= "";	// 회차
+                    		var progressVal			= "";	// 진행상태
+                    		var visitShedule		= "-";	// 방문일정
+                    		var managerInfo			= "-";	// 매니저정보
+                    		var filterReplacementYn	= "X";	// 필터교체여부
+                    		var html 				= "";
+                    		
+                    		if ( data.scheduleList.length > 0 ) {
+                    			data.scheduleList.forEach(function(scheduleInfoTemp){
+                        			
+                        			visitTimes = scheduleInfoTemp.VISIT_TIMES;
+                        			
+                        			if (scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != "") {
+                        				// 매니저 방문완료일(VISIT_DATE) 이 있을경우 방문완료
+                        				progressVal	= "방문완료";	
+                        			} else {
+                        				// 매니저 방문완료일(VISIT_DATE) 이 없을경우
+                        				if (scheduleInfoTemp.NOT_VISIT_REASON_NM != undefined && scheduleInfoTemp.NOT_VISIT_REASON_NM != "") {
+                        					// 방문연기 사유가 있을경우
+                        					progressVal = "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")"
+                        				} else {
+                        					// 방문연기 사유가 없을경우
+                        					progressVal = "방문연기<br>(-)";
+                        					if (scheduleInfoTemp.VISIT_CONFM_DATE != undefined && scheduleInfoTemp.VISIT_CONFM_DATE !="") {
+                            					var visitDate = scheduleInfoTemp.VISIT_CONFM_DATE.replaceAll("-", "").substr(0, 8);
+                            					visitDate = new Date(Number(visitDate.substr(0,4)), Number(visitDate.substr(4,2)), Number(visitDate.substr(6,2)));
+                            					var today = new Date();
+                            					if (visitDate > today) { // 이후 방문 서비스상세내역중 오늘 이후의 내역이 있을경우
+                            						progressVal	= "방문예정";
+                            					}
+                            				} 
+                        				}
+                        			}
+                        
+                        			if (scheduleInfoTemp.VISIT_CONFM_DATE != undefined && scheduleInfoTemp.VISIT_CONFM_DATE != "" ||
+                        					scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != "") {
+                        				
+                        				// 매니저 방문완료시 VISIT_DATE 값이 존재
+                        				var visitDate = scheduleInfoTemp.VISIT_DATE ? scheduleInfoTemp.VISIT_DATE : scheduleInfoTemp.VISIT_CONFM_DATE;
+                        				visitShedule = visitDate.replaceAll("-", ".").substr(0, 10);
+                        			}
+                        			
+                        			if (scheduleInfoTemp.VISIT_USER_NM != undefined && scheduleInfoTemp.VISIT_USER_NM != "") {
+                        				managerInfo = scheduleInfoTemp.VISIT_USER_NM 
+                        			}
+                        			
+                        			if (scheduleInfoTemp.VISIT_USER_HP_NO != undefined && scheduleInfoTemp.VISIT_USER_HP_NO != "") {
+                        				managerInfo = managerInfo
+                        							+ "<br>"
+                        							+ "(" 
+                        							+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(0, 3) + "-"
+			                        				+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(3, 4) + "-"
+			                        				+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(7, 4) 
+			                        				+ ")";
+                        			}
+                        			
+                        			if (scheduleInfoTemp.FILTER_CNT != undefined && scheduleInfoTemp.FILTER_CNT != "") {
+                        				filterReplacementYn = scheduleInfoTemp.FILTER_CNT > 0 ? "O" : "X";
+                        			}
+                        			
+                        			html = html + 
+                                		'<tr>'
+                	                        + '<td class="board-tit">' + visitTimes + '회</td>'
+                	                        + '<td>' + progressVal + '</td>'
+                	                        + '<td>' + visitShedule + '</td>'
+                	                        + '<td>' + managerInfo + '</td>'
+                	                        + '<td>' + filterReplacementYn + '</td>' +
+                                        '</tr>';
+                        		})
+                    		} else {
+                    			html = '<tr class="empty-row"><td colspan="5"><div class="no-data"><p>내역이 없습니다.</p></div></td></tr>';
+                    		}
+                    		
+                    		$historyOfVisits.empty();
+                			$(html).appendTo($historyOfVisits);
+                    		
+                    		self.$popupServiceDetail.vcModal();
+                		}
+                	});
+                });
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 END
             },
 
             bindPopupEvents: function() {

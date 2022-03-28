@@ -1,0 +1,8 @@
+<svg width="40" height="20" viewBox="0 0 40 20" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <rect fill="#DA0F47" width="40" height="20" rx="4"/>
+        <text font-family="NotoSansKR-Bold, Noto Sans KR" font-size="12" font-weight="bold" fill="#FFF">
+                        <tspan x="6" y="15">NEW</tspan>
+                    </text>
+    </g>
+</svg>

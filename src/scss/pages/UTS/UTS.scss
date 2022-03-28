@@ -491,9 +491,9 @@
         }
         .ui_smooth_scrolltab {
             position: relative;
-            // .ui_smooth_tab {
-            //     margin-right: -40px;
-            // }
+            .ui_smooth_tab {
+                //margin-right: -40px;
+            }
             .scroll-controls {
                 .btn-arrow {
                     position: absolute;
@@ -836,7 +836,7 @@
             margin-top: 80px;
         }
         .title {
-            @include font($font-large,26px);
+            @include font($font-large-2,34px);
             &.type2 {
                 @include font-large;
             }
@@ -861,7 +861,7 @@
 
     .list-head {
         @include clearfix;
-        padding: 0 0 16px 8px;
+        padding: 0 0 24px;
         .title {
             float: left;
         }
@@ -913,7 +913,6 @@
 }
 
 @import "SERF9001";
-@import "SERF9002"; //LGECOMVIO-16 제품 검색 고도화
 @import "SERF9003";
 @import "SERF9009";
 
@@ -1750,44 +1749,20 @@
         padding: 0;
         p {
             padding-top: 0;
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 26px;
+            @include font-medium;
             &:before {
                 display: none;
             }
-            .search_word_area {
-                overflow: hidden;
-                display: inline-block;
+            span {
+                display: block;
                 margin-bottom: 8px;
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 20px;
-                color: #666;
+                font-weight: 700;
+                @include font($font-large-4,52px);
+                color: $color-default;
                 word-break: break-all;
-                .search_word {
-                    float: left;
-                    display: inline-block;
-                    margin-bottom: 0;
-                    font-size: 14px;
-                    font-weight: 700;
-                    color: #666;
-                    line-height: 20px;
-                    .word_area {
-                        display: inline-block;
-                        max-width: 250px;
-                        margin-bottom: 0;
-                        @include textEllipsis;
-                    }
-                }
                 em {
-                    float: left;
-                    margin-left: 8px;
                     word-break: break-all;
                 }
-            }
-            .search_word_msg {
-                display: block;
             }
         }
 
@@ -1805,7 +1780,7 @@
         .no-data {
             margin-top: 0;
             @include pc {
-                margin-bottom: 40px;
+                margin-bottom: 80px;
             }
             @include mobile {
                 padding-bottom: 60px;

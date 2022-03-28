@@ -29,6 +29,21 @@
             @@if(context.code) {
             <p class="code"><span class="blind">제품 코드</span>@@code</p>
             }
+            <!-- D: BTOCSITE-13244 케어플래너 PLP 스펙 노출 및 문구 수정 건 //-->
+            <div class="review-info">
+                <a href="#">
+                    <div class="star is-review"><span class="blind">리뷰있음</span></div>
+                    <div class="average-rating"><span class="blind">평점</span>5</div>
+                    <div class="review-count"><span class="blind">리뷰 수</span>(5)</div>
+                </a>
+            </div>
+            <ul class="spec-info">
+                <li>제품 분류 : 냉온정수기</li>
+                <li>직수방식 : 정수 / 냉수(순간냉각) / 온수(순간온수)</li>
+                <li>색상 : 화이트</li>
+                <li>제휴카드 사용 시 최대 23,000원 할인</li>
+            </ul>
+            <!--// D: BTOCSITE-13244 케어플래너 PLP 스펙 노출 및 문구 수정 건 -->
         </div>
         <div class="info-wrap">
             @@if(context.codeTxt) {
@@ -215,9 +230,10 @@
                 }
             </div>
             }
-
+            <!-- D: BTOCSITE-13244 케어플래너 PLP 스펙 노출 및 문구 수정 건 //-->
             @@if ( !context.whyCareship ) {
             <div class="price-wrap">
+                <em class="text">이용 요금 <span class="small-text">(1년차 월 요금 기준)</span></em> <!-- D: 추가 -->
                 <div class="total-price">
                     <p class="price">@@totalPrice</p>
                     <button type="button" class="btn border"><span>담기</span></button>
@@ -227,11 +243,12 @@
             @@if ( context.whyCareship ) {
             <div class="price-wrap type2">
                 <dl>
-                    <dt>이용 요금</dt>
+                    <dt>이용 요금  <span class="small-text">(1년차 월 요금 기준)</span></dt>  <!-- D: span~ 추가 -->
                     <dd>월 15,900원</dd>
                 </dl>
             </div>
             }
+            <!--// D: BTOCSITE-13244 케어플래너 PLP 스펙 노출 및 문구 수정 건 -->
         </div>
     </div>
 </li>

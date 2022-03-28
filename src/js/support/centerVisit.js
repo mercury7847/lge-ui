@@ -310,7 +310,8 @@
 
                 self.$keywordWrap.search({
                     template: {
-                        autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.shopID}}" class="btn-detail" title="새창 열림">{{item.shopName}}</a></li>{{/each}}</ul>',
+                        // BTOCSITE-13833 센터방문예약 > 방문할 센터 찾기, 선택 기능 수정 요청
+                        autocompleteList: '<ul>{{#each (item, index) in list}}<li><a href="#{{item.shopID}}" class="btn-detail" title="{{item.shopName}}">{{item.shopName}}</a></li>{{/each}}</ul>',
                     }
                 });
             });
@@ -423,9 +424,13 @@
                 });
             });
             self.$keywordWrap.on('autocompleteClick', function(e, el) {
-                var id = $(el).attr("href").replace("#", "");
-                var windowHeight = $(window).innerHeight();
-                window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+                // BTOCSITE-13833 센터방문예약 > 방문할 센터 찾기, 선택 기능 수정 요청
+                // var id = $(el).attr("href").replace("#", "");
+                // var windowHeight = $(window).innerHeight();
+                // window.open(self.detailUrl+"-"+id, "_blank", "width=1070, height=" + windowHeight + ", location=no, menubar=no, status=no, toolbar=no, scrollbars=1");
+                self._setSearch();
+                self.$address1.val($(el).text());            
+                self.$keywordWrap.removeClass('on');
             });
             $('.center-result-wrap table').on('click', '.btn-detail', function(){
                 var id = $(this).attr("href").replace("#", "");
@@ -719,6 +724,51 @@
                         location.href = _href; 
                     }
                 })
+            });
+
+            // 요금 및 보증 기간 안내
+            self.warrantyGuide.on('modalhide', function(){
+                var $this = $(this);
+                var $tab = $this.find('.ui_tab');
+                
+                // BTOCSITE-13599 요금 및 보증기간 안내 팝업 수정
+                $tab.vcTab("select", 0);
+            });
+
+            // BTOCSITE-13601 모델명 확인 방법 > 이미지 확대 추가
+            var $imgView = $('.btn-img-view');
+            $('#select2').on('change', function(){
+    
+                // 이미지가 없는 경우 no-img 삭제
+                if(!(lgkorUI.NO_IMAGE_MODEL_NAME != $imgView.find('img').attr('src'))) {
+                    $imgView.find('img').removeClass('no-img');
+                }
+            });
+
+            // BTOCSITE-13601 모델명 확인 방법 > 이미지 확대 추가
+            $imgView.on('click', function(e) {
+                e.preventDefault();
+            
+                if($(this).find('img').hasClass('no-img')) return;
+    
+                var domain=location.origin;
+                var agent = navigator.userAgent;
+                var imgUrl=domain + $(this).attr('href');
+                var imgAlt = $(this).find('img').attr('alt');
+                if(!vcui.detect.isMobileDevice){
+                    window.open(imgUrl, '', '');
+                    return
+                }
+
+                var currOption = $('#select2 option:selected');
+                var popTitle = currOption.hasClass('placeholder') ? '모델명 확인 방법' : currOption.text();
+                var $zoomPopup = $('#imgZoomPopup');
+                var $zoomImg = $('#imgZoomPopup img');
+                $zoomImg.attr('src', imgUrl);
+                $zoomImg.attr('alt', imgAlt);
+
+                $zoomPopup.find('.tit').html('<span>'+popTitle+'</span>');
+                $zoomPopup.vcModal('open');
             });
         },
         reset: function() {

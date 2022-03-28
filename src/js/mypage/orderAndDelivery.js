@@ -1,6 +1,4 @@
 (function() {
-
-   
     var inquiryListTemplate =
         '<div class="box" data-id="{{dataID}}">'+
             '<div class="info-wrap">'+
@@ -167,10 +165,10 @@
                         '</div>'+
                         '<div class="col col2">'+
                             '<div class="state-box">'+
-                            '{{#if !listData.deliveryStatus}}<p class="tit "><span class="blind">진행상태</span>{{listData.deliveryStatusText}}</p>{{/if}}' +
+                            '{{#if !listData.deliveryStatus}}<p class="tit"><span class="blind">진행상태</span>{{listData.deliveryStatusText}}</p>{{/if}}' +
                             '{{#if listData.deliveryStatus && listData.ordSysOrdNo}}'+
                                 '<div class="state-btns">'+
-                                    '<a href="#n" class="btn size border stateInner-btn" data-related-order-number="{{listData.ordSysOrdNo}}" data-type="bestShopDeliveryInquiry"><span>배송조회</span></a>'+
+                                    '<a href="#n" class="btn size border stateInner-btn" data-ord-no="{{listData.gerpOrdNo}}" data-type="bestShopDeliveryInquiry"><span>배송조회</span></a>'+
                                 '</div>'+
                             '{{/if}}'+
                         '</div>'+
@@ -310,8 +308,7 @@
         '{{#if isBeforeVisit && instpectionVisit}}<li><dl><dt>사전 방문 신청</dt><dd>신청</dd></dl></li>{{/if}}' +
         //'{{#if recyclingPickup}}<li><dl><dt>폐가전 수거</dt><dd>수거신청</dd></dl></li>{{/if}}';
         // '{{#if isBeforeVisit}}<li><dl><dt>사전 방문 신청</dt><dd>{{#if instpectionVisit}}신청{{#else}}미신청{{/if}}</dd></dl></li>{{/if}}' +
-        '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>'+
-        '<li><dl><dt>구매지점</dt><dd>{{storeName}}</dd></dl></li>';
+        '<li><dl><dt>폐가전 수거</dt><dd>{{#if recyclingPickup}}수거신청{{#else}}해당없음{{/if}}</dd></dl></li>';
 
     var careShippingListTemplate = '<li><dl><dt>성명</dt><dd>{{maskingName}}</dd></dl></li>' +
         '<li><dl><dt>인수자 휴대폰</dt><dd>{{maskingTelephone}}</dd></dl></li>' +
@@ -425,22 +422,15 @@
 
     var bestShopDeliveryInfoTemplate =
     '<div class="delivery-step">'+
-        '<div class="delivery-text active">'+
-            '<strong class="delivery-status">'+
-            '{{#if deliveryStatus == 1}}주문완료{{/if}}'+
-            '{{#if deliveryStatus == 2 || deliveryStatus == 3}}배송준비중{{/if}}'+
-            '{{#if deliveryStatus == 4}}배송중{{/if}}'+
-            '{{#if deliveryStatus == 5}}배송완료{{/if}}'+
-            '</strong>'+
-            '{{#if deliveryStatusDate}}<p class="delivery-date">{{deliveryStatusDate}}</p>{{/if}}'+
-            '{{#if deliveryDriver.name}}<span class="delivery-name">배송기사 {{deliveryDriver.name}} {{#if deliveryDriver.phoneNumber}}<em class="bar">{{deliveryDriver.phoneNumber}}</em></span>{{/if}}{{/if}}'+
-            '{{#if deliveryDriver && !deliveryDriver.name}}<span class="delivery-name">{{deliveryDriver}}</span>{{/if}}'+
-        '</div>'+
-    '</div>'+
-    '<div class="delivery-step">'+
-        '<div class="delivery-text">'+
-            '<strong class="delivery-status">주문일</strong>'+
-            '<p class="delivery-date">{{orderDate}}</p>'+
+        '<div class="delivery-info-list">'+
+            '{{#each list in listDataArray}}'+
+            '<div class="delivery-text">'+
+                '<strong class="delivery-name">{{list.modelCd}}</strong>'+
+                '<p class="delivery-status">'+
+                '{{list.ordStatusTypeNm}}{{#if list.ordStatusTypeDate}} ({{list.ordStatusTypeDate}}){{/if}}'+
+                '</p>'+
+            '</div>'+
+            '{{/each}}'+
         '</div>'+
     '</div>';
 
@@ -451,7 +441,7 @@
     var ORDER_SAILS_URL;
     var ORDER_REQUEST_URL;
     var ORDER_BENEFIT_URL;
-
+0
 
     var PAYMENT_METHOD_CONFIRM;
     var INFO_MODIFY_CONFIRM;
@@ -730,7 +720,7 @@
                     setDeliveryInquiry(dataID, prodID);
                     break;
                 case "bestShopDeliveryInquiry":
-                    setBestShopDeliveryInquiry($(this).data("relatedOrderNumber"));
+                    setBestShopDeliveryInquiry($(this).data("ordNo"));
                     break;
 
                 case "deliveryRequest":
@@ -933,18 +923,10 @@
         $('#popup-cancel, #popup-takeback').on('click', ".ui_modal_close", function(e){
             $(this).closest('article').find('.count em').html('0');
         });
-
-
-        // 모니터링 548 : 페이지 이탈시 앱에 모달 처리 알림
-        if(isApp() && vcui.detect.isIOS) {
-            $(window).on('unload',function(){
-                lgkorUI.appIsLayerPopup(false);
-            })
-        }
     }
 
     function sendDetailPage(dataID){
-        var listdata = getTabData(TAB_FLAG);
+        var listdata = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : TAB_FLAG == TAB_FLAG_CARE ? CARE_LIST : RECORD_LIST;
         var prodlist = listdata[dataID].productList;
 
         var orderNumbers = [];
@@ -1435,7 +1417,7 @@
     }
 
     function setDeliveryInquiry(dataID, prodID){
-        var listData = getTabData(TAB_FLAG)
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
 
         var orderStatus = listData[dataID].productList[prodID].orderStatus;
         
@@ -1443,21 +1425,47 @@
     }
     
     // LGECOMVIO-114 베스트샵 배송조회 추가
-    function setBestShopDeliveryInquiry(number){
+    function setBestShopDeliveryInquiry(ordNo){
         var sendata = {
-            relatedOrderNumber: number
+            gerpOrdNo: ordNo
         }
 
-        lgkorUI.requestAjaxDataFailCheck(BESTSHOP_DELIVERY_URL, sendata, function(result){
+        lgkorUI.requestAjaxDataIgnoreCommonSuccessCheck(BESTSHOP_DELIVERY_URL, sendata, function(result){
+            var listData = result.data;
+            if(result.status == 'fail') {
+                $('#popup-bestshop-delivery').find('.delivery-info').hide();
+                $('#popup-bestshop-delivery').find('.delivery-data').show();
+                $('#popup-bestshop-delivery').vcModal('show');
+                return;
+            }
+
             $('#popup-bestshop-delivery').find('.delivery-data').hide();
             $('#popup-bestshop-delivery').find('.delivery-info').empty();
-            $('#popup-bestshop-delivery').find('.delivery-info').html(vcui.template(bestShopDeliveryInfoTemplate, result.data));
+
+            listData.forEach(function(data) {
+                // 도착 예정일 (배송중일 떄)
+                if(data.dueYmd){
+                    data.ordStatusTypeDate = data.dueYmd + ' 도착 예정';
+                }
+
+                // 배송 예정일 (배송 준비중 일때)
+                if(data.delivWishYmd) {
+                    data.ordStatusTypeDate = data.delivWishYmd + ' 배송 예정';
+                }
+
+                // 도착 완료일 (배송완료 일때)
+                if(data.receiveYmd) {
+                    data.ordStatusTypeDate = data.receiveYmd;
+                }
+            })
+
+            $('#popup-bestshop-delivery').find('.delivery-info').html(vcui.template(bestShopDeliveryInfoTemplate, {listDataArray:listData}));
             $('#popup-bestshop-delivery').vcModal('show');
         });
     }
 
     function setDeliveryRequest(dataID, prodID){
-        var listData = getTabData(TAB_FLAG)
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
 
         var productNameEN = listData[dataID].productList[prodID].productNameEN.split(".")[0];
 
@@ -1478,7 +1486,7 @@
     }
 
     function setProductReview(dataID, prodID){
-        var listData = getTabData(TAB_FLAG)
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
 
         var url = listData[dataID].productList[prodID].productPDPurl;
         if(url && url.length > 0) {
@@ -1955,7 +1963,7 @@
                     if(Object.keys(data.payment).length){
                         var orderReceiptAbleYn;
                         if(TAB_FLAG == TAB_FLAG_RECORD) orderReceiptAbleYn = "N";
-                        else orderReceiptAbleYn = getTabData(TAB_FLAG)[0].orderReceiptAbleYn
+                        else orderReceiptAbleYn = TAB_FLAG == TAB_FLAG_ORDER ? data.listData[0].orderReceiptAbleYn : data.careListData[0].orderReceiptAbleYn;
 
                         PAYMENT_DATA = resetPaymentData(data.payment, orderReceiptAbleYn);
                     }
@@ -2371,7 +2379,7 @@
     function savePaymentInfoOk(){
         var chk = paymentInfoValidation();
         if(chk){
-            var listData = getTabData(TAB_FLAG)[0];
+            var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
 
             var sendata = {
                 confirmType: sendPaymentMethod,
@@ -2485,7 +2493,7 @@
         //결제정보
         $listBox = wrap.find('.inner-box.payment');
         if($listBox.length > 0) {
-            var listData = getTabData(TAB_FLAG)[0];
+            var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
             
             leng = paymentData ? Object.keys(paymentData).length : 0;
             
@@ -2549,7 +2557,7 @@
 
     //청약 주문상세 팝업
     function openOrderInfoPop(dataId, prodId, opener){
-        var listData = getTabData(TAB_FLAG);
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var productList = listData[dataId].productList[prodId];
         var shipping;
 
@@ -2569,7 +2577,7 @@
 
     //주문접수...
     function setOrderRequest(dataId, prodId){
-        var listData = getTabData(TAB_FLAG)[dataId];
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[dataId] : CARE_LIST[dataId];
         // var productList = vcui.array.map(listData.productList, function(item, idx){
         //     return{
         //         orderedQuantity: item.orderedQuantity,
@@ -2657,7 +2665,7 @@
 
     //취소/반품 신청을 위한 데이터 요정...후 팝업 열기
     function getPopOrderData(dataId, calltype, opener){
-        var listData = getTabData(TAB_FLAG);
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var memInfos = lgkorUI.getHiddenInputData();
         var orderNumber = listData[dataId].orderNumber;
         var requestNo = listData[dataId].requestNo;
@@ -2805,7 +2813,7 @@
 
                 var prodId = popup.data('prodId');
 
-                var listData = getTabData(TAB_FLAG);
+                var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
                 productList = vcui.array.filter(productList, function(item, idx){
                     return item.modelID == listData[dataId].productList[prodId].modelID;
                 });
@@ -2984,7 +2992,7 @@
     function setCancelTakebackData(popname, prodlist, matchIds){
         var popup = $('#'+popname);
 
-        var listData = getTabData(TAB_FLAG);
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var dataId = popup.data('dataId');    
         
         var orderNumber = listData[dataId].orderNumber;
@@ -3145,7 +3153,7 @@
 
     //영수증 발급내역...
     function setReceiptListPop(opener){
-        var listData = getTabData(TAB_FLAG);
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var method = PAYMENT_DATA.transType == METHOD_CARD ? "카드영수증" : "현금영수증";
         if(PAYMENT_DATA.transType == METHOD_BANK && listData[0].cashReceiptAbleYn != "Y") method = "";
         var header = $(vcui.template(receiptHeaderTemplate, {receiptUrl:PAYMENT_DATA.receiptUrl, method:method})).get(0);
@@ -3165,7 +3173,7 @@
     }
     //거래 영수증 팝업...
     function setSalesReceiotPop(opener){
-        var listData = getTabData(TAB_FLAG)[0];
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST[0] : CARE_LIST[0];
 
         receiptdata = {};
         receiptdata.orderNumber = listData.groupNumber;
@@ -3190,8 +3198,8 @@
         //리스트에서는 상품 이미지에서만 체크..go pdp
         //상세보기 둘다 체크후..go pdp
         //리스트에서는 네임은 상세로...go detail
-        
-        var listData = getTabData(TAB_FLAG);
+
+        var listData = TAB_FLAG == TAB_FLAG_ORDER ? ORDER_LIST : CARE_LIST;
         var sendata = {
             "sku": listData[dataId].productList[prodId].productNameEN,
             contDtlType: listData[dataId].productList[prodId].contDtlType,
