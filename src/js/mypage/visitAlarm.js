@@ -251,6 +251,7 @@
                     		var filterReplacementYn	= "X";	// 필터교체여부
                     		
                     		if ( data.scheduleList.length > 0 ) {
+                    			
                     			data.scheduleList.forEach(function(scheduleInfoTemp){
                         			
                         			visitTimes = scheduleInfoTemp.VISIT_TIMES;
