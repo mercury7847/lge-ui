@@ -184,7 +184,7 @@
                     */
                 });
                 
-             // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
                 self.$list.on('click', '.svc-details li', function(e){
                 	
                 	e.preventDefault();
@@ -281,8 +281,8 @@
                         				
                         				// 매니저 방문완료시 VISIT_DATE 값이 존재
                         				var visitDate = scheduleInfoTemp.VISIT_DATE ? scheduleInfoTemp.VISIT_DATE : scheduleInfoTemp.VISIT_CONFM_DATE;
-                        				
-                        				visitShedule = vcui.date.format(visitDate.substr(0, 10), "yyyy.mm.dd");
+                        				visitDate = visitDate.replace("-", "").substr(0, 8);
+                        				visitShedule = vcui.date.format(visitDate, "yyyy.mm.dd");
                         			}
                         			
                         			if (scheduleInfoTemp.VISIT_USER_NM != undefined && scheduleInfoTemp.VISIT_USER_NM != "") {
