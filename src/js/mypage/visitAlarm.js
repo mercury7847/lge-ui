@@ -302,7 +302,7 @@
                         				filterReplacementYn = scheduleInfoTemp.FILTER_CNT > 0 ? "O" : "X";
                         			}
                         			
-                        			html = html +
+                        			html = html + 
                                 		'<tr>'
                 	                        + '<td class="board-tit">' + visitTimes + '회</td>'
                 	                        + '<td>' + progressVal + '</td>'
