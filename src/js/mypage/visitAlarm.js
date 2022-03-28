@@ -190,16 +190,16 @@
                 	e.preventDefault();
                 	
                 	var $this = $(this);
-                	var scheduledToVisitFlag = $this.attr('data-scheduled-to-visit-flag');
+                	var scheduledToVisitFlag = $this.parent().attr('data-scheduled-to-visit-flag'); // 이전/다음/이후 방문
                 	var ajaxUrl = self.$myVisitSchedule.attr('data-detail-list-url');
                 	
                 	var param = {
-                			contLineSeq : $this.attr('data-cont-line-seq'),
-                			visitTimes : $this.attr('data-visit-times'),
-                			scheduledToVisitFlag : scheduledToVisitFlag
+                		contLineSeq : $this.attr('data-cont-line-seq'),
+                		visitTimes : $this.attr('data-visit-times'),
+                		scheduledToVisitFlag : scheduledToVisitFlag
                 	}
                 	
-                	lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result){
+                	lgkorUI.requestAjaxDataPost(ajaxUrl, param, function(result) {
                 		
                 		console.log(result.status);
                 		
@@ -211,7 +211,7 @@
                     		
                     		console.log(data);
                     		
-                    		// 상세정보
+                    		// 상세정보 SET
                     		var $productInfo			= self.$popupServiceDetail.find('.product-info');				// 제품명(제품코드)
                     		var $contractExpirationDate	= self.$popupServiceDetail.find('.contract-expiration-date');	// 계약만료일
                     		var $managerName			= self.$popupServiceDetail.find('.manager-name');				// 매니저 이름
@@ -222,11 +222,11 @@
                     		var $filterReplacementYn	= self.$popupServiceDetail.find('.filter-replacement-yn');		// 필터교체 여부
                     		
                     		var productInfo =  contInfo.CATEGORY_NM_KOR + "(" + contInfo.MODEL_CD + ")";
-                    		var contractExpirationDate	= contInfo.CONT_END_DATE.substr(0,4) + "년"
-                    									+ contInfo.CONT_END_DATE.substr(4,2) + "월"
+                    		var contractExpirationDate	= contInfo.CONT_END_DATE.substr(0,4) + "년 "
+                    									+ contInfo.CONT_END_DATE.substr(4,2) + "월 "
                     									+ contInfo.CONT_END_DATE.substr(6,2) + "일까지 계약"
                     									+ "(1회 / "+ contInfo.VISIT_CYCLE +"개월)"; 
-                    		var managerName = scheduleInfo.VISIT_USER_NM + "매니저";
+                    		var managerName = scheduleInfo.VISIT_USER_NM + " 매니저";
                     		var managerPhone = "(" + scheduleInfo.VISIT_USER_HP_NO + ")";
                     		var timesInfo = scheduleInfo.VISIT_TIMES + "회차" ;
                     		var visitYn = (scheduledToVisitFlag == "before") ? "방문완료" : "방문예정";
@@ -242,7 +242,7 @@
                     		$visitShedule.text(visitShedule);
                     		$filterReplacementYn.text(filterReplacementYn);
                     		
-                    		// 회차별방문내역
+                    		// 회차별방문내역 SET
                     		var $historyOfVisits	= self.$popupServiceDetail.find('.history-of-visits');	// 회차별방문내역
                     		var visitTimes			= "";	// 회차
                     		var progressVal			= "";	// 진행상태
@@ -259,9 +259,11 @@
                         				 			? "방문완료"  
                         							:	scheduleInfoTemp.NOT_VISIT_REASON_NM != undefined && scheduleInfoTemp.NOT_VISIT_REASON_NM != ""  
                         								? "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")" 
-                        								: "방문연기"; // VISIT_DATE(=매니저방문일)
+                        								: "방문연기<br>(-)"; // VISIT_DATE(=매니저방문일)
+
                         			if (scheduleInfoTemp.VISIT_CONFM_DATE != undefined && scheduleInfoTemp.VISIT_CONFM_DATE != "") {
-                        				visitShedule = vcui.date.format(scheduleInfoTemp.VISIT_CONFM_DATE, "yyyy.mm.dd");
+                        				var visitConfmDate = scheduleInfoTemp.VISIT_CONFM_DATE.substr(0, 10);
+                        				visitShedule = vcui.date.format(visitConfmDate, "yyyy.mm.dd");
                         			}
                         			
                         			if (scheduleInfoTemp.VISIT_USER_NM != undefined && scheduleInfoTemp.VISIT_USER_NM != "") {
