@@ -2589,39 +2589,116 @@ html {
         width: 100%;
         padding-top: 0;
 
-       .login-mobile {
+        .login-mobile {
             z-index: 1;
             position: fixed;
             width: 100%;
-            padding:11px 40px 0 0;
+            padding: 12px 40px 12px 16px;
             border-bottom: none;
-            background:#ff0000;
+            background: #ff0000;
 
             &:before {
                 display: none;
             }
-       }
 
-        .nav > li {
-            border-top: 0;
+            .login-info {
+                padding: 0;
+            }
         }
 
-       .nav-item {
-           margin: 0 16px;
-           padding: 15.5px 0 7.5px 4px;
-           border-bottom: 1px solid #ddd;
-           font-size: 14px;
-           line-height: 17px;
+        .menu-button {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 62px 16px 24px;
+
+            a {
+                display: inline-block;
+                flex: 1 1 calc(50% - 4px);
+                width: 100%;
+                height: 42px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                font-size: 13px;
+                text-align: center;
+                line-height: 38px;
+
+                &:before {
+                    display: inline-block;
+                    content: "";
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 4px;
+                    vertical-align: top;
+                    background-size: 30px;
+                }
+            }
+
+            &-bestshop {
+                margin-right: 4px;
+
+                &:before {
+                    background: url("/lg5-common/images/icons/icon-header-bestshop.svg") no-repeat 0 3px;
+                }
+            }
+
+            &-store {
+                margin-left: 4px;
+
+                &:before {
+                    background: url("/lg5-common/images/icons/icon-header-store.svg") no-repeat 0 3px;
+                }
+            }
+        }
+
+        .super-category .category-item {
+            padding: 12px !important;
+        }
+        .nav > li {
+            position: relative;
+            margin: 0 16px;
+            border-top: 0;
+
+            .category-round {
+                position: absolute;
+                top: 15px;
+                right: 4px;
+                display: inline-block;
+                padding: 3.5px 13px;
+                border: 1px solid #ddd;
+                border-radius: 20px;
+                font-size: 10px;
+            }
+        }
+
+        .nav-item {
+            padding: 15.5px 0 7.5px 4px;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            line-height: 17px;
 
             &:after {
                 display: none;
             }
-       }
+        }
 
-       .nav-category-container {
+        .nav-category-container {
             display: block;
-            li.on .super-category-item{
-                border-bottom: 1px solid #000;
+
+            li.on .super-category-item {
+                position: relative;
+                font-weight: 700;
+
+                &:before {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    display: block;
+                    content: "";
+                    width: calc(100% - 4px);
+                    height: 1px;
+                    background: #000;
+                }
+
                 &:after {
                     background-image: url("/lg5-common/images/icons/btn-minus-21.svg");
                 }
@@ -2631,12 +2708,12 @@ html {
                 display: flex;
                 flex-wrap: wrap;
                 background: #f4f4f4;
-                margin: 0 16px;
 
                 &-item {
-                    padding: 14px 0 14px 4px;
+                    padding: 12px 0 11px 4px;
                     background: #fff;
                     font-size: 12px;
+
                     &:after {
                         top: calc(50% - 10.5px);
                         right: 4px;
@@ -2648,8 +2725,12 @@ html {
                 }
 
                 &-list {
-                    flex: 1 1 50%;
+                    flex: 1 1 calc(50% - 4px);
                     max-width: 50%;
+
+                    .super-category-item {
+                        padding-right: 4px;
+                    }
 
                     .nav-category-wrap {
                         width: 200%;
@@ -2658,32 +2739,93 @@ html {
                     }
 
                     &:nth-child(even) {
-                        .nav-category-wrap{
+                        .super-category-item {
+                            padding-left: 4px;
+                            padding-right: 0;
+
+                            &:before {
+                                left: auto;
+                                right: 0;
+                            }
+                        }
+
+                        .nav-category-wrap {
                             margin-left: -100%;
                         }
                     }
                 }
-
-                .nav-category-layer {
-                    display: block;
+            }
+        }
+        .nav-category-layer {
+            width: 100%;
+            //padding: 0 12px;
+        }
+        .nav-category-layer .category  {
+            display: flex;
+            flex-wrap: wrap;
+            li {
+                flex:1 1 50%;
+                max-width: 50%;
+                .category-item {
+                    padding: 12px 0 11px 4px;
+                    font-size:12px;
                 }
+                &.on .category-item {
+                    position: relative;
+
+                    &:before {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        display: block;
+                        content: "";
+                        width: calc(100% - 4px);
+                        height: 1px;
+                        background: #000;
+                    }
+
+                    &:after {
+                        background-image: url("/lg5-common/images/icons/btn-minus-21.svg");
+                    }
+                }
+                .category-item:after {
+                    top: calc(50% - 10.5px);
+                    right: 4px;
+                    width: 21px;
+                    height: 21px;
+                    background: url("/lg5-common/images/icons/btn-plus-21.svg") no-repeat 0 0;
+                    background-size: 21px 21px;
+                }
+                &.on:nth-child(even) .sub-category {
+                    margin-left: -100%;
+                }
+
             }
         }
 
-       .category {
-           display: flex;
-           flex-wrap: wrap;
-
-           li {
-               flex: 1 1 50%;
-               max-width: 50%;
-           }
-       }
+        .nav-category-layer .category > li .sub-category {
+            display: flex;
+            flex-wrap: wrap;
+            width: 200%;
+            padding:0;
+            li {
+                flex: 1 1 50%;
+                a{
+                    padding: 12px;
+                    font-size: 12px;
+                }
+            }
+        }
     }
 }
 
 
 
+
+/* 임시 */
+.nav-brand-gate, .marketing-link {
+    display: block;
+}
 
 
 
