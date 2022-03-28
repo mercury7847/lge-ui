@@ -73,7 +73,7 @@
                 entries.forEach(function(entry){
                     if(entry.removedNodes.length > 0) {
                         $(entry.removedNodes).each(function() {
-                            var id = crema.popup !== undefined ? crema.popup.iframe_id:crema-review-popup;
+                            var id = crema.popup !== undefined ? crema.popup.iframe_id:'crema-review-popup';
                             if($(this).is('#'+id)) {
                                 // console.log('remove', crema)
                                 crema.message_handler.reload_all(crema.iframe_manager.iframes);
