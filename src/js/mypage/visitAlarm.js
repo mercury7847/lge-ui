@@ -292,8 +292,8 @@
                         				managerInfo = managerInfo
                         							+ "<br>"
                         							+ "(" 
-			                        				+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(0, 3) 
-			                        				+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(3, 4) 
+                        							+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(0, 3) + "-"
+			                        				+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(3, 4) + "-"
 			                        				+ scheduleInfoTemp.VISIT_USER_HP_NO.substr(7, 4) 
 			                        				+ ")";
                         			}
