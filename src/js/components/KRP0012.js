@@ -78,8 +78,8 @@
                             chkIE = true;
                         }
                         if(chkIE && !$(entry.target).is(':visible')) {
+                            console.log('....chkIE')
                             chkIE = false;
-                            // console.log(crema.iframe_manager.iframes)
                             $('.KRP0012-crema-review').find('iframe').attr('src', $('.KRP0012-crema-review').find('iframe').attr('src'))
                         }
                     }else {
