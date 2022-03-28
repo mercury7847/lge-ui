@@ -22,7 +22,7 @@
         "mainTitle": "매장 상담 예약",
         "storeUrl": "https://bestshopdev.lge.co.kr/shop/detail-1292",
         "requestDate": "2022.03.16",
-        "requestCategory": "LG 울트라 HD TV(스탠드)",
+        "requestCategory": "LG 울트라 HD <br>TV(스탠드)",
         "visitorTelno": "",
         "counselRequestId": "251",
         "modelDisplayName": "",
@@ -44,7 +44,7 @@
         "mainTitle": "화상 상담 예약",
         "storeUrl": "https://bestshopdev.lge.co.kr/shop/detail-1296",
         "requestDate": "2022.03.17",
-        "requestCategory": "LG 울트라 HD TV(벽걸이)",
+        "requestCategory": "LG 울트라 HD TV AI<sup>ThinQ</sup>",
         "visitorTelno": "010-****-2222",
         "counselRequestId": "280",
         "modelDisplayName": "",
@@ -91,7 +91,7 @@
         "requestCategory": "",
         "visitorTelno": "010-****-2222",
         "counselRequestId": "277",
-        "modelDisplayName": "프라엘>딥클렌징,주방가전 > 광파오븐/전자레인지,에어컨/에어케어>휴대용 공기청정기",
+        "modelDisplayName": "프라엘>딥클렌징,주방가전 > 광파오븐/전자레인지,에어컨/에어케어>휴대용 공기청정기, aaaa>bb, ccc>ddd",
         "requestOrgcodeName": "발안점"
       },
       {
