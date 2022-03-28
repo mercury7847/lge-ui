@@ -230,8 +230,20 @@
                     		var managerPhone = "(" + scheduleInfo.VISIT_USER_HP_NO + ")";
                     		var timesInfo = scheduleInfo.VISIT_TIMES + "회차" ;
                     		var visitYn = (scheduledToVisitFlag == "before") ? "방문완료" : "방문예정";
-                    		var visitShedule = scheduleInfo.VISIT_CONFM_DATE;
-                    		var filterReplacementYn	= scheduleInfo.FILTER_CNT > 0 ? "O(" + scheduleInfo.FILTER_NAME + ")" : "X";
+                    		
+                    		var visitSheduleDtl = "-";
+                    		
+                    		if (scheduleInfo.VISIT_CONFM_DATE != undefined && scheduleInfo.VISIT_CONFM_DATE != "") {
+                    			var visitSheduleTemp = scheduleInfo.VISIT_CONFM_DATE.replace(/(\s*)/g, ""); // 공백제거 
+                        		visitSheduleTemp = visitSheduleTemp.replaceAll("-", "");
+                        		
+                        		visitSheduleDtl = visitSheduleTemp.substr(0, 4) + "년 "
+                        						+ visitSheduleTemp.substr(4, 2) + "월 "
+                        						+ visitSheduleTemp.substr(6, 2) + "일 "
+                        						+ visitSheduleTemp.substr(8, 5);
+                    		}
+                    		
+                    		var filterReplacementYn	= scheduleInfo.FILTER_NAME.length > 0 ? "O(" + scheduleInfo.FILTER_NAME.toString() + ")" : "X";
                     		
                     		$productInfo.text(productInfo);
                     		$contractExpirationDate.text(contractExpirationDate);
@@ -239,7 +251,7 @@
                     		$managerPhone.text(managerPhone);
                     		$timesInfo.text(timesInfo);
                     		$visitYn.text(visitYn);
-                    		$visitShedule.text(visitShedule);
+                    		$visitShedule.text(visitSheduleDtl);
                     		$filterReplacementYn.text(filterReplacementYn);
                     		
                     		// 회차별방문내역 SET
@@ -262,9 +274,13 @@
                         								? "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")" 
                         								: "방문연기<br>(-)"; // VISIT_DATE(=매니저방문일)
 
-                        			if (scheduleInfoTemp.VISIT_CONFM_DATE != undefined && scheduleInfoTemp.VISIT_CONFM_DATE != "") {
-                        				var visitConfmDate = scheduleInfoTemp.VISIT_CONFM_DATE.substr(0, 10);
-                        				visitShedule = vcui.date.format(visitConfmDate, "yyyy.mm.dd");
+                        			if (scheduleInfoTemp.VISIT_CONFM_DATE != undefined && scheduleInfoTemp.VISIT_CONFM_DATE != "" ||
+                        					scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != "") {
+                        				
+                        				// 매니저 방문완료시 VISIT_DATE 값이 존재
+                        				var visitDate = scheduleInfoTemp.VISIT_DATE ? scheduleInfoTemp.VISIT_DATE : scheduleInfoTemp.VISIT_CONFM_DATE;
+                        				
+                        				visitShedule = vcui.date.format(visitDate.substr(0, 10), "yyyy.mm.dd");
                         			}
                         			
                         			if (scheduleInfoTemp.VISIT_USER_NM != undefined && scheduleInfoTemp.VISIT_USER_NM != "") {
