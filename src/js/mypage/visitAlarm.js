@@ -184,7 +184,7 @@
                     */
                 });
                 
-                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+             // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
                 self.$list.on('click', '.svc-details li', function(e){
                 	
                 	e.preventDefault();
@@ -266,7 +266,6 @@
                     		var html 				= "";
                     		
                     		if ( data.scheduleList.length > 0 ) {
-                    			
                     			data.scheduleList.forEach(function(scheduleInfoTemp){
                         			
                         			visitTimes = scheduleInfoTemp.VISIT_TIMES;
@@ -304,7 +303,7 @@
                         				filterReplacementYn = scheduleInfoTemp.FILTER_CNT > 0 ? "O" : "X";
                         			}
                         			
-                        			html = 
+                        			html = html +
                                 		'<tr>'
                 	                        + '<td class="board-tit">' + visitTimes + '회</td>'
                 	                        + '<td>' + progressVal + '</td>'
