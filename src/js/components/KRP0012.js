@@ -77,11 +77,10 @@
                         if($(entry.target).is('#'+id)) {
                             chkIE = true;
                         }
-                        console.log('....chkIE')
+                        console.log('....chkIE', chkIE, $(entry.target).is(':visible'))
                         if(chkIE && !$(entry.target).is(':visible')) {
                             chkIE = false;
-                            document.getElementById($('.KRP0012-crema-review').find('iframe').attr('id')).contentDocument.location.reload(true);
-                            // $('.KRP0012-crema-review').find('iframe').attr('src', $('.KRP0012-crema-review').find('iframe').attr('src'))
+                            $('.KRP0012-crema-review').find('iframe').attr('src', $('.KRP0012-crema-review').find('iframe').attr('src'))
                         }
                     }else {
                         if(entry.removedNodes.length > 0) {
