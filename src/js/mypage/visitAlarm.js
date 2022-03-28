@@ -274,12 +274,28 @@
                         			
                         			visitTimes = scheduleInfoTemp.VISIT_TIMES;
                         			
-                        			progressVal	=	scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != ""
-                        				 			? "방문완료"  
-                        							:	scheduleInfoTemp.NOT_VISIT_REASON_NM != undefined && scheduleInfoTemp.NOT_VISIT_REASON_NM != ""  
-                        								? "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")" 
-                        								: "방문연기<br>(-)"; // VISIT_DATE(=매니저방문일)
-
+                        			if (scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != "") {
+                        				// 매니저 방문완료일(VISIT_DATE) 이 있을경우 방문완료
+                        				progressVal	= "방문완료";	
+                        			} else {
+                        				// 매니저 방문완료일(VISIT_DATE) 이 없을경우
+                        				if (scheduleInfoTemp.NOT_VISIT_REASON_NM != undefined && scheduleInfoTemp.NOT_VISIT_REASON_NM != "") {
+                        					// 방문연기 사유가 있을경우
+                        					progressVal = "방문연기<br>(" + scheduleInfoTemp.NOT_VISIT_REASON_NM + ")"
+                        				} else {
+                        					// 방문연기 사유가 없을경우
+                        					progressVal = "방문연기<br>(-)";
+                        					if (scheduleInfoTemp.VISIT_CONFM_DATE != undefined && scheduleInfoTemp.VISIT_CONFM_DATE !="") {
+                            					var visitDate = scheduleInfoTemp.VISIT_CONFM_DATE.replaceAll("-", "").substr(0, 8);
+                            					visitDate = new Date(Number(visitDate.substr(0,4)), Number(visitDate.substr(4,2)), Number(visitDate.substr(6,2)));
+                            					var today = new Date();
+                            					if (visitDate > today) { // 이후 방문 서비스상세내역중 오늘 이후의 내역이 있을경우
+                            						progressVal	= "방문예정";
+                            					}
+                            				} 
+                        				}
+                        			}
+                        
                         			if (scheduleInfoTemp.VISIT_CONFM_DATE != undefined && scheduleInfoTemp.VISIT_CONFM_DATE != "" ||
                         					scheduleInfoTemp.VISIT_DATE != undefined && scheduleInfoTemp.VISIT_DATE != "") {
                         				
