@@ -77,8 +77,8 @@
                         if($(entry.target).is('#'+id)) {
                             chkIE = true;
                         }
-                        console.log('....chkIE', chkIE, $(entry.target).is(':visible'))
-                        if(chkIE && !$(entry.target).is(':visible')) {
+                        console.log('....chkIE', chkIE, $('#'+id).is(':visible'))
+                        if(chkIE && !$('#'+id).is(':visible')) {
                             chkIE = false;
                             $('.KRP0012-crema-review').find('iframe').attr('src', $('.KRP0012-crema-review').find('iframe').attr('src'))
                         }
