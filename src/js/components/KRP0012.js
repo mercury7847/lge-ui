@@ -27,7 +27,7 @@
                 if(isMobile){
                     $contWrap.append('<style>.crema-product-reviews > iframe { max-width: 100% !important; }</style><div class="crema-product-reviews" data-widget-id="' + "26" + '" data-product-code="' + productcode + '"></div>');
                 } else {
-                    $contWrap.append('<div class="crema-product-reviews" data-product-code="' + productcode + '"></div>');
+                    $contWrap.append('<div class="crema-product-reviews KRP0012-crema-review" data-product-code="' + productcode + '"></div>');
                 }
 
                 //상품 소셜 위젯
@@ -69,16 +69,28 @@
                 modelId: (digitalData.productInfo)? digitalData.productInfo.model_id:null,
                 unifyId: (digitalData.userInfo)? digitalData.userInfo.unifyId:null,
             };
+            var chkIE = false;
             var mutationObserver = new MutationObserver(function(entries) {
                 entries.forEach(function(entry){
-                    if(entry.removedNodes.length > 0) {
-                        $(entry.removedNodes).each(function() {
-                            var id = crema.popup !== undefined ? crema.popup.iframe_id:'crema-review-popup';
-                            if($(this).is('#'+id)) {
-                                // console.log('remove', crema)
-                                crema.message_handler.reload_all(crema.iframe_manager.iframes);
-                            }
-                        })
+                    var id = crema.popup !== undefined ? crema.popup.iframe_id:'crema-review-popup';
+                    if(vcui.detect.isIE) {
+                        if($(entry.target).is('#'+id)) {
+                            chkIE = true;
+                        }
+                        if(chkIE && !$(entry.target).is(':visible')) {
+                            chkIE = false;
+                            // console.log(crema.iframe_manager.iframes)
+                            $('.KRP0012-crema-review').find('iframe').attr('src', $('.KRP0012-crema-review').find('iframe').attr('src'))
+                        }
+                    }else {
+                        if(entry.removedNodes.length > 0) {
+                            $(entry.removedNodes).each(function() {
+                                if($(this).is('#'+id)) {
+                                    // console.log('remove', crema)
+                                    crema.message_handler.reload_all(crema.iframe_manager.iframes);
+                                }
+                            })
+                        }
                     }
 				});
             }); 
