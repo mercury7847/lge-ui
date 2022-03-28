@@ -23,7 +23,7 @@
       '{{#if _type != "2"}}' +
         '<dl>' +
             '<dt>상담제품</dt>' +
-            '<dd>{{_category}}' +
+            '<dd>{{#raw _category}}' +
               '{{#if _prdId}}' +
                 '<a href="#n" class="linkbtn product" data-prd-id="{{_prdId}}">제품정보팝업호출</a>' +
               '{{/if}}' +
@@ -36,7 +36,7 @@
           '<dt>구매예약제품</dt>' +
           '<dd>' +
             '{{#each item in _category}} <div class="li_categ">' +
-              '{{#each cate in item}}<span>{{cate}}' + 
+              '{{#each cate in item}}<span>{{#raw cate}}' + 
                 '{{#if $index!=0}} <span class="gap"></span> {{/if}}</span>' +
               '{{/each}}' +
             '</div> {{/each}}' +
@@ -62,9 +62,9 @@
 
   // prettier-ignore
   var productItem = '<div class="prd_img">' +
-      '<img class="lazyload" data-src="{{_img}}" alt="{{_category}}">' + 
+      '<img class="lazyload" data-src="{{_img}}" alt="{{_alt}}">' + 
     '</div>' + 
-    '<p class="prd_name">{{_category}}</p>' + 
+    '<p class="prd_name">{{#raw _category}}</p>' + 
     '<p class="prd_model">{{modelName}}</p>' + 
     '<dl class="prd_visit">' + 
       '<dt>방문주기</dt>' + 
@@ -625,28 +625,22 @@
         item._prdId = null;
         item._category = null;
 
-        var removeTagRegex = this.variable.removeTagRegex;
-
         if (item._type !== 2) {
           if (item.hasOwnProperty("modelName") && item._type === 1) {
             // 케어십 (상품코드)
             item._prdId = item.modelName;
 
-            item._category = item.modelDisplayName
-              .trim()
-              .replace(removeTagRegex, " ");
+            item._category = item.modelDisplayName.trim();
           } else {
             var categorys = [];
 
             // 방문상담/화상상담
             if (item.requestCategory.match(/\,/g)) {
               categorys = item.requestCategory.split(",").map(function (prd) {
-                return prd.trim().replace(removeTagRegex, " ");
+                return prd.trim();
               });
             } else {
-              categorys = [
-                item.requestCategory.trim().replace(removeTagRegex, " "),
-              ];
+              categorys = [item.requestCategory.trim()];
             }
 
             // 외 n개 혹은 1개인 경우 첫번째 제품
@@ -665,12 +659,10 @@
           // 소모품
           if (item.modelDisplayName.match(/\,/g)) {
             categorys = item.modelDisplayName.split(",").map(function (item) {
-              return item.trim().replace(removeTagRegex, " ");
+              return item.trim();
             });
           } else {
-            categorys = [
-              item.modelDisplayName.trim().replace(removeTagRegex, " "),
-            ];
+            categorys = [item.modelDisplayName.trim()];
           }
 
           item._category = categorys
@@ -768,8 +760,6 @@
      * @param {Object} item 제품 json 데이터
      */
     createProduct: function (item) {
-      var removeTagRegex = this.variable.removeTagRegex;
-
       // 이미지
       if (item.hasOwnProperty("modelImg")) {
         item._img = item.modelImg;
@@ -782,9 +772,8 @@
 
       // 제품명
       if (item.hasOwnProperty("modelDisplayName")) {
-        item._category = item.modelDisplayName
-          .trim()
-          .replace(removeTagRegex, " ");
+        item._category = item.modelDisplayName.trim();
+        item._alt = item._category.replace(this.variable.removeTagRegex, " ");
       }
 
       this.el.$popProduct
