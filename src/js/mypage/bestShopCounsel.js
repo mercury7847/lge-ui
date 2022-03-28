@@ -62,9 +62,9 @@
 
   // prettier-ignore
   var productItem = '<div class="prd_img">' +
-      '<img class="lazyload" data-src="{{_img}}" alt="{{modelDisplayName}}">' + 
+      '<img class="lazyload" data-src="{{_img}}" alt="{{_category}}">' + 
     '</div>' + 
-    '<p class="prd_name">{{modelDisplayName}}</p>' + 
+    '<p class="prd_name">{{_category}}</p>' + 
     '<p class="prd_model">{{modelName}}</p>' + 
     '<dl class="prd_visit">' + 
       '<dt>방문주기</dt>' + 
@@ -91,6 +91,7 @@
       showListLen: 0, // 리스트 노출된 갯수
       showListCount: 13, // 리스트 더보기 시 추가 노출할 갯수
       dateRegex: /^(\d{4}-\d{2}-\d{2}).+/, // yyyy-mm-dd 형만 추출
+      removeTagRegex: /<[^>]*>/g, // 제품명 html 태그 제거 정규식
       revType: null, // 상담 | 예약
     },
     el: {
@@ -624,7 +625,7 @@
         item._prdId = null;
         item._category = null;
 
-        var removeTagRegex = /<[^>]*>/g; // 제품명 html 태그 제거 정규식
+        var removeTagRegex = this.variable.removeTagRegex;
 
         if (item._type !== 2) {
           if (item.hasOwnProperty("modelName") && item._type === 1) {
@@ -767,6 +768,8 @@
      * @param {Object} item 제품 json 데이터
      */
     createProduct: function (item) {
+      var removeTagRegex = this.variable.removeTagRegex;
+
       // 이미지
       if (item.hasOwnProperty("modelImg")) {
         item._img = item.modelImg;
@@ -775,6 +778,13 @@
       // 월 이용료
       if (item.hasOwnProperty("monthlyPrice")) {
         item._price = vcui.number.addComma(item.monthlyPrice);
+      }
+
+      // 제품명
+      if (item.hasOwnProperty("modelDisplayName")) {
+        item._category = item.modelDisplayName
+          .trim()
+          .replace(removeTagRegex, " ");
       }
 
       this.el.$popProduct
