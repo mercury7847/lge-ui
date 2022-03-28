@@ -221,7 +221,11 @@
                     		var $visitShedule			= self.$popupServiceDetail.find('.visit-schedule');				// 방문일정
                     		var $filterReplacementYn	= self.$popupServiceDetail.find('.filter-replacement-yn');		// 필터교체 여부
                     		
-                    		var productInfo =  contInfo.CATEGORY_NM_KOR + "(" + contInfo.MODEL_CD + ") 렌탈/케어";
+                    		var modelCode = "-";
+                    		if (contInfo.MODEL_CD != undefined && contInfo.MODEL_CD != "") {
+                    			modelCode = contInfo.MODEL_CD.indexOf(".") !== -1 ? contInfo.MODEL_CD.substr(0, contInfo.MODEL_CD.indexOf(".")) : contInfo.MODEL_CD; 
+                    		}
+                    		var productInfo =  contInfo.CATEGORY_NM_KOR + "(" + modelCode + ") 렌탈/케어";
                     		var contractExpirationDate	= contInfo.CONT_END_DATE.substr(0,4) + "년 "
                     									+ contInfo.CONT_END_DATE.substr(4,2) + "월 "
                     									+ contInfo.CONT_END_DATE.substr(6,2) + "일까지 계약"
