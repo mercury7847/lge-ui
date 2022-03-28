@@ -12,8 +12,8 @@
                 '</div>' +
             '</div>' +
             '<div class="svc-lists"><p>{{#if type=="prev"}}이전{{#elsif type=="next"}}다음{{#else}}이후{{/if}} 방문 서비스 상세 내역</p>' +
-                '<div class="svc-wrap"><ul class="svc-details">' +
-                    '{{#each item in serviceList}}<li>{{item.name}}({{item.sku}}){{#if item.desc}} - {{item.desc}}{{/if}}</li>{{/each}}' +
+                '<div class="svc-wrap"><ul class="svc-details" data-scheduled-to-visit-flag="{{#if type=="prev"}}previous{{#elsif type=="next"}}next{{#else}}after{{/if}}">' +
+                    '{{#each item in serviceList}}<li data-visit-times="{{item.visitTimes}}" data-cont-line-seq="{{item.sku}}"><a href="#n" class="btn-link">{{item.name}}({{item.sku}}){{#if item.desc}} - {{item.desc}}{{/if}}</a></li>{{/each}}' +
                 '</ul></div>' +
                 '{{#if serviceList.length > 5}}<div class="more-view-wrap" aria-hidden="true">' +
                     '<span class="more-view-btn">더보기</span>' +
