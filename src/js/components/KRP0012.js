@@ -69,6 +69,19 @@
                 modelId: (digitalData.productInfo)? digitalData.productInfo.model_id:null,
                 unifyId: (digitalData.userInfo)? digitalData.userInfo.unifyId:null,
             };
+            var mutationObserver = new MutationObserver(function(entries) {
+                entries.forEach(function(entry){
+                    if(entry.removedNodes.length > 0) {
+                        $(entry.removedNodes).each(function() {
+                            var id = crema.popup !== undefined ? crema.popup.iframe_id:crema-review-popup;
+                            if($(this).is('#'+id)) {
+                                // console.log('remove', crema)
+                                crema.message_handler.reload_all(crema.iframe_manager.iframes);
+                            }
+                        })
+                    }
+				});
+            }); 
             lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
                 var data = result.data[0];
                 var appendTarget = $section.find('.review-info-text').size()>0 ? $section.find('.review-info-text'): $section.find('.review-wrap');
@@ -77,6 +90,8 @@
                 options.isProduct = lgkorUI.stringToBool(data.isproduct);
                 appendTarget.before(vcui.template(options.cremaReviewTemplate, options));
                 lgkorUI.cremaReload();
+
+                mutationObserver.observe($('body')[0], { attributes: true, childList: true, subtree: true });
             },"POST", null, null, null, null, function(request){
                 var err = (request == undefined) ? 'undefined' : request.status;
                 console.log("ERROR : " + err);
