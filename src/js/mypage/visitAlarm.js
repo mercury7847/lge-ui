@@ -184,7 +184,7 @@
                     */
                 });
                 
-                // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
+             // BTOCSITE-13464 방문 알리미 일정 화면 서비스 내용 상세화 START
                 self.$list.on('click', '.svc-details li', function(e){
                 	
                 	e.preventDefault();
@@ -263,6 +263,7 @@
                     		var visitShedule		= "-";	// 방문일정
                     		var managerInfo			= "-";	// 매니저정보
                     		var filterReplacementYn	= "X";	// 필터교체여부
+                    		var html 				= "";
                     		
                     		if ( data.scheduleList.length > 0 ) {
                     			
@@ -303,7 +304,7 @@
                         				filterReplacementYn = scheduleInfoTemp.FILTER_CNT > 0 ? "O" : "X";
                         			}
                         			
-                        			var html = 
+                        			html = 
                                 		'<tr>'
                 	                        + '<td class="board-tit">' + visitTimes + '회</td>'
                 	                        + '<td>' + progressVal + '</td>'
@@ -311,12 +312,13 @@
                 	                        + '<td>' + managerInfo + '</td>'
                 	                        + '<td>' + filterReplacementYn + '</td>' +
                                         '</tr>';
-                        			
-                        			$(html).appendTo($historyOfVisits);
                         		})
                     		} else {
-                    			$historyOfVisits.find('.empty-row').css("display", "");
+                    			html = '<tr class="empty-row"><td colspan="5"><div class="no-data"><p>내역이 없습니다.</p></div></td></tr>';
                     		}
+                    		
+                    		$historyOfVisits.empty();
+                			$(html).appendTo($historyOfVisits);
                     		
                     		self.$popupServiceDetail.vcModal();
                 		}
