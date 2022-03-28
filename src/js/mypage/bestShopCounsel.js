@@ -624,22 +624,28 @@
         item._prdId = null;
         item._category = null;
 
+        var removeTagRegex = /<[^>]*>/g; // 제품명 html 태그 제거 정규식
+
         if (item._type !== 2) {
           if (item.hasOwnProperty("modelName") && item._type === 1) {
             // 케어십 (상품코드)
             item._prdId = item.modelName;
 
-            item._category = item.modelDisplayName.trim();
+            item._category = item.modelDisplayName
+              .trim()
+              .replace(removeTagRegex, " ");
           } else {
             var categorys = [];
 
             // 방문상담/화상상담
             if (item.requestCategory.match(/\,/g)) {
               categorys = item.requestCategory.split(",").map(function (prd) {
-                return prd.trim();
+                return prd.trim().replace(removeTagRegex, " ");
               });
             } else {
-              categorys = [item.requestCategory.trim()];
+              categorys = [
+                item.requestCategory.trim().replace(removeTagRegex, " "),
+              ];
             }
 
             // 외 n개 혹은 1개인 경우 첫번째 제품
@@ -658,20 +664,24 @@
           // 소모품
           if (item.modelDisplayName.match(/\,/g)) {
             categorys = item.modelDisplayName.split(",").map(function (item) {
-              return item.trim();
+              return item.trim().replace(removeTagRegex, " ");
             });
           } else {
-            categorys = [item.modelDisplayName.trim()];
+            categorys = [
+              item.modelDisplayName.trim().replace(removeTagRegex, " "),
+            ];
           }
 
-          item._category = categorys.map(function (prd) {
-            return prd
-              .replace(/\>/g, ",")
-              .split(",")
-              .map(function (label) {
-                return label.trim();
-              });
-          });
+          item._category = categorys
+            .map(function (prd) {
+              return prd
+                .replace(/\>/g, ",")
+                .split(",")
+                .map(function (label) {
+                  return label.trim();
+                });
+            })
+            .slice(0, 3);
         }
       }
 
