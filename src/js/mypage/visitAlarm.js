@@ -221,18 +221,20 @@
                     		var $visitShedule			= self.$popupServiceDetail.find('.visit-schedule');				// 방문일정
                     		var $filterReplacementYn	= self.$popupServiceDetail.find('.filter-replacement-yn');		// 필터교체 여부
                     		
-                    		var productInfo =  contInfo.CATEGORY_NM_KOR + "(" + contInfo.MODEL_CD + ")";
+                    		var productInfo =  contInfo.CATEGORY_NM_KOR + "(" + contInfo.MODEL_CD + ") 렌탈/케어";
                     		var contractExpirationDate	= contInfo.CONT_END_DATE.substr(0,4) + "년 "
                     									+ contInfo.CONT_END_DATE.substr(4,2) + "월 "
                     									+ contInfo.CONT_END_DATE.substr(6,2) + "일까지 계약"
                     									+ "(1회 / "+ contInfo.VISIT_CYCLE +"개월)"; 
                     		var managerName = scheduleInfo.VISIT_USER_NM + " 매니저";
-                    		var managerPhone = "(" + scheduleInfo.VISIT_USER_HP_NO + ")";
+                    		var visitUserHpNo = scheduleInfo.VISIT_USER_HP_NO ? 
+                    				scheduleInfo.VISIT_USER_HP_NO.substr(0, 3) + "-" + 
+                    				scheduleInfo.VISIT_USER_HP_NO.substr(3, 4) + "-" + 
+                    				scheduleInfo.VISIT_USER_HP_NO.substr(7, 4) : "-";
+                    		var managerPhone = "(" + visitUserHpNo + ")";
                     		var timesInfo = scheduleInfo.VISIT_TIMES + "회차" ;
-                    		var visitYn = (scheduledToVisitFlag == "before") ? "방문완료" : "방문예정";
-                    		
+                    		var visitYn = (scheduledToVisitFlag == "previous") ? "방문완료" : "방문예정";
                     		var visitSheduleDtl = "-";
-                    		
                     		if (scheduleInfo.VISIT_CONFM_DATE != undefined && scheduleInfo.VISIT_CONFM_DATE != "") {
                     			var visitSheduleTemp = scheduleInfo.VISIT_CONFM_DATE.replace(/(\s*)/g, ""); // 공백제거 
                         		visitSheduleTemp = visitSheduleTemp.replaceAll("-", "");
