@@ -616,13 +616,7 @@
             postData.empNo = $(".comm-code").val();
             var desc = "<span class='blind'>message :: </span>";
 
-            var ajaxUrl;
-            if (document.URL.indexOf("ACCF7096.html") >= 0) {
-                ajaxUrl = "/lg5-common/data-ajax/mypage/shopping/updateCoupon.json";
-            } else {
-                ajaxUrl = "/my-page/ajax/coupon/updateBestShopCoupon";
-            }
-
+            var ajaxUrl = this.el.$contents.data("bestshop-visit-coupon-update-url");
             lgkorUI.requestAjaxDataPost(
                 ajaxUrl,
                 postData,
