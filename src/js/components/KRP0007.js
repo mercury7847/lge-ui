@@ -43,7 +43,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if isShow}}<span class="flag cardDiscount">{{cardDiscountName}}</span>{{/if}}' +
+                '{{#if cardDiscount}}<span class="flag cardDiscount">{{cardDiscountName}}</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -1139,7 +1139,7 @@
                 }
 
                 /* BTOCSITE-13934 4월 5% 결제일할인 뱃지 적용조건 변경건  */
-                item.isShow = item.cardDiscountFlag !== 'N' && !lgkorUI.stringToBool(kiosk) ? true :  false;
+                item.cardDiscount = item.cardDiscountFlag !== 'N' && !lgkorUI.stringToBool(kiosk) ? true :  false;
                 switch(item.cardDiscountFlag) {
                     case 'A' :  item.cardDiscountName = $('.hidden-input-group input[name="cardDiscountName"]').val(); break;
                     case 'B' :  item.cardDiscountName = $('.hidden-input-group input[name="cardDiscountName2"]').val(); break;
