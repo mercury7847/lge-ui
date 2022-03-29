@@ -59,7 +59,7 @@
                     '<p>유효기간 : {{_startDate}}~{{_endDate}}</p>'+
                     '<p>{{#if _clName === "shop-dc"}}대상모델 : {{_itemName}}{{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcodeName1}}{{/if}}</p>'+
                 '</div>'+
-                '<a href="#" class="btn-link-text" title="사용하기"><span>사용하기</span></a>'+
+                '<a href="#" class="btn-link-text" title="{{_txtBtnLink}}"><span>{{_txtBtnLink}}</span></a>'+
                 '{{#if _status==="disabled"}}<div class="end-flags">{{_txtEndFlag}}</div>{{/if}}'+
             '</div>'+
             '<span class="coupon-bg" aria-hidden="true"><em>BEST SHOP</em></span>'+
@@ -859,6 +859,7 @@
                     } else {
                         item._couponNm = item.couponNm;
                     }
+                    _txtBtnLink = "대상모델 보기";
                 } else if (TAB === TAB_BESTSHOP_VISIT) {
                     item._startDate = item.cpnFromDate;
                     item._endDate = item.cpnToDate;
@@ -870,6 +871,7 @@
                     } else if (item.cpnStatus === "N") {
                         item._txtEndFlag = "기간만료";
                     }
+                    _txtBtnLink = "사용하기";
                 }
                 this.el.$couponList.append(vcui.template(template, item));
             }
