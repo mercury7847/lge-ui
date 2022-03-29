@@ -486,6 +486,7 @@ gulp.task("watch", ["browser-sync"], () => {
     //gulp.watch("./lg5-common/images/**", ["static:images"]).on('change', browserSync.reload);
     gulp.watch("./lg5-common/template/**", ["static:template"]).on('change', browserSync.reload);
     gulp.watch("./lg5-common/videos/**", ["static:videos"]).on('change', browserSync.reload);
+    gulp.watch("./lg5-common/event/**", ["static:event"]).on('change', browserSync.reload);
 });
 
 // Compile sass, concat and minify css + js

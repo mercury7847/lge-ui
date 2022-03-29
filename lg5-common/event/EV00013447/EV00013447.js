@@ -146,13 +146,13 @@ $(function () {
                             window.open('', '_self', '').close();
                         }
                     })
-                }else{
+                }else if(result.data.success == 'N'){
                     lgkorUI.alert("", {
                         title: result.data.message,
                     })
                 }
 
-            })                 
+            }, 'POST');             
         }
         
     }
