@@ -1622,13 +1622,11 @@ var goAppUrl = function(path) {
 
         loadKakaoSdkForShare: function(callback){
             var self = this;
-
-            if(window.kakao){
-                if(callback != null) callback();
-            }else{
+            // BTOCSITE-13759 카카오웹 임베디드 regression test 진행 요청
+            if(!self.kakaoSdkLoad) {
                 var script = document.createElement('script');
-        
                 script.onload = function () {
+                    self.kakaoSdkLoad = true;
                     if(callback != null){
                         callback();
                         return;
@@ -1636,12 +1634,12 @@ var goAppUrl = function(path) {
                     self.loadCommonShareUI();
                 };
                 script.onerror = function(e){ 
-                    //alert('kakao api를 로드할수 없습니다.');
+                    self.kakaoSdkLoad = false;
                     console.log('kakao api를 로드할수 없습니다.');
                 }
                 script.src = '//developers.kakao.com/sdk/js/kakao.min.js';        
                 document.head.appendChild(script); 
-            }
+            } 
         },
 
         loadCommonShareUI: function(){
