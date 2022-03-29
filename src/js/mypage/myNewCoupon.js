@@ -99,7 +99,7 @@
             '</div>'+
             '<div class="coupon-info-model">'+
                 '<p class="sub-tit">대상매장</p>'+
-                '<div class="sub-cont">{{orgcodeName2}}</div>'+
+                '<div class="sub-cont">{{_orgcodeName2}}</div>'+
             '</div>'+
             '<ul class="bullet-list">'+
                 '<li class="b-txt">본 쿠폰은 LG전자 베스트샵 매장에서만 사용할 수 있습니다.</li>'+
@@ -237,9 +237,6 @@
                 var $tab = $(e.currentTarget).parent();
 
                 if ($tab.closest(".ui_tab").length === 0) {
-                    if (this.variable.tabActIndex === $tab.index()) {
-                        return;
-                    }
                     this.variable.tabActIndex = $tab.index();
 
                     $tab.siblings("li.on").removeClass("on");
@@ -250,16 +247,12 @@
 
                     if ($tab.index() === 0) {
                         this.el.$subTab.hide();
+                        this.variable.subTabActIndex = 0;
+                        this.el.$subTab.vcTab("instance").select(0);
                     } else {
                         this.el.$subTab.show();
-                        this.variable.subTabActIndex = 0;
-                        this.el.$subTab.find(">ul >li >a:eq(0)").trigger("click");
                     }
                 } else {
-                    if (this.variable.subTabActIndex === $tab.index()) {
-                        return;
-                    }
-
                     //subTab 클릭 할 경우
                     this.variable.subTabActIndex = $tab.index();
                 }
@@ -315,6 +308,13 @@
                     }
                 }
 
+                if (TAB === TAB_BESTSHOP_VISIT) {
+                    if (obj.orgcodeName2.indexOf(",") >= 0) {
+                        obj._orgcodeName2 = obj.orgcodeName2.split(",").join(" / ");
+                    } else {
+                        obj._orgcodeName2 = obj.orgcodeName2;
+                    }
+                }
                 this.el.$couponPopup.html(vcui.template(template, obj));
                 this.el.$couponPopup.vcModal({ opener: $(this) });
             },
