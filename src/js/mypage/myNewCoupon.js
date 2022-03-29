@@ -234,6 +234,10 @@
                 if (this.variable.isLoadAjax) {
                     return;
                 }
+                //사용 가능 쿠폰 값 으로 변경
+                this.el.$contents.find(".ui_selectbox").vcSelectbox("value", "on", true);
+                this.variable.selOptVal = "on";
+
                 var $tab = $(e.currentTarget).parent();
 
                 if ($tab.closest(".ui_tab").length === 0) {
@@ -256,9 +260,6 @@
                     //subTab 클릭 할 경우
                     this.variable.subTabActIndex = $tab.index();
                 }
-                //사용 가능 쿠폰 값 으로 변경
-                this.el.$contents.find(".ui_selectbox").vcSelectbox("value", "on", true);
-                this.variable.selOptVal = "on";
 
                 //url 파라미터 변경
                 TAB = this.getTabName(this.variable.tabActIndex);
@@ -500,6 +501,7 @@
 
             //게시글 수 출력 초기화
             this.variable.subListCnt = 0;
+            this.el.$tab.find("li a .count span").eq(1).removeAttr("data-cntList");
 
             $.each(dataUrl, function (idx, val) {
                 url = oSelf.el.$contents.data(val);
@@ -679,7 +681,11 @@
             if (TAB === TAB_BESTSHOP_PRD || TAB === TAB_BESTSHOP_VISIT) {
                 //사용 가능 쿠폰 > 종료일 오름 차순
                 this.variable.listData["on"].forEach(function (data) {
-                    data._sort = vcui.date.parse(data.cpnToDate).getTime();
+                    if (TAB === TAB_BESTSHOP_PRD) {
+                        data._sort = vcui.date.parse(data.endDate).getTime();
+                    } else if (TAB === TAB_BESTSHOP_VISIT) {
+                        data._sort = vcui.date.parse(data.cpnToDate).getTime();
+                    }
                 });
                 this.variable.listData["on"].sort(function (a, b) {
                     return a._sort - b._sort;
@@ -687,7 +693,11 @@
 
                 //종료된 쿠폰 > 종료일 오름 차순
                 this.variable.listData["end"].forEach(function (data) {
-                    data._sort = vcui.date.parse(data.cpnToDate).getTime();
+                    if (TAB === TAB_BESTSHOP_PRD) {
+                        data._sort = vcui.date.parse(data.endDate).getTime();
+                    } else if (TAB === TAB_BESTSHOP_VISIT) {
+                        data._sort = vcui.date.parse(data.cpnToDate).getTime();
+                    }
                 });
                 this.variable.listData["end"].sort(function (a, b) {
                     return a._sort - b._sort;
@@ -709,7 +719,11 @@
             } else {
                 this.variable.subListCnt = Number(this.variable.subListCnt) + Number(listCnt);
                 var totSubListCnt = this.variable.subListCnt === 0 ? "" : this.variable.subListCnt;
-                this.el.$tab.find("li a .count span").eq(1).text(totSubListCnt);
+
+                if (this.el.$tab.find("li a .count span").eq(1).attr("data-cntList")) {
+                    this.el.$tab.find("li a .count span").eq(1).text(totSubListCnt);
+                }
+                this.el.$tab.find("li a .count span").eq(1).attr("data-cntList", totSubListCnt);
 
                 this.el.$subTab
                     .find("li a .count span")
