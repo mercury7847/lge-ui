@@ -2,57 +2,57 @@
 @import "_components";
 
 .lists.on.coupon-item {
-    background-color:#fff !important;
-    border: 2px solid #ddd;
+    background-color:$color-white !important;
+    border: 2px solid $color-border;
     box-shadow:2px 8px 10px rgba(221, 221, 221,.8);
-}
-.coupon-box {
-    position:relative;
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    width:100%;
-    &:before {
-        content:'';
-        display:inline-block;
-        width:32px;
-        height:32px;
-        margin:-4px 0;
-        background:url(/lg5-common/images/KRC0008/coupon/ico-coupon@2x.png) no-repeat 50% 50%/contain;
-    }
-    > .coupon-title {
-        overflow:hidden;
-        flex:1;
-        align-items:center;
-        padding-left:1em;
-        font-weight:$font-weight-bold;
-        font-size:16px;
-        line-height:1.5;
-        > em {
-            color:#da0f47;
-        }
-    }
-    > .coupon-btn {
-        align-items:center;
-        text-align:right;
-        > .btn-link {
-            font-size:14px;
-            line-height:1.72;
-        }
-    }
-}
-@media screen and (max-width: 767px) {
     .coupon-box {
+        position:relative;
+        display:flex;
+        flex-wrap:wrap;
+        align-items:center;
+        width:100%;
         &:before {
-            width:24px;
-            height:24px;
+            content:'';
+            display:inline-block;
+            width:32px;
+            height:32px;
+            margin:-4px 0;
+            background:url(/lg5-common/images/KRC0008/coupon/ico-coupon@2x.png) no-repeat 50% 50%/contain;
         }
         > .coupon-title {
-            padding-left:.8em;
-            font-size:15px;
+            overflow:hidden;
+            flex:1;
+            align-items:center;
+            padding-left:1em;
+            font-weight:$font-weight-bold;
+            font-size:16px;
+            line-height:1.5;
+            > em {
+                color:#da0f47;
+            }
         }
-        > .coupon-btn > .btn-link {
-            font-size:13px;
+        > .coupon-btn {
+            align-items:center;
+            text-align:right;
+            > .btn-link {
+                font-size:14px;
+                line-height:1.72;
+            }
+        }
+    }
+    @media screen and (max-width: 767px) {
+        .coupon-box {
+            &:before {
+                width:24px;
+                height:24px;
+            }
+            > .coupon-title {
+                padding-left:.8em;
+                font-size:15px;
+            }
+            > .coupon-btn > .btn-link {
+                font-size:13px;
+            }
         }
     }
 }
@@ -60,15 +60,21 @@
 .copuon-pop-wrap {
     max-width:444px;
     .coupon-down-pop {
-        padding:48px 34px 0 40px;
+        padding:48px 34px 60px 40px;
+        @include mobile {
+            margin:0 -18px;
+        }
         .coupon-list li{
             &:nth-child(n+2) {
                 margin-top:32px;
+                @include mobile {
+                    margin-top:16px;
+                }
             }
         }
         ~ .pop-footer.center {
             .btn-group > .btn {
-                min-width:141px;
+                min-width:76%;
             }
         }
     }
@@ -112,8 +118,12 @@
                 background-size:2px 8px;
                 background-repeat:repeat-y;
                 @include mobile {
-                    margin:20px 64px 63px 19px;
+                    margin: 20px 64px 20px 19px;
+                    background-size: 1px 5px;
                     border-radius:5px;
+                    .cp-cont{
+                        margin: 20px 64px 20px 19px;
+                    }
                 }
                 &:before {
                     content:'#{$text}';
@@ -251,13 +261,15 @@
                 }
                 ~ .cp-open-view{
                     position:relative;
-                    margin:-35px 0 20px;
+                    margin:-21px 0 17px;
                     padding:0 30px;
+                    @include mobile {
+                        margin:-48px 0 16px;
+                        padding:0 20px;
+                    }
                     .text {
                         position:relative;
                         display:inline-block;
-                        margin-top:14px;
-                        margin-bottom:-3px;
                         padding-right:22px;
                         color:$color-default;
                         font-size:14px;
@@ -277,22 +289,36 @@
                     }
                     .cp-cont-view {
                         display:none;
-                        margin:20px -29px -18px;
-                        padding:24px 20px 24px 24px;
+                        margin:20px -29px -16px;
+                        padding:24px 20px;
                         font-size:16px;
                         background:#f4f4f4;
                         border-radius:0 0 5px 5px;
+                        @include mobile {
+                            margin:20px -19px -15px;
+                            padding:24px 20px;
+                            font-size:13px;
+                        }
                         .sub-tit {
                             font-size:16px;
                             line-height:1.57;
+                            @include mobile {
+                                font-size:13px;
+                            }
                             &:nth-child(n+2) {
                                 display:inline-block;
                                 margin-top:20px;
+                                @include mobile {
+                                    margin-top:12px;
+                                }
                             }
                         }
                         .sub-cont {
                             font-size:16px;
                             line-height:1.62;
+                            @include mobile {
+                                font-size:13px;
+                            }
                         }
                     }
                 }
