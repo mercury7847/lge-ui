@@ -43,7 +43,7 @@
             '<div class="flag-wrap bar-type">' +
                 '{{#if bestBadgeFlag}}<span class="flag">{{bestBadgeName}}</span>{{/if}}' +
                 '{{#if newProductBadgeFlag}}<span class="flag">{{newProductBadgeName}}</span>{{/if}}' +
-                '{{#if (obsSellingPriceNumber >= 1000000 && obsBtnRule == "enable" && bizType == "PRODUCT" && isShow)}}<span class="flag cardDiscount">{{cardDiscountName}}</span>{{/if}}' +
+                '{{#if isShow}}<span class="flag cardDiscount">{{cardDiscountName}}</span>{{/if}}' +
                 '{{#if promotionBadges}}'+
                     '{{#each badge in promotionBadges}}'+
                         '{{#if badge.badgeName == "NCSI 1위 기념"}}'+
@@ -1137,10 +1137,15 @@
                 } else {
                     item.isShowPrice = item.obsSellingPriceNumber;
                 }
-                /* BTOCSITE-12969 5% 결제일 할인 뱃지 적용기간 연장요청건  */
-                item.isShow = lgkorUI.stringToBool(item.cardDiscountFlag) && !lgkorUI.stringToBool(kiosk) ? true :  false;
-                item.cardDiscountName = $('.hidden-input-group input[name="cardDiscountName"]').val();
-                
+
+                /* BTOCSITE-13934 4월 5% 결제일할인 뱃지 적용조건 변경건  */
+                item.isShow = item.cardDiscountFlag !== 'N' && !lgkorUI.stringToBool(kiosk) ? true :  false;
+                switch(item.cardDiscountFlag) {
+                    case 'A' :  item.cardDiscountName = $('.hidden-input-group input[name="cardDiscountName"]').val(); break;
+                    case 'B' :  item.cardDiscountName = $('.hidden-input-group input[name="cardDiscountName2"]').val(); break;
+                    default  :  item.cardDiscountName = ''; break;
+                }
+               
                 return vcui.template(productItemTemplate, item);
             },
 
