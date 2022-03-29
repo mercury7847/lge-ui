@@ -60,10 +60,10 @@ $(function () {
                         this.msgTarget = '.err-block';
                         this.errorMsg = "상세주소를 입력해주세요.";
                         return false;
-                    } else if(!valTest.test(value)){
-                        this.msgTarget = '.err-block';
-                        this.errorMsg = "'@'를 제외한 특수문자는 입력하실 수 없습니다.";
-                        return false;
+                    // } else if(!valTest.test(value)){
+                    //     this.msgTarget = '.err-block';
+                    //     this.errorMsg = "'@'를 제외한 특수문자는 입력하실 수 없습니다.";
+                    //     return false;
                     } else {
                         return true;
                     }
