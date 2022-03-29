@@ -498,6 +498,9 @@
             var loadAjaxCnt = 0;
             var totLoadAjaxCnt = dataUrl.length;
 
+            //게시글 수 출력 초기화
+            this.variable.subListCnt = 0;
+
             $.each(dataUrl, function (idx, val) {
                 url = oSelf.el.$contents.data(val);
 
@@ -512,21 +515,16 @@
                         url,
                         {},
                         function (result) {
-                            lgkorUI.hideLoading();
-
-                            //게시글 수 출력 초기화
-                            this.variable.subListCnt = 0;
-                            $(".tabs-wrap .count span").text("");
-
                             //템플릿 초기화
                             this.el.$couponWrap.hide();
                             this.el.$couponNoData.hide();
                             this.el.$couponMore.hide();
                             this.el.$errorCoupon.hide();
-
                             loadAjaxCnt++;
                             if (totLoadAjaxCnt === loadAjaxCnt) {
                                 this.variable.isLoadAjax = false;
+
+                                lgkorUI.hideLoading();
                             }
 
                             if (result.status.toUpperCase() === "ERROR") {
@@ -534,6 +532,9 @@
                                     this.goLogin();
                                 } else {
                                     this.error(result);
+
+                                    // 게시글 수 출력
+                                    this.setCntList(idx, 0);
                                 }
                                 return;
                             }
@@ -576,6 +577,7 @@
                             loadAjaxCnt++;
                             if (totLoadAjaxCnt === loadAjaxCnt) {
                                 this.variable.isLoadAjax = false;
+                                lgkorUI.hideLoading();
                             }
                             if (result.status.toUpperCase() === "ERROR") {
                                 //로그인 풀릴 경우
@@ -583,6 +585,9 @@
                                     //로그인 화면으로 이동
                                     this.goLogin();
                                     return;
+                                } else {
+                                    // 게시글 수 출력
+                                    this.setCntList(idx, 0);
                                 }
                             }
 
