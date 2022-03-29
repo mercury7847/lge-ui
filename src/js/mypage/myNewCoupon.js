@@ -59,7 +59,7 @@
                     '<p>유효기간 : {{_startDate}}~{{_endDate}}</p>'+
                     '<p>{{#if _clName === "shop-dc"}}대상모델 : {{_itemName}}{{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcodeName1}}{{/if}}</p>'+
                 '</div>'+
-                '<a href="#" class="btn-link-text" title="사용하기"><span>사용하기</span></a>'+
+                '<a href="#" class="btn-link-text" title="{{_txtBtnLink}}"><span>{{_txtBtnLink}}</span></a>'+
                 '{{#if _status==="disabled"}}<div class="end-flags">{{_txtEndFlag}}</div>{{/if}}'+
             '</div>'+
             '<span class="coupon-bg" aria-hidden="true"><em>BEST SHOP</em></span>'+
@@ -498,6 +498,9 @@
             var loadAjaxCnt = 0;
             var totLoadAjaxCnt = dataUrl.length;
 
+            //게시글 수 출력 초기화
+            this.variable.subListCnt = 0;
+
             $.each(dataUrl, function (idx, val) {
                 url = oSelf.el.$contents.data(val);
 
@@ -512,21 +515,16 @@
                         url,
                         {},
                         function (result) {
-                            lgkorUI.hideLoading();
-
-                            //게시글 수 출력 초기화
-                            this.variable.subListCnt = 0;
-                            $(".tabs-wrap .count span").text("");
-
                             //템플릿 초기화
                             this.el.$couponWrap.hide();
                             this.el.$couponNoData.hide();
                             this.el.$couponMore.hide();
                             this.el.$errorCoupon.hide();
-
                             loadAjaxCnt++;
                             if (totLoadAjaxCnt === loadAjaxCnt) {
                                 this.variable.isLoadAjax = false;
+
+                                lgkorUI.hideLoading();
                             }
 
                             if (result.status.toUpperCase() === "ERROR") {
@@ -534,6 +532,9 @@
                                     this.goLogin();
                                 } else {
                                     this.error(result);
+
+                                    // 게시글 수 출력
+                                    this.setCntList(idx, 0);
                                 }
                                 return;
                             }
@@ -576,6 +577,7 @@
                             loadAjaxCnt++;
                             if (totLoadAjaxCnt === loadAjaxCnt) {
                                 this.variable.isLoadAjax = false;
+                                lgkorUI.hideLoading();
                             }
                             if (result.status.toUpperCase() === "ERROR") {
                                 //로그인 풀릴 경우
@@ -583,6 +585,9 @@
                                     //로그인 화면으로 이동
                                     this.goLogin();
                                     return;
+                                } else {
+                                    // 게시글 수 출력
+                                    this.setCntList(idx, 0);
                                 }
                             }
 
@@ -859,6 +864,7 @@
                     } else {
                         item._couponNm = item.couponNm;
                     }
+                    _txtBtnLink = "대상모델 보기";
                 } else if (TAB === TAB_BESTSHOP_VISIT) {
                     item._startDate = item.cpnFromDate;
                     item._endDate = item.cpnToDate;
@@ -870,6 +876,7 @@
                     } else if (item.cpnStatus === "N") {
                         item._txtEndFlag = "기간만료";
                     }
+                    _txtBtnLink = "사용하기";
                 }
                 this.el.$couponList.append(vcui.template(template, item));
             }
