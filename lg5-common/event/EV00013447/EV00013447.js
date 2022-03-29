@@ -100,7 +100,7 @@ $(function () {
             sendaddressInfo();
         })
 
-        $('.popup-event-13447').on('click', 'button.win-btn-close', function (e) {
+        $('#popup-event-13447').on('click', '.win-btn-close', function (e) {
             e.preventDefault();
             window.close();
         });
