@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko" data-login="N">
+    @@include('./common/head.html', {
+        "pageCSS": [
+            "support/support",
+            "support/notice"
+        ]
+    })
+<body>
+    <div class="wrap">
+        @@include('./common/header.html')
+
+        <div class="container">
+            <div class="contents support notice">
+                <div class="cont-wrap">
+
+                    <div class="board-view-wrap">
+                        <div class="board-view">
+                            <div class="board-view-head">
+                                <div class="flag-wrap bar-type">
+                                    <span class="flag"><span class="blind">제품 상태</span>NEW</span>
+                                    <span class="flag"><span class="blind">제품 상태</span>BEST</span>
+                                </div>
+                                <h1 class="head-title">시스템 점검에 따른 서비스 이용안내 공지사항</h1>
+                                <ul class="head-infos">
+                                    <li>2020.07.20</li>
+                                    <li>조회 4,129</li>
+                                </ul>
+                            </div>
+                            <div class="board-view-sub">
+                                <div class="addfile-wrap ui_dropdown">
+                                    <a href="#" class="addfile-button ui_dropdown_toggle">첨부파일</a>
+                                    <div class="addfilebox-list ui_dropdown_list">
+                                        <ul class="addfile-list">
+                                            <li>
+                                                <a href="#" class="all download">전체</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="download">@img_manager.jpg</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="download">@img_manager2.jpg</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tooltip-wrap share">
+                                    <a href="#n" class="tooltip-icon ui_tooltip-target"><span class="blind">제품 공유하기</span></a>
+                                    <div class="tooltip-box fixed-right">
+                                        <span class="title">공유하기</span>
+                                        <div class="sns-wrap">
+                                            <!-- 
+                                                data-url : 공유될 url 주소 , 미 사용시 메타태그 url 사용.
+                                                data-title : 공유될 타이틀 명 , 미사용시 페이지 타이틀이 사용됨
+                                                data-image : 공유이미지로 사용될 이미지, 미사용시 메타태그에 지정된 이미지가 사용됨
+                                                data-desc : 공유 디스크립션. 미 사용시 메타태그 description 사용.
+                                        
+                                                각 sns 버튼에 적용.
+                                            -->
+                                            <ul class="sns-list">
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn fb" title="페이스북에 공유하기, 새창열림" data-link-name="facebook">페이스북<span class="blind">으로 페이지 공유하기</span></a></li>
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn tw" title="트위터에 공유하기, 새창열림" data-link-name="twitter">트위터<span class="blind">로 페이지 공유하기</span></a></li>
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn kk" title="카카오톡에 공유하기, 새창열림" data-link-name="kakaotalk">카카오톡<span class="blind">으로 페이지 공유하기</span></a></li>
+                                                <li><a href="#none" data-url="https://www.lg.com/html/components/blog-share.html" class="ico-btn url" data-link-name="copy_url">URL복사<span class="blind">하기</span></a></li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="board-view-body">
+                                <!-- admin editor 등록 시 id="viewContent" 추가 -->
+                                <!-- <div class="view-content" id="viewContent"> -->
+                                <div class="view-content" id="viewContent">
+                                   
+
+
+
+                                    
+                                    <!-- 이벤트 start -->
+                                    <div>
+                                        <img src="" alt="">
+                                    </div>
+                                    
+                                    <div style="display: flex; align-items: center; justify-content: center;">    
+                                        <a href="#" style="width:50%; background: #222; color: #fff; text-align: center; font-size: 1.8vw; padding: 15px 0;">ThinQ 앱 설치</a>
+                                        <a href="/html/cs/BTOCSITE-13447-event.html" target="_black" style="width:50%; background: #666; color: #fff; text-align: center; font-size: 1.8vw; padding: 15px 0;">이벤트 참여하기</a>
+                                    </div>
+                                    <!-- 이벤트 end -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="board-navi">
+                            <a href="#" class="navi">
+                                <span class="navi-label">이전 글</span>
+                                <span class="navi-desc">시스템 점검에 따른 서비스 홈페이지 메뉴 이용 관련 안내</span>
+                            </a>
+                            <a href="#" class="navi">
+                                <span class="navi-label">다음 글</span>
+                                <span class="navi-desc">LG전자 챗봇 개인정보 처리 방침 개정안내</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="btn-group center">
+                        <a href="/html/CS/CSRF6052.html" class="btn"><span>목록</span></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        @@include('./common/support/quick-menu.html')
+        @@include('./common/footer.html')
+    </div>      
+
+    <!-- support script -->
+    <script src="/lg5-common/js/support-common.min.js"></script>
+    <script src="/lg5-common/js/support/notice/notice.min.js"></script>
+</body>
+</html> 
