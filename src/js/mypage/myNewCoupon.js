@@ -494,17 +494,6 @@
             }
 
             var dataUrl = ["coupon-list-url", "bestshop-product-coupon-list-url", "bestshop-visit-coupon-list-url"];
-
-            //게시글 수 출력 초기화
-            this.variable.subListCnt = 0;
-            $(".tabs-wrap .count span").text("");
-
-            //템플릿 초기화
-            this.el.$couponWrap.hide();
-            this.el.$couponNoData.hide();
-            this.el.$couponMore.hide();
-            this.el.$errorCoupon.hide();
-
             this.variable.isLoadAjax = true;
             var loadAjaxCnt = 0;
             var totLoadAjaxCnt = dataUrl.length;
@@ -524,6 +513,17 @@
                         {},
                         function (result) {
                             lgkorUI.hideLoading();
+
+                            //게시글 수 출력 초기화
+                            this.variable.subListCnt = 0;
+                            $(".tabs-wrap .count span").text("");
+
+                            //템플릿 초기화
+                            this.el.$couponWrap.hide();
+                            this.el.$couponNoData.hide();
+                            this.el.$couponMore.hide();
+                            this.el.$errorCoupon.hide();
+
                             loadAjaxCnt++;
                             if (totLoadAjaxCnt === loadAjaxCnt) {
                                 this.variable.isLoadAjax = false;
