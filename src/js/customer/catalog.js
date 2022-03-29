@@ -86,9 +86,11 @@
             var catalog07 = anchorCont.eq(6).offset().top - catalTab;
             var catalog08 = anchorCont.eq(7).offset().top - catalTab;
             var catalog09 = anchorCont.eq(8).offset().top - catalTab;
+            var catalog10 = anchorCont.eq(9).offset().top - catalTab;
+            var catalog11 = anchorCont.eq(10).offset().top - catalTab;
 
             scrollTabList.removeClass('on');
-            
+
             if( catalog02 > scrollTop ) {
                 scrollTabList.eq(0).addClass('on');
             } else if( catalog02 <= scrollTop && catalog03 > scrollTop ) {
@@ -105,8 +107,12 @@
                 scrollTabList.eq(6).addClass('on');
             } else if( catalog08 <= scrollTop && catalog09 > scrollTop ) {
                 scrollTabList.eq(7).addClass('on');
-            } else if( catalog09 <= scrollTop ) {
+            } else if( catalog09 <= scrollTop && catalog10 > scrollTop ) {
                 scrollTabList.eq(8).addClass('on');
+            } else if( catalog10 <= scrollTop && catalog11 > scrollTop ) {
+                scrollTabList.eq(9).addClass('on');
+            } else if( catalog11 <= scrollTop ) {
+                scrollTabList.eq(10).addClass('on');
             }
         },
         catalSlider: function(){
