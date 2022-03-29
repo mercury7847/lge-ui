@@ -1,0 +1,51 @@
+{
+	"membershipYn": "Y",
+	"data": {
+		"storeProductOnListCount": "1",
+		"storeProductOffListCount": "2",
+		"storeProductOnList": [
+			{
+				"useDt": "",
+				"couponAmt": "70,000원",
+				"endDate": "2022.05.31",
+				"couponNm": "LGPra.L5(사용가능)",
+				"statusName": "사용가능",
+				"couponNo": "70018091000156",
+				"useYn": "N",
+				"itemList": "24Z95P-G.AA5WK/25Z95P-G.AA5WK",
+				"startDate": "2022.03.01",
+				"statusCode": "usable"
+			}
+		],
+		"storeProductOffList": [
+			{
+				"useDt": "20220120121212",
+				"couponAmt": "40,000원",
+				"endDate": "2022.01.31",
+				"couponNm": "LGPra.L2(사용완료90일미만)",
+				"statusName": "사용완료",
+				"couponNo": "40018091000156",
+				"useYn": "Y",
+				"itemList": "18Z95P-G.AA5WK/19Z95P-G.AA5WK",
+				"startDate": "2022.01.01",
+				"statusCode": "completed"
+			},
+			{
+				"useDt": "",
+				"couponAmt": "60,000원",
+				"endDate": "2022.01.05",
+				"couponNm": "LGPra.L4(기간만료90일미만)",
+				"statusName": "기간만료",
+				"couponNo": "60018091000156",
+				"useYn": "N",
+				"itemList": "22Z95P-G.AA5WK/23Z95P-G.AA5WK",
+				"startDate": "2022.01.01",
+				"statusCode": "expired"
+			}
+		]
+	},
+	"login": "Y",
+	"message": "SUCCESS",
+	"responseCode": "00",
+	"status": "SUCCESS"
+}

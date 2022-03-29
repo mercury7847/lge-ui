@@ -52,12 +52,12 @@
         '<div class="coupon-box bshop {{_clName}} {{_status}}">'+
             '<div class="coupon-cont">'+
                 '<div class="top">'+
-                    '<p class="name">{{cpnEventName}}</p>'+
+                    '<p class="name">{{#if _clName === "shop-dc"}}{{couponAmt}}{{/if}}{{#if _clName === "shop-benefit"}}{{cpnEventName}}{{/if}}</p>'+
                 '</div>'+
-                '<p class="desc">{{cpnMainTitle}}</p>'+
+                '<p class="desc">{{#if _clName === "shop-dc"}}{{_couponNm}}{{/if}}{{#if _clName === "shop-benefit"}}{{cpnMainTitle}}{{/if}}</p>'+
                 '<div class="bottom">'+
-                    '<p>유효기간 : {{cpnFromDate}}~{{cpnToDate}}</p>'+
-                    '<p>{{#if _clName !== "shop-benefit"}}대상모델 : {{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcodeName1}}{{/if}}</p>'+
+                    '<p>유효기간 : {{_startDate}}~{{_endDate}}</p>'+
+                    '<p>{{#if _clName === "shop-dc"}}대상모델 : {{_itemName}}{{/if}}{{#if _clName === "shop-benefit"}}대상매장 : {{orgcodeName1}}{{/if}}</p>'+
                 '</div>'+
                 '<a href="#" class="btn-link-text" title="사용하기"><span>사용하기</span></a>'+
                 '{{#if _status==="disabled"}}<div class="end-flags">{{_txtEndFlag}}</div>{{/if}}'+
@@ -65,9 +65,31 @@
             '<span class="coupon-bg" aria-hidden="true"><em>BEST SHOP</em></span>'+
         '</div>'+
     '</li>';
+    // prettier-ignore
+    var storePrdCouponPopupTemplate = '<header class="pop-header">'+
+            '<h1 class="tit">'+
+                '<span>{{couponAmt}}</span>'+
+            '</h1>'+
+        '</header>'+
+        '<section class="pop-conts common-pop mypage mybestshop no-footer">'+
+            '<div class="coupon-info-moreview">'+
+                '<strong class="title-info">{{_couponNm}}</strong>'+
+                '<p class="period-info">유효기간 : {{_startDate}}~{{_endDate}}</p>'+
+            '</div>'+
+            '<div class="coupon-info-model">'+
+                '<p class="sub-tit">대상모델</p>'+
+                '<div class="sub-cont">{{_itemList}}</div>'+
+            '</div>'+
+            '<ul class="bullet-list">'+        
+                '<li class="b-txt">본 쿠폰은 LG전자 베스트샵 매장에서만 사용할 수 있습니다.</li>'+        
+            '</ul>'+
+        '</section>'+
+        '<button type="button" class="btn-close ui_modal_close">'+
+            '<span class="blind">닫기</span>'+
+        '</button>';
 
     // prettier-ignore
-    var storeCouponPopupTemplate = '<header class="pop-header" data-cpnEventNo="{{cpnEventNo}}">'+
+    var storeVisitCouponPopupTemplate = '<header class="pop-header" data-cpnEventNo="{{cpnEventNo}}">'+
             '<h1 class="tit"><span>{{cpnEventName}}</span></h1>'+
         '</header>'+
         '<section class="pop-conts common-pop mypage mybestshop">'+
@@ -97,6 +119,10 @@
     var TAB_LGE = "LGE";
     var TAB_BESTSHOP_PRD = "BESTSHOP_PRD";
     var TAB_BESTSHOP_VISIT = "BESTSHOP_VISIT";
+
+    var SYSTEM_DOWN_TIME_PLAN = "SYSTEM_DOWN_TIME_PLAN"; // 서버 점검
+    var NOT_LOG_IN = "NOT_LOG_IN"; //
+
     var linkHost = window.LGEAPPHostName === "localhost" ? "https://www.lge.co.kr" : "";
 
     var coupon = {
@@ -104,7 +130,7 @@
             listData: [],
             visibleCount: 12,
             tabActIndex: 0,
-            subTabActIndex: 1, //todo> subtab 생성 시 0으로 변경
+            subTabActIndex: 0,
             lgeOnPage: 0, //LGE.COM > 사용 가능 쿠폰 리스트 페이지
             lgeOffPage: 0, //LGE.COM > 종료 쿠폰 리스트 페이지
             bestShopPrdOnPage: 0, //베스트샵 > 매장 제품 할인 쿠폰 > 사용 가능 리스트 페이지
@@ -112,6 +138,7 @@
             bestShopVisitOnPage: 0, //베스트샵 > 매장 방문 할인 쿠폰 > 사용 가능 리스트 페이지
             bestShopVisitOffPage: 0, //베스트샵 > 매장 방문 할인 쿠폰 > 종료 쿠폰 리스트 페이지
             selOptVal: "on", //셀렉트 박스 옵션 값 설정
+            subListCnt: 0,
             isLoadAjax: false,
         },
         el: {
@@ -148,56 +175,34 @@
             this.el.$errorCoupon = $(this.selector.errorCoupon);
         },
         setStyle: function () {
-            // if (this.urlParam("tab") && this.urlParam("tab") === "bestshop" && this.urlParam("store_coupon") === "visit") {
-            //     //베스트샵 > 매장 방문 혜택 쿠폰
-            //     this.variable.tabActIndex = 1;
-            //     this.variable.subTabActIndex = 1;
-            //     this.el.$tab.find(">ul>li").eq(1).addClass("on");
-
-            //     //todo> subtab 생성
-            //     // this.el.$subTab.show();
-            //     // this.el.$subTab.find(">ul>li").eq(1).addClass("on");
-            // } else if (this.urlParam("tab") && this.urlParam("tab") === "bestshop") {
-            //     //베스트샵 > 매장 제품 할인 쿠폰
-            //     this.variable.tabActIndex = 1;
-            //     this.variable.subTabActIndex = 0;
-            //     this.el.$tab.find(">ul>li").eq(1).addClass("on");
-
-            //     //todo> subtab 생성
-            //     // this.el.$subTab.show();
-            //     // this.el.$subTab.find(">ul>li").eq(0).addClass("on");
-            // } else {
-            //     //베스트샵 > 매장 제품 할인 쿠폰
-            //     this.variable.tabActIndex = 0;
-            //     this.el.$tab.find(">ul>li").eq(0).addClass("on");
-            // }
-
-            if (this.urlParam("tab") && this.urlParam("tab") === "bestshop") {
+            if (this.urlParam("tab") && this.urlParam("tab") === "bestshop" && this.urlParam("store_coupon") === "visit") {
                 //베스트샵 > 매장 방문 혜택 쿠폰
                 this.variable.tabActIndex = 1;
+                this.variable.subTabActIndex = 1;
                 this.el.$tab.find(">ul>li").eq(1).addClass("on");
+
+                this.el.$subTab.show();
+                this.el.$subTab.find(">ul>li").eq(1).addClass("on");
+            } else if (this.urlParam("tab") && this.urlParam("tab") === "bestshop") {
+                //베스트샵 > 매장 제품 할인 쿠폰
+                this.variable.tabActIndex = 1;
+                this.variable.subTabActIndex = 0;
+                this.el.$tab.find(">ul>li").eq(1).addClass("on");
+
+                this.el.$subTab.show();
+                this.el.$subTab.find(">ul>li").eq(0).addClass("on");
             } else {
                 //LGE.COM 쿠폰
                 this.variable.tabActIndex = 0;
+                this.el.$subTab.hide();
                 this.el.$tab.find(">ul>li").eq(0).addClass("on");
             }
 
             this.el.$tab.find("li.on a .count").after('<em class="blind">선택됨</em>');
-
-            //todo> subtab 생성
-            // TAB = this.getTabName(this.variable.tabActIndex);
-            // if (TAB === TAB_LGE) {
-            //     this.el.$subTab.hide();
-            // } else if (TAB === TAB_BESTSHOP_VISIT) {
-            //     this.el.$subTab.show();
-            // }
         },
         bindEvents: function () {
             //탭 클릭 시 > 데이터 연결
-            this.el.$tab.on("click", ">ul >li >a", $.proxy(this.handler.clickTabMenu, this));
-
-            //서브 탭 클릭 시 > 데이터 연결
-            // this.el.$subTab.on("click", ">ul >li >a", $.proxy(this.handler.clickSubTabMenu, this));
+            $(".tabs-wrap").on("click", "a", $.proxy(this.handler.clickTabMenu, this));
 
             //쿠폰 상세 클릭 시 > 팝업 활성화
             this.el.$contents.find("div.coupon-lists").on("click", "li a", $.proxy(this.handler.clickCoupon, this));
@@ -226,53 +231,52 @@
              */
             clickTabMenu: function (e) {
                 e.preventDefault();
-
                 if (this.variable.isLoadAjax) {
                     return;
                 }
-
                 var $tab = $(e.currentTarget).parent();
-                $tab.siblings("li.on").removeClass("on");
-                $tab.addClass("on");
 
-                this.el.$tab.find("li a > .blind").remove();
-                this.el.$tab.find("li.on a .count").after('<em class="blind">선택됨</em>');
+                if ($tab.closest(".ui_tab").length === 0) {
+                    if (this.variable.tabActIndex === $tab.index()) {
+                        return;
+                    }
+                    this.variable.tabActIndex = $tab.index();
 
-                //사용 가능 쿠폰 초기 값 셋팅
+                    $tab.siblings("li.on").removeClass("on");
+                    $tab.addClass("on");
+
+                    this.el.$tab.find("li a > .blind").remove();
+                    this.el.$tab.find("li.on a .count").after('<em class="blind">선택됨</em>');
+
+                    if ($tab.index() === 0) {
+                        this.el.$subTab.hide();
+                    } else {
+                        this.el.$subTab.show();
+                        this.variable.subTabActIndex = 0;
+                        this.el.$subTab.find(">ul >li >a:eq(0)").trigger("click");
+                    }
+                } else {
+                    if (this.variable.subTabActIndex === $tab.index()) {
+                        return;
+                    }
+
+                    //subTab 클릭 할 경우
+                    this.variable.subTabActIndex = $tab.index();
+                }
+                //사용 가능 쿠폰 값 으로 변경
                 this.el.$contents.find(".ui_selectbox").vcSelectbox("value", "on", true);
                 this.variable.selOptVal = "on";
 
-                //탭 변경 시 데이터 새로 고침
-                this.variable.tabActIndex = $tab.index();
-
                 //url 파라미터 변경
-                var url = lgkorUI.parseUrl(location.href);
-                if (this.variable.tabActIndex === 0) {
-                    window.history.replaceState("", "", url.pathname);
-                } else {
-                    window.history.replaceState("", "", "?tab=bestshop&store_coupon=visit");
+                TAB = this.getTabName(this.variable.tabActIndex);
+                if (TAB === TAB_LGE) {
+                    window.history.replaceState("", "", location.origin + location.pathname);
+                } else if (TAB === TAB_BESTSHOP_PRD) {
+                    window.history.replaceState("", "", location.origin + location.pathname + "?tab=bestshop&store_coupon=prd");
+                } else if (TAB === TAB_BESTSHOP_VISIT) {
+                    window.history.replaceState("", "", location.origin + location.pathname + "?tab=bestshop&store_coupon=visit");
                 }
 
-                this.requestCouponList();
-
-                //todo> subtab 생성
-                // TAB = this.getTabName($tab.index());
-                // if ($tab.index() === 0) {
-                //     this.el.$subTab.hide();
-                // } else {
-                //     this.el.$subTab.show();
-                // }
-            },
-            clickSubTabMenu: function (e) {
-                if (this.variable.isLoadAjax) {
-                    return;
-                }
-
-                e.preventDefault();
-                var $subTab = $(e.currentTarget).parent();
-
-                //탭 변경 시 데이터 새로 고침
-                this.variable.subTabActIndex = $subTab.index();
                 this.requestCouponList();
             },
             /**
@@ -288,10 +292,29 @@
                 TAB = this.getTabName(this.variable.tabActIndex);
                 if (TAB === TAB_LGE) {
                     template = couponPopupTemplate;
-                } else if (TAB === TAB_BESTSHOP_VISIT) {
-                    template = storeCouponPopupTemplate;
+                } else if (TAB == TAB_BESTSHOP_PRD) {
+                    template = storePrdCouponPopupTemplate;
+                } else {
+                    template = storeVisitCouponPopupTemplate;
                 }
                 obj.jsonString = JSON.stringify(obj);
+
+                if (TAB === TAB_BESTSHOP_PRD) {
+                    obj._startDate = obj.startDate;
+                    obj._endDate = obj.endDate;
+                    if (obj.couponNm.indexOf("(") >= 0) {
+                        obj._couponNm = obj.couponNm.split("(")[0];
+                    } else {
+                        obj._couponNm = obj.couponNm;
+                    }
+
+                    if (obj.itemList.indexOf("/") >= 0) {
+                        obj._itemList = obj.itemList.split("/").join(" / ");
+                    } else {
+                        obj._itemList = obj.itemList;
+                    }
+                }
+
                 this.el.$couponPopup.html(vcui.template(template, obj));
                 this.el.$couponPopup.vcModal({ opener: $(this) });
             },
@@ -311,6 +334,14 @@
                     } else {
                         this.variable.lgeOffPage = this.variable.lgeOffPage + 1;
                         page = this.variable.lgeOffPage;
+                    }
+                } else if (TAB === TAB_BESTSHOP_PRD) {
+                    if (this.variable.selOptVal === "on") {
+                        this.variable.bestShopPrdOnPage = this.variable.bestShopPrdOnPage + 1;
+                        page = this.variable.bestShopPrdOnPage;
+                    } else {
+                        this.variable.bestShopPrdOffPage = this.variable.bestShopPrdOffPage + 1;
+                        page = this.variable.bestShopPrdOffPage;
                     }
                 } else if (TAB === TAB_BESTSHOP_VISIT) {
                     if (this.variable.selOptVal === "on") {
@@ -453,31 +484,43 @@
         requestCouponList: function () {
             var oSelf = this;
             var ajaxUrl;
-            var tabCouponCnt0;
-            var tabCouponCnt1;
             TAB = this.getTabName(this.variable.tabActIndex);
             if (TAB === TAB_LGE) {
-                ajaxUrl = this.el.$contents.data("coupon-list-url");
-                tabCouponCnt1 = this.el.$contents.data("bestshop-visit-coupon-list-url");
+                ajaxUrl = "coupon-list-url";
+            } else if (TAB === TAB_BESTSHOP_PRD) {
+                ajaxUrl = "bestshop-product-coupon-list-url";
             } else if (TAB === TAB_BESTSHOP_VISIT) {
-                ajaxUrl = this.el.$contents.data("bestshop-visit-coupon-list-url");
-                tabCouponCnt0 = this.el.$contents.data("coupon-list-url");
+                ajaxUrl = "bestshop-visit-coupon-list-url";
             }
+
+            var dataUrl = ["coupon-list-url", "bestshop-product-coupon-list-url", "bestshop-visit-coupon-list-url"];
+
+            //게시글 수 출력 초기화
+            this.variable.subListCnt = 0;
+            $(".tabs-wrap .count span").text("");
+
+            //템플릿 초기화
+            this.el.$couponWrap.hide();
+            this.el.$couponNoData.hide();
+            this.el.$couponMore.hide();
+            this.el.$errorCoupon.hide();
 
             this.variable.isLoadAjax = true;
             var loadAjaxCnt = 0;
-            var totLoadAjaxCnt = 2;
+            var totLoadAjaxCnt = dataUrl.length;
 
-            var dataUrl = this.el.$contents.data();
             $.each(dataUrl, function (idx, val) {
-                if (ajaxUrl && ajaxUrl === val) {
+                url = oSelf.el.$contents.data(val);
+
+                if (ajaxUrl === val) {
+                    //현재 탭 데이터
                     lgkorUI.showLoading();
 
                     //초기화
                     oSelf.variable.listData = [];
 
                     lgkorUI.requestAjaxDataPost(
-                        val,
+                        url,
                         {},
                         function (result) {
                             lgkorUI.hideLoading();
@@ -487,42 +530,15 @@
                             }
 
                             if (result.status.toUpperCase() === "ERROR") {
-                                //로그인 풀릴 경우 > 로그인 화면으로 이동
-                                if (result.message.toUpperCase() === "NOT_LOG_IN") {
+                                if (result.message === NOT_LOG_IN) {
                                     this.goLogin();
-                                    return;
-                                }
-
-                                this.el.$couponWrap.hide();
-                                this.el.$couponNoData.hide();
-                                this.el.$couponMore.hide();
-                                this.el.$errorCoupon.show();
-
-                                // 게시글 수 출력
-                                var $listCnt;
-                                TAB = this.getTabName(this.variable.tabActIndex);
-                                if (TAB === TAB_LGE) {
-                                    $listCnt = this.el.$tab.find(".count span").eq(0);
-                                } else if (TAB === TAB_BESTSHOP_VISIT) {
-                                    $listCnt = this.el.$tab.find(".count span").eq(1);
-                                }
-                                $listCnt.text("");
-
-                                //시스템 정기 점검 일 경우
-                                if (result.downTimeStart) {
-                                    $(".coupon-error-cont dl").show();
-                                    $(".coupon-error-cont dd").text(result.downTimeStart + " ~ " + result.downTimeEnd);
                                 } else {
-                                    $(".coupon-error-cont dl").hide();
+                                    this.error(result);
                                 }
-
                                 return;
                             }
 
                             if (result.status.toUpperCase() === "SUCCESS") {
-                                this.el.$couponWrap.show();
-                                this.el.$errorCoupon.hide();
-
                                 var keyValue = Object.keys(result.data);
                                 var aDataList;
                                 $.each(keyValue, function (idx, val) {
@@ -543,6 +559,9 @@
                                     }
                                 });
 
+                                // 게시글 수 출력
+                                this.setCntList(idx, this.variable.listData["onListCnt"]);
+
                                 this.renderContents();
                             }
                         }.bind(oSelf),
@@ -551,7 +570,7 @@
                     );
                 } else {
                     lgkorUI.requestAjaxDataPost(
-                        val,
+                        url,
                         {},
                         function (result) {
                             loadAjaxCnt++;
@@ -565,31 +584,19 @@
                                     this.goLogin();
                                     return;
                                 }
-                                // 게시글 수 출력
-                                this.el.$tab.find('li:not(".on") a .count span').text("");
                             }
 
                             if (result.status.toUpperCase() === "SUCCESS") {
                                 var keyListCnt;
                                 var keyValue = Object.keys(result.data);
-                                $.each(keyValue, function (idx, val) {
-                                    if (val.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
-                                        keyListCnt = val;
+                                $.each(keyValue, function (dataIdx, dataVal) {
+                                    if (dataVal.toUpperCase().indexOf("ONLISTCOUNT") >= 0) {
+                                        keyListCnt = dataVal;
                                     }
                                 });
 
                                 // 게시글 수 출력
-                                var $listCnt;
-                                if (tabCouponCnt0 === val) {
-                                    $listCnt = this.el.$tab.find("li a .count span").eq(0);
-                                } else {
-                                    $listCnt = this.el.$tab.find("li a .count span").eq(1);
-                                }
-                                if (result.data[keyListCnt] > 0) {
-                                    $listCnt.text(result.data[keyListCnt]);
-                                } else {
-                                    $listCnt.text("");
-                                }
+                                this.setCntList(idx, result.data[keyListCnt]);
                             }
                         }.bind(oSelf),
                         true,
@@ -664,25 +671,13 @@
         /**
          * @method renderContents
          * @memberof
-         * @return {myCallback}  [list > 게시글 수 출력, 데이터 리스트 출력]
+         * @return {myCallback}  [데이터 정렬]
          */
         renderContents: function () {
-            // 게시글 수 출력
-            var $listCnt;
-            TAB = this.getTabName(this.variable.tabActIndex);
-            if (TAB === TAB_LGE) {
-                $listCnt = this.el.$tab.find(".count span").eq(0);
-            } else if (TAB === TAB_BESTSHOP_VISIT) {
-                $listCnt = this.el.$tab.find(".count span").eq(1);
-            }
-            if (this.variable.listData["onListCnt"] > 0) {
-                $listCnt.text(this.variable.listData["onListCnt"]);
-            } else {
-                $listCnt.text("");
-            }
+            this.el.$couponWrap.show();
 
             //종료일 기준 오름차순 정렬
-            if (TAB === TAB_BESTSHOP_VISIT) {
+            if (TAB === TAB_BESTSHOP_PRD || TAB === TAB_BESTSHOP_VISIT) {
                 //사용 가능 쿠폰 > 종료일 오름 차순
                 this.variable.listData["on"].forEach(function (data) {
                     data._sort = vcui.date.parse(data.cpnToDate).getTime();
@@ -691,16 +686,9 @@
                     return a._sort - b._sort;
                 });
 
-                //종료된 쿠폰 > 현재 날짜와 가까운 순으로 정렬
-                var now = new Date();
-                var year = now.getFullYear();
-                var month = now.getMonth();
-                var day = now.getDate();
-                var nowDate = new Date(year, month, day).getTime();
-
+                //종료된 쿠폰 > 종료일 오름 차순
                 this.variable.listData["end"].forEach(function (data) {
-                    endDate = vcui.date.parse(data.cpnToDate).getTime();
-                    data._sort = Math.abs(nowDate - endDate);
+                    data._sort = vcui.date.parse(data.cpnToDate).getTime();
                 });
                 this.variable.listData["end"].sort(function (a, b) {
                     return a._sort - b._sort;
@@ -708,6 +696,27 @@
             }
 
             this.setCouponList();
+        },
+        /**
+         * @method setCntList
+         * @memberof
+         * @param {*} idx: selector index, cntVal: 게시글 수
+         * @return {myCallback}  [list > 게시글 수 출력]
+         */
+        setCntList: function (idx, cntVal) {
+            var listCnt = Number(cntVal) === 0 ? "" : cntVal;
+            if (idx === 0) {
+                this.el.$tab.find("li a .count span").eq(0).text(listCnt);
+            } else {
+                this.variable.subListCnt = Number(this.variable.subListCnt) + Number(listCnt);
+                var totSubListCnt = this.variable.subListCnt === 0 ? "" : this.variable.subListCnt;
+                this.el.$tab.find("li a .count span").eq(1).text(totSubListCnt);
+
+                this.el.$subTab
+                    .find("li a .count span")
+                    .eq(idx - 1)
+                    .text(listCnt);
+            }
         },
         /**
          * @method setCouponList
@@ -739,6 +748,12 @@
                     page = this.variable.lgeOnPage;
                 } else {
                     page = this.variable.lgeOffPage;
+                }
+            } else if (TAB === TAB_BESTSHOP_PRD) {
+                if (this.variable.selOptVal === "on") {
+                    page = this.variable.bestShopPrdOnPage;
+                } else {
+                    page = this.variable.bestShopPrdOffPage;
                 }
             } else if (TAB === TAB_BESTSHOP_VISIT) {
                 if (this.variable.selOptVal === "on") {
@@ -793,6 +808,15 @@
             TAB = this.getTabName(this.variable.tabActIndex);
             if (TAB === TAB_LGE) {
                 template = couponItemTemplate;
+            } else if (TAB === TAB_BESTSHOP_PRD) {
+                template = storeCouponItemTemplate;
+                _clName = "shop-dc";
+
+                if (this.variable.selOptVal === "on") {
+                    _status = "";
+                } else {
+                    _status = "disabled";
+                }
             } else if (TAB === TAB_BESTSHOP_VISIT) {
                 template = storeCouponItemTemplate;
                 _clName = "shop-benefit";
@@ -816,10 +840,34 @@
                 item.endDate = !item.endDate ? null : vcui.date.format(item.endDate, "yyyy.MM.dd");
                 item.jsonString = JSON.stringify(item);
 
-                if (TAB === TAB_BESTSHOP_VISIT) {
-                    item._clName = _clName;
-                    item._status = _status;
-                    item._txtEndFlag = "";
+                item._clName = _clName;
+                item._status = _status;
+
+                if (TAB === TAB_BESTSHOP_PRD) {
+                    item._startDate = item.startDate;
+                    item._endDate = item.endDate;
+                    if (item.itemList && item.itemList.split("/").length === 0) {
+                        item._itemName = "전체상품";
+                    } else if (item.itemList && item.itemList.split("/").length === 1) {
+                        item._itemName = item.itemList;
+                    } else {
+                        item._itemName = item.itemList.split("/")[0] + " 등";
+                    }
+
+                    if (item.statusCode === "completed") {
+                        item._txtEndFlag = "사용완료";
+                    } else if (item.statusCode === "expired") {
+                        item._txtEndFlag = "기간만료";
+                    }
+
+                    if (item.couponNm.indexOf("(") >= 0) {
+                        item._couponNm = item.couponNm.split("(")[0];
+                    } else {
+                        item._couponNm = item.couponNm;
+                    }
+                } else if (TAB === TAB_BESTSHOP_VISIT) {
+                    item._startDate = item.cpnFromDate;
+                    item._endDate = item.cpnToDate;
 
                     if (item.cpnStatus === "F") {
                         item._txtEndFlag = "조기마감";
@@ -854,6 +902,28 @@
                 return null;
             } else {
                 return decodeURI(results[1]) || 0;
+            }
+        },
+        /**
+         * @method error
+         * @memberof
+         * @return {myCallback}  [서버 에러 출력]
+         */
+        error: function (result) {
+            this.el.$errorCoupon.show();
+
+            if (result.message === SYSTEM_DOWN_TIME_PLAN) {
+                //시스템 정기 점검 일 경우
+                $(".coupon-error-cont dl").show();
+                $(".coupon-error-cont dd").text(result.downTimeStart + " ~ " + result.downTimeEnd);
+            } else {
+                $(".coupon-error-cont dl").hide();
+            }
+
+            if (result.responseCode) {
+                this.el.$errorCoupon.attr("data-responseCode", result.responseCode);
+            } else {
+                this.el.$errorCoupon.attr("data-responseCode", "");
             }
         },
         /**
