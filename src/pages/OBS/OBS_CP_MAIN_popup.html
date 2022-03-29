@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+    @@include('./common/head.html', {
+        pageCSS: ["OBS/OBS"]
+    })
+<body>
+    <div class="wrap">
+        <button type="button" data-href="#cp-lge-before_pop" data-control="modal" class="btn"><span>쿠폰 상세 팝업(LGE_쿠폰받기)</span></button><br><br>
+        <button type="button" data-href="#cp-lge-after_pop" data-control="modal" class="btn"><span>쿠폰 상세 팝업(LGE_사용완료)</span></button><br><br>
+        <button type="button" data-href="#cp-best-store_pop" data-control="modal" class="btn"><span>쿠폰 상세 팝업(베스트샵_매장제품할인쿠폰)</span></button><br><br>
+        <button type="button" data-href="#cp-best-benefit_pop" data-control="modal" class="btn"><span>쿠폰 상세 팝업(베스트샵_매장방문혜택쿠폰)</span></button><br><br>
+        <button type="button" data-href="#cp-partner-before_pop" data-control="modal" class="btn"><span>쿠폰 상세 팝업(제휴_쿠폰받기)</span></button><br><br>
+        <button type="button" data-href="#cp-partner-confirm_pop" data-control="modal" class="btn"><span>쿠폰 상세 팝업(제휴_사용확인)</span></button><br><br>
+        <button type="button" data-href="#cp-partner-after_pop" data-control="modal" class="btn"><span>쿠폰 상세 팝업(제휴_사용완료)</span></button><br><br>
+        <button type="button" data-href="#cp-register_pop" data-control="modal" class="btn"><span>쿠폰 등록</span></button><br><br>
+    </div>
+
+    <!-- 쿠폰 상세보기(LGE_쿠폰받기) -->
+    <article id="cp-lge-before_pop" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>쿠폰 상세정보</span></h1>
+        </header>
+        <section class="pop-conts common-pop cp-pop">
+            <div class="cp-cont-info">
+                <em class="tit">50,000<i class="unit">원</i></em>
+                <p class="desc">[네이버쇼핑]신학기 새내기 프로젝트! <br>LG GRAM 100,000원 할인 쿠폰</p>
+                <div class="graybox">
+                    <strong class="sub-tit">유효기간</strong>
+                    <div class="sub-cont">2022년 1월 1일 10:00 부터 <br>2022년 1월 30일 23:59 까지</div>
+                    <strong class="sub-tit">할인조건</strong>
+                    <div class="sub-cont">5,000원 이상 구매 시 최대 100,000원 할인</div>
+                    <strong class="sub-tit">대상 카테고리</strong>
+                    <div class="sub-cont">TV &gt; 올레드 TV  <br>일부모델은 적용대상에서 제외될 수 있습니다.</div>
+                </div>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "본 쿠폰은 LG전자 베스트샵 매장에서만 사용할 수 있습니다."
+                ]
+            })
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>쿠폰받기</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 쿠폰 상세보기(LGE_쿠폰받기) -->
+
+    <!-- 쿠폰 상세보기(LGE_사용완료) -->
+    <article id="cp-lge-after_pop" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>쿠폰 상세정보</span></h1>
+        </header>
+        <section class="pop-conts common-pop cp-pop no-footer">
+            <div class="cp-cont-info">
+                <em class="tit">50,000<i class="unit">원</i></em>
+                <p class="desc">[네이버쇼핑]신학기 새내기 프로젝트! <br>LG GRAM 100,000원 할인 쿠폰</p>
+                <div class="graybox">
+                    <strong class="sub-tit">유효기간</strong>
+                    <div class="sub-cont">2022년 1월 1일 10:00 부터 <br>2022년 1월 30일 23:59 까지</div>
+                    <strong class="sub-tit">할인조건</strong>
+                    <div class="sub-cont">5,000원 이상 구매 시 최대 100,000원 할인</div>
+                    <strong class="sub-tit">대상 카테고리</strong>
+                    <div class="sub-cont">TV &gt; 올레드 TV <br>일부모델은 적용대상에서 제외될 수 있습니다.</div>
+                </div>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "본 쿠폰은 LG전자 베스트샵 매장에서만 사용할 수 있습니다."
+                ]
+            })
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 쿠폰 상세보기(LGE_사용완료) -->
+
+    <!-- 쿠폰 상세보기(매장제품할인쿠폰) -->
+    <article id="cp-best-store_pop" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>매장제품할인쿠폰</span></h1>
+        </header>
+        <section class="pop-conts common-pop cp-pop no-footer">
+            <div class="cp-cont-info best-store"><!-- .best-store : 매장제품할인쿠폰 -->
+                <em class="tit">50,000<i class="unit">원</i></em>
+                <p class="desc">[네이버쇼핑]신학기 새내기 프로젝트! <br>LG GRAM 100,000원 할인 쿠폰</p>
+                <div class="graybox">
+                    <strong class="sub-tit">유효기간</strong>
+                    <div class="sub-cont">2022년 1월 1일 10:00 부터 <br>2022년 1월 30일 23:59 까지</div>
+                    <strong class="sub-tit">대상 모델</strong>
+                    <div class="sub-cont">
+                        <div class="scroll-box">
+                            65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/
+                            65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/65ART90EKPA.AKRG/
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "본 쿠폰은 LG전자 베스트샵 매장에서만 사용할 수 있습니다."
+                ]
+            })
+        </section> 
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 쿠폰 상세보기(매장제품할인쿠폰) -->
+
+    <!-- 쿠폰 상세보기(매장방문혜택쿠폰) -->
+      <article id="cp-best-benefit_pop" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>매장 방문 혜택 쿠폰</span></h1>
+        </header>
+        <section class="pop-conts common-pop cp-pop">
+            <div class="cp-cont-info best-benefit"><!-- .best-benefit : 매장방문혜택쿠폰 -->
+                <em class="tit">매장방문혜택쿠폰</em>
+                <p class="desc">[네이버쇼핑]신학기 새내기 프로젝트! <br>LG GRAM 100,000원 할인 쿠폰</p>
+                <div class="graybox">
+                    <strong class="sub-tit">유효기간</strong>
+                    <div class="sub-cont">2022년 1월 1일 10:00 부터 <br>2022년 1월 30일 23:59 까지</div>
+                    <strong class="sub-tit">대상 매장</strong>
+                    <div class="sub-cont">
+                        <div class="scroll-box">
+                            강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 
+                            강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 강남본점 / 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "본 쿠폰은 LG전자 베스트샵 매장에서만 사용할 수 있습니다.",
+                    "대상 매장에 방문하여 매니저에게 쿠폰을 보여주세요.",
+                    "&quot;매니저 확인&quot; 후 사용된 쿠폰은 사용취소가 불가합니다.",
+                    "본 쿠폰은 매장 사정에 의해 조기 마감될 수 있습니다."
+                ]
+            })
+            <div class="input-wrap error">
+                <input type="text" class="comm-code" placeholder="확인 코드를 입력해주세요." title="확인 코드를 입력해주세요." maxlength="9" data-min-length="8" data-max-length="9" data-required="true">
+                <p class="err-msg">확인 코드가 올바르지 않습니다.</p>
+            </div>
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>매니저 확인</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 쿠폰 상세보기(매장방문혜택쿠폰) -->
+
+    <!-- 쿠폰 상세보기(제휴_쿠폰받기) -->
+    <article id="cp-partner-before_pop" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>쿠폰 상세정보</span></h1>
+        </header>
+        <section class="pop-conts common-pop cp-pop">
+            <div class="cp-cont-info partner"><!-- .partner :  제휴사쿠폰 -->
+                <em class="tit">50,000</em>
+                <p class="desc">[네이버쇼핑]신학기 새내기 프로젝트! <br>LG GRAM 100,000원 할인 쿠폰</p>
+                <div class="graybox">
+                    <strong class="sub-tit">유효기간</strong>
+                    <div class="sub-cont">2022년 1월 1일 10:00 부터 <br>2022년 1월 30일 23:59 까지</div>
+                    <strong class="sub-tit">혜택정보</strong>
+                    <div class="sub-cont">5,000원 이상 구매 시 최대 100,000원 할인</div>
+                </div>
+                <div class="btn-area">
+                    <a href="#n" class="btn-text" target="_blank" title="새창열림">이벤트 페이지 이동</a>
+                </div>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "제휴매장에 방문하여 직원에게 쿠폰을 보여주세요.",
+                    "&quot;사용확인&quot; 버튼 클릭 시 쿠폰이 사용 처리되어 더 이상 쿠폰을 사용하실 수 없습니다.",
+                    "본 쿠폰은 제휴매장 사정에 의해 조기 마감될 수 있습니다."
+                ]
+            })
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn pink"><span>쿠폰받기</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 쿠폰 상세보기(제휴_쿠폰받기) -->
+
+    <!-- 쿠폰 상세보기(제휴_사용확인) -->
+       <article id="cp-partner-confirm_pop" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>쿠폰 상세정보</span></h1>
+        </header>
+        <section class="pop-conts common-pop cp-pop no-footer">
+            <div class="cp-cont-info partner"><!-- .partner :  제휴사쿠폰 -->
+                <em class="tit">50,000</em>
+                <p class="desc">[네이버쇼핑]신학기 새내기 프로젝트! <br>LG GRAM 100,000원 할인 쿠폰</p>
+                <div class="graybox">
+                    <strong class="sub-tit">쿠폰코드</strong>
+                    <div class="sub-cont">QW34 - GBH6 - VBNM - 3456</div>
+                    <strong class="sub-tit">유효기간</strong>
+                    <div class="sub-cont">2022년 1월 1일 10:00 부터 <br>2022년 1월 30일 23:59 까지</div>
+                    <strong class="sub-tit">혜택정보</strong>
+                    <div class="sub-cont">5,000원 이상 구매 시 최대 100,000원 할인</div>
+                </div>
+                <div class="btn-area">
+                    <a href="#n" class="btn-text" target="_blank" title="새창열림">이벤트 페이지 이동</a>
+                </div>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "제휴매장에 방문하여 직원에게 쿠폰을 보여주세요.",
+                    "&quot;사용확인&quot; 버튼 클릭 시 쿠폰이 사용 처리되어 더 이상 쿠폰을 사용하실 수 없습니다.",
+                    "본 쿠폰은 제휴매장 사정에 의해 조기 마감될 수 있습니다."
+                ]
+            })
+            <div class="input-wrap">
+                <input type="text" class="comm-code" placeholder="사용정보를 입력해주세요.(선택)" title="사용정보를 입력해주세요.(선택)">
+            </div>
+            <div class="btn-area">
+                <button type="button" class="btn pink"><span>사용확인</span></button>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "제휴매장에 방문하여 직원에게 쿠폰을 보여주세요.",
+                    "본 쿠폰은 제휴매장 사정에 의해 조기 마감될 수 있습니다."
+                ]
+            })
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 쿠폰 상세보기(제휴_사용확인) -->
+
+    <!-- 쿠폰 상세보기(제휴_사용완료) -->
+    <article id="cp-partner-after_pop" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>쿠폰 상세정보</span></h1>
+        </header>
+        <section class="pop-conts common-pop cp-pop no-footer">
+            <div class="cp-cont-info partner"><!-- .partner :  제휴사쿠폰 -->
+                <em class="tit">50,000</em>
+                <p class="desc">[네이버쇼핑]신학기 새내기 프로젝트! <br>LG GRAM 100,000원 할인 쿠폰</p>
+                <div class="graybox">
+                    <strong class="sub-tit">쿠폰코드</strong>
+                    <div class="sub-cont">LGESHOP COUPON</div>
+                    <strong class="sub-tit">유효기간</strong>
+                    <div class="sub-cont">2022년 1월 1일 10:00 부터 <br>2022년 1월 30일 23:59 까지</div>
+                    <strong class="sub-tit">혜택정보</strong>
+                    <div class="sub-cont">5,000원 이상 구매 시 최대 100,000원 할인</div>
+                </div>
+                <div class="btn-area">
+                    <a href="#n" class="btn-text" target="_blank" title="새창열림">이벤트 페이지 이동</a>
+                </div>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "제휴매장에 방문하여 직원에게 쿠폰을 보여주세요.",
+                    "&quot;사용확인&quot; 버튼 클릭 시 쿠폰이 사용 처리되어 더 이상 쿠폰을 사용하실 수 없습니다.",
+                    "본 쿠폰은 제휴매장 사정에 의해 조기 마감될 수 있습니다."
+                ]
+            })
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 쿠폰 상세보기(제휴_사용완료) -->
+
+    <!-- 쿠폰 등록 -->
+    <article id="cp-register_pop" class="popup-wrap small">
+        <header class="pop-header">
+            <h1 class="tit"><span>쿠폰 등록</span></h1>
+        </header>
+        <section class="pop-conts common-pop cp-pop">
+            <div class="cp-cont-info">
+                <div class="input-wrap">
+                    <input type="text" class="comm-code" placeholder="쿠폰 번호를 입력하세요" title="쿠폰 번호를 입력하세요" maxlength="9" data-min-length="8" data-max-length="9" data-required="true">
+                    <button type="button" class="btn"><span>등록</span></button>
+                </div>
+            </div>
+            @@include('./common/modules/bullet-list.html', {
+                "bulletTxt" : [
+                    "장바구니 쿠폰은 한 주문번호당 하나의 쿠폰만 사용가능 합니다.",
+                    "상품쿠폰은 상품당 하나의 쿠폰만 사용가능합니다.",
+                    "반품시 쿠폰금액은 반환되지 않습니다.",
+                    "30%이상 할인상품 및 일부 브랜드는 쿠폰 사용이 제한될 수 있습니다.",
+                    "본 쿠폰은 인터넷 회원만 받으실 수 있습니다."
+                ]
+            })
+        </section>
+        <footer class="pop-footer center">
+            <div class="btn-group">
+                <button type="button" class="btn border ui_modal_close"><span>창닫기</span></button>
+            </div>
+        </footer>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- // 쿠폰 상세보기(LGE_쿠폰받기) -->
+</body>
+</html>
