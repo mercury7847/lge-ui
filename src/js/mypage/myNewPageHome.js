@@ -6,7 +6,7 @@
             '<div class="prod-info">'+
                 '<span class="cate">{{category}}</span>'+
                 '<span class="prod">{{productNameKR}}</span>'+
-                '<span class="model">{{status}}</span>'+
+                '<span class="model">{{modelID}}</span>'+
             '</div>'+
             '<a href="#" class="btn-myact"><i class="blind">바로가기</i></a>'+
         '</div>'+
