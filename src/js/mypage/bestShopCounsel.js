@@ -649,7 +649,7 @@
               if (categorys.length === 1) {
                 models = categorys[0];
               } else {
-                models = categorys[0] + " 외 " + categorys.length + "개";
+                models = categorys[0] + " 외 " + (categorys.length - 1) + "개";
               }
             }
 
