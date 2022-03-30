@@ -2,7 +2,7 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["MYS/MYS"],
-        pageJS: ["mypage/myPageHome"]
+        pageJS: ["mypage/myNewPageHome"]
     })
 <body>
     <div class="wrap">
@@ -19,7 +19,7 @@
             > as-is 참조용 -->
 
             <!-- LGECOMVIO-30 : 마이페이지 홈 1차 개선 영역(2022.03.16) -->
-            <div class="contents mypage mypage-main-new">
+            <div class="contents mypage mypage-main-new" data-mypage-orderList="/lg5-common/data-ajax/mypage/mypageOrderList.json">
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         <!-- @@include('./common/modules/mypage-lnb.html') as-is 참조용 -->
@@ -83,8 +83,8 @@
                             -->
                             <div class="my-section">
                                 <h3 class="title">나의 활동 내역</h3>
-                                <div class="my-act-group">
-                                    <p class="sub-title">주문/배송/청약 조회 <em class="count">3</em></p>
+                                <div class="my-act-group" style="display: none;">
+                                    <p class="sub-title">주문/배송/청약 조회 <em class="count"></em></p>
                                     <ul class="my-activity-list">
                                         <li>
                                             <div class="myact-cont order"><!-- case : add class -->
@@ -109,7 +109,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                                    <div class="list-more">
+                                    <div class="list-more" style="display: none;">
                                         <a href="#" class="btn-link">더보기</a>
                                     </div>
                                 </div>
@@ -128,6 +128,9 @@
                                             </div>
                                         </li>
                                     </ul>
+                                    <div class="list-more" style="display: none;">
+                                        <a href="#" class="btn-link">더보기</a>
+                                    </div>
                                 </div>
                                 <div class="my-act-group">
                                     <p class="sub-title">렌탈/케어 관리 <em class="count">1</em></p>
@@ -144,6 +147,9 @@
                                             </div>
                                         </li>
                                     </ul>
+                                    <div class="list-more" style="display: none;">
+                                        <a href="#" class="btn-link">더보기</a>
+                                    </div>
                                 </div>
                                 <div class="my-act-group">
                                     <p class="sub-title">칭찬/개선/제안 조회 <em class="count">1</em></p>
@@ -159,6 +165,9 @@
                                             </div>
                                         </li>
                                     </ul>
+                                    <div class="list-more" style="display: none;">
+                                        <a href="#" class="btn-link">더보기</a>
+                                    </div>
                                 </div>
                                 <div class="my-act-group">
                                     <p class="sub-title">서비스 상담/예약 조회 <em class="count">1</em></p>
@@ -175,6 +184,9 @@
                                             </div>
                                         </li>
                                     </ul>
+                                    <div class="list-more" style="display: none;">
+                                        <a href="#" class="btn-link">더보기</a>
+                                    </div>
                                 </div>
                             </div>
                             <!-- //커뮤니케이션 -->
