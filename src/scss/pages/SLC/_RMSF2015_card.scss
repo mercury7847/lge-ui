@@ -1,30 +1,87 @@
-.contents.caresolution.benefit .card-benefit-contents {
+.card-benefit-contents {    
+    .section-wrap {
+        @include mobile {
+            padding-left:0px;
+            padding-right:0px;
+        }
+    } 
     .mo-only {
         @include pc {
             display: none;
         }
     }
-    padding-top:32px;
-    @include mobile {
-        padding-top:10px;
+    .f-underline {
+        text-decoration:underline;
     }
-    .tit-wrap {
-        margin-bottom: 0;
-        .tit {
-            font-size: 28px;
-            line-height: 38px;
-            @include mobile {
-                font-size: 24px;
-                line-height: 33px;
+    .bullet-list {
+        .fz16 {
+            font-size:16px;
+        }  
+    }
+    .refer-list {
+        margin-top:20px;
+    }
+    .refer-txt {
+        position:relative;
+        margin-top:2px;
+        line-height:24px;
+        padding-left:18px;
+        font-size:14px;
+        font-weight:bold;
+        &:before{
+            content:'※';
+            position:absolute;
+            left:0;
+        }
+        &.top-border {
+            margin-top:15px;
+        }
+        &.f-big {
+            font-size:16px;
+        }
+    }
+    [class^="refer-"] {
+        &.top-border {
+            width:50%;
+            padding-top:12px;
+            border-top:1px solid #ddd;
+        }
+    }
+    .hyphen-txt {
+        position:relative;
+        margin-top:2px;
+        line-height:24px;
+        padding-left:11px;
+        font-size:14px;
+        &:before {
+            content:'-';
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        &.f-big {
+            font-size:16px;
+            font-weight:bold;
+        }
+    }
+    .cont-wrap .tit-wrap {
+        &.type2 {
+            margin-bottom: 0;
+            .tit {
+                font-size: 28px;
+                line-height: 38px;
+                padding-bottom:16px;
+                text-align: left;
+                @include mobile {
+                    font-size: 24px;
+                    line-height: 33px;
+                    padding:4px 0;
+                }
             }
         }
         &.type3 {
             margin-bottom: 48px;
             text-align: center;
-            .tit {
-                font-size: 32px;
-                line-height: 52px;
-            }
             @include mobile {
                 margin-bottom: 32px;
                 .tit {
@@ -104,7 +161,6 @@
             }
         }
 
-        /* 20210528 추가 */
         .card-tab-contents {
             padding-top:48px;
             @include mobile {
@@ -123,7 +179,6 @@
                     .images {
                         display:block;
                         text-align:center;
-                        // start - 210601 이미지 srcset 관련 css 속성 추가
                         img {
                             width:100%;
                             max-width:303px;
@@ -140,7 +195,6 @@
                         .img-card-02 {
                             max-width: 310px;
                         }
-                        // end - 210601 이미지 srcset 관련 css 속성 추가
                         &.type2 {
                             img {
                                 max-width:206px;
@@ -224,7 +278,6 @@
                         }
                         .desc-wrap{
                             line-height: 12px;
-                            /* 210531 bullet style 적용 */
                             .bullet {
                                 .bultxt {
                                     line-height: 24px;
@@ -245,7 +298,6 @@
                             .stit {
                                 padding: 30px 0 15px;
                             }
-                            /* // 210531 bullet style 적용 */
                         }
                         p {
                             line-height:26px;
@@ -253,7 +305,6 @@
                         .subtit {
                             margin:25px 0;
                         }
-                        /* // 210531  */
                         @include mobile {
                             margin-top:40px;
                             .tit {
@@ -267,6 +318,18 @@
                                 }
                             }
                         }
+                        .info-stit + .bullet-list {
+                            margin-top:0;
+                        }
+                        .info-stit {
+                            margin-top:20px;
+                            @include mobile {
+                                font-size: 14px;
+                            }
+                        }
+                        .tit + .info-stit {
+                            margin-top:0;
+                        }
                     }
                 }
             }
@@ -279,13 +342,12 @@
                     border-top: 0;
                 }
             }
-            // 210601 마지막 카드 border-bottom: 0; 처리
             .card-sects:last-child {
                 border-bottom : 0;
             }
-            // <!-- to-be 210531 멤버십 카드혜택 개편 -->
             .sects {
                 margin-top: 0;
+                padding: 0px;
                 .sects-head{
                     border-bottom: 2px solid #000;
                     padding-bottom:8px;
@@ -307,7 +369,6 @@
                     }
                 }                
             }
-            // <!-- to-be 210531 멤버십 카드혜택 개편 -->
         }
     }
     
