@@ -302,7 +302,9 @@
                         obj._couponNm = obj.couponNm;
                     }
 
-                    if (obj.itemList.indexOf("/") >= 0) {
+                    if (obj.itemList === "") {
+                        obj._itemList = "전체상품";
+                    } else if (obj.itemList.indexOf("/") >= 0) {
                         obj._itemList = obj.itemList.split("/").join(" / ");
                     } else {
                         obj._itemList = obj.itemList;
@@ -677,30 +679,69 @@
         renderContents: function () {
             this.el.$couponWrap.show();
 
+            function addOrderPrefix(s) {
+                var code = s.toLowerCase().charCodeAt(0);
+                var prefix;
+
+                // 한글 AC00—D7AF
+                if (0xac00 <= code && code <= 0xd7af) prefix = "1";
+                // 한글 자모 3130—318F
+                else if (0x3130 <= code && code <= 0x318f) prefix = "2";
+                // 영어 소문자 0061-007A
+                else if (0x61 <= code && code <= 0x7a) prefix = "3";
+                // 그외
+                else prefix = "9";
+
+                return prefix + s;
+            }
+
             //종료일 기준 오름차순 정렬
             if (TAB === TAB_BESTSHOP_PRD || TAB === TAB_BESTSHOP_VISIT) {
-                //사용 가능 쿠폰 > 종료일 오름 차순
+                //사용가능 쿠폰 ::	종료일(오름차순) >>	쿠폰명(오름차순) >>	쿠폰번호(오름차순)
                 this.variable.listData["on"].forEach(function (data) {
                     if (TAB === TAB_BESTSHOP_PRD) {
-                        data._sort = vcui.date.parse(data.endDate).getTime();
+                        data._endDate = vcui.date.parse(data.endDate).getTime();
+                        data._couponNm = addOrderPrefix(data.couponNm);
+                        data._couponNo = addOrderPrefix(data.couponNo);
                     } else if (TAB === TAB_BESTSHOP_VISIT) {
-                        data._sort = vcui.date.parse(data.cpnToDate).getTime();
+                        data._endDate = vcui.date.parse(data.cpnToDate).getTime();
+                        data._couponNm = addOrderPrefix(data.cpnEventName);
+                        data._couponNo = addOrderPrefix(data.cpnEventNo);
                     }
                 });
                 this.variable.listData["on"].sort(function (a, b) {
-                    return a._sort - b._sort;
+                    if (a._endDate < b._endDate) return -1;
+                    if (a._endDate > b._endDate) return 1;
+
+                    if (a._couponNm < b._couponNm) return -1;
+                    if (a._endDate > b._endDate) return 1;
+
+                    if (a._couponNo < b._couponNo) return -1;
+                    if (a._couponNo > b._couponNo) return 1;
                 });
 
-                //종료된 쿠폰 > 종료일 내림 차순
+                //종료된 쿠폰 :: 종료일(내림차순)	>> 쿠폰명(오름차순) >>	쿠폰번호(오름차순)
+
                 this.variable.listData["end"].forEach(function (data) {
                     if (TAB === TAB_BESTSHOP_PRD) {
-                        data._sort = vcui.date.parse(data.endDate).getTime();
+                        data._endDate = vcui.date.parse(data.endDate).getTime();
+                        data._couponNm = addOrderPrefix(data.couponNm);
+                        data._couponNo = addOrderPrefix(data.couponNo);
                     } else if (TAB === TAB_BESTSHOP_VISIT) {
-                        data._sort = vcui.date.parse(data.cpnToDate).getTime();
+                        data._endDate = vcui.date.parse(data.cpnToDate).getTime();
+                        data._couponNm = addOrderPrefix(data.cpnEventName);
+                        data._couponNo = addOrderPrefix(data.cpnEventNo);
                     }
                 });
                 this.variable.listData["end"].sort(function (a, b) {
-                    return b._sort - a._sort;
+                    if (a._endDate > b._endDate) return -1;
+                    if (a._endDate < b._endDate) return 1;
+
+                    if (a._couponNm < b._couponNm) return -1;
+                    if (a._endDate > b._endDate) return 1;
+
+                    if (a._couponNo < b._couponNo) return -1;
+                    if (a._couponNo > b._couponNo) return 1;
                 });
             }
 
@@ -859,14 +900,14 @@
                 if (TAB === TAB_BESTSHOP_PRD) {
                     item._startDate = item.startDate;
                     item._endDate = item.endDate;
-                    if (item.itemList && item.itemList.split("/").length === 0) {
+
+                    if (item.itemList === "") {
                         item._itemName = "전체상품";
                     } else if (item.itemList && item.itemList.split("/").length === 1) {
                         item._itemName = item.itemList;
                     } else {
                         item._itemName = item.itemList.split("/")[0] + " 등";
                     }
-
                     if (item.statusCode === "completed") {
                         item._txtEndFlag = "사용완료";
                     } else if (item.statusCode === "expired") {
