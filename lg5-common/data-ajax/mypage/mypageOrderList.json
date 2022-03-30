@@ -1,0 +1,22 @@
+{
+    "orderList": {
+        "data": {
+            "message": "",
+            "myShoppingCnt": 2,
+            "status": "true",
+            "completeUrl": "/my-page/care-solution-contract-status",
+            "dataList": [{
+                "productNameKR": "LG 트롬",
+                "modelID": "MD08921938",
+                "status": "배송준비중",
+                "category": "일반제품"
+            },{
+                "productNameKR": "LG 트롬",
+                "modelID": "MD08921938",
+                "status": "배송완료",
+                "category": "일반제품"
+            }]
+        },
+        "dataFlag": "Y"
+    }
+}
