@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+pageCSS: ["ODC/ODC"],
+pageJS: ["category-home/index"]
+})
+<body>
+<div class="wrap subRenewWrap">
+    @@include('./common/header.html', {
+    "mobileCase": "subDepth",
+    "is-depth": "is-depth",
+    "hasTitle": "hasTitle",
+    "subCategory": "subCategory",
+    "titleName": "TV"
+    })
+
+    <div class="container">
+
+        <!-- category home -->
+        <!--
+            공통 참고 내용
+            1. 제품 자동화 처리 해야하는 경우 영역별로 data-model-code="모델명" 추가
+        -->
+        <div class="odc-content">
+
+            <!-- ODCC0013 : 상단 hero 배너 -->
+            <section class="odc-hero">
+
+                <div class="odc-hero__list ui_carousel_list">
+
+                    <div class="odc-hero__track ui_carousel_track">
+
+                        <div class="odc-hero__slide ui_carousel_slide">
+                            <a href="#">
+                                <div class="odc-hero__image">
+                                    <img alt=""
+                                         src="/lg5-common/images/ODC/visual-2.jpg"
+                                         data-pc-src="/lg5-common/images/ODC/visual-2.jpg"
+                                         data-m-src="/lg5-common/images/ODC/m-visual-2.jpg"
+                                    >
+                                </div>
+                                <div class="odc-hero__info">
+                                    <div class="odc-hero__box odc-hero__box--black">
+                                        <div class="odc-hero__title">
+                                            정수기 소모품
+                                        </div>
+                                        <div class="odc-hero__subtitle">
+                                            제품에 맞는 정품 소모품을 무료배송으로 만나보세요<br>
+                                            LG전자 멤버십 포인트를 현금처럼 사용해보세요
+                                        </div>
+                                        <p class="odc-hero__link">바로가기</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="odc-hero__slide ui_carousel_slide">
+                            <a href="#">
+                                <div class="odc-hero__image">
+                                    <img alt=""
+                                         src="/lg5-common/images/ODC/visual-2.jpg"
+                                         data-pc-src="/lg5-common/images/ODC/visual-2.jpg"
+                                         data-m-src="/lg5-common/images/ODC/m-visual-2.jpg"
+                                    >
+                                </div>
+                                <div class="odc-hero__info">
+                                    <div class="odc-hero__box odc-hero__box--black">
+                                        <div class="odc-hero__title">
+                                            정수기 소모품 2
+                                        </div>
+                                        <div class="odc-hero__subtitle">
+                                            제품에 맞는 정품 소모품을 무료배송으로 만나보세요<br>
+                                            LG전자 멤버십 포인트를 현금처럼 사용해보세요
+                                        </div>
+                                        <p class="odc-hero__link">바로가기</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="odc-hero__indicator">
+
+                    <div class="odc-hero__controls">
+                        <div class="odc-hero__inner">
+                            <button type="button" class="odc-hero__prev ui_carousel_prev"><span class="blind">이전</span></button>
+                            <span class="odc-hero__paging"><strong class="odc-hero__current"></strong><em class="odc-hero__total"></em></span>
+                            <button type="button" class="odc-hero__next ui_carousel_next"><span class="blind">다음</span></button>
+                        </div>
+                    </div>
+
+                    <button type="button" class="odc-hero__play ui_carousel_play play">
+                        <span class="blind" data-bind-text="{&quot;play&quot;:&quot;재생&quot;, &quot;stop&quot;:&quot;정지&quot;}">정지</span>
+                    </button>
+
+                </div>
+
+            </section>
+            <!-- // ODCC0013 : 상단 hero 배너 -->
+
+            <!-- ODCC0014 : 2depth 카테고리 -->
+            <section class="odc-sub-category" data-all-view="true" data-all-view-item=".odc-sub-category__item" data-all-view-limit="6">
+                <div class="odc-sub-category__inner">
+                    <a href="#" class="odc-sub-category__item">청소기</a>
+                    <a href="#" class="odc-sub-category__item">에어컨</a>
+                    <a href="#" class="odc-sub-category__item">공기청정기/에어케어</a>
+                    <a href="#" class="odc-sub-category__item">세탁기</a>
+                    <a href="#" class="odc-sub-category__item">TV/AV</a>
+                    <a href="#" class="odc-sub-category__item">모니터/PC</a>
+                    <a href="#" class="odc-sub-category__item">청소기</a>
+                    <a href="#" class="odc-sub-category__item">에어컨</a>
+                    <a href="#" class="odc-sub-category__item">공기청정기/에어케어</a>
+                    <a href="#" class="odc-sub-category__item">세탁기</a>
+                    <a href="#" class="odc-sub-category__item">TV/AV</a>
+                    <a href="#" class="odc-sub-category__item">모니터/PC</a>
+                </div>
+                <button type="button" class="odc-all-view" data-all-view-target=".odc-sub-category__inner"><span class="odc-all-view__text">전체보기</span></button>
+            </section>
+            <!-- // ODCC0014 : 2depth 카테고리 -->
+
+            <!-- ODCC0015 : 보유제품 연계 배너 -->
+            <section class="odc-my-product">
+                <!-- 로그인 전 -->
+                <a href="#" class="odc-my-product__banner is-logoff">
+                    <div class="odc-my-product__inner">
+                        <p class="odc-my-product__title">로그인을하고 보유제품에 맞는<br>소모품을 확인해보세요</p>
+                        <p class="odc-my-product__link">보유 제품 등록하기</p>
+                    </div>
+                </a>
+                <!-- // 로그인 전 -->
+
+                <!-- 로그인 후 : 보유제품 없을 시 -->
+                <a href="#" class="odc-my-product__banner is-login">
+                    <div class="odc-my-product__inner">
+                        <p class="odc-my-product__title">제품 등록하고 나의 제품과<br>맞는 소모품을 확인해보세요
+                        </p>
+                        <p class="odc-my-product__link">보유 제품 등록하기</p>
+                    </div>
+                </a>
+                <!-- //로그인 후 : 보유제품 없을 시 -->
+
+                <!-- 로그인 후 : 보유제품 있을 시 -->
+                <a href="#" class="odc-my-product__banner is-my-product">
+                    <div class="odc-my-product__inner">
+                        <p class="odc-my-product__title">등록 가능한 제품이 <span class="odc-my-product__count">2</span>개 있습니다</p>
+                        <p class="odc-my-product__link">보유 제품 등록하기</p>
+                    </div>
+                </a>
+                <!-- // 로그인 후 : 보유제품 있을 시 -->
+
+            </section>
+            <!-- // ODCC0015 : 보유제품 연계 배너 -->
+
+            <!-- ODCC0016 : 쇼룸 type 1, odc-show-room-type1__image 영역 이미지 pc, mobile 별도 관리 필요 data-pc-src, data-m-src -->
+            <section class="odc-show-room-type1 odc-show-room-type1--type2"><!-- 케어용품/소모품 카테고리 일 시 odc-show-room-type1--type2 추가 -->
+
+                <div class="odc-head">
+                    <div class="odc-head__title">여름 되기전! 필터 소모품을 준비하세요</div>
+                    <div class="odc-head__subtitle">착한가격, 빠른배송 오직 LG전자에서</div>
+                </div>
+
+                <div class="odc-show-room-type1__body">
+
+                    <div class="odc-show-room-type1__indicator">
+                        <button type="button" class="odc-show-room-type1__prev ui_carousel_prev"><span class="blind">이전</span></button>
+                        <span class="odc-show-room-type1__paging"><strong class="odc-show-room-type1__current"></strong><em class="odc-show-room-type1__total"></em></span>
+                        <button type="button" class="odc-show-room-type1__next ui_carousel_next"><span class="blind">다음</span></button>
+                    </div>
+
+                    <div class="odc-show-room-type1__list ui_carousel_list">
+
+                        <div class="odc-show-room-type1__track ui_carousel_track">
+
+                            <div class="odc-show-room-type1__slide ui_carousel_slide">
+
+                                <div class="odc-show-room-type1__item">
+
+                                    <div class="odc-show-room-type1__image">
+                                        <img alt=""
+                                             src="/lg5-common/images/ODC/img-odcc0003-3.jpg"
+                                             data-pc-src="/lg5-common/images/ODC/img-odcc0003-3.jpg"
+                                             data-m-src="/lg5-common/images/ODC/img-m-odcc0003-3.jpg"
+                                        >
+                                    </div>
+
+                                    <!-- mark 1 -->
+                                    <div class="odc-show-room-type1__display is-active" data-model-code="65ART90EKPA"><!-- 최초에 주력 제품 1개 활성화 -->
+
+                                        <button type="button" class="odc-show-room-type1__mark" style="top: 28%; left: 49%">
+                                            <span class="blind">LG SIGNATURE OLED R</span>
+                                        </button>
+
+                                        <a href="#" class="odc-show-room-type1__product">
+
+                                            <div class="odc-show-room-type1__row">
+                                                <span class="odc-show-room-type1__tag">거실</span>
+                                                <span class="odc-show-room-type1__tag">여름</span>
+                                            </div>
+
+                                            <p class="odc-show-room-type1__name">휴대용공기청정기 필터 세트 (3개입)</p>
+                                            <p class="odc-show-room-type1__model">ADQ75153412</p>
+                                            <p class="odc-show-room-type1__price">28,500원</p>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- // mark 1 -->
+
+                                </div>
+
+                            </div>
+
+                            <div class="odc-show-room-type1__slide ui_carousel_slide">
+
+                                <div class="odc-show-room-type1__item">
+
+                                    <div class="odc-show-room-type1__image">
+                                        <img alt=""
+                                             src="/lg5-common/images/ODC/img-odcc0003-3.jpg"
+                                             data-pc-src="/lg5-common/images/ODC/img-odcc0003-3.jpg"
+                                             data-m-src="/lg5-common/images/ODC/img-m-odcc0003-3.jpg"
+                                        >
+                                    </div>
+
+                                    <!-- mark 1 -->
+                                    <div class="odc-show-room-type1__display is-active" data-model-code="65ART90EKPA"><!-- 최초에 주력 제품 1개 활성화 -->
+
+                                        <button type="button" class="odc-show-room-type1__mark" style="top: 18%; left: 30%">
+                                            <span class="blind">LG SIGNATURE OLED</span>
+                                        </button>
+
+                                        <a href="#" class="odc-show-room-type1__product">
+
+                                            <div class="odc-show-room-type1__row">
+                                                <span class="odc-show-room-type1__tag">거실</span>
+                                            </div>
+
+                                            <p class="odc-show-room-type1__name">휴대용공기청정기 필터 세트 (3개입)</p>
+                                            <p class="odc-show-room-type1__model">ADQ75153412</p>
+                                            <p class="odc-show-room-type1__price">28,500원</p>
+
+                                        </a>
+
+                                    </div>
+                                    <!-- // mark 1 -->
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <ul class="odc-show-room-type1__dots ui_carousel_dots">
+                        <li><button type="button" class="odc-show-room-type1__dot"><span class="blind">{{no}}번 내용 보기</span></button></li>
+                    </ul>
+                </div>
+
+            </section>
+            <!-- // ODCC0016 : 쇼룸 type 1 -->
+
+            <!-- ODCC0017 : 쇼룸 type 2 하나 이상일 경우 -->
+            <section class="odc-show-room-type2 odc-show-room-type2--type2"><!-- 케어용품/소모품 카테고리 일 시 odc-show-room-type2--type2 추가 -->
+
+                <div class="odc-head">
+                    <div class="odc-head__title">LG SIGNATURE 소모품을 한눈에!</div>
+                    <div class="odc-head__subtitle">소모품 구매도 품격있게</div>
+                </div>
+
+                <div class="odc-show-room-type2__body">
+
+                    <div class="odc-show-room-type2__list">
+
+                        <a href="#" class="odc-show-room-type2__item" data-model-code="65ART90EKPA">
+
+                            <div class="odc-show-room-type2__image">
+                                <img src="/lg5-common/images/ODC/img-odcc0017-1.jpg">
+                            </div>
+
+                            <div class="odc-show-room-type2__info">
+                                <p class="odc-show-room-type2__name">초미세 집진 Black 필터 (최신모델)</p>
+                                <p class="odc-show-room-type2__model">ADQ74813204</p>
+                                <p class="odc-show-room-type2__price">132,000원</p>
+                            </div>
+
+                        </a>
+
+                        <a href="#" class="odc-show-room-type2__item" data-model-code="65ART90EKPA">
+
+                            <div class="odc-show-room-type2__image">
+                                <img src="/lg5-common/images/ODC/img-odcc0017-1.jpg">
+                            </div>
+
+                            <div class="odc-show-room-type2__info">
+                                <p class="odc-show-room-type2__name">초미세 집진 Black 필터 (최신모델)</p>
+                                <p class="odc-show-room-type2__model">ADQ74813204</p>
+                                <p class="odc-show-room-type2__price">132,000원</p>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+            <!-- // ODCC0017 : 쇼룸 type 2 하나 이상일 경우 -->
+
+            <!-- ODCC0017 : 쇼룸 type 2 하나일 경우 -->
+            <section class="odc-show-room-type2 odc-show-room-type2--type2"><!-- 케어용품/소모품 카테고리 일 시 odc-show-room-type2--type2 추가 -->
+
+                <div class="odc-head">
+                    <div class="odc-head__title">LG SIGNATURE 소모품을 한눈에!</div>
+                    <div class="odc-head__subtitle">소모품 구매도 품격있게</div>
+                </div>
+
+                <div class="odc-show-room-type2__body">
+
+                    <div class="odc-show-room-type2__list">
+
+                        <a href="#" class="odc-show-room-type2__item" data-model-code="65ART90EKPA">
+
+                            <div class="odc-show-room-type2__image">
+                                <img src="/lg5-common/images/ODC/img-odcc0017-1.jpg">
+                            </div>
+
+                            <div class="odc-show-room-type2__info">
+                                <p class="odc-show-room-type2__name">초미세 집진 Black 필터 (최신모델)</p>
+                                <p class="odc-show-room-type2__model">ADQ74813204</p>
+                                <p class="odc-show-room-type2__price">132,000원</p>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+            <!-- // ODCC0017 : 쇼룸 type 2 하나일 경우 -->
+
+            <!-- ODCC0018 : 제품 추천 탭, 스펙형 -->
+            <section class="odc-recommend-tab">
+
+                <div class="odc-head">
+                    <div class="odc-head__title">스탠드 에어컨 리모컨</div>
+                    <div class="odc-head__subtitle">나에게 맞는 리모컨 추천!</div>
+                </div>
+
+                <div class="odc-recommend-tab__body">
+
+                    <div class="odc-recommend-tab__list">
+
+                        <div class="odc-recommend-tab__inner">
+
+                            <!-- data-panel-target에 노출할 panel에 할당된 id 삽입 필요 -->
+                            <button type="button" class="odc-recommend-tab__button is-active" data-panel-target="recommendTabPanel1"><span>스탠드 에어컨</span></button><!-- 첫 load 시 처음 탭 영역 is-active 추가 -->
+                            <button type="button" class="odc-recommend-tab__button" data-panel-target="recommendTabPanel2"><span>리모컨</span></button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- panel 에 id unique하게 추가 필요 -->
+                    <div id="recommendTabPanel1" class="odc-recommend-tab__panel is-active"><!-- 첫 load 시 처음 탭 영역 is-active 추가 -->
+
+                        <div class="odc-recommend-tab__product">
+
+                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+
+                                <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-1.jpg"></div>
+
+                                <div class="odc-recommend-tab__info">
+                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
+                                    <p class="odc-recommend-tab__model">OLED65G1KNA</p>
+                                    <p class="odc-recommend-tab__price">15,200원</p>
+                                </div>
+
+                            </div>
+
+                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+
+                                <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-2.jpg"></div>
+
+                                <div class="odc-recommend-tab__info">
+                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
+                                    <p class="odc-recommend-tab__model">AKB73795703</p>
+                                    <p class="odc-recommend-tab__price">20,900원</p>
+                                </div>
+
+                            </div>
+
+                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+
+                                <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-1.jpg"></div>
+
+                                <div class="odc-recommend-tab__info">
+                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
+                                    <p class="odc-recommend-tab__model">OLED65G1KNA</p>
+                                    <p class="odc-recommend-tab__price">15,200원</p>
+                                </div>
+
+                            </div>
+
+                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+
+                                <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-2.jpg"></div>
+
+                                <div class="odc-recommend-tab__info">
+                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
+                                    <p class="odc-recommend-tab__model">AKB73795703</p>
+                                    <p class="odc-recommend-tab__price is-soldout">20,900원 <span class="odc-badge odc-badge--gray">일시품절</span></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="odc-more">
+                            <a href="#" class="odc-more__link">더보기</a>
+                        </div>
+
+                    </div>
+
+                    <div id="recommendTabPanel2" class="odc-recommend-tab__panel">
+
+                        <div class="odc-recommend-tab__product">
+
+                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+
+                                <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-1.jpg"></div>
+
+                                <div class="odc-recommend-tab__info">
+                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
+                                    <p class="odc-recommend-tab__model">OLED65G1KNA</p>
+                                    <p class="odc-recommend-tab__price">35,200원</p>
+                                </div>
+
+                            </div>
+
+                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+
+                                <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-2.jpg"></div>
+
+                                <div class="odc-recommend-tab__info">
+                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
+                                    <p class="odc-recommend-tab__model">AKB73795703</p>
+                                    <p class="odc-recommend-tab__price">20,900원</p>
+                                </div>
+
+                            </div>
+
+                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+
+                                <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-1.jpg"></div>
+
+                                <div class="odc-recommend-tab__info">
+                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
+                                    <p class="odc-recommend-tab__model">OLED65G1KNA</p>
+                                    <p class="odc-recommend-tab__price">15,200원</p>
+                                </div>
+
+                            </div>
+
+                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+
+                                <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-2.jpg"></div>
+
+                                <div class="odc-recommend-tab__info">
+                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
+                                    <p class="odc-recommend-tab__model">AKB73795703</p>
+                                    <p class="odc-recommend-tab__price">20,900원</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="odc-more">
+                            <a href="#" class="odc-more__link">더보기</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+            <!-- // ODCC0005 : 제품 추천 탭, 스펙형 -->
+
+            <!-- ODCC0019 : 제품 추천 목록, 전시형 -->
+            <section class="odc-recommend-list">
+
+                <div class="odc-head">
+                    <div class="odc-head__title">여름, 미리 필터 구매로 시작</div>
+                    <div class="odc-head__subtitle">함께하면 올 여름 삶의 질을 UP 해줄 소모품</div>
+                </div>
+
+                <div class="odc-recommend-list__list" data-all-view="true" data-all-view-item=".odc-recommend-list__item" data-all-view-limit="3">
+
+                    <div class="odc-recommend-list__inner">
+
+                        <a href="#" class="odc-recommend-list__item" data-model-code="65ART90EKPA">
+
+                            <div class="odc-recommend-list__image"><img src="/lg5-common/images/ODC/img-odcc0019-1.jpg"></div>
+
+                            <div class="odc-recommend-list__info">
+                                <p class="odc-recommend-list__name">토탈케어 플러스 E11 필터</p>
+                                <p class="odc-recommend-list__model">ADQ75153404</p>
+                                <p class="odc-recommend-list__price">61,700원</p>
+                            </div>
+
+                        </a>
+
+                        <a href="#" class="odc-recommend-list__item" data-model-code="65ART90EKPA">
+
+                            <div class="odc-recommend-list__image"><img src="/lg5-common/images/ODC/img-odcc0019-1.jpg"></div>
+
+                            <div class="odc-recommend-list__info">
+                                <p class="odc-recommend-list__name">토탈케어 플러스 E11 필터</p>
+                                <p class="odc-recommend-list__model">ADQ75153404</p>
+                                <p class="odc-recommend-list__price">61,700원</p>
+                            </div>
+
+                        </a>
+
+                        <a href="#" class="odc-recommend-list__item" data-model-code="65ART90EKPA">
+
+                            <div class="odc-recommend-list__image"><img src="/lg5-common/images/ODC/img-odcc0019-1.jpg"></div>
+
+                            <div class="odc-recommend-list__info">
+                                <p class="odc-recommend-list__name">토탈케어 플러스 E11 필터</p>
+                                <p class="odc-recommend-list__model">ADQ75153404</p>
+                                <p class="odc-recommend-list__price is-soldout">61,700원 <span class="odc-badge odc-badge--gray">일시품절</span></p>
+                            </div>
+
+                        </a>
+
+                        <a href="#" class="odc-recommend-list__item" data-model-code="65ART90EKPA">
+
+                            <div class="odc-recommend-list__image"><img src="/lg5-common/images/ODC/img-odcc0019-1.jpg"></div>
+
+                            <div class="odc-recommend-list__info">
+                                <p class="odc-recommend-list__name">토탈케어 플러스 E11 필터</p>
+                                <p class="odc-recommend-list__model">ADQ75153404</p>
+                                <p class="odc-recommend-list__price">61,700원</p>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                    <button type="button" class="odc-all-view" data-all-view-target=".odc-recommend-list__inner"><span class="odc-all-view__text">전체보기</span></button>
+                </div>
+
+            </section>
+            <!-- // ODCC0006 : 제품 추천 목록, 전시형 -->
+
+            <!-- ODCC0020 : 수동 관리 연계 배너 -->
+            <section class="odc-banner">
+                <!-- white 타입 -->
+                <a href="#" class="odc-banner__item odc-banner__item--white" style="background-image: url('/lg5-common/images/ODC/img-odcc0020-1.jpg')"><!-- 문구 색상 흰색으로 필요할 시 odc-banner__item--white 추가 -->
+                    <div class="odc-banner__info">
+                        <p class="odc-banner__title">나의 케어용품/소모품 확인하기!</p>
+                        <p class="odc-banner__text">보유제품 등록</p>
+                    </div>
+                </a>
+                <!-- // white 타입 -->
+
+                <!-- black 타입 -->
+                <a href="#" class="odc-banner__item" style="background-image: url('/lg5-common/images/ODC/img-odcc0020-2.jpg')">
+                    <div class="odc-banner__info">
+                        <p class="odc-banner__title">베스트샵에서 소모품 픽업하기!</p>
+                        <p class="odc-banner__text">소모품 예약 구매</p>
+                    </div>
+                </a>
+                <!-- // black 타입 -->
+            </section>
+            <!-- // ODCC0020 : 수동 관리 연계 배너 -->
+
+        </div>
+        <!-- // category home -->
+
+    </div>
+
+    @@include('./common/footer.html')
+</div>
+</body>
+</html>

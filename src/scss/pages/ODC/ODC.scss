@@ -1,0 +1,1599 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+// 공통
+.odc-content {
+  p {
+    word-break: keep-all;
+  }
+
+  padding-bottom: 60px;
+
+  // tooltip
+  .tooltip-wrap {
+    height: auto;
+    line-height: inherit;
+  }
+  .tooltip-icon {
+    position: relative;
+    top: 2px;
+    width: 13px;
+    height: 13px;
+    background-image: url("/lg5-common/images/ODC/icon-tooltip-gray.svg");
+  }
+
+  .is-soldout {
+    color: #aaa;
+  }
+}
+
+section[class*='odc'] {
+  margin-top: 60px;
+}
+
+// head (title, subtitle)
+.odc-head {
+  padding: 0 4px;
+
+  &__title {
+    color: #000;
+    font-weight: bold;
+    @include mobile {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  &__subtitle {
+    color: #666;
+    @include mobile {
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 19px;
+    }
+
+    &--small {
+      color: #aaa;
+      @include mobile {
+        margin-top: 2px;
+        font-size: 10px;
+        line-height: 16px;
+      }
+    }
+  }
+}
+
+// 전체보기
+.odc-all-view {
+  display: none;
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  color: #000;
+  font-size: 13px;
+  line-height: 19px;
+
+  &__text {
+    position: relative;
+    padding-right: 20px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      background-image: url('/lg5-common/images/ODC/icon-arrow-down-black.svg');
+      background-size: 15px 15px;
+      background-repeat: no-repeat;
+      background-position: 0 0;
+
+      @at-root .is-active & {
+        top: 2px;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+
+}
+
+// 더보기
+.odc-more {
+  text-align: right;
+  &__link {
+    display: inline-block;
+    color: #666;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    padding-right: 14px;
+    background-image: url('/lg5-common/images/ODC/icon-arrow-right-gray.svg');
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 11px 11px;
+  }
+}
+
+// 기획전, 프로모션, 이벤트 grid 리스트
+.odc-grid-list {
+  margin-top: 20px;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  &__item {
+    &:nth-child(n+3) {
+      margin-top: 20px;
+    }
+
+    &:nth-child(even) {
+      margin-left: 6px;
+    }
+
+    &:nth-child(odd) {
+      margin-right: 6px;
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    border-radius: 8px;
+    height: 30.556vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  &__info {
+    margin-top: 8px;
+  }
+
+  &__flag {
+    position: relative;
+    font-weight: 500;
+    color: #e81953;
+    font-size: 10px;
+    line-height: 15px;
+
+    & + & {
+      margin-left: 2px;
+      padding-left: 5px;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 0;
+        display: inline-block;
+        width: 1px;
+        height: 10px;
+        background-color: #ddd;
+      }
+    }
+  }
+
+  &__title {
+    max-width: 90%;
+    margin-top: 2px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 19px;
+
+    @include textEllipsisClamp(2);
+  }
+
+  &__date {
+    margin-top: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #666;
+  }
+}
+
+// badge
+.odc-badge {
+  display: inline-block;
+  height: 17px;
+  padding: 0 6px;
+  margin-left: 4px;
+  line-height: 16px;
+  font-weight: 500;
+  font-size: 10px;
+  vertical-align: top;
+
+  &--gray {
+    background-color: #666;
+    color: #fff;
+  }
+}
+
+// ODCC0001 : 상단 hero 배너
+.odc-hero {
+  margin-top: 0 !important;
+  position: relative;
+
+  &__track {
+    overflow: hidden;
+    height: 640px;
+    @include mobile{
+      height: 342px;
+    }
+  }
+
+  &__slide {
+    position: relative;
+    height: 640px;
+    @include mobile{
+      height: 342px;
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+      height: auto;
+      min-width: 100%;
+      min-height: 100%;
+      max-width: none;
+
+      @media screen and (min-width:1920px) {
+        width: 100%;
+        height: auto;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+
+      @include mobile {
+        width: 100%;
+        height: auto;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &__info {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 120px;
+    max-width: 1614px;
+    margin: 0 auto;
+    padding: 0 40px;
+    transform: translateX(0);
+    @include mobile {
+      top: 48px;
+      bottom: 102px;
+      left: 20px;
+      padding: 0;
+    }
+  }
+
+  &__box {
+    display:inline-block;
+    &--black {
+      color: #000;
+    }
+    &--white {
+      color: #fff;
+    }
+  }
+
+  &__title {
+    color: inherit;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 62px;
+    @include mobile{
+      position: relative;
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 16px;
+    font-size: 24px;
+    line-height: 32px;
+    @include mobile{
+      margin-top: 4px;
+      font-size: 13px;
+      line-height: 19px;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    margin-top: 32px;
+    font-size: 22px;
+    line-height: 22px;
+    @include mobile {
+      margin-top: 16px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+    &:after {
+      content: "";
+      display: inline-block;
+      @include pc {
+        width: 22px;
+        height: 22px;
+        margin-left: 4px;
+        vertical-align: -3px;
+        background: url('/lg5-common/images/ODC/icon-arrow-right-black.svg') no-repeat right top;
+        background-size: 21px 21px;
+      }
+      @include mobile {
+        vertical-align: -2px;
+        margin-left: 2px;
+        width: 12px;
+        height: 12px;
+        background: url('/lg5-common/images/ODC/icon-arrow-right-black.svg') no-repeat right top;
+        background-size: 11px 11px;
+      }
+    }
+  }
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    &__info {
+      width:100%;
+    }
+  }
+
+  &__indicator {
+    position: absolute;
+    display: none;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    max-width: 1380px;
+    margin: 0 auto;
+    @include mobile{
+      bottom: 20px;
+      right: 16px;
+      left: 16px;
+      max-width: none;
+    }
+  }
+
+  &__controls {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: 54px;
+    transform: translateX(0);
+    max-width: 1380px;
+    margin: 0 auto;
+    @media screen and (max-width: (1460px + 30px)) {
+      right: 69px;
+    }
+    @include mobile{
+      right: 34px;
+    }
+  }
+
+  &__inner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    height: 46px;
+    border-radius: 26px;
+    background: rgba(0, 0, 0, 0.35);
+    text-align: center;
+    @include mobile{
+      width: 84px;
+      height: 26px;
+      border-radius: 13px;
+    }
+  }
+
+  &__paging {
+    padding: 0 4px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 42px;
+    @include mobile{
+      font-size: 12px;
+      line-height: 24px;
+    }
+  }
+
+  &__total {
+    color: #d6d6d6;
+    &:before{
+      content: '/';
+      margin: 0 8px;
+      color: #fff;
+    }
+  }
+
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 9px;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    @include mobile {
+      top: 4px;
+      width: 16px;
+      height: 16px;
+    }
+    &:before{
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      box-shadow: none;
+      @include mobile{
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &__prev {
+    left: 16px;
+    @include mobile{
+      left: 6px;
+    }
+    &:before{
+      background-image: url(/lg5-common/images/icons/btn-arr-24x24-lt.svg);
+      @include mobile{
+        background-size: 16px 16px;
+      }
+    }
+  }
+  &__next {
+    right: 16px;
+    @include mobile{
+      right: 6px;
+    }
+    &:before{
+      background-image: url(/lg5-common/images/icons/btn-arr-24x24-rt.svg);
+      @include mobile{
+        background-size: 16px 16px;
+      }
+    }
+  }
+
+  &__play {
+    display: block !important;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 0;
+    width: 46px;
+    height: 46px;
+    @include mobile{
+      width: 26px;
+      height: 26px;
+    }
+    &:before{
+      content: "";
+      display: block;
+      width: 46px;
+      height: 46px;
+      @include mobile{
+        width: 26px;
+        height: 26px;
+      }
+    }
+    &.play{
+      &:before{
+        background: url(/lg5-common/images/icons/btn-carousel-46-play.svg) no-repeat 0 0;
+        @include mobile{
+          background-size: 26px 26px;
+        }
+      }
+    }
+    &.stop{
+      &:before{
+        background: url(/lg5-common/images/icons/btn-carousel-46-pause.svg) no-repeat 0 0;
+        @include mobile{
+          background-size: 26px 26px;
+        }
+      }
+    }
+    @media screen and (max-width: (1460px + 30px)) {
+      right: 15px;
+      margin-right: 0;
+      @include mobile {
+        right: 0;
+      }
+    }
+  }
+}
+
+// ODCC0002 : 2depth 카테고리
+.odc-sub-category {
+  $root : &;
+  margin-top: 0 !important;
+
+  & + section[class*='odc'] {
+    margin-top: 48px;
+  }
+
+  @include mobile() {
+    display: block;
+    border-bottom: 10px solid #f4f4f4;
+  }
+
+  &__inner {
+    @include mobile() {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+  }
+
+  &__item {
+    color: #666;
+    font-weight: 500;
+
+    @include mobile () {
+      display: block;
+      padding: 10px 0;
+      border-top: 1px solid #f4f4f4;
+      &:first-child + & {
+        border-top: 0;
+      }
+      &:nth-child(odd) {
+        border-right: 1px solid #f4f4f4;
+      }
+      &:nth-child(n+7) {
+        display: none;
+      }
+
+      @at-root .is-active &:nth-child(n+7) {
+        display: block;
+      }
+
+      font-size: 13px;
+      line-height: 19px;
+      text-align: center;
+    }
+  }
+
+  .odc-all-view {
+    border-top: 1px solid #f4f4f4;
+  }
+}
+
+// ODCC0003 : show room type 1
+.odc-show-room-type1 {
+  $root: &;
+  padding: 0 16px;
+
+  &__body {
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+
+    @include pc {
+      width: 328px;
+      height: 328px;
+    }
+  }
+
+  &__list {
+    overflow: hidden;
+    border-radius: 8px;
+    height: 91.112vw;
+  }
+  &__item {
+    position: relative;
+    height: 91.112vw;
+  }
+
+  &__image {
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__mark {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 5.556vw;
+    height: 5.556vw;
+    background-image: url('/lg5-common/images/ODC/icon-dot.svg');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 100%;
+
+    @at-root .is-active & {
+      background-image: url('/lg5-common/images/ODC/icon-dot-active.svg');
+    }
+
+    @include mobile {
+      width: 5.556vw;
+      height: 5.556vw;
+    }
+
+    @include pc {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__product {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: calc(100% - 24px);
+    left: 12px;
+    bottom: 3.3334vw;
+    padding: 10px 20px 12px;
+    background-color: #fff;
+    border-radius: 8px;
+    @at-root .is-active & {
+      display: block;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: #fff;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -10px;
+      width: 0px;
+      height: 0px;
+      border-bottom: 20px solid #fff;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      transform: rotate(90deg);
+    }
+  }
+
+  &__tag {
+    &:not(:first-child) {
+      margin-left: 2px;
+    }
+    color: #e81953;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+    &:before {
+      content: '#';
+    }
+  }
+
+  &__name {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 19px;
+  }
+
+  &__model {
+    margin-top: 1px;
+    font-size: 10px;
+    line-height: 15px;
+    color: #666;
+  }
+
+  &__price {
+    margin-top: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 19px;
+  }
+  &__indicator {
+    display: none;
+  }
+  &__prev,
+  &__next {
+    position: absolute;
+    top: 50%;
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/lg5-common/images/ODC/icon-arrow-right-round.svg');
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: 100% 100%;
+      z-index: 1;
+    }
+  }
+
+  &__prev {
+    left: 6px;
+    &:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__next {
+    right: 6px;
+  }
+
+  &__paging {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    min-width: 40px;
+    padding: 0 10px;
+    border-radius: 12px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 10px;
+    height: 23px;
+    line-height: 23px;
+    z-index: 1;
+  }
+
+  &__current {
+    font-weight: bold;
+  }
+
+  &__total {
+    color: #fff;
+    &:before{
+      content: '/';
+      margin: 0 2px;
+      color: #fff;
+    }
+  }
+
+  &__dots {
+    display: none;
+    margin-top: 12px;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
+  &__dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0 2px;
+    border-radius: 3px;
+    border: 1px solid #000;
+    vertical-align: top;
+
+    @at-root .on & {
+      width: 18px;
+      background-color: #000;
+    }
+  }
+
+  // 케어용품/소모품 타입
+  &--type2 {
+    #{$root}__image {
+      width: 69.445vw;
+      height: 69.445vw;
+      margin: 0 auto;
+    }
+
+    #{$root}__item {
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+    }
+  }
+}
+
+// ODCC0004 : show room type 2
+.odc-show-room-type2 {
+  $root : &;
+
+  .odc-head {
+    padding: 0 20px;
+  }
+
+  &__body {
+    margin-top: 20px;
+    padding: 0 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  &__list {
+    display: flex;
+    &:after {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      flex: none;
+    }
+  }
+
+  &__item {
+    overflow: hidden;
+    flex: none;
+    width: 50vw;
+    margin: 0 6px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.03);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    &:only-child {
+      width: calc(100% - 12px);
+      margin: 0 6px;
+
+      #{$root}__image {
+        width: 100%;
+        height: auto;
+      }
+
+      #{$root}__name {
+        font-size: 13px;
+        line-height: 19px;
+      }
+
+      #{$root}__price {
+        font-size: 13px;
+      }
+    }
+  }
+
+  &__image {
+    width: 50vw;
+    height: 31.945vw;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__info {
+    padding: 12px 0 16px;
+    margin: 0 16px;
+  }
+
+  &__name {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  &__model {
+    margin-top: 1px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+    color: #aaa;
+  }
+
+  &__price {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 17px;
+  }
+
+  &--type2 {
+    #{$root}__image {
+      position: relative;
+      padding: 2px;
+      text-align: center;
+      background-color: #fff;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+
+      img {
+        width: 30.556vw;
+        height: 30.556vw;
+      }
+    }
+
+    #{$root}__item {
+      &:only-child {
+        img {
+          width: 175px;
+          height: auto;
+        }
+      }
+    }
+
+    #{$root}__info {
+      border-top: 1px solid #ddd;
+    }
+  }
+}
+
+// ODCC0005 : 제품 추천 탭, 스펙형
+.odc-recommend-tab {
+
+  .odc-head {
+    padding: 0 20px;
+  }
+
+  &__list {
+    margin-top: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  &__inner {
+    display: flex;
+    padding: 0 16px;
+
+    &:after {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      flex: none;
+    }
+  }
+
+  &__button {
+    flex: none;
+    height: 24px;
+    padding: 0 10px;
+    line-height: 24px;
+    background-color: rgba(221, 221, 221, 0.3);
+    border-radius: 12px;
+    color: #666;
+    font-size: 11px;
+
+    & + & {
+      margin-left: 4px;
+    }
+
+    &.is-active {
+      color: #fff;
+      background-color: #008182;
+    }
+  }
+
+  &__product {
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  &__panel {
+    display: none;
+    margin-top: 20px;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  &__item {
+    &:nth-child(n+3) {
+      margin-top: 8px;
+    }
+
+    &:nth-child(even) {
+      margin-left: 6px;
+    }
+
+    &:nth-child(odd) {
+      margin-right: 6px;
+    }
+  }
+
+  &__info {
+    padding: 12px;
+  }
+
+  &__image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 100px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.03);
+      border-radius: 8px;
+    }
+
+    img {
+      width: 90px;
+      height: 90px;
+    }
+  }
+
+  &__name {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 17px;
+  }
+
+  &__model {
+    margin-top: 1px;
+    font-size: 10px;
+    line-height: 15px;
+    color: #666;
+  }
+
+  &__price {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  .odc-more {
+    padding: 0 16px;
+  }
+}
+
+// ODCC0006 : 제품 추천 목록, 전시형
+.odc-recommend-list {
+  padding: 32px 16px 16px;
+  background-color: #f4f4f4;
+
+  &__inner {
+    margin-top: 20px;
+  }
+
+  &__item {
+    display: flex;
+    position: relative;
+    min-height: 100px;
+    padding: 13px 16px 7px 16px;
+    border-radius: 8px;
+    background-color: #fff;
+
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: #fff;
+    }
+
+    &:not(:first-child) {
+      margin-top: 12px;
+    }
+
+    &:nth-child(n+4) {
+      display: none;
+    }
+
+    @at-root .is-active &:nth-child(n+4) {
+      display: flex;
+    }
+  }
+
+  &__info {
+    padding: 11px 0;
+  }
+
+  &__image {
+    flex: none;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    img {
+      width: 100%;
+      heught: auto;
+    }
+  }
+
+  &__name {
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  &__model {
+    margin-top: 1px;
+    font-size: 10px;
+    line-height: 15px;
+    color: #666;
+  }
+
+  &__price {
+    margin-top: 4px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .odc-all-view {
+    margin-top: 8px;
+  }
+}
+
+// ODCC0007 : 인기 제품
+.odc-rank-popular {
+  padding: 0 16px;
+
+  &__subtitle {
+    color: #aaa;
+    @include mobile {
+      margin-top: 2px;
+      font-size: 10px;
+      line-height: 16px;
+    }
+  }
+
+  &__list {
+    margin-top: 20px;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    padding: 5px 8px;
+    border-bottom: 1px solid #f4f4f4;
+  }
+
+  &__image {
+    flex: none;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-right: 8px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__number {
+    position: absolute;
+    top: 0;
+    left: -2px;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Roboto';
+    font-size: 13px;
+    line-height: 17px;
+    border-bottom: 1px solid #000;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 80px;
+  }
+
+  &__name {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  &__model {
+    font-size: 11px;
+    line-height: 16px;
+    color: #aaa;
+  }
+
+  .odc-more {
+    margin-top: 12px;
+  }
+
+}
+
+// ODCC0008 : 판매 베스트
+.odc-rank-best {
+
+  .odc-head {
+    padding: 0 20px;
+  }
+
+  &__body {
+    margin-top: 20px;
+    padding: 0 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  &__list {
+    display: flex;
+    &:after {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      flex: none;
+    }
+  }
+
+  &__item {
+    flex: none;
+    position: relative;
+    width: 33.334vw;
+    height: 36.112vw;
+    margin: 0 6px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__image {
+    position: relative;
+    img {
+      width: 33.334vw;
+      height: 36.112vw;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__name {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  .odc-more {
+    margin-top: 12px;
+    padding: 0 16px;
+  }
+}
+
+// ODCC0009 : 베스트 리뷰
+.odc-best-review {
+  padding: 0 16px;
+
+  &__item {
+    display: flex;
+    padding: 20px 0;
+
+    &:not(:first-child) {
+      border-top: 1px solid #f4f4f4;
+    }
+  }
+
+  &__image {
+    flex: none;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    margin-right: 16px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 120px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    padding-right: 10px;
+    word-break: keep-all;
+    @include textEllipsisClamp(2);
+  }
+
+  &__row {
+    margin-top: 8px;
+  }
+
+  &__tag {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 17px;
+
+    &:before {
+      content: '#';
+    }
+
+    & + & {
+      margin-left: 3px;
+    }
+  }
+
+  &__date {
+    margin-top: 1px;
+    color: #aaa;
+    font-size: 10px;
+    line-height: 15px;
+  }
+}
+
+// 구매, 사용 가이드 링크 배너
+.odc-guide-link {
+  margin-top: 20px;
+
+  &__item {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    padding: 20px;
+    height: 110px;
+    border-radius: 8px;
+    justify-content: center;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+
+    & + & {
+      margin-top: 12px;
+    }
+  }
+
+  &__info {
+    position: relative;
+    z-index: 1;
+    max-width: 60%;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  &__text {
+    display: inline-block;
+    margin-top: 4px;
+    padding-right: 12px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+    background-image: url('/lg5-common/images/ODC/icon-arrow-right-black.svg');
+    background-position: right 4px;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+  }
+}
+
+// ODCC0010 : 기획전/프로모션
+.odc-exhibition-promotion {
+  padding: 0 16px;
+}
+
+// ODCC0011 : 이벤트
+.odc-event {
+  padding: 0 16px;
+}
+
+// 브랜드 연계배너
+.odc-brand-banner {
+  padding: 0 16px;
+
+  &__item {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    padding: 20px;
+    height: 110px;
+    border-radius: 8px;
+    justify-content: center;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+
+    & + & {
+      margin-top: 12px;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  &__info {
+    position: relative;
+    z-index: 1;
+    max-width: 80%;
+    color: #fff;
+  }
+
+  &__logo {
+    margin-bottom: 4px;
+    img {
+      width: auto;
+      height: 13px;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  &__text {
+    display: inline-block;
+    margin-top: 4px;
+    padding-right: 12px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+    background-image: url('/lg5-common/images/ODC/icon-arrow-right-white.svg');
+    background-position: right 4px;
+    background-repeat: no-repeat;
+    background-size: 9px 9px;
+  }
+}
+
+// ODCC0015 : 보유제품 연계 배너
+.odc-my-product {
+  margin-top: 0 !important;
+  border-bottom: 5px solid #f4f4f4;
+
+  & + section[class*='odc'] {
+    margin-top: 48px;
+  }
+
+  &__banner {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 98px;
+    padding: 20px 24px 20px 86px;
+    background-image: url("/lg5-common/images/ODC/img-holding-product.svg");
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position: 24px 24px;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  &__link {
+    display: inline-block;
+    margin-top: 2px;
+    padding-right: 12px;
+    font-size: 12px;
+    line-height: 17px;
+    color: #666;
+    background-image: url('/lg5-common/images/ODC/icon-arrow-right-gray.svg');
+    background-position: right 3px;
+    background-repeat: no-repeat;
+    background-size: 11px auto;
+  }
+}
+
+// 수동관리 연계 배너
+
+// 구매, 사용 가이드 링크 배너
+.odc-banner {
+  margin-top: 48px;
+  padding: 0 16px;
+
+  &__item {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    padding: 20px;
+    height: 110px;
+    border-radius: 8px;
+    justify-content: center;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right center;
+
+    & + & {
+      margin-top: 12px;
+    }
+  }
+
+  &__info {
+    position: relative;
+    z-index: 1;
+    max-width: 60%;
+
+    @at-root .odc-banner__item--white {
+        color: #fff;
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  &__text {
+    display: inline-block;
+    margin-top: 4px;
+    padding-right: 12px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+    background-image: url('/lg5-common/images/ODC/icon-arrow-right-black.svg');
+    background-position: right 4px;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+
+    @at-root .odc-banner__item--white & {
+      background-image: url('/lg5-common/images/ODC/icon-arrow-right-white.svg');
+      background-size: 9px 9px;
+    }
+  }
+}
