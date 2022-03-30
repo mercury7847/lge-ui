@@ -74,45 +74,28 @@
             }, 200)
         },
         scrollTab: function(){
+            // BTOCSITE-13884 4월 이북(제품 카탈로그) 업데이트 및 수정 요청 사항 
             var scrollTop = $(window).scrollTop();
+            var catalWrap = $('.catal-list-wrap');
             var scrollTabList = $('.catal-tab .tabs-wrap li');
             var catalTab = $(".catal-tab").offset().top;
             var anchorCont = $(".anchor-contents");
-            var catalog02 = anchorCont.eq(1).offset().top - catalTab;
-            var catalog03 = anchorCont.eq(2).offset().top - catalTab;
-            var catalog04 = anchorCont.eq(3).offset().top - catalTab;
-            var catalog05 = anchorCont.eq(4).offset().top - catalTab;
-            var catalog06 = anchorCont.eq(5).offset().top - catalTab;
-            var catalog07 = anchorCont.eq(6).offset().top - catalTab;
-            var catalog08 = anchorCont.eq(7).offset().top - catalTab;
-            var catalog09 = anchorCont.eq(8).offset().top - catalTab;
-            var catalog10 = anchorCont.eq(9).offset().top - catalTab;
-            var catalog11 = anchorCont.eq(10).offset().top - catalTab;
+            var ancLeng = anchorCont.length-1;
 
             scrollTabList.removeClass('on');
 
-            if( catalog02 > scrollTop ) {
-                scrollTabList.eq(0).addClass('on');
-            } else if( catalog02 <= scrollTop && catalog03 > scrollTop ) {
-                scrollTabList.eq(1).addClass('on');
-            } else if( catalog03 <= scrollTop && catalog04 > scrollTop ) {
-                scrollTabList.eq(2).addClass('on');
-            } else if( catalog04 <= scrollTop && catalog05 > scrollTop ) {
-                scrollTabList.eq(3).addClass('on');
-            } else if( catalog05 <= scrollTop && catalog06 > scrollTop ) {
-                scrollTabList.eq(4).addClass('on');
-            } else if( catalog06 <= scrollTop && catalog07 > scrollTop ) {
-                scrollTabList.eq(5).addClass('on');
-            } else if( catalog07 <= scrollTop && catalog08 > scrollTop ) {
-                scrollTabList.eq(6).addClass('on');
-            } else if( catalog08 <= scrollTop && catalog09 > scrollTop ) {
-                scrollTabList.eq(7).addClass('on');
-            } else if( catalog09 <= scrollTop && catalog10 > scrollTop ) {
-                scrollTabList.eq(8).addClass('on');
-            } else if( catalog10 <= scrollTop && catalog11 > scrollTop ) {
-                scrollTabList.eq(9).addClass('on');
-            } else if( catalog11 <= scrollTop ) {
-                scrollTabList.eq(10).addClass('on');
+            if(anchorCont.length == 0) {
+                catalWrap.hide();
+            } else{
+                for(var i = 1; i < ancLeng; i++) {
+                    if( anchorCont.eq(1).offset().top - catalTab > scrollTop ) {
+                        scrollTabList.eq(0).addClass('on');
+                    } else if( anchorCont.eq(i).offset().top - catalTab <= scrollTop && anchorCont.eq(i+1).offset().top - catalTab > scrollTop ) {
+                        scrollTabList.eq(i).addClass('on');
+                    } else if( anchorCont.eq(ancLeng).offset().top - catalTab <= scrollTop ) {
+                        scrollTabList.eq(ancLeng).addClass('on');
+                    }
+                }
             }
         },
         catalSlider: function(){
