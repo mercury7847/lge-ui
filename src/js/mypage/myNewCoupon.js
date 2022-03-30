@@ -691,7 +691,7 @@
                     return a._sort - b._sort;
                 });
 
-                //종료된 쿠폰 > 종료일 오름 차순
+                //종료된 쿠폰 > 종료일 내림 차순
                 this.variable.listData["end"].forEach(function (data) {
                     if (TAB === TAB_BESTSHOP_PRD) {
                         data._sort = vcui.date.parse(data.endDate).getTime();
@@ -700,7 +700,7 @@
                     }
                 });
                 this.variable.listData["end"].sort(function (a, b) {
-                    return a._sort - b._sort;
+                    return b._sort - a._sort;
                 });
             }
 
