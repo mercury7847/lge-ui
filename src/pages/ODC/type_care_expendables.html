@@ -126,7 +126,7 @@ pageJS: ["category-home/index"]
                 <!-- 로그인 전 -->
                 <a href="#" class="odc-my-product__banner is-logoff">
                     <div class="odc-my-product__inner">
-                        <p class="odc-my-product__title">로그인을하고 보유제품에 맞는<br>소모품을 확인해보세요</p>
+                        <p class="odc-my-product__title">로그인하고 보유제품에 맞는 <br>소모품을 확인해보세요</p>
                         <p class="odc-my-product__link">보유 제품 등록하기</p>
                     </div>
                 </a>
@@ -135,7 +135,7 @@ pageJS: ["category-home/index"]
                 <!-- 로그인 후 : 보유제품 없을 시 -->
                 <a href="#" class="odc-my-product__banner is-login">
                     <div class="odc-my-product__inner">
-                        <p class="odc-my-product__title">제품 등록하고 나의 제품과<br>맞는 소모품을 확인해보세요
+                        <p class="odc-my-product__title">제품 등록하고 나의 제품과 <br>맞는 소모품을 확인해보세요
                         </p>
                         <p class="odc-my-product__link">보유 제품 등록하기</p>
                     </div>
@@ -160,6 +160,8 @@ pageJS: ["category-home/index"]
                 <div class="odc-head">
                     <div class="odc-head__title">여름 되기전! 필터 소모품을 준비하세요</div>
                     <div class="odc-head__subtitle">착한가격, 빠른배송 오직 LG전자에서</div>
+
+                    <div class="odc-show-room-type1__detail"></div>
                 </div>
 
                 <div class="odc-show-room-type1__body">
@@ -186,12 +188,20 @@ pageJS: ["category-home/index"]
                                         >
                                     </div>
 
+                                    <!-- mobile, pc 이미지 비율이 다르므로 mark도 mobile, pc 용 따로 등록 필요함 -->
                                     <!-- mark 1 -->
                                     <div class="odc-show-room-type1__display is-active" data-model-code="65ART90EKPA"><!-- 최초에 주력 제품 1개 활성화 -->
 
-                                        <button type="button" class="odc-show-room-type1__mark" style="top: 28%; left: 49%">
-                                            <span class="blind">LG SIGNATURE OLED R</span>
+                                        <!-- mobile 용 mark -->
+                                        <button type="button" class="odc-show-room-type1__mark is-mobile" style="top: 28%; left: 49%">
+                                            <span class="blind">휴대용공기청정기 필터</span>
                                         </button>
+
+                                        <!-- pc 용 mark -->
+                                        <button type="button" class="odc-show-room-type1__mark is-pc" style="top: 28%; left: 49%">
+                                            <span class="blind">휴대용공기청정기 필터</span>
+                                        </button>
+
 
                                         <a href="#" class="odc-show-room-type1__product">
 
@@ -200,9 +210,9 @@ pageJS: ["category-home/index"]
                                                 <span class="odc-show-room-type1__tag">여름</span>
                                             </div>
 
-                                            <p class="odc-show-room-type1__name">휴대용공기청정기 필터 세트 (3개입)</p>
-                                            <p class="odc-show-room-type1__model">ADQ75153412</p>
-                                            <p class="odc-show-room-type1__price">28,500원</p>
+                                            <p class="odc-product-name">휴대용공기청정기 필터 세트 (3개입)</p>
+                                            <p class="odc-product-model">ADQ75153412</p>
+                                            <p class="odc-product-price">28,500원</p>
 
                                         </a>
 
@@ -228,9 +238,16 @@ pageJS: ["category-home/index"]
                                     <!-- mark 1 -->
                                     <div class="odc-show-room-type1__display is-active" data-model-code="65ART90EKPA"><!-- 최초에 주력 제품 1개 활성화 -->
 
-                                        <button type="button" class="odc-show-room-type1__mark" style="top: 18%; left: 30%">
-                                            <span class="blind">LG SIGNATURE OLED</span>
+                                        <!-- mobile 용 mark -->
+                                        <button type="button" class="odc-show-room-type1__mark is-mobile" style="top: 28%; left: 49%">
+                                            <span class="blind">휴대용공기청정기 필터</span>
                                         </button>
+
+                                        <!-- pc 용 mark -->
+                                        <button type="button" class="odc-show-room-type1__mark is-pc" style="top: 28%; left: 49%">
+                                            <span class="blind">휴대용공기청정기 필터</span>
+                                        </button>
+
 
                                         <a href="#" class="odc-show-room-type1__product">
 
@@ -238,9 +255,9 @@ pageJS: ["category-home/index"]
                                                 <span class="odc-show-room-type1__tag">거실</span>
                                             </div>
 
-                                            <p class="odc-show-room-type1__name">휴대용공기청정기 필터 세트 (3개입)</p>
-                                            <p class="odc-show-room-type1__model">ADQ75153412</p>
-                                            <p class="odc-show-room-type1__price">28,500원</p>
+                                            <p class="odc-product-name">휴대용공기청정기 필터</p>
+                                            <p class="odc-product-model">ADQ75153412</p>
+                                            <p class="odc-product-price">28,500원</p>
 
                                         </a>
 
@@ -282,9 +299,9 @@ pageJS: ["category-home/index"]
                             </div>
 
                             <div class="odc-show-room-type2__info">
-                                <p class="odc-show-room-type2__name">초미세 집진 Black 필터 (최신모델)</p>
-                                <p class="odc-show-room-type2__model">ADQ74813204</p>
-                                <p class="odc-show-room-type2__price">132,000원</p>
+                                <p class="odc-product-name">초미세 집진 Black 필터 (최신모델)</p>
+                                <p class="odc-product-model">ADQ74813204</p>
+                                <p class="odc-product-price">132,000원</p>
                             </div>
 
                         </a>
@@ -296,9 +313,23 @@ pageJS: ["category-home/index"]
                             </div>
 
                             <div class="odc-show-room-type2__info">
-                                <p class="odc-show-room-type2__name">초미세 집진 Black 필터 (최신모델)</p>
-                                <p class="odc-show-room-type2__model">ADQ74813204</p>
-                                <p class="odc-show-room-type2__price">132,000원</p>
+                                <p class="odc-product-name">초미세 집진 Black 필터 (최신모델)</p>
+                                <p class="odc-product-model">ADQ74813204</p>
+                                <p class="odc-product-price">132,000원</p>
+                            </div>
+
+                        </a>
+
+                        <a href="#" class="odc-show-room-type2__item" data-model-code="65ART90EKPA">
+
+                            <div class="odc-show-room-type2__image">
+                                <img src="/lg5-common/images/ODC/img-odcc0017-1.jpg">
+                            </div>
+
+                            <div class="odc-show-room-type2__info">
+                                <p class="odc-product-name">초미세 집진 Black 필터 (최신모델)</p>
+                                <p class="odc-product-model">ADQ74813204</p>
+                                <p class="odc-product-price">132,000원</p>
                             </div>
 
                         </a>
@@ -329,9 +360,9 @@ pageJS: ["category-home/index"]
                             </div>
 
                             <div class="odc-show-room-type2__info">
-                                <p class="odc-show-room-type2__name">초미세 집진 Black 필터 (최신모델)</p>
-                                <p class="odc-show-room-type2__model">ADQ74813204</p>
-                                <p class="odc-show-room-type2__price">132,000원</p>
+                                <p class="odc-product-name">초미세 집진 Black 필터 (최신모델)</p>
+                                <p class="odc-product-model">ADQ74813204</p>
+                                <p class="odc-product-price">132,000원</p>
                             </div>
 
                         </a>
@@ -371,53 +402,53 @@ pageJS: ["category-home/index"]
 
                         <div class="odc-recommend-tab__product">
 
-                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+                            <a href="#" class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
 
                                 <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-1.jpg"></div>
 
                                 <div class="odc-recommend-tab__info">
-                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
-                                    <p class="odc-recommend-tab__model">OLED65G1KNA</p>
-                                    <p class="odc-recommend-tab__price">15,200원</p>
+                                    <p class="odc-product-name">에어컨 리모컨</p>
+                                    <p class="odc-product-model">OLED65G1KNA</p>
+                                    <p class="odc-product-price">15,200원</p>
                                 </div>
 
-                            </div>
+                            </a>
 
-                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+                            <a href="#" class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
 
                                 <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-2.jpg"></div>
 
                                 <div class="odc-recommend-tab__info">
-                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
-                                    <p class="odc-recommend-tab__model">AKB73795703</p>
-                                    <p class="odc-recommend-tab__price">20,900원</p>
+                                    <p class="odc-product-name">에어컨 리모컨</p>
+                                    <p class="odc-product-model">AKB73795703</p>
+                                    <p class="odc-product-price">20,900원</p>
                                 </div>
 
-                            </div>
+                            </a>
 
-                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+                            <a href="#" class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
 
                                 <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-1.jpg"></div>
 
                                 <div class="odc-recommend-tab__info">
-                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
-                                    <p class="odc-recommend-tab__model">OLED65G1KNA</p>
-                                    <p class="odc-recommend-tab__price">15,200원</p>
+                                    <p class="odc-product-name">에어컨 리모컨</p>
+                                    <p class="odc-product-model">OLED65G1KNA</p>
+                                    <p class="odc-product-price">15,200원</p>
                                 </div>
 
-                            </div>
+                            </a>
 
-                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+                            <a href="#" class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
 
                                 <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-2.jpg"></div>
 
                                 <div class="odc-recommend-tab__info">
-                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
-                                    <p class="odc-recommend-tab__model">AKB73795703</p>
-                                    <p class="odc-recommend-tab__price is-soldout">20,900원 <span class="odc-badge odc-badge--gray">일시품절</span></p>
+                                    <p class="odc-product-name">에어컨 리모컨</p>
+                                    <p class="odc-product-model">AKB73795703</p>
+                                    <p class="odc-product-price is-soldout">20,900원 <span class="odc-badge odc-badge--gray">일시품절</span></p>
                                 </div>
 
-                            </div>
+                            </a>
 
                         </div>
 
@@ -431,53 +462,53 @@ pageJS: ["category-home/index"]
 
                         <div class="odc-recommend-tab__product">
 
-                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+                            <a href="#" class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
 
                                 <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-1.jpg"></div>
 
                                 <div class="odc-recommend-tab__info">
-                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
-                                    <p class="odc-recommend-tab__model">OLED65G1KNA</p>
-                                    <p class="odc-recommend-tab__price">35,200원</p>
+                                    <p class="odc-product-name">에어컨 리모컨</p>
+                                    <p class="odc-product-model">OLED65G1KNA</p>
+                                    <p class="odc-product-price">35,200원</p>
                                 </div>
 
-                            </div>
+                            </a>
 
-                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+                            <a href="#" class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
 
                                 <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-2.jpg"></div>
 
                                 <div class="odc-recommend-tab__info">
-                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
-                                    <p class="odc-recommend-tab__model">AKB73795703</p>
-                                    <p class="odc-recommend-tab__price">20,900원</p>
+                                    <p class="odc-product-name">에어컨 리모컨</p>
+                                    <p class="odc-product-model">AKB73795703</p>
+                                    <p class="odc-product-price">20,900원</p>
                                 </div>
 
-                            </div>
+                            </a>
 
-                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+                            <a href="#" class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
 
                                 <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-1.jpg"></div>
 
                                 <div class="odc-recommend-tab__info">
-                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
-                                    <p class="odc-recommend-tab__model">OLED65G1KNA</p>
-                                    <p class="odc-recommend-tab__price">15,200원</p>
+                                    <p class="odc-product-name">에어컨 리모컨</p>
+                                    <p class="odc-product-model">OLED65G1KNA</p>
+                                    <p class="odc-product-price">15,200원</p>
                                 </div>
 
-                            </div>
+                            </a>
 
-                            <div class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
+                            <a href="#" class="odc-recommend-tab__item" data-model-code="65ART90EKPA">
 
                                 <div class="odc-recommend-tab__image"><img src="/lg5-common/images/ODC/img-odcc0018-2.jpg"></div>
 
                                 <div class="odc-recommend-tab__info">
-                                    <p class="odc-recommend-tab__name">에어컨 리모컨</p>
-                                    <p class="odc-recommend-tab__model">AKB73795703</p>
-                                    <p class="odc-recommend-tab__price">20,900원</p>
+                                    <p class="odc-product-name">에어컨 리모컨</p>
+                                    <p class="odc-product-model">AKB73795703</p>
+                                    <p class="odc-product-price">20,900원</p>
                                 </div>
 
-                            </div>
+                            </a>
 
                         </div>
 
@@ -509,9 +540,9 @@ pageJS: ["category-home/index"]
                             <div class="odc-recommend-list__image"><img src="/lg5-common/images/ODC/img-odcc0019-1.jpg"></div>
 
                             <div class="odc-recommend-list__info">
-                                <p class="odc-recommend-list__name">토탈케어 플러스 E11 필터</p>
-                                <p class="odc-recommend-list__model">ADQ75153404</p>
-                                <p class="odc-recommend-list__price">61,700원</p>
+                                <p class="odc-product-name">토탈케어 플러스 E11 필터</p>
+                                <p class="odc-product-model">ADQ75153404</p>
+                                <p class="odc-product-price">61,700원</p>
                             </div>
 
                         </a>
@@ -521,9 +552,9 @@ pageJS: ["category-home/index"]
                             <div class="odc-recommend-list__image"><img src="/lg5-common/images/ODC/img-odcc0019-1.jpg"></div>
 
                             <div class="odc-recommend-list__info">
-                                <p class="odc-recommend-list__name">토탈케어 플러스 E11 필터</p>
-                                <p class="odc-recommend-list__model">ADQ75153404</p>
-                                <p class="odc-recommend-list__price">61,700원</p>
+                                <p class="odc-product-name">토탈케어 플러스 E11 필터</p>
+                                <p class="odc-product-model">ADQ75153404</p>
+                                <p class="odc-product-price">61,700원</p>
                             </div>
 
                         </a>
@@ -533,9 +564,9 @@ pageJS: ["category-home/index"]
                             <div class="odc-recommend-list__image"><img src="/lg5-common/images/ODC/img-odcc0019-1.jpg"></div>
 
                             <div class="odc-recommend-list__info">
-                                <p class="odc-recommend-list__name">토탈케어 플러스 E11 필터</p>
-                                <p class="odc-recommend-list__model">ADQ75153404</p>
-                                <p class="odc-recommend-list__price is-soldout">61,700원 <span class="odc-badge odc-badge--gray">일시품절</span></p>
+                                <p class="odc-product-name">토탈케어 플러스 E11 필터</p>
+                                <p class="odc-product-model">ADQ75153404</p>
+                                <p class="odc-product-price is-soldout">61,700원 <span class="odc-badge odc-badge--gray">일시품절</span></p>
                             </div>
 
                         </a>
@@ -545,9 +576,9 @@ pageJS: ["category-home/index"]
                             <div class="odc-recommend-list__image"><img src="/lg5-common/images/ODC/img-odcc0019-1.jpg"></div>
 
                             <div class="odc-recommend-list__info">
-                                <p class="odc-recommend-list__name">토탈케어 플러스 E11 필터</p>
-                                <p class="odc-recommend-list__model">ADQ75153404</p>
-                                <p class="odc-recommend-list__price">61,700원</p>
+                                <p class="odc-product-name">토탈케어 플러스 E11 필터</p>
+                                <p class="odc-product-model">ADQ75153404</p>
+                                <p class="odc-product-price">61,700원</p>
                             </div>
 
                         </a>

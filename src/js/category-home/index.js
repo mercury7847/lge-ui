@@ -97,12 +97,17 @@ var odc = {
      * ODCC0003 : show room type 1
      */
     showRoomSetting: function () {
-        var $slide = $('.odc-show-room-type1__slide');
-        var $indicator = $('.odc-show-room-type1__indicator');
-        var $dots = $('.odc-show-room-type1__dots');
-        var $slideCurrent = $('.odc-show-room-type1__current');
-        var $totalCount = $('.odc-show-room-type1__total');
+        var prefixClass = '.odc-show-room-type1';
+        var $slide = $(prefixClass + '__slide');
+        var $indicator = $(prefixClass + '__indicator');
+        var $dots = $(prefixClass + '__dots');
+        var $slideCurrent = $(prefixClass + '__current');
+        var $totalCount = $(prefixClass + '__total');
+        var $currentSlide = $slide.siblings('.ui_carousel_current');
         var currentIndex = $slide.siblings('.ui_carousel_current').index() || 1;
+        var clonePcProductDetail = $currentSlide.find(prefixClass + '__display.is-active').find(prefixClass + '__product').clone();
+
+        $(prefixClass + '__detail').html(clonePcProductDetail);
 
         if($slide.length > 1) {
             $indicator.show();
@@ -142,10 +147,15 @@ var odc = {
 
     showRoomMark: function() {
         var self = this;
+        var prefixClass = '.odc-show-room-type1';
 
-        $('.odc-show-room-type1__mark').on('mouseenter', function(){
-            $(this).closest('.odc-show-room-type1__item').find('.odc-show-room-type1__display').removeClass('is-active');
-            $(this).closest('.odc-show-room-type1__display').addClass('is-active');
+        $(prefixClass + '__mark').on('mouseenter', function(){
+            var detailClone = $(this).closest(prefixClass + '__display').find(prefixClass + '__product').clone();
+
+            $(this).closest(prefixClass + '__item').find(prefixClass + '__display').removeClass('is-active');
+            $(this).closest(prefixClass + '__display').addClass('is-active');
+
+            $(this).closest(prefixClass).find(prefixClass + '__detail').html(detailClone);
         })
     },
 
