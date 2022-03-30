@@ -257,6 +257,9 @@
                                 background-size:24px;  
                             }
                             &.download {
+                                &[disabled] {
+                                    cursor:default;
+                                }
                                 em{
                                     position:absolute;
                                     z-index:-10;
@@ -273,9 +276,6 @@
                                 }
                                 @if $type == lge-before {
                                     background-image:url(/lg5-common/images/OBS/coupon/ico-download_blk.svg);
-                                    &[disabled] {
-                                        background-image:url(/lg5-common/images/OBS/coupon/ico-download_disabled.svg);
-                                    }
                                 } @else if $type == lge-after {
                                     background-image:url(/lg5-common/images/OBS/coupon/ico-download_chk-red.svg);
                                     &[disabled] {
@@ -311,9 +311,6 @@
                                     }
                                 } @else if $type == partner-before {
                                     background-image:url(/lg5-common/images/OBS/coupon/ico-download_blk.svg);
-                                    &[disabled] {
-                                        background-image:url(/lg5-common/images/OBS/coupon/ico-download_disabled.svg);
-                                    }
                                 } @else if $type == partner-after {
                                     background-image:url(/lg5-common/images/OBS/coupon/ico-download_chk-blk.svg);
                                     &[disabled] {
@@ -498,21 +495,7 @@
                             opacity:.5;
                         }
                     }
-                    @if $type == lge-before {
-                        &:before {
-                            border-color:#ddd;
-                        }
-                        > .cp-cont {
-                            padding-bottom:37px;
-                            @include mobile {
-                                padding-bottom:7px;
-                            }
-                            > .cp-btn:after {
-                                background-image:url(/lg5-common/images/OBS/coupon/bg-round-half.png);
-                            }
-                        }
-
-                    } @else if $type == lge-after {
+                    @if $type == lge-after {
                         &:before {
                             border-color:#ddd;
                         }
@@ -544,23 +527,6 @@
                         }
                     } @else if $type == best-benefit {
                         &:before {
-                            border-color:#ddd;
-                        }
-                        > .cp-cont {
-                            padding-bottom:37px;
-                            @include mobile {
-                                padding-bottom:7px;
-                            }
-                            &:before {
-                                color:#aaa !important;
-                                background-color:rgba(221,221,221,.3) !important;
-                            }
-                            > .cp-btn:after {
-                                background-image:url(/lg5-common/images/OBS/coupon/bg-round-half.png);
-                            }
-                        }
-                    } @else if $type == partner-before {
-                            &:before {
                             border-color:#ddd;
                         }
                         > .cp-cont {
@@ -826,6 +792,21 @@
 
 //쿠폰상세(layer)
 @at-root {
+    .popup-wrap.cp-pop-wrap {
+        max-width:444px;
+        @include mobile {
+            .cp-pop.pop-conts {
+                min-height:initial; 
+                ~ .pop-footer {
+                    padding:0;
+                    .btn-group {
+                        margin:-60px auto 60px;
+                        padding:0 16px;
+                    }
+                }
+            }
+        }
+    }
     .cp-pop.pop-conts {
         min-height:452px;
         padding-top:12px !important;
