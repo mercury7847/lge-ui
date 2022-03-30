@@ -77,9 +77,9 @@
             // BTOCSITE-13884 4월 이북(제품 카탈로그) 업데이트 및 수정 요청 사항 
             var scrollTop = $(window).scrollTop();
             var catalWrap = $('.catal-list-wrap');
-            var scrollTabList = $('.catal-tab .tabs-wrap li');
-            var catalTab = $(".catal-tab").offset().top;
-            var anchorCont = $(".anchor-contents");
+            var scrollTabList = catalWrap.find('.catal-tab .tabs-wrap li');
+            var catalTab = catalWrap.find(".catal-tab").offset().top;
+            var anchorCont = catalWrap.find(".anchor-contents");
             var ancLeng = anchorCont.length-1;
 
             scrollTabList.removeClass('on');
