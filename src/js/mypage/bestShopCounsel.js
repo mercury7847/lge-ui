@@ -486,8 +486,9 @@
 
               // "reg_date" 바인딩 format 수정
               data._regDate = vcui.date.format(regDateStr, "yyyy년 MM월 dd일");
-              // 정렬을 위한 등록일시 타임형태로 저장
-              data._sort = vcui.date.parse(regDateStr).getTime();
+              // 정렬을 위한 예약일시 타임형태로 저장
+              data._sort = vcui.date.parse(visitDate).getTime();
+              data._sortSame = vcui.date.parse(regDateStr).getTime();
               // today
               data._today = this.getIsToday(visitDateStr) || false;
               // 지난 시간
@@ -506,13 +507,22 @@
         }.bind(this)
       );
 
-      // 지난건 내림 차순 정렬
+      // 이후건 오름 차순 정렬
       revArr.sort(function (a, b) {
+        return a._sort - b._sort;
+      });
+      // 지난건 내림 차순 정렬
+      oldRevArr.sort(function (a, b) {
         return b._sort - a._sort;
       });
-      // 이후건 오름 차순 정렬
+
+      // 예약일시 같은 예약 - 등록일 기준 이후건 오름 차순 정렬
+      revArr.sort(function (a, b) {
+        return a._sort === b._sort ? a._sortSame - b._sortSame : 0;
+      });
+      // 예약일시 같은 예약 - 등록일 기준 지난건 내림 차순 정렬
       oldRevArr.sort(function (a, b) {
-        return a._sort - b._sort;
+        return a._sort === b._sort ? b._sortSame - a._sortSame : 0;
       });
 
       // 정렬된 데이터 override
@@ -786,7 +796,7 @@
      * 문자 중앙 마스킹
      * @param {String} str
      * @returns
-     * @example 홍*동 | 홍**동 | ho******ng
+     * @example 홍*동 | 홍**동 | 홍* | ho******ng
      */
     middleMaskingText: function (str) {
       var maskRegex;
@@ -796,10 +806,22 @@
         // 한글
         maskRegex = /^.(.+).$/;
         regex = /(^.).+(.$)/;
+
+        if (str.length <= 2) {
+          // 2자 이하 대응
+          maskRegex = /^.(.+)/;
+          regex = /(^.).+()/;
+        }
       } else {
         // 영문
         maskRegex = /^.{2}(.+).{2}$/;
         regex = /(^.{2}).+(.{2}$)/;
+
+        if (str.length <= 4) {
+          // 4자 이하 대응
+          maskRegex = /^.{1}(.)|.+$/g;
+          regex = /(^.{1}).(|.+)$/;
+        }
       }
 
       var masking = str.replace(maskRegex, "$1");
