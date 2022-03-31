@@ -522,6 +522,12 @@ br.pc {
 .care-category {
     margin-top:48px;
     padding: 0;
+    //220331 추가 s
+    @include pc {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    //220331 추가 s
     .category-list {
         @include mobile{
             background-color:#f4f4f4;
