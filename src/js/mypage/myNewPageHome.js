@@ -51,6 +51,11 @@
             //AS-IS > 크레마
             this.cremaLogin();
             this.setProperty();
+
+            //쿠폰 갯수 API 연결
+            this.requestCntCoupon();
+
+            //커뮤니케이션 API 연결
             this.requestMyPageList();
         },
         cremaLogin: function () {
@@ -74,6 +79,37 @@
             });
             //크레마 리로드
             lgkorUI.cremaReload();
+        },
+        /**
+         * @method requestMyPageList
+         * @memberof
+         * @return {myCallback}  [정보관리 > 쿠폰 갯수 API ]
+         */
+        requestCntCoupon: function () {
+            var sendUrl = this.el.$contents.data("member-info");
+            lgkorUI.requestAjaxData(
+                sendUrl,
+                {},
+                function (result) {
+                    var txtCntCoupon = vcui.number.addComma(result["couponeCnt"]);
+
+                    var totalFormat = function (val) {
+                        if (val >= 100) {
+                            return "99+";
+                        } else {
+                            return val;
+                        }
+                    };
+                    $(".my-info .count")
+                        .eq(1)
+                        .html(totalFormat(txtCntCoupon) + '<i class="unit">장</i>');
+                },
+                "GET",
+                "json",
+                true,
+                null,
+                true
+            );
         },
         /**
          * @method requestMyPageList
