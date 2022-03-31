@@ -45,7 +45,6 @@
             '<div class="tbl-layout sizeType3">'+
                 '<div class="thead" aria-hidden="true">'+
                     '<span class="th col1">제품정보</span>'+
-                    '<span class="th col2">결제금액</span>'+
                     '<span class="th col3">진행상태</span>'+
                 '</div>'+
                 '<div class="tbody">'+
@@ -156,13 +155,6 @@
                                 '</div>'+
                             '</div>'+
                          '</div>'+
-                        '<div class="col col1-2">'+
-                            '<div class="payment-price">'+
-                                '<p class="price">'+
-                                    '<span class="blind">구매가격</span>{{listData.buyAmt}}원'+
-                                '</p>'+
-                            '</div>'+
-                        '</div>'+
                         '<div class="col col2">'+
                             '<div class="state-box">'+
                             '{{#if !listData.deliveryStatus}}<p class="tit"><span class="blind">진행상태</span>{{listData.deliveryStatusText}}</p>{{/if}}' +
