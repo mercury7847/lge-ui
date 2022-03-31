@@ -539,6 +539,11 @@
                         &.counselling-ready:before {background-image:url(/lg5-common/images/MYS/ico-svc-counselling-ready.svg)}
                     }
                 }
+                &.shop {
+                    .status {
+                        &.reservation:before {background-image:url(/lg5-common/images/MYS/ico-shop-reservation.svg)}
+                    }
+                }
             }
             @include tablet {
                 flex:0 1 100%;
@@ -679,10 +684,10 @@
                         }
                     }
                     &.favor:before{
-                        background-image:url(/lg5-common/images/MYS/ico-mybestshop-04.svg);
+                        background-image:url(/lg5-common/images/MYS/ico-mybestshop-favor.svg);
                     }
                     &.coupon:before{
-                        background-image:url(/lg5-common/images/MYS/ico-mybestshop-05.svg);
+                        background-image:url(/lg5-common/images/MYS/ico-mybestshop-coupon.svg);
                     }
                 }
                 &:after {
