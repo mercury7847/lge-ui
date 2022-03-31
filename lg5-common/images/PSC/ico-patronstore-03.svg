@@ -1,0 +1,16 @@
+<svg id="img_memberBenefit_MO_128" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect id="box" width="128" height="128" fill="none" opacity="0.3"/>
+  <g id="ic" transform="translate(7.125 26)">
+    <g id="Rectangle" transform="translate(35.531 10)" fill="none" stroke="#da0f47" stroke-width="4">
+      <rect width="75.156" height="14" stroke="none"/>
+      <rect x="2" y="2" width="71.156" height="10" fill="none"/>
+    </g>
+    <path id="Combined_Shape" data-name="Combined Shape" d="M68,50H29a6.657,6.657,0,0,0,0-6,6.5,6.5,0,0,0-8.906-2.82L3.732,49.991A4.008,4.008,0,0,1,0,46V4A4,4,0,0,1,4,0H68a4,4,0,0,1,4,4V46A4,4,0,0,1,68,50Z" transform="translate(36.875)" fill="none" stroke="#000" stroke-width="4"/>
+    <g id="hand" transform="translate(0.694 26.449)">
+      <path id="Path" d="M22.724,24.986,42.373,13.639a6.343,6.343,0,0,1,8.812,2.591h0a7.336,7.336,0,0,1-2.554,9.525l-5.4,3.475c-8.091,4.244-10.894,7.256-15.7,14.693s-13.507,7.215-13.507,7.215L0,26.761S7.461,3.246,23.075,0" transform="translate(13.106 0.639)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="4"/>
+      <path id="Path-2" data-name="Path" d="M0,3.146,3.153,8a5.25,5.25,0,0,0,6.834,1.79h0A4.37,4.37,0,0,0,11.64,3.554L9.359,0" transform="translate(51.087 27.551)" fill="none" stroke="#000" stroke-width="4"/>
+      <path id="Rectangle-2" data-name="Rectangle" d="M.01,4.382A4,4,0,0,1,3.827.375L12,0l-.218,36L3.534,34.858A4,4,0,0,1,.082,30.907Z" transform="translate(0.699 29.998) rotate(-30)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="4"/>
+      <path id="Path-3" data-name="Path" d="M0,8,1.231,9.818A4.848,4.848,0,0,0,8.125,11h0a4.976,4.976,0,0,0,1-7.017L6.094,0" transform="translate(44.993 31.551)" fill="none" stroke="#000" stroke-width="4"/>
+    </g>
+  </g>
+</svg>

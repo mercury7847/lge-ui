@@ -1,0 +1,25 @@
+<svg id="img_membership03_MO_128" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Mask" width="128" height="128" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="그룹_3" data-name="그룹 3">
+    <rect id="Mask-2" data-name="Mask" width="128" height="128" fill="none"/>
+  </g>
+  <g id="ic" transform="translate(22 15.319)">
+    <g id="ic-2" data-name="ic">
+      <path id="Shape" d="M37,92H4a4.08,4.08,0,0,1-4-4V12A4.08,4.08,0,0,1,4,8H22M54,8H72a4.111,4.111,0,0,1,4,4V38.926" transform="translate(0 -1.441)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <path id="Path" d="M16,34.9,20.329,38,28,30" transform="translate(0 -1.441)" fill="none" stroke="#da0f47" stroke-linecap="round" stroke-width="4"/>
+      <path id="Path-2" data-name="Path" d="M16,48.9,20.329,52,28,44" transform="translate(0 -1.441)" fill="none" stroke="#da0f47" stroke-linecap="round" stroke-width="4"/>
+      <rect id="Rectangle" width="12" height="12" rx="4" transform="translate(16 60.559)" fill="none" stroke="#000" stroke-width="4"/>
+      <g id="Group-12" transform="translate(84.178 42.457) rotate(39)">
+        <path id="Combined-Shape" d="M.44,3.963A4,4,0,0,1,4.44,0h4a4,4,0,0,1,4,4v.037h0L12,51.582h0L5.894,65.41,0,51.582Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+        <line id="Path-3" data-name="Path" x2="11.758" y2="0.196" transform="translate(0.242 51.386)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      </g>
+      <path id="Rectangle-2" data-name="Rectangle" d="M29.194,1.624l8.613,2.693a4,4,0,0,0,2.387,0l8.613-2.693A4,4,0,0,1,54,5.442V8a4,4,0,0,1-4,4H28a4,4,0,0,1-4-4V5.442a4,4,0,0,1,5.194-3.818Z" transform="translate(0 -1.441)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <line id="Line" x2="24" transform="translate(39 33.559)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <line id="Line-2" data-name="Line" x2="24" transform="translate(39 47.559)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    </g>
+  </g>
+</svg>
