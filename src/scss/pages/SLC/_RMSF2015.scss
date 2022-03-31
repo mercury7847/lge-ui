@@ -447,3 +447,8 @@ br.m {
         }
     }
 }
+
+// BTOCSITE-13928 렌탈케어 혜택 안내 페이지 변경
+.contents.caresolution.benefit {
+    @import "RMSF2015_card";
+}
