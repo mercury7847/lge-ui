@@ -18,5 +18,72 @@
             }]
         },
         "dataFlag": "Y"
+    },
+    "bestCounselList": {
+        "data": {
+            "bestCounselCnt": 2,
+            "bestCounselList": [{
+                    "counselEventType": "화상상담",
+                    "progress": "고객취소",
+                    "modelName": "50UP8300KNA",
+                    "modelDisplayName": "LG 울트라 HD TV(벽걸이)"
+                },
+                {
+                    "counselEventType": "소모품 구매 예약",
+                    "progress": "예약완료",
+                    "modelName": "",
+                    "modelDisplayName": "올레드 TV 외 20개"
+                }
+            ]
+        },
+        "dataFlag": "Y"
+    },
+
+    "visitInfoList": {
+        "data": {
+            "nextListCnt": 1,
+            "nextList": [{
+                "CONT_LINE_SEQ": "20228969",
+                "CALC_DATE": "20210926",
+                "CATEGORY_NM_KOR": "식기세척기"
+            }]
+        },
+        "dataFlag": "Y"
+    },
+    "myInquiryList": {
+        "data": {
+            "inquiryListCnt": 1,
+            "inquiryList": [{
+                    "newTitle": "테스트1",
+                    "categoryTitle": "Q&A",
+                    "progress": "답변대기"
+                },
+                {
+                    "newTitle": "ttest 테스트 입니다",
+                    "categoryTitle": "칭찬합니다",
+                    "progress": "답변중"
+                }
+            ]
+        },
+        "dataFlag": "Y"
+    },
+    "myReservationList": {
+        "data": {
+            "reservationCnt": 9,
+            "reservationList": [{
+                    "inquiryType": "이메일 문의",
+                    "modelCd": "42PN450H-NA",
+                    "progress": "접수",
+                    "modelCategory": "TV / 프로젝터>PDP"
+                },
+                {
+                    "inquiryType": "이메일 문의",
+                    "modelCd": "B507SM",
+                    "progress": "답변중",
+                    "modelCategory": "냉장/냉동고>일반형"
+                }
+            ]
+        },
+        "dataFlag": "Y"
     }
 }

@@ -19,7 +19,7 @@
             > as-is 참조용 -->
 
             <!-- LGECOMVIO-30 : 마이페이지 홈 1차 개선 영역(2022.03.16) -->
-            <div class="contents mypage mypage-main-new" data-mypage-orderList="/lg5-common/data-ajax/mypage/mypageOrderList.json">
+            <div class="contents mypage mypage-main-new" data-mypage-info="/lg5-common/data-ajax/mypage/mypageOrderList.json">
                 <div class="cont-wrap">
                     <div class="lnb-wrap">
                         <!-- @@include('./common/modules/mypage-lnb.html') as-is 참조용 -->
@@ -85,12 +85,12 @@
                                 ② 접수(.receipt), 답변중(.progress), 답변완료(.completion), 
                                   방문예정(.visit-ready), 처리중(.svc-progress), 처리완료(.svc-completion), 상담예정(.counselling-ready)
                             -->
-                            <div class="my-section">
+                            <div class="my-section" style="display: none;">
                                 <h3 class="title">나의 활동 내역</h3>
-                                <div class="my-act-group" style="display: none;">
+                                <div class="my-act-group">
                                     <p class="sub-title">주문/배송/청약 조회 <em class="count"></em></p>
                                     <ul class="my-activity-list">
-                                        <!-- 2022.03.30 리스트 삭제 -->
+                                        <!-- 2022.03.31 리스트 삭제 -->
                                         <!--<li>
                                             <div class="myact-cont order">//case : add class
                                                 <em class="status care-01">청약완료</em>status : add class
@@ -114,18 +114,19 @@
                                             </div>
                                         </li>
                                         -->
-                                        <!-- 2022.03.30 리스트 삭제 -->
+                                        <!-- 2022.03.31 리스트 삭제 -->
                                     </ul>
-                                    <div class="list-more" style="display: none;">
+                                    <div class="list-more">
                                         <a href="#" class="btn-link">더보기</a>
                                     </div>
                                 </div>
                                 <div class="my-act-group">
                                     <p class="sub-title">마이 베스트샵 <em class="count">1</em></p>
                                     <ul class="my-activity-list">
-                                        <li>
-                                            <div class="myact-cont shop"><!-- case : add class -->
-                                                <em class="status reservation">예약완료</em><!-- status : add class -->
+                                        <!-- 2022.03.31 리스트 삭제 -->
+                                        <!-- <li>
+                                            <div class="myact-cont shop">//case : add class 
+                                                <em class="status reservation">예약완료</em>//status : add class
                                                 <div class="prod-info">
                                                     <span class="cate">매장 상담 예약</span>
                                                     <span class="prod">LG DIOS 식기세척기 스팀</span>
@@ -133,18 +134,20 @@
                                                 </div>
                                                 <a href="#" class="btn-myact"><i class="blind">바로가기</i></a>
                                             </div>
-                                        </li>
+                                        </li> -->
+                                        <!-- 2022.03.31 리스트 삭제 -->
                                     </ul>
-                                    <div class="list-more" style="display: none;">
+                                    <div class="list-more">
                                         <a href="#" class="btn-link">더보기</a>
                                     </div>
                                 </div>
                                 <div class="my-act-group">
                                     <p class="sub-title">렌탈/케어 관리 <em class="count">1</em></p>
                                     <ul class="my-activity-list">
-                                        <li>
-                                            <div class="myact-cont visit"><!-- case : add class -->
-                                                <em class="status reservation">방문 일정/예약</em><!-- status : add class -->
+                                        <!-- 2022.03.31 리스트 삭제 -->
+                                        <!-- <li>
+                                            <div class="myact-cont visit">// case : add class
+                                                <em class="status reservation">방문 일정/예약</em>// status : add class 
                                                 <div class="prod-info">
                                                     <span class="cate">렌탈/케어 관리</span>
                                                     <span class="prod date">방문 예정일 : 2022.04.04</span>
@@ -152,36 +155,40 @@
                                                 </div>
                                                 <a href="#" class="btn-myact"><i class="blind">바로가기</i></a>
                                             </div>
-                                        </li>
+                                        </li> -->
+                                        <!-- 2022.03.31 리스트 삭제 -->
                                     </ul>
-                                    <div class="list-more" style="display: none;">
+                                    <div class="list-more">
                                         <a href="#" class="btn-link">더보기</a>
                                     </div>
                                 </div>
                                 <div class="my-act-group">
                                     <p class="sub-title">칭찬/개선/제안 조회 <em class="count">1</em></p>
                                     <ul class="my-activity-list">
-                                        <li>
-                                            <div class="myact-cont voc"><!-- case : add class -->
-                                                <em class="status receipt">접수</em><!-- status : add class -->
+                                        <!-- 2022.03.31 리스트 삭제 -->
+                                        <!-- <li>
+                                            <div class="myact-cont voc">// case : add class 
+                                                <em class="status receipt">접수</em>// status : add class
                                                 <div class="prod-info">
                                                     <span class="cate">칭찬합니다</span>
                                                     <span class="prod">LG전자 상담사분 친절해요!</span>
                                                 </div>
                                                 <a href="#" class="btn-myact"><i class="blind">바로가기</i></a>
                                             </div>
-                                        </li>
+                                        </li> -->
+                                        <!-- 2022.03.31 리스트 삭제 -->
                                     </ul>
-                                    <div class="list-more" style="display: none;">
+                                    <div class="list-more">
                                         <a href="#" class="btn-link">더보기</a>
                                     </div>
                                 </div>
                                 <div class="my-act-group">
                                     <p class="sub-title">서비스 상담/예약 조회 <em class="count">1</em></p>
                                     <ul class="my-activity-list">
-                                        <li>
-                                            <div class="myact-cont svc"><!-- case : add class -->
-                                                <em class="status receipt">접수</em><!-- status : add class -->
+                                        <!-- 2022.03.31 리스트 삭제 -->
+                                        <!-- <li>
+                                            <div class="myact-cont svc">// case : add class
+                                                <em class="status receipt">접수</em>// status : add class
                                                 <div class="prod-info">
                                                     <span class="cate">이메일 상담</span>
                                                     <span class="prod">조리/세척기 &gt; 식기세척기</span>
@@ -189,9 +196,10 @@
                                                 </div>
                                                 <a href="#" class="btn-myact"><i class="blind">바로가기</i></a>
                                             </div>
-                                        </li>
+                                        </li> -->
+                                        <!-- 2022.03.31 리스트 삭제 -->
                                     </ul>
-                                    <div class="list-more" style="display: none;">
+                                    <div class="list-more">
                                         <a href="#" class="btn-link">더보기</a>
                                     </div>
                                 </div>
