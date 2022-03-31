@@ -764,7 +764,7 @@
                 if (this.el.$tab.find("li a .count span").eq(1).attr("data-cntList")) {
                     this.el.$tab.find("li a .count span").eq(1).text(totSubListCnt);
                 }
-                this.el.$tab.find("li a .count span").eq(1).attr("data-cntList", totSubListCnt);
+                this.el.$tab.find("li a .count span").eq(1).attr("data-cntList", this.variable.subListCnt);
 
                 this.el.$subTab
                     .find("li a .count span")
