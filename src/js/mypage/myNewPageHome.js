@@ -131,7 +131,6 @@
                         });
                     } else {
                         var totListCnt = 0;
-                        this.el.$actGroup.hide();
 
                         if (result.orderList && result.orderList.dataFlag == "Y") {
                             this.variable.orderListData = result.orderList.data.dataList;
@@ -139,13 +138,18 @@
                             totListCnt += Number(this.variable.orderListCnt);
 
                             this.renderList(0, this.variable.orderListCnt);
+                        } else {
+                            this.el.$actGroup.eq(0).remove();
                         }
+
                         if (result.bestshopCounselList && result.bestshopCounselList.dataFlag == "Y") {
                             this.variable.bestCounselList = result.bestshopCounselList.data.bestCounselList;
                             this.variable.bestCounselCnt = result.bestshopCounselList.data.bestCounselCnt;
                             totListCnt += Number(this.variable.bestCounselCnt);
 
                             this.renderList(1, this.variable.bestCounselCnt);
+                        } else {
+                            this.el.$actGroup.eq(1).remove();
                         }
 
                         if (result.visitInfoList && result.visitInfoList.dataFlag == "Y") {
@@ -154,6 +158,8 @@
                             totListCnt += Number(this.variable.visitInfoCnt);
 
                             this.renderList(2, this.variable.visitInfoCnt);
+                        } else {
+                            this.el.$actGroup.eq(2).remove();
                         }
 
                         if (result.myInquiryList && result.myInquiryList.dataFlag == "Y") {
@@ -162,6 +168,8 @@
                             totListCnt += Number(this.variable.inquiryListCnt);
 
                             this.renderList(3, this.variable.inquiryListCnt);
+                        } else {
+                            this.el.$actGroup.eq(3).remove();
                         }
 
                         if (result.reservationList && result.reservationList.dataFlag == "Y") {
@@ -170,6 +178,8 @@
                             totListCnt += Number(this.variable.reservationCnt);
 
                             this.renderList(4, this.variable.reservationCnt);
+                        } else {
+                            this.el.$actGroup.eq(4).remove();
                         }
                         if (totListCnt > 0) {
                             this.el.$actSection.show();
@@ -188,7 +198,7 @@
          */
         renderList: function (groupIdx, listCnt) {
             if (listCnt === 0) {
-                this.el.$actGroup.eq(groupIdx).hide();
+                this.el.$actGroup.eq(groupIdx).remove();
                 return;
             }
             this.el.$actGroup.eq(groupIdx).show();
