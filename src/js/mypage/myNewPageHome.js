@@ -131,22 +131,24 @@
                         });
                     } else {
                         var totListCnt = 0;
-                        if (result.orderList.dataFlag == "Y") {
+                        this.el.$actGroup.hide();
+
+                        if (result.orderList && result.orderList.dataFlag == "Y") {
                             this.variable.orderListData = result.orderList.data.dataList;
                             this.variable.orderListCnt = result.orderList.data.myShoppingCnt;
                             totListCnt += Number(this.variable.orderListCnt);
 
                             this.renderList(0, this.variable.orderListCnt);
                         }
-                        if (result.bestCounselList.dataFlag == "Y") {
-                            this.variable.bestCounselList = result.bestCounselList.data.bestCounselList;
-                            this.variable.bestCounselCnt = result.bestCounselList.data.bestCounselCnt;
+                        if (result.bestshopCounselList && result.bestshopCounselList.dataFlag == "Y") {
+                            this.variable.bestCounselList = result.bestshopCounselList.data.bestCounselList;
+                            this.variable.bestCounselCnt = result.bestshopCounselList.data.bestCounselCnt;
                             totListCnt += Number(this.variable.bestCounselCnt);
 
                             this.renderList(1, this.variable.bestCounselCnt);
                         }
 
-                        if (result.visitInfoList.dataFlag == "Y") {
+                        if (result.visitInfoList && result.visitInfoList.dataFlag == "Y") {
                             this.variable.visitInfoList = result.visitInfoList.data.nextList;
                             this.variable.visitInfoCnt = result.visitInfoList.data.nextListCnt;
                             totListCnt += Number(this.variable.visitInfoCnt);
@@ -154,7 +156,7 @@
                             this.renderList(2, this.variable.visitInfoCnt);
                         }
 
-                        if (result.myInquiryList.dataFlag == "Y") {
+                        if (result.myInquiryList && result.myInquiryList.dataFlag == "Y") {
                             this.variable.inquiryList = result.myInquiryList.data.inquiryList;
                             this.variable.inquiryListCnt = result.myInquiryList.data.inquiryListCnt;
                             totListCnt += Number(this.variable.inquiryListCnt);
@@ -162,7 +164,7 @@
                             this.renderList(3, this.variable.inquiryListCnt);
                         }
 
-                        if (result.myInquiryList.dataFlag == "Y") {
+                        if (result.reservationList && result.reservationList.dataFlag == "Y") {
                             this.variable.reservationList = result.myReservationList.data.reservationList;
                             this.variable.reservationCnt = result.myReservationList.data.reservationCnt;
                             totListCnt += Number(this.variable.reservationCnt);
@@ -189,6 +191,7 @@
                 this.el.$actGroup.eq(groupIdx).hide();
                 return;
             }
+            this.el.$actGroup.eq(groupIdx).show();
             this.setTxtCount(groupIdx, listCnt);
             var cntList = Math.min(listCnt, MAX_LIST_CNT);
             for (var i = 0; i < cntList; i++) {
