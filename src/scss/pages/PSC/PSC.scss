@@ -22,17 +22,11 @@
         }
         .visual {
             &-cont {
-                position:absolute;
-                top:0;
-                left:40px;
-                right:40px;
-                bottom:0;
-                max-width:1380px;
+                position:relative;
+                height:100%;
+                max-width:1460px;
                 margin:0 auto;
-                @include mobile{
-                    left:0;
-                    right:0;
-                }
+                padding:40px;
             }
             &-img {
                 position:absolute;
@@ -42,26 +36,25 @@
                 width:47.5%;
                 background:no-repeat 100% 50%/contain;
                 @include mobile{
-                    bottom:160px;
                     width:100%;
-                    background:no-repeat 50% 100%/360px;
+                    background:no-repeat 50% 50%/360px;
+                }
+                @media screen and (max-width: 359px) {
+                    background-size:contain;
                 }
             }
             &-info {
                 position:absolute;
                 top:50%;
-                left:0;
                 transform:translateY(-50%);
                 @include mobile {
-                    top:46px;
-                    left:16px;
-                    right:16px;
-                    bottom:40px;
-                    transform:translateY(0);
+                    position: static;
+                    transform:inherit;
                     text-align:center;
                 }
                 .tit {
                     position:relative;
+                    z-index:10;
                     display:inline-block;
                     margin-top:38px;
                     font-weight:$font-weight-bold;
@@ -117,12 +110,12 @@
                     @include mobile {
                         padding:16px 20px;
                         position:absolute;
-                        left:0;
-                        right:0;
-                        bottom:0;
+                        left:16px;
+                        right:16px;
+                        bottom:40px;
                         font-size:18px;
                         background:$color-white;
-                        border:2px solid #ddd;
+                        border:2px solid $color-border;
                         border-radius:8px;
                         > em {
                             color:$color-primary;
@@ -136,10 +129,10 @@
                             display:block;
                             border-left:8px solid transparent;
                             border-right:8px solid transparent;
-                            border-bottom:18px solid #fff;
+                            border-bottom:18px solid $color-white;
                             transform:translateX(-50%);
                         }
-                        &::after {
+                        &:after {
                             content:'';
                             position:absolute;
                             top:-9px;
@@ -147,7 +140,7 @@
                             display:block;
                             width:16px;
                             height:16px;
-                            border:solid #ddd;
+                            border:solid $color-border;
                             border-width:2px 2px 0 0;
                             transform:translateX(-50%) rotate(315deg) skew(-15deg, -15deg);
                         }
@@ -186,7 +179,9 @@
         }
     }
     .benefit-lists {
-        margin:0 -12px;
+        display:table;
+        height:100%;
+        margin:20px -12px 52px;
         font-size:0;
         counter-reset:count;
         @include tablet {
@@ -194,15 +189,15 @@
         }
         li {
             position:relative;
-            display:inline-block;
+            display:table-cell;
             width:calc(100% / 3);
-            margin:20px 0 52px;
+            height:100%;
             padding:12px;
             vertical-align:top;
             counter-increment:count;
             @include tablet {
+                display:inline-block;
                 width:100%;
-                margin:0;
                 padding:8px 16px;
             }
             @include mobile {
@@ -233,31 +228,30 @@
             .benefit-box {
                 display:inline-block;
                 width:100%;
+                height:100%;
                 padding:40px 40px 40px 128px;
-                background:#f4f4f4;
+                background:$color-bg;
                 border-radius:8px;
+                display:block;
+                font-weight:$font-weight-bold;
+                font-size:24px;
+                line-height:1.38;
+                transition:font-size .3s ease-in-out;
+                @include pc-size-m {
+                    font-size:21px;
+                }
+                @include tablet {
+                    font-size:18px;
+                    .pc-br {
+                        display:none;
+                    }
+                }
                 @include mobile {
                     padding:30px 20px 30px 104px;
                 }
-                .text {
-                    display:block;
-                    font-weight:$font-weight-bold;
-                    font-size:24px;
-                    line-height:1.38;
-                    transition:font-size .3s ease-in-out;
-                    @include pc-size-m {
-                        font-size:21px;
-                    }
-                    @include tablet {
-                        font-size:18px;
-                        .pc-br {
-                            display:none;
-                        }
-                    }
-                }
                 &:before {
                     content:counter(count, decimal-leading-zero);
-                    display:inline-block;
+                    display:block;
                     color:$color-primary;
                     font-weight:$font-weight-bold;
                     font-size:24px;
@@ -272,10 +266,13 @@
 }
 .patron-pop-wrap {
     max-width:444px;
+    @include mobile{
+        max-width:inherit;
+    }
     .patron-store {
         .title {
             display:inline-block;
-            margin:-16px 0 34px;
+            margin:-16px 0 32px;
             font-weight:$font-weight-bold;
             font-size:28px;
             line-height:1.29;
@@ -290,6 +287,7 @@
                 position:relative;
                 display:inline-block;
                 font-style:normal;
+                z-index:10;
                 &:before{
                     content:'';
                     position:absolute;
@@ -305,9 +303,12 @@
             }
         }
         .benefit-lists {
-            margin:0 -16px -8px;
+            height:auto;
+            margin:0 -16px;
             li{
+                display:inline-block;
                 width:100%;
+                height:auto;
                 margin:0;
                 padding:8px 16px;
                 @include mobile{
@@ -317,21 +318,17 @@
                     left:28px;
                 }
                 .benefit-box {
-                    padding:24px 24px 24px 102px;
+                    padding:22px 24px 22px 102px;
+                    font-size:22px;
                     @include mobile{
+                        margin-top:4px;
                         padding:24px 12px 24px 89px;
+                        font-size:18px;
                     }
                     &:before {
                         font-size:18px;
                         @include mobile{
                             font-size:16px;
-                        }
-                    }
-                    .text {
-                        font-size:22px;
-                        @include mobile{
-                            margin-top:4px;
-                            font-size:18px;
                         }
                     }
                 }
