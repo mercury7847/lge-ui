@@ -2785,10 +2785,10 @@ var goAppUrl = function(path) {
             lgkorUI.runintegrateLoginEvent = true;
             if(isApp() && lgkorUI.getParameterByName('src_svc_code') === 'SVC202') {
                 var keys = ['ci', 'sso_id', 'thinq_mbrno', 'id_tp_code'];
-                var sendata = {};
+                var sendata = {}, getData;
                 $(keys).each(function(i, key) {
                     if(vcui.detect.isIOS){
-                        var getData = function(data) {
+                        getData = function(data) {
                             sendata[key] = data;
                             return false;
                         }
