@@ -2831,16 +2831,16 @@ var goAppUrl = function(path) {
                         lgkorUI.cancelIntegrateId(sendata)
                     },
                     ok: function(){
-                        var loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
-                        var linkHost = window.LGEAPPHostName === "localhost" ? "https://www.lge.co.kr" : "";
-                        var link =  lgkorUI.stringToBool(loginFlag) ? "/sso/api/emp/integrateId?state=" + encodeURIComponent(location.href.replace(location.origin, "")+'&thinq_mbrno='+sendata.thinq_mbrno+'&id_tp_code='+sendata.id_tp_code)
-                        : "/sso/api/emp/Login?state=" + encodeURIComponent(location.href.replace(location.origin, "")+'&integrateCancel=true');
+                        var loginFlag = digitalData.hasOwnProperty('userInfo') && digitalData.userInfo.unifyId ? true:false;
+                        var linkHost = window.LGEAPPHostName === "localhost" ? 'https://www.lge.co.kr' : '';
+                        var link =  lgkorUI.stringToBool(loginFlag) ? '/sso/api/emp/integrateId?state=' + encodeURIComponent(location.href.replace(location.origin, '')+'&thinq_mbrno='+sendata.thinq_mbrno+'&id_tp_code='+sendata.id_tp_code)
+                        : "/sso/api/emp/Login?state=" + encodeURIComponent(location.href.replace(location.origin, '')+'&integrateCancel=true');
                         location.href = linkHost + link;
                     }
                 };
 
                 if(data.integrateType == 'popup1') {
-                    msg = 'ThinQ에 가입하신 계정과 LGE.com 에 가입하신 계정을 연결하시겠습니까? <br>연결하시면 LG가 제공하는 다양한 서비스를 편리하게 이용하실 수 있습니다.';
+                    msg = 'ThinQ에 가입하신 계정과 LGE.com 에<br> 가입하신 계정을 연결하시겠습니까? <br>연결하시면 LG가 제공하는 다양한 서비스를<br> 편리하게 이용하실 수 있습니다.';
                 }else if(data.integrateType == 'popup2') {
                     msg = 'ThinQ와 LGE.com에 연결된 계정은<br>' + data.displayUserId + ' 입니다.<br>'
                     + '위 계정으로 연결 하시겠습니까?<br>'
@@ -2860,9 +2860,9 @@ var goAppUrl = function(path) {
                 if(data.integrateType == 'popup3') {
                     var msg = 'LGE.com 로그인 정보와 ThinQ 앱 로그인 정보가 다르기 때문에 멤버십 포인트는 ThinQ 앱에서 보여지는 정보와 다릅니다.';
                     lgkorUI.alert(msg, {ok: function(){
-                        var loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
-                        var linkHost = window.LGEAPPHostName === "localhost" ? "https://www.lge.co.kr" : "";
-                        var link =  lgkorUI.stringToBool(loginFlag) ? "/sso/api/emp/integrateId?state=" + encodeURIComponent(location.href.replace(location.origin, "")+'&thinq_mbrno='+sendata.thinq_mbrno+'&id_tp_code='+sendata.id_tp_code): "/sso/api/emp/Login?state=" + encodeURIComponent(location.href.replace(location.origin, "")+'&integrateCancel=true');
+                        var loginFlag = digitalData.hasOwnProperty('userInfo') && digitalData.userInfo.unifyId ? true:false;
+                        var linkHost = window.LGEAPPHostName === "localhost" ? 'https://www.lge.co.kr' : '';
+                        var link =  lgkorUI.stringToBool(loginFlag) ? '/my-page': '/sso/api/emp/Login?state=' + encodeURIComponent(location.href.replace(location.origin, '')+'&integrateCancel=true');
                         location.href = linkHost + link;
                     }});
                 }
