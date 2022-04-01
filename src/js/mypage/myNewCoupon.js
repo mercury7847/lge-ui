@@ -968,7 +968,7 @@
         error: function (result) {
             this.el.$errorCoupon.show();
 
-            if (result.message === SYSTEM_DOWN_TIME_PLAN) {
+            if (result.message.toUpperCase() === SYSTEM_DOWN_TIME_PLAN) {
                 //시스템 정기 점검 일 경우
                 $(".coupon-error-cont dl").show();
                 $(".coupon-error-cont dd").text(result.downTimeStart + " ~ " + result.downTimeEnd);
