@@ -2779,7 +2779,10 @@ var goAppUrl = function(path) {
             }
         },
         // BTOCSITE-13955 ThinQ LGE.com 앱간 자동 로그인 연계
+        runintegrateLoginEvent: null,
         integrateLoginEvent: function(){
+            if(lgkorUI.runintegrateLoginEvent !== true) return false;
+            lgkorUI.runintegrateLoginEvent = true;
             if(isApp() && lgkorUI.getParameterByName('src_svc_code') === 'SVC202') {
                 var keys = ['ci', 'sso_id', 'thinq_mbrno', 'id_tp_code'];
                 var sendata = {}, getData = {};
@@ -2804,17 +2807,19 @@ var goAppUrl = function(path) {
                     }
                 }, 1000);
             }
-
             var loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
             var _url = lgkorUI.stringToBool(loginFlag) ? 'https://lgthinq.page.link/?link=https%3A%2F%2Flgthinq.lge.com%2Fthinqapp%2Fssodashboard%3Fsrc_svc_code%3DSVC612&apn=com.lgeha.nuts&isi=993504342&ibi=com.lgeha.nuts&efr=1' 
             : 'https://lgthinq.page.link/?link=https%3A%2F%2Flgthinq.lge.com%2Fthinqapp%2Fdashboard&apn=com.lgeha.nuts&isi=993504342&ibi=com.lgeha.nuts&efr=1'
             $('.item-box-wrap a, .nav-outer-link .thinq').each(function() {
-                if($(this).attr('href').indexOf('//lgthinq.page.link/') !== -1) {
-                    console.log('......!', $(this))
-                    $(this).attr('href', _url);
+                if($(this).attr('href').indexOf('//lgthinq.page.link/') !== -1 || $(this).hasClass('thinq')) {
+                    $(this).attr('href', _url).addClass('lgthinq-link');
                 }
             })
-
+            $('.lgthinq-link').on('click', function() {
+                console.log('......!', $(this))
+                return false;
+            })
+            
         },
         checkIntegrateId: function(sendata){
             var ajaxUrl = '/sso/api/checkIntegrateId';
