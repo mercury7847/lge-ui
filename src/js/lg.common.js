@@ -396,7 +396,7 @@ var goAppUrl = function(path) {
             self._appDownloadPopup(); //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
             self.afLoginEvent(); // BTOCSITE-4852 [AppsFlyer] 앱어트리뷰션 툴 Event 태깅을 위한 회원가입완료 및 로그인 완료 정보 개발 요청건
             
-            if(isApp()) self.integrateLoginEvent(); // BTOCSITE-13955 ThinQ LGE.com 앱간 자동 로그인 연계
+            self.integrateLoginEvent(); // BTOCSITE-13955 ThinQ LGE.com 앱간 자동 로그인 연계
             
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
@@ -2780,30 +2780,23 @@ var goAppUrl = function(path) {
         },
         // BTOCSITE-13955 ThinQ LGE.com 앱간 자동 로그인 연계
         integrateLoginEvent: function(){
-            var keys = ['ci', 'sso_id', 'thinq_mbrno', 'id_tp_code'], getData;
-            var sendata = {};
-            $(keys).each(function(i, key) {
-                if(vcui.detect.isIOS){
-                    getData = function(data) {
+            if(isApp() && lgkorUI.getParameterByName('src_svc_code') === 'SVC202') {
+                var keys = ['ci', 'sso_id', 'thinq_mbrno', 'id_tp_code'];
+                var sendata = {}, getData = {};
+                $(keys).each(function(i, key) {
+                    getData[key] = function(data) {
                         sendata[key] = data;
                         return false;
                     }
-                    webkit.messageHandlers.callbackHandler.postMessage(JSON.stringify({ 'command': 'actionWithAccountManager', 'actionType': '1', 'key': key, 'callback': 'getData'}));
-                } else {
-                    sendata[key] = android.actionWithAccountManager("1", key, "");
-                }
-            });
-            
-            if(Object.keys(sendata).length > 0) {
+                    if(vcui.detect.isIOS){
+                        webkit.messageHandlers.callbackHandler.postMessage(JSON.stringify({ 'command': 'actionWithAccountManager', 'actionType': '1', 'key': key, 'callback': getData[key]}));
+                    } else {
+                        sendata[key] = android.actionWithAccountManager("1", key, "");
+                    }
+                });
                 var lgkorUIcheckTimer = setInterval(function() {
                     if(vcui.modal) {
-                        if(lgkorUI.getParameterByName('src_svc_code') === 'SVC202') {
-                            lgkorUI.checkIntegrateId(sendata);
-                            var loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
-                            var _url = lgkorUI.stringToBool(loginFlag) ? 'https://lgthinq.page.link/?link=https%3A%2F%2Flgthinq.lge.com%2Fthinqapp%2Fssodashboard%3Fsrc_svc_code%3DSVC612&apn=com.lgeha.nuts&isi=993504342&ibi=com.lgeha.nuts&efr=1' 
-                            : 'https://lgthinq.page.link/?link=https%3A%2F%2Flgthinq.lge.com%2Fthinqapp%2Fdashboard&apn=com.lgeha.nuts&isi=993504342&ibi=com.lgeha.nuts&efr=1'
-                            $('.nav-outer-link').find('.thinq').attr('href',_url);
-                        }
+                        lgkorUI.checkIntegrateId(sendata);
                         if(lgkorUI.stringToBool(lgkorUI.getParameterByName('integrateIdCancel'))) {
                             lgkorUI.cancelIntegrateId(sendata);
                         }
@@ -2811,6 +2804,16 @@ var goAppUrl = function(path) {
                     }
                 }, 1000);
             }
+
+            var loginFlag = digitalData.hasOwnProperty("userInfo") && digitalData.userInfo.unifyId ? "Y" : "N";
+            var _url = lgkorUI.stringToBool(loginFlag) ? 'https://lgthinq.page.link/?link=https%3A%2F%2Flgthinq.lge.com%2Fthinqapp%2Fssodashboard%3Fsrc_svc_code%3DSVC612&apn=com.lgeha.nuts&isi=993504342&ibi=com.lgeha.nuts&efr=1' 
+            : 'https://lgthinq.page.link/?link=https%3A%2F%2Flgthinq.lge.com%2Fthinqapp%2Fdashboard&apn=com.lgeha.nuts&isi=993504342&ibi=com.lgeha.nuts&efr=1'
+            $('.nav-outer-link').find('.thinq').attr('href',_url);
+            $('.item-box-wrap').find('a').each(function() {
+                if($(this).attr('href').indexOf('//lgthinq.page.link/') !== -1) {
+                    $(this).attr('href', _url);
+                }
+            })
 
         },
         checkIntegrateId: function(sendata){
@@ -2840,6 +2843,7 @@ var goAppUrl = function(path) {
                 }
 
                 if(data.integrateType == 'popup1'|| data.integrateType == 'popup2')  lgkorUI.confirm(msg, opt);
+
             },"GET", "json", true, null, true);
         },
         cancelIntegrateId: function(data, sendata){
