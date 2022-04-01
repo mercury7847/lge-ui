@@ -135,7 +135,7 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             self.$mobileNaviWrapper = $('.mo-nav').width('100%');
             self.$mobileNaviItems = self.$mobileNaviWrapper.find('> li');
             // self.$el.find(".nav-wrap").append(self.$mobileNaviWrapper);
-            self.$mobileNaviWrapper.addClass("ui_gnb_accordion");
+            self.$mobileNaviWrapper.not('.mo-nav--new').addClass("ui_gnb_accordion"); // LGECOMVIO-20 공통 네비게이션 개선
             // self.$mobileNaviWrapper.find('img').remove();
             // self.$mobileNaviWrapper.find('.nav-category-wrap').removeClass('super-category-content on')
 
@@ -740,14 +740,17 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
             //         $cateContainer.insertAfter($navDepth1Item)
             //     }
             // });
-            self.$mobileNaviItems.find('> a, > span').addClass("ui_accord_toggle");
-            self.$mobileNaviItems.find('> .nav-category-layer, > .nav-category-container').addClass("ui_accord_content");
-            self.$mobileNaviItems.find('> .nav-category-container > ul').addClass('ui_gnb_accordion');
-            self.$mobileNaviItems.find('> .nav-category-container > ul > li > a').addClass('ui_accord_toggle');
-            self.$mobileNaviItems.find('> .nav-category-container > ul > li > .nav-category-layer').addClass('ui_accord_content');
 
-            var gid = 0;
-            self.$mobileNaviItems.find('> .nav-category-layer > .nav-category-inner').each(function(idx, item){
+            // LGECOMVIO-20 공통 네비게이션 개선
+            if(self.$mobileNaviWrapper.not('.mo-nav--new').hasClass('mo-nav--new')) {
+                self.$mobileNaviItems.find('> a, > span').addClass("ui_accord_toggle");
+                self.$mobileNaviItems.find('> .nav-category-layer, > .nav-category-container').addClass("ui_accord_content");
+                self.$mobileNaviItems.find('> .nav-category-container > ul').addClass('ui_gnb_accordion');
+                self.$mobileNaviItems.find('> .nav-category-container > ul > li > a').addClass('ui_accord_toggle');
+                self.$mobileNaviItems.find('> .nav-category-container > ul > li > .nav-category-layer').addClass('ui_accord_content');
+
+                var gid = 0;
+                self.$mobileNaviItems.find('> .nav-category-layer > .nav-category-inner').each(function(idx, item){
                 $(item).find('.column > .category').addClass("ui_gnb_accordion");
                 $(item).find('.column > .category').attr("data-accord-group", "group_"+gid);
 
@@ -766,6 +769,24 @@ vcui.define('common/header', ['jquery', 'vcui'], function ($, core) {
 
                 gid++;
             });
+            } else {
+                // LGECOMVIO-20 공통 네비게이션 개선
+                var moNavNew = self.$mobileNaviWrapper.filter('.mo-nav--new');
+
+                moNavNew.find('.category-item, .super-category-item').click(function() {
+                    var subCategory = $(this).closest('li').hasClass('super-category-list') ? $(this).closest('li').find('.category') : $(this).closest('li').find('.sub-category');
+                    if($(this).closest('li').hasClass('on')){
+                        $(this).closest('li').removeClass('on');
+                        subCategory.hide();
+                    } else{
+                        moNavNew.find('.super-category-list, ul.category > li').removeClass('on');
+                        moNavNew.find('.super-category .category, .sub-category').hide();
+
+                        $(this).closest('li').addClass('on');
+                        subCategory.slideDown('fast');
+                    }
+                });
+            }
 
             $('.ui_gnb_accordion').vcAccordion({
                 singleOpen: true,
