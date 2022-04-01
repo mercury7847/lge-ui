@@ -2785,14 +2785,14 @@ var goAppUrl = function(path) {
             lgkorUI.runintegrateLoginEvent = true;
             if(isApp() && lgkorUI.getParameterByName('src_svc_code') === 'SVC202') {
                 var keys = ['ci', 'sso_id', 'thinq_mbrno', 'id_tp_code'];
-                var sendata = {}, getData;
+                var sendata = {}, getData = {};
                 $(keys).each(function(i, key) {
                     if(vcui.detect.isIOS){
-                        getData = function(data) {
+                        getData[key] = function(data) {
                             sendata[key] = data;
                             return false;
                         }
-                        webkit.messageHandlers.callbackHandler.postMessage(JSON.stringify({ 'command': 'actionWithAccountManager', 'actionType': '1', 'key': key, 'callback': 'getData' }));
+                        webkit.messageHandlers.callbackHandler.postMessage(JSON.stringify({ 'command': 'actionWithAccountManager', 'actionType': '1', 'key': key, 'callback': 'getData['+key+']' }));
                     } else {
                         sendata[key] = android.actionWithAccountManager("1", key, "");
                     }
