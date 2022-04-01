@@ -91,7 +91,7 @@
                 sendUrl,
                 {},
                 function (result) {
-                    var txtCntCoupon = vcui.number.addComma(result["couponeCnt"]);
+                    var txtCntCoupon = vcui.number.addComma(result["couponCnt"]);
 
                     var totalFormat = function (val) {
                         if (val >= 100) {
