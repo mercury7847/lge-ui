@@ -227,9 +227,10 @@
                             <!-- 찜한, 최근본 -->
                             <div class="my-section-wrap">
                                 <div class="my-section">
-                                    <h3 class="title"><a href="#">찜한 제품<em class="count">(8)</em></a></h3>
+                                    <h3 class="title"><a href="#">찜한 제품<em class="count"></em></a></h3>
                                     <div class="my-prod-box">
                                         <ul class="my-prod-list">
+                                            <!-- 2022.04.01 리스트 삭제 -->
                                             @@loop('./common/modules/product-list-item-loop.html', [
                                                 {
                                                     "itemClass": "",
@@ -240,11 +241,14 @@
                                                     "nonSku": false,
                                                     "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg"
                                                 }
-                                            ])
+                                            ])                                          
+                                            <!-- 2022.04.01 리스트 삭제 -->
                                         </ul>
-                                        <div class="no-data">
+                                        <!-- 2022.04.01 삭제 -->
+                                        <!-- <div class="no-data">
                                             <span>찜한 제품이 없습니다.</span>
-                                        </div>
+                                        </div> -->
+                                        <!-- 2022.04.01 삭제 -->
                                     </div>
                                 </div>
                                 <div class="my-section">
