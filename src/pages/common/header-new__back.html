@@ -91,14 +91,16 @@
             [D] Mobile Menu Click - .active 추가
                 html 태그에 .scroll-fixed 추가
         -->
-        <button type="button" class="mobile-nav-button">
+        <button type="button" class="mobile-nav-button active">
             <span class="line-1"></span>
             <span class="line-2"></span>
             <span class="line-3"></span>
             <span class="blind">메뉴 열기</span>
             <span class="mobile-nav-close"><span class="blind">닫기</span></span>
         </button>
-        <div class="header-bottom" role="navigation">
+
+        <!-- [DTI 2.0]LGECOMVIO - 20 공통네비게이션 작업 -->
+        <div class="header-bottom header-new" role="navigation" style="display:block">
             <!-- Mobile 로그인 영역 -->
             <div class="login-mobile">
                 <div class="login-info before-login">
@@ -108,7 +110,7 @@
                     </div>
                 </div>
                 <div class="login-info after-login">
-                    <a href="/my-page" class="text"><span></span>님 안녕하세요.</a>
+                    <a href="/my-page" class="text"><span></span>김엘지님</a>
                     <div class="btn-mypage after-login">
                         <a href="/my-page"><span class="blind">마이페이지<em>로그인중</em></span></a>
                     </div>
@@ -117,13 +119,12 @@
                     </div>
                 </div>
             </div>
+
             <div class="nav-wrap">
                 <div class="nav-inner">
-
                     <!-- 20201230 레이어 내 메뉴 위치/텍스트 수정되었으니 전체적으로 확인 -->
                     <ul class="nav">
                         <!-- [D] Click, Hover - .active 추가 -->
-
                         <!-- BTOCSITE-1937 스프레드메뉴 수정: 제품 메뉴 수정 -->
                         <li class="">
                             <!-- BTOCSITE-10664 GNB "제품" 명칭 > "제품/소모품"으로 변경 및  GNB 메뉴 순서 변경 건  -->
@@ -1351,66 +1352,31 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </li>
                     </ul>
-
-
-                    <!-- BTOCSITE-1937 스프레드메뉴 수정 : 브랜드관 메뉴 nav 다음으로 변경 -->
+                    <!-- PC:브랜드관 -->
                     <div class="nav-brand-gate">
                         <span class="title">브랜드관</span>
-                        <!-- 20201230 브랜드 추가 / 20210120  순서 변경 -->
-                        <!-- 브랜드 로고 이미지 사용의 경우 -->
                         <ul class="brand-link">
-                            <li><a href="#"><img src="/lg5-common/images/header/logo-signature.svg" alt="LG SIGNATURE"></a></li>
-                            <!-- 210326 이미지확장자 수정 -->
-                            <!-- <li><a href="#"><img src="/lg5-common/images/header/logo-thinq.svg" alt="LG ThinQ"></a></li> -->
-                            <!-- //210326 이미지확장자 수정 -->
-                            <!-- 210204 수정 [브랜드 텍스트 사용의 경우 추가] -->
-                            <li><a href="#"><span>LG ThinQ</span></a></li>
-                            <li><a href="#"><img src="/lg5-common/images/header/logo-objet-collection.svg" alt="LG Objet Collection"></a></li>
+                            <li>
+                                <a href="https://wwwdev50.lge.co.kr/lg-signature/info" target="_self">
+                                    <img src="/lg5-common/images/header/logo-signature.svg" alt="LG SIGNATURE">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wwwdev50.lge.co.kr/lg-thinq" target="_self">
+                                    <img src="/lg5-common/images/header/logo-thinq.svg" alt="LG ThinQ">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://wwwdev50.lge.co.kr/objet-collection" target="_self">
+                                    <img src="/lg5-common/images/header/logo-objet-collection.svg" alt="LG Object Collection">
+                                </a>
+                            </li>
                         </ul>
                     </div>
-                    <!-- //BTOCSITE-1937 스프레드메뉴 수정 : 브랜드관 메뉴 nav 다음으로 변경 -->
-                </div>
-                <!-- 20201230 마케팅 퀵링크 추가 -->
-
-
-                <!-- Mobile 마케팅 퀵링크 -->
-                <div class="marketing-link">
-                    <div class="ui_carousel_slider">
-                        <div class="items ui_carousel_track">
-
-                            <!-- BTOCSITE-10816 GNB 수정 컨텐츠 수정 -->
-                            <div class="ui_carousel_slide">
-                                <a href="#n" class="banner-box">
-                                    <div class="mob-navSlideBan" style="background-image: url('/lg5-common/images/header/@slide-banner04-m.png');"></div>
-                                    <div class="banner-text">
-                                        <p class="text">
-                                            쓸수록 새롭고 좋아지는 LG UP가전
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- <div class="ui_carousel_slide">
-                                <a href="#n" class="banner-box">
-                                    <div class="mob-navSlideBan" style="background-image: url('/lg5-common/images/header/@slide-banner04-m.png');"></div>
-                                    <div class="banner-text">
-                                        <p class="text">맥주제조기</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="ui_carousel_slide">
-                                <a href="#n" class="banner-box">
-                                    <div class="mob-navSlideBan" style="background-image: url('/lg5-common/images/header/@slide-banner04-m.png');"></div>
-                                    <div class="banner-text">
-                                        <p class="text">맥주제조기</p>
-                                    </div>
-                                </a>
-                            </div> -->
-                            <!-- //BTOCSITE-10816 GNB 수정 컨텐츠 수정 -->
-
-                        </div>
-                    </div>
+                    <!-- //PC:브랜드관 -->
                 </div>
 
 
@@ -1421,31 +1387,26 @@
                 </div>
                 <!-- // 메뉴 슬라이드 버튼 -->
 
+                <div class="menu-button">
+                    <a href="#" class="menu-button-bestshop">베스트샵 찾기</a>
+                    <a href="#" class="menu-button-store">매장상담예약</a>
+                </div>
 
-
-
-
-
-
-
-
-
-                <!-- BTOCSITE-7335 : mobile nav 추가-->
-                <ul class="nav mo-nav">
+                <!-- mobile:nav-->
+                <ul class="nav mo-nav mo-nav--new">
                     <li>
-                        <!-- BTOCSITE-10664 GNB "제품" 명칭 > "제품/소모품"으로 변경 및  GNB 메뉴 순서 변경 건  -->
-                        <a href="/store" class="nav-item" data-super-category-item="제품/소모품 홈">제품/소모품</a>
+                        <p class="nav-item">aa제품/소모품</p>
                         <div class="nav-category-container">
-                            <!-- BTOCSITE-7335 스토어홈 > 제품홈 명칭변경 -->
-                            <div class="category-home"><a href="/store" class="super-category-item">제품 홈</a></div>
-                            <ul>
-                                <li><a href="#" class="super-category-item">TV/AV </a>
+                            <ul class="super-category">
+                                <li class="super-category-list">
+                                    <a href="#" class="super-category-item">TV/AV</a>
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory1">
                                                 <div class="category-box">
                                                     <div class="column">
                                                         <ul class="category">
+                                                            <li><a href="#" class="category-item" data-contents="전체">전체</a></li>
                                                             <li>
                                                                 <a href="/tvs" class="category-item" data-contents="TV/AV-TV">TV</a>
                                                                 <ul class="sub-category">
@@ -1456,17 +1417,15 @@
                                                                     <li><a href="/tvs?subCateId=CT50029007">라이프스타일 스크린</a></li>
                                                                 </ul>
                                                             </li>
-                                                            <li><a href="/projectors" class="category-item" data-contents="TV/AV-프로젝터">프로젝터</a>
+                                                            <li>
+                                                                <a href="/projectors" class="category-item" data-contents="TV/AV-프로젝터">프로젝터</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/projectors?subCateId=CT50000035">초단초점</a></li>
                                                                     <li><a href="/projectors?subCateId=CT50000034">투사형</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="/home-audio" class="category-item" data-contents="TV/AV-AV">AV</a>
+                                                            <li>
+                                                                <a href="/home-audio" class="category-item" data-contents="TV/AV-AV">AV</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/home-audio?subCateId=CT50000041">사운드바</a></li>
                                                                     <li><a href="/home-audio?subCateId=CT50000040">무선 스피커</a></li>
@@ -1474,17 +1433,18 @@
                                                                     <li><a href="/home-audio?subCateId=CT50000037">오디오/플레이어</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
-                                                            <li><a href="/care-accessories/tv?main=Y" class="category-item" data-contents="TV/AV-케어용품/소모품">케어용품/소모품</a>
+                                                            <li><a href="#" class="category-item" data-contents="상업용 디스플레이">상업용 디스플레이</a></li>
+                                                            <li>
+                                                                <a href="/care-accessories/tv?main=Y" class="category-item" data-contents="TV/AV-케어용품/소모품">케어용품/소모품</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/care-accessories/tv">TV</a></li>
                                                                     <li><a href="/care-accessories/projector-minibeam-etc">프로젝터</a></li>
                                                                 </ul>
                                                             </li>
                                                         </ul>
+                                                    </div>
+
+                                                    <div class="column">
                                                         <div class="category-hashtag">
                                                             <ul>
                                                                 <li><a href="/search/result?search=%23%EA%B0%A4%EB%9F%AC%EB%A6%AC%EB%94%94%EC%9E%90%EC%9D%B8" class="tag-item" data-contents="TV/AV-갤러리디자인">#갤러리디자인</a></li>
@@ -1493,13 +1453,13 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" class="super-category-item">IT</a>
+                                <li class="super-category-list">
+                                    <a href="#" class="super-category-item">IT</a>
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory2">
@@ -1516,10 +1476,6 @@
                                                             <li>
                                                                 <a href="/all-in-one-pc-and-desktop" class="category-item" data-contents="IT-일체형/데스크톱">일체형/데스크톱</a>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/monitors" class="category-item" data-contents="IT-모니터">모니터</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/monitors?subCateId=CT50000059">울트라기어 게이밍모니터</a></li>
@@ -1530,10 +1486,6 @@
                                                                     <li><a href="/monitors?subCateId=CT50000061">IPTV 모니터</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/care-accessories/laptop?main=Y" class="category-item" data-contents="IT-케어용품/소모품">케어용품/소모품</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/care-accessories/laptop">노트북</a></li>
@@ -1543,6 +1495,9 @@
                                                                 </ul>
                                                             </li>
                                                         </ul>
+                                                    </div>
+
+                                                    <div class="column">
                                                         <div class="category-hashtag">
                                                             <ul>
                                                                 <li><a href="/search/result?search=%23%EA%B2%8C%EC%9E%84" class="tag-item" data-contents="IT-게임">#게임</a></li>
@@ -1550,13 +1505,13 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" class="super-category-item">주방가전</a>
+                                <li class="super-category-list">
+                                    <a href="#" class="super-category-item">주방가전</a>
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory3">
@@ -1580,10 +1535,6 @@
                                                                     <li><a href="/kimchi-refrigerators?subCateId=CT50000075">프리스타일</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/electric-ranges" class="category-item" data-contents="주방가전-전기레인지">전기레인지</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/electric-ranges?subCateId=CT50000077">인덕션</a></li>
@@ -1600,10 +1551,6 @@
                                                                     <li><a href="/water-purifiers?subCateId=CT50000097">정수전용</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/lg-homebrew" class="category-item" data-contents="주방가전-맥주제조기">맥주제조기</a></li>
                                                             <li><a href="/kr/business/product/builtin" class="category-item" target="_blank" title="새창열림" data-contents="주방가전-빌트인가전">빌트인가전</a></li>
                                                             <li><a href="/kr/business/signaturekitchen/signaturekitchenMain.do" class="category-item" target="_blank" title="새창열림" data-contents="주방가전-시그니처 키친 스위트">시그니처 키친 스위트</a></li>
@@ -1617,6 +1564,9 @@
                                                                 </ul>
                                                             </li>
                                                         </ul>
+                                                    </div>
+
+                                                    <div class="column">
                                                         <div class="category-hashtag">
                                                             <ul>
                                                                 <li><a href="/search/result?search=%23%EA%B2%B0%ED%98%BC" class="tag-item" data-contents="주방가전-결혼">#결혼</a></li>
@@ -1624,13 +1574,13 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" class="super-category-item">생활가전</a>
+                                <li class="super-category-list">
+                                    <a href="#" class="super-category-item">생활가전</a>
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory4">
@@ -1647,10 +1597,6 @@
                                                                 </ul>
                                                             </li>
                                                             <li><a href="/dryers" class="category-item" data-contents="생활가전-의류건조기">의류건조기</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/lg-styler" class="category-item" data-contents="생활가전-스타일러">스타일러</a></li>
                                                             <li><a href="/vacuum-cleaners" class="category-item" data-contents="생활가전-청소기">청소기</a>
                                                                 <ul class="sub-category">
@@ -1661,10 +1607,6 @@
                                                                     <li><a href="/vacuum-cleaners?subCateId=CT50000113">싸이킹</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/massage-chairs" class="category-item" data-contents="생활가전-안마의자">안마의자</a></li>
                                                             <li><a href="/care-accessories/front-load-washer" class="category-item" data-contents="생활가전-케어용품/소모품">케어용품/소모품</a>
                                                                 <ul class="sub-category">
@@ -1675,6 +1617,9 @@
                                                                 </ul>
                                                             </li>
                                                         </ul>
+                                                    </div>
+
+                                                    <div class="column">
                                                         <div class="category-hashtag">
                                                             <ul>
                                                                 <li><a href="/search/result?search=%23%EC%B9%BC+%EC%A3%BC%EB%A6%84" class="tag-item" data-contents="생활가전-칼 주름">#칼 주름</a>
@@ -1684,14 +1629,14 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="active on"><a href="#" class="super-category-item">에어컨/에어케어</a>
-                                    <div class="nav-category-layer" style="display: block;">
+                                <li class="super-category-list">
+                                    <a href="#" class="super-category-item">에어컨/에어케어</a>
+                                    <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory5">
                                                 <div class="category-box">
@@ -1713,10 +1658,6 @@
                                                                     <li><a href="/system-air-conditioners?subCateId=CT50045002">상업용 천장형 </a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/air-purifier" class="category-item" data-contents="에어컨/에어케어-공기청정기">공기청정기</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/air-purifier?subCateId=CT50000144">공기청정기</a></li>
@@ -1727,10 +1668,6 @@
                                                             <li><a href="/dehumidifiers-and-humidifiers" class="category-item" data-contents="에어컨/에어케어-제습/가습기">제습/가습기</a>
                                                             </li>
                                                             <li><a href="/ceiling-fan" class="category-item" data-contents="에어컨/에어케어-실링팬">실링팬</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/care-accessories/floor-standing-cooler" class="category-item" data-contents="에어컨/에어케어-케어용품/소모품">케어용품/소모품</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/care-accessories/floor-standing-cooler">에어컨</a></li>
@@ -1738,6 +1675,9 @@
                                                                 </ul>
                                                             </li>
                                                         </ul>
+                                                    </div>
+
+                                                    <div class="column">
                                                         <div class="category-hashtag">
                                                             <ul>
                                                                 <li><a href="/search/result?search=%23%EB%AF%B8%EC%84%B8%EB%A8%BC%EC%A7%80" class="tag-item" data-contents="에어컨/에어케어-미세먼지">#미세먼지</a></li>
@@ -1745,13 +1685,13 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" class="super-category-item">모바일</a>
+                                <li class="super-category-list">
+                                    <a href="#" class="super-category-item">모바일</a>
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory6">
@@ -1767,10 +1707,6 @@
                                                                 </ul>
                                                             </li>
                                                             <li><a href="/feature-phones" class="category-item" data-contents="모바일-피처폰">피처폰</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/care-accessories/smartphone?main=Y" class="category-item" data-contents="모바일-케어용품/소모품">케어용품/소모품</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/care-accessories/smartphone?main=Y">스마트폰</a></li>
@@ -1778,6 +1714,7 @@
                                                             </li>
                                                         </ul>
                                                     </div>
+
                                                     <div class="column">
                                                         <div class="category-related">
                                                             <ul>
@@ -1793,13 +1730,13 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" class="super-category-item">뷰티/의료기기</a>
+                                <li class="super-category-list">
+                                    <a href="#" class="super-category-item">뷰티/의료기기</a>
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory7">
@@ -1816,10 +1753,6 @@
                                                                     <li><a href="/beauty-devices?subCateId=CT50000169">클렌징 기기</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/medical-devices" class="category-item" data-contents="뷰티/의료기기-의료기기">의료기기</a>
                                                                 <ul class="sub-category">
                                                                     <li><a href="/medical-devices?subCateId=CT50019005">메디헤어</a></li>
@@ -1842,13 +1775,13 @@
                                                             </ul>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" class="super-category-item">LG SIGNATURE</a>
+                                <li  class="super-category-list">
+                                    <a href="#" class="super-category-item">LG SIGNATURE</a>
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory8">
@@ -1858,21 +1791,17 @@
                                                             <li><a href="/signature?subCateId=CT50022018" class="category-item" data-contents="LG SIGNATURE-올레드 TV">올레드 TV</a></li>
                                                             <li><a href="/signature?subCateId=CT50022019" class="category-item" data-contents="LG SIGNATURE-냉장고">냉장고</a></li>
                                                             <li><a href="/signature?subCateId=CT50022020" class="category-item" data-contents="LG SIGNATURE-세탁기">세탁기</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/signature?subCateId=CT50022021" class="category-item" data-contents="LG SIGNATURE-에어컨">에어컨</a></li>
                                                             <li><a href="/signature?subCateId=CT50022022" class="category-item" data-contents="LG SIGNATURE-가습 공기청정기">가습 공기청정기</a></li>
                                                         </ul>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" class="super-category-item">LG Objet Collection</a>
+                                <li class="super-category-list">
+                                    <a href="#" class="super-category-item">LG Objet Collection</a>
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory9">
@@ -1884,20 +1813,11 @@
                                                             <li><a href="/object-collection?subCateId=CT50022007" class="category-item" data-contents="LG Objet Collection-김치냉장고">김치냉장고</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022011" class="category-item" data-contents="LG Objet Collection-식기세척기">식기세척기</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022010" class="category-item" data-contents="LG Objet Collection-광파오븐">광파오븐</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li><a href="/object-collection?subCateId=CT50022014" class="category-item" data-contents="LG Objet Collection-정수기">정수기</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022008" class="category-item" data-contents="LG Objet Collection-워시타워">워시타워</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022009" class="category-item" data-contents="LG Objet Collection-스타일러">스타일러</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022016" class="category-item" data-contents="LG Objet Collection-청소기">청소기</a></li>
                                                             <li><a href="/object-collection?subCateId=CT50022015" class="category-item" data-contents="LG Objet Collection-에어컨">에어컨</a></li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li>
                                                                 <a href="/care-accessories/water-ionizer?main=Y" class="category-item" data-contents="케어용품/소모품-이온수기/정수기">이온수기/정수기</a>
                                                                 <ul class="sub-category">
@@ -1923,11 +1843,11 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" class="super-category-item">케어용품/소모품</a>
+                                <li class="super-category-list">
+                                    <a href="#" class="super-category-item">케어용품/소모품</a>
                                     <div class="nav-category-layer">
                                         <div class="nav-category-inner">
                                             <div class="nav-category-wrap" id="storeSubCategory10">
-
                                                 <div class="category-box">
                                                     <div class="column">
                                                         <ul class="category">
@@ -1957,11 +1877,6 @@
                                                                     <li><a href="/care-accessories/puricare-mask">퓨리케어 마스크</a></li>
                                                                 </ul>
                                                             </li>
-
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li>
                                                                 <a href="/care-accessories/top-load-washer?main=Y" class="category-item" data-contents="케어용품/소모품-세탁기">세탁기</a>
                                                                 <ul class="sub-category">
@@ -1986,10 +1901,6 @@
                                                                 </ul>
                                                             </li>
                                                             <li><a href="/care-accessories/laserjet-inkjet-printer-printer" class="category-item" data-contents="케어용품/소모품-프린터">프린터</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li>
                                                                 <a href="/care-accessories/pra-l?main=Y" class="category-item" data-contents="케어용품/소모품-뷰티/의료기기">뷰티/의료기기</a>
                                                                 <ul class="sub-category">
@@ -2010,10 +1921,6 @@
                                                                     <li><a href="/care-accessories/freezer">냉동고</a></li>
                                                                 </ul>
                                                             </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="column">
-                                                        <ul class="category">
                                                             <li>
                                                                 <a href="/care-accessories/water-ionizer?main=Y" class="category-item" data-contents="케어용품/소모품-이온수기/정수기">이온수기/정수기</a>
                                                                 <ul class="sub-category">
@@ -2043,48 +1950,44 @@
                         </div>
                     </li>
                     <li class="icon-update">
-                        <a href="#" class="nav-item">스토리</a>
+                        <p class="nav-item">스토리</p>
+                        <div class="category-round"><a href="#">스토리 홈</a></div>
                         <div class="nav-category-layer">
                             <div class="nav-category-inner">
                                 <div class="nav-category-wrap">
-                                    <div class="category-title">스토리</div>
+                                    <div class="category-title">스토리222</div>
                                     <div class="category-box">
-                                        <div class="category-home"><a href="#" class="category-item">스토리 홈</a></div>
                                         <div class="column">
                                             <ul class="category">
                                                 <li>
-                                                    <span class="category-item btn_open">라이프</span>
+                                                    <a href="#" class="category-item btn_open">라이프</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">라이프스타일</a></li>
                                                         <li><a href="#">트렌드</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <span class="category-item btn_open">인사이드</span>
+                                                    <a href="#" class="category-item btn_open">인사이드</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">대명장의 추천</a></li>
                                                         <li><a href="#">Only &amp; Best</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <span class="category-item btn_open">가이드&amp;팁</span>
+                                                    <a href="#" class="category-item btn_open">가이드&amp;팁</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">가전꿀팁</a></li>
                                                         <li><a href="#">사용가이드</a></li>
                                                     </ul>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
                                                 <li>
-                                                    <span class="category-item btn_open">리뷰</span>
+                                                    <a href="#" class="category-item btn_open">리뷰</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">고객리뷰</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <span class="category-item btn_open">아카이브</span>
+                                                    <a href="#" class="category-item btn_open">아카이브</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">TV광고</a></li>
                                                         <li><a href="#">수상내역</a></li>
@@ -2098,18 +2001,17 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-item">고객지원</a>
+                        <p class="nav-item">고객지원</p>
+                        <div class="category-round"><a href="#">고객지원 홈</a></div>
                         <div class="nav-category-layer">
                             <div class="nav-category-inner">
                                 <div class="nav-category-wrap">
                                     <div class="category-title">고객지원</div>
                                     <div class="category-box">
                                         <div class="column">
-                                            <div class="category-home"><a href="#" class="category-item">고객지원 홈</a>
-                                            </div>
                                             <ul class="category">
                                                 <li>
-                                                    <span class="category-item btn_open">제품 사용 지원</span>
+                                                    <a href="#" class="category-item btn_open">제품 사용 지원</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">제품 문제 해결</a></li>
                                                         <li><a href="#">동영상 가이드</a></li>
@@ -2120,7 +2022,7 @@
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <span class="category-item btn_open">서비스 상담</span>
+                                                    <a href="#" class="category-item btn_open">서비스 상담</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">이메일 문의</a></li>
                                                         <li><a href="#">전화상담 예약</a></li>
@@ -2129,12 +2031,8 @@
                                                         <li><a href="#">상담결과 조회/변경</a></li>
                                                     </ul>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
                                                 <li>
-                                                    <span class="category-item btn_open">서비스 예약</span>
+                                                    <a href="#" class="category-item btn_open">서비스 예약</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">출장 서비스 예약</a></li>
                                                         <li><a href="#">제품 설치/철거 예약</a></li>
@@ -2142,7 +2040,7 @@
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <span class="category-item btn_open">센터/매장 찾기</span>
+                                                    <a href="#" class="category-item btn_open">센터/매장 찾기</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">센터 찾기</a></li>
                                                         <li><a href="#">센터 방문 예약</a></li>
@@ -2151,7 +2049,7 @@
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <span class="category-item btn_open">고객의 소리</span>
+                                                    <a href="#" class="category-item btn_open">고객의 소리</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">칭찬합니다</a></li>
                                                         <li><a href="#">개선해 주세요</a></li>
@@ -2160,12 +2058,8 @@
                                                         <li><a href="#">경영진에게 제안</a></li>
                                                     </ul>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
                                                 <li>
-                                                    <span class="category-item btn_open">서비스 안내</span>
+                                                    <a href="#" class="category-item btn_open">서비스 안내</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">서비스 뉴스</a></li>
                                                         <li><a href="#">공지사항</a></li>
@@ -2183,18 +2077,17 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-item">렌탈/케어</a>
+                        <p class="nav-item">렌탈/케어</p>
+                        <div class="category-round"><a href="#">렌탈/케어 홈</a></div>
                         <div class="nav-category-layer">
                             <div class="nav-category-inner">
                                 <div class="nav-category-wrap">
                                     <div class="category-title">렌탈/케어</div>
                                     <div class="category-box">
                                         <div class="column">
-                                            <div class="category-home"><a href="#" class="category-item">렌탈/케어 홈</a>
-                                            </div>
                                             <ul class="category">
                                                 <li>
-                                                    <span class="category-item btn_open">렌탈(케어솔루션) 제품</span>
+                                                    <a href="#" class="category-item btn_open">렌탈(케어솔루션) 제품</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">정수기</a></li>
                                                         <li><a href="#">얼음정수기냉장고</a></li>
@@ -2207,12 +2100,8 @@
                                                         <li><a href="#">안마의자</a></li>
                                                     </ul>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
                                                 <li>
-                                                    <span class="category-item btn_open">렌탈/케어 소개</span>
+                                                    <a href="#" class="category-item btn_open">렌탈/케어 소개</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">WHY 케어솔루션</a></li>
                                                         <li><a href="#">WHY 케어십</a></li>
@@ -2235,29 +2124,24 @@
                                                 </ul>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <a href="/benefits" class="nav-item">이벤트/멤버십</a>
+                        <p class="nav-item">이벤트/멤버십</p>
+                        <div class="category-round"><a href="/benefits">이벤트/멤버십 홈</a></div>
                         <div class="nav-category-layer">
                             <div class="nav-category-inner">
                                 <div class="nav-category-wrap">
                                     <div class="category-title">이벤트/멤버십</div>
                                     <div class="category-box">
-                                        <div class="category-home"></div>
                                         <div class="column">
                                             <ul class="category">
                                                 <li><a href="#" class="category-item none-toggle">멤버십</a></li>
                                                 <li><a href="#" class="category-item none-toggle">이벤트</a></li>
                                                 <li><a href="#" class="category-item none-toggle">기획전</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
                                                 <li><a href="#" class="category-item none-toggle">엘라쇼</a></li>
                                                 <li><a href="#" class="category-item none-toggle">카드혜택</a></li>
                                             </ul>
@@ -2268,39 +2152,27 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-item">마이컬렉션</a>
+                        <p class="nav-item">마이컬렉션</a>
+                        <div class="category-round"><a href="#">마이컬렉션 홈</a></div>
                         <div class="nav-category-layer">
                             <div class="nav-category-inner">
                                 <div class="nav-category-wrap">
                                     <div class="category-title">마이컬렉션</div>
                                     <div class="category-box category-image-box">
-                                        <div class="category-home"><a href="#" class="category-item">마이컬렉션 홈</a></div>
                                         <div class="column">
                                             <ul class="category">
                                                 <li>
                                                     <a href="#" class="category-item none-toggle">라이프스타일 컬렉션</a>
                                                     <div class="category-image"></div>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
                                                 <li>
                                                     <a href="#" class="category-item none-toggle">인테리어 컬렉션</a>
                                                     <div class="category-image"></div>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
                                                 <li>
                                                     <a href="#" class="category-item none-toggle">대명장의 추천 컬렉션</a>
                                                     <div class="category-image"></div>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
                                                 <li>
                                                     <a href="#" class="category-item none-toggle">나만의 제품 컬렉션</a>
                                                     <div class="category-image"></div>
@@ -2313,18 +2185,17 @@
                         </div>
                     </li>
                     <li class="mobile-only">
-                        <a href="#" class="nav-item">마이페이지</a>
+                        <p class="nav-item">마이페이지</p>
+                        <div class="category-round"><a href="#">마이페이지 홈</a></div>
                         <div class="nav-category-layer">
                             <div class="nav-category-inner">
                                 <div class="nav-category-wrap">
                                     <div class="category-title">마이페이지</div>
                                     <div class="category-box">
                                         <div class="column">
-                                            <div class="category-home"><a href="#" class="category-item">마이페이지 홈</a>
-                                            </div>
                                             <ul class="category">
                                                 <li>
-                                                    <span class="category-item btn_open">쇼핑 관리</span>
+                                                    <a href="#" class="category-item btn_open">쇼핑 관리</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">주문/배송 조회</a></li>
                                                         <li><a href="#">비회원 주문/배송 조회</a></li>
@@ -2333,7 +2204,7 @@
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <span class="category-item btn_open">렌탈/케어</span>
+                                                    <a href="#" class="category-item btn_open">렌탈/케어</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">계약 현황</a></li>
                                                         <li><a href="#">납부 내역</a></li>
@@ -2350,42 +2221,33 @@
                                                         <li><a href="#">재입고 알림</a></li>
                                                     </ul>
                                                 </li>
-                                                <!-- [S] LGECOMVIO-143 : 마이페이지>마이베스트샵 : 메뉴 신설  -->
                                                 <li>
-                                                    <span class="category-item">마이베스트샵</span>
+                                                    <a href="#" class="category-item">마이베스트샵</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#" target="_self">상담 예약 조회</a></li>
                                                         <!-- LGECOMVIO-192 베스트샵 마이페이지_인테리어상담신청 -->
                                                         <li><a href="#" data-mobile-url="https://www.lxhausys.co.kr/mobile/counsel/write.jsp" data-pc-url="https://www.lxhausys.co.kr/rn/counsel/write.jsp" target="_blank">인테리어 상담 신청</a></li>
                                                     </ul>
                                                 </li>
-                                                <!-- [E] LGECOMVIO-143 : 마이페이지>마이베스트샵 : 메뉴 신설  -->
-                                                <li><a href="#" class="category-item none-toggle">보유 제품 등록</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="column">
-                                            <ul class="category">
+                                                <li><a href="#" class="category-item none-toggle">보유 제품 등록</a></li>
                                                 <li>
-                                                    <span class="category-item btn_open">고객지원 관리</span>
+                                                    <a href="#" class="category-item btn_open">고객지원 관리</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">나의 글 보기</a></li>
                                                         <li><a href="#">문의/예약 결과 조회</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <span class="category-item btn_open">멤버십 관리</span>
+                                                    <a href="#" class="category-item btn_open">멤버십 관리</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">멤버십 가입 정보</a></li>
                                                         <li><a href="#">멤버십 포인트 조회</a></li>
-                                                        <!-- [S] BTOCSITE-9954 : 메뉴 신규 생성-->
                                                         <li><a href="#">무상서비스 제품 조회</a></li>
-                                                        <!-- [E] BTOCSITE-9954 : 메뉴 신규 생성-->
                                                         <li><a href="#">영수증 등록</a></li>
                                                     </ul>
                                                 </li>
                                                 <li>
-                                                    <span class="category-item btn_open">활동 관리</span>
+                                                    <a href="#" class="category-item btn_open">활동 관리</a>
                                                     <ul class="sub-category">
                                                         <li><a href="#">리뷰 관리</a></li>
                                                         <li><a href="#">참여 이벤트</a></li>
@@ -2407,113 +2269,97 @@
                         </div>
                     </li>
                 </ul>
-                <!-- //BTOCSITE-7335 : mobile nav 추가-->
-            </div>
+                <!-- //mobile:nav-->
 
+                <!-- mobile:배너 -->
+                <div class="marketing-link">
+                    <a href="#n" class="banner-box">
+                        <div class="mob-navSlideBan" style="background-image: url('/lg5-common/images/header/header-banner.jpg');"></div>
+                        <div class="banner-text">
+                            <p class="text">
+                                LG 틔운 오프제컬렉션<br>
+                                판매 기획전
+                            </p>
+                            <p class="date">2021.11.01~2021.11.30</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- // mobile:배너 -->
 
+                <!-- mobile:퀵링크 -->
+                <div class="nav-outer-link">
+                    <p class="nav-outer-title">퀵링크</p>
+                    <ul class="links">
+                        <li><a href="#" class="business" target="_blank" title="새창열림">비지니스</a></li>
+                        <li><a href="#" class="bestshop" target="_blank" title="새창열림">LG 베스트샵</a></li>
+                        <li><a href="#" class="thinq" target="_blank" title="새창열림">LG ThinQ</a></li>
+                        <li><a href="#" class="member" target="_blank" title="새창열림">LG전자 멤버십</a></li>
+                        <li><a href="#" class="pral" target="_blank" title="새창열림">LG Pra.L Care</a></li>
+                    </ul>
+                </div>
+                <!-- //mobile:퀵링크 -->
 
+                <!-- mobile:브랜드관 -->
+                <div class="nav-brand-gate mobile-only">
+                    <span class="title">브랜드관</span>
+                    <ul class="brand-link">
+                        <li><a href="#"><img src="/lg5-common/images/header/logo-signature.svg" alt="LG SIGNATURE"></a></li>
+                        <li><a href="#"><img src="/lg5-common/images/header/logo-objet-collection.svg" alt="LG Objet Collection"></a></li>
+                        <li><a href="#"><img src="/lg5-common/images/header/logo-lgthinq.png" alt="LG ThinQ"></a></li>
+                    </ul>
+                </div>
+                <!-- //mobile:브랜드관 -->
 
-
-
-
-
-
-            <!-- 주영 -->
-            <!-- BTOCSITE-10816  주영 테스트 작업 -->
-            <!-- BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) -->
-            <div class="store-counsel-banner">
-
-                <!-- BTOCSITE-10034 야간무인매장 추가 7335보다 src로선 반영 이미지 태그 개선된 작업은 data-active-src -->
-                    <!-- BTOCSITE-7335 : src > data-active-src로 속성 변경 -->
-                    <!-- <a href="#"><img data-active-src="/lg5-common/images/header/img-banner-counsel.svg" alt="매장 상담 예약"></a>  -->
-
-                <div class="mob_navBanner-content">
-                    <ul class="mob_navBanner-type1">
-                        <li class="store_reservation">
-                            <a href="https://www.lge.co.kr/support/visit-store-reservation">
-                                매장 상담 예약
+                <!-- mobile:주요 서비스 리스트 -->
+                <div class="service-list">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <strong>이벤트/멤버쉽</strong>
+                                <p>특별한 선물을 드립니다</p>
                             </a>
                         </li>
-                        <li class="store_unmanned">
-                            <a href="https://www.lge.co.kr/untact-store">
-                                야간 무인 매장
+                        <li>
+                            <a href="#">
+                                <strong>스토리</strong>
+                                <p>LG의 새로움을 만나보세요</p>
                             </a>
                         </li>
                     </ul>
-                    <div class="mob_navBanner-type2">
-                        <a href="https://www.lge.co.kr/ebook">
-                            제품 카탈로그
+                </div>
+                <!-- //mobile:주요 서비스 리스트 -->
+
+                <!-- mobile:서비스 바로 가기 -->
+                <div class="shortcut-service-link">
+                    <span class="shortcut-service-title">서비스  바로가기</span>
+                    <ul class="links">
+                        <li><a href="#">회사소개</a></li>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">제품 카탈로그</a></li>
+                        <li><a href="#">엘라쇼</a></li>
+                    </ul>
+                </div>
+                <!-- //mobile:서비스 바로 가기 -->
+
+                <!-- mobile:배너 -->
+                <div class="mobile-nav-banner">
+                    <div class="banner-inner">
+                        <a href="#">
+                            <img data-active-src="/lg5-common/images/header/@banner-m02.jpg" alt="LG SIGNATURE 초프리미엄 가전" src="/lg5-common/images/header/@banner-m02.jpg">
                         </a>
                     </div>
                 </div>
-                <!-- //BTOCSITE-10034 야간무인매장 추가 7335보다 src로선 반영 이미지 태그 개선된 작업은 data-active-src -->
-            </div>
-            <!-- //BTOCSITE-6416 매장상담예약 노출 강화 (햄버거메뉴) -->
-            <!-- //BTOCSITE-10816  주영 테스트 작업 -->
+                <!-- // mobile:배너 -->
 
-
-
-
-
-
-
-            <!-- 20201230 수정 / 20210120 바로가기 버튼 텍스트 수정 -->
-            <div class="shortcut-service-link">
-                <span class="title">바로가기</span>
-
-                <!-- BTOCSITE-10816  주영 테스트 작업 -->
-                <ul class="links">
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">주문/배송 조회</a></li>
-
-                    <li><a href="#">내게 맞는 제품 찾기</a></li>
-                    <li><a href="#">케어플래너</a></li>
-
-                    <li><a href="#">보유제품 등록</a></li>
-                    <li><a href="#">영수증 등록</a></li>
-
-                    <li><a href="#">베스트샵 매장찾기</a></li>
-                    <li><a href="#">공지사항</a></li>
-                </ul>
-                <!-- //BTOCSITE-10816  주영 테스트 작업 -->
-
-            </div>
-            <div class="nav-outer-link">
-                <ul class="links">
-                    <li><a href="#" class="business" target="_blank" title="새창열림">B2B</a></li>
-                    <li><a href="#" class="bestshop" target="_blank" title="새창열림">LG 베스트샵</a></li>
-                </ul>
-                <!-- 210324 수정 [모바일 아웃링크 추가] -->
-                <ul class="links mobile">
-                    <li><a href="#" class="member" target="_blank" title="새창열림">LG전자 멤버십</a></li>
-                    <li><a href="#" class="thinq" target="_blank" title="새창열림">LG ThinQ</a></li>
-                </ul>
-                <!-- 210324 수정 [모바일 아웃링크 추가] -->
-            </div>
-            <!-- 210326 수정 [로그아웃 버튼 위치 이동] -->
-            <div class="nav-logout">
-                <a href="#" class="btn-logout"><span>로그아웃</span></a>
-            </div>
-            <!-- // 210326 수정 [로그아웃 버튼 위치 이동] -->
-            <!-- // 20201230 수정 -->
-            <div class="mobile-nav-banner">
-                <div class="banner-inner">
-                    <!-- 210222 수정 [a 태그 누락 추가] -->
-                    <!-- 210406 lazyload 삭제 -->
-                    <!-- 210407 이미지속성변경(src) -->
-                    <a href="#">
-                        <!-- BTOCSITE-7335 : src > data-active-src로 속성 변경 -->
-                        <img data-active-src="/lg5-common/images/header/@banner-m.jpg" alt="">
-                    </a>
-                    <!-- //210407 이미지속성변경(src) -->
-                    <!-- //210406 lazyload 삭제 -->
-                    <!-- <div class="banner-text">
-                        <span class="title">프리미엄 Zone</span>
-                        <span class="copy">LG전자의 차원이 다른<br>프리미엄 라인 가전</span>
-                    </div> 20210125 삭제 - 어드민에서 이미지만 등록 가능 -->
+                <!-- mobile:로그아웃 -->
+                <div class="nav-logout">
+                    <a href="#" class="btn-logout"><span>로그아웃</span></a>
                 </div>
+                <!-- //mobile:로그아웃 -->
             </div>
         </div>
+        <!-- // [DTI 2.0]LGECOMVIO - 20 공통네비게이션 작업 -->
+
         <div class="dimmed"></div><!-- 210331 수정 [딤영역 돔 위치 이동] -->
     </div>
 </header>
