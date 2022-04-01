@@ -2781,7 +2781,7 @@ var goAppUrl = function(path) {
         // BTOCSITE-13955 ThinQ LGE.com 앱간 자동 로그인 연계
         runintegrateLoginEvent: null,
         integrateLoginEvent: function(){
-            if(lgkorUI.runintegrateLoginEvent !== true) return false;
+            if(lgkorUI.runintegrateLoginEvent == true) return false;
             lgkorUI.runintegrateLoginEvent = true;
             if(isApp() && lgkorUI.getParameterByName('src_svc_code') === 'SVC202') {
                 var keys = ['ci', 'sso_id', 'thinq_mbrno', 'id_tp_code'];
