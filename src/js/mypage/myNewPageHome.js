@@ -8,7 +8,7 @@
                 '<span class="prod {{#if _clContType === "visit"}}date{{/if}}">{{_modelNm}}</span>'+
                 '{{#if _modelId !== ""}}<span class="model">{{_modelId}}</span>{{/if}}'+
             '</div>'+
-            '<a href="#" class="btn-myact"><i class="blind">바로가기</i></a>'+
+            '<a href="{{completeUrl}}" class="btn-myact"><i class="blind">바로가기</i></a>'+
         '</div>'+
     '</li>';
 
