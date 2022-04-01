@@ -19,7 +19,7 @@
         },
         "dataFlag": "Y"
     },
-    "bestCounselList": {
+    "bestshopCounselList": {
         "data": {
             "bestCounselCnt": 2,
             "bestCounselList": [{
@@ -81,6 +81,64 @@
                     "modelCd": "B507SM",
                     "progress": "답변중",
                     "modelCategory": "냉장/냉동고>일반형"
+                }
+            ]
+        },
+        "dataFlag": "Y"
+    },
+    "wishList": {
+        "data": {
+            "wishCnt": 2,
+            "list": [
+                {
+                    "disabled": false,
+                    "disabledReason": null,
+                    "obsBtnFlag": "enable",
+                    "priceFlag": "Y",
+                    "requireCare": "N",
+                    "id": "MD08981826",
+                    "modelName": "QP5W",
+                    "sku": "QP5W.AKOR",
+                    "wishListId": "2815878",
+                    "wishItemId": "104041",
+                    "title": "LG 사운드바",
+                    "imageUrl": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                    "imageAlt": "",
+                    "pdpUrl": "/home-audio/qp5w",
+                    "originalPrice": "997800",
+                    "price": "900500",
+                    "categoryId": "CT50000036",
+                    "rtSeq": null,
+                    "typeFlag": "P",
+                    "spec": [
+                        "스피커 구성 : 3.1.2ch",
+                        "유선/무선 스피커 : 무선 서브 우퍼"
+                    ]
+                },
+                {
+                    "disabled": false,
+                    "disabledReason": null,
+                    "obsBtnFlag": "enable",
+                    "priceFlag": "Y",
+                    "requireCare": "N",
+                    "id": "MD09062827",
+                    "modelName": "65ART90EKPA",
+                    "sku": "65ART90EKPA.AKR",
+                    "wishListId": "2815878",
+                    "wishItemId": "104038",
+                    "title": "LG 올레드 evo 오브제컬렉션 ",
+                    "imageUrl": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                    "imageAlt": "",
+                    "pdpUrl": "/tvs/65art90ekpa",
+                    "originalPrice": "10969600",
+                    "price": "9900000",
+                    "categoryId": "CT50000025",
+                    "rtSeq": null,
+                    "typeFlag": "P",
+                    "spec": [
+                        "화면 사이즈 : 163 cm (베젤 미포함)",
+                        "디스플레이 종류 : 올레드"
+                    ]
                 }
             ]
         },
