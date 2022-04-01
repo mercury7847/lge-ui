@@ -314,6 +314,39 @@ if ('scrollRestoration' in history) {
 		+		'</div>'
 		+	'</a>'
 		+'</li>';
+
+        var liveLgTemplate =
+    	'<li>'
+		+   '<a href="{{post_url}}" class="item item-type2" target="_blank">'
+        +    '{{#if post_thumbnail}}'
+        +       '<div class="result-thumb">'
+        +           '<div>' 
+        +               '<img onError="lgkorUI.addImgErrorEvent(this);" src="{{post_thumbnail}}" alt="{{post_title}}">' 
+        +           '</div>' 
+        +       '</div>'      
+        +       '{{/if}}'      
+		+		'<div class="result-info">'
+		+			'<div class="info-text">'
+        +				'{{#if category_type || category_name}}'
+        +				    '<div class="flag-wrap bar-type">'
+        +                   '   {{#if category_type}}<span class="flag">{{category_type}}</span>{{/if}}'
+        +                   '   {{#if category_name}}<span class="flag">{{category_name}}</span>{{/if}}'
+        +                   '</div>'
+        +				'{{/if}}'
+		+				'{{#if post_title}}'
+		+					'<div class="result-tit"><strong>{{#raw post_title}}</strong></div>'
+		+				'{{/if}}'
+		+				'<div class="result-detail">'
+		+					'{{#if post_content}}'
+		+						'<div class="desc">'
+		+							'<span>{{#raw post_content}}</span>'
+		+						'</div>'
+		+					'{{/if}}'
+		+				'</div>'
+		+			'</div>'
+		+		'</div>'
+		+	'</a>'
+		+'</li>';
     
     var searchBnrTemplate = '<a href="{{url}}" target="{{target}}">'+
         '<img src="{{pcImage}}" alt="{{#if desc}}{{desc}}{{#else}}광고배너{{/if}}" class="pc-only">' +
@@ -1248,6 +1281,40 @@ if ('scrollRestoration' in history) {
                     } else {
                         $resultListWrap.hide();
                     }
+
+                    //LiVE LG
+                	//BTOCSITE-8911
+                    $resultListWrap = $searchResult.find('div.result-list-wrap[data-log-index="livelg"]');
+
+                    console.log($resultListWrap );
+                    arr = self.checkArrayData(data.livelg);
+                    count = self.checkCountData(data.livelg);
+                    self.setTabCount(8, count);
+
+                    console.log("arr %o count %o",arr,count);
+                    if(arr.length > 0) {
+                        var $list_ul = $resultListWrap.find('ul');
+                        $list_ul.empty();
+                        arr.forEach(function(item, index) {
+
+                        	
+                            $list_ul.append(vcui.template(liveLgTemplate, item));
+                        });
+                        $resultListWrap.show();
+                        noData = false;
+
+                        var $btnLink = $resultListWrap.find('div.btn-area a.btn-link:eq(0)');
+                        if($btnLink.length > 0 && count < 5) {
+                            $btnLink.hide();
+                        } else {
+                            $btnLink.show();
+                        }
+                    } else {
+                        $resultListWrap.hide();
+                    }
+
+
+
 
                     //스마트 필터
                     self.curationLayer.setCurationData(data);

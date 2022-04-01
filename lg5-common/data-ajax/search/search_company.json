@@ -1,0 +1,165 @@
+{
+    "data": {
+        "product": {
+            "availableforpurchaseyn": "N",
+            "count": 3235,
+            "availableforrentalyn": "N",
+            "subcount": 0,
+            "apibiztype": ""
+        },
+        "shop": {
+            "count": 575,
+            "subcount": 0
+        },
+        "additional": {
+            "count": 104,
+            "subcount": 0
+        },
+        "allCount": 203743,
+        "searchBanner": {},
+        "recommendList": [],
+        "related": [],
+        "company": {
+            "data": [
+                {
+                    "breadcrumb": "회사소개 > 기업정보 > LG WAY ",
+                    "title": " 일등LG",
+                    "url": "/company/info/firstplacelg",
+                    "content": "LG Way는 LG 고유의 경영철학이자, LG 전 임직원이 지키고 실천해야 할 사고와 행동의 기반입니다. 일등 LG 일등LG는 LG의 궁극적인 지향점으로 시장에서 인정받으며 시장을 리드하는 선도기업이 되는 것을 의미합니다."
+                },
+                {
+                    "breadcrumb": "회사소개 > 기업정보 > LG WAY ",
+                    "title": " 일등LG",
+                    "url": "/company/info/vision",
+                    "content": "LG Way는 LG 고유의 경영철학이자, LG 전 임직원이 지키고 실천해야 할 사고와 행동의 기반입니다. 일등LG 일등LG는 LG의 궁극적인 지향점으로 시장에서 인정받으며 시장을 리드하는 선도기업이 되는 것을 의미합니다."
+                },
+                {
+                    "breadcrumb": "회사소개 > 준법경영 > 개요 ",
+                    "title": " LG전자의 준법경영",
+                    "url": "/company/compliance/compliance",
+                    "content": " LG전자는 준법경영을 기업의 필수 경영철학으로 인식하고 있습니다. LG전자는 준법경영을 기업 활동 전반에 걸친 기본 운영방침으로 삼아 고객의 신뢰와 기업경쟁력을 함께 갖추는 것을 목표로 하고 있습니다.모든 구성원 개개인이 일상 업무를 수행하는 과정에서 부적절한 상황"
+                },
+                {
+                    "breadcrumb": "회사소개 > 준법경영 > Compliance Program ",
+                    "title": " LG전자의 CP",
+                    "url": "/company/compliance/program",
+                    "content": "LG전자 Compliance Program Cycle Compliance Program Cycle Risk Reporting Risk Identification Risk Assessment Risk Mitigation Risk Monitoring 주요 활동 식별 및 평가"
+                },
+                {
+                    "breadcrumb": "회사소개>투자자정보>공시/전자공고>전자공고",
+                    "title": "LG전자 공시정보관리 규정",
+                    "url": "/company/investor/announceView?anncmNo=16",
+                    "content": ""
+                },
+                {
+                    "breadcrumb": "회사소개>투자자정보>공시/전자공고>전자공고",
+                    "title": "LG전자(주) 분할보고총회에 갈음하는 공고",
+                    "url": "/company/investor/announceView?anncmNo=1",
+                    "content": ""
+                },
+                {
+                    "breadcrumb": "회사소개 > 기업정보 > LG WAY ",
+                    "title": " 개요",
+                    "url": "/company/info/outline",
+                    "content": "LG Way는 LG 고유의 경영철학이자, LG 전 임직원이 지키고 실천해야 할 사고와 행동의 기반입니다. LG Way 개요 LG Way는 LG 고유의 경영철학이자, LG 전 임직원이 지키고 실천해야 할 사고와 행동의 기반입니다."
+                },
+                {
+                    "breadcrumb": "회사소개 > 기업정보 > LG WAY ",
+                    "title": " 정도경영",
+                    "url": "/company/info/proper",
+                    "content": "LG Way는 LG 고유의 경영철학이자, LG 전 임직원이 지키고 실천해야 할 사고와 행동의 기반입니다. 정도경영 LG의 '정도경영'이란 윤리경영을 기반으로 꾸준히 실력을 길러 정정당당하게 승부하자는 LG만의 행동방식을 의미합니다. LG의 “정도경영” 이란?"
+                },
+                {
+                    "breadcrumb": "회사소개 > 기업정보 > LG WAY ",
+                    "title": " 정도경영",
+                    "url": "/company/info/behavior",
+                    "content": "LG Way는 LG 고유의 경영철학이자, LG 전 임직원이 지키고 실천해야 할 사고와 행동의 기반입니다. 행동방식 LG의 ‘정도경영’이란 윤리경영을 기반으로 꾸준히 실력을 길러 정정당당하게 승부하자는 LG만의 행동방식을 의미합니다. LG의 “정도경영” 이란?"
+                },
+                {
+                    "breadcrumb": "회사소개 > 기업정보 > LG WAY ",
+                    "title": " 윤리규범",
+                    "url": "/company/info/philosophy",
+                    "content": "LG Way는 LG 고유의 경영철학이자, LG 전 임직원이 지키고 실천해야 할 사고와 행동의 기반입니다. 경영이념 LG의 경영이념은 기업활동의 목적인 ‘고객을 위한 가치창조’와 회사 운영 원칙인 ‘인간존중의 경영’ 입니다."
+                }
+            ],
+            "count": 55,
+            "subcount": 55
+        },
+        "serviceLinkers": [],
+        "category": [],
+        "event": {
+            "count": 47,
+            "subcount": 0
+        },
+        "filterList": [
+            {
+                "filterId": "category",
+                "filterValues": [
+                    {
+                        "filterValueName": "전체",
+                        "filterValueId": ""
+                    },
+                    {
+                        "filterValueName": " ESG 경영 ",
+                        "filterValueId": " ESG 경영 ",
+                        "count": 18
+                    },
+                    {
+                        "filterValueName": " ESG경영 ",
+                        "filterValueId": " ESG경영 ",
+                        "count": 7
+                    },
+                    {
+                        "filterValueName": " 기업정보 ",
+                        "filterValueId": " 기업정보 ",
+                        "count": 12
+                    },
+                    {
+                        "filterValueName": " 인재채용 ",
+                        "filterValueId": " 인재채용 ",
+                        "count": 3
+                    },
+                    {
+                        "filterValueName": " 준법경영 ",
+                        "filterValueId": " 준법경영 ",
+                        "count": 8
+                    },
+                    {
+                        "filterValueName": " 투자자정보 ",
+                        "filterValueId": " 투자자정보 ",
+                        "count": 5
+                    },
+                    {
+                        "filterValueName": "투자자정보",
+                        "filterValueId": "투자자정보",
+                        "count": 2
+                    }
+                ],
+                "filterGroupName": "카테고리",
+                "filterGroupType": "radio",
+                "filterType": "radio"
+            }
+        ],
+        "story": {
+            "count": 75,
+            "subcount": 0
+        },
+        "customer": {
+            "count": 199652,
+            "subcount": 0
+        }
+    },
+    "param": {
+        "search": "lg",
+        "pagination": {
+            "totalCount": 6,
+            "visibleCount": 7,
+            "page": "1"
+        },
+        "inputValue": "lg",
+        "searchIn": "",
+        "force": "false"
+    },
+    "message": null,
+    "status": "success"
+}

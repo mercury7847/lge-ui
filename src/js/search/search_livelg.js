@@ -1,8 +1,3 @@
-if ('scrollRestoration' in history) {
-    //BTOCSITE-2216 뒤로가기로 페이지 진입했을때 강제 스크롤이동을 위한 히스토리 스크롤값 수동으로 변경
-    history.scrollRestoration = 'manual';
-}
-
 (function() {
     //자동완성
     var autoCompleteItemTemplate = '<li><a href="#{{input}}">{{#raw text}}</a></li>';
@@ -17,7 +12,7 @@ if ('scrollRestoration' in history) {
     var productItemTemplate = '<li><div class="item{{#if obsFlag!="Y"}} discontinued{{/if}}" data-ec-product="{{ga}}">' +
         '<div class="result-thumb"><a href="{{url}}"><img onError="lgkorUI.addImgErrorEvent(this);" src="{{imageUrl}}" alt="{{imageAlt}}"></a></div>' +
         '<div class="result-info">' +
-            '<div class="info-text{{#if (obsFlag == "N" && rentalTabFlag == "N") || originalPrice == 0}} mar{{/if}}">' +
+            '<div class="info-text">' +
                 '<div class="detail-wrap">' +
                     '<div class="flag-wrap bar-type">{{#each item in flag}}<span class="flag">{{item}}</span>{{/each}}</div>' +
                     '<div class="result-tit"><a href="{{url}}">{{#raw title}}</a></div>' +
@@ -25,56 +20,19 @@ if ('scrollRestoration' in history) {
                         '<div class="sku">{{#raw sku}}</div>' +
                         '<div class="review-info">' +
                             '{{#if review > 0}}' +
-                                '<a href="{{url}}">' +
-                                    '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
-                                    '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
-                                    '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
-                                '</a>' +
+                            '<a href="{{url}}">' +
+                                '<div class="star is-review"><span class="blind">리뷰있음</span></div>' +
+                                '<div class="average-rating"><span class="blind">평점</span>{{rating}}</div>' +
+                                '<div class="review-count"><span class="blind">리뷰 수</span>({{review}})</div>' + 
+                            '</a>' +
                             '{{/if}}' +
                         '</div>' +
-                        // BTOCSITE-16 검색 결과 구획 정리
-                        '<div class="info-price mo-only">' +
-                            '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
-                                '<a href="{{url}}">' +
-                                    '<div class="price-info rental">' +
-                                        '<p class="tit">렌탈</p><span class="price"><em>월</em> {{vcui.number.addComma(carePrice)}}<em>원</em></span>' +
-                                    '</div>' +
-                                '</a>' +
-                            '{{/if}}' +
-                            '{{#if obsFlag=="Y" && originalPrice != 0}}' +
-                                '<a href="{{url}}">' +
-                                    '<div class="price-info sales">' +
-                                        '{{#if obsFlag=="Y"}}' +
-                                            '{{#if price == originalPrice}}' +
-                                                '<div class="price-in">' +
-                                                    '<span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>' +
-                                                '</div>' +
-                                            '{{#else}}' +
-                                                '<div class="original">' +
-                                                    '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>{{/if}}' +
-                                                '</div>' +
-                                                '<div class="price-in">' +
-                                                    '{{#if price != 0}}<span class="price">{{vcui.number.addComma(price)}}<em>원</em></span>{{/if}}' +
-                                                '</div>' +
-                                            '{{/if}}' +
-                                        '{{/if}}' +
-                                    '</div>' +
-                                '</a>' +
-                            '{{/if}}' +
+                        '<div class="info-btm">' +
+                            '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>{{/if}}' +
+                            '<div class="text hashtag-wrap">' +
+                                '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
+                            '</div>' +
                         '</div>' +
-
-                        // BTOCSITE-16 검색 결과 구획 정리 -삭제
-                        // '<div class="info-btm">' +
-                        //     /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/ 
-                        //     '<div class="care">'+
-                        //     '{{#if ctypeCnt > 0 && !rentalFlag}}<span class="text careflag">케어십 가능</span>' +
-                        //     '{{#if (subCategoryId == "CT50000070")}}<span class="care-n"></span><span class="redcare-option">1년 무상케어</span>{{/if}}' + '{{/if}}' +
-                        //     '</div>'+
-                        //     /* BTOCSITE-3404 검색, PLP > 얼음정수기냉장고 1년무상케어 태그 추가 건*/
-                        //     '<div class="text hashtag-wrap">' +
-                        //         '{{#each item in hash}}<span class="hashtag"><span>#</span>{{item}}</span>{{/each}}' +
-                        //     '</div>' +
-                        // '</div>' +
                     '</div>' +
                 '</div>' +
                 '{{#if techSpecs && techSpecs.length > 0}}' +
@@ -85,134 +43,112 @@ if ('scrollRestoration' in history) {
                     '</ul></div>' +
                 '{{/if}}' +
             '</div>' +
-
-            // BTOCSITE-16 검색 결과 구획 정리
-            '<div class="info-price pc-only">' +
-                '{{#if rentalTabFlag=="Y" && carePrice != 0}}' +
-                    '<a href="{{url}}">' +
-                        '<div class="price-info rental">' +
-                            '<p class="tit">렌탈</p><span class="price"><em>월</em> {{vcui.number.addComma(carePrice)}}<em>원</em></span>' +
-                        '</div>' +
-                    '</a>' +
+            '{{#if obsFlag=="Y" || rentalTabFlag=="Y"}}' +
+            '<div class="info-price">' +
+                '<a href="{{url}}">' +
+                    '{{#if rentalTabFlag=="Y" && carePrice != "0"}}' +
+                    '<div class="price-info rental">' +
+                        '<p class="tit">케어솔루션</p><span class="price"><em>월</em> {{carePrice}}<em>원</em></span>' +
+                    '</div>' +
                     '{{/if}}' +
-                    '{{#if obsFlag=="Y" && originalPrice != 0}}' +
-                    '<a href="{{url}}">' +
-                        '<div class="price-info sales">' +
-                            '{{#if obsFlag=="Y"}}' +
-                                '{{#if price == originalPrice}}' +
-                                    '<div class="price-in">' +
-                                        '<span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>' +
-                                    '</div>' +
-                                '{{#else}}' +
-                                    '<div class="original">' +
-                                        '{{#if originalPrice != 0}}<em class="blind">원가</em><span class="price">{{vcui.number.addComma(originalPrice)}}<em>원</em></span>{{/if}}' +
-                                    '</div>' +
-                                    '<div class="price-in">' +
-                                        '{{#if price != 0}}<span class="price">{{vcui.number.addComma(price)}}<em>원</em></span>{{/if}}' +
-                                    '</div>' +
-                                '{{/if}}' +
-                            '{{/if}}' +
+                    '<div class="price-info sales">' +
+                    '{{#if obsFlag=="Y"}}' +
+                        '<div class="original">' +
+                            '{{#if originalPrice != "0"}}<em class="blind">원가</em><span class="price">{{originalPrice}}<em>원</em></span>{{/if}}' +
                         '</div>' +
-                    '</a>' +
-                '{{/if}}' +
+                        '<div class="price-in">' +
+                            '{{#if price != "0"}}<p class="tit">구매</p><span class="price">{{price}}<em>원</em></span>{{/if}}' +
+                        '</div>' +
+                    '{{/if}}' +
+                    '</div>' +
+                '</a>' +
             '</div>' +
+            '{{/if}}' +
         '</div>' +
     '</div></li>';
+    
+    var liveLgTemplate =
+    '<li>'
+    +   '<a href="{{post_url}}" class="item item-type2" target="_blank">'
+    +    '{{#if post_thumbnail}}'
+    +       '<div class="result-thumb">'
+    +           '<div>' 
+    +               '<img onError="lgkorUI.addImgErrorEvent(this);" src="{{post_thumbnail}}" alt="{{post_title}}">' 
+    +           '</div>' 
+    +       '</div>'      
+    +       '{{/if}}'      
+    +		'<div class="result-info">'
+    +			'<div class="info-text">'
+    +				'{{#if category_type || category_name}}'
+    +				    '<div class="flag-wrap bar-type">'
+    +                   '   {{#if category_type}}<span class="flag">{{category_type}}</span>{{/if}}'
+    +                   '   {{#if category_name}}<span class="flag">{{category_name}}</span>{{/if}}'
+    +                   '</div>'
+    +				'{{/if}}'
+    +				'{{#if post_title}}'
+    +					'<div class="result-tit"><strong>{{#raw post_title}}</strong></div>'
+    +				'{{/if}}'
+    +				'<div class="result-detail">'
+    +					'{{#if category_type !== "동영상" && post_content }}'
+    +						'<div class="desc">'
+    +							'<span>{{#raw post_content}}</span>'
+    +						'</div>'
+    +					'{{/if}}'
+    +				'</div>'
+    +			'</div>'
+    +		'</div>'
+    +	'</a>'
+    +'</li>';
 
-    var recommendProdTemplate = 
-        '<h3 class="title">찾으시는 제품이 없으신가요?</h3>'+
-        '<ul class="box-list-inner">'+
-            '{{#each item in recommendList}}'+
-            '<li class="lists">'+
-                '<div class="list-inner">'+
-                    '<span class="thumb">'+
-                        '<img src="{{item.image}}" alt="" aria-hidden="true" onError="lgkorUI.addImgErrorEvent(this);">'+
-                    '</span>'+
-                    '<div class="info">'+
-                        '<p class="tit"><span class="blind">{{#if item.category}}{{item.category}}{{/if}}</span>{{item.title}}</p>'+
-                        '<p class="copy">{{item.desc}}</p>'+
-                        '<div class="btn-area btm">'+
-                            '<a href="{{item.url}}" target="{{item.target}}" class="btn-link"><span>{{item.urlTitle}}</span></a>'+
-                        '</div>'+
-                    '</div>'+
-                '</div>'+
-            '</li>'+
-            '{{/each}}'+
-        '</ul>';
-
+    
     var serviceLinkTemplate = 
         '<ul>'+
             '{{#each item in serviceLinkers}}'+ 
-            '<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+            	'{{#if item.target == "popup"}}' + 
+            		'<li><a href="{{item.url}}" target="{{item.target}}" data-width="{{item.width}}" data-height="{{item.height}}"class="btn-text js-popup"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>' +
+        		'{{#else}}' +
+        			'<li><a href="{{item.url}}" target="{{item.target}}" class="btn-text"><span>{{item.title}}</span><img src="{{item.image}}" alt="{{item.title}}"></a></li>'+
+    			'{{/if}}' +
             '{{/each}}'+
         '</ul>';
-
-    $(document).ready(function() {
+    
+    $(window).ready(function() {
         var search = {
             init: function() {
                 var self = this;
                 self.uniqId = vcui.getUniqId(8);
-                $(window).scrollTop(0); //BTOCSITE-2216
-
-                vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion'], function () {
+                
+                vcui.require(['ui/pagination', 'ui/rangeSlider', 'ui/selectbox', 'ui/accordion','/lg5-common/js/search/filterLayer.min.js'], function () {
                     self.setting();
                     self.updateRecentSearchList();
                     self.bindEvents();
 
-                    self.savedSmartFilterData = null;
-                    self.curationLayer = new Curation(self.$contentsSearch, function(data, sendData){
-                        self.savedSmartFilterData = JSON.parse(JSON.stringify(data));
-
-                        var filterData  = self.filterLayer.getDataFromFilter();
-                        if(data && data.data && data.data.length > 0) {
-                            //스마트 필터가 있으면 사이드 필터 제거
-                            filterData.filterData = null;
-                        }
-                        filterData.smartFilter = sendData;
-                        self.requestSearch(self.makeFilterData(filterData));
-                    }, function(data){
-                        //큐레이션 선택
-                        //큐레이션이 선택되면 sort, 검색내검색, 구매가능 등을 숨긴다
-                        //BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
-                        if(vcui.isEmpty(data)) {
-                            self.$listSorting.removeClass('selected');
-                            var filterData  = self.filterLayer.getDataFromFilter();
-                            filterData.curation = data;
-                            self.requestSearch(self.makeFilterData(filterData));
-                        } else {
-                            var filterData  = {};
-                            self.$listSorting.addClass('selected');
-                            filterData.curation = data;
-                            self.requestSearch(filterData);
-                        }
-                    });
-                    
                     self.savedFilterData = null;
+                    
                     self.filterLayer = new FilterLayer(self.$layFilter, null, self.$listSorting, self.$btnFilter, null, function (data) {
                         if(self.savedFilterData) {
                             var category1 = self.getCategoryFromFilter(self.savedFilterData.filterData);
                             var category2 = self.getCategoryFromFilter(data.filterData);
-                            if(!category1) category1 = [];
-                            if(!category2) category2 = [];
-                            var diffCat = vcui.array.different(category1,category2);
-                            if(diffCat.length > 0) {
-                                if(category2 && category2.length > 0) {
-                                    data.filterData = JSON.stringify({"category":category2});
+                            if (!category1) category1 = [];
+                            if (!category2) category2 = [];
+                            var diffCat = vcui.array.different(category1, category2);
+                            if (diffCat.length > 0) {
+                                if (category2 && category2.length > 0) {
+                                	data.filterData = JSON.stringify({"category":category2});
                                 } else {
                                     data.filterData = "{}";
                                 }
                             }
                         }
                         self.savedFilterData = JSON.parse(JSON.stringify(data));
-                        data.smartFilter = self.curationLayer.getMakeDataFromSmartFilter();
                         self.requestSearch(self.makeFilterData(data));
                     });
 
-                    var hash = location.hash.replace("#","");
+                    var hash = location.hash.replace("#", "");
                     var savedData = lgkorUI.getStorage(hash);
-                    if(savedData && savedData.search) {
+                    if (savedData && savedData.search) {
                         self.savedFilterData = JSON.parse(JSON.stringify(savedData));
-                        if(self.savedFilterData.filterData) {
+                        if (self.savedFilterData.filterData) {
                             var filterData = JSON.parse(self.savedFilterData.filterData);
                             var str;
                             for (key in filterData) {
@@ -221,34 +157,18 @@ if ('scrollRestoration' in history) {
                             }
                             self.savedFilterData.filterData =  JSON.stringify(filterData);
                         }
-                        if(savedData.href) self.scrollHref = savedData.href;
-                        if(savedData.search) self.$inputSearch.val(savedData.search);
+                        if (savedData.href) self.scrollHref = savedData.href;
+                        if (savedData.search) self.$inputSearch.val(savedData.search);
                         self.requestSearchData(savedData.search,savedData.force,savedData, true);
                     } else {
                         //입력된 검색어가 있으면 선택된 카테고리로 값 조회
                         var value = self.$contentsSearch.attr('data-search-value');
                         value = !value ? null : value.trim();
-                        var force =  lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
-                        if(!(!value)) {
+                        var force = lgkorUI.stringToBool(self.$contentsSearch.attr('data-search-force'));
+                        if (!(!value)) {
                             //현재 선택된 카테고리 기준으로 검색
                             self.setinputSearchValue(value);
                             var filterQueryData = self.getListSortingData();
-
-                            //큐레이션 추가
-                            var curation = lgkorUI.getParameterByName('curation');
-                            if(curation && curation.length > 0) {
-                                filterQueryData.filterData = null;
-                                filterQueryData.curation = curation;
-                            } else {
-                                //스마트필터 추가
-                                var smartFilter = lgkorUI.getParameterByName('smartFilter');
-                                if(smartFilter && smartFilter.length > 0) {
-                                    //스마트 필터가 있으면 사이드 필터 제거
-                                    filterQueryData.filterData = null;
-                                    filterQueryData.smartFilter = smartFilter;
-                                }
-                            }
-
                             self.requestSearchData(value, force, filterQueryData, true);
                         }
                     }
@@ -258,7 +178,7 @@ if ('scrollRestoration' in history) {
             },
 
             getCategoryFromFilter: function(filterData) {
-                if(!filterData) return null;
+                if (!filterData) return null;
                 var filterData = JSON.parse(filterData);
                 var category = filterData["category"];
                 return category ? category : [];
@@ -267,7 +187,7 @@ if ('scrollRestoration' in history) {
             makeFilterData: function(data) {
                 var filterdata = JSON.parse(data.filterData);
                 var makeData = {};
-                for(key in filterdata) {
+                for (key in filterdata) {
                     makeData[key] = filterdata[key].join("||");
                 }
                 data.filterData = JSON.stringify(makeData);
@@ -276,19 +196,19 @@ if ('scrollRestoration' in history) {
 
             makeProductGAData: function(item) {
                 var param = {
-                    "model_name":item.modelDisplayName,
-                    "model_id":item.modelId,
-                    "model_sku":item.salesModelCode + '.' + item.salesSuffixCode,
-                    "model_gubun":(item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "케어솔루션" : "일반제품",
-                    "rental_price":(item.carePrice && item.carePrice > 0) ? ""+item.carePrice : "",
-                    "price":(item.originalPrice && item.originalPrice > 0) ? ""+item.originalPrice : "",
-                    "discounted_price":(item.price && item.price > 0) ? ""+item.price : "",
-                    "brand":"LG",
-                    "category":item.superCategoryName + "/" + item.categoryName
+                    "model_name" : item.modelDisplayName,
+                    "model_id" : item.modelId,
+                    "model_sku" : item.salesModelCode + '.' + item.salesSuffixCode,
+                    "model_gubun" : (item.rentalTabFlag == "Y" && item.obsFlag == "N") ? "케어솔루션" : "일반제품",
+                    "rental_price" : (item.carePrice && item.carePrice > 0) ? item.carePrice : "",
+                    "price" : (item.originalPrice && item.originalPrice > 0) ? item.originalPrice : "",
+                    "discounted_price" : (item.price && item.price > 0) ? item.price : "",
+                    "brand" : "LG",
+                    "category" : item.superCategoryName + "/" + item.categoryName
                 }
                 return JSON.stringify(param);
             },
-
+            
             setting: function() {
                 var self = this;
 
@@ -345,9 +265,7 @@ if ('scrollRestoration' in history) {
                 self.$contWrap = self.$contentsSearch.find('div.cont-wrap');
                 self.$searchResult = self.$contWrap.find('div.search-result-wrap');
                 self.$listSorting = self.$searchResult.find('div.list-sorting');
-                //
-                self.$sortListCurationHidden = self.$listSorting.find('div.sort-list');                
-
+                
                 //필터
                 self.$layFilter = self.$contWrap.find('div.lay-filter');
                 //모바일 필터열기버튼
@@ -368,7 +286,7 @@ if ('scrollRestoration' in history) {
             getListSortingData: function() {
                 var self = this;
                 var data = {};
-                self.$listSorting.find('input').each(function(idx, el){
+                self.$listSorting.find('input').each(function(idx, el) {
                     switch(el.type) {
                         case "checkbox":
                             data[el.name] = el.checked ? "Y" : "N";
@@ -384,7 +302,7 @@ if ('scrollRestoration' in history) {
                     }
                 });
 
-                self.$listSorting.find('.ui_selectbox').each(function(idx, el){
+                self.$listSorting.find('.ui_selectbox').each(function(idx, el) {
                     data[el.name] = $(el).vcSelectbox('selectedOption').value;
                 });
                 return data;
@@ -405,12 +323,6 @@ if ('scrollRestoration' in history) {
                     var index = data.selectedIndex;
                     var $li = self.$tab.find('li a:eq("'+index+'")');
                     var href = $li.attr('href');
-
-                    var careType = lgkorUI.getParameterByName('careType')
-                    if(careType) {
-                        href += (href.indexOf("?") === -1 ? "?" : "&");
-                        href += "careType="+careType;
-                    }
 
                     var value = self.$contentsSearch.attr('data-search-value');
                     value = !value ? null : value.trim(); 
@@ -453,7 +365,7 @@ if ('scrollRestoration' in history) {
                         self.$buttonSearchFixed.trigger('click');
                     }
                 });
-
+                
                 //검색 타이머
                 self.$inputSearch.on("input", function(e) {
                     clearTimeout(self.searchTimer);
@@ -502,11 +414,12 @@ if ('scrollRestoration' in history) {
                     self.searchItem($(this));
                 });
 
+                // BTOCSITE-16 검색 결과 구획 정리
                 //연관검색어 리스트 클릭
-                self.$relatedKeywordList.on('click', 'ul li a', function(e){
-                    e.preventDefault();
-                    self.searchItem($(this));
-                });
+                // self.$relatedKeywordList.on('click', 'ul li a', function(e){
+                //     e.preventDefault();
+                //     self.searchItem($(this));
+                // });
 
                 //기존입력 검색어 클릭
                 self.$similarText.on('click', function(e){
@@ -519,36 +432,23 @@ if ('scrollRestoration' in history) {
                     self.requestSearchData(searchVal, true, filterQueryData, true);
                 });
 
+                // BTOCSITE-16 검색 결과 구획 정리
                 //연관검색어 펼치기
-                self.$relatedKeywordMobileMoreButton.on('click', 'a', function(e){
-                    e.preventDefault();
-                    if(self.$relatedKeywordList.hasClass('open')) {
-                        self.$relatedKeywordList.removeClass('open');
-                    } else {
-                        self.$relatedKeywordList.addClass('open');
-                    }
-                });
+                // self.$relatedKeywordMobileMoreButton.on('click', 'a', function(e){
+                //     e.preventDefault();
+                //     if(self.$relatedKeywordList.hasClass('open')) {
+                //         self.$relatedKeywordList.removeClass('open');
+                //     } else {
+                //         self.$relatedKeywordList.addClass('open');
+                //     }
+                // });
 
                 //페이지
                 self.$pagination.on('page_click', function(e, data) {
                     //기존에 입력된 데이타와 변경된 페이지로 검색
-                    //var postData = self.makeFilterData(self.filterLayer.getDataFromFilter());
-                    var filterData  = self.filterLayer.getDataFromFilter();
-
-                    var curation = self.curationLayer.getSelectedCuration();
-                    if(!vcui.isEmpty(curation)) {
-                        filterData.filterData = null;
-                        filterData.curation = curation;
-                    } else {
-                        var smartFilter = self.curationLayer.getDataFromSmartFilter();
-                        if(!vcui.isEmpty(smartFilter)) {
-                            filterData.filterData = null;
-                            filterData.smartFilter = self.curationLayer._makeFilterData(smartFilter);
-                        }
-                    }
-                    var postData = self.makeFilterData(filterData);
+                    var postData = self.makeFilterData(self.filterLayer.getDataFromFilter());
                     postData.page = data;
-                    self.requestSearch(filterData);
+                    self.requestSearch(postData);
                 });
 
                 //검색 이동 로그 쌓기
@@ -563,7 +463,7 @@ if ('scrollRestoration' in history) {
                         location.hash = self.uniqId;
                     }
                 });
-
+                
                 //리사이즈 체크
                 $(window).on('resizeend', function(e){   
                     self.updateRelatedKeywordMoreButton();
@@ -574,7 +474,7 @@ if ('scrollRestoration' in history) {
                     self._setScrollMoved();
                 });
                 self._setScrollMoved();
-
+                
             },
 
             sendLog: function(dm) {
@@ -587,7 +487,7 @@ if ('scrollRestoration' in history) {
                     "search":search
                 };
                 var ajaxUrl = self.$contentsSearch.data('logUrl');
-                if(ajaxUrl) {
+                if (ajaxUrl) {
                     lgkorUI.requestAjaxDataPost(ajaxUrl, param, null, true);
                 }
             },
@@ -595,7 +495,7 @@ if ('scrollRestoration' in history) {
             _setScrollMoved: function() {
                 var self = this;
                 var scrolltop = $(window).scrollTop();
-                if((self.$contWrap.offset().top - 110) < scrolltop) {
+                if ((self.$contWrap.offset().top - 110) < scrolltop) {
                     self.$listSorting.addClass('fixed');
                 } else {
                     self.$listSorting.removeClass('fixed');
@@ -759,9 +659,6 @@ if ('scrollRestoration' in history) {
                 var ajaxUrl = self.getTabItembySelected().attr('data-search-url');
 
                 var postData = {"search":value, "force":force};
-                var careType = lgkorUI.getParameterByName('careType')
-                if(careType) vcui.extend(postData,{ "careType" : careType });
-
                 if(!filterQueryData) {
                     //postData.filter = null;
                 } else {
@@ -772,15 +669,7 @@ if ('scrollRestoration' in history) {
 
                 lgkorUI.setStorage(self.uniqId, postData);
                 location.hash = self.uniqId;
-
-                //큐레이션이 선택되면 sort, 검색내검색, 구매가능 등을 숨긴다
-                // BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
-                if(vcui.isEmpty(filterQueryData.curation)) {
-                    self.$listSorting.removeClass('selected');
-                } else {
-                    self.$listSorting.addClass('selected');
-                }
-
+                
                 lgkorUI.showLoading();
                 lgkorUI.requestAjaxData(ajaxUrl, postData, function(result) {
                     self.openSearchInputLayer(false);
@@ -791,20 +680,7 @@ if ('scrollRestoration' in history) {
                     var searchedValue = param.search;
                     var replaceText = '<span class="search-word">' + searchedValue + '</span>';
 
-                    // 구매가능 렌탈가능 버튼 노출 상태
-                    if(data.availableforpurchaseyn === 'Y') {
-                        $('[name="availableforpurchase"]').closest('.sort-check-area').addClass('active');
-                    } else {
-                        $('[name="availableforpurchase"]').closest('.sort-check-area').removeClass('active');
-                    }
-
-                    if(data.availableforrentalyn === 'Y') {
-                        $('[name="availableforrental"]').closest('.sort-check-area').addClass('active');
-                    } else {
-                        $('[name="availableforrental"]').closest('.sort-check-area').removeClass('active');
-                    }
-
-                    //결과내 검색어 세팅
+                    //검색내 검색어 세팅
                     if(self.$listSorting.find('div.search-inner input').length > 0) {
                         self.$listSorting.find('div.search-inner input').attr('data-searchvalue', param.searchIn).val(param.searchIn);
                     }
@@ -825,27 +701,28 @@ if ('scrollRestoration' in history) {
                         self.$searchSimilar.hide();
                     }
 
+                    // BTOCSITE-16 검색 결과 구획 정리
                     //연관 검색어 리스트 갱신
-                    var arr = data.related instanceof Array ? data.related : [];
-                    if(arr.length > 0) {
-                        showResult = true;
-                        var $list_ul = self.$relatedKeywordList.find('ul');
-                        $list_ul.empty();
-                        arr.forEach(function(item, index) {
-                            $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
-                        });
-                        self.$relatedKeywordList.show();
+                    // var arr = data.related instanceof Array ? data.related : [];
+                    // if(arr.length > 0) {
+                    //     showResult = true;
+                    //     var $list_ul = self.$relatedKeywordList.find('ul');
+                    //     $list_ul.empty();
+                    //     arr.forEach(function(item, index) {
+                    //         $list_ul.append(vcui.template(relatedItemTemplate, {"text":item}));
+                    //     });
+                    //     self.$relatedKeywordList.show();
 
-                        self.updateRelatedKeywordMoreButton();
-                    } else {
-                        self.$relatedKeywordList.hide();
-                    }
+                    //     self.updateRelatedKeywordMoreButton();
+                    // } else {
+                    //     self.$relatedKeywordList.hide();
+                    // }
 
-                    self.$relatedKeywordList.removeClass('open');
+                    // self.$relatedKeywordList.removeClass('open');
 
                     //nodata Test
                     //data.count = null;
-                    //data.product = null;
+                    //data.customer = null;
 
                     var noData = true;
                     var count = self.checkCountData(data);
@@ -858,31 +735,26 @@ if ('scrollRestoration' in history) {
 
                     //필터세팅
                     var filterShow = false;
-                    if(data.filterList && data.filterList.length > 0) {
+                    if (data.filterList && data.filterList.length > 0) {
                         filterShow = true;
                         self.filterLayer.updateFilter(data.filterList);
                         //모바일일 경우 필터섹션이 2개 이하이면 모두 열어둔다
-                        if(vcui.detect.isMobile){
+                        if (vcui.detect.isMobile) {
                             self.filterLayer.openFilterSectionAll(2);
                         }
-
-                        if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
-                            //스마트 필터가 존재하면 사이드 필터 숨김
-                            filterShow = false;
-                        } else {
-                            if(self.savedFilterData && self.savedFilterData.filterData) {
-                                var filterData = JSON.parse(self.savedFilterData.filterData);
-                                self.filterLayer.resetFilter(filterData);
-                            }
+                        
+                        if (self.savedFilterData && self.savedFilterData.filterData) {
+                            var filterData = JSON.parse(self.savedFilterData.filterData);
+                            self.filterLayer.resetFilter(filterData);
                         }
                     }
 
-                    //리스트 세팅
+                    // LiVE LG 리스트 세팅
                     var $resultListWrap = self.$searchResult.find('div.result-list-wrap:eq(0)');
-                    arr = self.checkArrayData(data.product);
-                    count = self.checkCountData(data.product);
-                    self.setTabCount(1, count);
-                    var subcount = self.checkSubCountData(data.product);
+                    arr = self.checkArrayData(data.livelg);
+                    count = self.checkCountData(data.livelg);
+                    self.setTabCount(8, count);
+                    var subcount = self.checkSubCountData(data.livelg);
                     if(subcount) {
                         self.$searchResult.find('p.list-count').text('총 '+vcui.number.addComma(subcount)+'개').show();
                     } else {
@@ -891,35 +763,8 @@ if ('scrollRestoration' in history) {
                     if(arr.length > 0) {
                         var $list_ul = $resultListWrap.find('ul');
                         $list_ul.empty();
-                        var $div = $("<div/>");
                         arr.forEach(function(item, index) {
-                            if(!item.hash) {
-                                item.hash = [];
-                            }
-                            if(item.techSpecs) {
-                                item.techSpecs.forEach(function(obj, index) {
-                                    obj.SPEC_VALUE_NAME = $div.html(obj.SPEC_VALUE_NAME).text();
-                                });
-                            }
-
-                            // BTOCSITE-16 검색 결과 구획 정리
-                            if(item.salesModelFlag === "Y" && item.caresolutionSalesModelCode) {
-                                if(!item.techSpecs) item.techSpecs = [];
-                                item.techSpecs.push({
-                                    'SPEC_NAME' : '렌탈제품모델명',
-                                    'SPEC_VALUE_NAME' : item.caresolutionSalesModelCode
-                                });
-                            }   
-
-                            item.ga = self.makeProductGAData(item);
-                            //item.title = vcui.string.replaceAll(item.title, searchedValue, replaceText);
-                            item.sku = vcui.string.replaceAll(item.sku, searchedValue, replaceText);
-                            // item.price = item.price ? vcui.number.addComma(item.price) : null;
-                            // item.originalPrice = item.originalPrice ? vcui.number.addComma(item.originalPrice) : null;
-                            // item.carePrice = item.carePrice ? vcui.number.addComma(item.carePrice) : null;
-                            item.rentalFlag = lgkorUI.stringToBool(item.rentalFlag);
-                            item.ctypeCnt = item.ctypeCnt ? parseInt(item.ctypeCnt) : 0;
-                            $list_ul.append(vcui.template(productItemTemplate, item));
+                            $list_ul.append(vcui.template(liveLgTemplate, item));
                         });
                         $resultListWrap.show();
                         //self.$listSorting.show();
@@ -929,7 +774,11 @@ if ('scrollRestoration' in history) {
                         //self.$listSorting.hide();
                     }
 
-                    //케어용품/소모품 
+                    //제품
+                    count = self.checkCountData(data.product);
+                    self.setTabCount(1, count);
+
+                    //케어용품/소모품
                     count = self.checkCountData(data.additional);
                     self.setTabCount(2, count);
 
@@ -937,47 +786,36 @@ if ('scrollRestoration' in history) {
                     count = self.checkCountData(data.story);
                     self.setTabCount(3, count);
 
-                    //이벤트/기획전
+                    //이벤트
                     count = self.checkCountData(data.event);
                     self.setTabCount(4, count);
 
-                    //센터매장
+                    //매장
                     count = self.checkCountData(data.shop);
                     self.setTabCount(5, count);
-
+                    
                     //고객지원
                     count = self.checkCountData(data.customer);
                     self.setTabCount(6, count);
-                    
+
                     //회사소개
                     count = self.checkCountData(data.company);
                     self.setTabCount(7, count);
 
-                    //LIVE LG
-                    count = self.checkCountData(data.livelg);
-                    self.setTabCount(8, count);
 
+                    
                     //추천 제품
+                    /*
                     self.$recommendListBox.empty();
                     if(data.recommendList && data.recommendList.length){
                         self.$recommendListBox.append(vcui.template(recommendProdTemplate, {recommendList: data.recommendList}))
                     }
-
-                    //서비스 링크
+                    */
+                    //BTOCSITE-1339 서비스 링크
                     $('.service-link, .mobile-service-link').empty();
-                    if(data.serviceLinkers && data.serviceLinkers.length){
+                    if (data.serviceLinkers && data.serviceLinkers.length) {
                         $('.service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
                         $('.mobile-service-link').append(vcui.template(serviceLinkTemplate, {serviceLinkers: data.serviceLinkers}));
-                    }
-
-                    //스마트 필터
-                    self.curationLayer.setCurationData(data);
-                    if(!vcui.isEmpty(filterQueryData.curation)) {
-                        //큐레이션이 이미 존재하였다
-                        self.curationLayer.resetCuration(filterQueryData.curation);
-                    } else if(!vcui.isEmpty(filterQueryData.smartFilter)) {
-                        //스마트필터가 이미 존재하였다
-                        self.curationLayer.resetFilter(filterQueryData.smartFilter);
                     }
 
                     //noData 체크
@@ -1018,14 +856,8 @@ if ('scrollRestoration' in history) {
                         self.$contWrap.removeClass('w-filter');
                         self.$layFilter.hide();
                         self.$btnFilter.hide();
-
                         //정렬 셀렉트 박스
                         self.$listSorting.find('.sort-select-wrap').hide();
-
-                        //결과내 검색어 세팅
-                        if(self.$listSorting.find('div.search-inner input').length > 0) {
-                            self.$listSorting.find('div.search-inner input').closest('.sort-search-area').hide();
-                        }
                     } else {
                         //self.$tab.parents('.search-tabs-wrap').show();
                         //self.$tab.vcSmoothScroll('refresh');
@@ -1037,16 +869,8 @@ if ('scrollRestoration' in history) {
                         if(filterShow) {
                             self.$contWrap.addClass('w-filter');
                             self.$layFilter.css('display', '');
-                        } else {
-                            self.$contWrap.removeClass('w-filter');
-                            self.$layFilter.hide();
                         }
-
-                        if(!vcui.isEmpty(data.smartFilterList) || !vcui.isEmpty(data.curation)) {
-                            self.$btnFilter.hide();
-                        } else {
-                            self.$btnFilter.show();
-                        }
+                        self.$btnFilter.show();
                         // BTOCSITE-7149 검색 > 검색바로 가기 새창 오류
                         self.$listSorting.find('.sort-select-wrap').removeAttr('style');
                     }
@@ -1066,33 +890,24 @@ if ('scrollRestoration' in history) {
                     self.$tab.vcSmoothScroll('scrollToElement',$selectTab[0],0);
 
                     if(self.scrollHref) {
-                        // $(window).scrollTop(self.scrollHref);
-                        // self.scrollHref = null;
-                        // BTOCSITE-2216
-                        if( $('.result-list img').last().length ) {
-                            $('.result-list img').last().on('load', function(){
-                                $('html,body').stop().animate({scrollTop: self.scrollHref});
-                                self.scrollHref = null;
-                            });
-                        } else {
-                            $('html,body').stop().animate({scrollTop: self.scrollHref});
-                            self.scrollHref = null;
-                        }
+                        $(window).scrollTop(self.scrollHref);
+                        self.scrollHref = null;
                     }
                 });
             },
 
+            // BTOCSITE-16 검색 결과 구획 정리
             //연관검색어 더보기 버튼 노출 여부 체크
-            updateRelatedKeywordMoreButton:function () {
-                var self = this;
-                var $list_ul = self.$relatedKeywordList.find('ul');
-                var $li = $list_ul.find('>li:eq(0)');
-                if($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
-                    self.$relatedKeywordMobileMoreButton.show();
-                } else {
-                    self.$relatedKeywordMobileMoreButton.hide();
-                }    
-            },
+            // updateRelatedKeywordMoreButton : function() {
+            //     var self = this;
+            //     var $list_ul = self.$relatedKeywordList.find('ul');
+            //     var $li = $list_ul.find('>li:eq(0)');
+            //     if ($li.length > 0 && $list_ul.height() > $li.outerHeight(true)) {
+            //         self.$relatedKeywordMobileMoreButton.show();
+            //     } else {
+            //         self.$relatedKeywordMobileMoreButton.hide();
+            //     }
+            // },
 
             //최근 검색어 삭제
             removeRecentSearcheText:function(text) {
@@ -1114,8 +929,8 @@ if ('scrollRestoration' in history) {
             },
 
             //최근 검색어 추가
-            addRecentSearcheText:function(text) {
-                if(!text || text.length < 1) return;
+            addRecentSearcheText : function(text) {
+                if (!text || text.length < 1) return;
                 var self = this;
                 /*
                 var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
@@ -1139,7 +954,7 @@ if ('scrollRestoration' in history) {
             },
 
             //최근 검색어 리스트 갱신
-            updateRecentSearchList:function() {
+            updateRecentSearchList : function() {
                 var self = this;
                 //var searchedList = localStorage.searchedList ? JSON.parse(localStorage.searchedList) : [];
                 var cookieValue = lgkorUI.getCookie(lgkorUI.INTERGRATED_SEARCH_VALUE);
@@ -1149,7 +964,7 @@ if ('scrollRestoration' in history) {
                 var arr = searchedList instanceof Array ? searchedList : [];
                 var $list_ul = self.$recentKeywordList.find('div.keyword-list ul');
                 $list_ul.empty();
-                if(arr.length > 0) {
+                if (arr.length > 0) {
                     arr.forEach(function(item, index) {
                         $list_ul.append(vcui.template(recentItemTemplate, {"text":item}));
                     });
@@ -1160,9 +975,9 @@ if ('scrollRestoration' in history) {
                     self.$recentKeywordList.find('div.no-data').show();
                 }
             },
-            
+
             //기초 데이타 갱신
-            updateBasicData:function() {
+            updateBasicData : function() {
                 var self = this;
                 var ajaxUrl = self.$contentsSearch.data('basicUrl');
                 lgkorUI.requestAjaxData(ajaxUrl, null, function(result) {

@@ -810,6 +810,10 @@ if ('scrollRestoration' in history) {
                     count = self.checkCountData(data.company);
                     self.setTabCount(7, count);
 
+                    //LIVE LG
+                    count = self.checkCountData(data.livelg);
+                    self.setTabCount(8, count);
+
                     //추천 제품
                     /*
                     self.$recommendListBox.empty();
