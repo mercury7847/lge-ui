@@ -2883,8 +2883,8 @@ var goAppUrl = function(path) {
 
             },"GET", "json", true, null, true);
         },
-        cancelIntegrateId: function(data, sendata){
-            console.log('cancelIntegrateId', data)
+        cancelIntegrateId: function(sendata){
+            console.log('cancelIntegrateId', sendata)
             var ajaxUrl = '/sso/api/integrateIdCancel';
             // ajaxUrl = '/lg5-common/data-ajax/common/integrateIdCancel.json';
             lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
