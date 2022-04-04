@@ -2888,7 +2888,7 @@ var goAppUrl = function(path) {
                     + '위 계정으로 연결 하시겠습니까?<br>'
                     '(현재 로그인을 유지하면 ThinQ에서 조회한 정보와 다를 수 있습니다.)';
                 }else if(data.integrateType == 'popup4') {
-                    msg = 'LGE.com 회원이 아닙니다.<br> ThinQ 회원정보로 LGE.com에 가입 하시겠습니까?';
+                    msg = 'LGE.com 회원이 아닙니다.<br> ThinQ 회원정보로 LGE.com에<br> 가입 하시겠습니까?';
                 }
 
                 if(data.integrateType == 'popup1'|| data.integrateType == 'popup2' || data.integrateType == 'popup4')  {
