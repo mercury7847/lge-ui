@@ -2778,12 +2778,42 @@ var goAppUrl = function(path) {
                 });
             }
         },
+        // BTOCSITE-12458 [앱스플라이어] 이벤트 공통 함수
+        afEvent: function(eventName,eventValue){
+            if(isApp() && eventName && eventValue) {
+                var eventValue = JSON.stringify(eventValue);
+                var iframe = document.createElement("IFRAME");
+                    iframe.setAttribute("src", "af-event://inappevent?eventName="+eventName+"&eventValue="+eventValue);
+                    document.documentElement.appendChild(iframe);
+                    iframe.parentNode.removeChild(iframe);
+                    iframe = null;
+            }
+        },
+        // BTOCSITE-11928 챗봇 pincode 파라미터 연결 수정
+        getChatPinCode: function(el) {
+            if(el.length > 0) {
+                lgkorUI.requestAjaxData('/support/getPinCode.lgajax', null, function(result) {
+                    var pinCode = null;
+                    var data = result.data;
+                    if(data) {
+                        var receveResult = data.result;
+                        if(receveResult && receveResult.code) {
+                            pinCode = receveResult.code;
+                        }
+                    }
+
+                    var url = lgkorUI.parseUrl(el.attr('href')),
+                        params = $.extend(url.searchParams.getAll(),{'channel': isApp() ? "lg_app" : "lg_homepage", 'code' :  pinCode || ''});
+                        el.attr('href',vcui.uri.addParam(url.origin+url.pathname,params));
+                },"GET", "json", true, null, true);
+            }
+        },
         // BTOCSITE-13955 ThinQ LGE.com 앱간 자동 로그인 연계
         runintegrateLoginEvent: null,
         integrateLoginEvent: function(){
-            if(lgkorUI.runintegrateLoginEvent == true) return false;
+            if(!isApp() || lgkorUI.runintegrateLoginEvent == true) return false;
             lgkorUI.runintegrateLoginEvent = true;
-            if(isApp() && lgkorUI.getParameterByName('src_svc_code') === 'SVC202') {
+            if(lgkorUI.getParameterByName('src_svc_code') === 'SVC202') {
                 var keys = ['ci', 'sso_id', 'thinq_mbrno', 'id_tp_code'];
                 var sendata = {}, getData = {};
                 $(keys).each(function(i, key) {
@@ -2807,6 +2837,7 @@ var goAppUrl = function(path) {
                     }
                 }, 1000);
             }
+            // ThinkQ 연결하기 링크 변경
             var loginFlag = digitalData.hasOwnProperty('userInfo') && digitalData.userInfo.unifyId ? true:false;
             var _url = lgkorUI.stringToBool(loginFlag) ? 
             'https://lgthinq.page.link/?link=https%3A%2F%2Flgthinq.lge.com%2Fthinqapp%2Fssodashboard%3Fsrc_svc_code%3DSVC612&apn=com.lgeha.nuts&isi=993504342&ibi=com.lgeha.nuts&efr=1' 
@@ -2816,10 +2847,10 @@ var goAppUrl = function(path) {
                     $(this).attr('href', _url).addClass('lgthinq-link');
                 }
             })
-            $('.lgthinq-link').on('click', function() {
+            /* $('.lgthinq-link').on('click', function() {
                 console.log('......!', $(this))
                 return false;
-            })
+            }) */
             
         },
         checkIntegrateId: function(sendata){
@@ -2869,36 +2900,6 @@ var goAppUrl = function(path) {
                 }
     
             },"GET", "json", true, null, true);
-        },
-        // BTOCSITE-12458 [앱스플라이어] 이벤트 공통 함수
-        afEvent: function(eventName,eventValue){
-            if(isApp() && eventName && eventValue) {
-                var eventValue = JSON.stringify(eventValue);
-                var iframe = document.createElement("IFRAME");
-                    iframe.setAttribute("src", "af-event://inappevent?eventName="+eventName+"&eventValue="+eventValue);
-                    document.documentElement.appendChild(iframe);
-                    iframe.parentNode.removeChild(iframe);
-                    iframe = null;
-            }
-        },
-        // BTOCSITE-11928 챗봇 pincode 파라미터 연결 수정
-        getChatPinCode: function(el) {
-            if(el.length > 0) {
-                lgkorUI.requestAjaxData('/support/getPinCode.lgajax', null, function(result) {
-                    var pinCode = null;
-                    var data = result.data;
-                    if(data) {
-                        var receveResult = data.result;
-                        if(receveResult && receveResult.code) {
-                            pinCode = receveResult.code;
-                        }
-                    }
-
-                    var url = lgkorUI.parseUrl(el.attr('href')),
-                        params = $.extend(url.searchParams.getAll(),{'channel': isApp() ? "lg_app" : "lg_homepage", 'code' :  pinCode || ''});
-                        el.attr('href',vcui.uri.addParam(url.origin+url.pathname,params));
-                },"GET", "json", true, null, true);
-            }
         }
     }
 
