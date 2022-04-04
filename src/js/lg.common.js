@@ -395,8 +395,7 @@ var goAppUrl = function(path) {
             
             self._appDownloadPopup(); //BTOCSITE-429 앱 설치 유도 팝업 노출 페이지 추가
             self.afLoginEvent(); // BTOCSITE-4852 [AppsFlyer] 앱어트리뷰션 툴 Event 태깅을 위한 회원가입완료 및 로그인 완료 정보 개발 요청건
-            
-            self.integrateLoginEvent(); // BTOCSITE-13955 ThinQ LGE.com 앱간 자동 로그인 연계
+            if(isApp()) self.integrateLoginEvent();  // BTOCSITE-13955 ThinQ LGE.com 앱간 자동 로그인 연계
             
             var lnbContents = $('.contents .lnb-contents');
             if(lnbContents.length) lnbContents.attr('id', 'content');
@@ -2809,34 +2808,8 @@ var goAppUrl = function(path) {
             }
         },
         // BTOCSITE-13955 ThinQ LGE.com 앱간 자동 로그인 연계
-        runintegrateLoginEvent: null,
-        integrateLoginEvent: function(){
-            if(!isApp() || lgkorUI.runintegrateLoginEvent == true) return false;
-            lgkorUI.runintegrateLoginEvent = true;
-            if(lgkorUI.getParameterByName('src_svc_code') === 'SVC202') {
-                var keys = ['ci', 'sso_id', 'thinq_mbrno', 'id_tp_code'];
-                var sendata = {}, getData = {};
-                $(keys).each(function(i, key) {
-                    if(vcui.detect.isIOS){
-                        getData[key] = function(data) {
-                            sendata[key] = data;
-                            return false;
-                        }
-                        webkit.messageHandlers.callbackHandler.postMessage(JSON.stringify({ 'command': 'actionWithAccountManager', 'actionType': '1', 'key': key, 'callback': 'getData['+key+']' }));
-                    } else {
-                        sendata[key] = android.actionWithAccountManager("1", key, "");
-                    }
-                });
-                var lgkorUIcheckTimer = setInterval(function() {
-                    if(vcui.modal) {
-                        lgkorUI.checkIntegrateId(sendata);
-                        if(lgkorUI.stringToBool(lgkorUI.getParameterByName('integrateIdCancel'))) {
-                            lgkorUI.cancelIntegrateId(sendata);
-                        }
-                        clearInterval(lgkorUIcheckTimer);
-                    }
-                }, 1000);
-            }
+        integrateData: {},
+        setThinkQLink: function() {
             // ThinkQ 연결하기 링크 변경
             var loginFlag = digitalData.hasOwnProperty('userInfo') && digitalData.userInfo.unifyId ? true:false;
             var _url = lgkorUI.stringToBool(loginFlag) ? 
@@ -2851,16 +2824,43 @@ var goAppUrl = function(path) {
                 console.log('......!', $(this))
                 return false;
             }) */
-            
         },
-        checkIntegrateId: function(sendata){
+        integrateLoginEvent: function(){
+            lgkorUI.setThinkQLink();
+            if(Object.keys(lgkorUI.integrateData).length>0) return false;
+            if(lgkorUI.getParameterByName('src_svc_code') === 'SVC202') {
+                var keys = ['ci', 'sso_id', 'thinq_mbrno', 'id_tp_code'];
+                var getData = {};
+                $(keys).each(function(i, key) {
+                    if(vcui.detect.isIOS){
+                        getData[key] = function(data) {
+                            lgkorUI.integrateData[key] = data;
+                            return false;
+                        }
+                        webkit.messageHandlers.callbackHandler.postMessage(JSON.stringify({ 'command': 'actionWithAccountManager', 'actionType': '1', 'key': key, 'callback': 'getData['+key+']' }));
+                    } else {
+                        lgkorUI.integrateData[key] = android.actionWithAccountManager("1", key, "");
+                    }
+                });
+                var lgkorUIcheckTimer = setInterval(function() {
+                    if(vcui.modal) {
+                        lgkorUI.checkIntegrateId();
+                        if(lgkorUI.stringToBool(lgkorUI.getParameterByName('integrateIdCancel'))) {
+                            lgkorUI.cancelIntegrateId();
+                        }
+                        clearInterval(lgkorUIcheckTimer);
+                    }
+                }, 1000);
+            }
+        },
+        checkIntegrateId: function(){
             var ajaxUrl = '/sso/api/checkIntegrateId';
             // ajaxUrl = '/lg5-common/data-ajax/common/checkIntegrateId.json';
-            lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
+            lgkorUI.requestAjaxData(ajaxUrl, lgkorUI.integrateData, function(result) {
                 var data = result.data;
                 var msg = '', opt = {
                     cancel: function(){
-                        lgkorUI.cancelIntegrateId(sendata)
+                        lgkorUI.cancelIntegrateId()
                     },
                     ok: function(){
                         var loginFlag = digitalData.hasOwnProperty('userInfo') && digitalData.userInfo.unifyId ? true:false;
@@ -2883,11 +2883,11 @@ var goAppUrl = function(path) {
 
             },"GET", "json", true, null, true);
         },
-        cancelIntegrateId: function(sendata){
-            console.log('cancelIntegrateId', sendata)
+        cancelIntegrateId: function(){
+            console.log('cancelIntegrateId', lgkorUI.integrateData)
             var ajaxUrl = '/sso/api/integrateIdCancel';
             // ajaxUrl = '/lg5-common/data-ajax/common/integrateIdCancel.json';
-            lgkorUI.requestAjaxData(ajaxUrl, sendata, function(result) {
+            lgkorUI.requestAjaxData(ajaxUrl, lgkorUI.integrateData, function(result) {
                 var data = result.data;
                 if(data.integrateType == 'popup3') {
                     var msg = 'LGE.com 로그인 정보와 ThinQ 앱 로그인 정보가 다르기 때문에 멤버십 포인트는 ThinQ 앱에서 보여지는 정보와 다릅니다.';
