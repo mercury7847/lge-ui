@@ -15,6 +15,7 @@
     <script src="/lg5-common/js/components/KRP0011.min.js"></script>
     <!-- LGECOMVIO-34 : 쿠폰 시스템 도입 -->
     <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0008-coupon.min.css">
+    <script src="/lg5-common/js/components/KRP0008-coupon.min.js"></script>
     <!-- //LGECOMVIO-34 : 쿠폰 시스템 도입 -->
 <body>
     <script>
@@ -2173,8 +2174,9 @@
         </header>
         <section class="pop-conts coupon-down-pop">
             <ul class="coupon-list">
-                <li>
-                    <div class="cp-box lge-before"><!-- .lge-before : 다운로드 가능 -->
+                <!-- 2022-04-04 리스트 삭제 -->
+                <!-- <li>
+                    <div class="cp-box lge-before">// .lge-before : 다운로드 가능
                         <div class="cp-cont">
                             <em class="title">50,000<i class="unit">원</i></em>
                             <p class="description">신학기 으쌰으쌰 새내기 프로젝트! <br>LG GRAM 100,000원 할인 쿠폰</p>
@@ -2185,7 +2187,7 @@
                                 <button type="button" class="download"><em>다운로드</em></button>
                             </div>
                         </div>
-                        <!-- 상세 -->
+                        //상세
                         <div class="cp-open-view">
                             <a href="#n" class="text">상세정보</a>
                             <div class="cp-cont-view">
@@ -2197,11 +2199,11 @@
                                 <div class="sub-cont">TV &gt; 올레드 TV  <br>일부모델은 적용대상에서 제외될 수 있습니다.</div>
                             </div>
                         </div>
-                        <!-- //상세 -->                                                   
+                        //상세                                                
                     </div>
                 </li>
                 <li>
-                    <div class="cp-box lge-after"><!-- .lge-before : 발급 완료 -->
+                    <div class="cp-box lge-after">// .lge-before : 발급 완료
                         <div class="cp-cont">
                             <em class="title">5<i class="unit">%</i></em>
                             <p class="description">신학기 으쌰으쌰 새내기 프로젝트! <br>LG GRAM 100,000원 할인 쿠폰</p>
@@ -2212,7 +2214,7 @@
                                 <button type="button" class="download"><em>발급<br>완료</em></button>
                             </div>
                         </div>
-                        <!-- 상세 -->
+                        // 상세
                         <div class="cp-open-view">
                             <a href="#n" class="text">상세정보</a>
                             <div class="cp-cont-view">
@@ -2224,9 +2226,10 @@
                                 <div class="sub-cont">TV &gt; 올레드 TV  <br>일부모델은 적용대상에서 제외될 수 있습니다.</div>
                             </div>
                         </div>
-                        <!-- //상세 -->                                                   
+                        //상세                                               
                     </div>
-                </li>
+                </li> -->
+                <!-- 2022-04-04 리스트 삭제 -->
             </ul> 
             @@include('./common/modules/bullet-list.html', {
                 "topBorder" : true,
@@ -2245,13 +2248,6 @@
         </footer>
         <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
     </article>
-    <script>
-        $(function() {
-            $('body').on('click', '.cp-open-view > .text', function() {
-            $(this).parents('.cp-box').toggleClass('active');
-            });
-        });
-    </script>
     <!-- // LGECOMVIO-34 : 쿠폰 시스템 도입(팝업) -->
 
 </body>

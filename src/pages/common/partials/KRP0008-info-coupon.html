@@ -10,6 +10,7 @@
     data-buy-url="/product/addCartDirectPurchase.lgajax"
     data-rental-url="/order-to-pay/rental-care-solution"
     data-sibling-ajax="/lg5-common/data-ajax/pdp/retrieveProductSiblings.json"
+    data-coupon-list-ajax="/lg5-common/data-ajax/pdp/couponList.json"
 >
 <!-- //2021-02-25 바로구매, 렌탈 url추가 -->
     <div class="product-detail-info">
@@ -276,7 +277,7 @@
                     </li>
                     <!-- //BTOCSITE-9588 PDP > 혜택가 노출 및 배송정보 노출 원복 요청 (BTOCSITE-5781 제품 PDP 페이지 개선요청건 삭제) -->
                     <!-- LGECOMVIO-34 : 쿠폰 시스템 도입 -->
-                    <li class="lists coupon-item">
+                    <li class="lists coupon-item" style="display: none;">
                         <div class="coupon-box">
                             <div class="coupon-title"><em>사용 가능한 쿠폰</em>이 있어요</div>
                             <div class="coupon-btn">
