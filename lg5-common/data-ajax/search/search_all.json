@@ -657,6 +657,56 @@
                     "isVideo":true
                 }
             ]           
+        },
+        "company":{
+            "data": [
+                {
+                    "breadcrumb": "회사소개 > 기업정보 > LG WAY ",
+                    "title": " 일등LG",
+                    "url": "/company/info/firstplacelg",
+                    "content": "LG Way는 LG 고유의 경영철학이자, LG 전 임직원이 지키고 실천해야 할 사고와 행동의 기반입니다. 일등 LG 일등LG는 LG의 궁극적인 지향점으로 시장에서 인정받으며 시장을 리드하는 선도기업이 되는 것을 의미합니다."
+                },
+                {
+                    "breadcrumb": "회사소개 > 준법경영 > 개요 ",
+                    "title": " LG전자의 준법경영",
+                    "url": "/company/compliance/compliance",
+                    "content": ""
+                },
+                {
+                    "breadcrumb": "회사소개 > 준법경영 > Compliance Program ",
+                    "title": " LG전자의 CP",
+                    "url": "/company/compliance/program",
+                    "content": "LG전자 Compliance Program Cycle Compliance Program Cycle Risk Reporting Risk Identification Risk Assessment Risk Mitigation Risk Monitoring 주요 활동 식별 및 평가"
+                },
+                {
+                    "breadcrumb": "회사소개>투자자정보>공시/전자공고>전자공고",
+                    "title": "LG전자 공시정보관리 규정",
+                    "url": "/company/investor/announceView?anncmNo=16",
+                    "content": ""
+                }
+            ],
+            "count": 57
+        },
+        "livelg":{
+            "data": [
+                {
+                    "post_title": "환경의 날 '종이컵 줄이기 캠페인'",
+                    "post_content": " https://youtu.be/wE-PN5MnJyY 동영상 원고 선임 : 이야 잘먹었다 선임: 너무 짜게 먹었나? 선임: 캬~ 직원1: 지금 시작한대요 선임님! 선임: 아! 지금 갈게요 직원일동: 생일 축하합니다~ 생일축하합니다~ 직원1: 선임님 이거 케이크 가져가",
+                    "category_name": "환경/나눔",
+                    "post_url": "https://live.lge.co.kr/zerowaste-june/",
+                    "post_thumbnail": "https://live.lge.co.kr/wp-content/uploads/2021/06/종이컵-줄이기-캠페인-라이브엘지-썸네일.jpg",
+                    "category_type": "동영상"
+                },
+                {
+                    "post_title": "Art-View #3 작가 정5가 말하는 ‘혼자만의 시간’",
+                    "post_content": "밝고 건강하게 잘 지냈으면 합니다. 😄 l 혼자만의 힐링 타임을 담은 LG전자 아티스트 콜라보레이션 LG전자 x 정5 콜라보 작품, 소파에 쉬며 LG 코드제로 A9S 펫으로 고양이들의 털을 청소하는 모습 저의 일상을 담고 싶었어요.",
+                    "category_name": "LG 라이프",
+                    "post_url": "https://live.lge.co.kr/artview-03/",
+                    "post_thumbnail": "https://live.lge.co.kr/wp-content/uploads/2021/06/artview_jung5_main_2106072.png",
+                    "category_type": "포스트"
+                }
+            ],
+            "count": 777
         }
     }
 }

@@ -798,6 +798,10 @@
                     //고객지원
                     count = self.checkCountData(data.customer);
                     self.setTabCount(6, count);
+
+                    //LIVE LG
+                    count = self.checkCountData(data.livelg);
+                    self.setTabCount(8, count);
                     
                     //추천 제품
                     /*

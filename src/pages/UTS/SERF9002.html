@@ -38,11 +38,15 @@
                         <ul class="tabs">
                             <li class="on" data-label="전체"><a href="/html/UTS/SERF9002.html" data-category-id="all" data-search-url="/lg5-common/data-ajax/search/search_all.json">전체<span>(210)</span><em class="blind">선택됨</em></a></li>
                             <li data-label="제품"><a href="/html/UTS/SERF9003.html" data-category-id="product" data-search-url="/lg5-common/data-ajax/search/search_product.json">제품/케어솔루션<span>(59)</span></a></li>
-                            <li data-label="이벤트/기획전"><a href="/html/UTS/SERF9005.html" data-category-id="event" data-search-url="/lg5-common/data-ajax/search/search_event.json">이벤트/기획전<span>(5)</span></a></li>
-                            <li data-label="스토리"><a href="/html/UTS/SERF9006.html" data-category-id="story" data-search-url="/lg5-common/data-ajax/search/search_story.json">스토리<span>(18)</span></a></li>
                             <li data-label="케어용품/소모품"><a href="/html/UTS/SERF9007.html" data-category-id="additional" data-search-url="/lg5-common/data-ajax/search/search_additional.json">케어용품/소모품<span>(32)</span></a></li>
+                            <li data-label="스토리"><a href="/html/UTS/SERF9006.html" data-category-id="story" data-search-url="/lg5-common/data-ajax/search/search_story.json">스토리<span>(18)</span></a></li>
+                            <li data-label="이벤트/기획전"><a href="/html/UTS/SERF9005.html" data-category-id="event" data-search-url="/lg5-common/data-ajax/search/search_event.json">이벤트/기획전<span>(5)</span></a></li>                           
                             <li data-label="센터/매장"><a href="/html/UTS/SERF9015.html" data-category-id="shop" data-search-url="/lg5-common/data-ajax/search/search_shop.json">센터/매장<span>(2)</span></a></li>
                             <li data-label="고객지원"><a href="/html/UTS/SERF9008.html" data-category-id="customer" data-search-url="/lg5-common/data-ajax/search/search_customer.json">고객지원<span>(28)</span></a></li>
+                            <li data-label="회사소개"><a href="" data-category-id="company" data-search-url="/lg5-common/data-ajax/search/search_company.json">회사소개<span>(55)</span></a></li>
+                            <!-- S: BTOCSITE-8911 통합검색 내 Live LG 컨텐츠 연동 노출 -->
+                            <li data-label="LIVE LG"><a href="/html/UTS/SERF9016.html" data-category-id="livelg" data-search-url="/lg5-common/data-ajax/search/search_live_lg.json">LIVE LG<span>(30)</span></a></li>
+                            <!-- E: BTOCSITE-8911 통합검색 내 Live LG 컨텐츠 연동 노출 -->
                         </ul>
                     </div>
                 </div>
@@ -672,6 +676,125 @@
                             </div>
                             <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
                         </div>
+
+                        <!-- 회사소개 -->
+                        <div class="result-list-wrap" data-log-index="company">
+                            <div class="list-head">
+                                <h2 class="title">회사소개</h2>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="result-list company-list">
+                                    @@loop('./common/modules/result-list.html', [
+                                        {
+                                            "itemLink" : true,
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/noimage.png",
+                                            "tit" : "LG XPION A50PH XPION A50PH",
+                                            "sku" : "LG 올레드 AI ThinQ",
+                                            "InfoText" : ["제품사용설명서", "드라이버/소프트웨어", "제품문제해결"]
+
+                                        }, {
+                                            "itemLink" : true,
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@img-cs.jpg",
+                                            "tit" : "LG XPION A50PH XPION A50PH",
+                                            "sku" : "LG 올레드 AI ThinQ",
+                                            "InfoText" : ["제품사용설명서", "드라이버/소프트웨어", "제품문제해결"]
+
+                                        }, {
+                                            "itemClass" : "",
+                                            "flags" : ["제품사용설명서"],
+                                            "tit" : "HTML 사용설명서",
+                                            "cs" : true,
+                                            "InfoText" : ["2020.11.03", "한글"],
+                                            "btnB" : ["ZIP", "HTML"]
+                                        }, {
+                                            "itemClass" : "",
+                                            "flags" : ["드라이버/소프트웨어"],
+                                            "tit" : "[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램",
+                                            "cs" : true,
+                                            "InfoText" : ["2020.11.03", "ver 7.7PHV1", "통합 드라이버 설치 프로그램"],
+                                            "btnB" : ["다운로드 1118.4MB"]
+
+                                        }, {
+                                            "itemClass" : "",
+                                            "itemLink" : true,
+                                            "flags" : ["제품문제해결"],
+                                            "tit" : "Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+                                            "cs" : true,
+                                            "InfoText" : ["2020.11.03", "조회수 5,692"],
+                                            "videoB" : true
+
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                            <!--[S] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
+                            <div class="btn-area">
+                                <a href="#company" class="btn-link btn-moreview"><span>고객지원 더보기</span></a>
+                            </div>
+                            <!--//[E] BTOCSITE-2059 - 검색 > 전체탭 > 더보기 버튼 UI 변경요청-->
+                        </div>
+
+                        <!-- S:BTOCSITE-8911 통합검색 내 Live LG 컨텐츠 연동 노출 -->
+                        <!-- LIVE LG -->
+                        <div class="result-list-wrap" data-log-index="livelg">
+                            <div class="list-head">
+                                <h2 class="title">LIVE LG</h2>
+                            </div>
+                            <div class="list-wrap">
+                                <ul class="result-list livelg-list">
+                                    @@loop('./common/modules/result-list.html', [
+                                        {
+                                            "itemLink" : true,
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/noimage.png",
+                                            "tit" : "LG XPION A50PH XPION A50PH",
+                                            "sku" : "LG 올레드 AI ThinQ",
+                                            "InfoText" : ["제품사용설명서", "드라이버/소프트웨어", "제품문제해결"]
+
+                                        }, {
+                                            "itemLink" : true,
+                                            "itemClass" : "",
+                                            "img" : "/lg5-common/images/dummy/@img-cs.jpg",
+                                            "tit" : "LG XPION A50PH XPION A50PH",
+                                            "sku" : "LG 올레드 AI ThinQ",
+                                            "InfoText" : ["제품사용설명서", "드라이버/소프트웨어", "제품문제해결"]
+
+                                        }, {
+                                            "itemClass" : "",
+                                            "flags" : ["제품사용설명서"],
+                                            "tit" : "HTML 사용설명서",
+                                            "cs" : true,
+                                            "InfoText" : ["2020.11.03", "한글"],
+                                            "btnB" : ["ZIP", "HTML"]
+                                        }, {
+                                            "itemClass" : "",
+                                            "flags" : ["드라이버/소프트웨어"],
+                                            "tit" : "[프로그램/Win7_32bit] XPION용 LG intelligent Update 프로그램",
+                                            "cs" : true,
+                                            "InfoText" : ["2020.11.03", "ver 7.7PHV1", "통합 드라이버 설치 프로그램"],
+                                            "btnB" : ["다운로드 1118.4MB"]
+
+                                        }, {
+                                            "itemClass" : "",
+                                            "itemLink" : true,
+                                            "flags" : ["제품문제해결"],
+                                            "tit" : "Miracast 또는 MHL포트를 이용하여 휴대폰과 TV를 연결하고 싶은가요?",
+                                            "cs" : true,
+                                            "InfoText" : ["2020.11.03", "조회수 5,692"],
+                                            "videoB" : true
+
+                                        }
+                                    ])
+                                </ul>
+                            </div>
+                            <div class="btn-area">
+                                <a href="#livelg" class="btn-link btn-moreview"><span>LIVE LG 더보기</span></a>
+                            </div>
+                        </div>
+                         <!-- E:BTOCSITE-8911 통합검색 내 Live LG 컨텐츠 연동 노출 -->
+
 
                         <div class="result-list-wrap list-no-data">
                             <div class="list-head">

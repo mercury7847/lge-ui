@@ -2,13 +2,14 @@
 <html lang="ko">
     @@include('./common/head.html', {
         pageCSS: ["UTS/UTS"],
-        pageJS: ["search/filterLayer","search/search_story"]
+        pageJS: ["search/filterLayer","search/search_livelg"]
     })
 <body>
     <div class="wrap">
         @@include('./common/header.html')
 
         <div class="container">
+            <!-- S: BTOCSITE-8911 통합검색 내 Live LG 컨텐츠 연동 노출 -->
             <!-- search -->
             <div class="contents search" data-search-value="노크온 매직스페이스" data-search-force=false
                 data-autocomplete-url="/lg5-common/data-ajax/search/searchAutoComplete.json"
@@ -26,7 +27,7 @@
                     "similar" : true
                 })
                 <!-- // 검색 영역 -->
-                
+
                 <!-- tabs -->
                 <div class="search-tabs-wrap">
                     <div class="tabs-wrap border-type ui_tab ui_smooth_scroll"><!-- 210218 수정 [.border-type 클래스 추가] -->
@@ -34,13 +35,13 @@
                             <li data-label="전체"><a href="/html/UTS/SERF9002.html" data-category-id="all" data-search-url="/lg5-common/data-ajax/search/search_all.json">전체<span>(210)</span><em class="blind">선택됨</em></a></li>
                             <li data-label="제품"><a href="/html/UTS/SERF9003.html" data-category-id="product" data-search-url="/lg5-common/data-ajax/search/search_product.json">제품/케어솔루션<span>(59)</span></a></li>
                             <li data-label="케어용품/소모품"><a href="/html/UTS/SERF9007.html" data-category-id="additional" data-search-url="/lg5-common/data-ajax/search/search_additional.json">케어용품/소모품<span>(32)</span></a></li>
-                            <li class="on" data-label="스토리"><a href="/html/UTS/SERF9006.html" data-category-id="story" data-search-url="/lg5-common/data-ajax/search/search_story.json">스토리<span>(18)</span></a></li>
+                            <li data-label="스토리"><a href="/html/UTS/SERF9006.html" data-category-id="story" data-search-url="/lg5-common/data-ajax/search/search_story.json">스토리<span>(18)</span></a></li>
                             <li data-label="이벤트/기획전"><a href="/html/UTS/SERF9005.html" data-category-id="event" data-search-url="/lg5-common/data-ajax/search/search_event.json">이벤트/기획전<span>(5)</span></a></li>                           
                             <li data-label="센터/매장"><a href="/html/UTS/SERF9015.html" data-category-id="shop" data-search-url="/lg5-common/data-ajax/search/search_shop.json">센터/매장<span>(2)</span></a></li>
                             <li data-label="고객지원"><a href="/html/UTS/SERF9008.html" data-category-id="customer" data-search-url="/lg5-common/data-ajax/search/search_customer.json">고객지원<span>(28)</span></a></li>
                             <li data-label="회사소개"><a href="" data-category-id="company" data-search-url="/lg5-common/data-ajax/search/search_company.json">회사소개<span>(55)</span></a></li>
                             <!-- S: BTOCSITE-8911 통합검색 내 Live LG 컨텐츠 연동 노출 -->
-                            <li data-label="LIVE LG"><a href="/html/UTS/SERF9016.html" data-category-id="livelg" data-search-url="/lg5-common/data-ajax/search/search_live_lg.json">LIVE LG<span>(30)</span></a></li>
+                            <li class="on" data-label="LIVE LG"><a href="/html/UTS/SERF9016.html" data-category-id="livelg" data-search-url="/lg5-common/data-ajax/search/search_live_lg.json">LIVE LG<span>(30)</span></a></li>
                             <!-- E: BTOCSITE-8911 통합검색 내 Live LG 컨텐츠 연동 노출 -->
                         </ul>
                     </div>
@@ -57,19 +58,17 @@
                     </div>
                 </div>
                 <!-- // 검색 결과 없음 -->
-
+                
                 <div class="cont-wrap w-filter"><!-- 필터 포함 시 : .w-filter 추가 -->
                     <!-- 210323 문구수정 -->
                     @@include('./common/modules/list-filter.html', {
                         "search" : true,
-                        "serviceLinkClass" : "story",
-                        "btmLink" : [
-                            {"text" : "매장 상담 신청", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"},
-                            {"text" : "매장 찾기", "img" : "/lg5-common/images/icons/icon-img02-64.svg"}
-                        ]
+                        "serviceLinkClass" : "livlg",
+                        "btmLink" : []
                    })
                    <!-- //210323 문구수정 -->
-                    <div class="search-result-wrap result-story">                       
+                    <div class="search-result-wrap">
+
                         <div class="result-area">
                             <!-- [모바일] 옵션 필터 적용한 경우 .applied 추가, 텍스트 "옵션필터 적용됨" 으로 변경 -->
                             <div class="btn-filter">
@@ -108,38 +107,42 @@
                             </div>
 
                             <div class="result-list-wrap">
-                                <!--
-                                <div class="list-head">
-                                    <h2 class="title">스토리</h2>
-                                    <div class="btn-area">
-                                        <a href="#product" class="btn-link"><span>더보기</span></a>
-                                    </div>
-                                </div>-->
                                 <div class="list-wrap">
-                                    <!-- 210628 태그와 등록일 삭제-->
-                                    <ul class="result-list story-list">
+                                    <ul class="result-list livelg-list">
                                         @@loop('./common/modules/result-list.html', [
                                         {
                                             "itemLink" : true,
                                             "itemClass" : "item-type2",
                                             "img" : "/lg5-common/images/dummy/@img-search.jpg",
-                                            "playbtn" : true,
-                                            "flags" : ["비하인드 스토리"],
-                                            "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결 LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결 LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
-                                            "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. "
+                                            "flags" : ["보도자료", "LG 뉴스룸"],
+                                            "tit" : "신개념 식물생활가전 ‘LG 틔운(LG tiiun)’ 출시",
+                                            "desc" : "고객은 오프라인 매장인 LG전자 베스트샵은 물론 LG전자 홈페이지, LG 씽큐 앱 등 다양한 방법으로 LG 틔운 씨앗키트를 구입하거나 정기 구독할 수도 있다."
                                         }, {
                                             "itemLink" : true,
                                             "itemClass" : "item-type2",
                                             "img" : "/lg5-common/images/dummy/@img-search.jpg",
-                                            "flags" : ["비하인드 스토리"],
-                                            "tit" : "LG 식기세척기 인사이드 #5 알쏭달쏭 궁금증 해결",
-                                            "desc" : "코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. 집에서 음식을 조리해 먹는 '홈쿡'이 대세로 떠오르면서 가사 노동을 덜어주는 식기세척기도 함께 인기를 코로나19로 생활 속 거리두기가 장기화되면서 집에서 보내는 시간이 점점 늘어나고 있습니다. "
+                                            "flags" : ["포스트", "TV/생활가전"],
+                                            "tit" : "LG전자 제5타워  ‘LG 퓨리케어 에어로타워’ 디자이너를 만나다",
+                                            "desc" : "본사인 트윈타워, LG 트롬 워시타워, LG 휘센 타워 에어컨, LG 올인원타워, 그리고 작년 12월 합류한 ‘LG 퓨리케어 에어로타워(이하 에어로타워)’죠."
+                                        }, {
+                                            "itemLink" : true,
+                                            "itemClass" : "item-type2",
+                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
+                                            "flags" : ["보도자료", "LG 뉴스룸"],
+                                            "tit" : "엘지마그나 이파워트레인, 이사회 열고 주요 경영진 선임",
+                                            "desc" : "엘지마그나 이파워트레인(대표 정원석, www.lgmagna.com)은 24일 이사회를 열고 주요 경영진을 선임했다."
+                                        } , {
+                                            "itemLink" : true,
+                                            "itemClass" : "item-type2",
+                                            "img" : "/lg5-common/images/dummy/@img-search.jpg",
+                                            "flags" : ["동영상", "현장 취재"],
+                                            "tit" : "[LG at CES 2021] LG Press Conference",
+                                            "desc" : ""
                                         }
                                     ])
-                                    </ul> 
-                                    <!-- 210628 태그와 등록일 삭제-->
+                                    </ul>
                                 </div>
-                            </div> <!-- // 스토리-->
+                            </div> <!-- // 센터, 매장-->
                             <div class="pagination" data-page="1" data-visible-count="5" data-total-count="1"></div>
                             <!-- @@include('./common/modules/pagination.html', {
                                 count: 5
@@ -205,24 +208,19 @@
                                 </div>
                             </div>
 
-                        </div>
-                    </div>  
-                    
+                        </div>     
+                    </div>
+
                     <div class="mobile-service-link">
                         <ul> 
-                            <!-- 210323 문구수정 -->
-                            <li><a href="#n" class="btn-text"><span>매장 상담 신청</span><img src="/lg5-common/images/icons/ic-main-calender-48.svg" alt=""></a></li>
-                            <!-- //210323 문구수정 -->
-                        
-                            <li><a href="#n" class="btn-text"><span>매장 찾기</span><img src="/lg5-common/images/icons/icon-img02-64.svg" alt=""></a></li>
-                            
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- // evsearchent -->
+            <!-- // search -->
         </div>
-        
+        <!-- E: BTOCSITE-8911 통합검색 내 Live LG 컨텐츠 연동 노출 -->
+
         @@include('./common/footer.html')
     </div>     
 </body>
