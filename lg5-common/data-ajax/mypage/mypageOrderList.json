@@ -3,36 +3,39 @@
         "data": {
             "message": "",
             "myShoppingCnt": 2,
-            "status": "true",
-            "completeUrl": "/my-page/care-solution-contract-status",
+            "status": "true",            
             "dataList": [{
                 "productNameKR": "LG 트롬",
                 "modelID": "MD08921938",
                 "status": "배송준비중",
-                "category": "일반제품"
+                "category": "일반제품",
+                "completeUrl": "/my-page/care-solution-contract-status"
             },{
                 "productNameKR": "LG 트롬",
                 "modelID": "MD08921938",
                 "status": "배송완료",
-                "category": "일반제품"
+                "category": "일반제품",
+                "completeUrl": "/my-page/care-solution-contract-status"
             }]
         },
         "dataFlag": "Y"
     },
-    "bestCounselList": {
+    "bestshopCounselList": {
         "data": {
             "bestCounselCnt": 2,
             "bestCounselList": [{
                     "counselEventType": "화상상담",
                     "progress": "고객취소",
                     "modelName": "50UP8300KNA",
-                    "modelDisplayName": "LG 울트라 HD TV(벽걸이)"
+                    "modelDisplayName": "LG 울트라 HD TV(벽걸이)",
+                    "completeUrl": "#bestCounselList0"
                 },
                 {
                     "counselEventType": "소모품 구매 예약",
                     "progress": "예약완료",
                     "modelName": "",
-                    "modelDisplayName": "올레드 TV 외 20개"
+                    "modelDisplayName": "올레드 TV 외 20개",
+                    "completeUrl": "#bestCounselList1"
                 }
             ]
         },
@@ -45,7 +48,8 @@
             "nextList": [{
                 "CONT_LINE_SEQ": "20228969",
                 "CALC_DATE": "20210926",
-                "CATEGORY_NM_KOR": "식기세척기"
+                "CATEGORY_NM_KOR": "식기세척기",
+                "completeUrl": "#nextList0"
             }]
         },
         "dataFlag": "Y"
@@ -56,12 +60,14 @@
             "inquiryList": [{
                     "newTitle": "테스트1",
                     "categoryTitle": "Q&A",
-                    "progress": "답변대기"
+                    "progress": "답변대기",
+                    "completeUrl": "#inquiryList0"
                 },
                 {
                     "newTitle": "ttest 테스트 입니다",
                     "categoryTitle": "칭찬합니다",
-                    "progress": "답변중"
+                    "progress": "답변중",
+                    "completeUrl": "#inquiryList1"
                 }
             ]
         },
@@ -74,13 +80,75 @@
                     "inquiryType": "이메일 문의",
                     "modelCd": "42PN450H-NA",
                     "progress": "접수",
-                    "modelCategory": "TV / 프로젝터>PDP"
+                    "modelCategory": "TV / 프로젝터>PDP",
+                    "completeUrl": "#reservationList0"
                 },
                 {
                     "inquiryType": "이메일 문의",
                     "modelCd": "B507SM",
                     "progress": "답변중",
-                    "modelCategory": "냉장/냉동고>일반형"
+                    "modelCategory": "냉장/냉동고>일반형",
+                    "completeUrl": "#reservationList1"
+                }
+            ]
+        },
+        "dataFlag": "Y"
+    },
+    "wishList": {
+        "data": {
+            "wishCnt": 2,
+            "list": [
+                {
+                    "disabled": false,
+                    "disabledReason": null,
+                    "obsBtnFlag": "enable",
+                    "priceFlag": "Y",
+                    "requireCare": "N",
+                    "id": "MD08981826",
+                    "modelName": "QP5W",
+                    "sku": "QP5W.AKOR",
+                    "wishListId": "2815878",
+                    "wishItemId": "104041",
+                    "title": "LG 사운드바",
+                    "imageUrl": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                    "imageAlt": "",
+                    "pdpUrl": "/home-audio/qp5w",
+                    "originalPrice": "997800",
+                    "price": "900500",
+                    "categoryId": "CT50000036",
+                    "rtSeq": null,
+                    "typeFlag": "P",
+                    "spec": [
+                        "스피커 구성 : 3.1.2ch",
+                        "유선/무선 스피커 : 무선 서브 우퍼"
+                    ],
+                    "completeUrl": "#list0"
+                },
+                {
+                    "disabled": false,
+                    "disabledReason": null,
+                    "obsBtnFlag": "enable",
+                    "priceFlag": "Y",
+                    "requireCare": "N",
+                    "id": "MD09062827",
+                    "modelName": "65ART90EKPA",
+                    "sku": "65ART90EKPA.AKR",
+                    "wishListId": "2815878",
+                    "wishItemId": "104038",
+                    "title": "LG 올레드 evo 오브제컬렉션 ",
+                    "imageUrl": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                    "imageAlt": "",
+                    "pdpUrl": "/tvs/65art90ekpa",
+                    "originalPrice": "10969600",
+                    "price": "9900000",
+                    "categoryId": "CT50000025",
+                    "rtSeq": null,
+                    "typeFlag": "P",
+                    "spec": [
+                        "화면 사이즈 : 163 cm (베젤 미포함)",
+                        "디스플레이 종류 : 올레드"
+                    ],
+                    "completeUrl": "#list1"
                 }
             ]
         },

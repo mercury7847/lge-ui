@@ -33,7 +33,7 @@
         '</dl>' +
       '{{#else}}' +
         '<dl>' +
-          '<dt>구매예약제품</dt>' +
+          '<dt>상담제품</dt>' +
           '<dd>' +
             '{{#each item in _category}} <div class="li_categ">' +
               '{{#each cate in item}}<span>{{#raw cate}}' + 
@@ -324,9 +324,11 @@
     error: function (result) {
       var errorMsg = "";
 
-      if (result.message === "SYSTEM_DOWN_TIME_PLAN") {
+      if (result.message === SYSTEM_DOWN_TIME_PLAN) {
         errorMsg = result.downTimeStart + " ~ " + result.downTimeEnd;
       }
+
+      this.el.$error.find(".msg_annex").toggle(errorMsg.length > 0);
 
       this.el.$error.show().find(".msg_annex > dd").html(errorMsg);
       this.el.$noData.hide();
@@ -346,19 +348,22 @@
         ajaxUrl,
         {},
         function (result) {
-          if (result.status === "error") {
-            if (result.message === SYSTEM_DOWN_TIME_PLAN) {
-              this.error(result);
-            } else if (result.message === NOT_LOG_IN) {
+          var status = result.status.toLocaleLowerCase();
+
+          if (status === "error") {
+            if (result.message === NOT_LOG_IN) {
               this.goLogin();
+            } else {
+              this.error(result);
             }
 
             return;
           } else {
             // 베스트샵 회원이 아닌 경우
             if (result.bestshopYn === "N") {
-              this.goBestShopSignUp();
-              return;
+              result.data.counselOrderList = []; // 일단 데이터 없음 처리
+              /* this.goBestShopSignUp();
+              return; */
             }
           }
 
@@ -480,12 +485,12 @@
               // "storeVisitDateTime" 바인딩 format 수정
               data._visitDate = vcui.date.format(
                 visitDate,
-                "yyyy년 MM월 dd일, hh시"
+                "yyyy.MM.dd. hh:mm"
               );
               data._visitDateStr = visitDateStr; // yyyy-mm-dd 형태의 예약일
 
               // "reg_date" 바인딩 format 수정
-              data._regDate = vcui.date.format(regDateStr, "yyyy년 MM월 dd일");
+              data._regDate = vcui.date.format(regDateStr, "yyyy.MM.dd");
               // 정렬을 위한 예약일시 타임형태로 저장
               data._sort = vcui.date.parse(visitDate).getTime();
               data._sortSame = vcui.date.parse(regDateStr).getTime();
@@ -690,8 +695,8 @@
 
       // 각 탭 마크업 특수
       if (item.hasOwnProperty("counselEventType")) {
-        item._method = item._type !== 2 ? "상담" : "구매";
-        item._loc = item._type !== 2 ? "상담" : "예약";
+        item._method = item._type !== 2 ? "상담" : "상담"; /* "상담" : "구매" */ // 베샵 요청에 의해 일괄 "상담" 통일..;
+        item._loc = item._type !== 2 ? "상담" : "상담"; /* "상담" : "예약" */ // 베샵 요청에 의해 일괄 "상담" 통일..;
         item._title = item.counselEventType;
       }
 

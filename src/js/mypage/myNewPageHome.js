@@ -8,9 +8,27 @@
                 '<span class="prod {{#if _clContType === "visit"}}date{{/if}}">{{_modelNm}}</span>'+
                 '{{#if _modelId !== ""}}<span class="model">{{_modelId}}</span>{{/if}}'+
             '</div>'+
-            '<a href="#" class="btn-myact"><i class="blind">바로가기</i></a>'+
+            '<a href="{{completeUrl}}" class="btn-myact"><i class="blind">바로가기</i></a>'+
         '</div>'+
     '</li>';
+
+    // prettier-ignore
+    var wishItemTemplate = "<li>" +
+            '<div class="item">' +
+                '<div class="product-image" aria-hidden="true">' +
+                    '<a href="{{pdpUrl}}"><img src="{{imageUrl}}" alt="{{imageAlt}}"></a>' +
+            '</div>' +
+            '<div class="product-contents">' +
+                '<div class="product-info">' +
+                    '<div class="product-name"><a href="{{pdpUrl}}">{{title}}</a></div>'+
+                    '<div class="sku">{{sku}}</div>' +
+                "</div>" +
+            "</div>" +
+        "</div>" +
+    "</li>";
+
+    // prettier-ignore
+    var noDataTemplate='<div class="no-data"><span>{{msg}}</span></div>';
 
     var MAX_LIST_CNT = 2;
 
@@ -21,11 +39,14 @@
             visitInfoList: [],
             inquiryList: [],
             reservationList: [],
+            wishList: [],
             orderListCnt: 0,
             bestCounselCnt: 0,
             visitInfoCnt: 0,
             inquiryListCnt: 0,
             reservationCnt: 0,
+            wishListCnt: 0,
+            wishListMsg: "",
         },
         el: {
             $contents: null,
@@ -81,6 +102,18 @@
             lgkorUI.cremaReload();
         },
         /**
+         * @method totalFormat
+         * @param {val} [val: 데이터]
+         * @return {myCallback}  [값이 100개 이상일 경우 표기 ]
+         */
+        totalFormat: function (val) {
+            if (val >= 100) {
+                return "99+";
+            } else {
+                return val;
+            }
+        },
+        /**
          * @method requestMyPageList
          * @memberof
          * @return {myCallback}  [정보관리 > 쿠폰 갯수 API ]
@@ -91,19 +124,12 @@
                 sendUrl,
                 {},
                 function (result) {
-                    var txtCntCoupon = vcui.number.addComma(result["couponCnt"]);
+                    var txtCntCoupon = this.totalFormat(result["couponCnt"]);
 
-                    var totalFormat = function (val) {
-                        if (val >= 100) {
-                            return "99+";
-                        } else {
-                            return val;
-                        }
-                    };
                     $(".my-info .count")
                         .eq(1)
-                        .html(totalFormat(txtCntCoupon) + '<i class="unit">장</i>');
-                },
+                        .html(txtCntCoupon + '<i class="unit">장</i>');
+                }.bind(this),
                 "GET",
                 "json",
                 true,
@@ -118,7 +144,6 @@
          */
         requestMyPageList: function () {
             var url = this.el.$contents.data("mypage-info");
-            var oSelf = this;
             lgkorUI.showLoading();
             lgkorUI.requestAjaxDataPost(
                 url,
@@ -131,51 +156,75 @@
                         });
                     } else {
                         var totListCnt = 0;
-                        if (result.orderList.dataFlag == "Y") {
+
+                        if (result.orderList && result.orderList.dataFlag == "Y") {
                             this.variable.orderListData = result.orderList.data.dataList;
                             this.variable.orderListCnt = result.orderList.data.myShoppingCnt;
                             totListCnt += Number(this.variable.orderListCnt);
 
                             this.renderList(0, this.variable.orderListCnt);
+                        } else {
+                            this.el.$actGroup.eq(0).remove();
                         }
-                        if (result.bestCounselList.dataFlag == "Y") {
-                            this.variable.bestCounselList = result.bestCounselList.data.bestCounselList;
-                            this.variable.bestCounselCnt = result.bestCounselList.data.bestCounselCnt;
+
+                        if (result.bestshopCounselList && result.bestshopCounselList.dataFlag == "Y") {
+                            this.variable.bestCounselList = result.bestshopCounselList.data.bestCounselList;
+                            this.variable.bestCounselCnt = result.bestshopCounselList.data.bestCounselCnt;
                             totListCnt += Number(this.variable.bestCounselCnt);
 
                             this.renderList(1, this.variable.bestCounselCnt);
+                        } else {
+                            this.el.$actGroup.eq(1).remove();
                         }
 
-                        if (result.visitInfoList.dataFlag == "Y") {
+                        if (result.visitInfoList && result.visitInfoList.dataFlag == "Y") {
                             this.variable.visitInfoList = result.visitInfoList.data.nextList;
                             this.variable.visitInfoCnt = result.visitInfoList.data.nextListCnt;
                             totListCnt += Number(this.variable.visitInfoCnt);
 
                             this.renderList(2, this.variable.visitInfoCnt);
+                        } else {
+                            this.el.$actGroup.eq(2).remove();
                         }
 
-                        if (result.myInquiryList.dataFlag == "Y") {
+                        if (result.myInquiryList && result.myInquiryList.dataFlag == "Y") {
                             this.variable.inquiryList = result.myInquiryList.data.inquiryList;
                             this.variable.inquiryListCnt = result.myInquiryList.data.inquiryListCnt;
                             totListCnt += Number(this.variable.inquiryListCnt);
 
                             this.renderList(3, this.variable.inquiryListCnt);
+                        } else {
+                            this.el.$actGroup.eq(3).remove();
                         }
 
-                        if (result.myInquiryList.dataFlag == "Y") {
+                        if (result.reservationList && result.reservationList.dataFlag == "Y") {
                             this.variable.reservationList = result.myReservationList.data.reservationList;
                             this.variable.reservationCnt = result.myReservationList.data.reservationCnt;
                             totListCnt += Number(this.variable.reservationCnt);
 
                             this.renderList(4, this.variable.reservationCnt);
+                        } else {
+                            this.el.$actGroup.eq(4).remove();
                         }
+
                         if (totListCnt > 0) {
                             this.el.$actSection.show();
                         } else {
                             this.el.$actSection.hide();
                         }
+
+                        //찜한 목록 데이터 연결
+                        if (result.wishList) {
+                            this.variable.wishListMsg = result.wishList.data.message;
+
+                            if (result.wishList.dataFlag == "Y") {
+                                this.variable.wishList = result.wishList.data.list;
+                                this.variable.wishListCnt = result.wishList.data.wishCnt;
+                            }
+                            this.renderWishList();
+                        }
                     }
-                }.bind(oSelf),
+                }.bind(this),
                 true
             );
         },
@@ -186,9 +235,10 @@
          */
         renderList: function (groupIdx, listCnt) {
             if (listCnt === 0) {
-                this.el.$actGroup.eq(groupIdx).hide();
+                this.el.$actGroup.eq(groupIdx).remove();
                 return;
             }
+            this.el.$actGroup.eq(groupIdx).show();
             this.setTxtCount(groupIdx, listCnt);
             var cntList = Math.min(listCnt, MAX_LIST_CNT);
             for (var i = 0; i < cntList; i++) {
@@ -338,6 +388,30 @@
                         return "counselling-ready";
                         break;
                 }
+            }
+        },
+        /**
+         * @method renderWishList
+         * @return {myCallback}  [위시리스트 영역]
+         */
+        renderWishList: function () {
+            var $wishWrap = $(".my-section-wrap .my-section").eq(0);
+            var $txtCntWishList = $wishWrap.find(".count");
+            var $prdList = $wishWrap.find(".my-prod-list");
+            var cntList = Math.min(this.variable.wishListCnt, MAX_LIST_CNT);
+            $prdList.empty();
+
+            if (this.variable.wishListCnt > 0) {
+                $txtCntWishList.text("(" + this.totalFormat(this.variable.wishListCnt) + ")");
+
+                for (var i = 0; i < cntList; i++) {
+                    $prdList.append(vcui.template(wishItemTemplate, this.variable.wishList[i]));
+                }
+            } else {
+                $txtCntWishList.text("");
+                var data = {};
+                data.msg = this.variable.wishListMsg;
+                $prdList.append(vcui.template(noDataTemplate, data));
             }
         },
     };
