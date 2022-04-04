@@ -1,0 +1,10 @@
+<svg id="img_CareBenefit4_64_off" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <rect id="Rectangle" width="48" height="48" fill="none"/>
+  <g id="ic" transform="translate(6 5.25)">
+    <path id="빼기_1" data-name="빼기 1" d="M-852.6,7139.35H-864a9.611,9.611,0,0,1,9.6-9.6,9.678,9.678,0,0,1,1.822.173,2.555,2.555,0,0,0-.022.329v9.1Zm-2-9.6a5,5,0,0,1-5-5,5,5,0,0,1,5-5,5.006,5.006,0,0,1,5,5,4.952,4.952,0,0,1-1.047,3.062,2.508,2.508,0,0,0-1.737,1.421A4.954,4.954,0,0,1-854.6,7129.749Z" transform="translate(867.6 -7120)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Rectangle-2" data-name="Rectangle" d="M0,0H33a0,0,0,0,1,0,0V10.2A1.8,1.8,0,0,1,31.2,12H1.8A1.8,1.8,0,0,1,0,10.2V0A0,0,0,0,1,0,0Z" transform="translate(2 23.75)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Rectangle-3" data-name="Rectangle" d="M2.5,0h12A2.5,2.5,0,0,1,17,2.5V12a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V2.5A2.5,2.5,0,0,1,2.5,0Z" transform="translate(15 7.75)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <rect id="Rectangle-4" data-name="Rectangle" width="35" height="4" rx="2" transform="translate(0 19.75)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <circle id="Oval" cx="2.4" cy="2.4" r="2.4" transform="translate(20.7 11.55)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>
