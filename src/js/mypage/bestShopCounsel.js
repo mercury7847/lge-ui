@@ -646,6 +646,9 @@
             item._prdId = item.modelName;
 
             item._category = item.modelDisplayName.trim();
+            item._category += item.modelName.length
+              ? " (" + item.modelName + ")"
+              : "";
           } else {
             var categorys = [];
 
