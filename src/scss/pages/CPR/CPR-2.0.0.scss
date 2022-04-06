@@ -1,0 +1,1034 @@
+@charset "UTF-8";
+
+@import "../../utilities/variables";
+@import "../../utilities/mixins";
+
+
+// 비교하기 결과
+.header-wrap{
+  border-bottom:1px solid #ddd;
+}
+.container{
+  .page-header{
+    padding:80px 40px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title{
+      text-align:left;
+    }
+    .select-wrap {
+      width: 203px;
+      margin-right: 24px;
+      padding: 32px 0 16px;
+      vertical-align: middle;
+      order: 1;
+    }
+  }
+}
+.contents.compare {
+
+  .compare-result {
+    .inner {
+      max-width: (1146px + 80px);
+      margin: 0 auto;
+      padding: 0 40px;
+      @include mobile {
+        max-width: 100%;
+        padding: 0 16px;
+      }
+    }
+
+    .product-items {
+      margin: 0 -24px;
+
+      > li {
+        padding: 0 24px;
+      }
+
+      @media (min-width: $tablet-s-width + 1) and (max-width: $desktop-s-width) {
+        margin: 0 -12px;
+        > li {
+          width: 33.333333%;
+          padding: 0 12px;
+        }
+      }
+      @include mobile {
+        margin: 0 -8px;
+        > li {
+          width: 50%;
+          padding: 0 4px;
+
+          &:nth-child(3) {
+            display: none;
+          }
+        }
+      }
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 200px 48px 40px;
+        border: 1px solid $color-border;
+        box-shadow: none;
+        text-align: center;
+        @include mobile {
+          padding: 168px 0 24px;
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 21px;
+            right: 21px;
+            width: 24px;
+            height: 24px;
+          }
+
+          .btn-close:after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 24px;
+            background: url(/lg5-common/images/icons/btn-close-24.svg) no-repeat;
+          }
+
+
+        .product-image {
+          position: absolute;
+          top: 40px;
+          right: 0;
+          left: 0;
+
+          img {
+            max-width: 160px;
+          }
+
+          @include mobile {
+            top: 8px;
+          }
+        }
+
+        .product-info {
+          padding-top: 16px;
+          font-size: 0;
+
+          .product-name {
+            margin-top: 0;
+
+            a {
+              @include font-medium;
+            }
+          }
+
+          .sku {
+            margin-right: 0;
+            color: #000;
+          }
+
+          .spec-info3 {
+            color: #000;
+          }
+        }
+
+        .product-bottom {
+          position: static;
+          margin-top: 20px;
+        }
+
+        .price-area {
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .product-button {
+          margin-top: 16px;
+
+          .btn {
+            max-width: 140px;
+            padding: 3px 11px;
+            font-size: 14px;
+            line-height: 24px;
+          }
+
+          @media all and (max-width: 1146px) {
+            flex-direction: column;
+            align-items: center;
+            height: 70px;
+            .btn {
+              width: 100%;
+
+              &:not(:first-child) {
+                margin-top: 6px;
+                margin-left: 0;
+              }
+            }
+          }
+        }
+
+        @include mobile {
+          .product-contents {
+            padding: 0 12px;
+          }
+          .product-info {
+            .product-name {
+              a {
+                @include font-medium;
+              }
+            }
+
+            .spec-info3 {
+              display: block;
+              margin-top: 4px;
+
+              &:before {
+                display: none;
+              }
+            }
+          }
+          .price-area {
+            flex-direction: column;
+            align-items: center;
+
+            .total {
+              font-size: $font-small;
+              line-height: 22px;
+            }
+          }
+          .product-button {
+            margin-top: 16px;
+
+            .btn {
+              max-width: 140px;
+              height: auto;
+              padding: 4px 0;
+              font-size: $font-small;
+              line-height: 22px;
+            }
+          }
+        }
+      }
+    }
+
+    .result-tabs {
+      position: relative;
+      //height:72px;
+      margin-top: 72px;
+      padding: 0;
+      @include mobile {
+        height: 100%;
+        margin: 24px -16px 0;
+        padding: 14px 0;
+        min-height: 64px; //BTOCSITE-5938-487 [모니터링] 비교하기 체크박스 제품박스 가림 수정
+      }
+
+      .tabs-scroll-wrap {
+        position: relative;
+
+        .tabs {
+          font-size: 0;
+          white-space: nowrap;
+          vertical-align: top;
+
+          > li {
+            display: inline-block;
+            white-space: nowrap;
+            vertical-align: top;
+            padding: 0 32px 0 0;
+
+            > a {
+              display: block;
+              position: relative;
+              // border-bottom: 4px solid transparent;
+              //padding:7px 16px;
+              font-weight: 700;
+              @include font-large;
+              color: #666;
+            }
+
+            &.on > a {
+              // border-color: #222;
+              //border-radius:24px;
+              //background-color:#e4e4e4;
+              color: #000;
+              border-bottom: 2px solid #000;
+            }
+
+            @include mobile {
+              margin-left: 6px;
+              &:first-child {
+                margin-left: 0;
+              }
+              > a {
+                // padding-bottom: 8px;
+                // border-width: 3px;
+              }
+            }
+          }
+        }
+
+        @include pc {
+          margin-right: 120px;
+          text-align: left;
+          .tabs > li {
+            margin-left: 0;
+
+            > a {
+              padding: 0 0 6px 0;
+              text-align: center;
+            }
+          }
+        }
+        @include mobile {
+          &:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 16px;
+            height: 36px;
+            background-image: linear-gradient(to left, rgba(255, 255, 255, 0), #ffffff);
+            content: '';
+          }
+          .tabs {
+            padding: 0 96px 0 16px;
+          }
+        }
+
+        .scroll-controls {
+          .btn-arrow {
+            position: absolute;
+            top: 0;
+            height: 72px;
+            border-radius: 0;
+            background-color: $color-bg-wt;
+            box-shadow: none;
+
+            &.prev {
+              left: 0;
+            }
+
+            &.next {
+              right: 0;
+            }
+          }
+
+          @include mobile {
+            display: none !important;
+          }
+        }
+      }
+
+      .check-different {
+        //position: absolute;
+        //bottom: 0;
+        //right: 0;
+        padding: 0 0 32px 0;
+
+        .chk-wrap input + label {
+          @include font-medium;
+        }
+
+        @include mobile {
+          bottom: 10px;
+          right: 16px;
+          padding: 11px 0;
+          background-color: $color-bg-wt;
+          &:before {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -30px;
+            width: 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0), $color-bg-wt);
+            content: '';
+          }
+        }
+      }
+    }
+
+    &.fixed {
+      background-color: $color-bg-wt;
+      box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14);
+
+      .product-items {
+        padding-top: 24px;
+
+        .item {
+          padding: 16px 48px;
+          @include mobile {
+            padding: 16px 12px;
+          }
+
+          &.compare-item {
+            //padding-bottom: 50px;
+            height: 160px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            @include mobile {
+              padding-bottom: 72px;
+            }
+          }
+
+          .product-image,
+            //.product-info .sku,
+          .product-info .spec-info3,
+          .product-button,
+          .product-bottom {
+            display: none;
+          }
+
+          .product-info {
+            margin-bottom: 0;
+            padding-top: 0;
+
+            .product-name {
+              margin-top: 0;
+
+              a {
+                //-webkit-line-clamp: 1;
+                overflow: visible;
+                -webkit-line-clamp: initial;
+              }
+            }
+          }
+
+          .price-area {
+            .original {
+              @include font-small;
+            }
+
+            .total {
+              @include font-medium;
+            }
+          }
+
+          .product-bottom {
+            bottom: 16px;
+            right: 16px;
+            left: 16px;
+          }
+        }
+
+        @include mobile {
+          padding: 10px 0;
+          .item {
+            .product-info {
+              .product-name {
+                margin-bottom: 6px;
+              }
+            }
+          }
+        }
+      }
+
+      .result-tabs {
+        margin-top: 64px;
+        @include mobile {
+          margin: 10px -16px 0; //BTOCSITE-5938-487 [모니터링] 비교하기 체크박스 제품박스 가림 수정
+          //padding-right:85px;
+        }
+      }
+    }
+  }
+
+  .compare-result-contents {
+    max-width: (1146px + 80px);
+    margin: 0 auto;
+    padding: 64px 40px 120px;
+
+    @include mobile {
+      max-width: 100%;
+      padding: 60px 16px;
+      border-top: 12px solid #f4f4f4;
+    }
+
+    .section {
+      margin-top: 120px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .title-wrap {
+        border-bottom: 2px solid #000;
+
+        .title {
+          padding-bottom: 16px;
+          text-align: center;
+          @include font-large-4;
+          @include mobile {
+            margin-bottom: 0;
+            padding-bottom: 14px;
+            font-size: 24px;
+            line-height: 33px;
+          }
+        }
+      }
+
+      @include mobile {
+        // margin: 0 -16px;
+        // padding: 40px 16px;
+        margin-top: 60px;
+        .title {
+          margin-bottom: 20px;
+        }
+      }
+      /* BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 */
+      .pay-benefit-wrap {
+        display: flex;
+        margin: 48px 0 0 -48px;
+        @media (min-width: $tablet-s-width + 1) and (max-width: $desktop-s-width) {
+          margin-left: -24px;
+        }
+        @include mobile {
+          margin: 32px 0 0 -12px;
+        }
+
+        .benefit-box {
+          margin-left: 48px;
+          width: calc(33.33% - 48px);
+          padding: 24px 24px 32px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          @media (min-width: $tablet-s-width + 1) and (max-width: $desktop-s-width) {
+            margin-left: 24px;
+            width: calc(33.33% - 24px);
+          }
+          @include mobile {
+            margin-left: 12px;
+            padding: 0;
+            width: calc(50% - 4px);
+            border: 0;
+          }
+
+          .payment-info {
+            > li {
+              margin-bottom: 8px;
+
+              &:first-of-type {
+                margin-bottom: 16px;
+                @include mobile {
+                  margin-bottom: 16px !important;
+                }
+              }
+
+              &:last-of-type {
+                margin-bottom: 0;
+              }
+
+              @include mobile {
+                margin-bottom: 12px !important;
+              }
+            }
+
+            .price-info {
+              display: flex;
+              align-items: center;
+              @media (max-width: $desktop-s-width) {
+                display: block;
+              }
+
+              dt {
+                flex: 1;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 24px;
+                @include mobile {
+                  font-size: 13px;
+                  line-height: 21px;
+                }
+              }
+
+              dd {
+                .price {
+                  font-size: 14px;
+                  line-height: 24px;
+                  font-weight: 700;
+                }
+
+                .discount-rate {
+                  font-weight: 700;
+                  font-size: 12px;
+                  color: #da0f47;
+
+                  &:after {
+                    content: '';
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    background: url('/lg5-common/images/icons/icon-triangle-16-pink.svg') no-repeat 0 3px;
+                  }
+                }
+              }
+
+              &.total {
+                .price {
+                  font-size: 20px;
+                  line-height: 30px;
+                  @include mobile {
+                    font-size: 18px;
+                    line-height: 26px;
+                  }
+                }
+              }
+
+              &.discount {
+                .text {
+                  @include mobile {
+                    margin-bottom: 4px;
+                  }
+                }
+
+                .price {
+                  color: #da0f47;
+                  @include mobile {
+                    font-size: 13px;
+                    line-height: 21px;
+                  }
+                }
+              }
+
+              &.total-discount {
+                margin-top: 12px;
+                @include mobile {
+                  margin-top: 16px;
+                }
+
+                .text {
+                  @include mobile {
+                    margin-bottom: 4px;
+                  }
+                }
+
+                .price {
+                  @include mobile {
+                    font-size: 13px;
+                    line-height: 21px;
+                  }
+                }
+              }
+
+              &.total-payment {
+                .price {
+                  font-size: 20px;
+                  line-height: 30px;
+                  color: #da0f47;
+                }
+              }
+
+              &.mem-point {
+                margin: 12px 0;
+                min-height: 48px;
+                @include mobile {
+                  margin: 16px 0;
+                }
+
+                .content {
+                  @media (max-width: $desktop-s-width) {
+                    margin-top: 8px;
+                  }
+                }
+              }
+            }
+          }
+
+          .additional {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #ddd;
+            @include mobile {
+              margin-top: 18px;
+              padding-top: 16px;
+            }
+
+            .title {
+              font-size: 16px;
+              line-height: 24px;
+              @include mobile {
+                font-size: 14px;
+                line-height: 22px;
+              }
+            }
+
+            .membership {
+              .payment-info {
+                margin-top: 20px;
+
+                > li {
+                  &:first-of-type {
+                    margin-bottom: 12px;
+                  }
+                }
+
+                .btn-box {
+                  .btn {
+                    &.size {
+                      @media (max-width: $desktop-s-width) {
+                        padding: 0 10px;
+                        width: 100%;
+                      }
+                    }
+                  }
+                }
+
+                .input-wrap {
+                  display: none;
+                  position: relative;
+                  padding-right: 28px;
+                  width: 160px;
+                  height: 48px;
+                  text-align: right;
+                  font-size: 14px;
+                  line-height: 26px;
+                  border: 1px solid #ddd;
+                  border-radius: 8px;
+                  background: #fff;
+                  line-height: 46px;
+                  @media (max-width: $desktop-s-width) {
+                    width: 100%;
+                  }
+
+                  &.p-none {
+                    background: #f4f4f4;
+                    color: #aaaaaa;
+
+                    &:after {
+                      color: #aaaaaa;
+                    }
+                  }
+
+                  em {
+                    margin-left: 1px;
+                  }
+                }
+              }
+            }
+
+            .acco-box {
+              position: relative;
+              margin-top: 12px;
+              border: 1px solid #ddd;
+              border-radius: 8px;
+              width: 100%;
+              min-height: 48px;
+              transition: all 0.4s;
+              @include mobile {
+                margin-top: 8px;
+              }
+
+              .cash-back-info {
+                display: block;
+                position: relative;
+                padding: 0 16px;
+                font-size: 14px;
+                line-height: 46px;
+                font-weight: 700;
+                @include mobile {
+                  padding: 0 12px;
+                }
+
+                .ico {
+                  position: absolute;
+                  top: 50%;
+                  right: 16px;
+                  width: 16px;
+                  height: 16px;
+                  margin-top: -8px;
+                  background: url('/lg5-common/images/icons/btn-down-16-black.svg') no-repeat 0 0;
+                  transition: all 0.3s;
+                  @include mobile {
+                    right: 12px;
+                  }
+                }
+              }
+
+              &.disabled {
+                border: 1px solid #ededed;
+                background: #ededed;
+
+                .cash-back-info {
+                  color: #aaa;
+                  font-weight: 500;
+                  cursor: default;
+                  pointer-events: none;
+
+                  .ico {
+                    background: url('/lg5-common/images/icons/btn-down-16-gray.svg') no-repeat 0 0;
+                  }
+                }
+              }
+
+              &.on {
+                border: 1px solid #000;
+                height: auto;
+
+                .ico {
+                  transform: rotate(180deg);
+                }
+              }
+
+              .ui_accord_content {
+                position: absolute;
+                z-index: 11;
+                top: 41px;
+                left: -1px;
+                right: -1px;
+                padding: 0 16px 24px;
+                max-height: 300px;
+                border: 1px solid #000;
+                border-top: 0;
+                border-radius: 0 0 8px 8px;
+                background: #fff;
+                overflow: auto;
+
+                .bullet-list {
+                  margin-top: 14px;
+                }
+              }
+
+              .info-box {
+                .bullet-list {
+                  font-size: 14px;
+                  line-height: 24px;
+
+                  .b-txt {
+                    margin-top: 16px;
+
+                    &:first-child {
+                      margin-top: 0;
+                    }
+
+                    .card-list {
+                      display: inline-block;
+                      width: calc(100% - 4px);
+
+                      li {
+                        word-break: keep-all;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .card-selec-box {
+              position: relative;
+              margin: 12px 0;
+              border: 1px solid #ddd;
+              border-radius: 8px;
+              width: 100%;
+              min-height: 48px;
+              @include mobile {
+                margin: 16px 0;
+              }
+
+              strong {
+                position: absolute;
+                top: 16px;
+                z-index: 1;
+                padding: 0 16px;
+                font-size: 14px;
+                border-radius: 8px;
+                @include mobile {
+                  padding: 0 12px;
+                }
+
+                &.mo-sel {
+                  @include mobile {
+                    display: none;
+                  }
+                }
+              }
+
+              .select-wrap {
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                .ui-selectbox-wrap {
+                  .ui-select-button {
+                    padding: 9px 47px 9px 12px;
+                    height: 46px;
+                    border: none;
+                    text-align: right;
+                    @include mobile {
+                      padding: 10px 36px 10px 12px;
+                      text-align: left;
+                    }
+
+                    .ui-select-text {
+                      font-size: 14px;
+                      line-height: 26px;
+                      color: #000;
+                    }
+
+                    .ico {
+                      right: 16px;
+                      @include mobile {
+                        right: 12px;
+                      }
+                    }
+                  }
+
+                  .ui-selectbox-list {
+                    text-align: right;
+
+                    ul {
+                      li {
+                        &:first-child {
+                          display: none;
+                        }
+
+                        a {
+                          font-size: 14px;
+                          line-height: 26px;
+                          white-space: normal; //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
+                          word-break: keep-all; //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+              &.zindex {
+                border: 1px solid #222;
+                border-bottom: 0;
+
+                .ui_selectbox {
+                  background: transparent;
+                }
+
+                .ui-selectbox-wrap {
+                  .ui-selectbox-list {
+                    top: 42px;
+                    left: -1px;
+                    right: -1px;
+                  }
+                }
+              }
+            }
+
+            .info-text {
+              margin-top: 24px;
+              padding: 16px 0 0 15px;
+              border-top: 1px solid #ddd;
+              font-size: 12px;
+              line-height: 22px;
+              text-indent: -15px;
+            }
+          }
+
+          &:nth-child(3) {
+            @include mobile {
+              display: none;
+            }
+          }
+        }
+      }
+
+      /* //BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 */
+    }
+
+    .lists {
+      @include clearfix;
+      margin: 0 -24px;
+      padding-top: 48px;
+      text-align: center;
+
+      .list {
+        float: left;
+        width: 33%;
+        padding: 0 24px;
+
+        > li {
+          &:not(:last-child) {
+            margin-bottom: 36px;
+          }
+        }
+      }
+
+      @include mobile {
+        margin: 0 -10px;
+        padding-top: 32px;
+        .list {
+          width: 50%;
+          padding: 0 10px;
+
+          &:nth-child(3) {
+            display: none;
+          }
+        }
+      }
+
+      dl {
+        dt {
+          margin-bottom: 2px;
+          font-weight: 500;
+          @include font-small;
+          color: $color-gray-1;
+        }
+
+        dd {
+          font-weight: 700;
+          @include font-medium;
+        }
+      }
+
+      &.main {
+        dl {
+          dd {
+            font-weight: 700;
+            font-size: $font-large-1;
+            line-height: 30px;
+            color: #111;
+            @include mobile {
+              font-size: $font-large;
+              line-height: 26px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// BTOCSITE-3276
+.compare-result-table {
+  table {
+    width: 100%;
+    table-layout: fixed;
+
+    tbody {
+      tr {
+        td {
+          width: 33.333333%;
+          padding: 0 24px 36px;
+          vertical-align: top;
+          @include mobile {
+            width: 50%;
+            padding: 0 10px 36px;
+            &:nth-child(3) {
+              display: none;
+            }
+          }
+        }
+
+        &:last-child {
+          td {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+
+    colgroup {
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+}

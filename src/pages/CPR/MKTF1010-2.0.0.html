@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ko">
+@@include('./common/head.html', {
+pageCSS: ["CPR/CPR-2.0.0"],
+pageJS: ["store/compareResult-2.0.0"],
+pageTitle: "제품 비교하기 | LG전자",
+pageDesc: "LG 전자의 제품 선택이 고민이시면 제품 비교하기 기능을 활용해 보세요. 인기 제품부터 최신 제품까지 간편하고 쉽게 한 눈에 비교 할 수 있습니다."
+})
+<body>
+<div class="wrap">
+    <!-- 210311_H1추가 -->
+    @@include('./common/header-2.0.0.html', {
+    hiddenTitle: "제품 비교하기"
+    })
+    <!-- //210311_H1추가 -->
+
+    <div class="container">
+        @@include('./common/modules/page-header.html', {
+        "pageTitle": "선택한 제품 비교하기",
+<!--        "pageLink": {-->
+<!--        "arrowPos": "arrow-left",-->
+<!--        "text": "돌아가기"-->
+<!--        } 20220404 삭제-->
+        })
+        <!-- 비교하기 결과 -->
+        <div class="contents compare">
+            <div class="compare-result ui_sticky" data-used-anchor="true" data-anchor-class=".tabs-scroll-wrap .tabs a"
+                 data-act-class="on"><!-- 20210105 돔 위치 변경, .ui_sticky 추가 -->
+                <div class="inner">
+                    <div class="list-wrap">
+                        <ul class="product-items">
+                            @@loop('./common/modules/product-list-item-loop.html', [
+                            {
+                            "itemClass": "compare-item",
+                            "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                            "doubleButton": {
+                                "originalPrice": true,
+                                "price": true,
+                            /*  "button": ["장바구니","자세히보기"] 20220404삭제 */
+                            }
+                            },{
+                            "itemClass": "compare-item",
+                            "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                            "spec3": true,
+                            "doubleButton": {
+                                "price": true,
+                            /*  "button": ["자세히보기"] 20220404삭제 */
+                            }
+                            },{
+                            "itemClass": "compare-item",
+                            "singleImage": "/lg5-common/images/dummy/@sample-180x180.jpg",
+                            "spec3": true,
+                            "doubleButton": {
+                                "originalPrice": true,
+                                "price": true,
+                            /*  "button": ["장바구니","자세히보기"] 20220404삭제 */
+                            }
+                            }
+                            ])
+                        </ul>
+                    </div>
+                    <div class="result-tabs">
+                        <!--20220404 위치이동-->
+                        <div class="check-different">
+                                <span class="chk-wrap">
+                                    <input type="checkbox" id="differentCompare" name="differentCompare">
+                                    <!-- 20210105 id/name 수정 -->
+                                    <!-- 210208 수정 -->
+                                    <label for="differentCompare">차이점만 보기</label><!-- 20210105 수정 -->
+                                    <!-- //210208 수정 -->
+                                </span>
+                        </div>
+                        <!--20220404 위치이동-->
+                        <!-- 20210105 .ui_smooth_scrolltab / .ui_smooth_tab 추가 -->
+                        <div class="tabs-scroll-wrap ui_smooth_scrolltab" data-used-tab-link="false">
+                            <div class="ui_smooth_tab">
+                                <!-- BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 -->
+                                <ul class="tabs">
+                                    <li class="on"><a href="#spec">주요스펙</a></li>
+                                    <li><a href="#capacity">용량</a></li>
+                                    <li><a href="#size">크기</a></li>
+                                    <li><a href="#design">디자인</a></li>
+                                    <li><a href="#skill">상세기능</a></li>
+                                    <li><a href="#benefit">구매 혜택</a></li> <!-- 20220404리스트위치바뀜-->
+
+                                </ul>
+                                <!-- //BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 -->
+                            </div>
+                            <div class="scroll-controls ui_smooth_controls">
+                                <button type="button" class="btn-arrow prev ui_smooth_prev"><span
+                                        class="blind">이전</span></button>
+                                <button type="button" class="btn-arrow next ui_smooth_next"><span
+                                        class="blind">다음</span></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="compare-result-contents"><!-- 20220404 .compare-result-contents 수정 -->
+
+                <div id="spec" class="section">
+                    <div class="title-wrap">
+                        <h2 class="title"><span>주요 스펙</span></h2>
+                    </div>
+                    <div class="lists main">
+                        <!-- BTOCSITE-3276 : 비교하기 항목 구조 변경 -->
+                        <div class="compare-result-table">
+                            <table>
+                                <colgroup>
+                                    <col width="33.333333333%">
+                                    <col width="33.333333333%">
+                                    <col width="33.333333333%">
+                                <colgroup>
+                                <thead class="blind">
+                                <tr>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q)</th>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q,케어십 가능)</th>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q,케어십 가능)</th>
+                                </tr>
+                                </thead>
+                                <tbody class="compare-result-list">
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>전체용량</dt>
+                                            <dd>821L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>전체용량</dt>
+                                            <dd>821L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>전체용량</dt>
+                                            <dd>821L</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>냉동</dt>
+                                            <dd>296L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>냉동</dt>
+                                            <dd>200L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>냉동</dt>
+                                            <dd>335L</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>냉장</dt>
+                                            <dd>525L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>냉장</dt>
+                                            <dd>407L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>냉장</dt>
+                                            <dd>505L</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>형태</dt>
+                                            <dd>노크온 매직스페이스</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>형태</dt>
+                                            <dd>크온 매직스페이스 노크온 매직스페이스 노크온 매직스페이스 노크온 매직스페이스</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>형태</dt>
+                                            <dd>노크온 매직스페이스</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>패턴(색상)</dt>
+                                            <dd>맨해튼 미드나잇 맨해튼 미드나잇 맨해튼 미드나잇 맨해튼 미드나잇</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>패턴(색상)</dt>
+                                            <dd>샤이니 퓨어</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>패턴(색상)</dt>
+                                            <dd>샤이니 유니버스</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="capacity" class="section">
+                    <div class="title-wrap">
+                        <h2 class="title"><span>용량</span></h2>
+                    </div>
+                    <div class="lists">
+                        <!-- BTOCSITE-3276 : 비교하기 항목 구조 변경 -->
+                        <div class="compare-result-table">
+                            <table>
+                                <colgroup>
+                                    <col width="33.333333333%">
+                                    <col width="33.333333333%">
+                                    <col width="33.333333333%">
+                                <colgroup>
+                                <thead class="blind">
+                                <tr>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q)</th>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q,케어십 가능)</th>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q,케어십 가능)</th>
+                                </tr>
+                                </thead>
+                                <tbody class="compare-result-list">
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>전체용량</dt>
+                                            <dd>821L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>전체용량</dt>
+                                            <dd>821L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>전체용량</dt>
+                                            <dd>821L</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>냉동</dt>
+                                            <dd>296L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>냉동</dt>
+                                            <dd>200L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>냉동</dt>
+                                            <dd>335L</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>냉장</dt>
+                                            <dd>525L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>냉장</dt>
+                                            <dd>407L</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>냉장</dt>
+                                            <dd>505L</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="size" class="section">
+                    <div class="title-wrap">
+                        <h2 class="title"><span>크기</span></h2>
+                    </div>
+                    <div class="lists">
+                        <div class="compare-result-table">
+                            <table>
+                                <colgroup>
+                                    <col width="33.333333333%">
+                                    <col width="33.333333333%">
+                                    <col width="33.333333333%">
+                                <colgroup>
+                                <thead class="blind">
+                                <tr>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q)</th>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q,케어십 가능)</th>
+                                    <!-- <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q,케어십 가능)</th> -->
+                                </tr>
+                                </thead>
+                                <tbody class="compare-result-list">
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>전체크기(WxHxD)</dt>
+                                            <dd>912 X 1,790 X 927mm</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>전체크기(WxHxD)</dt>
+                                            <dd>912 X 1,790 X 927mm</dd>
+                                        </dl>
+                                    </td>
+                                    <!-- <td>
+                                        <dl>
+                                            <dt>전체크기(WxHxD)</dt>
+                                            <dd>912 X 1,790 X 927mm</dd>
+                                        </dl>
+                                    </td> -->
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>무게</dt>
+                                            <dd>134kg</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>무게</dt>
+                                            <dd>134kg</dd>
+                                        </dl>
+                                    </td>
+                                    <!-- <td>
+                                        <dl>
+                                            <dt>무게</dt>
+                                            <dd>134kg</dd>
+                                        </dl>
+                                    </td> -->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="design" class="section">
+                    <div class="title-wrap">
+                        <h2 class="title"><span>디자인</span></h2>
+                    </div>
+                    <div class="lists">
+                        <div class="compare-result-table">
+                            <table>
+                                <colgroup>
+                                    <col width="33.333333333%">
+                                    <col width="33.333333333%">
+                                    <col width="33.333333333%">
+                                <colgroup>
+                                <thead class="blind">
+                                <tr>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q)</th>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q,케어십 가능)</th>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q,케어십 가능)</th>
+                                </tr>
+                                </thead>
+                                <tbody class="compare-result-list">
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>형태</dt>
+                                            <dd>노크온 매직스페이스 노크온 매직스페이스 노크온 매직스페이스 노크온 매직스페이스 노크온 매직스페이스</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>형태</dt>
+                                            <dd>매직스페이스</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>형태</dt>
+                                            <dd>노크온 매직스페이스</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>핸들</dt>
+                                            <dd>이지핸들</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>핸들</dt>
+                                            <dd>이지핸들</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>핸들</dt>
+                                            <dd>플랫핸들</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>디스플레이</dt>
+                                            <dd>Big 매직 디스플레이</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>디스플레이</dt>
+                                            <dd>Big 매직 디스플레이</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>디스플레이</dt>
+                                            <dd>서클 디스플레이(LCD)</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="skill" class="section">
+                    <div class="title-wrap">
+                        <h2 class="title"><span>상세기능</span></h2>
+                    </div>
+                    <div class="lists">
+                        <div class="compare-result-table">
+                            <table>
+                                <colgroup>
+                                    <col width="33.333333333%">
+                                    <col width="33.333333333%">
+                                    <col width="33.333333333%">
+                                <colgroup>
+                                <thead class="blind">
+                                <tr>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q)</th>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q,케어십 가능)</th>
+                                    <th scope="col">LG DIOS 노크온 매직스페이스(S833MC85Q,케어십 가능)</th>
+                                </tr>
+                                </thead>
+                                <tbody class="compare-result-list">
+                                <tr>
+                                    <td>
+                                        <dl>
+                                            <dt>대용량 바스켓</dt>
+                                            <dd>O</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>대용량 바스켓</dt>
+                                            <dd>X</dd>
+                                        </dl>
+                                    </td>
+                                    <td>
+                                        <dl>
+                                            <dt>대용량 바스켓</dt>
+                                            <dd>X</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 -->
+                <div id="benefit" class="section">
+                    <div class="title-wrap">
+                        <h2 class="title"><span>구매 혜택</span></h2>
+                    </div>
+                    <div class="pay-benefit-wrap">
+                        <!-- 비로그인 -->
+                        <div class="benefit-box">
+                            <ul class="payment-info">
+                                <li>
+                                    <dl class="price-info total">
+                                        <dt class="text">판매가</dt>
+                                        <dd class="content">
+                                            <strong class="price">1,990,000원</strong>
+                                        </dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">회원할인</dt>
+                                        <dd class="content"><span class="price">-59,700원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">즉시할인</dt>
+                                        <dd class="content"><span class="price">-77,210원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info total-discount">
+                                        <dt class="text">할인금액합계</dt>
+                                        <dd class="content"><span class="price">136,900원</span></dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="additional">
+                                <h2 class="title"><span>추가할인</span></h2>
+                                <div class="membership">
+                                    <ul class="payment-info">
+                                        <li>
+                                            <dl class="price-info discount">
+                                                <dt class="text">캐시백</dt>
+                                                <dd class="content"><span class="price">해당 사항없음</span></dd>
+                                            </dl>
+                                            <div class="ui_accordion" ui-modules="Accordion" role="presentation">
+                                                <ul>
+                                                    <li class="acco-box disabled"> <!-- 캐시백 혜택 없을 경우 disabled 추가 -->
+                                                        <div class="head" role="heading">
+                                                            <a href="#n"
+                                                               class="btn-toggle ui_accord_toggle cash-back-info"
+                                                               id="accrod_toggle_m4u3wxrkdj"
+                                                               aria-controls="accord_content_m4u3wxrkdj"
+                                                               aria-expanded="false">
+                                                                캐시백 혜택 안내
+                                                                <span class="ico"></span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="ui_accord_content" id="accord_content_m4u3wxrkdj"
+                                                             role="region" aria-labelledby="accord_toggle_m4u3wxrkdj"
+                                                             style="display: none;">
+                                                            <div class="info-box">
+                                                                <ul class="bullet-list">
+                                                                    <li class="b-txt">행사기간 : <br> 11월 3일~11월 30일 결제 완료
+                                                                    </li>
+                                                                    <li class="b-txt">
+                                                                        <ul class="card-list">
+                                                                            <li>신한카드 : 500,000원</li>
+                                                                            <li>국민카드 : 500,000원</li>
+                                                                            <li>비씨카드(NH) : 500,000원</li>
+                                                                            <li>비씨카드(우리) : 500,000원</li>
+                                                                            <li>현대카드(캐시백or청구할인) : 500,000원</li>
+                                                                            <li>롯데카드 : 500,000원</li>
+                                                                            <li>하나카드 : 500,000원</li>
+                                                                            <li>NH농협카드 : 500,000원</li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li class="b-txt">캐시백 지급은 배송일 기준 익월말에 지급됨.</li>
+                                                                    <li class="b-txt">단, 법인카드, 체크카드, 기프트카드는 적용 불가함.</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <dl class="price-info mem-point">
+                                                <dt class="text">멤버십 포인트</dt>
+                                                <dd class="content">
+                                                    <div class="btn-box">
+                                                        <a href="/sso/api/Login" class="btn dark-gray size"><span>보유 멤버십 포인트 확인</span></a>
+                                                    </div>
+                                                    <span class="input-wrap">0<em>P</em></span>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <div class="card-selec-box">
+                                                <strong>카드 혜택</strong>
+                                                <div class="select-wrap">
+                                                    <!-- BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 -->
+                                                    <select class="ui_selectbox" title="카드 혜택">
+                                                        <option value="" class="placeholder"></option><!-- 첫번째 옵션 공백 -->
+                                                        <option value="" class="placeholder"></option>
+                                                        <option value="" class="placeholder">현대카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">국민카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">삼성카드 - 무이자 2~6개월</option>
+                                                        <option value="" class="placeholder">신한카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">하나카드 - 무이자 2~8개월</option>
+                                                        <option value="" class="placeholder">BC카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">농협카드 - 무이자 2~8개월</option>
+                                                    </select>
+                                                    <!-- //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 -->
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <dl class="price-info total-discount">
+                                                <dt class="text">최대 할인 금액</dt>
+                                                <dd class="content">
+                                                    <small class="discount-rate">38%</small>
+                                                    <span class="price">136,900원</span>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="price-info total-payment">
+                                                <dt class="text">최대 혜택 적용 시</dt>
+                                                <dd class="content"><span class="price">-77,210원</span></dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p class="info-text">※ 할인적용가, 최대 혜택적용가는 회원에게 적용되는 가격으로서 로그인 후 주문시에 적용됩니다.<br>
+                                    또한, 캐시백은 총 결제금액의 60% 이상을 상기 신용카드로 결제해야, 캐시백 지급 대상이 됩니다. (멤버십 포인트 사용 등으로 카드 결제액이 60%
+                                    미만일 경우 지급되지 않음) 캐시백, 청구할인, 무이자 등은 각 카드사별 조건에 따라 달라질 수 있습니다.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 로그인 -->
+                        <div class="benefit-box">
+                            <ul class="payment-info">
+                                <li>
+                                    <dl class="price-info total">
+                                        <dt class="text">판매가</dt>
+                                        <dd class="content">
+                                            <strong class="price">1,990,000원</strong>
+                                        </dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">회원할인</dt>
+                                        <dd class="content"><span class="price">-59,700원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">즉시할인</dt>
+                                        <dd class="content"><span class="price">-77,210원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info total-discount">
+                                        <dt class="text">할인금액합계</dt>
+                                        <dd class="content"><span class="price">136,900원</span></dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="additional">
+                                <h2 class="title"><span>추가할인</span></h2>
+                                <div class="membership">
+                                    <ul class="payment-info">
+                                        <li>
+                                            <dl class="price-info discount">
+                                                <dt class="text">캐시백</dt>
+                                                <dd class="content"><span class="price">최대 혜택 23,000원</span></dd>
+                                            </dl>
+                                            <div class="ui_accordion" ui-modules="Accordion" role="presentation">
+                                                <ul>
+                                                    <li class="acco-box">
+                                                        <div class="head" role="heading">
+                                                            <a href="#n"
+                                                               class="btn-toggle ui_accord_toggle cash-back-info"
+                                                               id="accrod_toggle_m4u3wxrkdj"
+                                                               aria-controls="accord_content_m4u3wxrkdj"
+                                                               aria-expanded="false">
+                                                                캐시백 혜택 안내
+                                                                <span class="ico"></span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="ui_accord_content" id="accord_content_m4u3wxrkdj"
+                                                             role="region" aria-labelledby="accord_toggle_m4u3wxrkdj"
+                                                             style="display: none;">
+                                                            <div class="info-box">
+                                                                <ul class="bullet-list">
+                                                                    <li class="b-txt">행사기간 : <br> 11월 3일~11월 30일 결제 완료
+                                                                    </li>
+                                                                    <li class="b-txt">
+                                                                        <ul class="card-list">
+                                                                            <li>신한카드 : 500,000원</li>
+                                                                            <li>국민카드 : 500,000원</li>
+                                                                            <li>비씨카드(NH) : 500,000원</li>
+                                                                            <li>비씨카드(우리) : 500,000원</li>
+                                                                            <li>현대카드(캐시백or청구할인) : 500,000원</li>
+                                                                            <li>롯데카드 : 500,000원</li>
+                                                                            <li>하나카드 : 500,000원</li>
+                                                                            <li>NH농협카드 : 500,000원</li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li class="b-txt">캐시백 지급은 배송일 기준 익월말에 지급됨.</li>
+                                                                    <li class="b-txt">단, 법인카드, 체크카드, 기프트카드는 적용 불가함.</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <dl class="price-info mem-point">
+                                                <dt class="text">멤버십 포인트</dt>
+                                                <dd class="content">
+                                                    <div class="btn-box">
+                                                        <a href="/sso/api/Login" class="btn dark-gray size"><span>보유 멤버십 포인트 확인</span></a>
+                                                    </div>
+                                                    <span class="input-wrap">0<em>P</em></span>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <div class="card-selec-box">
+                                                <strong>카드 혜택</strong>
+                                                <div class="select-wrap">
+                                                    <!-- BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 -->
+                                                    <select class="ui_selectbox" title="카드 혜택">
+                                                        <option value="" class="placeholder"></option><!-- 첫번째 옵션 공백 -->
+                                                        <option value="" class="placeholder">롯데카드 - 무이자 2~4/12개월
+                                                        </option>
+                                                        <option value="" class="placeholder">현대카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">국민카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">삼성카드 - 무이자 2~6개월</option>
+                                                        <option value="" class="placeholder">신한카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">하나카드 - 무이자 2~8개월</option>
+                                                        <option value="" class="placeholder">BC카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">농협카드 - 무이자 2~8개월</option>
+                                                    </select>
+                                                    <!-- //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 -->
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <dl class="price-info total-discount">
+                                                <dt class="text">최대 할인 금액</dt>
+                                                <dd class="content">
+                                                    <small class="discount-rate">38%</small>
+                                                    <span class="price">136,900원</span>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="price-info total-payment">
+                                                <dt class="text">최대 혜택 적용 시</dt>
+                                                <dd class="content"><span class="price">-77,210원</span></dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p class="info-text">※ 할인적용가, 최대 혜택적용가는 회원에게 적용되는 가격으로서 로그인 후 주문시에 적용됩니다.<br>
+                                    또한, 캐시백은 총 결제금액의 60% 이상을 상기 신용카드로 결제해야, 캐시백 지급 대상이 됩니다. (멤버십 포인트 사용 등으로 카드 결제액이 60%
+                                    미만일 경우 지급되지 않음) 캐시백, 청구할인, 무이자 등은 각 카드사별 조건에 따라 달라질 수 있습니다.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="benefit-box">
+                            <ul class="payment-info">
+                                <li>
+                                    <dl class="price-info total">
+                                        <dt class="text">판매가</dt>
+                                        <dd class="content">
+                                            <strong class="price">1,990,000원</strong>
+                                        </dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">회원할인</dt>
+                                        <dd class="content"><span class="price">-59,700원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info discount">
+                                        <dt class="text">즉시할인</dt>
+                                        <dd class="content"><span class="price">-77,210원</span></dd>
+                                    </dl>
+                                </li>
+                                <li>
+                                    <dl class="price-info total-discount">
+                                        <dt class="text">할인금액합계</dt>
+                                        <dd class="content"><span class="price">136,900원</span></dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                            <div class="additional">
+                                <h2 class="title"><span>추가할인</span></h2>
+                                <div class="membership">
+                                    <ul class="payment-info">
+                                        <li>
+                                            <dl class="price-info discount">
+                                                <dt class="text">캐시백</dt>
+                                                <dd class="content"><span class="price">최대 혜택 23,000원</span></dd>
+                                            </dl>
+                                            <div class="ui_accordion" ui-modules="Accordion" role="presentation">
+                                                <ul>
+                                                    <li class="acco-box">
+                                                        <div class="head" role="heading">
+                                                            <a href="#n"
+                                                               class="btn-toggle ui_accord_toggle cash-back-info"
+                                                               id="accrod_toggle_m4u3wxrkdj"
+                                                               aria-controls="accord_content_m4u3wxrkdj"
+                                                               aria-expanded="false">
+                                                                캐시백 혜택 안내
+                                                                <span class="ico"></span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="ui_accord_content" id="accord_content_m4u3wxrkdj"
+                                                             role="region" aria-labelledby="accord_toggle_m4u3wxrkdj"
+                                                             style="display: none;">
+                                                            <div class="info-box">
+                                                                <ul class="bullet-list">
+                                                                    <li class="b-txt">행사기간 : <br> 11월 3일~11월 30일 결제 완료
+                                                                    </li>
+                                                                    <li class="b-txt">
+                                                                        <ul class="card-list">
+                                                                            <li>신한카드 : 500,000원</li>
+                                                                            <li>국민카드 : 500,000원</li>
+                                                                            <li>비씨카드(NH) : 500,000원</li>
+                                                                            <li>비씨카드(우리) : 500,000원</li>
+                                                                            <li>현대카드(캐시백or청구할인) : 500,000원</li>
+                                                                            <li>롯데카드 : 500,000원</li>
+                                                                            <li>하나카드 : 500,000원</li>
+                                                                            <li>NH농협카드 : 500,000원</li>
+                                                                        </ul>
+                                                                    </li>
+                                                                    <li class="b-txt">캐시백 지급은 배송일 기준 익월말에 지급됨.</li>
+                                                                    <li class="b-txt">단, 법인카드, 체크카드, 기프트카드는 적용 불가함.</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <dl class="price-info mem-point">
+                                                <dt class="text">멤버십 포인트</dt>
+                                                <dd class="content">
+                                                    <div class="btn-box">
+                                                        <a href="/sso/api/Login" class="btn dark-gray size"><span>보유 멤버십 포인트 확인</span></a>
+                                                    </div>
+                                                    <span class="input-wrap">0<em>P</em></span>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <div class="card-selec-box">
+                                                <strong>카드 혜택</strong>
+                                                <div class="select-wrap">
+                                                    <!-- BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 -->
+                                                    <select class="ui_selectbox" title="카드 혜택">
+                                                        <option value="" class="placeholder"></option><!-- 첫번째 옵션 공백 -->
+                                                        <option value="" class="placeholder">롯데카드 - 무이자 2~4/12개월
+                                                        </option>
+                                                        <option value="" class="placeholder">현대카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">국민카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">삼성카드 - 무이자 2~6개월</option>
+                                                        <option value="" class="placeholder">신한카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">하나카드 - 무이자 2~8개월</option>
+                                                        <option value="" class="placeholder">BC카드 - 무이자 2~7개월</option>
+                                                        <option value="" class="placeholder">농협카드 - 무이자 2~8개월</option>
+                                                    </select>
+                                                    <!-- //BTOCSITE-13063 신용카드 무이자 입력방식 변경요청 -->
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <dl class="price-info total-discount">
+                                                <dt class="text">최대 할인 금액</dt>
+                                                <dd class="content">
+                                                    <small class="discount-rate">38%</small>
+                                                    <span class="price">136,900원</span>
+                                                </dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl class="price-info total-payment">
+                                                <dt class="text">최대 혜택 적용 시</dt>
+                                                <dd class="content"><span class="price">-77,210원</span></dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p class="info-text">※ 할인적용가, 최대 혜택적용가는 회원에게 적용되는 가격으로서 로그인 후 주문시에 적용됩니다.<br>
+                                    또한, 캐시백은 총 결제금액의 60% 이상을 상기 신용카드로 결제해야, 캐시백 지급 대상이 됩니다. (멤버십 포인트 사용 등으로 카드 결제액이 60%
+                                    미만일 경우 지급되지 않음) 캐시백, 청구할인, 무이자 등은 각 카드사별 조건에 따라 달라질 수 있습니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //BTOCSITE-8348 [사용자행태분석 개선사항] ‘선택한 제품 비교하기’ 페이지에 제휴 혜택 내용 제공 -->
+            </div>
+        </div>
+        <!-- // 비교하기 결과 -->
+    </div>
+
+    @@include('./common/footer.html')
+</div>
+</body>
+</html>
