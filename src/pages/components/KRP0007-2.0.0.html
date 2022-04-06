@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <link type="text/css" rel="stylesheet" href="/lg5-common/css/components/KRP0015.min.css">
+    <!-- <script src="/lg5-common/js/search/filterLayer.min.js"></script> -->
+    @@include('./common/head.html', {
+        componentID: "KRP0007",
+        isJScompile: true
+    })
+    <script src="/lg5-common/js/components/KRP0015.min.js"></script>
+<body>
+    <script>
+        var firstEnableFilter = {
+            "FM00015001":["FV00046002","FV00046003"]
+        };
+        var firstFilterList = [
+            {
+                "filterType":"none",
+                "topFilterFlag": "Y",
+                "filterId":"FM00015001",
+                "filterGroupName":"일반제품_서브카테고리",
+                "filterGroupType":"sub_category",
+                "filterValues":[
+                    {"filterValueId":"FV00046001","filterValueName":"나노셀 TV"},
+                    {"filterValueId":"FV00046002","filterValueName":"울트라 HD TV"},
+                    {"filterValueId":"FV00046003","filterValueName":"올레드 TV"},
+                    {"filterValueId":"FV00046004","filterValueName":"일반 LED TV"},
+                    {"filterValueId":"FV00046005","filterValueName":"나노셀 TV2"},
+                    {"filterValueId":"FV00046006","filterValueName":"울트라 HD TV2"},
+                    {"filterValueId":"FV00046007","filterValueName":"올레드 TV2"},
+                    {"filterValueId":"FV00046008","filterValueName":"일반 LED TV2"},
+                    {"filterValueId":"FV00046009","filterValueName":"나노셀 TV3"},
+                    {"filterValueId":"FV00046010","filterValueName":"울트라 HD TV3"},
+                    {"filterValueId":"FV00046011","filterValueName":"올레드 TV3"},
+                    {"filterValueId":"FV00046012","filterValueName":"일반 LED TV3"},
+                ]
+            },
+
+            
+            {
+                "filterType":"range",
+                "topFilterFlag": "N",
+                "filterId":"fid00001",
+                "filterGroupName":"판매가",
+                "filterGroupType":"range",
+                "filterValues":[
+                ]
+            },
+            {
+                "filterType":"range",
+                "topFilterFlag": "N",
+                "filterId":"fid00002",
+                "filterGroupName":"화면크기",
+                "filterGroupType":"range",
+                "filterValues":[
+                    {
+                        "filterValueId":"rd0001",
+                        "filterValueName":"48인치"
+                    },
+                    {
+                        "filterValueId":"rd0002",
+                        "filterValueName":"52인치"
+                    },
+                    {
+                        "filterValueId":"rd0003",
+                        "filterValueName":"80인치"
+                    },
+                    {
+                        "filterValueId":"rd0004",
+                        "filterValueName":"120인치"
+                    }
+                ]
+            },
+            {
+                "filterType":"radio",
+                "topFilterFlag": "N",
+                "filterId":"fid00003",
+                "filterGroupName":"서비스",
+                "filterGroupType":"radio",
+                "filterValues":[
+                    {
+                        "filterValueId":"",
+                        "filterValueName":"전체"
+                    },
+                    {
+                        "filterValueId":"sd0002",
+                        "filterValueName":"일반제품"
+                    },
+                    {
+                        "filterValueId":"sd0003",
+                        "filterValueName":"케어십 가능 제품"
+                    },
+                    {
+                        "filterValueId":"sd0004",
+                        "filterValueName":"기타"
+                    }
+                ]
+            },
+            {
+                "filterType":"color",
+                "topFilterFlag": "N",
+                "filterId":"fid00004",
+                "filterGroupName":"색상",
+                "filterGroupType":"color",
+                "filterValues":[
+                    {"filterValueId":"cd0001","filterValueName":"맷 블랙", "topFilterDisplayName":"HA_REF_Matte_Black_Stainless_Steel"},
+                    {"filterValueId":"cd0002","filterValueName":"블랙 스틸", "topFilterDisplayName":"Black-Stainless-Steel"},
+                    {"filterValueId":"cd0003","filterValueName":"스테인레스 스틸", "topFilterDisplayName":"stainless-steel"},
+                    {"filterValueId":"cd0004","filterValueName":"화이트", "topFilterDisplayName":"smooth-white"}
+                ]
+            },
+            {
+                "filterType":"checkbox",
+                "topFilterFlag": "N",
+                "filterId":"fid00005",
+                "filterGroupName":"용량",
+                "filterGroupType":"size",
+                "filterValues":[
+                    {"filterValueId":"yd0001","filterValueName":"용량 11"},
+                    {"filterValueId":"yd0002","filterValueName":"용량 22"},
+                    {"filterValueId":"yd0003","filterValueName":"용량 33"},
+                    {"filterValueId":"yd0004","filterValueName":"용량 44"}
+                ]
+            },
+            {
+                "filterType":"checkbox",
+                "filterId":"fid00006",
+                "filterGroupName":"태그",
+                "filterGroupType":"check",
+                "filterValues":[
+                    {"filterValueId":"td0001","filterValueName":"태그1"},
+                    {"filterValueId":"td0002","filterValueName":"태그2"},
+                    {"filterValueId":"td0003","filterValueName":"태그3"}
+                ]
+            }
+        ];
+    </script>
+    
+    <div class="wrap">
+        @@include('./common/header.html')
+        <div class="container">
+
+            <div class="component-wrap full zero-top">
+                <!--
+                    [.component-wrap 옵션]
+                    1. 여백
+                    .zero-top : 상단여백 없음
+                    .zero-btm : 하단여백 없음
+                -->
+                
+                <!-- component KRC0009 -->
+                <section class="component KRP0007" aria-label="product list"
+                    data-prod-list="/lg5-common/data-ajax/KRP0007/retrieveCategoryProductList.json"
+                    data-wish-url="/lg5-common/data-ajax/KRP0007/plpWish.json"
+                    data-cart-url="/lg5-common/data-ajax/KRP0007/plpCart.json"
+                    data-sibling-url="/lg5-common/data-ajax/KRP0007/retrieveSiblingProductInfo.json"
+                >
+                    <div class="hidden-input-group">
+                        <!-- categoryId 을 가져오기 위한 부분  tv 카테고리 샘플 -->
+                        <!-- <input type="hidden" name="categoryId" value="CT50000025"> -->
+                        <!-- BTOCSITE-13 [퍼블] 비교하기 개선 -->
+                        <!-- <input type="hidden" name="categoryName" value="TV"> -->
+
+                      <!-- categoryId 을 가져오기 위한 부분 it 카테고리 샘플 -->
+                      <input type="hidden" name="categoryId" value="CT50000046">
+                      <!-- BTOCSITE-13 [퍼블] 비교하기 개선 -->
+                      <input type="hidden" name="categoryName" value="노트북">
+
+
+                      <!-- categoryId 을 가져오기 위한 부분 냉장고 카테고리 샘틀-->
+                      <!-- <input type="hidden" name="categoryId" value="CT50000065"> -->
+                      <!-- BTOCSITE-13 [퍼블] 비교하기 개선 -->
+                      <!-- <input type="hidden" name="categoryName" value="냉장고"> -->
+
+
+
+
+
+                        <!-- 페이지 더보기 -->
+                        <input type="hidden" name="totalCount" value="1">
+                        <input type="hidden" name="page" value="1">
+
+                        <!-- 2021.2.3 isLogin 추가-->
+                        <input type="hidden" name="isLogin" value="Y">
+
+                        <!-- 2021.2.5 추가-->
+                        <input type="hidden" name="newProductBadgeName" value="NEW">
+                        <input type="hidden" name="bestBadgeName" value="BEST">
+                        <input type="hidden" name="cashbackBadgeName" value="캐시백">
+                        <input type="hidden" name="lastBulletName" value="케어십 가능">
+                    </div>
+                    <!-- component -->
+                   @@include('./common/partials/KRP0007-cate.html')
+                    <!-- // component -->
+
+                    <!-- BTOCSITE-2785 : add 2021-07-16 --> 
+                    <div class="KRP0007-product">
+                        <div class="cont_s1 productGlossary">
+                            <div class="productGlo-cont">
+                                <h3>올레드TV란</h3>
+                                <p>올레드TV란 스스로 빛을 내 백라이트가 필요 없어 매우 얇고, 필요한 곳에만 스스로 빛을 내 무한대의<br/> 명암비, 우수한 색 재현이 가능합니다.</p>
+                                <a href="#n" class="btn-link">OLED TV와 LCD TV의 차이, LIVE LG에서 비교하기</a>
+                            </div>
+                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                        </div>
+
+                        <div class="cont_s2 productGlossary">
+                            <div class="productGlo-cont">
+                                <h3>올레드TV란 test</h3>
+                                <p>올레드TV란 스스로 빛을 내 백라이트가 필요 없어 매우 얇고, 필요한 곳에만 스스로 빛을 내 무한대의<br/> 명암비, 우수한 색 재현이 가능합니다.</p>
+                            </div>
+                            <button type="button" class="btn-close"><span class="blind">닫기</span></button>
+                        </div>
+                    </div>
+                    <!-- //BTOCSITE-2785 : add 2021-07-16 -->
+
+                    <div class="plp-list-wrap">
+                        <!-- component -->
+                        <!-- 210323 문구수정 -->
+                        @@include('./common/modules/list-filter.html', {
+                            "btmLink" : [
+                                {"text" : "나에게 맞는<br>케어솔루션 제품 찾기", "img" : "/lg5-common/images/icons/icon-img02-64.svg"},
+                                {"text" : "매장 상담 신청", "img" : "/lg5-common/images/icons/ic-main-calender-48.svg"},
+                                {"text" : "온라인 견적", "img" : "/lg5-common/images/icons/ic-main-online.svg"}
+                            ],
+                            "select" : [
+                                    {"option" : "추천순", "default":'value="popular"'},
+                                    {"option" : "인기순", "default":'value="popularity"'},
+                                    {"option" : "최신순", "default":'value="latest"'},
+                                    {"option" : "가격 높은순", "default":'value="pricehigh"'},
+                                    {"option" : "가격 낮은순", "default":'value="pricelow"'},
+                                    {"option" : "리뷰 많은순", "default":'value="review"'}
+                                ]
+                        })
+                        <!-- //210323 문구수정 -->
+                        <!-- // component -->
+
+                        <!-- component -->
+                        <div class="product-list-area">
+                            <!-- BTOCSITE-9186 -->
+                            <button type="button" class="btn border size btn-inchGuide" data-href="#popupInchGuide" data-control="modal"><span>화면 사이즈(cm) 안내</span></button> <!-- BTOCSITE-9186 -->
+                            <!-- BTOCSITE-//9186 -->
+                            @@include('./common/modules/list-sorting.html', {
+                                "select" : [
+                                    {"option" : "인기순", "default":'value="sort_popular"'},
+                                    {"option" : "최신순", "default":'value="sort_new"'},
+                                    {"option" : "가격 높은순", "default":'value="sort_max_price"'},
+                                    {"option" : "가격 낮은순", "default":'value="sort_min_price"'},
+                                    {"option" : "리뷰 많은순", "default":'value="sort_max_review"'}
+                                ],
+                                "selectname":"sortType"
+                            })
+                            <div class="list-wrap">
+                                <ul class="product-items">
+                                    @@loop('./common/modules/product-list-item-loop.html', [
+                                        {
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product6-color1",
+                                                    "name": "product6",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product6-color2",
+                                                    "name": "product6",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product6-color3",
+                                                    "name": "product6",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flagDiscount" : true,
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A3421244345234' title='LG DIOS 노크온 매직스페이스 S833MC85Q' data-b2bcatemapping='N' data-care-type='R'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : [
+                                                    {
+                                                        "icon" : "cash",
+                                                        "text" : "캐시백 이벤트"
+                                                    },{
+                                                        "icon" : "gift",
+                                                        "text" : "사은품 증정"
+                                                    }
+                                                ],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk6",
+                                                    "name": "wish-chk6",
+                                                    "checked": ""
+                                                },
+                                                "cartDisabled" :  true,
+                                                "button" : "제품정보 보기"
+                                            }
+                                        },
+                                        {
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product1-color1",
+                                                    "name": "product1",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product1-color2",
+                                                    "name": "product1",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product1-color3",
+                                                    "name": "product1",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "imageFlags": [
+                                                {"num":"1","alt":"으뜸효율 10%"},
+                                                {"num":"2","alt":"코리아세일 페스타"}
+                                            ],
+                                            "flagDiscount" : false,
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "isReview" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' class='on' data-id='A342352345234' data-b2bcatemapping='Y' data-care-type='C' title='LG DIOS 노크온 매직스페이스 S833MC85Q'><span>비교하기<em class='blind'>선택됨</em></span></a><!-- 210421 웹접근성 수정 [title, 선택 상태정보 표시] -->",
+                                            "ar" : true,
+                                            "bottom" : {
+                                                "benefit" : [
+                                                    {
+                                                        "icon" : "cash",
+                                                        "text" : "캐시백 이벤트"
+                                                    },{
+                                                        "icon" : "gift",
+                                                        "text" : "사은품 증정"
+                                                    }
+                                                ],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk1",
+                                                    "name": "wish-chk1",
+                                                    "checked": "checked"
+                                                },
+                                                "cartDisabled" :  false,
+                                                "button" : "구매하기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionText" : true,
+                                            "textSet" : [
+                                                {
+                                                    "title": "옵션1",
+                                                    "id": "product2-text1",
+                                                    "name": "product2",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "옵션2",
+                                                    "id": "product2-text2",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "옵션3",
+                                                    "id": "product2-text3",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "옵션4",
+                                                    "id": "product2-text4",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "옵션5",
+                                                    "id": "product2-text5",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "옵션6",
+                                                    "id": "product2-text6",
+                                                    "name": "product2",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "imageFlags": [
+                                                {"num":"1","alt":"으뜸효율 10%"},
+                                                {"num":"3","alt":"아카데미 페스티벌"}
+                                            ],
+                                            "flagDiscount" : true,
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' class='on' data-id='B1234513' data-b2bcatemapping='Y' data-care-type='C' title='LG DIOS 노크온 매직스페이스 S833MC85Q'><span>비교하기<em class='blind'>선택됨</em></span></a>",
+                                            "bottom" : {
+                                                "carePrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk2",
+                                                    "name": "wish-chk2",
+                                                    "checked": ""
+                                                },
+                                                "cartDisabled" :  false,
+                                                "button" : "구매하기"
+                                            }
+                                        },{
+                                            "banner" : {
+                                                "moduleType" : "",
+                                                "pcVisual": "/lg5-common/images/dummy/@img-product-banner-lg.jpg",
+                                                "moVisual": "/lg5-common/images/dummy/@img-product-banner.jpg",
+                                                "title": "각 얼음 세팅해줘!",
+                                                "copy": "말로 제어하는 디오스 라이프",
+                                                "button": "더 알아보기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product3-color1",
+                                                    "name": "product3-color",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product3-color2",
+                                                    "name": "product3-color",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product3-color3",
+                                                    "name": "product3-color",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "optionText" : true,
+                                            "textSet" : [
+                                                {
+                                                    "title": "지급제",
+                                                    "id": "product3-text1",
+                                                    "name": "product3-text",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "SKT",
+                                                    "id": "product3-text2",
+                                                    "name": "product3-text",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "KT",
+                                                    "id": "product3-text3",
+                                                    "name": "product3-text",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "LGU+",
+                                                    "id": "product3-text4",
+                                                    "name": "product3-text",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "imageFlags": [
+                                                {"num":"1","alt":"으뜸효율 10%"},
+                                                {"num":"6","alt":"NCSI 1위 기념"}
+                                            ],
+                                            "flagDiscount" : true,
+                                            "flagNCSI" : true,
+                                            "flags" : [],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='C342352345234' title='LG DIOS 노크온 매직스페이스 S833MC85Q' data-b2bcatemapping='N' data-care-type='R'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : [
+                                                    {
+                                                        "icon" : "cash",
+                                                        "text" : "캐시백 이벤트"
+                                                    },{
+                                                        "icon" : "gift",
+                                                        "text" : "사은품 증정"
+                                                    }
+                                                ],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk3",
+                                                    "name": "wish-chk3",
+                                                    "checked": ""
+                                                },
+                                                "cartDisabled" :  false,
+                                                "button" : "구매하기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product4-color1",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product4-color2",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product4-color3",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Matte Black Stainless Steel",
+                                                    "color": "HA_REF_Matte_Black_Stainless_Steel",
+                                                    "id": "product4-color4",
+                                                    "name": "product4",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "Smooth White",
+                                                    "color": "smooth-white",
+                                                    "id": "product4-color5",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "LG SIGNATURE Textured Steel™",
+                                                    "color": "HA_REF_SIGNATURE_Textured_Steel",
+                                                    "id": "product4-color6",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Espresso",
+                                                    "color": "Espresso",
+                                                    "id": "product4-color7",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Shine Gold",
+                                                    "color": "Shine-Gold",
+                                                    "id": "product4-color8",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Graphite Steel",
+                                                    "color": "graphite-steel",
+                                                    "id": "product4-color9",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Pearl Gray",
+                                                    "color": "pearl-gray",
+                                                    "id": "product4-color10",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "Lavender",
+                                                    "color": "lavender",
+                                                    "id": "product4-color11",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "LeatherYellow",
+                                                    "color": "LeatherYellow",
+                                                    "id": "product4-color12",
+                                                    "name": "product4",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flagDiscount" : true,
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A34235212342234' title='LG DIOS 노크온 매직스페이스 S833MC85Q' data-b2bcatemapping='N' data-care-type='R'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : [
+                                                    {
+                                                        "icon" : "cash",
+                                                        "text" : "캐시백 이벤트"
+                                                    },{
+                                                        "icon" : "gift",
+                                                        "text" : "사은품 증정"
+                                                    }
+                                                ],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk4",
+                                                    "name": "wish-chk4",
+                                                    "checked": ""
+                                                },
+                                                "cartDisabled" :  false,
+                                                "button" : "구매하기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "imageFlags": [
+                                                {"num":"5","alt":"에어컨 예약판매"}
+                                            ],
+                                            "flagDiscount" : true,
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A342123345234' title='LG DIOS 노크온 매직스페이스 S833MC85Q' data-b2bcatemapping='N' data-care-type='R'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : [
+                                                    {
+                                                        "icon" : "cash",
+                                                        "text" : "캐시백 이벤트"
+                                                    },{
+                                                        "icon" : "gift",
+                                                        "text" : "사은품 증정"
+                                                    }
+                                                ],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk5",
+                                                    "name": "wish-chk5",
+                                                    "checked": ""
+                                                },
+                                                "cartDisabled" :  false,
+                                                "button" : "구매하기"
+                                            }
+                                        },{
+                                            "banner" : {
+                                                "moduleType" : "large",
+                                                "pcVisual": "/lg5-common/images/dummy/@img-product-banner2-lg.jpg",
+                                                "moVisual": "/lg5-common/images/dummy/@img-product-banner2.jpg",
+                                                "title": "마트 가기 전, 음료가 있는지 없는지 헷갈린다면?",
+                                                "copy": "말로 제어하는 디오스 라이프",
+                                                "button": "더 알아보기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product6-color1",
+                                                    "name": "product6",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product6-color2",
+                                                    "name": "product6",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product6-color3",
+                                                    "name": "product6",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "flagDiscount" : true,
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A3421244345234' title='LG DIOS 노크온 매직스페이스 S833MC85Q' data-b2bcatemapping='N' data-care-type='R'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : [
+                                                    {
+                                                        "icon" : "cash",
+                                                        "text" : "캐시백 이벤트"
+                                                    },{
+                                                        "icon" : "gift",
+                                                        "text" : "사은품 증정"
+                                                    }
+                                                ],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk6",
+                                                    "name": "wish-chk6",
+                                                    "checked": ""
+                                                },
+                                                "cartDisabled" :  false,
+                                                "button" : "구매하기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product7-color1",
+                                                    "name": "product7",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product7-color2",
+                                                    "name": "product7",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product7-color3",
+                                                    "name": "product7",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "imageFlags": [
+                                                {"num":"4","alt":"미리미리 페스티벌"}
+                                            ],
+                                            "flagDiscount" : true,
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A315972345234' title='LG DIOS 노크온 매직스페이스 S833MC85Q' data-b2bcatemapping='N' data-care-type='R'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : [
+                                                    {
+                                                        "icon" : "cash",
+                                                        "text" : "캐시백 이벤트"
+                                                    },{
+                                                        "icon" : "gift",
+                                                        "text" : "사은품 증정"
+                                                    }
+                                                ],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk7",
+                                                    "name": "wish-chk7",
+                                                    "checked": ""
+                                                },
+                                                "cartDisabled" :  false,
+                                                "button" : "구매하기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product8-color1",
+                                                    "name": "product8",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product8-color2",
+                                                    "name": "product8",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product8-color3",
+                                                    "name": "product8",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "imageFlags": [
+                                                {"num":"4","alt":"미리미리 페스티벌"}
+                                            ],
+                                            "flagDiscount" : true,
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A34235234fs5234' title='LG DIOS 노크온 매직스페이스 S833MC85Q' data-b2bcatemapping='N' data-care-type='R'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : [
+                                                    {
+                                                        "icon" : "cash",
+                                                        "text" : "캐시백 이벤트"
+                                                    },{
+                                                        "icon" : "gift",
+                                                        "text" : "사은품 증정"
+                                                    }
+                                                ],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk8",
+                                                    "name": "wish-chk8",
+                                                    "checked": ""
+                                                },
+                                                "cartDisabled" :  false,
+                                                "button" : "구매하기"
+                                            }
+                                        },{
+                                            "itemClass" : "plp-item",
+                                            "optionColor" : true,
+                                            "colorSet" : [
+                                                {
+                                                    "title": "샤이니 유니버스",
+                                                    "color": "stainless-steel",
+                                                    "id": "product9-color1",
+                                                    "name": "product9",
+                                                    "checked": "checked"
+                                                },{
+                                                    "title": "샤이니 퓨어",
+                                                    "color": "Black-Stainless-Steel",
+                                                    "id": "product9-color2",
+                                                    "name": "product9",
+                                                    "checked": ""
+                                                },{
+                                                    "title": "맨하튼 미드나잇",
+                                                    "color": "MC_K62_SkyBlue",
+                                                    "id": "product9-color3",
+                                                    "name": "product9",
+                                                    "checked": ""
+                                                }
+                                            ],
+                                            "imageFlags": [
+                                                {"num":"4","alt":"미리미리 페스티벌"}
+                                            ],
+                                            "flagDiscount" : true,
+                                            "flags" : ["NEW","BEST"],
+                                            "review" : true,
+                                            "spec" : true,
+                                            "compare" : "<a href='#n' data-id='A342fertgg45234' title='LG DIOS 노크온 매직스페이스 S833MC85Q' data-b2bcatemapping='N' data-care-type='R'><span>비교하기</span></a>",
+                                            "bottom" : {
+                                                "benefit" : [
+                                                    {
+                                                        "icon" : "cash",
+                                                        "text" : "캐시백 이벤트"
+                                                    },{
+                                                        "icon" : "gift",
+                                                        "text" : "사은품 증정"
+                                                    }
+                                                ],
+                                                "price" : true,
+                                                "originalPrice" : true,
+                                                "wish" : {
+                                                    "id": "wish-chk9",
+                                                    "name": "wish-chk9",
+                                                    "checked": ""
+                                                },
+                                                "cartDisabled" :  false,
+                                                "button" : "구매하기"
+                                            }
+                                        }
+                                    ])
+                                </ul>
+
+                                <div class="read-more-area">
+                                    <button type="button" class="read-more"><span><em>제품 </em>더보기</span></button>
+                                </div>
+
+                                <!-- 210407 수정 [데이터 없는 케이스 추가] -->
+                                <div class="no-data" style="display:none;">
+                                    <p>설정하신 필터에 맞는 제품이 없습니다.</p>
+                                </div>
+                                <!-- // 210407 수정 [데이터 없는 케이스 추가] -->
+                                
+                            </div>
+
+                            <!-- 210310 수정 [배너 누락 추가] -->
+                            <div class="mobile-service-link">
+                                <ul>
+                                    <li><a href="#n" data-pc-href="https://wwwdev50.lge.co.kr/tvs/" data-m-href="https://wwwdev50.lge.co.kr" class="btn-text"><span>나에게 맞는 케어솔루션 제품 찾기</span><img src="/lg5-common/images/icons/icon-img02-64.svg" alt=""></a></li>
+
+                                    <li><a href="#n" data-pc-href="https://wwwdev50.lge.co.kr/tvs/" data-m-href="https://wwwdev50.lge.co.kr" class="btn-text"><span>매장 방문 예약</span><img src="/lg5-common/images/icons/ic-main-calender-48.svg" alt=""></a></li>
+                                </ul>
+                            </div>
+                            <!-- // 210310 수정 [배너 누락 추가] -->
+
+                        </div>                        
+                        <!-- // component -->
+                    </div>
+                </section>
+                <!-- //component KRC0009 -->
+            </div>
+            <!-- component -->
+            @@include('./common/partials/KRP0015.html')
+            <!-- // component -->
+            @@include('./common/modules/toast-message.html', {
+                 "messageArr": [
+                     {"message" : "2개까지 비교가능합니다. "},
+                     {"message" : "비교하기 기능이 초기화되었습니다. "}
+                 ]
+             }) 
+        </div>
+        @@include('./common/footer.html')
+    </div>
+
+    <!-- BTOCSITE-9186 -->
+    <article  class="popup-wrap popup-inch-guide" id="popupInchGuide">
+        <header class="pop-header">
+            <h1 class="tit"><span>TV 화면 사이즈(cm) 안내</span></h1>
+        </header>
+        <section class="pop-conts no-footer">
+            <iframe src="./KRP0007_table.html" frameborder="0" width="100%" >
+            </iframe>
+        </section>
+        <button type="button" class="btn-close ui_modal_close"><span class="blind">닫기</span></button>
+    </article>
+    <!-- //BTOCSITE-9186 -->
+</body>
+</html>

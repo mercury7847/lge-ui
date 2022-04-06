@@ -86,7 +86,7 @@ var res = {
 				"KRP0004_Scroll to the top" : ["/html/components/floating.html","","검수완료"],
 				"KRP0005_Sticky chat" : ["/html/components/floating.html","","검수완료"],
 				"KRP0006_Response UI[KRP0008]" : ["/html/components/KRP0006.html","","검수완료"],
-				"KRP0007_Product List[KRP0009]" : ["/html/components/KRP0007.html","","검수완료"],
+				"KRP0007_Product List[KRP0009]" : ["/html/components/KRP0007-2.0.0.html","","검수완료"],
 				"KRP0008_Product Summary[KRP0010]" : ["/html/components/KRP0008.html","","검수완료"],
 				"KRP0008_Product Summary[KRP0010] Popup" : ["/html/components/KRP0008-modal.html","","검수완료"],
 				"KRP0009_PDP Tab Anchor[KRP0012]" : ["/html/components/KRP0009.html","","검수완료"],
